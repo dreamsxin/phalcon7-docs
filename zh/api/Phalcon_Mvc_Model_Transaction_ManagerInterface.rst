@@ -1,0 +1,62 @@
+Interface **Phalcon\\Mvc\\Model\\Transaction\\ManagerInterface**
+================================================================
+
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/mvc/model/transaction/managerinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
+Phalcon\\Mvc\\Model\\Transaction\\ManagerInterface initializer
+
+
+Methods
+-------
+
+abstract public *boolean*  **has** ()
+
+Checks whether manager has an active transaction
+
+
+
+abstract public :doc:`Phalcon\\Mvc\\Model\\TransactionInterface <Phalcon_Mvc_Model_TransactionInterface>`  **get** ([*boolean* $autoBegin])
+
+Returns a new Phalcon\\Mvc\\Model\\Transaction or an already created once
+
+
+
+abstract public  **rollbackPendent** ()
+
+Rollbacks active transactions within the manager
+
+
+
+abstract public  **commit** ()
+
+Commmits active transactions within the manager
+
+
+
+abstract public  **rollback** ([*boolean* $collect])
+
+Rollbacks active transactions within the manager Collect will remove transaction from the manager
+
+
+
+abstract public  **notifyRollback** (:doc:`Phalcon\\Mvc\\Model\\TransactionInterface <Phalcon_Mvc_Model_TransactionInterface>` $transaction)
+
+Notifies the manager about a rollbacked transaction
+
+
+
+abstract public  **notifyCommit** (:doc:`Phalcon\\Mvc\\Model\\TransactionInterface <Phalcon_Mvc_Model_TransactionInterface>` $transaction)
+
+Notifies the manager about a commited transaction
+
+
+
+abstract public  **collectTransactions** ()
+
+Remove all the transactions from the manager
+
+
+

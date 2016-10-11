@@ -1,0 +1,653 @@
+Abstract class **Phalcon\\Db\\Adapter**
+=======================================
+
+*extends* abstract class :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
+
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`
+
+.. role:: raw-html(raw)
+   :format: html
+
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/db/adapter.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+
+Base class for Phalcon\\Db adapters
+
+
+Methods
+-------
+
+protected  **__construct** ()
+
+Phalcon\\Db\\Adapter constructor
+
+
+
+public  **setProfiler** (:doc:`Phalcon\\Db\\Profiler <Phalcon_Db_Profiler>` $profiler)
+
+Sets the profiler
+
+
+
+public :doc:`Phalcon\\Db\\Profiler <Phalcon_Db_Profiler>`  **getProfiler** ()
+
+Returns the profiler
+
+
+
+public  **setDialect** (*unknown* $dialect)
+
+Sets the dialect used to produce the SQL
+
+
+
+public :doc:`Phalcon\\Db\\DialectInterface <Phalcon_Db_DialectInterface>`  **getDialect** ()
+
+Returns internal dialect instance
+
+
+
+public *array*  **fetchOne** (*string* $sqlQuery, [*int* $fetchMode], [*unknown* $placeholders], [*mixed* $fetchArgument], [*array* $ctorArgs])
+
+Returns the first row in a SQL query result 
+
+.. code-block:: php
+
+    <?php
+
+    //Getting first robot
+    $robot = $connection->fetchOne("SELECT * FROM robots");
+    print_r($robot);
+    
+    //Getting first robot with associative indexes only
+    $robot = $connection->fetchOne("SELECT * FROM robots", Phalcon\Db::FETCH_ASSOC);
+    print_r($robot);
+
+
+
+
+public *array*  **fetchAll** (*string* $sqlQuery, [*int* $fetchMode], [*unknown* $placeholders], [*mixed* $fetchArgument], [*array* $ctorArgs])
+
+Dumps the complete result of a query into an array 
+
+.. code-block:: php
+
+    <?php
+
+    //Getting all robots with associative indexes only
+    $robots = $connection->fetchAll("SELECT * FROM robots", Phalcon\Db::FETCH_ASSOC);
+    foreach ($robots as $robot) {
+    	print_r($robot);
+    }
+    
+      //Getting all robots that contains word "robot" withing the name
+      $robots = $connection->fetchAll("SELECT * FROM robots WHERE name LIKE :name",
+    	Phalcon\Db::FETCH_ASSOC,
+    	array('name' => '%robot%')
+      );
+    foreach($robots as $robot){
+    	print_r($robot);
+    }
+
+
+
+
+public *boolean*  **insert** (*string* $table, *array* $values, [*array* $fields], [*array* $dataTypes])
+
+Inserts data into a table using custom RBDM SQL syntax 
+
+.. code-block:: php
+
+    <?php
+
+     //Inserting a new robot
+     $success = $connection->insert(
+         "robots",
+         array("Astro Boy", 1952),
+         array("name", "year")
+     );
+    
+     //Next SQL sentence is sent to the database system
+     INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
+
+
+
+
+public *boolean*  **insertAsDict** (*string* $table, *array* $data, [*array* $dataTypes])
+
+Inserts data into a table using custom RBDM SQL syntax Another, more convenient syntax 
+
+.. code-block:: php
+
+    <?php
+
+     //Inserting a new robot
+     $success = $connection->insertAsDict(
+     "robots",
+     array(
+    	  "name" => "Astro Boy",
+    	  "year" => 1952
+      )
+     );
+    
+     //Next SQL sentence is sent to the database system
+     INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
+
+
+
+
+public *boolean*  **update** (*string* $table, *array* $fields, *array* $values, [*string* $whereCondition], [*array* $dataTypes])
+
+Updates data on a table using custom RBDM SQL syntax 
+
+.. code-block:: php
+
+    <?php
+
+     //Updating existing robot
+     $success = $connection->update(
+         "robots",
+         array("name"),
+         array("New Astro Boy"),
+         "id = 101"
+     );
+    
+     //Next SQL sentence is sent to the database system
+     UPDATE `robots` SET `name` = "Astro boy" WHERE id = 101
+
+
+
+
+public *boolean*  **delete** (*string* $table, [*string* $whereCondition], [*array* $placeholders], [*array* $dataTypes])
+
+Deletes data from a table using custom RBDM SQL syntax 
+
+.. code-block:: php
+
+    <?php
+
+     //Deleting existing robot
+     $success = $connection->delete(
+         "robots",
+         "id = 101"
+     );
+    
+     //Next SQL sentence is generated
+     DELETE FROM `robots` WHERE `id` = 101
+
+
+
+
+public *string*  **getColumnList** (*array* $columnList)
+
+Gets a list of columns
+
+
+
+public *string*  **limit** (*string* $sqlQuery, *int* $number)
+
+Appends a LIMIT clause to $sqlQuery argument 
+
+.. code-block:: php
+
+    <?php
+
+     	echo $connection->limit("SELECT * FROM robots", 5);
+
+
+
+
+public *string*  **tableExists** (*string* $tableName, [*string* $schemaName])
+
+Generates SQL checking for the existence of a schema.table 
+
+.. code-block:: php
+
+    <?php
+
+     	var_dump($connection->tableExists("blog", "posts"));
+
+
+
+
+public *string*  **viewExists** (*string* $viewName, [*string* $schemaName])
+
+Generates SQL checking for the existence of a schema.view 
+
+.. code-block:: php
+
+    <?php
+
+     var_dump($connection->viewExists("active_users", "posts"));
+
+
+
+
+public *string*  **forUpdate** (*string* $sqlQuery)
+
+Returns a SQL modified with a FOR UPDATE clause
+
+
+
+public *string*  **sharedLock** (*string* $sqlQuery)
+
+Returns a SQL modified with a LOCK IN SHARE MODE clause
+
+
+
+public *boolean*  **createTable** (*string* $tableName, *string* $schemaName, *array* $definition)
+
+Creates a table
+
+
+
+public *boolean*  **dropTable** (*string* $tableName, [*string* $schemaName], [*boolean* $ifExists])
+
+Drops a table from a schema/database
+
+
+
+public *boolean*  **createView** (*unknown* $viewName, *array* $definition, [*string* $schemaName])
+
+Creates a view
+
+
+
+public *boolean*  **dropView** (*string* $viewName, [*string* $schemaName], [*boolean* $ifExists])
+
+Drops a view
+
+
+
+public *boolean*  **addColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
+
+Adds a column to a table
+
+
+
+public *boolean*  **modifyColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
+
+Modifies a table column based on a definition
+
+
+
+public *boolean*  **dropColumn** (*string* $tableName, *string* $schemaName, *string* $columnName)
+
+Drops a column from a table
+
+
+
+public *boolean*  **addIndex** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index)
+
+Adds an index to a table
+
+
+
+public *boolean*  **dropIndex** (*string* $tableName, *string* $schemaName, *string* $indexName)
+
+Drop an index from a table
+
+
+
+public *boolean*  **addPrimaryKey** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\IndexInterface <Phalcon_Db_IndexInterface>` $index)
+
+Adds a primary key to a table
+
+
+
+public *boolean*  **dropPrimaryKey** (*string* $tableName, *string* $schemaName)
+
+Drops a table's primary key
+
+
+
+public *boolean true*  **addForeignKey** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\ReferenceInterface <Phalcon_Db_ReferenceInterface>` $reference)
+
+Adds a foreign key to a table
+
+
+
+public *boolean true*  **dropForeignKey** (*string* $tableName, *string* $schemaName, *string* $referenceName)
+
+Drops a foreign key from a table
+
+
+
+public *string*  **getColumnDefinition** (:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
+
+Returns the SQL column definition from a column
+
+
+
+public *array*  **listTables** ([*string* $schemaName])
+
+List all tables on a database 
+
+.. code-block:: php
+
+    <?php
+
+     	print_r($connection->listTables("blog"));
+
+
+
+
+public *array*  **listViews** ([*string* $schemaName])
+
+List all views on a database 
+
+.. code-block:: php
+
+    <?php
+
+    print_r($connection->listViews("blog")); ?>
+
+
+
+
+public :doc:`Phalcon\\Db\\Index <Phalcon_Db_Index>` [] **describeIndexes** (*string* $table, [*string* $schema])
+
+Lists table indexes 
+
+.. code-block:: php
+
+    <?php
+
+    print_r($connection->describeIndexes('robots_parts'));
+
+
+
+
+public :doc:`Phalcon\\Db\\Reference <Phalcon_Db_Reference>` [] **describeReferences** (*string* $table, [*string* $schema])
+
+Lists table references 
+
+.. code-block:: php
+
+    <?php
+
+     print_r($connection->describeReferences('robots_parts'));
+
+
+
+
+public *array*  **tableOptions** (*string* $tableName, [*string* $schemaName])
+
+Gets creation options from a table 
+
+.. code-block:: php
+
+    <?php
+
+     print_r($connection->tableOptions('robots'));
+
+
+
+
+public *boolean*  **createSavepoint** (*string* $name)
+
+Creates a new savepoint
+
+
+
+public *boolean*  **releaseSavepoint** (*string* $name)
+
+Releases given savepoint
+
+
+
+public *boolean*  **rollbackSavepoint** (*string* $name)
+
+Rollbacks given savepoint
+
+
+
+public :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`  **setNestedTransactionsWithSavepoints** (*boolean* $nestedTransactionsWithSavepoints)
+
+Set if nested transactions should use savepoints
+
+
+
+public *boolean*  **isNestedTransactionsWithSavepoints** ()
+
+Returns if nested transactions should use savepoints
+
+
+
+public *string*  **getNestedTransactionSavepointName** ()
+
+Returns the savepoint name to use for nested transactions
+
+
+
+public :doc:`Phalcon\\Db\\RawValue <Phalcon_Db_RawValue>`  **getDefaultIdValue** ()
+
+Returns the default identity value to be inserted in an identity column 
+
+.. code-block:: php
+
+    <?php
+
+     //Inserting a new robot with a valid default value for the column 'id'
+     $success = $connection->insert(
+         "robots",
+         array($connection->getDefaultIdValue(), "Astro Boy", 1952),
+         array("id", "name", "year")
+     );
+
+
+
+
+public *boolean*  **supportSequences** ()
+
+Check whether the database system requires a sequence to produce auto-numeric values
+
+
+
+public *boolean*  **useExplicitIdValue** ()
+
+Check whether the database system requires an explicit value for identity columns
+
+
+
+public *array*  **getDescriptor** ()
+
+Return descriptor used to connect to the active database
+
+
+
+public *string*  **getConnectionId** ()
+
+Gets the active connection unique identifier
+
+
+
+public *string*  **getSQLStatement** ()
+
+Active SQL statement in the object
+
+
+
+public *string*  **getRealSQLStatement** ()
+
+Active SQL statement in the object without replace bound paramters
+
+
+
+public *array*  **getSQLVariables** ()
+
+Active SQL statement in the object
+
+
+
+public *array*  **getSQLBindTypes** ()
+
+Active SQL statement in the object
+
+
+
+public *string*  **getType** ()
+
+Returns type of database system the adapter is used for
+
+
+
+public *string*  **getDialectType** ()
+
+Returns the name of the dialect used
+
+
+
+public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\DI\\Injectable
+
+Sets the dependency injector
+
+
+
+public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ([*unknown* $error]) inherited from Phalcon\\DI\\Injectable
+
+Returns the internal dependency injector
+
+
+
+public  **setEventsManager** (:doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>` $eventsManager) inherited from Phalcon\\DI\\Injectable
+
+Sets the event manager
+
+
+
+public :doc:`Phalcon\\Events\\ManagerInterface <Phalcon_Events_ManagerInterface>`  **getEventsManager** () inherited from Phalcon\\DI\\Injectable
+
+Returns the internal event manager
+
+
+
+public *boolean*  **fireEvent** (*string* $eventName, [*unknown* $data], [*unknown* $cancelable]) inherited from Phalcon\\DI\\Injectable
+
+Fires an event, implicitly calls behaviors and listeners in the events manager are notified
+
+
+
+public *boolean*  **fireEventCancel** (*string* $eventName, [*unknown* $data], [*unknown* $cancelable]) inherited from Phalcon\\DI\\Injectable
+
+Fires an event, implicitly calls behaviors and listeners in the events manager are notified This method stops if one of the callbacks/listeners returns boolean false
+
+
+
+public *boolean*  **hasService** (*string* $name) inherited from Phalcon\\DI\\Injectable
+
+Check whether the DI contains a service by a name
+
+
+
+public *mixed*  **getResolveService** (*string* $name, [*unknown* $args], [*unknown* $noerror], [*unknown* $noshared]) inherited from Phalcon\\DI\\Injectable
+
+Resolves the service based on its configuration
+
+
+
+public  **__get** (*unknown* $property) inherited from Phalcon\\DI\\Injectable
+
+Magic method __get
+
+
+
+public  **__sleep** () inherited from Phalcon\\DI\\Injectable
+
+...
+
+
+public  **__debugInfo** () inherited from Phalcon\\DI\\Injectable
+
+...
+
+
+abstract public *boolean*  **connect** ([*array* $descriptor]) inherited from Phalcon\\Db\\AdapterInterface
+
+This method is automatically called in Phalcon\\Db\\Adapter\\Pdo constructor. Call it when you need to restore a database connection
+
+
+
+abstract public :doc:`Phalcon\\Db\\ResultInterface <Phalcon_Db_ResultInterface>`  **query** (*string* $sqlStatement, [*array* $placeholders], [*array* $dataTypes]) inherited from Phalcon\\Db\\AdapterInterface
+
+Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server return rows
+
+
+
+abstract public *boolean*  **execute** (*string* $sqlStatement, [*array* $placeholders], [*array* $dataTypes]) inherited from Phalcon\\Db\\AdapterInterface
+
+Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server don't return any row
+
+
+
+abstract public *int*  **affectedRows** () inherited from Phalcon\\Db\\AdapterInterface
+
+Returns the number of affected rows by the last INSERT/UPDATE/DELETE reported by the database system
+
+
+
+abstract public *boolean*  **close** () inherited from Phalcon\\Db\\AdapterInterface
+
+Closes active connection returning success. Phalcon automatically closes and destroys active connections within Phalcon\\Db\\Pool
+
+
+
+abstract public *string*  **escapeIdentifier** (*string* $identifier) inherited from Phalcon\\Db\\AdapterInterface
+
+Escapes a column/table/schema name
+
+
+
+abstract public *string*  **escapeString** (*string* $str) inherited from Phalcon\\Db\\AdapterInterface
+
+Escapes a value to avoid SQL injections
+
+
+
+abstract public *array*  **convertBoundParams** (*string* $sqlStatement, *array* $params) inherited from Phalcon\\Db\\AdapterInterface
+
+Converts bound params like :name: or ?1 into ? bind params
+
+
+
+abstract public *int*  **lastInsertId** ([*string* $sequenceName]) inherited from Phalcon\\Db\\AdapterInterface
+
+Returns insert id for the auto_increment column inserted in the last SQL statement
+
+
+
+abstract public *boolean*  **begin** () inherited from Phalcon\\Db\\AdapterInterface
+
+Starts a transaction in the connection
+
+
+
+abstract public *boolean*  **rollback** () inherited from Phalcon\\Db\\AdapterInterface
+
+Rollbacks the active transaction in the connection
+
+
+
+abstract public *boolean*  **commit** () inherited from Phalcon\\Db\\AdapterInterface
+
+Commits the active transaction in the connection
+
+
+
+abstract public *boolean*  **isUnderTransaction** () inherited from Phalcon\\Db\\AdapterInterface
+
+Checks whether connection is under database transaction
+
+
+
+abstract public *\PDO*  **getInternalHandler** () inherited from Phalcon\\Db\\AdapterInterface
+
+Return internal PDO handler
+
+
+
+abstract public :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` [] **describeColumns** (*string* $table, [*string* $schema]) inherited from Phalcon\\Db\\AdapterInterface
+
+Returns an array of Phalcon\\Db\\Column objects describing a table
+
+
+
