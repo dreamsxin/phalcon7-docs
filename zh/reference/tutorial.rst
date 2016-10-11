@@ -249,9 +249,10 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
 该控制器类必须有“Controller”后缀，且控制器动作必须有“Action”后缀。如果你从浏览器访问应用程序，你应该看到这样的事情：
 
-.. image:: ../static/img/tutorial-1.png
-    :align: center
+.. raw:: html
 
+    <img class="align-center" src="../static/img/tutorial-1.png">
+ 
 恭喜, 让Phalcon带你飞!
 
 输出到视图（Sending output to a view）
@@ -302,9 +303,10 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
 我们使用类 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` 去生成标记。 这是一个让我们构建HTML标记的实用类。 关于生成HTML更详细的文章可以查看 :doc:`视图助手 <tags>`
 
-.. image:: ../static/img/tutorial-2.png
-    :align: center
+.. raw:: html
 
+    <img class="align-center" src="../static/img/tutorial-2.png">
+ 
 这是一个注册控制器 (app/controllers/SignupController.php):
 
 .. code-block:: php
@@ -348,9 +350,10 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
 在浏览器中查看表单将显示类似的页面：
 
-.. image:: ../static/img/tutorial-3.png
-    :align: center
+.. raw:: html
 
+    <img class="align-center" src="../static/img/tutorial-3.png">
+ 
 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` 还提供了有用的方法来构建表单元素。
 
 :code:`Phalcon\Tag::form()` 方法只接受一个参数实例, 一个相对uri到这个应用的一个控制器/动作。
@@ -522,9 +525,10 @@ ORM自动转义输入以防止SQL注入，所以我们只需要将请求传递�
 
 附加的自动验证会验证字段定义为not null(必需)。如果我们不输入任何必需的注册表单中的字段，我们的屏幕将会看起来像这样：
 
-.. image:: ../static/img/tutorial-4.png
-    :align: center
+.. raw:: html
 
+    <img class="align-center" src="../static/img/tutorial-4.png">
+ 
 结束语（Conclusion）
 --------------------
 这是一个非常简单的教程，正如你所看到的，使用Phalcon很容易开始构建应用程序。Phalcon是一个在你的web服务器上没有干扰、易于开发、特性优良的扩展。我们邀请你继续阅读手册，这样你就可以发现Phalcon提供的附加功能!

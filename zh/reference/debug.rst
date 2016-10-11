@@ -1,9 +1,10 @@
 调试应用程序（Debugging Applications）
 ======================================
 
-.. image:: ../static/img/xdebug-1.jpg
-    :align: center
+.. raw:: html
 
+    <img class="align-center" src="../static/img/xdebug-1.jpg">
+ 
 Phalcon中提供了提供了几种调试级别即通知，错误和异常。 异常类 `Exception class`_ 提供了错误发生时的一些常用的调试信息如文件，行，消息，错误代码，跟踪信息等。
 Phalcon主要使用这个异常类来包装这些功能，以方便开发者或用户使用。
 

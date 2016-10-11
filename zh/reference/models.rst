@@ -792,9 +792,10 @@ The following schema shows 3 tables whose relations will serve us as an example 
 
 Check the EER diagram to understand better the relations:
 
-.. image:: ../static/img/eer-1.png
-    :align: center
+.. raw:: html
 
+    <img class="align-center" src="../static/img/eer-1.png">
+ 
 The models with their relations could be implemented as follows:
 
 .. code-block:: php
@@ -1018,8 +1019,9 @@ The "robots_similar" table has the function to define what robots are similar to
 
 Both "robots_id" and "similar_robots_id" have a relation to the model Robots:
 
-.. image:: ../static/img/eer-2.png
-   :align: center
+.. raw:: html
+
+    <img class="align-center" src="../static/img/eer-2.png">
 
 A model that maps this table and its relationships is the following:
 

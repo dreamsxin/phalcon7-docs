@@ -231,8 +231,9 @@ to check that only registered users have access to these controllers. If you are
 into the application and you try to access, for example, the products controller (which is private)
 you will see a screen like this:
 
-.. image:: ../static/img/invo-2.png
-   :align: center
+.. raw:: html
+
+    <img class="align-center" src="../static/img/invo-2.png">
 
 Every time someone attempts to access any controller/action, the application verifies that the
 current role (in session) has access to it, otherwise it displays a message like the above and

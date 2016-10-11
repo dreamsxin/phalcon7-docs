@@ -14,13 +14,15 @@ You can download a cross platform package containing the developer tools from th
 
 Open a terminal and type the commands below:
 
-.. image:: ../static/img/linux-1.png
-   :align: center
+.. raw:: html
+
+    <img class="align-center" src="../static/img/linux-1.png">
 
 Then enter the folder where the tools were cloned and execute ". ./phalcon.sh", (don't forget the dot at beginning of the command):
 
-.. image:: ../static/img/linux-2.png
-   :align: center
+.. raw:: html
+
+    <img class="align-center" src="../static/img/linux-2.png">
 
 Create a symbolink link to the phalcon.php script:
 

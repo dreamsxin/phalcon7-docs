@@ -57,8 +57,9 @@ web服务器根目录下输入如下命令：
 
 执行命令后会生成如下的文档结构的项目：
 
-.. image:: ../static/img/tools-2.png
-   :align: center
+.. raw:: html
+
+    <img class="align-center" src="../static/img/tools-2.png">
 
 我们可以在命令上加 *--help* 以显示帮助信息（下面的帮助中的中文是翻译时加上去的）：
 
@@ -92,8 +93,9 @@ web服务器根目录下输入如下命令：
 
 我们访问新生成项目的地址显示如下：
 
-.. image:: ../static/img/tools-6.png
-   :align: center
+.. raw:: html
+
+    <img class="align-center" src="../static/img/tools-6.png">
 
 生成控制器（Generating Controllers）
 ------------------------------------
@@ -311,18 +313,21 @@ scaffold生成器会在相关的文件夹中生成若干个文档。 下面是�
 
 在生成的Products控制器中，我们可以看到一个搜索表单和一个生成新product的链接：
 
-.. image:: ../static/img/tools-10.png
-   :align: center
+.. raw:: html
+
+    <img class="align-center" src="../static/img/tools-10.png">
 
 在创建页面我们可以生成经过验证的Products记录。 Phalcon会自动的验证数据库中的非空字段。
 
-.. image:: ../static/img/tools-11.png
-   :align: center
+.. raw:: html
+
+    <img class="align-center" src="../static/img/tools-11.png">
 
 执行搜索后，分页组件会显示颁后的结果。 我们在结果列表的前面放置Edit或Delete链接，以实现相应的操作。
 
-.. image:: ../static/img/tools-12.png
-   :align: center
+.. raw:: html
+
+    <img class="align-center" src="../static/img/tools-12.png">
 
 工具的 Web 界面（Web Interface to Tools）
 -----------------------------------------

@@ -19,9 +19,10 @@ Xdebug_ 提供了简易的性能测试的方式， 安装后可在php.ini中 进
 
 使用 Webgrind_ 可以分析出哪些函数或方法比其它的要慢：
 
-.. image:: ../static/img/webgrind.jpg
-    :align: center
+.. raw:: html
 
+    <img class="align-center" src="../static/img/webgrind.jpg">
+ 
 关于 Xhprof（Profiling with Xhprof）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Xhprof_ 也是一个非常有意思的扩展。 开发者可以添加如下的代码到启动文件中：
@@ -51,12 +52,14 @@ Xhprof_ 也是一个非常有意思的扩展。 开发者可以添加如下的�
 
 Xhprof 提供了一个内置的HTML视图用来对性能分析的数据进行展示：
 
-.. image:: ../static/img/xhprof-2.jpg
-    :align: center
+.. raw:: html
 
-.. image:: ../static/img/xhprof-1.jpg
-    :align: center
+    <img class="align-center" src="../static/img/xhprof-2.jpg">
+ 
+.. raw:: html
 
+    <img class="align-center" src="../static/img/xhprof-1.jpg">
+ 
 关于 SQL 语句（Profiling SQL Statements）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 几乎所有的数据库系统都提供了相关的工具以找出哪些执行缓慢的SQL语句。 检测及修复那些执行缓慢的查询对提高服务器端系统的性能来说是非常重要的。
@@ -75,29 +78,33 @@ Xhprof 提供了一个内置的HTML视图用来对性能分析的数据进行展
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 几乎所有的现代浏览器都有相应的工具来检测页面加载时间。 Chrome中开发者可使用web探察器来获取一个页面的所有资源加载所需的时间：
 
-.. image:: ../static/img/chrome-1.jpg
-    :align: center
+.. raw:: html
 
+    <img class="align-center" src="../static/img/chrome-1.jpg">
+ 
 Firebug_ 提供了类似的功能：
 
-.. image:: ../static/img/firefox-1.jpg
-    :align: center
+.. raw:: html
 
+    <img class="align-center" src="../static/img/firefox-1.jpg">
+ 
 Yahoo! YSlow
 ------------
 开发者可以使用 YSlow_ 对网页进行分析， YSlow给出基于 `rules for high performance web pages`_ （高性能网页规)的建议：
 
-.. image:: ../static/img/yslow-1.jpg
-    :align: center
+.. raw:: html
 
+    <img class="align-center" src="../static/img/yslow-1.jpg">
+ 
 使用Speed Trace进行性能分析(Profile with Speed Tracer)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 `Speed Tracer`_ 这个工具可以帮助开发者找出web应用性能方面的问题。 这个工个从浏览器的底层分析出web应用的性能。 Speed Tracer 这个插可以安装
 在Ｗindows或Linux版本的Chrome上。
 
-.. image:: ../static/img/speed-tracer.jpg
-    :align: center
+.. raw:: html
 
+    <img class="align-center" src="../static/img/speed-tracer.jpg">
+ 
 这是一个非常有用的工具，它可以为我们显示出html页面渲染的时间， Javascript及css执行(渲染)的时间等。
 
 使用最新的 PHP 版本（Use a recent PHP version）

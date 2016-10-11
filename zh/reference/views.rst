@@ -99,8 +99,9 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 
 注意方法 :code:`$this->getContent()` 被调用的这行。这种方法指示 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 在这里注入前面视图层次结构执行的内容。在上面的示例中，输出将会是：
 
-.. image:: ../static/img/views-1.png
-   :align: center
+.. raw:: html
+
+    <img class="align-center" src="../static/img/views-1.png">
 
 请求生成的HTML的将为：
 

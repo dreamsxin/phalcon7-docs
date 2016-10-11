@@ -57,9 +57,10 @@ Phalcon的上下文转义组件基于 OWASP_ 提供的`XSS (Cross Site Scripting
 
 结果如下：
 
-.. image:: ../static/img/escape.jpeg
-    :align: center
+.. raw:: html
 
+    <img class="align-center" src="../static/img/escape.jpeg">
+ 
 Phalcon会根据文本所处的上下文进行转义。 恰当的上下文环境对防范XSS攻击来说是非常重要的。
 
 HTML 编码（Escaping HTML）

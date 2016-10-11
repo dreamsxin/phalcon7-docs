@@ -13,8 +13,9 @@ You can download a cross platform package containing the developer tools from th
 
 Open the terminal application:
 
-.. image:: ../static/img/mac-1.png
-   :align: center
+.. raw:: html
+
+    <img class="align-center" src="../static/img/mac-1.png">
 
 Copy & Paste the commands below in your terminal:
 
@@ -26,13 +27,15 @@ Copy & Paste the commands below in your terminal:
 
 Check where the phalcon-tools directory was installed using a *pwd* command in your terminal:
 
-.. image:: ../static/img/mac-2.png
-   :align: center
+.. raw:: html
+
+    <img class="align-center" src="../static/img/mac-2.png">
 
 On the Mac platform, you need to configure your user PATH to include Phalcon tools. Edit your .profile and append the Phalcon tools path to the environment variable PATH:
 
-.. image:: ../static/img/mac-3.png
-   :align: center
+.. raw:: html
+
+    <img class="align-center" src="../static/img/mac-3.png">
 
 Insert these two lines at the end of the file:
 
@@ -43,8 +46,9 @@ Insert these two lines at the end of the file:
 
 The .profile should look like this:
 
-.. image:: ../static/img/mac-4.png
-   :align: center
+.. raw:: html
+
+    <img class="align-center" src="../static/img/mac-4.png">
 
 Save your changes and close the editor. In the terminal window, type the following commands to create a symbolic link to the phalcon.php script:
 
@@ -55,8 +59,9 @@ Save your changes and close the editor. In the terminal window, type the followi
 
 Type the command "phalcon" and you will see something like this:
 
-.. image:: ../static/img/mac-5.png
-   :align: center
+.. raw:: html
+
+    <img class="align-center" src="../static/img/mac-5.png">
 
 Congratulations you now have Phalcon tools installed!
 

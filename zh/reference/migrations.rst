@@ -23,22 +23,25 @@ The :doc:`Phalcon Developer Tools <tools>` provides scripts to manage migrations
 
 The available options for generating migrations are:
 
-.. image:: ../static/img/migrations-1.png
-   :align: center
+.. raw:: html
+
+    <img class="align-center" src="../static/img/migrations-1.png">
 
 Running this script without any parameters will simply dump every object (tables and views) from your database into migration classes.
 
 Each migration has a version identifier associated with it. The version number allows us to identify if the migration is newer or older than the current 'version' of our database. Versions will also inform Phalcon of the running order when executing a migration.
 
-.. image:: ../static/img/migrations-2.png
-   :align: center
+.. raw:: html
+
+    <img class="align-center" src="../static/img/migrations-2.png">
 
 When a migration is generated, instructions are displayed on the console to describe the different steps of the migration and the execution time of those statements. At the end, a migration version is generated.
 
 By default :doc:`Phalcon Developer Tools <tools>` uses the *app/migrations* directory to dump the migration files. You can change the location by setting one of the parameters on the generation script. Each table in the database has its respective class generated in a separated file under a directory referring its version:
 
-.. image:: ../static/img/migrations-3.png
-   :align: center
+.. raw:: html
+
+    <img class="align-center" src="../static/img/migrations-3.png">
 
 迁移类剖析（Migration Class Anatomy）
 -------------------------------------
@@ -243,10 +246,12 @@ Migrations aren't only designed to "morph" table. A migration is just a regular 
 ------------------------------
 Once the generated migrations are uploaded on the target server, you can easily run them as shown in the following example:
 
-.. image:: ../static/img/migrations-4.png
-   :align: center
+.. raw:: html
 
-.. image:: ../static/img/migrations-5.png
-   :align: center
+    <img class="align-center" src="../static/img/migrations-4.png">
+
+.. raw:: html
+
+    <img class="align-center" src="../static/img/migrations-5.png">
 
 Depending on how outdated is the database with respect to migrations, Phalcon may run multiple migration versions in the same migration process. If you specify a target version, Phalcon will run the required migrations until it reaches the specified version.

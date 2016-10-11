@@ -13,13 +13,15 @@ You can download a cross platform package containing the developer tools from th
 
 On the Windows platform, you need to configure the system PATH to include Phalcon tools as well as the PHP executable. If you download the Phalcon tools as a zip archive, extract it on any path of your local drive i.e. *c:\\phalcon-tools*. You will need this path in the steps below. Edit the file "phalcon.bat" by right clicking on the file and selecting "Edit":
 
-.. image:: ../static/img/path-0.png
-   :align: center
+.. raw:: html
+
+    <img class="align-center" src="../static/img/path-0.png">
 
 Change the path to the one you installed the Phalcon tools (set PTOOLSPATH=C:\phalcon-tools\):
 
-.. image:: ../static/img/path-01.png
-   :align: center
+.. raw:: html
+
+    <img class="align-center" src="../static/img/path-01.png">
 
 Save the changes.
 
@@ -29,38 +31,45 @@ Because the scripts are written in PHP, you need to install it on your machine. 
 
 From the Windows start menu, right mouse click on the "Computer" icon and select "Properties":
 
-.. image:: ../static/img/path-1.png
-   :align: center
+.. raw:: html
+
+    <img class="align-center" src="../static/img/path-1.png">
 
 Click the "Advanced" tab and then the button "Environment Variables":
 
-.. image:: ../static/img/path-2.png
-   :align: center
+.. raw:: html
+
+    <img class="align-center" src="../static/img/path-2.png">
 
 At the bottom, look for the section "System variables" and edit the variable "Path":
 
-.. image:: ../static/img/path-3.png
-   :align: center
+.. raw:: html
+
+    <img class="align-center" src="../static/img/path-3.png">
 
 Be very careful on this step! You need to append at the end of the long string the path where your php.exe was located and the path where Phalcon tools are installed. Use the ";" character to separate the different paths in the variable:
 
-.. image:: ../static/img/path-4.png
-   :align: center
+.. raw:: html
+
+    <img class="align-center" src="../static/img/path-4.png">
 
 Accept the changes made by clicking "OK" and close the dialogs opened. From the start menu click on the option "Run". If you can't find this option, press "Windows Key" + "R".
 
-.. image:: ../static/img/path-5.png
-   :align: center
+.. raw:: html
+
+    <img class="align-center" src="../static/img/path-5.png">
 
 Type "cmd" and press enter to open the windows command line utility:
 
-.. image:: ../static/img/path-6.png
-   :align: center
+.. raw:: html
+
+    <img class="align-center" src="../static/img/path-6.png">
 
 Type the commands "php -v" and "phalcon" and you will see something like this:
 
-.. image:: ../static/img/path-7.png
-   :align: center
+.. raw:: html
+
+    <img class="align-center" src="../static/img/path-7.png">
 
 Congratulations you now have Phalcon tools installed!
 

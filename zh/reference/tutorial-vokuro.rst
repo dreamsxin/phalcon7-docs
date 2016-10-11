@@ -27,8 +27,9 @@ Once you clone the project in your document root you'll see the following struct
 This project follows a quite similar structure to INVO. Once you open the application in your
 browser http://localhost/vokuro you'll see something like this:
 
-.. image:: ../static/img/vokuro-1.png
-   :align: center
+.. raw:: html
+
+    <img class="align-center" src="../static/img/vokuro-1.png">
 
 The application is divided into two parts, a frontend, where visitors can sign up the service
 and a backend where administrative users can manage registered users. Both frontend and backend

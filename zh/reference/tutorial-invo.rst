@@ -38,8 +38,9 @@ provides a simple MVC structure and a public document root.
 
 Once you open the application in your browser http://localhost/invo you'll see something like this:
 
-.. image:: ../static/img/invo-1.png
-   :align: center
+.. raw:: html
+
+    <img class="align-center" src="../static/img/invo-1.png">
 
 The application is divided into two parts, a frontend, that is a public part where visitors can receive information
 about INVO and request contact information. The second part is the backend, an administrative area where a

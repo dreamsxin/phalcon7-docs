@@ -4,8 +4,9 @@
 清理用户输入是软件开发中很重要的一个环节。信任或者忽略对用户输入数据作清理可能会导致
 对应用内容（主要是用户数据），甚至你应用所处在的服务器的非法访问。
 
-.. image:: ../static/img/sql.png
-   :align: center
+.. raw:: html
+
+    <img class="align-center" src="../static/img/sql.png">
 
 `Full image (from xkcd)`_
 
