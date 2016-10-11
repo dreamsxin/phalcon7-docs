@@ -1049,7 +1049,7 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
     );
 
 多视图目录设置（Multiple Views Directory）
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------------------
 如下所示，视图文件将从`app/views/view1`和`app/views/view2`寻找：
 
 .. code-block:: php
