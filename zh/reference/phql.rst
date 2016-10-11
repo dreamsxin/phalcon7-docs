@@ -621,21 +621,28 @@ any validation messages you should check the status code returned:
 ------------------------------------------------------------------
 A builder is available to create PHQL queries without the need to write PHQL statements, also providing IDE facilities:
 
+选取查询构建器（Select Query Builder）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. code-block:: php
 
     <?php
 
+    // Create a new Query Builder for Select
+    $robots = $this->modelsManager->createBuilder();
+    // Or
+    $builder = Phalcon\Mvc\Model\Query\Builder::create(Phalcon\Mvc\Model\Query::TYPE_SELECT);
+    // Or
+    $builder = Phalcon\Mvc\Model\Query\Builder::createSelectBuilder();
+
     // Getting a whole set
-    $robots = $this->modelsManager->createBuilder()
-        ->from('Robots')
+    $builder->from('Robots')
         ->join('RobotsParts')
         ->orderBy('Robots.name')
         ->getQuery()
         ->execute();
 
     // Getting the first row
-    $robots = $this->modelsManager->createBuilder()
-        ->from('Robots')
+    $builder->from('Robots')
         ->join('RobotsParts')
         ->orderBy('Robots.name')
         ->getQuery()
@@ -647,8 +654,7 @@ That is the same as:
 
     <?php
 
-    $phql   = "SELECT Robots.* FROM Robots JOIN RobotsParts p
-        ORDER BY Robots.name LIMIT 20";
+    $phql   = "SELECT Robots.* FROM Robots JOIN RobotsParts p ORDER BY Robots.name LIMIT 20";
     $result = $manager->executeQuery($phql);
 
 More examples of the builder:
@@ -777,6 +783,66 @@ More examples of the builder:
     // 'SELECT r.* FROM Store\Robots WHERE r.name LIKE '%Art%';
     $builder->from(['r' => 'Store\Robots'])
             ->where('r.name LIKE :name:', array('name' => '%' . $name . '%'));
+
+插入查询构建器（Insert Query Builder）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. code-block:: php
+
+    <?php
+
+    // Create a new Query Builder for Insert
+    $robots = $this->modelsManager->createBuilder(NULL, Phalcon\Mvc\Model\Query::TYPE_INSERT);
+    // Or
+    $builder = Phalcon\Mvc\Model\Query\Builder::create(Phalcon\Mvc\Model\Query::TYPE_INSERT);
+    // Or
+    $builder = Phalcon\Mvc\Model\Query\Builder::createInsertBuilder();
+
+    // Insert two records
+    $builder->table('Robots')
+        ->columns(array('name'))
+        ->values(array(array('name' => 'Google'), array('name' => 'Baidu')))
+        ->getQuery()
+        ->execute();
+
+更新查询构建器（Update Query Builder）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. code-block:: php
+
+    <?php
+
+    // Create a new Query Builder for Update
+    $robots = $this->modelsManager->createBuilder(NULL, Phalcon\Mvc\Model\Query::TYPE_UPDATE);
+    // Or
+    $builder = Phalcon\Mvc\Model\Query\Builder::create(Phalcon\Mvc\Model\Query::TYPE_UPDATE);
+    // Or
+    $builder = Phalcon\Mvc\Model\Query\Builder::createUpdateBuilder();
+
+    // Update records
+    $builder->table('Robots')
+        ->set(array('name' => 'Google'))
+        ->getQuery()
+        ->execute();
+
+删除查询构建器（Delete Query Builder）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. code-block:: php
+
+    <?php
+
+    // Create a new Query Builder for Delete
+    $robots = $this->modelsManager->createBuilder(NULL, Phalcon\Mvc\Model\Query::TYPE_DELETE);
+    // Or
+    $builder = Phalcon\Mvc\Model\Query\Builder::create(Phalcon\Mvc\Model\Query::TYPE_DELETE);
+    // Or
+    $builder = Phalcon\Mvc\Model\Query\Builder::createDeleteBuilder();
+
+    // Delete records
+    $builder->table('Robots')
+        ->where('name = "Peter"')
+        ->orderBy('Robots.id')
+        ->limit(20)
+        ->getQuery()
+        ->execute();
 
 绑定参数（Bound Parameters）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
