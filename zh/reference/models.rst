@@ -1976,32 +1976,28 @@ The following example shows how to use it:
     <?php
 
     use Phalcon\Mvc\Model;
-    use Phalcon\Mvc\Model\Validator\Uniqueness;
-    use Phalcon\Mvc\Model\Validator\InclusionIn;
+    use Phalcon\Validation\Validator\Uniqueness;
+    use Phalcon\Validation\Validator\InclusionIn;
 
     class Robots extends Model
     {
         public function validation()
         {
-            $this->validate(
-                new InclusionIn(
-                    array(
-                        "field"  => "type",
-                        "domain" => array("Mechanical", "Virtual")
-                    )
+            $validation = new Phalcon\Validation;
+
+	    $validation->add("type", new InclusionIn(
+                array(
+                    "domain" => array("Mechanical", "Virtual")
                 )
             );
 
-            $this->validate(
-                new Uniqueness(
-                    array(
-                        "field"   => "name",
-                        "message" => "The robot name must be unique"
-                    )
+	    $validation->add("name", new Uniqueness(
+                array(
+                    "message" => "The robot name must be unique"
                 )
             );
 
-            return $this->validationHasFailed() != true;
+            return $this->validate($validation);
         }
     }
 
@@ -2036,28 +2032,22 @@ In addition to the built-in validators, you can create your own validators:
 
     <?php
 
-    use Phalcon\Mvc\Model\Validator;
-    use Phalcon\Mvc\Model\ValidatorInterface;
-    use Phalcon\Mvc\EntityInterface;
+    use Phalcon\Validation\Validator;
+    use Phalcon\Validation\ValidatorInterface;
+    use Phalcon\ValidationInterface;
 
     class MaxMinValidator extends Validator implements ValidatorInterface
     {
-        public function validate(EntityInterface $model)
+        public function validate(ValidationInterface $validator, $field)
         {
-            $field = $this->getOption('field');
-
             $min   = $this->getOption('min');
             $max   = $this->getOption('max');
 
-            $value = $model->$field;
+            $value = $validator->getValue($field);
 
             if ($min <= $value && $value <= $max) {
-                $this->appendMessage(
-                    "The field doesn't have the right range of values",
-                    $field,
-                    "MaxMinValidator"
-                );
-
+                $message = new Phalcon\Validation\Message("The field doesn't have the right range of values", $field, "MaxMinValidator", 0);
+                $validator->appendMessage($message);
                 return false;
             }
 
@@ -2082,19 +2072,16 @@ Adding the validator to a model:
     {
         public function validation()
         {
-            $this->validate(
-                new MaxMinValidator(
-                    array(
-                        "field" => "price",
-                        "min"   => 10,
-                        "max"   => 100
-                    )
+            $validation = new Phalcon\Validation;
+
+	    $validation->add("price", new MaxMinValidator(
+                array(
+                    "min"   => 10,
+                    "max"   => 100
                 )
             );
 
-            if ($this->validationHasFailed() == true) {
-                return false;
-            }
+            return $this->validate($validation);
         }
     }
 
@@ -2105,7 +2092,7 @@ The idea of creating validators is make them reusable between several models. A 
     <?php
 
     use Phalcon\Mvc\Model;
-    use Phalcon\Mvc\Model\Message;
+    use Phalcon\Validation\Message;
 
     class Robots extends Model
     {
