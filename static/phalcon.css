@@ -1338,18 +1338,6 @@ img.mfp-img {
 .coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .css,.xml .hljs-cdata,.xml .javascript,.xml .vbscript {
 	opacity:.7
 }
-.sample {
-	width: 330px;
-	height: 250px;
-}
-.sample div {
-	position: relative;
-	top: 105px;
-	left: -1px;
-	padding: 10px;
-	background: rgba(0, 0, 0, 0.8);
-	color: #fff;
-}
 .highlight .hll { background-color: #ffffcc }
 .highlight  { background: #eeffcc; }
 .highlight .c { color: #408090; font-style: italic } /* Comment */
@@ -1415,6 +1403,42 @@ img.mfp-img {
 .highlight .vg { color: #bb60d5 } /* Name.Variable.Global */
 .highlight .vi { color: #bb60d5 } /* Name.Variable.Instance */
 .highlight .il { color: #208050 } /* Literal.Number.Integer.Long */
+div.highlight, blockquote {
+    font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
+    display: block;
+    font-size: 17px;
+    line-height: 18px;
+    word-wrap: break-word;
+}
+
+div.highlight pre {
+    background: transparent;
+    border: none;
+    padding: 0px;
+    margin: 0px;
+    color: #F6F3E8
+}
+
+.highlight {
+    padding: 20px 10px 10px;
+    border-left: 3px solid #94d7be;
+    background: none repeat scroll 0% 0% #2B2F3E;
+    color: #F6F3E8;
+    font: 14px/18px "Courier New",serif;
+    margin-bottom: 10px;
+}
+.sample {
+	width: 330px;
+	height: 250px;
+}
+.sample div {
+	position: relative;
+	top: 105px;
+	left: -1px;
+	padding: 10px;
+	background: rgba(0, 0, 0, 0.8);
+	color: #fff;
+}
 .sample a {
 	color: #fff;
 }
