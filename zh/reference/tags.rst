@@ -9,8 +9,7 @@ This component can be used in a plain HTML+PHP view or in a :doc:`Volt <volt>` t
 
 .. highlights::
 
-    This guide is not intended to be a complete documentation of available helpers and their arguments. Please visit
-    the :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` page in the API for a complete reference.
+   本指南不是一个完整的视图助手使用文档，完整说明请查看 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>`。
 
 文档类型（Document Type of Content）
 ------------------------------------
@@ -330,6 +329,8 @@ of form helpers between requests. This way you can easily show validation messag
 Every form helper supports the parameter "value". With it you can specify a value for the helper directly.
 When this parameter is present, any preset value using setDefault() or via request will be ignored.
 
+所有的表单方法都支持参数 `value`。你可以直接设置一个明确的值给表单方法。当这个值被明确设定的时候，任何通过 setDefault() 或者通过 请求(request) 所设置的值将被直接忽略。
+
 动态设置文档标题（Changing dynamically the Document Title）
 -----------------------------------------------------------
 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` offers helpers to change dynamically the document title from the controller.
@@ -372,6 +373,56 @@ The following HTML will generated:
     <html>
         <head>
             <title>Index of Posts - Your Website</title>
+        </head>
+
+        <body>
+
+        </body>
+    </html>
+
+设置标题分隔符（Set the title separator）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+设置标题分隔符，用以连接追加或前置的标题内容:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Controller;
+
+    class PostsController extends Controller
+    {
+        public function initialize()
+        {
+            $this->tag->setTitle("Your");
+            $this->tag->appendTitle("Website");
+	    $this->tag->setTitleSeparator(' - ');
+        }
+
+        public function indexAction()
+        {
+            $this->tag->prependTitle("Index of Posts");
+        }
+    }
+
+.. code-block:: html+php
+
+    <html>
+        <head>
+            <?php echo $this->tag->getTitle(); ?>
+        </head>
+        <body>
+
+        </body>
+    </html>
+
+将生成如下的 HTML 内容:
+
+.. code-block:: html+php
+
+    <html>
+        <head>
+            <title>Index of Posts - Your - Website</title>
         </head>
 
         <body>
