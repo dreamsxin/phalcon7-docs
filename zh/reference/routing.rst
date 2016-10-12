@@ -786,6 +786,11 @@ You can set up the router to automatically remove the slashes from the end of ha
     // Remove trailing slashes automatically
     $router->removeExtraSlashes(true);
 
+    $router->add('/phalcon', array(
+        'controller' => 'index',
+        'action' =>  'index'
+    ));
+
 Or, you can modify specific routes to optionally accept trailing slashes:
 
 .. code-block:: php
@@ -800,6 +805,40 @@ Or, you can modify specific routes to optionally accept trailing slashes:
             'action'     => 'index'
         )
     );
+
+设置处理结尾额外的斜杆，可以简化路由匹配，设置前:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Router;
+
+    $router = new Router();
+    $router->add('/phalcon', array(
+        'controller' => 'index',
+        'action' =>  'index'
+    ));
+
+    $router->add('/phalcon/', array(
+        'controller' => 'index',
+        'action' =>  'index'
+    ));
+    
+设置后:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Router;
+
+    $router = new Router();
+    $router->removeExtraSlashes(true);
+    $router->add('/phalcon', array(
+        'controller' => 'index',
+        'action' =>  'index'
+    ));
 
 匹配回调函数（Match Callbacks）
 -------------------------------
