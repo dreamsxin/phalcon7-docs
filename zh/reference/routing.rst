@@ -5,16 +5,14 @@ The router component allows you to define routes that are mapped to controllers 
 the request. A router simply parses a URI to determine this information. The router has two modes: MVC
 mode and match-only mode. The first mode is ideal for working with MVC applications.
 
-路由器组件用来定义处理接收到的请求的路由，指向相应的控制器或者处理程序。路由器只是简单解析一个URI获取这些信息。
-路由器有两种模式：MVC模式以及匹配模式。第一种模式主要适合MVC应用。
+Router 组件允许定义用户请求对应到哪个控制器或 Action。Router 解析 URI 以确定这些信息。路由器有两种模式：MVC模式和匹配模式(match-only)。第一种模式是使用MVC应用程序的理想选择。
 
 定义路由（Defining Routes）
 ---------------------------
 :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` provides advanced routing capabilities. In MVC mode,
 you can define routes and map them to controllers/actions that you require. A route is defined as follows:
 
-:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` 提供高级路由支持。在MVC模式下，你可以定义路由并映射向需要的控制器/动作。
-一个路由定义方法如下所示：
+:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` 提供了一套先进的路由功能。在MVC模式中，你可以自定义路由规则，对应到你需要的 controllers/actions 上。路由的定义如下：
 
 .. code-block:: php
 
@@ -120,8 +118,8 @@ their relevance, latest routes added have more relevance than first added. Inter
 are traversed in reverse order until :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` finds the
 one that matches the given URI and processes it, while ignoring the rest.
 
-更改占位符对应正则表达式（Define Placeholders Regular Expressions）
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+设置占位符对应正则表达式（Setting Placeholders Regular Expressions）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
 
@@ -135,11 +133,11 @@ one that matches the given URI and processes it, while ignoring the rest.
             "action" => 2,
             "params" => 3,
         ));
-        // Define new
+        // Setting new regular
         $router->add('/:controller/:action/:params', array(
             "controller" => 1,
             "action" => 2,
-            "params" => 3,
+            "params" => 4,
         ), array(
             '/:controller' => '/([a-zA-Z0-9_-]+)',
             '/:action' => '/([a-zA-Z0-9_-]+)',
