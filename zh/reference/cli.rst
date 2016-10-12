@@ -88,6 +88,45 @@ CLI应用即是运行在命令行窗体上的应用。 主要用来实现后台�
 
     这样程序会直接执行默认的任务及默认动作.
 
+从命令行参数列表中获取选项
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: php
+
+    <?php
+    $shortopts  = "";
+    $shortopts .= "ns:"; // -ns="Phalcon"
+    $shortopts .= "d::"; // -d
+    $shortopts .= "D";   // -D
+
+    $options = getopt(
+        $shortopts,
+        array(
+            'namespace:', // 必选项 --namespace=Phalcon
+            'task::',     // 可选项 --task=main
+            'dev::',      // 可选项 --dev=true
+            'debug'       // 无值   --debug
+	)
+    );
+
+    // 创建console应用
+    $console = new \Phalcon\CLI\Console();
+    $console->setDI($di);
+    
+    // 处理console应用参数
+    $arguments = array(
+        'namespace' => \Phalcon\Arr::get($opts, 'namespace'),
+        'task' => \Phalcon\Arr::get($opts, 'task'),
+        'action' => \Phalcon\Arr::get($opts, 'action')
+    );
+
+    try {
+        $console->handle($arguments);
+    } catch (\Phalcon\Exception $e) {
+        echo $e->getMessage();
+    }
+
+
 任务（Tasks）
 -------------
 这里的任务同于web应用中的控制器。 任一 CLI 应用程序都至少包含一个mainTask 及一个 mainAction， 每个任务至少有一个mainAction, 这样在使用者未明确的 指定action时 此mainAction就会执行。

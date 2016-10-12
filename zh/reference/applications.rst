@@ -1,9 +1,7 @@
 MVC 应用（MVC Applications）
 ============================
 
-在Phalcon，策划MVC操作背后的全部困难工作通常都可以
-通过 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` 做到。这个组件封装了全部后端所需要的复杂
-操作，实例化每一个需要用到的组件并与项目整合在一起，从而使得MVC模式可以如期地运行。
+在Phalcon，策划MVC操作背后的全部困难工作通常都可以通过 :doc:`Phalcon\\Mvc\\Application <../api/Phalcon_Mvc_Application>` 做到。这个组件封装了全部后端所需要的复杂操作，实例化每一个需要用到的组件并与项目整合在一起，从而使得MVC模式可以如期地运行。
 
 单模块或多模块应用（Single or Multi Module Applications）
 ---------------------------------------------------------
@@ -505,6 +503,16 @@ MVC 应用（MVC Applications）
             // ...
         }
     );
+
+禁用视图组件（Disable View Component）
+--------------------------------------
+MVC 应用默认开启视图组件，以下示例演示了如何禁用视图组件：
+
+.. code-block:: php
+
+    <?php
+
+    $application->useImplicitView(false);
 
 外部资源（External Resources）
 ------------------------------
