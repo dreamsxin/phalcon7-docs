@@ -1010,9 +1010,7 @@ The above findByRawSql could be used as follows:
 
     <?php
 
-    use Phalcon\Mvc\Model;
-
-    class Robots extends Model
+    class MyQuery extends Phalcon\Mvc\Model\Query
     {
         /**
          * 动态选择读数据库连接
@@ -1039,15 +1037,15 @@ The above findByRawSql could be used as follows:
         }
     }
 
+    $di->set('modelsQuery', 'MyQuery');
+
 根据当前查询条件来实现，实现水平切分的功能：
 
 .. code-block:: php
 
     <?php
 
-    use Phalcon\Mvc\Model;
-
-    class Robots extends Model
+    class MyQuery extends Phalcon\Mvc\Model\Query
     {
         /**
          * 动态选择读数据库连接
@@ -1081,6 +1079,8 @@ The above findByRawSql could be used as follows:
             return $this->getDI()->get('dbShard0');
         }
     }
+
+    $di->set('modelsQuery', 'MyQuery');
 
 注意事项（Troubleshooting）
 ---------------------------
