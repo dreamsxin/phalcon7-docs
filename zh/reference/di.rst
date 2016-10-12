@@ -718,7 +718,7 @@ reponse服务(:doc:`Phalcon\\Http\\Response <../api/Phalcon_Http_Response>`)作�
 
 混合不同类型的定义是可以的，每个人可以应用需要决定什么样的注册服务的方式是最适当的。
 
-服务解疑（Resolving Services）
+服务解析（Resolving Services）
 ==============================
 从容器中获取一个服务是一件简单的事情，只要通过“get”方法就可以。这将返回一个服务的新实例：
 
