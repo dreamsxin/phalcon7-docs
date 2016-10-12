@@ -1002,6 +1002,86 @@ The above findByRawSql could be used as follows:
 
     $robots = Robots::findByRawSql('id > ?', array(10));
 
+实现读写分离（Reading and Writing Separation）
+----------------------------------------------
+当查询器中实现此方法，将会替换 :doc:`模型 <models>` 中实现的方法，实现读写分离代码如下：
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
+    {
+        /**
+         * 动态选择读数据库连接
+         *
+         * @param array $intermediate
+         * @param array $bindParams
+         * @param array $bindTypes
+         */
+        public function selectReadConnection($intermediate, $bindParams, $bindTypes)
+        {
+            return $this->getDI()->get('readDB');
+        }
+
+        /**
+         * 动态选择写数据库连接
+         *
+         * @param array $intermediate
+         * @param array $bindParams
+         * @param array $bindTypes
+         */
+        public function selectWriteConnection($intermediate, $bindParams, $bindTypes)
+        {
+            return $this->getDI()->get('writeDB');
+        }
+    }
+
+根据当前查询条件来实现，实现水平切分的功能：
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
+    {
+        /**
+         * 动态选择读数据库连接
+         *
+         * @param array $intermediate
+         * @param array $bindParams
+         * @param array $bindTypes
+         */
+        public function selectReadConnection($intermediate, $bindParams, $bindTypes)
+        {
+            // Check if there is a 'where' clause in the select
+            if (isset($intermediate['where'])) {
+
+                $conditions = $intermediate['where'];
+
+                // Choose the possible shard according to the conditions
+                if ($conditions['left']['name'] == 'id') {
+                    $id = $conditions['right']['value'];
+
+                    if ($id > 0 && $id < 10000) {
+                        return $this->getDI()->get('dbShard1');
+                    }
+
+                    if ($id > 10000) {
+                        return $this->getDI()->get('dbShard2');
+                    }
+                }
+            }
+
+            // Use a default shard
+            return $this->getDI()->get('dbShard0');
+        }
+    }
+
 注意事项（Troubleshooting）
 ---------------------------
 Some things to keep in mind when using PHQL:

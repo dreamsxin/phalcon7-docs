@@ -33,10 +33,6 @@
 上面的例子显示了 "Robots" 模型的实现。 需要注意的是 Robots 继承自 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 。
 因此，Robots 模型拥有了大量继承自该组件功能，包括基本的数据库 CRUD (Create, Read, Update, Delete) 操作，数据验证以及复杂的搜索支持，并且可以同时关联多个模型。
 
-.. highlights::
-
-    如果使用 PHP 5.4/5.5 建议在模型中预先定义好所有的列，这样可以减少模型内存的开销以及内存分配。
-
 默认情况下，模型 "Robots" 对应的是数据库表 "robots"， 如果想映射到其他数据库表，可以使用 :code:`getSource()` 方法：
 
 .. code-block:: php
@@ -283,7 +279,7 @@ Namespaces make part of model names when they are within strings:
 
 .. highlights::
 
-    If you want find record by external data (such as user input) or variable data you must use `绑定参数（Binding Parameters）`_.
+    如果需要通过外部数据（比如用户输入）或变量来查询记录，则必须要用`Binding Parameters`（绑定参数）的方式来防止SQL注入.
 
 你可以使用 :code:`findFirst()` 方法获取第一条符合查询条件的结果：
 
@@ -2941,11 +2937,12 @@ Then, in the initialize method, we define the connection service for the model:
         }
     }
 
+实现读写分离（Reading and Writing Separation）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 But Phalcon offers you more flexibility, you can define the connection that must be used to 'read' and for 'write'. This is specially useful
 to balance the load to your databases implementing a master-slave architecture:
 
 另外Phalcon还提供了更多的灵活性，你可分别定义用来读取和写入的数据库连接。这对实现主从架构的数据库负载均衡非常有用。
-（译者注：EvaEngine项目为使用Phalcon提供了更多的灵活性，推荐了解和使用）
 
 .. code-block:: php
 
@@ -2959,6 +2956,41 @@ to balance the load to your databases implementing a master-slave architecture:
         {
             $this->setReadConnectionService('dbSlave');
             $this->setWriteConnectionService('dbMaster');
+        }
+    }
+
+也可以用如下方法实现：
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
+    {
+        /**
+         * 动态选择读数据库连接
+         *
+         * @param array $intermediate
+         * @param array $bindParams
+         * @param array $bindTypes
+         */
+        public function selectReadConnection($intermediate, $bindParams, $bindTypes)
+        {
+            return $this->getDI()->get('readDB');
+        }
+
+        /**
+         * 动态选择写数据库连接
+         *
+         * @param array $intermediate
+         * @param array $bindParams
+         * @param array $bindTypes
+         */
+        public function selectWriteConnection($intermediate, $bindParams, $bindTypes)
+        {
+            return $this->getDI()->get('writeDB');
         }
     }
 
@@ -2976,7 +3008,7 @@ according to the current query conditions:
     class Robots extends Model
     {
         /**
-         * Dynamically selects a shard
+         * 动态选择读数据库连接
          *
          * @param array $intermediate
          * @param array $bindParams
@@ -3006,6 +3038,21 @@ according to the current query conditions:
             // Use a default shard
             return $this->getDI()->get('dbShard0');
         }
+
+        /**
+         * 动态选择写数据库连接
+         *
+         * @param array $intermediate
+         * @param array $bindParams
+         * @param array $bindTypes
+         */
+        public function selectWriteConnection($intermediate, $bindParams, $bindTypes)
+        {
+            // Check if there is a 'where' clause in the select
+
+            // Use a default shard
+            return $this->getDI()->get('dbShard0');
+        }
     }
 
 The method 'selectReadConnection' is called to choose the right connection, this method intercepts any new
@@ -3018,6 +3065,11 @@ query executed:
     <?php
 
     $robot = Robots::findFirst('id = 101');
+
+
+.. highlights::
+
+    在 :doc:`Model查询器 <phql>` 中可实现同样的功能。
 
 记录底层 SQL 语句（Logging Low-Level SQL Statements）
 -----------------------------------------------------
