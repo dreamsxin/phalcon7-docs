@@ -137,7 +137,11 @@ Phalcon的验证组件中内置了一些验证器：
 +--------------+-------------------------------------------+-------------------------------------------------------------------+
 | Confirmation |  检测两个值是否相等                       | :doc:`Example <../api/Phalcon_Validation_Validator_Confirmation>` |
 +--------------+-------------------------------------------+-------------------------------------------------------------------+
-| Url          | Validates that field contains a valid URL | :doc:`Example <../api/Phalcon_Validation_Validator_Url>`          |
+| Url          |  监测值是否是合法的URL                    | :doc:`Example <../api/Phalcon_Validation_Validator_Url>`          |
++--------------+-------------------------------------------+-------------------------------------------------------------------+
+| Uniqueness   |  监测值是否已存在                         | :doc:`Example <../api/Phalcon_Validation_Validator_Uniqueness>`   |
++--------------+-------------------------------------------+-------------------------------------------------------------------+
+| Json         |  监测值是否是合法的JSON                   | :doc:`Example <../api/Phalcon_Validation_Validator_Json>`         |
 +--------------+-------------------------------------------+-------------------------------------------------------------------+
 
 下面的例子中展示了如何创建自定义的验证器：
@@ -163,7 +167,7 @@ Phalcon的验证组件中内置了一些验证器：
         {
             $value = $validator->getValue($attribute);
 
-            if (!filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6)) {
+            if (!$this->valid($value)) {
 
                 $message = $this->getOption('message');
                 if (!$message) {
@@ -177,9 +181,49 @@ Phalcon的验证组件中内置了一些验证器：
 
             return true;
         }
+
+        public function valid($value)
+        {
+            if (!filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6)) {
+                return false;
+            }
+
+            return true;
+        }
     }
 
-最重要的一点即是难证器要返回一个布尔值以标识验证是否成功：
+最重要的一点即是难证器要返回一个布尔值以标识验证是否成功。
+
+
+验证器的使用（The use of the validator）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+下面的例子中展示了如何单独使用验证器：
+
+.. code-block:: php
+
+    <?php
+
+    $ipValidator = new IpValidator;
+    $valid = $ipValidator->valid('192.168.1.1');
+
+    $emailValidator = new Phalcon\Validation\Validator\Email;
+    $valid = $emailValidator->valid('dreamsxin@qq.com');
+
+    $betweenValidator = new Phalcon\Validation\Validator\Between;
+    $min = 1, $max = 10;
+    $valid = $betweenValidator->valid(10, $min, $max);
+
+    // 判断 json 格式是否合法
+    $jsonValidator = new Phalcon\Validation\Validator\Json;
+    $valid = $jsonValidator->valid('{"name"=>"dreamsxin"}');
+
+    // 查找 email 值是否已存在
+    $uniquenessValidator = new Phalcon\Validation\Validator\Uniqueness;
+    $valid = $uniquenessValidator->valid(new Users, array('email' => 'dreamsxin@qq.com'));
+
+    // 排除指定提交记录
+    $user = Users::findFirst();
+    $valid = $uniquenessValidator->valid($user, array('email' => 'dreamsxin@qq.com'), array('id' => $user->id));
 
 验证信息（Validation Messages）
 -------------------------------
