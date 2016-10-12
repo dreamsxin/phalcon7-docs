@@ -806,7 +806,7 @@ Or, you can modify specific routes to optionally accept trailing slashes:
         )
     );
 
-设置处理结尾额外的斜杆，可以简化路由匹配，设置前:
+设置处理结尾额外的斜杆，可以简化路由设置，设置前:
 
 .. code-block:: php
 
