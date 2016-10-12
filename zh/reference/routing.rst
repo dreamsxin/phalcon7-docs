@@ -1120,6 +1120,20 @@ Since this component has no dependencies, you can create a file as shown below t
         return $router;
     };
 
+设置 URL 生成器（Setting URL Generator）
+----------------------------------------
+URL 生成器，帮助 URL 组件生成 URL，例子：
+
+.. code-block:: php
+
+    <?php
+
+    $route = $router->add("/posts/{year}/{title}", "Posts::show");
+    $route->setName("blog-post")->setUrlGenerator(function($base_uri, $paths, $uri){
+        return $base_uri.'posts/'.$uri['year'].'-'.$uri['title'].'.html';
+    });
+    $url->get(array('for' => 'blog-post', 'title' => 'some-cool-stuff', 'year' => '2012'));
+
 注册路由实例（Registering Router instance）
 -------------------------------------------
 You can register router during service registration with Phalcon dependency injector to make it available inside the controllers.

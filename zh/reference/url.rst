@@ -1,18 +1,13 @@
 生成 URL 和 路径（Generating URLs and Paths）
 =============================================
 
-:doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` is the component responsible of generate URLs in a Phalcon application. It's
-capable of produce independent URLs based on routes.
-
-:doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` 组件负责在Phalcon应用内生成URL。它依赖路由生成独立的URL。
+在Phalcon应用程序中，使用 :doc:`Phalcon\\Mvc\\Url <../api/Phalcon_Mvc_Url>` 组件生成URL。它能够生成基于路由的独立的URL。
 
 设置站点基地址（Setting a base URI）
 ------------------------------------
-Depending of which directory of your document root your application is installed, it may have a base URI or not.
+根据你的应用程序安装到主机文档目录的位置，你的应用程序URI可能会出现一个基础的URI。
 
-For example, if your document root is /var/www/htdocs and your application is installed in /var/www/htdocs/invo then your
-baseUri will be /invo/. If you are using a VirtualHost or your application is installed on the document root, then your baseUri is /.
-Execute the following code to know the base URI detected by Phalcon:
+例如，如果你的主机文档目录是 /var/www/htdocs，而你的应用程序安装到 /var/www/htdocs/invo，那么基础URI即为 /invo/.如果你使用虚拟主机的形式安装此应用，那么baseUri即为 /. 执行以下代码，你可以检测你的应用程序的baseUri.
 
 .. code-block:: php
 
@@ -23,8 +18,7 @@ Execute the following code to know the base URI detected by Phalcon:
     $url = new Url();
     echo $url->getBaseUri();
 
-By default, Phalcon automatically may detect your baseUri, but if you want to increase the performance of your application
-is recommended setting up it manually:
+默认情况下，Phalcon 会自动检测应用程序的baseUri.但如果你想提高应用程序性能的话，推荐手工设置：
 
 .. code-block:: php
 
@@ -43,7 +37,7 @@ is recommended setting up it manually:
     // Setting a full domain as base URI
     $url->setBaseUri('http://my.domain.com/my-app/');
 
-Usually, this component must be registered in the Dependency Injector container, so you can set up it there:
+通常情况下，此组件必须被注册到服务容器中，因此你可以直接这样设置它：
 
 .. code-block:: php
 
@@ -59,16 +53,13 @@ Usually, this component must be registered in the Dependency Injector container,
 
 生成 URI（Generating URIs）
 ---------------------------
-If you are using the :doc:`Router <routing>` with its default behavior. Your application is able to match routes based on the
-following pattern: /:controller/:action/:params. Accordingly it is easy to create routes that satisfy that pattern (or any other
-pattern defined in the router) passing a string to the method "get":
+如果你使用的是 :doc:`Router <routing>` 的默认行为。你的应用程序会匹配路由模式 : /:controller/:action/:params. 因此，很容易通过"get"方法得到：
 
 .. code-block:: php
 
     <?php echo $url->get("products/save"); ?>
 
-Note that isn't necessary to prepend the base URI. If you have named routes you can easily change it creating it dynamically.
-For Example if you have the following route:
+请注意，预先设置baseUri并不是必须的。如果你已经通过设置路由命名，你可以很容易改变它。例如，你有以下途径：
 
 .. code-block:: php
 
@@ -82,7 +73,7 @@ For Example if you have the following route:
         )
     )->setName('show-post');
 
-A URL can be generated in the following way:
+生成URL还可以通过以下方式：
 
 .. code-block:: php
 
@@ -98,9 +89,11 @@ A URL can be generated in the following way:
         )
     );
 
+如果使用 :doc:`Phalcon\\Mvc\\Router\\Route <../api/Phalcon_Mvc_Router_Route>` 的方法 :code:`setUrlGenerator` 设置了 URL 生成器，这里将会调用设置的 URL 生成器生成 URL。
+
 没有伪静态状态下的生成 URL（Producing URLs without mod_rewrite）
 ----------------------------------------------------------------
-You can use this component also to create URLs without mod_rewrite:
+你还可以使用此组件在不使用重写规则的情况下创建URL：
 
 .. code-block:: php
 
@@ -116,7 +109,7 @@ You can use this component also to create URLs without mod_rewrite:
     // This produce: /invo/index.php?_url=/products/save
     echo $url->get("products/save");
 
-You can also use :code:`$_SERVER["REQUEST_URI"]`:
+你也可以使用 :code:`$_SERVER["REQUEST_URI"]`:
 
 .. code-block:: php
 
@@ -132,7 +125,7 @@ You can also use :code:`$_SERVER["REQUEST_URI"]`:
     // Pass the URI using $_SERVER["REQUEST_URI"]
     $url->setBaseUri('/invo/index.php/');
 
-In this case, it's necessary to manually handle the required URI in the Router:
+在这种情况下，你必须手工处理路由中的URI：
 
 .. code-block:: php
 
@@ -147,7 +140,7 @@ In this case, it's necessary to manually handle the required URI in the Router:
     $uri = str_replace($_SERVER["SCRIPT_NAME"], '', $_SERVER["REQUEST_URI"]);
     $router->handle($uri);
 
-The produced routes would look like:
+产生的路由看起来像这样：
 
 .. code-block:: php
 
