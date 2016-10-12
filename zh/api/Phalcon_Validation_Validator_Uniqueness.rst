@@ -8,7 +8,7 @@ Class **Phalcon\\Validation\\Validator\\Uniqueness**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/validation/validator/uniqueness.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/validation/validator/uniqueness.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Check that a field is unique in the related table  
 

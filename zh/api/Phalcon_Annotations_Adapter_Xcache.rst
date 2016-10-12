@@ -8,7 +8,7 @@ Class **Phalcon\\Annotations\\Adapter\\Xcache**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/annotations/adapter/xcache.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/annotations/adapter/xcache.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Stores the parsed annotations to XCache. This adapter is suitable for production  
 

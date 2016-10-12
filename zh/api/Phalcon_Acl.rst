@@ -4,7 +4,7 @@ Abstract class **Phalcon\\Acl**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/acl.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/acl.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 This component allows to manage ACL lists. An access control list (ACL) is a list of permissions attached to an object. An ACL specifies which users or system processes are granted access to objects, as well as what operations are allowed on given objects.  
 

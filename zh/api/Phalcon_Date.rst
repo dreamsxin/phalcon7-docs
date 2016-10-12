@@ -4,7 +4,7 @@ Abstract class **Phalcon\\Date**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/date.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/date.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Provides utilities to work with dates
 

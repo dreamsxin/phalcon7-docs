@@ -8,7 +8,7 @@ Class **Phalcon\\Forms\\Element\\File**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/forms/element/file.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/forms/element/file.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Component INPUT[type=file] for forms
 

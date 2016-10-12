@@ -8,7 +8,7 @@ Class **Phalcon\\Forms\\Form**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/forms/form.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/forms/form.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 This component allows to build forms using an object-oriented interface
 

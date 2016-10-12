@@ -8,7 +8,7 @@ Class **Phalcon\\Logger\\Formatter\\Firephp**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/logger/formatter/firephp.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/logger/formatter/firephp.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Formats messages so that they can be sent to FirePHP
 

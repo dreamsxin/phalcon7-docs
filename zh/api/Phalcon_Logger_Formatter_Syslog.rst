@@ -8,7 +8,7 @@ Class **Phalcon\\Logger\\Formatter\\Syslog**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/logger/formatter/syslog.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/logger/formatter/syslog.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Prepares a message to be used in a Syslog backend
 

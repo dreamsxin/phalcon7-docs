@@ -8,7 +8,7 @@ Class **Phalcon\\Http\\Request**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/http/request.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/http/request.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Encapsulates request information for easy and secure access from application controllers.    The request object is a simple value object that is passed between the dispatcher and controller classes. It packages the HTTP request environment.    
 

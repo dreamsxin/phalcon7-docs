@@ -6,7 +6,7 @@ Class **Phalcon\\Paginator\\Adapter\\QueryBuilder**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/paginator/adapter/querybuilder.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/paginator/adapter/querybuilder.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Pagination using a PHQL query builder as source of data  
 

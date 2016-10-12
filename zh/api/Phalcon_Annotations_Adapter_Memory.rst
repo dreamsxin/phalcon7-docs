@@ -8,7 +8,7 @@ Class **Phalcon\\Annotations\\Adapter\\Memory**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/annotations/adapter/memory.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/annotations/adapter/memory.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Stores the parsed annotations in memory. This adapter is the suitable development/testing
 

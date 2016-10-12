@@ -8,7 +8,7 @@ Class **Phalcon\\Config\\Adapter\\Php**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/config/adapter/php.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/config/adapter/php.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Reads php files and converts them to Phalcon\\Config objects.  Given the next configuration file:  
 

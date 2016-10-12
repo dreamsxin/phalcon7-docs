@@ -8,7 +8,7 @@ Class **Phalcon\\Db\\Adapter\\Pdo\\Sqlite**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/db/adapter/pdo/sqlite.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/db/adapter/pdo/sqlite.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Specific functions for the Sqlite database system 
 

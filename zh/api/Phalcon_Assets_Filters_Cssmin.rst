@@ -6,7 +6,7 @@ Class **Phalcon\\Assets\\Filters\\Cssmin**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/assets/filters/cssmin.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/assets/filters/cssmin.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Minify the css - removes comments removes newlines and line feeds keeping removes last semicolon from last property
 

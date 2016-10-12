@@ -6,7 +6,7 @@ Class **Phalcon\\Annotations\\Reader**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/annotations/reader.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/annotations/reader.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Parses docblocks returning an array with the found annotations
 

@@ -4,7 +4,7 @@ Interface **Phalcon\\Logger\\FormatterInterface**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/logger/formatterinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/logger/formatterinterface.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Phalcon\\Logger\\FormatterInterface initializer
 

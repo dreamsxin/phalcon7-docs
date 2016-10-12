@@ -8,7 +8,7 @@ Class **Phalcon\\Mvc\\Model\\MetaData\\Mongo**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/mvc/model/metadata/mongo.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/model/metadata/mongo.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Stores model meta-data in the Mongo cache. Data will erased if the web server is restarted  By default meta-data is stored for 48 hours (172800 seconds)  You can query the meta-data by printing mongo_get('$PMM$') or mongo_get('$PMM$my-app-id')  
 

@@ -4,7 +4,7 @@ Interface **Phalcon\\Image\\AdapterInterface**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/image/adapterinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/image/adapterinterface.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Phalcon\\Image\\AdapterInterface initializer
 

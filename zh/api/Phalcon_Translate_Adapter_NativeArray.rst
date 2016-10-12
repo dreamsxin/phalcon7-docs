@@ -8,7 +8,7 @@ Class **Phalcon\\Translate\\Adapter\\NativeArray**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/translate/adapter/nativearray.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/translate/adapter/nativearray.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Allows to define translation lists using PHP arrays
 

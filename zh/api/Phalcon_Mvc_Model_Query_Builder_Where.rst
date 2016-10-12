@@ -8,7 +8,7 @@ Abstract class **Phalcon\\Mvc\\Model\\Query\\Builder\\Where**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/mvc/model/query/builder/where.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/model/query/builder/where.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Phalcon\\Mvc\\Model\\Query\\Builder  Helps to create PHQL queries for WHERE statements
 

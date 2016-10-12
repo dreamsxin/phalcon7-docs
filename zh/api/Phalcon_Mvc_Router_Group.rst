@@ -4,7 +4,7 @@ Class **Phalcon\\Mvc\\Router\\Group**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/mvc/router/group.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/router/group.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Helper class to create a group of routes with common attributes  
 

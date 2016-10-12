@@ -4,7 +4,7 @@ Class **Phalcon\\Forms\\Manager**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/forms/manager.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/forms/manager.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Manages forms within the application. Allowing the developer to access them from any part of the application
 

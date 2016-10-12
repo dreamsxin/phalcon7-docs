@@ -4,7 +4,7 @@ Class **Phalcon\\Cache\\Multiple**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/cache/multiple.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/cache/multiple.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Allows to read to chained backends writing to multiple backends  
 

@@ -4,7 +4,7 @@ Interface **Phalcon\\Mvc\\Model\\ResultsetInterface**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/mvc/model/resultsetinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/model/resultsetinterface.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Phalcon\\Mvc\\Model\\ResultsetInterface initializer
 

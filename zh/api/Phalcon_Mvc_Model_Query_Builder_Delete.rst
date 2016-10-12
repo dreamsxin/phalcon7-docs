@@ -8,7 +8,7 @@ Class **Phalcon\\Mvc\\Model\\Query\\Builder\\Delete**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/mvc/model/query/builder/delete.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/model/query/builder/delete.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 
 .. code-block:: php
@@ -18,8 +18,8 @@ Class **Phalcon\\Mvc\\Model\\Query\\Builder\\Delete**
     $resultset = Phalcon\Mvc\Model\Query\Builder::createDeleteBuilder()
        ->table('Robots')
        ->where('name = "Peter"')
-       ->limit(20)
        ->orderBy('Robots.id')
+       ->limit(20)
        ->execute();
 
 

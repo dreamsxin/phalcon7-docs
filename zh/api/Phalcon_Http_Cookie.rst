@@ -8,7 +8,7 @@ Class **Phalcon\\Http\\Cookie**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/http/cookie.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/http/cookie.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Provide OO wrappers to manage a HTTP cookie
 

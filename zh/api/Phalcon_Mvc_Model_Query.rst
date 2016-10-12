@@ -8,7 +8,7 @@ Class **Phalcon\\Mvc\\Model\\Query**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/mvc/model/query.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/model/query.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 This class takes a PHQL intermediate representation and executes it.  
 

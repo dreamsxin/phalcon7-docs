@@ -6,7 +6,7 @@ Class **Phalcon\\Escaper**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/escaper.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/escaper.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Escapes different kinds of text securing them. By using this component you may prevent XSS attacks.  This component only works with UTF-8. The PREG extension needs to be compiled with UTF-8 support.  
 

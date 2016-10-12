@@ -8,7 +8,7 @@ Class **Phalcon\\Validation\\Validator\\StringLength**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/validation/validator/stringlength.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/validation/validator/stringlength.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Validates that a string has the specified maximum and minimum constraints  
 

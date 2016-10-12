@@ -8,7 +8,7 @@ Class **Phalcon\\Forms\\Element\\Submit**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/forms/element/submit.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/forms/element/submit.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Component INPUT[type=submit] for forms
 

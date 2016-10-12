@@ -8,7 +8,7 @@ Abstract class **Phalcon\\Db\\Adapter**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/db/adapter.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/db/adapter.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Base class for Phalcon\\Db adapters
 

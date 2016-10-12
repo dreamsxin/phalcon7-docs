@@ -8,7 +8,7 @@ Class **Phalcon\\Logger\\Adapter\\Syslog**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/logger/adapter/syslog.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/logger/adapter/syslog.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Sends logs to the system logger  
 

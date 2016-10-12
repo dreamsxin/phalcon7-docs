@@ -8,7 +8,7 @@ Class **Phalcon\\Mvc\\Model\\Resultset\\Simple**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/mvc/model/resultset/simple.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/model/resultset/simple.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Simple resultsets only contains complete objects. This class builds every complete object as it is required
 

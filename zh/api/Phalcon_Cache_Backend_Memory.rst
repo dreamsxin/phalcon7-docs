@@ -8,7 +8,7 @@ Class **Phalcon\\Cache\\Backend\\Memory**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/cache/backend/memory.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/cache/backend/memory.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Stores content in memory. Data is lost when the request is finished  
 

@@ -6,7 +6,7 @@ Class **Phalcon\\Loader**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/loader.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/loader.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 This component helps to load your project classes automatically based on some conventions  
 

@@ -8,7 +8,7 @@ Class **Phalcon\\CLI\\Console**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/cli/console.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/cli/console.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 This component allows to create CLI applications using Phalcon
 

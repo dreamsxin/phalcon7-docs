@@ -8,7 +8,7 @@ Class **Phalcon\\Forms\\Element\\Radio**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/forms/element/radio.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/forms/element/radio.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 input[type="radio"] for forms
 

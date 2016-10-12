@@ -8,7 +8,7 @@ Class **Phalcon\\Db\\Dialect\\Mysql**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/db/dialect/mysql.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/db/dialect/mysql.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Generates database specific SQL for the MySQL RBDMS
 

@@ -8,7 +8,7 @@ Abstract class **Phalcon\\Mvc\\View\\Engine**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/mvc/view/engine.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/view/engine.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 All the template engine adapters must inherit this class. This provides basic interfacing between the engine and the Phalcon\\Mvc\\View component.
 

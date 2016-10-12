@@ -4,7 +4,7 @@ Abstract class **Phalcon\\Http\\Client**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/http/client.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/http/client.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Creates a new request object for the given URI.  
 

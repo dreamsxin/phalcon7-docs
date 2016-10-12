@@ -8,7 +8,7 @@ Class **Phalcon\\Config\\Adapter\\Ini**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/config/adapter/ini.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/config/adapter/ini.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Reads ini files and converts them to Phalcon\\Config objects.  Given the next configuration file:  
 

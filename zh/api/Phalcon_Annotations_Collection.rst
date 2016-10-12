@@ -6,7 +6,7 @@ Class **Phalcon\\Annotations\\Collection**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/annotations/collection.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/annotations/collection.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Represents a collection of annotations. This class allows to traverse a group of annotations easily  
 

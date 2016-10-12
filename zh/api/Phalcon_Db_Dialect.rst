@@ -6,7 +6,7 @@ Abstract class **Phalcon\\Db\\Dialect**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/db/dialect.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/db/dialect.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 This is the base class to each database dialect. This implements common methods to transform intermediate code into its RDBM related syntax
 

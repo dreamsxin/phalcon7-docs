@@ -8,7 +8,7 @@ Class **Phalcon\\Mvc\\Micro\\Exception**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/mvc/micro/exception.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/micro/exception.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Exceptions thrown in Phalcon\\Mvc\\Micro will use this class
 

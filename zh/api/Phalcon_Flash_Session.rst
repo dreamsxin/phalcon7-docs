@@ -8,7 +8,7 @@ Class **Phalcon\\Flash\\Session**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/flash/session.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/flash/session.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Temporarily stores the messages in session, then messages can be printed in the next request
 

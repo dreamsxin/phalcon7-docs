@@ -6,7 +6,7 @@ Class **Phalcon\\Assets\\Resource\\Js**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/assets/resource/js.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/assets/resource/js.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Represents Javascript resources
 

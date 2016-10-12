@@ -8,7 +8,7 @@ Class **Phalcon\\Db\\Adapter\\Pdo\\Postgresql**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/db/adapter/pdo/postgresql.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/db/adapter/pdo/postgresql.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Specific functions for the Postgresql database system 
 

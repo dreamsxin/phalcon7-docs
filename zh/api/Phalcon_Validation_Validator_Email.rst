@@ -8,7 +8,7 @@ Class **Phalcon\\Validation\\Validator\\Email**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/validation/validator/email.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/validation/validator/email.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Checks if a value has a correct e-mail format  
 

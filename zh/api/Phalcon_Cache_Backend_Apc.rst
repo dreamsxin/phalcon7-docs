@@ -8,7 +8,7 @@ Class **Phalcon\\Cache\\Backend\\Apc**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/cache/backend/apc.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/cache/backend/apc.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Allows to cache output fragments, PHP data and raw data using an APC backend  
 

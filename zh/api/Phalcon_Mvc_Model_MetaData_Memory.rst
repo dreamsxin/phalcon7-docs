@@ -8,7 +8,7 @@ Class **Phalcon\\Mvc\\Model\\MetaData\\Memory**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/mvc/model/metadata/memory.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/model/metadata/memory.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Stores model meta-data in memory. Data will be erased when the request finishes
 

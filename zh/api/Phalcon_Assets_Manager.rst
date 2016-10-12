@@ -4,7 +4,7 @@ Class **Phalcon\\Assets\\Manager**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/assets/manager.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/assets/manager.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Manages collections of CSS/Javascript assets
 

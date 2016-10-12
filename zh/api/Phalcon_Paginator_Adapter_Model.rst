@@ -6,7 +6,7 @@ Class **Phalcon\\Paginator\\Adapter\\Model**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/paginator/adapter/model.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/paginator/adapter/model.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 This adapter allows to paginate data using a Phalcon\\Mvc\\Model resultset as base
 

@@ -8,7 +8,7 @@ Class **Phalcon\\Mvc\\View\\Simple**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/mvc/view/simple.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/view/simple.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 This component allows to render views without hicherquical levels  
 
@@ -30,7 +30,7 @@ Phalcon\\Mvc\\View constructor
 
 
 
-public  **setViewsDir** (*string* $viewsDir)
+public  **setViewsDir** (*string|array* $viewsDir)
 
 Sets views directory. Depending of your platform, always add a trailing slash or backslash
 

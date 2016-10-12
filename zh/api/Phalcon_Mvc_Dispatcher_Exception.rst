@@ -8,7 +8,7 @@ Class **Phalcon\\Mvc\\Dispatcher\\Exception**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/mvc/dispatcher/exception.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/dispatcher/exception.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Exceptions thrown in Phalcon\\Mvc\\Dispatcher will use this class
 

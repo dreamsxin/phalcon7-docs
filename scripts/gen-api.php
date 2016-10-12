@@ -478,7 +478,7 @@ foreach ($classes as $className) {
         $code .= '*implements* ' . join(', ', $implements) . PHP_EOL . PHP_EOL;
     }
 
-    $githubLink = 'https://github.com/dreamsxin/cphalcon7/blob/master/' . str_replace("\\", "/", strtolower($className)) . '.zep';
+    $githubLink = 'https://github.com/dreamsxin/cphalcon7/blob/master/ext/' . str_replace("\\", "/", str_replace("phalcon\\", "", strtolower($className))) . '.c';
 
     $code .= '.. role:: raw-html(raw)' . PHP_EOL . '   :format: html' . PHP_EOL . PHP_EOL;
 

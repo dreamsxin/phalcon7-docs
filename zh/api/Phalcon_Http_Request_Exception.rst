@@ -8,7 +8,7 @@ Class **Phalcon\\Http\\Request\\Exception**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/http/request/exception.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/http/request/exception.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Exceptions thrown in Phalcon\\Http\\Request will use this class
 

@@ -8,7 +8,7 @@ Class **Phalcon\\Cache\\Frontend\\None**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/cache/frontend/none.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/cache/frontend/none.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Discards any kind of frontend data input. This frontend does not have expiration time or any other options  
 

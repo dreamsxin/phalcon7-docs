@@ -8,7 +8,7 @@ Class **Phalcon\\Security\\Random**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/security/random.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/security/random.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Secure random number generator class.  Provides secure random number generator which is suitable for generating session key in HTTP cookies, etc.  It supports following secure random number generators:  - libsodium - openssl - /dev/urandom  A `Phalcon\\Security\\Random` could be mainly useful for:  - Key generation (e.g. generation of complicated keys) - Creating random passwords for new user accounts - Encryption systems  
 

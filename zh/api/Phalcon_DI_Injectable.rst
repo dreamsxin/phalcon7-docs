@@ -6,7 +6,7 @@ Abstract class **Phalcon\\DI\\Injectable**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/di/injectable.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/di/injectable.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 This class allows to access services in the services container by just only accessing a public property with the same name of a registered service
 

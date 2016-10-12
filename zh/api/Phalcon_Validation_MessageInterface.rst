@@ -4,7 +4,7 @@ Interface **Phalcon\\Validation\\MessageInterface**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/validation/messageinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/validation/messageinterface.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Phalcon\\Validation\\MessageInterface initializer
 

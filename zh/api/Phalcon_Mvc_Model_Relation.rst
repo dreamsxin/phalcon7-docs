@@ -6,7 +6,7 @@ Class **Phalcon\\Mvc\\Model\\Relation**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/mvc/model/relation.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/model/relation.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 This class represents a relationship between two models
 

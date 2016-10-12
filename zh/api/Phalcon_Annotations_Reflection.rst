@@ -4,7 +4,7 @@ Class **Phalcon\\Annotations\\Reflection**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/phalcon/annotations/reflection.zep" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/annotations/reflection.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Allows to manipulate the annotations reflection in an OO manner  
 
