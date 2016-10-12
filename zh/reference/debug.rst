@@ -5,10 +5,21 @@
 
     <img class="align-center" src="../static/img/xdebug-1.jpg">
  
-Phalcon中提供了提供了几种调试级别即通知，错误和异常。 异常类 `Exception class`_ 提供了错误发生时的一些常用的调试信息如文件，行，消息，错误代码，跟踪信息等。
-Phalcon主要使用这个异常类来包装这些功能，以方便开发者或用户使用。
+Phalcon 中提供了提供了几种调试级别即通知，错误和异常。 异常类 `Exception class`_ 提供了错误发生时的一些常用的调试信息如文件（file）、行（line）、消息（message）、错误代码（code）、跟踪信息等。
+Phalcon 主要使用这个异常类来包装这些功能，以方便开发者或用户使用。
 
 尽管Phalcon是使用C语言书写的，但其依然如其它的PHP框架般提供了一些必须的调试工具，PHP本身提供的调试工具亦然可以正常使用。
+
+调试模式（Debug mode）
+----------------------
+开启调试模式之后，将会输出更多的信息帮助我们解决问题。例如，当控制器或者视图加载失败之后，我们想要确认 Phalcon 内部查找的目录是否正确，开启方式如下：
+
+.. code-block:: php
+
+    <?php
+
+    Phalcon\Debug::enable();
+
 
 捕获异常（Catching Exceptions）
 -------------------------------

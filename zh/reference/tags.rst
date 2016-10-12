@@ -380,7 +380,7 @@ The following HTML will generated:
         </body>
     </html>
 
-设置标题分隔符（Set the title separator）
+设置标题分隔符（Set The Title Separator）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 设置标题分隔符，用以连接追加或前置的标题内容:
 
