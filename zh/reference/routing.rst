@@ -824,6 +824,11 @@ Or, you can modify specific routes to optionally accept trailing slashes:
         'controller' => 'index',
         'action' =>  'index'
     ));
+    // Or
+    $router->add('/phalcon[/]?', array(
+        'controller' => 'index',
+        'action' =>  'index'
+    ));
     
 设置后:
 
