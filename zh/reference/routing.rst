@@ -91,21 +91,23 @@ The second parameter defines how the matched parts should bind to the controller
 parts are placeholders or subpatterns delimited by parentheses (round brackets). In the example given above, the
 first subpattern matched (:code:`:controller`) is the controller part of the route, the second the action and so on.
 
+默认占位符对应正则表达式（Default Placeholders Regular Expressions）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 These placeholders help writing regular expressions that are more readable for developers and easier
 to understand. The following placeholders are supported:
 
 +----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
 | Placeholder          | Regular Expression          | Usage                                                                                                  |
 +======================+=============================+========================================================================================================+
-| :code:`/:module`     | :code:`/([a-zA-Z0-9\_\-]+)` | Matches a valid module name with alpha-numeric characters only                                         |
+| :code:`/:module`     | :code:`/([\\w0-9\\_\\-]+)` | Matches a valid module name with alpha-numeric characters only                                          |
 +----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
-| :code:`/:controller` | :code:`/([a-zA-Z0-9\_\-]+)` | Matches a valid controller name with alpha-numeric characters only                                     |
+| :code:`/:controller` | :code:`/([\\w0-9\\_\\-]+)` | Matches a valid controller name with alpha-numeric characters only                                      |
 +----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
-| :code:`/:action`     | :code:`/([a-zA-Z0-9\_]+)`   | Matches a valid action name with alpha-numeric characters only                                         |
+| :code:`/:action`     | :code:`/([\\w0-9\\_\\-]+)`   | Matches a valid action name with alpha-numeric characters only                                        |
 +----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
 | :code:`/:params`     | :code:`(/.*)*`              | Matches a list of optional words separated by slashes. Only use this placeholder at the end of a route |
 +----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
-| :code:`/:namespace`  | :code:`/([a-zA-Z0-9\_\-]+)` | Matches a single level namespace name                                                                  |
+| :code:`/:namespace`  | :code:`/([\\w0-9\\_\\-]+)` | Matches a single level namespace name                                                                   |
 +----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
 | :code:`/:int`        | :code:`/([0-9]+)`           | Matches an integer parameter                                                                           |
 +----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
@@ -117,6 +119,32 @@ Since you can add many routes as you need using the :code:`add()` method, the or
 their relevance, latest routes added have more relevance than first added. Internally, all defined routes
 are traversed in reverse order until :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` finds the
 one that matches the given URI and processes it, while ignoring the rest.
+
+更改占位符对应正则表达式（Define Placeholders Regular Expressions）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: php
+
+    <?php
+
+        $router = new Phalcon\Mvc\Router(false);
+
+        // Default
+        $router->add('/:controller/:action/:params', array(
+            "controller" => 1,
+            "action" => 2,
+            "params" => 3,
+        ));
+        // Define new
+        $router->add('/:controller/:action/:params', array(
+            "controller" => 1,
+            "action" => 2,
+            "params" => 3,
+        ), array(
+            '/:controller' => '/([a-zA-Z0-9_-]+)',
+            '/:action' => '/([a-zA-Z0-9_-]+)',
+            '/:params' => '([/]?)([a-zA-Z0-9_-]+)?',
+        ));
 
 参数名称（Parameters with Names）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

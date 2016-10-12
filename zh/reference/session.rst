@@ -27,7 +27,7 @@ Thanks to the service container, we can ensure that the session is accessed only
         return $session;
     });
 
-Session 的存储与读取（Storing/Retrieving data in Session）
+会话数据的存储与读取（Storing/Retrieving data in Session）
 ----------------------------------------------------------
 From a controller, a view or any other component that extends :doc:`Phalcon\\Di\\Injectable <../api/Phalcon_DI_Injectable>` you can access the session service
 and store items and retrieve them in the following way:
@@ -58,8 +58,8 @@ and store items and retrieve them in the following way:
 
     }
 
-Sessions 的删除和销毁（Removing/Destroying Sessions）
------------------------------------------------------
+会话数据的删除和销毁（Removing/Destroying Sessions）
+----------------------------------------------------
 It's also possible remove specific variables or destroy the whole session:
 
 .. code-block:: php
@@ -182,6 +182,20 @@ In a component:
 
 The data added to the session (:code:`$this->session`) are available throughout the application, while persistent (:code:`$this->persistent`)
 can only be accessed in the scope of the current class.
+
+会话适配器（Session Adapters）
+------------------------------
+这些适配器封装特定的数据存储方式的详细操作，下面是我们支持的数据存储方式：
+
++--------------+--------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+
+| 名称         | 描述                                                                                                   | API                                                                                          |
++==============+========================================================================================================+==============================================================================================+
+| Files        | 将会话数据存储在文本文件                                                                               | :doc:`Phalcon\\Session\\Adapter\\Files <../api/Phalcon_Session_Adapter_Files>`               |
++--------------+--------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+
+| Libmemcached | 利用Memcached扩展，将会话数据存储在 Memcached                                                          | :doc:`Phalcon\\Session\\Adapter\\Libmemcached <../api/Phalcon_Session_Adapter_Libmemcached>` |
++--------------+--------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+
+| Memcache     | 利用Memcache扩展，将会话数据存储在 Memcached                                                           | :doc:`Phalcon\\Session\\Adapter\\Memcache <../api/Phalcon_Session_Adapter_Memcache>`         |
++--------------+--------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+
 
 自定义适配器（Implementing your own adapters）
 ----------------------------------------------
