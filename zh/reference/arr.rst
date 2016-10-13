@@ -1,7 +1,7 @@
 数组助手（Array Helper）
 ========================
 
-Phalcon中提供了 :code:`Phalcon\Arr` 数组助手类，让你更高效地处理数组。。
+Phalcon中提供了 :code:`Phalcon\Arr` 数组助手类，让你更高效地处理数组。
 
 获取值（Gets Value）
 --------------------
