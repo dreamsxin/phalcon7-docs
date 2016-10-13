@@ -50,3 +50,9 @@ Executes the validation
 
 
 
+abstract public *boolean*  **valid** () inherited from Phalcon\\Validation\\ValidatorInterface
+
+Executes the validation
+
+
+

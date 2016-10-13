@@ -36,3 +36,9 @@ Executes the validation
 
 
 
+abstract public *boolean*  **valid** ()
+
+Executes the validation
+
+
+

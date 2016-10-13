@@ -30,7 +30,7 @@ Gets a value from an array using a dot separated path. // Get the value of $arra
 
 
 
-public static  **set_path** (*array* $array, *string* $path, *mixed* $value, [*string* $delimiter])
+public static  **set_path** (*array* $array, *string* $path, *mixed* $value, [*string* $delimiter], [*unknown* $flag])
 
 Set a value on an array by path. Using a wildcard "*" will search intermediate arrays and return an array. // Set the values of "color" in theme $array = array('theme' => array('one' => array('color' => 'green'), 'two' => array('size' => 11)); \\Phalcon\\Arr::set_path($array, 'theme.*.color', 'red'); // Result: array('theme' => array('one' => array('color' => 'red'), 'two' => array('size' => 11, 'color' => 'red'));
 
@@ -42,7 +42,7 @@ Fill an array with a range of numbers. // Fill an array with values 5, 10, 15, 2
 
 
 
-public static *mixed*  **get** (*array* $array, *string|array* $key, [*mixed* $default_value])
+public static *mixed*  **get** (*array* $array, *string|array|\Closure* $key, [*mixed* $default_value])
 
 Retrieve a single key from an array. If the key does not exist in the array, the default value will be returned instead. // Get the value "username" from $_POST, if it exists $username = \\Phalcon\\Arr::get($_POST, 'username');
 
@@ -102,24 +102,40 @@ Convert a multi-dimensional array into a single-dimensional array. $array = arra
 
 
 
-public static  **arrayobject** (*unknown* $array)
+public static *ArrayObject*  **arrayobject** (*array* $array)
 
-...
-
-
-public static  **key** (*unknown* $array, [*unknown* $postion])
-
-...
+Convert a array to a array object. $array = array('name' => 'Phalcon7', 'version' => '1.0.x'); $arrayobject = \\Phalcon\\Arr::arrayobject($array);
 
 
-public static  **filter** (*unknown* $array, [*unknown* $callback])
 
-...
+public static *mixed*  **key** (*array* $array, [*int* $postion])
+
+Gets array key of the postion $array = array('name' => 'Phalcon7', 'version' => '1.0.x'); $key = \\Phalcon\\Arr::key($array, 1);
+
+
+
+public static *array*  **filter** (*array* $array, [*unknown* $callback])
+
+Filters elements of an array using a the filter $array = array('name' => 'Phalcon7', 'version' => '1.0.x'); $key = \\Phalcon\\Arr::filter($array, 'int');
+
 
 
 public static *mixed*  **sum** (*array* $array, [*mixed* $path])
 
-Return the sum of all the values in the array using a dot separated path.
+Return the sum of all the values in the array using a dot separated path
+
+
+
+public static *array*  **toArray** (*object|array|string* $object, [*bool* $recursive], [*array* $properties])
+
+Converts an object or an array of objects into an array 
+
+.. code-block:: php
+
+    <?php
+
+    print_r(Phalcon\Arr::toArray($user);
+
 
 
 
