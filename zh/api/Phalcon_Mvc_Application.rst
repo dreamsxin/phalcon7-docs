@@ -112,6 +112,12 @@ Handles a MVC request
 
 
 
+public *mixed*  **request** (*unknown* $uri)
+
+Does a HMVC request in the application
+
+
+
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\DI\\Injectable
 
 Sets the dependency injector

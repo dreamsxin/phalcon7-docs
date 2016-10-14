@@ -260,7 +260,7 @@ Gets the connection used to write data to the model
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **assign** (*array* $data, [*array* $columnMap])
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **assign** (*array* $data, [*array* $columnMap], [*array* $whiteList])
 
 Assigns values to a model from an array 
 
