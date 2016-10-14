@@ -1,5 +1,5 @@
-Tutorial 3: Securing INVO
-=========================
+教程 3: 保护INVO（Tutorial 3: Securing INVO）
+=============================================
 
 In this chapter, we continue explaining how INVO is structured, we'll talk
 about the implementation of authentication, authorization using events and plugins and
@@ -7,15 +7,11 @@ an access control list (ACL) managed by Phalcon.
 
 登录应用（Log into the Application）
 ------------------------------------
-A "log in" facility will allow us to work on backend controllers. The separation between backend controllers and
-frontend ones is only logical. All controllers are located in the same directory (app/controllers/).
+一个 “登录” 功能将允许我们在后台控制器中工作。分离后台和前台的控制器是合理的。所有加载的控制器都位于相同的目录 (app/controllers/)。
 
-To enter the system, users must have a valid username and password. Users are stored in the table "users"
-in the database "invo".
+为了进入系统，用户必须有一个有效的用户名和密码。用户存储在数据库 “invo” 里面的 “users” 表里面。
 
-Before we can start a session, we need to configure the connection to the database in the application. A service
-called "db" is set up in the service container with the connection information. As with the autoloader, we are
-again taking parameters from the configuration file in order to configure a service:
+在我们开始会话之前，我们需要在数据库配置数据库的连接。注册一个 “db” 服务在服务容器中，并设置连接信息：
 
 .. code-block:: php
 
@@ -37,40 +33,33 @@ again taking parameters from the configuration file in order to configure a serv
         );
     });
 
-Here, we return an instance of the MySQL connection adapter. If needed, you could do extra actions such as adding a
-logger, a profiler or change the adapter, setting it up as you want.
+这里，我们将会返回一个 MySQL 连接适配器的一个实例。如果需要，你可以做一些额外的操作比如添加一个日志记录，一个分析器或者更换成其他数据库适配器，设置你想要的。
 
-The following simple form (app/views/session/index.volt) requests the login information. We've removed
-some HTML code to make the example more concise:
+下面是一个登录信息的表单 (app/views/session/index.phtml) 。我们已经删除了一些 HTML 代码来让例子更加简洁:
 
 .. code-block:: html+jinja
 
-    {{ form('session/start') }}
+    <?php echo Phalcon\Tag::form("session/start"); ?>
         <fieldset>
             <div>
                 <label for="email">Username/Email</label>
                 <div>
-                    {{ text_field('email') }}
+                    <?php echo Phalcon\Tag::textField("email"); ?>
                 </div>
             </div>
             <div>
                 <label for="password">Password</label>
                 <div>
-                    {{ password_field('password') }}
+                    <?php echo Phalcon\Tag::passwordField("password"); ?>
                 </div>
             </div>
             <div>
-                {{ submit_button('Login') }}
+		<?php echo Phalcon\Tag::submitButton("Login"); ?>
             </div>
         </fieldset>
     </form>
 
-Instead of using raw PHP as the previous tutorial, we started to use :doc:`Volt <volt>`. This is a built-in
-template engine inspired in Jinja_ providing a simpler and friendly syntax to create templates.
-It will not take too long before you become familiar with Volt.
-
-The :code:`SessionController::startAction` function (app/controllers/SessionController.php) has the task of validating the
-data entered in the form including checking for a valid user in the database:
+:code:`SessionController::startAction` 方法 (app/controllers/SessionController.php) 有验证表单中输入的数据包括检查在数据库中是否为有效用户的任务：
 
 .. code-block:: php
 
@@ -141,17 +130,13 @@ data entered in the form including checking for a valid user in the database:
         }
     }
 
-For the sake of simplicity, we have used "sha1_" to store the password hashes in the database, however, this algorithm is
-not recommended in real applications, use ":doc:`bcrypt <security>`" instead.
+为简单起见，我们使用 "sha1_" 在数据库中存储密码散列，然而，在实际应用中不建议采用此算法，使用 ":doc:`bcrypt <security>`" 代替。
 
-Note that multiple public attributes are accessed in the controller like: :code:`$this->flash`, :code:`$this->request` or :code:`$this->session`.
-These are services defined in the services container from earlier (app/config/services.php).
-When they're accessed the first time, they are injected as part of the controller.
+请注意，多个公共属性在控制器访问，像: :code:`$this->flash`，:code:`$this->request` 或者 :code:`$this->session`。这些是先前在服务容器中定义的服务 (app/config/services。php)。当它们第一次访问的时候，它们被注入作为控制器的一部分。
 
-These services are "shared", which means that we are always accessing the same instance regardless of the place
-where we invoke them.
+这些服务是"共享"的，这意味着我们总是访问相同的地方，无论我们在哪里调用它们。
 
-For instance, here we invoke the "session" service and then we store the user identity in the variable "auth":
+例如，这里我们调用 "session" 服务然后我们在变量 "auth" 中存储用户身份：
 
 .. code-block:: php
 
@@ -165,8 +150,7 @@ For instance, here we invoke the "session" service and then we store the user id
         )
     );
 
-Another important aspect of this section is how the user is validated as a valid one,
-first we validate whether the request has been made using method POST:
+本节的另外一个重要方面是如何验证用户为有效的，首先我们验证是否是POST请求的：
 
 .. code-block:: php
 
@@ -174,7 +158,7 @@ first we validate whether the request has been made using method POST:
 
     if ($this->request->isPost()) {
 
-Then, we receive the parameters from the form:
+然后，我们接收表单中的参数：
 
 .. code-block:: php
 
@@ -183,7 +167,7 @@ Then, we receive the parameters from the form:
     $email    = $this->request->getPost('email');
     $password = $this->request->getPost('password');
 
-Now, we have to check if there is one user with the same username or email and password:
+现在，我们需要检查是否存在一个相同的用户名或邮箱和密码的用户：
 
 .. code-block:: php
 
@@ -199,11 +183,7 @@ Now, we have to check if there is one user with the same username or email and p
         )
     );
 
-Note, the use of 'bound parameters', placeholders :email: and :password: are placed where values should be,
-then the values are 'bound' using the parameter 'bind'. This safely replaces the values for those
-columns without having the risk of a SQL injection.
-
-If the user is valid we register it in session and forwards him/her to the dashboard:
+如果用户是有效的，我们将会在session中注册它，并且转发到 dashboard：
 
 .. code-block:: php
 
@@ -216,7 +196,7 @@ If the user is valid we register it in session and forwards him/her to the dashb
         return $this->forward('invoices/index');
     }
 
-If the user does not exist we forward the user back again to action where the form is displayed:
+如果用户不存在，用户将返回登录表单页：
 
 .. code-block:: php
 
@@ -224,20 +204,15 @@ If the user does not exist we forward the user back again to action where the fo
 
     return $this->forward('session/index');
 
-保护后端（Securing the Backend）
+后端安全（Securing the Backend）
 --------------------------------
-The backend is a private area where only registered users have access. Therefore, it is necessary
-to check that only registered users have access to these controllers. If you aren't logged
-into the application and you try to access, for example, the products controller (which is private)
-you will see a screen like this:
+后端是一个私有区域，只有已经注册并登录的用户才可以访问。因此，只有登录用户才能访问控制器这样的检验是有必要的。如果你没有登录到应用中并试图访问，例如 products 控制器 (这是私有的) 你将会看到如下屏幕：
 
 .. raw:: html
 
     <img class="align-center" src="../static/img/invo-2.png">
 
-Every time someone attempts to access any controller/action, the application verifies that the
-current role (in session) has access to it, otherwise it displays a message like the above and
-forwards the flow to the home page.
+每次有人试图访问任何 `controller/action`，应用将会验证当前角色 (在session中) 是否能够访问它，否则就会显示一个像上面那样的消息并转发到首页。
 
 Now let's find out how the application accomplishes this. The first thing to know is that
 there is a component called :doc:`Dispatcher <dispatching>`. It is informed about the route
@@ -493,5 +468,4 @@ all the resources of both frontend and backend. The role "Guests" only has acces
 Hooray!, the ACL is now complete. In next chapter, we will see how a CRUD is implemented in Phalcon and how you
 can customize it.
 
-.. _jinja: http://jinja.pocoo.org/
 .. _sha1: http://php.net/manual/zh/function.sha1.php
