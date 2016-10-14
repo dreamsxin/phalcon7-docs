@@ -109,6 +109,12 @@ Gets variable from $_SERVER superglobal
 
 
 
+public *mixed*  **getParam** (*unknown* $name, [*string|array* $filters], [*mixed* $defaultValue])
+
+Gets a param by its name or numeric index
+
+
+
 public *boolean*  **has** (*string* $name)
 
 Checks whether $_REQUEST superglobal has certain index

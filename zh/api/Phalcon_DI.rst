@@ -1,7 +1,7 @@
 Class **Phalcon\\DI**
 =====================
 
-*implements* :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`
+*implements* :doc:`Phalcon\\DIInterface <Phalcon_DIInterface>`
 
 .. role:: raw-html(raw)
    :format: html

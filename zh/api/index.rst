@@ -293,6 +293,7 @@ API Indice
    Phalcon_Cache_FrontendInterface
    Phalcon_Config_AdapterInterface
    Phalcon_CryptInterface
+   Phalcon_DIInterface
    Phalcon_DI_InjectionAwareInterface
    Phalcon_DI_ServiceInterface
    Phalcon_Db_AdapterInterface
@@ -301,7 +302,6 @@ API Indice
    Phalcon_Db_IndexInterface
    Phalcon_Db_ReferenceInterface
    Phalcon_Db_ResultInterface
-   Phalcon_DiInterface
    Phalcon_DispatcherInterface
    Phalcon_EscaperInterface
    Phalcon_Events_EventsAwareInterface

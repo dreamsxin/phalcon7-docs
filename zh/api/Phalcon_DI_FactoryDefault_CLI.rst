@@ -3,7 +3,7 @@ Class **Phalcon\\DI\\FactoryDefault\\CLI**
 
 *extends* class :doc:`Phalcon\\DI\\FactoryDefault <Phalcon_DI_FactoryDefault>`
 
-*implements* :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`
+*implements* :doc:`Phalcon\\DIInterface <Phalcon_DIInterface>`
 
 .. role:: raw-html(raw)
    :format: html

@@ -1,4 +1,4 @@
-Interface **Phalcon\\DiInterface**
+Interface **Phalcon\\DIInterface**
 ==================================
 
 *extends* ArrayAccess
@@ -8,7 +8,7 @@ Interface **Phalcon\\DiInterface**
 
 :raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/diinterface.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Phalcon\\DiInterface initializer
+Phalcon\\DIInterface initializer
 
 
 Methods
@@ -68,13 +68,13 @@ Return the services registered in the DI
 
 
 
-abstract public static  **setDefault** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+abstract public static  **setDefault** (*Phalcon_DIInterface* $dependencyInjector)
 
 Set the default dependency injection container to be obtained into static methods
 
 
 
-abstract public static :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDefault** ()
+abstract public static *Phalcon_DIInterface*  **getDefault** ()
 
 Return the last DI created
 

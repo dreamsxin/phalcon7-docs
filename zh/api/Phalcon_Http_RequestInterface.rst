@@ -41,6 +41,11 @@ Gets variable from $_SERVER superglobal
 
 
 
+abstract public  **getParam** (*unknown* $name, [*unknown* $filters], [*unknown* $defaultValue])
+
+...
+
+
 abstract public *boolean*  **has** (*string* $name)
 
 Checks whether $_SERVER superglobal has certain index
