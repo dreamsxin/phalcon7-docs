@@ -293,15 +293,28 @@ Returns attribute data size
 
 
 
-public *int*  **getDataBytes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *string* $attribute) inherited from Phalcon\\Mvc\\Model\\MetaData
+public *int*  **getDataBytes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model) inherited from Phalcon\\Mvc\\Model\\MetaData
 
-Returns attribute data bytes 
+Returns attributes and their data bytes 
 
 .. code-block:: php
 
     <?php
 
-    print_r($metaData->getDataBytes(new Robots(), 'type'));
+    print_r($metaData->getDataBytes(new Robots()));
+
+
+
+
+public *int*  **getDataByte** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *string* $attribute) inherited from Phalcon\\Mvc\\Model\\MetaData
+
+Returns attribute data byte 
+
+.. code-block:: php
+
+    <?php
+
+    print_r($metaData->getDataByte(new Robots(), 'type'));
 
 
 
@@ -501,7 +514,7 @@ Gets a model certain attribute
 
 
 
-public *boolean*  **hasColumn** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *string* $column) inherited from Phalcon\\Mvc\\Model\\MetaData
+public *boolean*  **hasRealAttribute** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *string* $column) inherited from Phalcon\\Mvc\\Model\\MetaData
 
 Check if a model has real attribute name 
 
@@ -509,12 +522,12 @@ Check if a model has real attribute name
 
     <?php
 
-    var_dump($metaData->hasColumn(new Robots(), 'name'));
+    var_dump($metaData->hasRealAttribute(new Robots(), 'name'));
 
 
 
 
-public *string*  **getColumn** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *string* $column) inherited from Phalcon\\Mvc\\Model\\MetaData
+public *string*  **getRealAttribute** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *string* $column) inherited from Phalcon\\Mvc\\Model\\MetaData
 
 Gets a real attribute name 
 
@@ -522,7 +535,7 @@ Gets a real attribute name
 
     <?php
 
-    var_dump($metaData->getColumn(new Robots(), 'name'));
+    var_dump($metaData->getRealAttribute(new Robots(), 'name'));
 
 
 

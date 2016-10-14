@@ -102,10 +102,15 @@ Returns attributes and their data size
 
 
 
-abstract public *int*  **getDataBytes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model, *unknown* $attribute)
+abstract public *int*  **getDataBytes** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 Returns attributes and their data bytes
 
+
+
+abstract public  **getDataByte** (*unknown* $model, *unknown* $attribute)
+
+...
 
 
 abstract public *array*  **getDataScales** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)

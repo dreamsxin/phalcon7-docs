@@ -164,13 +164,103 @@ Returns the column map if any
 
 
 
-public *boolean*  **hasColumn** (*string* $column)
+public *array*  **getReverseColumnMap** ()
+
+Returns the reverse column map if any
+
+
+
+public *array*  **getAttributes** ()
+
+Returns table attributes names (fields)
+
+
+
+public *array*  **getPrimaryKeyAttributes** ()
+
+Returns an array of fields which are part of the primary key
+
+
+
+public *array*  **getNonPrimaryKeyAttributes** ()
+
+Returns an arrau of fields which are not part of the primary key
+
+
+
+public *array*  **getNotNullAttributes** ()
+
+Returns an array of not null attributes
+
+
+
+public *array*  **getDataTypesNumeric** ()
+
+Returns attributes which types are numerical
+
+
+
+public *array*  **isNotNull** (*unknown* $attribute)
+
+Checks if the attribute is not null
+
+
+
+public *array*  **getDataTypes** ()
+
+Returns the columns data types
+
+
+
+public *array*  **getDataSize** (*string* $attribute)
+
+Returns attribute data size
+
+
+
+public *array*  **getDataByte** (*string* $attribute)
+
+Returns attribute data byte
+
+
+
+public *array*  **getDataScale** (*string* $attribute)
+
+Returns attribute data scale
+
+
+
+public *array*  **getBindTypes** ()
+
+Returns attributes and their bind data types
+
+
+
+public *array*  **getDefaultValues** ()
+
+Returns attributes and their default values
+
+
+
+public *array*  **getAutomaticCreateAttributes** ()
+
+Returns attributes that must be ignored from the INSERT SQL generation
+
+
+
+public *array*  **getAutomaticUpdateAttributes** ()
+
+Returns attributes that must be ignored from the UPDATE SQL generation
+
+
+
+public *boolean*  **hasRealAttribute** (*string* $column)
 
 Check if a model has certain column
 
 
 
-public *string*  **getColumn** (*string* $column)
+public *string*  **getRealAttribute** (*string* $column)
 
 Gets a model certain column
 
@@ -185,24 +275,6 @@ Check if a model has certain attribute
 public *string*  **getAttribute** (*string* $attribute)
 
 Gets a model certain attribute
-
-
-
-public *array*  **getReverseColumnMap** ()
-
-Returns the reverse column map if any
-
-
-
-public *array*  **getColumns** ()
-
-Returns the columns
-
-
-
-public *array*  **getDataTypes** ()
-
-Returns the columns data types
 
 
 
@@ -1226,6 +1298,11 @@ Whether the record is new and deleted
 
 
 public  **__debugInfo** ()
+
+...
+
+
+public  **getRealAttributes** ()
 
 ...
 

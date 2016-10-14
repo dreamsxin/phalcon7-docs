@@ -30,6 +30,131 @@ Returns schema name where table mapped is located
 
 
 
+abstract public *string*  **getIdentityField** ()
+
+Returns the name of identity field (if one is present)
+
+
+
+abstract public *array*  **getColumnMap** ()
+
+Returns the column map if any
+
+
+
+abstract public *array*  **getReverseColumnMap** ()
+
+Returns the reverse column map if any
+
+
+
+abstract public *array*  **getAttributes** ()
+
+Returns table attributes names (fields)
+
+
+
+abstract public *array*  **getPrimaryKeyAttributes** ()
+
+Returns an array of fields which are part of the primary key
+
+
+
+abstract public *array*  **getNonPrimaryKeyAttributes** ()
+
+Returns an arrau of fields which are not part of the primary key
+
+
+
+abstract public *array*  **getNotNullAttributes** ()
+
+Returns an array of not null attributes
+
+
+
+abstract public *array*  **getDataTypesNumeric** ()
+
+Returns attributes which types are numerical
+
+
+
+abstract public *array*  **isNotNull** (*unknown* $attribute)
+
+Checks if the attribute is not null
+
+
+
+abstract public *array*  **getDataTypes** ()
+
+Returns the columns data types
+
+
+
+abstract public *array*  **getDataSize** (*string* $attribute)
+
+Returns attribute data size
+
+
+
+abstract public *array*  **getDataByte** (*string* $attribute)
+
+Returns attribute data byte
+
+
+
+abstract public *array*  **getDataScale** (*string* $attribute)
+
+Returns attribute data scale
+
+
+
+abstract public *array*  **getBindTypes** ()
+
+Returns attributes and their bind data types
+
+
+
+abstract public *array*  **getDefaultValues** ()
+
+Returns attributes and their default values
+
+
+
+abstract public *array*  **getAutomaticCreateAttributes** ()
+
+Returns attributes that must be ignored from the INSERT SQL generation
+
+
+
+abstract public *array*  **getAutomaticUpdateAttributes** ()
+
+Returns attributes that must be ignored from the UPDATE SQL generation
+
+
+
+abstract public *boolean*  **hasRealAttribute** (*string* $column)
+
+Check if a model has certain column
+
+
+
+abstract public  **getRealAttribute** (*unknown* $column)
+
+...
+
+
+abstract public *boolean*  **hasAttribute** (*string* $attribute)
+
+Check if a model has certain attribute
+
+
+
+abstract public *string*  **getAttribute** (*string* $attribute)
+
+Gets a model certain attribute
+
+
+
 abstract public  **setConnectionService** (*string* $connectionService)
 
 Sets both read/write connection services
