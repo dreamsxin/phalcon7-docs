@@ -514,6 +514,24 @@ MVC 应用默认开启视图组件，以下示例演示了如何禁用视图组�
 
     $application->useImplicitView(false);
 
-外部资源（External Resources）
-------------------------------
-* `Github上的MVC示例 <https://github.com/phalcon/mvc>`_
+HMVC 请求（HMVC request system）
+--------------------------------
+以下示例演示了如何完成 HMVC 请求：
+
+.. code-block:: php
+
+    <?php
+
+    class HmvcController extends Phalcon\Mvc\Controller
+    {
+
+        public function oneAction()
+        {
+            echo $this->app->request('/hmvc/two');
+        }
+
+        public function twoAction()
+        {
+            echo $this->dispatcher->getActionName();
+        }
+    }
