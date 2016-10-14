@@ -77,4 +77,3 @@ Phalcon7 不只是为了卓越的性能, 我们的目标是让它更加健壮，
    reference/whats-next
    reference/unit-testing
    reference/license
-   api/index

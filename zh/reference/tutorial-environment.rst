@@ -48,8 +48,8 @@
     } else {
         $environment = 'prod';
     }
-	
-	if ($environment == 'dev') {
+    
+    if ($environment == 'dev') {
         $filename = 'config.dev.php';
         if (file_exists($config_basedir . $filename)) {
             $config->merge($config->load($filename));
