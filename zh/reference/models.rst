@@ -14,8 +14,8 @@
     模型是数据库的高级抽象层。如果您想进行低层次的数据库操作，您可以查看
     :doc:`Phalcon\\Db <../api/Phalcon_Db>` 组件文档。
 
-创建模型
---------
+创建模型（Creating Models）
+---------------------------
 模型是一个继承自 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 的一个类。 它必须放到 models 文件夹。一个模型文件必须包含一个类，
 同时它的类名必须符合驼峰命名法：
 
@@ -3326,6 +3326,62 @@ Using :doc:`Phalcon\\Mvc\\Model <models>` in a stand-alone mode can be demonstra
 
     // Use the model
     echo Robots::count();
+
+
+元数据（Meta-Data）
+-------------------
+在这里将介绍如何获取模型在数据库中对应表的元数据。
+
+自定义元数据（Manual Meta-Data）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+在模型中添加 :code:`metaData` 方法即可。 :doc:`了解更多 <models-metadata>`
+
+自定义字段（Manual Fields）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+有时候我们只是想简单的隐藏一些字段，在模型中覆盖 :code:`getAttributes` 方法即可，实现代码如下：
+
+.. code-block:: php
+
+    <?php
+
+    // Create a model
+    class Robots extends Model
+    {
+        public function getAttributes()
+        {
+            return array('id', 'name');
+        }
+    }
+
+获取字段真实名称（Gets Real Field）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+实现代码如下：
+
+.. code-block:: php
+
+    <?php
+
+
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
+    {
+        public function columnMap()
+        {
+            // Keys are the real names in the table and
+            // the values their names in the application
+            return array(
+                'id'       => 'code',
+                'the_name' => 'theName',
+                'the_type' => 'theType',
+                'the_year' => 'theYear'
+            );
+        }
+    }
+
+    $robot = new Robots;
+    echo $robot->getRealAttribute('code');
+
 
 .. _PDO: http://www.php.net/manual/en/pdo.prepared-statements.php
 .. _date: http://php.net/manual/en/function.date.php
