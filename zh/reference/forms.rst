@@ -84,9 +84,22 @@ HTML的属性也可以在创建时指定：
         )
     );
 
+表单元素（Forms Elements）
+--------------------------
+所有 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` 支持的 HTML 元素，都可以作为表单元素来使用。
+例如，Phalcon 内置不存在 `Phalcon\Forms\Element\Tel` 元素类，但 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` 中存在 :code:`tel` 方法，我们仍然可以用下面的方式创建表单元素：
+
+.. code-block:: php
+
+    <?php
+
+    $element = new Phalcon\Forms\Element('mytel', NULL, NULL, NULL, 'tel');
+
+构造函数的第一个参数是元素名称（name），第二个参数是元素属性，第三个参数是用户选项值（自定义数据），第四个参数是选项值（比如下拉列表的值）。
+
 初始化表单（Initializing forms）
 --------------------------------
-从上面的例子我们可以看到表单项也可以在form对象初始化后进行添加。 当然开发者也可以对原有的Form类进行扩展：
+从上面的例子我们可以看到表单项也可以在form对象初始化后进行添加。当然开发者也可以对原有的Form类进行扩展：
 
 .. code-block:: php
 
@@ -523,6 +536,48 @@ Phalcon提供了一些内置的html元素类， 所有这些元素类仅位于 :
             return $html;
         }
     }
+
+表单元素转换为数组（Creating Form Elements）
+--------------------------------------------
+
+.. code-block:: php
+
+    <?php
+
+    $nameElement = new \Phalcon\Forms\Element("name", array('class' => 'big-input'), array('some' => 'value'), NULL, "text");
+    $versionElement = new \Phalcon\Forms\Element("version", NULL, NULL, array('phalcon' => 'Phalcon', 'phalcon7' => 'Phalcon7'), "select");
+
+    $form = new \Phalcon\Forms\Form();
+    $form->add($nameElement);
+    $form->add($versionElement);
+    $data = $form->toArray();
+
+:code:`$data` 值如下：
+
+.. code-block:: php
+
+    <?php
+
+    array(
+         "name" => array(
+              "name" => "name",
+              "type" => "text",
+              "attributes" => array(
+                   "class" => "big-input",
+              ),
+              "options" => array(
+                   "some" => "value",
+              ),
+         ),
+         "version" => array(
+              "name" => "version",
+              "type" => "select",
+              "optionsValues" => array(
+                   "phalcon" => "Phalcon",
+                   "phalcon7" => "Phalcon7",
+              ),
+         )
+    );
 
 表单管理（Forms Manager）
 -------------------------
