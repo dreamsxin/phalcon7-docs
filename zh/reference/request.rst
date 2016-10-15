@@ -1,10 +1,7 @@
-Request Environment
-===================
-
-Every HTTP request (usually originated by a browser) contains additional information regarding the request such as header data,
-files, variables, etc. A web based application needs to parse that information so as to provide the correct
-response back to the requester. :doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` encapsulates the
-information of the request, allowing you to access it in an object-oriented way.
+请求环境（Request Environment）
+===============================
+每个 HTTP 请求（通常由浏览器发起），包含了请求参数、HTTP 头信息（包括Cookies）、文件等。Web 应用程序需要解析这些信息，并根据这些信息返回正确的响应给请求者。
+请求对象 :doc:`Phalcon\\Http\\Request <../api/Phalcon_Http_Request>` 封装了这些信息，你可以以面向对象的方式访问它。
 
 .. code-block:: php
 
@@ -23,8 +20,8 @@ information of the request, allowing you to access it in an object-oriented way.
         }
     }
 
-获取值（Getting Values）
-------------------------
+获取请求参数（Getting Values）
+------------------------------
 PHP automatically fills the superglobal arrays :code:`$_GET` and :code:`$_POST` depending on the type of the request. These arrays
 contain the values present in forms submitted or the parameters sent via the URL. The variables in the arrays are
 never sanitized and can contain illegal characters or even malicious code, which can lead to `SQL injection`_ or
@@ -38,14 +35,18 @@ never sanitized and can contain illegal characters or even malicious code, which
 
     <?php
 
-    use Phalcon\Filter;
+    // Gets a variable from the $_REQUEST superglobal
+    $id = $request->get("id");
+
+    // Checks whether $_REQUEST superglobal has certain index
+    $ret = $request->has("id");
 
     // Manually applying the filter
-    $filter = new Filter();
+    $filter = new Phalcon\Filter();
     $email  = $filter->sanitize($_POST["user_email"], "email");
 
     // Manually applying the filter to the value
-    $filter = new Filter();
+    $filter = new Phalcon\Filter();
     $email  = $filter->sanitize($request->getPost("user_email"), "email");
 
     // Automatically applying the filter
@@ -56,6 +57,39 @@ never sanitized and can contain illegal characters or even malicious code, which
 
     // Setting a default value if the param is null without filtering
     $email = $request->getPost("user_email", null, "some@example.com");
+
+    // Gets a variable from put request
+    $id = $request->getPut("id");
+
+    // Gets variable from $_GET superglobal
+    $id = $request->getQuery("id");
+
+    // Gets variable from $_SERVER superglobal
+    $host = $request->getServer("HOST");
+
+请求方法（Request Method）
+--------------------------
+
+判断请求方法（Check Method）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. code-block:: php
+
+    <?php
+
+    // Check if HTTP method match any of the passed methods
+    $ret = $request->isMethod('POST');
+
+    // Checks whether HTTP method is POST. if $_SERVER['REQUEST_METHOD']=='POST'
+    $ret = $request->isPost();
+
+获取请求方法（Getting Method）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. code-block:: php
+
+    <?php
+
+    // Gets HTTP method which request has been made
+    $id = $request->getMethod();
 
 
 控制器中访问请求（Accessing the Request from Controllers）
