@@ -20,6 +20,11 @@ Phalcon 主要使用这个异常类来包装这些功能，以方便开发者或
 
     Phalcon\Debug::enable();
 
+    // 将跟踪信息输出到 $logger
+    $logfile = "unit-tests/logs/file.log";
+    $logger = new \Phalcon\Logger\Adapter\File($logfile);
+    Phalcon\Debug::enable($logger);
+
 
 捕获异常（Catching Exceptions）
 -------------------------------
