@@ -26,6 +26,16 @@ Phalcon 主要使用这个异常类来包装这些功能，以方便开发者或
     Phalcon\Debug::enable($logger);
 
 
+调试信息（Debug Message）
+^^^^^^^^^^^^^^^^^^^^^^^^^
+我们可以在代码中添加调试信息，开启调试模式后才会输出：
+
+.. code-block:: php
+
+    <?php
+
+    Phalcon\Debug::log("DEBUG Message");
+
 捕获异常（Catching Exceptions）
 -------------------------------
 纵观Phalcon的文档及其提供的例子程序， 有一个最直接的捕获异常的方法即是使用try/catch块：
@@ -123,11 +133,10 @@ Phalcon提供的调试组件可以使开发者更容易的定位代码中的错�
 
 下面的视频中展示了如何工作的：
 
+
 .. raw:: html
 
-    <div align="center">
-        <iframe src="//player.vimeo.com/video/68893840" width="500" height="313" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-    </div>
+    <img class="align-center" src="../static/img/debug.png">
 
 要打开调试功能只需要如下做：
 
@@ -138,7 +147,7 @@ Phalcon提供的调试组件可以使开发者更容易的定位代码中的错�
     $debug = new \Phalcon\Debug();
     $debug->listen();
 
-注意一定要去掉Try/Catch块才可以， 否则异常信息不会正确的输出（事实上很多时候Phalco显示异常信息是非常耗时的）。
+注意一定要去掉Try/Catch块才可以， 否则异常信息不会正确的输出（事实上很多时候Phalcon显示异常信息是非常耗时的）。
 
 反射与内省（Reflection and Introspection）
 ------------------------------------------
