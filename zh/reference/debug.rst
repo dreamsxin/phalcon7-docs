@@ -133,7 +133,7 @@ Phalcon提供的调试组件可以使开发者更容易的定位代码中的错�
 
 .. raw:: html
 
-    <img class="align-center" src="../static/img/debug.png">
+    <img class="align-center img-responsive" src="../static/img/debug.png">
 
 要打开调试功能只需要如下做：
 
