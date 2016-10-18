@@ -144,6 +144,15 @@ Phalcon提供的调试组件可以使开发者更容易的定位代码中的错�
     $debug = new \Phalcon\Debug();
     $debug->listen();
 
+下面的视频中展示了调试组件是如何工作的：
+
+.. raw:: html
+
+    <div align="center">
+        <video src="/static/video/debug.mp4"controls="controls"></video>
+    </div>
+
+
 在调试中输出变量（Adds a variable to the debug output）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 我们可以在代码中添加调试信息，开启调试模式后才会输出：
@@ -250,7 +259,7 @@ XDebug_ 是一个非常好（神奇）的调试工具，其和PHP内部调试工
 .. raw:: html
 
     <div align="center">
-        <iframe src="//player.vimeo.com/video/69867342" width="500" height="313" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+        <video src="/static/video/xdebug.mp4"controls="controls"></video>
     </div>
 
 一旦安装了xdebug, 开发者便可以使用其API来取得更多的异常信息和其它信息：
