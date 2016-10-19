@@ -1,4 +1,4 @@
-教程：INVO 简介（Tutorial 2: Introducing INVO）
+教程：INVO 简介（Tutorial: Introducing INVO）
 ========================================================
 
 在第二部分，我们将会说明一个完整的应用用来加深Phalcon的开发。
