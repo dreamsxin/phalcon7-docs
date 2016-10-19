@@ -1,4 +1,4 @@
-教程 3: 保护INVO（Tutorial 3: Securing INVO）
+教程: 保护INVO（Tutorial: Securing INVO）
 =============================================
 
 In this chapter, we continue explaining how INVO is structured, we'll talk

@@ -613,11 +613,19 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
     <div class="footer"><?php $this->partial("shared/footer"); ?></div>
 
-方法 partial() 也接受一个只存在于局部范围的变量/参数的数组作为第二个参数:
+方法 :code:`partial()` 也接受一个只存在于局部范围的变量/参数的数组作为第二个参数:
 
 .. code-block:: html+php
 
     <?php $this->partial("shared/ad_banner", array('id' => $site->id, 'size' => 'big')); ?>
+
+关闭局部模版自动渲染（Disables Partial Auto Render）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+通过方法 :code:`partial()` 第三个参数关闭自动渲染：
+
+.. code-block:: html+php
+
+    <?php $result = $this->partial("shared/ad_banner", array('id' => $site->id, 'size' => 'big'), TRUE); ?>
 
 控制器传值给视图（Transfer values from the controller to views）
 ----------------------------------------------------------------
@@ -689,6 +697,38 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
 
 尽管你可以执行模型处理操作，如在视图层 insert() 或  update()，但这是不推荐，因为在一个错误或异常发生时，它不可能将执行流程转发给另一个控制器。
 
+
+
+视图片段（View Sections）
+-------------------------
+:code:`startSection()` 和 :code:`stopSection()` 函数允许您在视图模版中构建视图片段，他们可以在其他任意位置使用。
+
+创建片段（Creating Sections）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+您需要定义片段名称。
+
+.. code-block:: html+php
+
+    <?php $this->startSection('category') ?>
+    <div class="categories">
+    <?php
+
+        foreach (Categories::find("status = 1") as $category) {
+            echo "<span class='category'>", $category->name, "</span>";
+        }
+
+    ?>
+    </div>
+    <?php $this->stopSection() ?>
+
+获取片段内容（Gets section content）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+根据片段名称获取相应片段内容，可以设置默认值，当片段不存在时，返回默认值。
+
+.. code-block:: html+php
+
+    <?php $this->section('category', $this->partial("shared/category", NULL, FALSE)) ?>
+
 缓存视图片段（Caching View Fragments）
 --------------------------------------
 有时当你开发动态网站和一些区域不会经常更新，请求的输出是完全相同的。 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 提供缓存全部或部分的渲染输出来提高性能。
@@ -743,8 +783,7 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
         }
     }
 
-当我们没有定义缓存的关键组件， the component automatically creates one using an MD5_ hash of the name of the controller and view currently being rendered in the format of "controller/view".
-它是定义每个关键动作的一个良好实践，这样你可以很容易地识别与每个视图关联的缓存。
+当我们没有定义缓存的 `key` 的值时，该组件会自动根据文件路径生成 `MD5` 值作为 `key` 的值，它是定义每个关键动作的一个良好实践，这样你可以很容易地识别与每个视图关联的缓存。
 
 当视图组件需要缓存的东西时，就会请求缓存服务的服务容器。
 这个服务的服务名称约定为"viewCache"：
@@ -819,6 +858,33 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
     }
 
 `PHP alternative site`_ 是实现缓存片段的一个例子。
+
+缓存任意视图片段（Caching Any View Fragments）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+在视图文件中，使用 :doc:`Phalcon\\Cache <cache>` 实现任意位置数据缓存：
+
+.. code-block:: html+php
+
+    <?php
+
+    $content = $cache->start("categories-cache.html");
+    if ($content === null) {
+    ?>
+    <div class="categories">
+    <?php
+
+        foreach (Categories::find("status = 1") as $category) {
+            echo "<span class='category'>", $category->name, "</span>";
+        }
+
+    ?>
+    </div>
+    <?php
+        $cache->save();
+    } else {
+        echo $content;
+    }
+    ?>
 
 模版引擎（Template Engines）
 ----------------------------

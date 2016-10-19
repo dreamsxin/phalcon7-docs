@@ -1,4 +1,4 @@
-教程 7：创建简单的 REST API（Tutorial 7: Creating a Simple REST API）
+教程：创建简单的 REST API（Tutorial: Creating a Simple REST API）
 =====================================================================
 
 在这个教程中，我们会学习如何创建一个拥有 RESTful API 的应用程序，它将会使用如下的几个 HTTP 方法：
