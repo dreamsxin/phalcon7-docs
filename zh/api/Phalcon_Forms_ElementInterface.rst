@@ -12,6 +12,11 @@ Phalcon\\Forms\\ElementInterface initializer
 Methods
 -------
 
+abstract public  **__construct** (*unknown* $name, [*unknown* $attributes], [*unknown* $options], [*unknown* $optionsValues], [*unknown* $type])
+
+...
+
+
 abstract public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setForm** (:doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>` $form)
 
 Sets the parent form to the element
@@ -195,6 +200,12 @@ Clears every element in the form to its default value
 abstract public *string*  **render** ([*array* $attributes])
 
 Renders the element widget
+
+
+
+abstract public *array*  **toArray** ()
+
+Returns the element as an array
 
 
 

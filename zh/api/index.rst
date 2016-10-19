@@ -54,6 +54,7 @@ API Indice
    Phalcon_Cache_Frontend_Json
    Phalcon_Cache_Frontend_None
    Phalcon_Cache_Frontend_Output
+   Phalcon_Cache_Memory
    Phalcon_Cache_Multiple
    Phalcon_Chart_Captcha
    Phalcon_Chart_Exception

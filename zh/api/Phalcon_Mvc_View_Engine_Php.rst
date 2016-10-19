@@ -34,6 +34,24 @@ Returns cached ouput on another view stage
 
 
 
+public  **startSection** (*string* $name) inherited from Phalcon\\Mvc\\View\\Engine
+
+Start a new section block
+
+
+
+public *string*  **stopSection** () inherited from Phalcon\\Mvc\\View\\Engine
+
+Stop the current section block
+
+
+
+public *string*  **section** (*unknown* $name, [*unknown* $defaultValue]) inherited from Phalcon\\Mvc\\View\\Engine
+
+Stop the current section block
+
+
+
 public *string*  **partial** (*string* $partialPath) inherited from Phalcon\\Mvc\\View\\Engine
 
 Renders a partial inside another view

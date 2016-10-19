@@ -44,3 +44,12 @@ Constants
 
 *integer* **EMERGENCY**
 
+Methods
+-------
+
+public static *string*  **getTypeString** (*integer* $type)
+
+Returns the string meaning of a logger constant
+
+
+

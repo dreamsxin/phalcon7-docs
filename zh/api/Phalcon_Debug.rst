@@ -138,18 +138,6 @@ Handles user-defined error
 
 
 
-public static *string*  **getCharset** ()
-
-Returns the character set used to display the HTML
-
-
-
-public :doc:`Phalcon\\Debug <Phalcon_Debug>`  **setCharset** (*string* $charset)
-
-Sets the character set used to display the HTML
-
-
-
 public *int*  **getLinesBeforeContext** ()
 
 Returns the number of lines deplayed before the error line
@@ -179,9 +167,21 @@ protected  **getFileLink** (*unknown* $file, *unknown* $line, *unknown* $format)
 ...
 
 
-public static :doc:`Phalcon\\Debug <Phalcon_Debug>`  **enable** ()
+public static  **enable** ([:doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>` $logger])
 
 Enable simple debug mode
+
+
+
+public static  **disable** ()
+
+Disable simple debug mode
+
+
+
+public static  **log** (*string* $message, [*mixed* $type], [*array* $context])
+
+Logs messages
 
 
 

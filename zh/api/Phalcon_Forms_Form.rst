@@ -235,6 +235,12 @@ Appends a messages to the form
 
 
 
+public *array*  **toArray** ()
+
+Returns a form elements as an array
+
+
+
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\DI\\Injectable
 
 Sets the dependency injector

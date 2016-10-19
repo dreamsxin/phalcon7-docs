@@ -253,6 +253,12 @@ Adds parameters to views (alias of setVar)
 
 
 
+public *array*  **getParamsToView** ()
+
+Returns parameters to views
+
+
+
 public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setVars** (*array* $params, [*boolean* $merge])
 
 Set all the render params 
@@ -285,13 +291,7 @@ Returns a parameter previously set in the view
 
 
 
-public *array*  **getParamsToView** ()
-
-Returns parameters to views
-
-
-
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setControllerName** ()
+public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setControllerName** (*string* $controllerName)
 
 Sets the controller name to be view
 
@@ -303,7 +303,7 @@ Gets the name of the controller rendered
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setActionName** ()
+public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setActionName** (*string* $actionName)
 
 Sets the action name to be view
 
@@ -315,7 +315,7 @@ Gets the name of the action rendered
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setParams** ()
+public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setParams** (*array* $params)
 
 Sets the extra parameters to be view
 
@@ -384,9 +384,10 @@ Returns the registered templating engines, if none is registered it will use Pha
 
 
 
-public  **exists** (*unknown* $view)
+public *boolean*  **exists** (*string* $view, [*unknown* $absolute_path])
 
-...
+Checks whether a view file exists
+
 
 
 public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **render** (*string* $controllerName, *string* $actionName, [*array* $params], [*unknown* $namespace], [:doc:`Phalcon\\Mvc\\View\\ModelInterface <Phalcon_Mvc_View_ModelInterface>` $viewModel])
@@ -517,6 +518,24 @@ Returns cached output from another view stage
 
 
 
+public  **startSection** (*string* $name)
+
+Start a new section block
+
+
+
+public *string*  **stopSection** ()
+
+Stop the current section block
+
+
+
+public *string*  **section** (*unknown* $name, [*unknown* $defaultValue])
+
+Stop the current section block
+
+
+
 public *string*  **getActiveRenderPath** ()
 
 Returns the path of the view that is currently rendered
@@ -538,6 +557,42 @@ Enables the auto-rendering process
 public *bool*  **isDisabled** ()
 
 Whether automatic rendering is enabled
+
+
+
+public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **enableNamespaceView** ()
+
+Enables namespace view render
+
+
+
+public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **disableNamespaceView** ()
+
+Disables namespace view render
+
+
+
+public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **enableLowerCase** ()
+
+Enables to lower case view path
+
+
+
+public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **disableLowerCase** ()
+
+Whether to lower case view path
+
+
+
+public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setConverter** (*string* $name, *callable* $converter)
+
+Adds a converter
+
+
+
+public *callable|null*  **getConverter** (*unknown* $name)
+
+Returns the router converter
 
 
 
@@ -586,40 +641,9 @@ Magic method to inaccessible a variable passed to the view
 
 
 
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **enableNamespaceView** ()
+public  **insert** (*unknown* $partialPath)
 
-Enables the auto-rendering process
-
-
-
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **disableNamespaceView** ()
-
-Whether automatic rendering is enabled
-
-
-
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **enableLowerCase** ()
-
-Enables to lower case view path
-
-
-
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **disableLowerCase** ()
-
-Whether to lower case view path
-
-
-
-public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **setConverter** ()
-
-Adds a converter
-
-
-
-public *callable|null*  **getConverter** ()
-
-Returns the router converter
-
+...
 
 
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\DI\\Injectable

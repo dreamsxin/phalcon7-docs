@@ -28,6 +28,24 @@ Returns cached ouput on another view stage
 
 
 
+public  **startSection** (*string* $name)
+
+Start a new section block
+
+
+
+public *string*  **stopSection** ()
+
+Stop the current section block
+
+
+
+public *string*  **section** (*unknown* $name, [*unknown* $defaultValue])
+
+Stop the current section block
+
+
+
 public *string*  **partial** (*string* $partialPath)
 
 Renders a partial inside another view

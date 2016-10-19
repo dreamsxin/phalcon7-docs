@@ -1,7 +1,7 @@
 Class **Phalcon\\Forms\\Element\\Select**
 =========================================
 
-*extends* abstract class :doc:`Phalcon\\Forms\\Element <Phalcon_Forms_Element>`
+*extends* class :doc:`Phalcon\\Forms\\Element <Phalcon_Forms_Element>`
 
 *implements* :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`
 
@@ -16,9 +16,9 @@ Component SELECT (choice) for forms
 Methods
 -------
 
-public  **__construct** (*string* $name, [*object|array* $options], [*array* $attributes])
+public  **__construct** (*string* $name, [*array* $attributes], [*array* $options], [*array* $optionsValues], [*unknown* $type])
 
-Phalcon\\Forms\\Element constructor
+Phalcon\\Forms\\Element\\Select constructor
 
 
 
@@ -223,6 +223,12 @@ Appends a message to the internal message list
 public :doc:`Phalcon\\Forms\\Element <Phalcon_Forms_Element>`  **clear** () inherited from Phalcon\\Forms\\Element
 
 Clears every element in the form to its default value
+
+
+
+public *array*  **toArray** () inherited from Phalcon\\Forms\\Element
+
+Returns a element all attributes
 
 
 

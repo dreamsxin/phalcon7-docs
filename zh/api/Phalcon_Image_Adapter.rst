@@ -134,7 +134,7 @@ Save the image. If the filename is omitted, the original image will be overwritt
 
 
 
-public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **render** ([*unknown* $type], [*unknown* $quality])
+public *string*  **render** ([*unknown* $type], [*unknown* $quality])
 
 Render the image and return the binary string.
 

@@ -346,23 +346,26 @@ Volt syntax:
 
 
 
-public static *string*  **imageInput** (*array* $parameters)
+public static *string*  **imageInput** ([*array* $parameters], [*boolean* $local])
 
-Builds a HTML input[type="image"] tag 
-
-.. code-block:: php
-
-    <?php
-
-     echo Phalcon\Tag::imageInput(array("src" => "/img/button.png"));
-
-Volt syntax: 
+Builds HTML IMG tags 
 
 .. code-block:: php
 
     <?php
 
-     {{ image_input('src': '/img/button.png') }}
+     	echo Phalcon\Tag::image("img/bg.png");
+     	echo Phalcon\Tag::image(array("img/photo.jpg", "alt" => "Some Photo"));
+
+Volt Syntax: 
+
+.. code-block:: php
+
+    <?php
+
+     	{{ image("img/bg.png") }}
+     	{{ image("img/photo.jpg", "alt": "Some Photo") }}
+     	{{ image("http://static.mywebsite.com/img/bg.png", false) }}
 
 
 
@@ -598,30 +601,6 @@ Volt syntax:
 
 
 
-public static *string*  **image** ([*array* $parameters], [*boolean* $local])
-
-Builds HTML IMG tags 
-
-.. code-block:: php
-
-    <?php
-
-     	echo Phalcon\Tag::image("img/bg.png");
-     	echo Phalcon\Tag::image(array("img/photo.jpg", "alt" => "Some Photo"));
-
-Volt Syntax: 
-
-.. code-block:: php
-
-    <?php
-
-     	{{ image("img/bg.png") }}
-     	{{ image("img/photo.jpg", "alt": "Some Photo") }}
-     	{{ image("http://static.mywebsite.com/img/bg.png", false) }}
-
-
-
-
 public static *text*  **friendlyTitle** (*string* $text, [*string* $separator], [*boolean* $lowercase])
 
 Converts texts into URL-friendly titles 
@@ -698,6 +677,111 @@ Returns default params
 
 
 public static  **choice** (*unknown* $expression, *unknown* $value1, [*unknown* $value2])
+
+...
+
+
+public static  **color** (*unknown* $parameters)
+
+...
+
+
+public static  **text** (*unknown* $parameters)
+
+...
+
+
+public static  **number** (*unknown* $parameters)
+
+...
+
+
+public static  **range** (*unknown* $parameters)
+
+...
+
+
+public static  **email** (*unknown* $parameters)
+
+...
+
+
+public static  **date** (*unknown* $parameters)
+
+...
+
+
+public static  **dateTime** (*unknown* $parameters)
+
+...
+
+
+public static  **dateTimeLocal** (*unknown* $parameters)
+
+...
+
+
+public static  **month** (*unknown* $parameters)
+
+...
+
+
+public static  **time** (*unknown* $parameters)
+
+...
+
+
+public static  **week** (*unknown* $parameters)
+
+...
+
+
+public static  **password** (*unknown* $parameters)
+
+...
+
+
+public static  **hidden** (*unknown* $parameters)
+
+...
+
+
+public static  **search** (*unknown* $parameters)
+
+...
+
+
+public static  **tel** (*unknown* $parameters)
+
+...
+
+
+public static  **url** (*unknown* $parameters)
+
+...
+
+
+public static  **file** (*unknown* $parameters)
+
+...
+
+
+public static  **check** (*unknown* $parameters)
+
+...
+
+
+public static  **radio** (*unknown* $parameters)
+
+...
+
+
+public static  **image** (*unknown* $parameters)
+
+...
+
+
+public static  **submit** (*unknown* $parameters)
 
 ...
 

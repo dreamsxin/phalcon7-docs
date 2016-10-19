@@ -1,5 +1,5 @@
-Abstract class **Phalcon\\Forms\\Element**
-==========================================
+Class **Phalcon\\Forms\\Element**
+=================================
 
 *implements* :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`
 
@@ -14,7 +14,7 @@ This is a base class for form elements
 Methods
 -------
 
-public  **__construct** (*string* $name, [*array* $attributes])
+public  **__construct** (*string* $name, [*array* $attributes], [*array* $options], [*array* $optionsValues], [*unknown* $type])
 
 Phalcon\\Forms\\Element constructor
 
@@ -200,15 +200,21 @@ Clears every element in the form to its default value
 
 
 
+public *string*  **render** ([*array* $attributes])
+
+Renders the element widget returning html
+
+
+
+public *array*  **toArray** ()
+
+Returns a element all attributes
+
+
+
 public *string*  **__toString** ()
 
 Magic method __toString renders the widget without attributes
-
-
-
-abstract public *string*  **render** ([*array* $attributes]) inherited from Phalcon\\Forms\\ElementInterface
-
-Renders the element widget
 
 
 

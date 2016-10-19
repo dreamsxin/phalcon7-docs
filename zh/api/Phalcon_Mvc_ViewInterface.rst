@@ -48,9 +48,15 @@ Gets the current partials sub-directory
 
 
 
-abstract public  **setBasePath** (*string* $basePath)
+abstract public :doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>`  **setBasePath** (*string* $basePath)
 
 Sets base path. Depending of your platform, always add a trailing slash or backslash
+
+
+
+abstract public *string*  **getBasePath** ()
+
+Gets base path
 
 
 
@@ -66,15 +72,26 @@ Gets the render level for the view
 
 
 
-abstract public  **setRenderLevel** (*string* $level)
+abstract public :doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>`  **setRenderLevel** (*string* $level)
 
 Sets the render level for the view
 
 
 
-abstract public  **setMainView** (*string* $viewPath)
+abstract public  **disableLevel** (*string* $level)
 
-Sets default view name. Must be a file without extension in the views directory
+Sets the render level for the view
+
+
+
+abstract public  **getDisabledLevels** ()
+
+...
+
+
+abstract public :doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>`  **setMainView** (*unknown* $viewPath)
+
+Disables a specific level of rendering
 
 
 
@@ -126,15 +143,33 @@ Adds parameters to views (alias of setVar)
 
 
 
-abstract public  **setVar** (*string* $key, *mixed* $value)
+abstract public *array*  **getParamsToView** ()
+
+Returns parameters to views
+
+
+
+abstract public :doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>`  **setVars** (*array* $params, [*boolean* $merge])
+
+Set all the render params
+
+
+
+abstract public :doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>`  **setVar** (*string* $key, *mixed* $value)
 
 Adds parameters to views
 
 
 
-abstract public *array*  **getParamsToView** ()
+abstract public *mixed*  **getVar** (*string* $key)
 
-Returns parameters to views
+Returns a parameter previously set in the view
+
+
+
+abstract public :doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>`  **setControllerName** (*string* $controllerName)
+
+Sets the controller name to be view
 
 
 
@@ -144,9 +179,21 @@ Gets the name of the controller rendered
 
 
 
+abstract public :doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>`  **setActionName** (*string* $actionName)
+
+Sets the action name to be view
+
+
+
 abstract public *string*  **getActionName** ()
 
 Gets the name of the action rendered
+
+
+
+abstract public :doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>`  **setParams** (*array* $params)
+
+Sets the extra parameters to be view
 
 
 
@@ -173,9 +220,16 @@ abstract public  **getRegisteredEngines** ()
 ...
 
 
-abstract public  **getEngines** ()
+abstract public *array*  **getEngines** ()
 
-...
+Returns the registered templating engines, if none is registered it will use Phalcon\\Mvc\\View\\Engine\\Php
+
+
+
+abstract public *boolean*  **exists** (*string* $view, [*unknown* $absolute_path])
+
+Checks whether a view file exists
+
 
 
 abstract public  **render** (*string* $controllerName, *string* $actionName, [*array* $params], [*unknown* $namespace], [*unknown* $viewModel])
@@ -196,9 +250,21 @@ Renders a partial view
 
 
 
-abstract public  **finish** ()
+abstract public *string*  **getRender** (*string* $controllerName, *string* $actionName, [*array* $params], [*mixed* $configCallback])
+
+Perform the automatic rendering returning the output as a string
+
+
+
+abstract public :doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>`  **finish** ()
 
 Finishes the render process by stopping the output buffering
+
+
+
+abstract public *boolean*  **isCaching** ()
+
+Check if the component is currently caching the output content
 
 
 
@@ -226,6 +292,24 @@ Returns cached ouput from another view stage
 
 
 
+abstract public  **startSection** (*string* $name)
+
+Start a new section block
+
+
+
+abstract public  **stopSection** ()
+
+Stop the current section block
+
+
+
+abstract public *string*  **section** (*unknown* $name, [*unknown* $defaultValue])
+
+Returns the content for a section block
+
+
+
 abstract public *string*  **getActiveRenderPath** ()
 
 Returns the path of the view that is currently rendered
@@ -244,15 +328,51 @@ Enables the auto-rendering process
 
 
 
+abstract public *bool*  **isDisabled** ()
+
+Whether automatic rendering is enabled
+
+
+
+abstract public :doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>`  **enableNamespaceView** ()
+
+Enables namespace view render
+
+
+
+abstract public :doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>`  **disableNamespaceView** ()
+
+Disables namespace view render
+
+
+
+abstract public :doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>`  **enableLowerCase** ()
+
+Enables to lower case view path
+
+
+
+abstract public :doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>`  **disableLowerCase** ()
+
+Disables to lower case view path
+
+
+
+abstract public :doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>`  **setConverter** (*string* $name, *callable* $converter)
+
+Adds a converter
+
+
+
+abstract public *callable|null*  **getConverter** (*unknown* $name)
+
+Returns the router converter
+
+
+
 abstract public  **reset** ()
 
 Resets the view component to its factory default values
-
-
-
-abstract public *bool*  **isDisabled** ()
-
-Whether the automatic rendering is disabled
 
 
 
