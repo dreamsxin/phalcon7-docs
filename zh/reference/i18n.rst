@@ -33,6 +33,30 @@ Phalcon 通过 :doc:`Phalcon\\Translate\\Adapter\\NativeArray <../api/Phalcon_Tr
 
 最后将 `mo` 文件拷贝到目录 `locale/zh_CN.utf8/LC_MESSAGES`。
 
+消息格式化（Message Format）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+在要翻译的消息里，你可以嵌入一些占位符，并让它们通过动态的参数值来代替。你甚至可以根据目标语言格式的参数值来使用特殊的占位符。
+在下面的例子中， 占位符 {username} 在 “Hello, {username}！” 中将分别被 'Alexander'和'Qiang' 所替换。
+
+.. code-block:: php
+
+    $username = 'Phalcon';
+    // 输出：“Hello, Phalcon”
+    echo $t->_('Hello, %username%!', [
+        'username' => $username,
+    ]);
+
+占位符也可以是从零开始的整数序列，比如下面的例子中， `%0%`、`%1%` 和 `%2%` 将分别被 `$price`、`$count` 和 `$total` 所替换。
+
+.. code-block:: php
+
+    $price = 100;
+    $count = 1;
+    $total = 200;
+    echo $t->_('Price: {0}, Count: {1}, Total: {2}', [
+        $price, $count, $total
+    ]);
+
 追踪消息文件（Trace Message File）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 如果出现无法翻译指定语言的情况，我们可以通过下面的方式追踪程序读取的语言文件：
