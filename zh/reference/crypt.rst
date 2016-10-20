@@ -1,5 +1,5 @@
-Encryption/Decryption
-=====================
+加密与解密（Encryption/Decryption）
+===================================
 
 Phalcon通过 :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` 组件提供了加密和解密工具。这个类提供了对PHP mcrypt_ 的封装。
 

@@ -648,8 +648,8 @@ If you would like to use :doc:`Phalcon\\Mvc\\View\\Simple <../api/Phalcon_Mvc_Vi
 
     });
 
-Error Handling
---------------
+异常处理（Error Handling）
+--------------------------
 A proper response can be generated if an exception is raised in a micro handler:
 
 .. code-block:: php
