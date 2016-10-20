@@ -1,18 +1,54 @@
 国际化（Internationalization）
 ==============================
+国际化是指在设计软件时，使它可以无需做大的改变就能够适应不同的语言和地区的需要。对于 Web 应用程序，这有着特别重要的意义，因为潜在的用户可能会在全球范围内。
 
-Phalcon is written in C as an extension for PHP. There is a PECL_ extension that offers internationalization functions to PHP applications called intl_.
-Starting from PHP 5.4/5.5 this extension is bundled with PHP. Its documentation can be found in the pages of the official `PHP manual`_.
+区域和语言（Locale And Language）
+---------------------------------
+Phalcon 通过 :doc:`Phalcon\\Translate\\Adapter\\NativeArray <../api/Phalcon_Translate_Adapter_NativeArray>` 和 :doc:`Phalcon\\Translate\\Adapter\\Gettext <../api/Phalcon_Translate_Adapter_Gettext>` 提供了一套轻量级的语言翻译功能。
 
-Phalcon does not offer this functionality, since creating such a component would be replicating existing code.
+.. code-block:: php
 
-In the examples below, we will show you how to implement the intl_ extension's functionality into Phalcon powered applications.
+    <?php
+    $t = new \Phalcon\Translate\Adapter\Gettext(array(
+        'locale' => 'zh_CN.utf8',
+        'defaultDomain' => 'messages',
+        'directory' => __DIR__ . DIRECTORY_SEPARATOR . 'locale'
+    ));
 
-.. highlights::
-   This guide is not intended to be a complete documentation of the intl_ extension. Please visit its the documentation_ of the extension for a reference.
+    echo $t->_('Hello');
+
+创建消息列表（Creating Messages）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+通过以下命令我们可以提取代码中所有类似 :code:`_("translate this words")` 文本生成 `zh_CN.po` 文件。
+
+.. code-block:: sh
+
+    $ xgettext -f *.php -d zh_CN --keyword=_ --from-code=UTF-8
+
+接着，我们可以使用工具（poedit、vim、gedit） 对生成的 `po` 文件进行翻译，翻译完成后生成 `mo` 文件：
+
+.. code-block:: sh
+
+    $ msgfmt -o zh_CN.mo zh_CN.po
+
+最后将 `mo` 文件拷贝到目录 `locale/zh_CN.utf8/LC_MESSAGES`。
+
+追踪消息文件（Trace Message File）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+如果出现无法翻译指定语言的情况，我们可以通过下面的方式追踪程序读取的语言文件：
+
+.. code-block:: sh
+
+    $ strace -e trace=open,read php test.php
+
+
+使用扩展 intl（Use Intl）
+-------------------------
+实现国际化，我们还可以使用 PECL_ 扩展 intl_，想了解更多可以查看 `PHP manual`_，下面简单介绍 intl 在 Phalcon 如何使用。
+
 
 匹配最佳的区域设置（Find out best available Locale）
-----------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 There are several ways to find out the best available locale using intl_. One of them is to check the HTTP "Accept-Language" header:
 
 .. code-block:: php
@@ -34,7 +70,7 @@ Examples of identifiers include:
 * fr-CA, fr-FR (French for Canada and France respectively)
 
 基于区域设置格式化信息（Formatting messages based on Locale）
--------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Part of creating a localized application is to produce concatenated, language-neutral messages. The MessageFormatter_ allows for the
 production of those messages.
 
@@ -77,7 +113,7 @@ Message formatting using time and date patterns:
     echo $formatter->format($values);
 
 特定区域设置的字符串比较（Locale-Sensitive comparison）
--------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The Collator_ class provides string comparison capability with support for appropriate locale-sensitive sort orderings. Check the
 examples below on the usage of this class:
 
@@ -97,7 +133,7 @@ examples below on the usage of this class:
     var_dump($collator->compare("una canción", "una cancion"));
 
 音译（Transliteration）
------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 Transliterator_ provides transliteration of strings:
 
 .. code-block:: php

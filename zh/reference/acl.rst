@@ -1,12 +1,12 @@
 访问控制列表 ACL（Access Control Lists ACL）
 ============================================
 
-Phalcon在权限方面通过 :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` 提供了一个轻量级的 ACL(访问控制列表). `Access Control Lists`_ (ACL)
-允许系统对用户的访问权限进行控制，比如允许访问某些资源而不允许访问其它资源等。 这里我们建议开发者了解一些关于ACL的技术。
+Phalcon在权限方面通过 :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` 提供了一个轻量级的 ACL(访问控制列表)。`Access Control Lists`_ (ACL)
+允许系统对用户的访问权限进行控制，比如允许访问某些资源而不允许访问其它资源等。这里我们建议开发者了解一些关于ACL的技术。
 
-ACL有两部分组成即角色和资源。 资源即是ACL定义的权限所依附的对象。 角色即是ACL所字义的请求者的身份，ACL决定了角色对资源的访问权限，允许访问或拒绝访问。
+ACL有两部分组成即角色和资源。资源即是ACL定义的权限所依附的对象。角色即是ACL所字义的请求者的身份，ACL决定了角色对资源的访问权限，允许访问或拒绝访问。
 
-创建 ACL（Creating an ACL）
+创建 ACL（Creating An ACL）
 ---------------------------
 这个组件起先是设计工作在内存中的， 这样做提供了更高的访问速度。 :doc:`Phalcon\\Acl <../api/Phalcon_Acl>` 构造器的第一个参数用于设置取得ACL的方式。 下面是使用内存适配器的例子：
 
