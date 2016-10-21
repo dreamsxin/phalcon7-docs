@@ -19,6 +19,7 @@ a.headerlink {
 }
 header .navbar {
 	margin-top: -15px;
+	margin-bottom: 10px;
 }
 header .navbar-toggle {
 	border-color: #ffffff;
