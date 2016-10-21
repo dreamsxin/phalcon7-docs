@@ -2110,8 +2110,8 @@ The idea of creating validators is make them reusable between several models. A 
         }
     }
 
-Avoiding SQL injections
-^^^^^^^^^^^^^^^^^^^^^^^
+防止 SQL 注入（Avoiding SQL injections）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Every value assigned to a model attribute is escaped depending of its data type. A developer doesn't need to escape manually
 each value before storing it on the database. Phalcon uses internally the `bound parameters <http://php.net/manual/en/pdostatement.bindparam.php>`_
 capability provided by PDO to automatically escape every value to be stored in the database.
@@ -2823,10 +2823,9 @@ you can do this:
     });
 
 
-记录快照（Record Snapshots）
-----------------------------
-Specific models could be set to maintain a record snapshot when they're queried. You can use this feature to implement auditing or just to know what
-fields are changed according to the data queried from the persistence:
+动态更新（Use Dynamic Update）
+------------------------------
+设置了动态更新，模型将会自动根据查询快照，去判断是否有字段值发生了更改，如果有更改才会去保存更新：
 
 .. code-block:: php
 
@@ -2838,12 +2837,11 @@ fields are changed according to the data queried from the persistence:
     {
         public function initialize()
         {
-            $this->keepSnapshots(true);
+            $this->useDynamicUpdate(true);
         }
     }
 
-When activating this feature the application consumes a bit more of memory to keep track of the original values obtained from the persistence.
-In models that have this feature activated you can check what fields changed:
+获取发生变化的字段列表：
 
 .. code-block:: php
 
