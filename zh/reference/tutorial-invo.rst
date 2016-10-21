@@ -82,8 +82,8 @@ INVO有一个设置应用常规参数的配置文件。这个文件位于 `app/c
 
 对于配置文件，Phalcon 没有任何提前预约好的惯例配置。通过节（Sections）帮助我们组织相应选项。在这个文件里 `application` 和 `database` 这两个部分将被用于后面的程序。
 
-自动加载（Autoloaders）
------------------------
+自动加载器（Autoloaders）
+-------------------------
 在引导文件 (public/index.php) 的第二部分是自动加载器:
 
 .. code-block:: php

@@ -1,18 +1,11 @@
 路由（Routing）
 ===============
 
-The router component allows you to define routes that are mapped to controllers or handlers that should receive
-the request. A router simply parses a URI to determine this information. The router has two modes: MVC
-mode and match-only mode. The first mode is ideal for working with MVC applications.
-
-Router 组件允许定义用户请求对应到哪个控制器或 Action。Router 解析 URI 以确定这些信息。路由器有两种模式：MVC模式和匹配模式(match-only)。第一种模式是使用MVC应用程序的理想选择。
+Router 组件允许定义用户请求对应到哪个控制器或动作。Router 解析 URI 以确定这些信息。路由器有两种模式：MVC 模式和匹配模式(match-only)。第一种模式是使用MVC应用程序的理想选择。
 
 定义路由（Defining Routes）
 ---------------------------
-:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` provides advanced routing capabilities. In MVC mode,
-you can define routes and map them to controllers/actions that you require. A route is defined as follows:
-
-:doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` 提供了一套先进的路由功能。在MVC模式中，你可以自定义路由规则，对应到你需要的 controllers/actions 上。路由的定义如下：
+在 MVC 模式中 :doc:`Phalcon\\Mvc\\Router <../api/Phalcon_Mvc_Router>` 提供了一套简单方便的高级路由功能。你可以自定义路由规则，对应到你需要的 controllers/actions 上。路由的定义如下：
 
 .. code-block:: php
 
@@ -44,8 +37,7 @@ you can define routes and map them to controllers/actions that you require. A ro
     $router->handle();
 
 add() 方法接受一个匹配模式作为第一个参数，一组可选的路径作为第二个参数。如上，如果URI就是/admin/users/my-profile的话，
-那么 "users" 控制的 "profile" 方法将被调用。当然路由器并不马上就调用这个方法，它只是收集这些信息并且通知相应的组件（
-比如  :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` ）应该调用这个控制器的这个动作。
+那么 "users" 控制的 "profile" 方法将被调用。当然路由器并不马上就调用这个方法，它只是收集这些信息并且通知相应的组件（比如 :doc:`Phalcon\\Mvc\\Dispatcher <../api/Phalcon_Mvc_Dispatcher>` ）应该调用这个控制器的这个动作。
 
 一个应用程序可以由很多路径，一个一个定义是一个非常笨重的工作。这种情况下我们可以创建一个更加灵活的路由：
 
@@ -80,12 +72,9 @@ add() 方法接受一个匹配模式作为第一个参数，一组可选的路�
 | Parameter  | 301           |
 +------------+---------------+
 
-The :code:`add()` method receives a pattern that can optionally have predefined placeholders and regular expression
-modifiers. All the routing patterns must start with a forward slash character (/). The regular expression syntax used
-is the same as the `PCRE regular expressions`_. Note that, it is not necessary to add regular expression
-delimiters. All route patterns are case-insensitive.
+方法 :code:`add()` 第一个参数，可以使用预定义的占位符和正则表达式的修饰符来作为匹配模式。所有的路由匹配模式第一个字符必须是斜杠（/）。正则表达式的使用跟 `PCRE regular expressions`_ 相同。注意，不需要添加正则表达式分隔符，所有路由匹配模式是不区分大小写的。
 
-The second parameter defines how the matched parts should bind to the controller/action/parameters. Matching
+第二个参数，定义如何将匹配到的数据绑定到对应的 `controller/action/parameters`。Matching
 parts are placeholders or subpatterns delimited by parentheses (round brackets). In the example given above, the
 first subpattern matched (:code:`:controller`) is the controller part of the route, the second the action and so on.
 

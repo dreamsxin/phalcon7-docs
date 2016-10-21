@@ -140,8 +140,8 @@ Salt使用PHP的 openssl_random_pseudo_bytes_ 函数的伪随机字节生成的�
         return $security;
     }, true);
 
-Random
-------
+随机数（Random）
+----------------
 The :doc:`Phalcon\\Security\\Random <../api/Phalcon_Security_Random>` class makes it really easy to generate lots of types of random data.
 
 .. code-block:: php

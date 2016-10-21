@@ -55,7 +55,7 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 在本教程中，我们将使用相当（友好）URL。友好的URL不但利于SEO而且便于用户记忆。Phalcon支持一些最流行的Web服务器提供重写模块。让你的应用程序的URL友好不是必要的，没有它们你可以同样轻松地开发。
 
-在这个例子中，我们将使用Apache的重写模块。 让我们在 /tutorial/.htaccess 文件中创建几个重写规则:
+在这个例子中，我们将使用Apache的重写模块。让我们在 `/tutorial/.htaccess` 文件中创建几个重写规则:
 
 .. code-block:: apacheconf
 
@@ -82,7 +82,7 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
 引导程序（Bootstrap）
 ^^^^^^^^^^^^^^^^^^^^^
-你需要创建的第一个文件是引导文件。这个文件很重要; 因为它作为你的应用程序的基础，用它来控制应用程序的各个方面。
+你需要创建的第一个文件是引导文件。这个文件很重要，因为它作为你的应用程序的基础，用它来控制应用程序的各个方面。
 在这个文件中，你可以实现组件的初始化和应用程序的行为。
 
 这个引导文件 tutorial/public/index.php 文件应该看起来像:
@@ -91,41 +91,34 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
     <?php
 
-    use Phalcon\Loader;
-    use Phalcon\Mvc\View;
-    use Phalcon\Mvc\Application;
-    use Phalcon\DI\FactoryDefault;
-    use Phalcon\Mvc\Url as UrlProvider;
-    use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
-
     try {
 
         // Register an autoloader
-        $loader = new Loader();
+        $loader = new Phalcon\Loader();
         $loader->registerDirs(array(
             '../app/controllers/',
             '../app/models/'
         ))->register();
 
         // Create a DI
-        $di = new FactoryDefault();
+        $di = new Phalcon\DI\FactoryDefault();
 
         // Setup the view component
         $di->set('view', function () {
-            $view = new View();
+            $view = new Phalcon\Mvc\View();
             $view->setViewsDir('../app/views/');
             return $view;
         });
 
         // Setup a base URI so that all generated URIs include the "tutorial" folder
         $di->set('url', function () {
-            $url = new UrlProvider();
+            $url = new Phalcon\Mvc\Url();
             $url->setBaseUri('/tutorial/');
             return $url;
         });
 
         // Handle the request
-        $application = new Application($di);
+        $application = new Phalcon\Mvc\Application();
 
         echo $application->handle()->getContent();
 
@@ -143,11 +136,9 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
     <?php
 
-    use Phalcon\Loader;
-
     // ...
 
-    $loader = new Loader();
+    $loader = new Phalcon\Loader();
     $loader->registerDirs(
         array(
             '../app/controllers/',
@@ -165,12 +156,10 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
     <?php
 
-    use Phalcon\DI\FactoryDefault;
-
     // ...
 
     // Create a DI
-    $di = new FactoryDefault();
+    $di = new Phalcon\Db\Adapter\Pdo\Mysql();
 
 :doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>` 是 :doc:`Phalcon\\Di <../api/Phalcon_DI>` 的一个变体。为了让事情变得更容易，它已注册了Phalcon的大多数组件。
 因此，我们不需要一个一个注册这些组件。在以后更换工厂服务的时候也不会有什么问题。
@@ -183,13 +172,11 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
     <?php
 
-    use Phalcon\Mvc\View;
-
     // ...
 
     // Setup the view component
     $di->set('view', function () {
-        $view = new View();
+        $view = new Phalcon\Mvc\View();
         $view->setViewsDir('../app/views/');
         return $view;
     });
@@ -201,13 +188,11 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
     <?php
 
-    use Phalcon\Mvc\Url as UrlProvider;
-
     // ...
 
     // Setup a base URI so that all generated URIs include the "tutorial" folder
     $di->set('url', function () {
-        $url = new UrlProvider();
+        $url = new Phalcon\Mvc\Url();
         $url->setBaseUri('/tutorial/');
         return $url;
     });
@@ -218,11 +203,9 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
     <?php
 
-    use Phalcon\Mvc\Application;
-
     // ...
 
-    $application = new Application($di);
+    $application = new Phalcon\Mvc\Application($di);
 
     echo $application->handle()->getContent();
 
@@ -285,7 +268,7 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
 设计注册表单（Designing a sign up form）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-现在我们将改变index.phtml视图文件，添加一个链接到一个名为“signup”的新控制器。我们的目标是在应用程序中允许用户注册。
+现在我们将改变 `index.phtml视图文件`，添加一个链接到一个名为“signup”的新控制器。我们的目标是在应用程序中允许用户注册。
 
 .. code-block:: php
 
@@ -307,7 +290,7 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 
     <img class="align-center" src="../static/img/tutorial-2.png">
  
-这是一个注册控制器 (app/controllers/SignupController.php):
+这是一个注册控制器（app/controllers/SignupController.php）：
 
 .. code-block:: php
 
@@ -324,7 +307,7 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
         }
     }
 
-这个空index动作整洁的传递了表单定义给一个视图 (app/views/signup/index.phtml):
+这个空index动作整洁的传递了表单定义给一个视图（app/views/signup/index.phtml）：
 
 .. code-block:: html+php
 
@@ -356,9 +339,9 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
  
 :doc:`Phalcon\\Tag <../api/Phalcon_Tag>` 还提供了有用的方法来构建表单元素。
 
-:code:`Phalcon\Tag::form()` 方法只接受一个参数实例, 一个相对uri到这个应用的一个控制器/动作。
+:code:`Phalcon\Tag::form()` 方法第一个参数，它是一个相对`uri`到这个应用的一个控制器/动作。
 
-通过单击“Send”按钮，您将注意到框架抛出了一个异常，这表明我们是错过了在控制器中注册“register”动作。我们的 public/index.php 文件抛出这个异常：
+通过单击“Send”按钮，您将注意到框架抛出了一个异常，这表明我们是错过了在控制器中注册“register”动作。我们的 `public/index.php` 文件抛出这个异常：
 
     Exception: Action "register" was not found on handler "signup"
 

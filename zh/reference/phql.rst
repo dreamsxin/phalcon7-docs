@@ -1,26 +1,18 @@
 Phalcon 查询语言（Phalcon Query Language (PHQL)）
 =================================================
+Phalcon 查询语言（以下简称 PHQL）是一种面向对象的高级 SQL 方言，与标准化的 SQL 相似。Phalcon 内部实现了一个解析器（和 SQLite 中相似的解析器）语句解析成符合 RDBMS 的语法。
 
-Phalcon Query Language, PhalconQL or simply PHQL is a high-level, object-oriented SQL dialect that allows to write queries using a
-standardized SQL-like language. PHQL is implemented as a parser (written in C) that translates syntax in that of the target RDBMS.
+在 PHQL 中，我们实现一组特性使你对数据库的访问更安全：
 
-To achieve the highest performance possible, Phalcon provides a parser that uses the same technology as SQLite_. This technology
-provides a small in-memory parser with a very low memory footprint that is also thread-safe.
-
-The parser first checks the syntax of the pass PHQL statement, then builds an intermediate representation of the statement and
-finally it converts it to the respective SQL dialect of the target RDBMS.
-
-In PHQL, we've implemented a set of features to make your access to databases more secure:
-
-* Bound parameters are part of the PHQL language helping you to secure your code
-* PHQL only allows one SQL statement to be executed per call preventing injections
-* PHQL ignores all SQL comments which are often used in SQL injections
-* PHQL only allows data manipulation statements, avoiding altering or dropping tables/databases by mistake or externally without authorization
-* PHQL implements a high-level abstraction allowing you to handle tables as models and fields as class attributes
+* 绑定参数，使你的代码更安全
+* 使用预处理语句
+* 忽略语句中的所有注释
+* 只允许数据操作语句，避免误修改、删除表或数据库
+* 允许在模型中处理表中字段
 
 范例（Usage Example）
 ---------------------
-To better explain how PHQL works consider the following example. We have two models “Cars” and “Brands”:
+通过下面的列子让我们更清除的了解 PHQL 是如何工作的。我们有两个模型 “Cars” 和 “Brands”：
 
 .. code-block:: php
 
@@ -59,7 +51,7 @@ To better explain how PHQL works consider the following example. We have two mod
         }
     }
 
-And every Car has a Brand, so a Brand has many Cars:
+每辆车都属于一个品牌，所以每个品牌下面拥有多辆车：
 
 .. code-block:: php
 
@@ -92,7 +84,7 @@ And every Car has a Brand, so a Brand has many Cars:
 
 创建 PHQL 查询（Creating PHQL Queries）
 ---------------------------------------
-PHQL queries can be created just by instantiating the class :doc:`Phalcon\\Mvc\\Model\\Query <../api/Phalcon_Mvc_Model_Query>`:
+PHQL 查询可以通过类 :doc:`Phalcon\\Mvc\\Model\\Query <../api/Phalcon_Mvc_Model_Query>` 进行实例化：
 
 .. code-block:: php
 
@@ -106,7 +98,7 @@ PHQL queries can be created just by instantiating the class :doc:`Phalcon\\Mvc\\
     // Execute the query returning a result if any
     $cars = $query->execute();
 
-From a controller or a view, it's easy to create/execute them using an injected :doc:`models manager <../api/Phalcon_Mvc_Model_Manager>`:
+在控制器或者视图中，利用注入服务 :doc:`models manager <../api/Phalcon_Mvc_Model_Manager>` 可以方便创建以及执行：
 
 .. code-block:: php
 
@@ -124,7 +116,7 @@ From a controller or a view, it's easy to create/execute them using an injected 
         )
     );
 
-Or simply execute it:
+或者直接执行：
 
 .. code-block:: php
 

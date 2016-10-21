@@ -1,26 +1,26 @@
-Phalcon 开发工具（Phalcon Developer Tools）
-===========================================
-
-Phalcon提供的这个开发工具主要是用来辅助开发，比如生成一些程序的基本框架，生成控制器模型等。使用这个工具我们只需要一个简单的命令即可生成应用的基本框架。
+Phalcon7 开发工具（Phalcon7 Developer Tools）
+=============================================
+Phalcon7 提供的这个开发工具主要是用来辅助开发，比如生成一些程序的基本框架，生成控制器、模型等。使用这个工具我们只需要一个简单的命令即可生成应用的基本框架。
 
 .. highlights::
-    **非常重要:** 要使用这个工具我们必须要安装Phalcon 0.5版本以上的扩展才行。这里我们推荐使用PHP5.4或更高版本的PHP. 如果你喜欢使用web版而非console版本的程序，那么在这里
-    `blog post`_ 可以看到更多的内容。
 
-下载（Download）
-----------------
-我们可以从 Github_ 上下载或克隆下来这个跨平台的开发辅助工具。
+    **非常重要:** 要使用这个工具我们必须要安装 Phalcon7 扩展才行。
 
-安装（Installation）
-^^^^^^^^^^^^^^^^^^^^
-下面详尽的说明了如何在不同的操作系统平台上安装这个辅助开发工具：
+下载开发工具（Download）
+------------------------
+该开发辅助工具已经包含在了源码中 Github_ 。
 
-.. toctree::
-   :maxdepth: 1
+Linux 系统下使用 Phalcon 开发工具（Phalcon Developer Tools on Linux）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+为文件 `phalcon.php` 创建软链接：
 
-   wintools
-   mactools
-   linuxtools
+.. code-block:: bash
+
+    ln -s ~/cphalcon7/devtools/phalcon.php /usr/bin/phalcon
+
+    chmod ugo+x /usr/bin/phalcon
+
+就这么简单，你已经安装好开发工具了。
 
 获取可用的命令（Getting Available Commands）
 --------------------------------------------
@@ -87,6 +87,7 @@ web服务器根目录下输入如下命令：
      --directory=s        Base path on which project will be created [optional] 在何外创建项目
      --type=s             Type of the application to be generated (cli, micro, simple, modules) 应用的种类（微型，简单，多模块，console等）
      --template-path=s    Specify a template path [optional] 指定模板路径
+     --template-engine=s  Define the template engine, default php [optional] 指定模板引擎
      --use-config-ini     Use a ini file as configuration file [optional] 使用ini文件作为配置保存文件
      --trace              Shows the trace of the framework in case of exception. [optional] 出错时是否显示框架的trace信息
      --help               Shows this help 显示帮助
@@ -99,7 +100,8 @@ web服务器根目录下输入如下命令：
 
 生成控制器（Generating Controllers）
 ------------------------------------
-我们可以使用phalcon create-controller --name test或phalcon controller --name test来生成名为test的控制器. 当然要使用此命令当前的执行命令目录必须为已存在的phalcon项目内.
+我们可以使用`phalcon create-controller --name test`或`phalcon controller --name test`来生成名为`test`的控制器。
+当然要使用此命令当前的执行命令目录必须为已存在的phalcon项目内。
 
 .. code-block:: sh
 
@@ -121,7 +123,7 @@ web服务器根目录下输入如下命令：
 
 数据库配置（Preparing Database Settings）
 -----------------------------------------
-当我们使用phalcon的辅助开发工具生成项目时，则生成的配置信息会被放在 *app/config/config.ini* 文件内。 我们必须要正确的配置连接信息才可生成模型或基本的CRUD操作。
+当我们使用phalcon的辅助开发工具生成项目时，则生成的配置信息会被放在 *app/config/config.ini* 文件内。我们必须要正确的配置连接信息才可生成模型或基本的CRUD操作。
 
 可以在config.ini中进行修改配置信息：
 
@@ -276,11 +278,7 @@ Options:
         }
     }
 
-另一个非常好的特性即是在我们多次生成模型时，原有的对模型的更改依然会存在。 这样我们就可以不用担心对模型的属性进行修会被后来再次执模型的生成命令所覆盖。下面的截图显示了这是如何工作的：
-
-.. raw:: html
-
-   <div align="center"><iframe src="http://player.vimeo.com/video/39213020" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+另一个非常好的特性即是在我们多次生成模型时，原有的对模型的更改依然会存在。
 
 生成基本的 CRUD（Scaffold a CRUD）
 --------------------------------------
@@ -323,33 +321,19 @@ scaffold生成器会在相关的文件夹中生成若干个文档。 下面是�
 
     <img class="align-center" src="../static/img/tools-11.png">
 
-执行搜索后，分页组件会显示颁后的结果。 我们在结果列表的前面放置Edit或Delete链接，以实现相应的操作。
+执行搜索后，分页组件会显示颁后的结果。我们在结果列表的前面放置Edit或Delete链接，以实现相应的操作。
 
 .. raw:: html
 
     <img class="align-center" src="../static/img/tools-12.png">
 
-工具的 Web 界面（Web Interface to Tools）
------------------------------------------
-另外，如果你喜欢我们还可以在生成项目时通过添加参数以实现在项目中使用Phalcon开发工具的web接口。 下面的视频中展示了如何工作的：
-
-.. raw:: html
-
-   <div align="center"><iframe src="http://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
-
 集成工具到 PhpStorm（Integrating Tools with PhpStorm IDE）
 ----------------------------------------------------------
-下面的视频中展示了如何在 `PhpStorm IDE`_ 中集成辅助开发工具。 这个配置步骤也适用于其它的PHP IDE.
-
-.. raw:: html
-
-   <div align="center"><iframe src="http://player.vimeo.com/video/43455647" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+在 PHP IDE 中包含 `devtools\ide\1.1.0` 就能在 IDE 中实现 Phalcon7 相关类和方法的自动提示。
 
 结束语（Conclusion）
 --------------------
-Phalcon开发辅助工具为我们提供了一种简易的产生应用代码的方法， 这可以减少开发时间及潜在的错误。
+Phalcon开发辅助工具为我们提供了一种简易的产生应用代码的方法，这可以减少开发时间及潜在的错误。
 
-.. _blog post: http://blog.phalconphp.com/post/23251010409
-.. _Github: https://github.com/phalcon/phalcon-devtools
-.. _Bootstrap: http://twitter.github.com/bootstrap/
+.. _Github: https://github.com/dreamsxin/cphalcon7
 .. _PhpStorm IDE: http://www.jetbrains.com/phpstorm/
