@@ -51,7 +51,7 @@ Constants
 Methods
 -------
 
-final public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
+final public  **__construct** ([*unknown* $data], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 Phalcon\\Mvc\\Model constructor
 
@@ -1305,6 +1305,20 @@ public  **__debugInfo** ()
 public  **getRealAttributes** ()
 
 ...
+
+
+public *array*  **jsonSerialize** ()
+
+Returns serialised model as array for json_encode. 
+
+.. code-block:: php
+
+    <?php
+
+     $robot = Robots::findFirst();
+     echo json_encode($robot);
+
+
 
 
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\DI\\Injectable

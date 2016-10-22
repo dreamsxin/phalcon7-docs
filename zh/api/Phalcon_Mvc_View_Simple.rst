@@ -222,9 +222,9 @@ Stop the current section block
 
 
 
-public *string*  **section** (*unknown* $name, [*unknown* $defaultValue])
+public *string|null*  **section** (*string* $name, [*unknown* $defaultValue])
 
-Stop the current section block
+Returns the content for a section block
 
 
 

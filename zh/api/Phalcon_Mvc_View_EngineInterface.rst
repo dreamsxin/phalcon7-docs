@@ -18,6 +18,24 @@ Returns cached ouput on another view stage
 
 
 
+abstract public  **startSection** (*string* $name)
+
+Start a new section block
+
+
+
+abstract public *string*  **stopSection** ()
+
+Stop the current section block
+
+
+
+abstract public *string|null*  **section** (*string* $name, [*unknown* $defaultValue])
+
+Returns the content for a section block
+
+
+
 abstract public *string*  **partial** (*string* $partialPath)
 
 Renders a partial inside another view

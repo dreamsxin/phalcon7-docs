@@ -1,6 +1,8 @@
 Class **Phalcon\\Events\\Event**
 ================================
 
+*implements* :doc:`Phalcon\\Events\\EventInterface <Phalcon_Events_EventInterface>`
+
 .. role:: raw-html(raw)
    :format: html
 
@@ -30,6 +32,12 @@ Returns the event's type
 
 
 
+public *object*  **setSource** (*unknown* $source)
+
+Sets the event's source
+
+
+
 public *object*  **getSource** ()
 
 Returns the event's source
@@ -54,7 +62,7 @@ Sets if the event is cancelable
 
 
 
-public *boolean*  **getCancelable** ()
+public *boolean*  **isCancelable** ()
 
 Check whether the event is cancelable
 
@@ -70,5 +78,10 @@ public  **isStopped** ()
 
 Check whether the event is currently stopped
 
+
+
+public  **getCancelable** ()
+
+...
 
 

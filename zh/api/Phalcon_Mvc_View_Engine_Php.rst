@@ -46,9 +46,9 @@ Stop the current section block
 
 
 
-public *string*  **section** (*unknown* $name, [*unknown* $defaultValue]) inherited from Phalcon\\Mvc\\View\\Engine
+public *string|null*  **section** (*string* $name, [*unknown* $defaultValue]) inherited from Phalcon\\Mvc\\View\\Engine
 
-Stop the current section block
+Returns the content for a section block
 
 
 

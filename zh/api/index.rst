@@ -269,8 +269,12 @@ API Indice
    Phalcon_Validation_Message
    Phalcon_Validation_Message_Group
    Phalcon_Validation_Validator
+   Phalcon_Validation_Validator_Alnum
+   Phalcon_Validation_Validator_Alpha
    Phalcon_Validation_Validator_Between
    Phalcon_Validation_Validator_Confirmation
+   Phalcon_Validation_Validator_Date
+   Phalcon_Validation_Validator_Digit
    Phalcon_Validation_Validator_Email
    Phalcon_Validation_Validator_ExclusionIn
    Phalcon_Validation_Validator_File
@@ -305,6 +309,7 @@ API Indice
    Phalcon_Db_ResultInterface
    Phalcon_DispatcherInterface
    Phalcon_EscaperInterface
+   Phalcon_Events_EventInterface
    Phalcon_Events_EventsAwareInterface
    Phalcon_Events_ManagerInterface
    Phalcon_FilterInterface

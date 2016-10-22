@@ -127,9 +127,9 @@ Returns a date/time string with the specified timestamp format $time = Phalcon\\
 
 
 
-public static *string*  **valid** (*unknown* $date, [*unknown* $format])
+public static *boolean*  **valid** (*unknown* $date, [*unknown* $format])
 
-Returns a date/time string with the specified timestamp format $ret = Phalcon\\Date::valid('2012-01-22'); $ret = Phalcon\\Date::valid('2012-01-22 11:00:00', 'Y-m-d H:i:s');
+Checks if a value is a valid date $ret = Phalcon\\Date::valid('2012-01-22'); $ret = Phalcon\\Date::valid('2012-01-22 11:00:00', 'Y-m-d H:i:s');
 
 
 

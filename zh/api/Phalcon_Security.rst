@@ -41,6 +41,8 @@ Constants
 
 *integer* **CRYPT_BLOWFISH**
 
+*integer* **CRYPT_BLOWFISH_A**
+
 *integer* **CRYPT_BLOWFISH_X**
 
 *integer* **CRYPT_BLOWFISH_Y**

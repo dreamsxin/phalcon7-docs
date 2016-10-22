@@ -1,5 +1,5 @@
-Abstract class **Phalcon\\Arr**
-===============================
+Class **Phalcon\\Arr**
+======================
 
 .. role:: raw-html(raw)
    :format: html
