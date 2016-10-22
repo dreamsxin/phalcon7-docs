@@ -1274,12 +1274,12 @@ to maintain the integrity of data:
 
 The above code set up to delete all the referenced records (parts) if the master record (robot) is deleted.
 
-生成运算（Generating Calculations）
+聚合运算（Generating Calculations）
 -----------------------------------
-Calculations (or aggregations) are helpers for commonly used functions of database systems such as COUNT, SUM, MAX, MIN or AVG.
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` allows to use these functions directly from the exposed methods.
+模型类 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 提供的聚合运算方法，使用的是数据库内置函数计算结果，例如：COUNT, SUM, MAX, MIN or AVG。
 
-Count examples:
+累计（Count）
+^^^^^^^^^^^^^
 
 .. code-block:: php
 
@@ -1326,7 +1326,8 @@ Count examples:
         )
     );
 
-Sum examples:
+累加（Sum）
+^^^^^^^^^^^
 
 .. code-block:: php
 
@@ -1376,7 +1377,8 @@ Sum examples:
         )
     );
 
-Average examples:
+平均（Average）
+^^^^^^^^^^^^^^^
 
 .. code-block:: php
 
@@ -1406,7 +1408,8 @@ Average examples:
         )
     );
 
-Max/Min examples:
+最大/最小（Max/Min）
+^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
 
@@ -1434,8 +1437,8 @@ Max/Min examples:
         )
     );
 
-Hydration Modes
----------------
+结果集类型（Hydration Modes）
+----------------------------
 As mentioned above, resultsets are collections of complete objects, this means that every returned result is an object
 representing a row in the database. These objects can be modified and saved again to persistence:
 
