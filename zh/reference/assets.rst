@@ -52,23 +52,6 @@ JavaScript另一为CSS.
         </body>
     <html>
 
-Volt语法：
-
-.. code-block:: html+jinja
-
-    <html>
-        <head>
-            <title>Some amazing website</title>
-            {{ assets.outputCss() }}
-        </head>
-        <body>
-
-            <!-- ... -->
-
-            {{ assets.outputJs() }}
-        </body>
-    <html>
-
 For better pageload performance, it is recommended to place JavaScript at the end of the HTML instead of in the :code:`<head>`.
 
 本地与远程资源（Local/Remote resources）
