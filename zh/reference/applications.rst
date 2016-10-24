@@ -5,7 +5,7 @@ MVC 应用（MVC Applications）
 
 单模块或多模块应用（Single or Multi Module Applications）
 ---------------------------------------------------------
-通过这个组件，你可以运行各式各样的MVC结构：
+通过这个组件，你可以运行各式各样的MVC结构，多模块跟单模块的区别就是，多模块会在路由返回的模块名称，之后去设置自动加载器、视图、调度器等各类服务和组件。
 
 单模块（Single Module）
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -134,7 +134,9 @@ MVC 应用（MVC Applications）
         img/
         js/
 
-在apps/下的每一个目录都有自己的MVC结构。Module.php文件代表了各个模块不同的配置，如自动加载器和自定义服务：
+模块定义类（Module Define Class）
+"""""""""""""""""""""""""""""""""
+在`apps/`下的每一个目录都有自己的 MVC 结构。`Module.php` 文件定义了各个模块不同的配置，如自动加载器、视图和自定义服务：
 
 .. code-block:: php
 
@@ -148,7 +150,7 @@ MVC 应用（MVC Applications）
     use Phalcon\Mvc\Dispatcher;
     use Phalcon\Mvc\ModuleDefinitionInterface;
 
-    class Module implements ModuleDefinitionInterface
+    class BackendModule implements ModuleDefinitionInterface
     {
         /**
          * 注册自定义加载器
@@ -242,7 +244,7 @@ MVC 应用（MVC Applications）
         // 创建应用
         $application = new Application($di);
 
-        // 注册模块
+        // 注册模块，包含设置模块定义类加载位置
         $application->registerModules(
             array(
                 'frontend' => array(
@@ -250,7 +252,7 @@ MVC 应用（MVC Applications）
                     'path'      => '../apps/frontend/Module.php',
                 ),
                 'backend'  => array(
-                    'className' => 'Multiple\Backend\Module',
+                    'className' => 'Multiple\Backend\BackendModule',
                     'path'      => '../apps/backend/Module.php',
                 )
             )
@@ -263,7 +265,24 @@ MVC 应用（MVC Applications）
         echo $e->getMessage();
     }
 
-如果你想在启动文件保持模块的配置，你可以使用匿名函数来注册对应的模块：
+你也可以直接实例化模块定义类，类进行注册：
+
+.. code-block:: php
+
+    <?php
+
+        require('../apps/backend/Module.php');
+        require('../apps/frontend/Module.php');
+
+        // 注册模块
+        $application->registerModules(
+            array(
+                'frontend' => new FrontendModule,
+                'backend'  => new BackendModule
+            )
+        );
+
+如果你想在启动文件进行相关组件配置，你可以使用匿名函数来注册对应的模块：
 
 .. code-block:: php
 
