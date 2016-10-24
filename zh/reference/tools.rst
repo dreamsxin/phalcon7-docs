@@ -30,7 +30,7 @@ Linux 系统下使用 Phalcon 开发工具（Phalcon Developer Tools on Linux）
 
    $ phalcon commands
 
-   Phalcon DevTools (2.0.8)
+   Phalcon7 DevTools (1.1.1)
 
    Available commands:
      commands         (alias of: list, enumerate)
@@ -40,7 +40,6 @@ Linux 系统下使用 Phalcon 开发工具（Phalcon Developer Tools on Linux）
      project          (alias of: create-project)
      scaffold         (alias of: create-scaffold)
      migration        (alias of: create-migration)
-     webtools         (alias of: create-webtools)
 
 生成项目框架（Generating a Project Skeleton）
 ---------------------------------------------
@@ -82,14 +81,17 @@ web服务器根目录下输入如下命令：
       phalcon project store simple
 
     Options: 选项
-     --name               Name of the new project 新项目的名字
-     --enable-webtools    Determines if webtools should be enabled [optional] 此选项决定了新的项目中是否使用webtools开发辅助组件
-     --directory=s        Base path on which project will be created [optional] 在何外创建项目
-     --type=s             Type of the application to be generated (cli, micro, simple, modules) 应用的种类（微型，简单，多模块，console等）
-     --template-path=s    Specify a template path [optional] 指定模板路径
-     --template-engine=s  Define the template engine, default php [optional] 指定模板引擎
-     --use-config-ini     Use a ini file as configuration file [optional] 使用ini文件作为配置保存文件
-     --trace              Shows the trace of the framework in case of exception. [optional] 出错时是否显示框架的trace信息
+     --name               项目的名字
+     --directory=s        项目路径，默认当前路径
+     --type=s             项目类型（cli, micro, simple），默认 simple
+     --template-path=s    指定模板路径，默认 simple
+     --template-engine=s  指定模板引擎，默认 php
+     --use-config-ini     是否使用ini文件作为配置保存文件，默认不使用
+     --adapter=s          指定数据库适配器，默认 Mysql
+     --username=s         设置数据库账户，默认 root
+     --password=s         设置数据库密码，默认为空
+     --dbname=s           设置数据库名称，默认为项目名
+     --trace              出错时是否显示框架的trace信息
      --help               Shows this help 显示帮助
 
 我们访问新生成项目的地址显示如下：
