@@ -488,6 +488,32 @@ Phalcon提供了一些内置的html元素类， 所有这些元素类仅位于 :
     <?php
 
     echo $form->render();
+    // or
+    echo $form->render(NULL, NULL, '<label>:label:</label><p>:element:</p>');
+
+方法 :code:`render` 第一个参数用来指定渲染哪个表单元素：
+
+.. code-block:: php
+
+    <?php
+
+    echo $form->render('name');
+
+方法 :code:`render` 第二个参数用来设定表单元素属性：
+
+.. code-block:: php
+
+    <?php
+
+    echo $form->render('name', array('class' => 'form-control'));
+
+方法 :code:`render` 第三个参数可以设置元素模板：
+
+.. code-block:: php
+
+    <?php
+
+    echo $form->render(NULL, NULL, '<div class="form-group"><label>:label:</label><p>:element:</p></div>');
 
 或是在登录表单中重用表单类：
 
