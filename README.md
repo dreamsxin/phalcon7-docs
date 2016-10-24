@@ -6,6 +6,8 @@
 
 ```shell
 sudo apt-get install sphinx-common
+# or
+pip install -U sphinx -i http://pypi.douban.com/simple
 cd zh
 make html
 ```
