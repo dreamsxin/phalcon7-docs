@@ -68,6 +68,18 @@ Gets referenced columns
 
 
 
+public *string*  **getOnDelete** ()
+
+Gets the referenced on delete
+
+
+
+public *string*  **getOnUpdate** ()
+
+Gets the referenced on update
+
+
+
 public static :doc:`Phalcon\\Db\\Reference <Phalcon_Db_Reference>`  **__set_state** ([*array* $properties])
 
 Restore a Phalcon\\Db\\Reference object from export

@@ -48,3 +48,15 @@ Gets referenced columns
 
 
 
+abstract public *string*  **getOnDelete** ()
+
+Gets the referenced on delete
+
+
+
+abstract public *string*  **getOnUpdate** ()
+
+Gets the referenced on update
+
+
+

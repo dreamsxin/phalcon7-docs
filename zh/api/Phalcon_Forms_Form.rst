@@ -41,25 +41,49 @@ Returns the form's action
 
 
 
-public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **setUserOption** (*string* $option, *mixed* $value)
+public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **setMethod** (*unknown* $method)
+
+Sets the form's method
+
+
+
+public *string*  **getMethod** ()
+
+Returns the form's method
+
+
+
+public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **setEnctype** (*unknown* $enctype)
+
+Sets the form's enctype
+
+
+
+public *string*  **getEnctype** ()
+
+Returns the form's enctype
+
+
+
+public :doc:`Phalcon\\Forms\\Form <Phalcon_Forms_Form>`  **setOption** (*string* $option, *mixed* $value)
 
 Sets an option for the form
 
 
 
-public *mixed*  **getUserOption** (*string* $option, [*mixed* $defaultValue])
+public *mixed*  **getOption** (*string* $option, [*mixed* $defaultValue])
 
 Returns the value of an option if present
 
 
 
-public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setUserOptions** (*array* $options)
+public :doc:`Phalcon\\Forms\\ElementInterface <Phalcon_Forms_ElementInterface>`  **setOptions** (*array* $options)
 
 Sets options for the element
 
 
 
-public *array*  **getUserOptions** ()
+public *array*  **getOptions** ()
 
 Returns the options for the element
 
@@ -119,7 +143,7 @@ Adds an element to the form
 
 
 
-public *string*  **render** (*string* $name, [*array* $attributes])
+public *string*  **render** ([*string* $name], [*array* $attributes])
 
 Renders a specific item in the form
 
@@ -238,6 +262,12 @@ Appends a messages to the form
 public *array*  **toArray** ()
 
 Returns a form elements as an array
+
+
+
+public *string*  **__toString** ()
+
+Renders the form html
 
 
 

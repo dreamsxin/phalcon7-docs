@@ -28,7 +28,7 @@ Generates SQL to add a column to a table
 
 
 
-public *string*  **modifyColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column)
+public *string*  **modifyColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column, [*unknown* $currentColumn])
 
 Generates SQL to modify a column in a table
 
@@ -124,13 +124,13 @@ Generates a SQL describing a table <code>print_r($dialect->describeColumns("post
 
 
 
-public *array*  **listTables** ([*string* $schemaName])
+public *string*  **listTables** ([*string* $schemaName])
 
-List all tables on database <code>print_r($dialect->listTables("blog")) ?>
+Generates SQL list all tables on database <code>print_r($dialect->listTables("blog")) ?>
 
 
 
-public *array*  **listViews** ([*string* $schemaName])
+public *string*  **listViews** ([*string* $schemaName])
 
 Generates the SQL to list all views of a schema or user
 
@@ -308,6 +308,24 @@ Registers custom SQL functions
 public *array*  **getCustomFunctions** () inherited from Phalcon\\Db\\Dialect
 
 Returns registered functions
+
+
+
+public *string*  **escape** (*string* $str, [*string* $escapeChar]) inherited from Phalcon\\Db\\Dialect
+
+Escape identifiers
+
+
+
+public *string*  **escapeSchema** (*string* $schema, [*string* $escapeChar]) inherited from Phalcon\\Db\\Dialect
+
+Escape Schema
+
+
+
+public *string*  **prepareTable** (*string* $table, [*string* $schema], [*string* $alias], [*string* $escapeChar]) inherited from Phalcon\\Db\\Dialect
+
+Prepares table for this RDBMS
 
 
 

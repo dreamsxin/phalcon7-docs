@@ -10,7 +10,7 @@ Class **Phalcon\\Cache\\Memory**
 
 :raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/cache/memory.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-This class implements common functionality for memory adapters. A memory cache adapter may extend this class
+It can be used to replace APC or local memcached.
 
 
 Methods

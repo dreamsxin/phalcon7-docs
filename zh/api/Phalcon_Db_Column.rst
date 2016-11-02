@@ -36,6 +36,8 @@ Constants
 
 *integer* **TYPE_INTEGER**
 
+*integer* **TYPE_BIGINTEGER**
+
 *integer* **TYPE_DATE**
 
 *integer* **TYPE_VARCHAR**
@@ -54,9 +56,21 @@ Constants
 
 *integer* **TYPE_DOUBLE**
 
+*integer* **TYPE_TINYBLOB**
+
+*integer* **TYPE_BLOB**
+
+*integer* **TYPE_MEDIUMBLOB**
+
+*integer* **TYPE_LONGBLOB**
+
 *integer* **TYPE_JSON**
 
+*integer* **TYPE_JSONB**
+
 *integer* **TYPE_ARRAY**
+
+*integer* **TYPE_TIMESTAMP**
 
 *integer* **TYPE_OTHER**
 
@@ -96,6 +110,18 @@ Returns column name
 public *int*  **getType** ()
 
 Returns column type
+
+
+
+public *int*  **getTypeReference** ()
+
+Returns column type reference
+
+
+
+public *string*  **getTypeValues** ()
+
+Returns column type values
 
 
 
@@ -175,5 +201,10 @@ public static :doc:`Phalcon\\Db\\Column <Phalcon_Db_Column>`  **__set_state** ([
 
 Restores the internal state of a Phalcon\\Db\\Column object
 
+
+
+public  **getDefault** ()
+
+...
 
 

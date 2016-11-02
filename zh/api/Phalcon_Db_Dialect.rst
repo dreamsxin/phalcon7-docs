@@ -165,6 +165,24 @@ Returns registered functions
 
 
 
+public *string*  **escape** (*string* $str, [*string* $escapeChar])
+
+Escape identifiers
+
+
+
+public *string*  **escapeSchema** (*string* $schema, [*string* $escapeChar])
+
+Escape Schema
+
+
+
+public *string*  **prepareTable** (*string* $table, [*string* $schema], [*string* $alias], [*string* $escapeChar])
+
+Prepares table for this RDBMS
+
+
+
 abstract public  **getColumnDefinition** (:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column) inherited from Phalcon\\Db\\DialectInterface
 
 Gets the column name in MySQL
@@ -177,7 +195,7 @@ Generates SQL to add a column to a table
 
 
 
-abstract public *string*  **modifyColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column) inherited from Phalcon\\Db\\DialectInterface
+abstract public *string*  **modifyColumn** (*string* $tableName, *string* $schemaName, :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $column, [:doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` $currentColumn]) inherited from Phalcon\\Db\\DialectInterface
 
 Generates SQL to modify a column in a table
 
