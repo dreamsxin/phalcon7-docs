@@ -80,21 +80,20 @@ first subpattern matched (:code:`:controller`) is the controller part of the rou
 
 默认占位符对应正则表达式（Default Placeholders Regular Expressions）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-These placeholders help writing regular expressions that are more readable for developers and easier
-to understand. The following placeholders are supported:
+这些占位符帮助编写开发人员更简单的书写正则表达式，而且容易理解，以下默认支持的占位符：
 
 +----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
 | Placeholder          | Regular Expression          | Usage                                                                                                  |
 +======================+=============================+========================================================================================================+
-| :code:`/:module`     | :code:`/([\\w0-9\\_\\-]+)` | Matches a valid module name with alpha-numeric characters only                                          |
+| :code:`/:module`     | :code:`/([\\w0-9\\_\\-]+)`  | Matches a valid module name with alpha-numeric characters only                                         |
 +----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
-| :code:`/:controller` | :code:`/([\\w0-9\\_\\-]+)` | Matches a valid controller name with alpha-numeric characters only                                      |
+| :code:`/:controller` | :code:`/([\\w0-9\\_\\-]+)`  | Matches a valid controller name with alpha-numeric characters only                                     |
 +----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
-| :code:`/:action`     | :code:`/([\\w0-9\\_\\-]+)`   | Matches a valid action name with alpha-numeric characters only                                        |
+| :code:`/:action`     | :code:`/([\\w0-9\\_\\-]+)`  | Matches a valid action name with alpha-numeric characters only                                         |
 +----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
 | :code:`/:params`     | :code:`(/.*)*`              | Matches a list of optional words separated by slashes. Only use this placeholder at the end of a route |
 +----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
-| :code:`/:namespace`  | :code:`/([\\w0-9\\_\\-]+)` | Matches a single level namespace name                                                                   |
+| :code:`/:namespace`  | :code:`/([\\w0-9\\_\\-]+)`  | Matches a single level namespace name                                                                  |
 +----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
 | :code:`/:int`        | :code:`/([0-9]+)`           | Matches an integer parameter                                                                           |
 +----------------------+-----------------------------+--------------------------------------------------------------------------------------------------------+
