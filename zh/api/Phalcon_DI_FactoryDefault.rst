@@ -100,13 +100,13 @@ Return the services registered in the DI
 
 
 
-public static  **setDefault** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\DI
+public static  **setDefault** (:doc:`Phalcon\\DIInterface <Phalcon_DIInterface>` $dependencyInjector) inherited from Phalcon\\DI
 
 Set a default dependency injection container to be obtained into static methods
 
 
 
-public static :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDefault** () inherited from Phalcon\\DI
+public static :doc:`Phalcon\\DIInterface <Phalcon_DIInterface>`  **getDefault** () inherited from Phalcon\\DI
 
 Return the lastest DI created
 

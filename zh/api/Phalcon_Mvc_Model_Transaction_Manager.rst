@@ -51,7 +51,7 @@ A transaction acts on a single database connection. If you have multiple class-s
 Methods
 -------
 
-public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
+public  **__construct** ([:doc:`Phalcon\\DIInterface <Phalcon_DIInterface>` $dependencyInjector])
 
 Phalcon\\Mvc\\Model\\Transaction\\Manager constructor
 
@@ -141,13 +141,13 @@ Remove all the transactions from the manager
 
 
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\DI\\Injectable
+public  **setDI** (:doc:`Phalcon\\DIInterface <Phalcon_DIInterface>` $dependencyInjector) inherited from Phalcon\\DI\\Injectable
 
 Sets the dependency injector
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ([*unknown* $error], [*unknown* $notUseDefault]) inherited from Phalcon\\DI\\Injectable
+public :doc:`Phalcon\\DIInterface <Phalcon_DIInterface>`  **getDI** ([*unknown* $error], [*unknown* $notUseDefault]) inherited from Phalcon\\DI\\Injectable
 
 Returns the internal dependency injector
 

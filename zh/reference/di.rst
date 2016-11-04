@@ -1057,7 +1057,7 @@ DI会回退到一个有效的自动加载类中，去加载这个类。通过这
 
 自定义注入器（Implementing your own DI）
 ========================================
-如果你要创建一个自定义注入器或者继承一个已有的，接口 :doc:`Phalcon\\DiInterface <../api/Phalcon_DIInterface>` 必须被实现。
+如果你要创建一个自定义注入器或者继承一个已有的，接口 :doc:`Phalcon\\DIInterface <../api/Phalcon_DIInterface>` 必须被实现。
 
 .. _`Inversion of Control`: http://zh.wikipedia.org/wiki/%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC
 .. _Singletons: http://zh.wikipedia.org/wiki/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F

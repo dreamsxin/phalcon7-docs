@@ -68,7 +68,7 @@ Returns the service definition
 
 
 
-public *object*  **resolve** ([*array* $parameters], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
+public *object*  **resolve** ([*array* $parameters], [:doc:`Phalcon\\DIInterface <Phalcon_DIInterface>` $dependencyInjector])
 
 Resolves the service
 

@@ -29,13 +29,13 @@ With Phalcon you can create "Micro-Framework like" applications. By doing this, 
 Methods
 -------
 
-public  **__construct** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
+public  **__construct** ([:doc:`Phalcon\\DIInterface <Phalcon_DIInterface>` $dependencyInjector])
 
 Phalcon\\Mvc\\Micro constructor
 
 
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+public  **setDI** (:doc:`Phalcon\\DIInterface <Phalcon_DIInterface>` $dependencyInjector)
 
 Sets the DependencyInjector container
 
@@ -235,7 +235,7 @@ Sets a handler that will be called when an exception is thrown handling the rout
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ([*unknown* $error], [*unknown* $notUseDefault]) inherited from Phalcon\\DI\\Injectable
+public :doc:`Phalcon\\DIInterface <Phalcon_DIInterface>`  **getDI** ([*unknown* $error], [*unknown* $notUseDefault]) inherited from Phalcon\\DI\\Injectable
 
 Returns the internal dependency injector
 

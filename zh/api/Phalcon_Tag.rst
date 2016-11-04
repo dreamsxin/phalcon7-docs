@@ -37,13 +37,13 @@ Constants
 Methods
 -------
 
-public static  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
+public static  **setDI** (:doc:`Phalcon\\DIInterface <Phalcon_DIInterface>` $dependencyInjector)
 
 Sets the dependency injector container.
 
 
 
-public static :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ()
+public static :doc:`Phalcon\\DIInterface <Phalcon_DIInterface>`  **getDI** ()
 
 Internally gets the dependency injector
 

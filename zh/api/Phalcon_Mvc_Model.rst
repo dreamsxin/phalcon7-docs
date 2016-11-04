@@ -51,7 +51,7 @@ Constants
 Methods
 -------
 
-final public  **__construct** ([*unknown* $data], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
+final public  **__construct** ([*unknown* $data], [:doc:`Phalcon\\DIInterface <Phalcon_DIInterface>` $dependencyInjector])
 
 Phalcon\\Mvc\\Model constructor
 
@@ -443,7 +443,7 @@ Allows to query the first record that match the specified conditions
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **query** ([:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
+public static :doc:`Phalcon\\Mvc\\Model\\Criteria <Phalcon_Mvc_Model_Criteria>`  **query** ([:doc:`Phalcon\\DIInterface <Phalcon_DIInterface>` $dependencyInjector])
 
 Create a criteria for a specific model
 
@@ -1321,13 +1321,13 @@ Returns serialised model as array for json_encode.
 
 
 
-public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\DI\\Injectable
+public  **setDI** (:doc:`Phalcon\\DIInterface <Phalcon_DIInterface>` $dependencyInjector) inherited from Phalcon\\DI\\Injectable
 
 Sets the dependency injector
 
 
 
-public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ([*unknown* $error], [*unknown* $notUseDefault]) inherited from Phalcon\\DI\\Injectable
+public :doc:`Phalcon\\DIInterface <Phalcon_DIInterface>`  **getDI** ([*unknown* $error], [*unknown* $notUseDefault]) inherited from Phalcon\\DI\\Injectable
 
 Returns the internal dependency injector
 
