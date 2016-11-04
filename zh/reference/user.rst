@@ -92,7 +92,8 @@ Phalcon 提供许多类来简化常见编码，如对文本或数组的操作，
 
 逻辑类（Logic Class）
 ---------------------
-一般用于处理业务逻辑，可以设置调度器绑定逻辑类，会根据控制器方法参数自动调用逻辑类静态方法 `call` 完成实例化：
+一般用于处理业务逻辑，可以设置调度器绑定逻辑类，会根据控制器方法参数自动调用逻辑类静态方法 `call` 完成实例化，然后调用 `start` 完成初始化操作，
+当控制器方法执行结束后，将调用 `finish` 方法：
 
 .. code-block:: php
 
@@ -127,6 +128,17 @@ Phalcon 提供许多类来简化常见编码，如对文本或数组的操作，
     class MyLogic extends Phalcon\Mvc\User\Logic
     {
         public $num = 0;
+
+	public function start()
+	{
+            // ...
+        }
+
+	public function finish()
+	{
+            // ...
+	    $this->view->data = $this->getContent();
+        }
 
 	// 该方法可以不实现
 	public static function call($action = NULL, $params = NULL)
