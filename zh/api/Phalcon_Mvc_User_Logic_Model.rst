@@ -1,41 +1,101 @@
-Class **Phalcon\\CLI\\Task**
-============================
+Abstract class **Phalcon\\Mvc\\User\\Logic\\Model**
+===================================================
 
-*extends* abstract class :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
+*extends* abstract class :doc:`Phalcon\\Mvc\\User\\Logic <Phalcon_Mvc_User_Logic>`
 
-*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
+*implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/cli/task.c" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/user/logic/model.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Every command-line task should extend this class that encapsulates all the task functionality  A task can be used to run "tasks" such as migrations, cronjobs, unit-tests, or anything that you want. The Task class should at least have a "mainAction" method  
-
-.. code-block:: php
-
-    <?php
-
-    class HelloTask extends \Phalcon\CLI\Task
-    {
-    
-      //This action will be executed by default
-      public function mainAction()
-      {
-    
-      }
-    
-      public function findAction()
-      {
-    
-      }
-    
-    }
-
+Phalcon\\Mvc\\User\\Logic  This class can be used to provide user business logic an easy access to services in the application
 
 
 Methods
 -------
+
+abstract public  **get** ([*unknown* $arguments])
+
+...
+
+
+abstract public  **getAll** ([*unknown* $arguments])
+
+...
+
+
+abstract public  **save** ([*unknown* $arguments])
+
+...
+
+
+abstract public  **create** ([*unknown* $arguments])
+
+...
+
+
+abstract public  **delete** ([*unknown* $arguments])
+
+...
+
+
+abstract public  **deleteAll** ([*unknown* $arguments])
+
+...
+
+
+abstract public  **update** ([*unknown* $arguments])
+
+...
+
+
+abstract public  **updateAll** ([*unknown* $arguments])
+
+...
+
+
+abstract public  **count** ([*unknown* $arguments])
+
+...
+
+
+public  **__construct** ([*string* $actionName], [*unknown* $arguments]) inherited from Phalcon\\Mvc\\User\\Logic
+
+Constructor for Phalcon\\Mvc\\User\\Logic
+
+
+
+public *string*  **getActionName** () inherited from Phalcon\\Mvc\\User\\Logic
+
+Gets the action name
+
+
+
+public *array*  **getActionParams** () inherited from Phalcon\\Mvc\\User\\Logic
+
+Gets action params
+
+
+
+public  **setContent** (*mixed* $content) inherited from Phalcon\\Mvc\\User\\Logic
+
+Sets content
+
+
+
+public *mixed*  **getContent** () inherited from Phalcon\\Mvc\\User\\Logic
+
+Gets content
+
+
+
+public static *object*  **call** ([*string* $actionName], [*unknown* $arguments]) inherited from Phalcon\\Mvc\\User\\Logic
+
+Loads an logic and prepares it for manipulation
+
+
 
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\DI\\Injectable
 

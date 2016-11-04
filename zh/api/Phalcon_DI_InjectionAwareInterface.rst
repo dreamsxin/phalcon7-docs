@@ -18,7 +18,7 @@ Sets the dependency injector
 
 
 
-abstract public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ([*unknown* $error])
+abstract public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ([*unknown* $error], [*unknown* $notUseDefault])
 
 Returns the internal dependency injector
 

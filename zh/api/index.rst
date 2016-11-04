@@ -229,6 +229,8 @@ API Indice
    Phalcon_Mvc_Url
    Phalcon_Mvc_Url_Exception
    Phalcon_Mvc_User_Component
+   Phalcon_Mvc_User_Logic
+   Phalcon_Mvc_User_Logic_Model
    Phalcon_Mvc_User_Module
    Phalcon_Mvc_User_Plugin
    Phalcon_Mvc_View

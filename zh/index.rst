@@ -73,10 +73,11 @@ Phalcon7 作为 Phalcon 1.3 系列的继承者，所以版权理所当然的属�
    reference/image
    reference/http
    reference/i18n
-   reference/migrations
    reference/helpers
    reference/debug
+   reference/user
    reference/tools
+   reference/migrations
    reference/whats-next
    reference/unit-testing
    reference/license

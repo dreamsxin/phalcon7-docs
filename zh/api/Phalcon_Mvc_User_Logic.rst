@@ -1,5 +1,5 @@
-Class **Phalcon\\CLI\\Task**
-============================
+Abstract class **Phalcon\\Mvc\\User\\Logic**
+============================================
 
 *extends* abstract class :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
 
@@ -8,34 +8,49 @@ Class **Phalcon\\CLI\\Task**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/cli/task.c" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/user/logic.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Every command-line task should extend this class that encapsulates all the task functionality  A task can be used to run "tasks" such as migrations, cronjobs, unit-tests, or anything that you want. The Task class should at least have a "mainAction" method  
-
-.. code-block:: php
-
-    <?php
-
-    class HelloTask extends \Phalcon\CLI\Task
-    {
-    
-      //This action will be executed by default
-      public function mainAction()
-      {
-    
-      }
-    
-      public function findAction()
-      {
-    
-      }
-    
-    }
-
+This class can be used to provide user business logic an easy access to services in the application
 
 
 Methods
 -------
+
+public  **__construct** ([*string* $actionName], [*unknown* $arguments])
+
+Constructor for Phalcon\\Mvc\\User\\Logic
+
+
+
+public *string*  **getActionName** ()
+
+Gets the action name
+
+
+
+public *array*  **getActionParams** ()
+
+Gets action params
+
+
+
+public  **setContent** (*mixed* $content)
+
+Sets content
+
+
+
+public *mixed*  **getContent** ()
+
+Gets content
+
+
+
+public static *object*  **call** ([*string* $actionName], [*unknown* $arguments])
+
+Loads an logic and prepares it for manipulation
+
+
 
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\DI\\Injectable
 

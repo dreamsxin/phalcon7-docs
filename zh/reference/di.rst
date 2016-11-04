@@ -847,7 +847,7 @@ The following events are supported:
         return $component;
     }, true);
 
-    // 把一个控制器注册为服务
+    // 把一个组件注册为服务
     $di->set('MyOtherComponent', function () {
         // 实际上返回另外一个组件
         $component = new AnotherComponent();

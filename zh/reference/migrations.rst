@@ -17,7 +17,7 @@ When a migration is generated a set of classes are created to describe how your 
         <iframe src="http://player.vimeo.com/video/41381817" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
     </div>
 
-图解导出（Schema Dumping）
+模式输出（Schema Dumping）
 --------------------------
 The :doc:`Phalcon Developer Tools <tools>` provides scripts to manage migrations (generation, running and rollback).
 
