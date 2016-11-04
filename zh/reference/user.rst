@@ -151,7 +151,7 @@ Phalcon 提供许多类来简化常见编码，如对文本或数组的操作，
 
 逻辑模型类（Logic Model Class）
 -------------------------------
-使用方法与逻辑类相同，比逻辑类多了抽象方法`get`、`getAll`、`save`、`create`、`delete`、`deleteAll`、`update`、`updateAll`、`count`。
+使用方式与逻辑类相同，比逻辑类多了几个预设的抽象方法，示例如下：
 
 .. code-block:: php
 

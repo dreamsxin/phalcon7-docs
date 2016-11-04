@@ -7,13 +7,17 @@
 ---------------------------
 可用的适配器有:
 
-+-----------+---------------------------------------------------------------------------------------------------+
-| 文件类型  | 解释                                                                                              |
-+===========+===================================================================================================+
-| Ini       | 使用INI文件来存储设置。内部适配器使用PHP函数 parse_ini_file。                                     |
-+-----------+---------------------------------------------------------------------------------------------------+
-| Array     | 使用PHP多维数组存储设置。这个适配器提供了最好的性能                                               |
-+-----------+---------------------------------------------------------------------------------------------------+
++---------------+---------------------------------------------------------------------------------------------------+
+| 文件类型      | 解释                                                                                              |
++===============+===================================================================================================+
+| Native Array  | 使用PHP多维数组存储设置。这个适配器提供了最好的性能                                               |
++---------------+---------------------------------------------------------------------------------------------------+
+| Php           | 使用PHP文件来存储设置，提供了较好的性能。                                                         |
++---------------+---------------------------------------------------------------------------------------------------+
+| Ini           | 使用INI文件来存储设置，内部使用PHP函数 parse_ini_file 来解析文件。                                |
++---------------+---------------------------------------------------------------------------------------------------+
+| Yaml          | 使用YAML文件来存储设置，内部使用PHP函数 yaml_parse_file 来解析文件。                              |
++---------------+---------------------------------------------------------------------------------------------------+
 
 原生数组（Native Arrays）
 -------------------------
@@ -58,9 +62,42 @@
     require "config/config.php";
     $config = new Config($settings);
 
+读取 PHP 文件（Reading PHP Files）
+----------------------------------
+通过加载 PHP 文件获取配置信息，配置文件内容如下：
+
+.. code-block:: php
+
+    <?php
+    return array(
+        "database" => array(
+            "adapter" => "Mysql",
+            "host     => localhost",
+            "username => scott",
+            "password => cheetah",
+            "dbname   => test_db",
+        ),
+        "phalcon" => array(
+            "controllersDir => "../app/controllers/",
+            "modelsDir      => "../app/models/",
+            "viewsDir       => "../app/views/",
+        ),
+    );
+
+访问方式如下所示：
+
+.. code-block:: php
+
+    <?php
+
+    $config = new Phalcon\Config\Adapter\Php("path/config.php");
+
+    echo $config->phalcon->controllersDir, "\n";
+    echo $config->database->username, "\n";
+
 读取 INI 文件（Reading INI Files）
 ----------------------------------
-INI文件是存储设置的常用方法。 :doc:`Phalcon\\Config <../api/Phalcon_Config>` 采用优化的PHP函数parse_ini_file读取这些文件。为方便访问，文件部分解析成子设置。
+INI文件是存储设置的常用方法。 :doc:`Phalcon\\Config\\Adapter\\Ini <../api/Phalcon_Config_Adapter_Ini>` 采用优化的PHP函数parse_ini_file读取这些文件。为方便访问，文件部分解析成子设置。
 
 .. code-block:: ini
 
@@ -79,7 +116,7 @@ INI文件是存储设置的常用方法。 :doc:`Phalcon\\Config <../api/Phalcon
     [models]
     metadata.adapter  = "Memory"
 
-你可以阅读如下所示的文件:
+访问方式如下所示：
 
 .. code-block:: php
 
@@ -92,6 +129,35 @@ INI文件是存储设置的常用方法。 :doc:`Phalcon\\Config <../api/Phalcon
     echo $config->phalcon->controllersDir, "\n";
     echo $config->database->username, "\n";
     echo $config->models->metadata->adapter, "\n";
+
+读取 YAML 文件（Reading Yaml Files）
+------------------------------------
+通过解析 YAML 文件获取配置信息，配置文件内容如下：
+
+.. code-block:: yaml
+
+    phalcon:
+      baseuri: /phalcon/
+    models:
+      metadata: memory
+    database:
+      adapter: mysql
+      host: localhost
+      username: user
+      password: passwd
+      name: demo
+
+
+访问方式如下所示：
+
+.. code-block:: php
+
+    <?php
+
+    $config = new Phalcon\Config\Adapter\Php("path/config.php");
+
+    echo $config->phalcon->baseuri, "\n";
+    echo $config->database->username, "\n";
 
 合并配置（Merging Configurations）
 ----------------------------------
@@ -144,5 +210,3 @@ INI文件是存储设置的常用方法。 :doc:`Phalcon\\Config <../api/Phalcon
         [debug] => 1
         [logging] => 1
     )
-
-有更多的适配器可用于这个组件： `Phalcon Incubator <https://github.com/phalcon/incubator>`_
