@@ -28,7 +28,7 @@ Validate a set of data according to a set of rules
 
 
 
-public :doc:`Phalcon\\Validation <Phalcon_Validation>`  **add** (*string* $attribute, *unknown* $validator)
+public :doc:`Phalcon\\Validation <Phalcon_Validation>`  **add** (*string|array* $attribute, *unknown* $validator)
 
 Adds a validator to a field
 

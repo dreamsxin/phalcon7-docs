@@ -1302,6 +1302,11 @@ public  **__debugInfo** ()
 ...
 
 
+public  **setDbService** (*unknown* $connectionService)
+
+...
+
+
 public  **getRealAttributes** ()
 
 ...

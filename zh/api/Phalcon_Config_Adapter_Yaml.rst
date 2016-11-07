@@ -10,7 +10,7 @@ Class **Phalcon\\Config\\Adapter\\Yaml**
 
 :raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/config/adapter/yaml.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Reads JSON files and converts them to Phalcon\\Config objects.  Given the following configuration file:  
+Reads YAML files and converts them to Phalcon\\Config objects.  Given the following configuration file:  
 
 .. code-block:: php
 

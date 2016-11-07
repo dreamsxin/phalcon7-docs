@@ -133,6 +133,12 @@ Gets a param by its name or numeric index
 
 
 
+public :doc:`Phalcon\\Mvc\\Controller <Phalcon_Mvc_Controller>`  **getActiveHandler** ()
+
+Returns the current handler to be/executed in the dispatcher
+
+
+
 public *string*  **getActiveMethod** ()
 
 Returns the current method to be/executed in the dispatcher

@@ -204,6 +204,12 @@ Gets a param by its name or numeric index
 
 
 
+public :doc:`Phalcon\\Mvc\\Controller <Phalcon_Mvc_Controller>`  **getActiveHandler** () inherited from Phalcon\\Dispatcher
+
+Returns the current handler to be/executed in the dispatcher
+
+
+
 public *string*  **getActiveMethod** () inherited from Phalcon\\Dispatcher
 
 Returns the current method to be/executed in the dispatcher
