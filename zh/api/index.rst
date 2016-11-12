@@ -31,6 +31,10 @@ API Indice
    Phalcon_Assets_Resource_Css
    Phalcon_Assets_Resource_Js
    Phalcon_Async
+   Phalcon_Binary
+   Phalcon_Binary_Exception
+   Phalcon_Binary_Reader
+   Phalcon_Binary_Writer
    Phalcon_CLI_Console
    Phalcon_CLI_Console_Exception
    Phalcon_CLI_Dispatcher

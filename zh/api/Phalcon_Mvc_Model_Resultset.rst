@@ -1,7 +1,7 @@
 Abstract class **Phalcon\\Mvc\\Model\\Resultset**
 =================================================
 
-*implements* :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`, Iterator, Traversable, SeekableIterator, Countable, ArrayAccess, Serializable
+*implements* :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`, Iterator, Traversable, SeekableIterator, Countable, ArrayAccess, Serializable, JsonSerializable
 
 .. role:: raw-html(raw)
    :format: html

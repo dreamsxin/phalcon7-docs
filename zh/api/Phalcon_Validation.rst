@@ -104,7 +104,7 @@ Adds labels for fields
 
 
 
-public *mixed*  **getLabel** (*string* $field)
+public *mixed*  **getLabel** (*string|array* $field)
 
 Get label for field
 

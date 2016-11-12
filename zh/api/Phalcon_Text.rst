@@ -51,7 +51,7 @@ Uncamelize strings which are camelized
 
 
 
-public static *string*  **increment** (*string* $str, [*string* $separator])
+public static *string*  **increment** (*string* $str, [*string|int* $separator])
 
 Adds a number to a string or increment that number if it already is defined 
 
@@ -61,6 +61,20 @@ Adds a number to a string or increment that number if it already is defined
 
     echo Phalcon\Text::increment("a"); // "a_1"
     echo Phalcon\Text::increment("a_1"); // "a_2"
+
+
+
+
+public static *string*  **decrement** (*string* $str, [*string|int* $separator])
+
+Adds a number to a string or decrement that number if it already is defined 
+
+.. code-block:: php
+
+    <?php
+
+    echo Phalcon\Text::decrement("a"); // "a_1"
+    echo Phalcon\Text::decrement("a_1"); // "a_0"
 
 
 
@@ -150,6 +164,34 @@ Concatenates strings using the separator only once without duplication in places
 
         $str = Phalcon\Text::concat("/", "/tmp/", "/folder_1/", "/folder_2", "folder_3/");
         echo $str; // /tmp/folder_1/folder_2/folder_3/
+
+
+
+
+public static  **underscore** (*unknown* $str)
+
+Makes a phrase underscored instead of spaced 
+
+.. code-block:: php
+
+    <?php
+
+       echo Phalcon\Text::underscore('look behind'); // 'look_behind'
+       echo Phalcon\Text::underscore('Awesome Phalcon'); // 'Awesome_Phalcon'
+
+
+
+
+public static  **humanize** (*unknown* $str)
+
+Makes an underscored or dashed phrase human-readable 
+
+.. code-block:: php
+
+    <?php
+
+       echo Phalcon\Text::humanize('start-a-horse'); // 'start a horse'
+       echo Phalcon\Text::humanize('five_cats'); // 'five cats'
 
 
 
