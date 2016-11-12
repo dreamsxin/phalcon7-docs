@@ -4,7 +4,7 @@
 
 二进制数据读取（Binary Data Read）
 ----------------------------------
-二进制读取类相关方法请查看 :doc:`Phalcon\\Binary\\Reader <../api/Phalcon_Binary_Reader>` 示例：
+二进制读取相关方法请查看 :doc:`Phalcon\\Binary\\Reader <../api/Phalcon_Binary_Reader>` 示例：
 
 .. code-block:: php
 
@@ -18,9 +18,9 @@
     $name = $bin->readString();
 
 
-二进制数据写入（Binary Data Read）
+二进制数据写入（Binary Data Write）
 ----------------------------------
-二进制写入类相关方法请查看 :doc:`Phalcon\\Binary\\Writer <../api/Phalcon_Binary_Writer>` 示例：
+二进制写入相关方法请查看 :doc:`Phalcon\\Binary\\Writer <../api/Phalcon_Binary_Writer>` 示例：
 
 .. code-block:: php
 
