@@ -70,6 +70,7 @@ Phalcon7 作为 Phalcon 1.3 系列的继承者，所以版权理所当然的属�
    reference/queue
    reference/db
    reference/image
+   reference/binary
    reference/http
    reference/i18n
    reference/helpers
