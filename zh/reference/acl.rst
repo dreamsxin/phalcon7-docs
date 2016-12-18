@@ -84,6 +84,20 @@ ACL有两部分组成即角色和资源。资源即是ACL定义的权限所依�
 
 allow()方法指定了允许角色对资源的访问， deny()方法则反之。
 
+我们还可以指定第四个参数，设置回调函数，来处理来自 :code:`isAllowed()` 方法的数据：
+
+.. code-block:: php
+
+    <?php
+
+    // 设置角色对资源的访问级别
+    $acl->allow("Guests", "Customers", "search", function ($role, $resource, $access, $data, $allow) {
+        return $data % 2 === 0;
+    });
+
+    // Returns true
+    $acl->isAllowed("Guests", "Customers", "search", 4);
+
 查询 ACL（Querying an ACL）
 ---------------------------
 一旦访问控制表定义之后， 我们就可以通过它来检查角色是否有访问权限了。
@@ -96,6 +110,99 @@ allow()方法指定了允许角色对资源的访问， deny()方法则反之。
     $acl->isAllowed("Guests", "Customers", "edit");   // Returns 0
     $acl->isAllowed("Guests", "Customers", "search"); // Returns 1
     $acl->isAllowed("Guests", "Customers", "create"); // Returns 1
+
+使用角色感知对象与资源感知对象（Objects as role name and resource name）
+------------------------------------------------------------------------
+角色感知类必须实现 :doc:`Phalcon\\Acl\\RoleAware <../api/Phalcon_Acl_RoleAware>` 接口，资源感知类必须实现 :doc:`Phalcon\\Acl\\ResourceAware <../api/Phalcon_Acl_ResourceAware>` 接口。
+
+角色感知类 :code:`UserRoles`：
+
+.. code-block:: php
+
+    <?php
+
+    class UserRoles extends Phalcon\Mvc\Model implements Phalcon\Acl\RoleAware
+    {
+        public function getId()
+        {
+            return $this->id;
+        }
+
+        // Implemented function from RoleAware Interface
+        public function getRoleName()
+        {
+            return $this->rolename;
+        }
+    }
+
+资源感知类 :code:`AclResources`：
+
+.. code-block:: php
+
+    <?php
+
+    class AclResources extends Phalcon\Mvc\Model implements Phalcon\Acl\ResourceAware
+    {
+        public function getId()
+        {
+            return $this->id;
+        }
+
+        public function getUserId()
+        {
+            return $this->user_id;
+        }
+
+        // Implemented function from ResourceAware Interface
+        public function getResourceName()
+        {
+            return $this->resourcename;
+        }
+    }
+
+我们可以在 :code:`isAllowed()` 方法中使用它们：
+
+.. code-block:: php
+
+    <?php
+
+    $acl = new Phalcon\Acl\Adapter\Memory;
+    $acl->allow("Guests", "Customers", "search");
+    $acl->allow("Guests", "Customers", "create");
+    $acl->deny("Guests", "Customers", "update");
+
+    // resourcename is "Customers", user_id is 2
+    $customer = AclResources::findFirst(1);
+
+    // rolename is "Designers"
+    $designer = UserRoles::findFirst(1);
+    // rolename is "Guests"
+    $guest = UserRoles::findFirst(2);
+    // rolename is "Guests"
+    $anotherGuest = UserRoles::findFirst(3);
+
+    // Returns false
+    $acl->isAllowed($designer, $customer, "search");
+
+    // Returns true
+    $acl->isAllowed($guest, $customer, "search");
+
+    // Returns true
+    $acl->isAllowed($anotherGuest, $customer, "search");
+
+我们还可以在 :code:`allow()` 或 :code:`deny()` 方法自定义回调函数，来处理角色和资源：
+
+.. code-block:: php
+
+    <?php
+
+    $acl = new Phalcon\Acl\Adapter\Memory;
+    $acl->allow("Guests", "Customers", "search", function (UserRoles $user, AclResources $resource) {
+        return $user->getId() == $resource->getUserId();
+    });
+
+    // Returns false
+    $acl->isAllowed($designer, $customer, "search");
 
 角色继承（Roles Inheritance）
 -----------------------------

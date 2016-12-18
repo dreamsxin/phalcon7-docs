@@ -47,7 +47,7 @@ Initializes a model in the model manager
 
 
 
-public *bool*  **isInitialized** (*string* $modelName)
+public *boolean*  **isInitialized** (*string* $modelName)
 
 Check whether a model is already initialized
 

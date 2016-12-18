@@ -328,7 +328,7 @@ Enables the auto-rendering process
 
 
 
-abstract public *bool*  **isDisabled** ()
+abstract public *boolean*  **isDisabled** ()
 
 Whether automatic rendering is enabled
 

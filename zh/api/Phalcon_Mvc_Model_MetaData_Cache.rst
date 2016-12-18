@@ -18,7 +18,7 @@ Stores model meta-data in the Cache cache. Data will erased if the web server is
 
     $metaData = new Phalcon\Mvc\Model\Metadata\Cache(array(
     	'service' => 'cache', // Service Name
-    	'lifetime' => 86400, // Service Name
+    	'lifetime' => 86400,
     ));
 
 

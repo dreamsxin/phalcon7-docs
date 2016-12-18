@@ -1,22 +1,23 @@
 分页（Pagination）
 ==================
 
-The process of pagination takes place when we need to present big groups of arbitrary data gradually. :code:`Phalcon\Paginator` offers a
-fast and convenient way to split these sets of data into browsable pages.
+当需要呈现大量数据时我们需要用到该分页组件。:code:`Phalcon\Paginator` 提供了便捷数据集访问接口。
 
 数据适配器（Data Adapters）
 ---------------------------
 This component makes use of adapters to encapsulate different sources of data:
 
-+---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Adapter                                                             | Description                                                                                                                                                                                                               |
-+=====================================================================+===========================================================================================================================================================================================================================+
-| :doc:`NativeArray <../api/Phalcon_Paginator_Adapter_NativeArray>`   | Use a PHP array as source data                                                                                                                                                                                            |
-+---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| :doc:`Model <../api/Phalcon_Paginator_Adapter_Model>`               | Use a :doc:`Phalcon\\Mvc\\Model\\Resultset <../api/Phalcon_Mvc_Model_Resultset>` object as source data. Since PDO doesn't support scrollable cursors this adapter shouldn't be used to paginate a large number of records |
-+---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| :doc:`QueryBuilder <../api/Phalcon_Paginator_Adapter_QueryBuilder>` | Use a :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <../api/Phalcon_Mvc_Model_Query_Builder>` object as source data                                                                                                           |
-+---------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++---------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Adapter                                                             | Description                                                                                                                                               |
++=====================================================================+===========================================================================================================================================================+
+| :doc:`NativeArray <../api/Phalcon_Paginator_Adapter_NativeArray>`   | 使用数组当数据源。                                                                                                                                        |
++---------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+| :doc:`Model <../api/Phalcon_Paginator_Adapter_Model>`               | 使用模型结果集 `Phalcon\\Mvc\\Model\\Resultset <../api/Phalcon_Mvc_Model_Resultset>` 当数据源。因为 PDO 不支持游标，所以不适合大数据量的翻页。            |
++---------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+| :doc:`QueryBuilder <../api/Phalcon_Paginator_Adapter_QueryBuilder>` | Use a :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <../api/Phalcon_Mvc_Model_Query_Builder>` object as source data                                           |
++---------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+| :doc:`Sql <../api/Phalcon_Paginator_Adapter_Sql>`                   | 通过设置原生 SQL 获取数据源。                                                                                                                             |
++---------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 示例（Examples）
 ----------------
@@ -91,6 +92,7 @@ An example of the source data that must be used for each adapter:
     use Phalcon\Paginator\Adapter\Model as PaginatorModel;
     use Phalcon\Paginator\Adapter\NativeArray as PaginatorArray;
     use Phalcon\Paginator\Adapter\QueryBuilder as PaginatorQueryBuilder;
+    use Phalcon\Paginator\Adapter\Sql as PaginatorSql;
 
     // Passing a resultset as data
     $paginator = new PaginatorModel(
@@ -126,6 +128,16 @@ An example of the source data that must be used for each adapter:
     $paginator = new PaginatorQueryBuilder(
         array(
             "builder" => $builder,
+            "limit"   => 20,
+            "page"    => 1
+        )
+    );
+
+    $paginator = new PaginatorSql(
+        array(
+            "sql" => "SELECT * FROM robots WHERE type = :type LIMIT :limit OFFSET :offset",
+            "total_sql" => "SELECT COUNT(*) rowcount FROM robots WHERE type = :type FROM robots",
+	    "bind" => ['type' => 'google'],
             "limit"   => 20,
             "page"    => 1
         )

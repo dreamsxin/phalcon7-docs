@@ -216,3 +216,9 @@ Generate SQL to rollback a savepoint
 
 
 
+abstract public *string*  **getDefaultValue** (*unknown* $defaultValue, *unknown* $columnType)
+
+Return the default value
+
+
+

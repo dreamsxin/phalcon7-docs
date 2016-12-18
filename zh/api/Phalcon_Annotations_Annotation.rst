@@ -54,7 +54,7 @@ Returns an argument in a specific position
 
 
 
-public *bool*  **hasArgument** (*unknown* $position)
+public *boolean*  **hasArgument** (*unknown* $position)
 
 Checks if the annotation has a specific argument
 

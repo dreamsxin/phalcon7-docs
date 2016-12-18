@@ -1,9 +1,9 @@
 Class **Phalcon\\Mvc\\Application**
 ===================================
 
-*extends* abstract class :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
+*extends* abstract class :doc:`Phalcon\\Application <Phalcon_Application>`
 
-*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
+*implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
 .. role:: raw-html(raw)
    :format: html
@@ -66,7 +66,19 @@ By default. The view is implicitly buffering all the output You can full disable
 
 
 
-public  **registerModules** (*array* $modules, [*boolean* $merge])
+public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **handle** ([*string* $uri])
+
+Handles a MVC request
+
+
+
+public *mixed*  **request** (*unknown* $uri)
+
+Does a HMVC request in the application
+
+
+
+public  **registerModules** (*array* $modules, [*boolean* $merge]) inherited from Phalcon\\Application
 
 Register an array of modules present in the application 
 
@@ -88,33 +100,21 @@ Register an array of modules present in the application
 
 
 
-public *array*  **getModules** ()
+public *array*  **getModules** () inherited from Phalcon\\Application
 
 Return the modules registered in the application
 
 
 
-public :doc:`Phalcon\\Mvc\\Application <Phalcon_Mvc_Application>`  **setDefaultModule** (*string* $defaultModule)
+public :doc:`Phalcon\\Application <Phalcon_Application>`  **setDefaultModule** (*string* $defaultModule) inherited from Phalcon\\Application
 
 Sets the module name to be used if the router doesn't return a valid module
 
 
 
-public *string*  **getDefaultModule** ()
+public *string*  **getDefaultModule** () inherited from Phalcon\\Application
 
 Returns the default module name
-
-
-
-public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **handle** ([*string* $uri])
-
-Handles a MVC request
-
-
-
-public *mixed*  **request** (*unknown* $uri)
-
-Does a HMVC request in the application
 
 
 

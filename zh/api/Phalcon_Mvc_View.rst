@@ -554,7 +554,7 @@ Enables the auto-rendering process
 
 
 
-public *bool*  **isDisabled** ()
+public *boolean*  **isDisabled** ()
 
 Whether automatic rendering is enabled
 

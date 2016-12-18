@@ -71,7 +71,7 @@ Returns a PDO prepared statement to be executed with 'executePrepared'
 
 
 
-public *\PDOStatement*  **executePrepared** (*\PDOStatement* $statement, *array* $placeholders, *array* $dataTypes)
+public *\PDOStatement*  **executePrepared** (*\PDOStatement* $statement, [*array* $placeholders], [*array* $dataTypes])
 
 Executes a prepared statement binding. This function uses integer indexes starting from zero 
 
@@ -788,6 +788,30 @@ public  **__debugInfo** () inherited from Phalcon\\DI\\Injectable
 abstract public :doc:`Phalcon\\Db\\ColumnInterface <Phalcon_Db_ColumnInterface>` [] **describeColumns** (*string* $table, [*string* $schema]) inherited from Phalcon\\Db\\AdapterInterface
 
 Returns an array of Phalcon\\Db\\Column objects describing a table
+
+
+
+abstract public *string*  **escapeBytea** (*string* $value) inherited from Phalcon\\Db\\AdapterInterface
+
+Convert php bytea to database bytea
+
+
+
+abstract public *string*  **unescapeBytea** (*string* $value) inherited from Phalcon\\Db\\AdapterInterface
+
+Convert database bytea to php bytea
+
+
+
+abstract public *string*  **escapeArray** (*array* $value, [*int* $type]) inherited from Phalcon\\Db\\AdapterInterface
+
+Convert php array to database array
+
+
+
+abstract public *array*  **unescapeArray** (*string* $value, [*int* $type]) inherited from Phalcon\\Db\\AdapterInterface
+
+Convert database array to php array
 
 
 

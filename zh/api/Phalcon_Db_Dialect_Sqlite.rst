@@ -160,6 +160,12 @@ Generates the SQL to describe the table creation options
 
 
 
+public *string*  **getDefaultValue** (*string* $defaultValue, *unknown* $columnType)
+
+Return the default value
+
+
+
 public *string*  **limit** (*string* $sqlQuery, *int* $number) inherited from Phalcon\\Db\\Dialect
 
 Generates the SQL for LIMIT clause 

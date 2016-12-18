@@ -28,7 +28,7 @@ Returns the translation related to the given key
 
 
 
-public *bool*  **exists** (*string* $index)
+public *boolean*  **exists** (*string* $index)
 
 Check whether is defined a translation key in the internal array
 

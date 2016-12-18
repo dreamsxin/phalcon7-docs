@@ -52,6 +52,12 @@ Removes a service in the services container
 
 
 
+public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **setRaw** (*string* $name, [*mixed* $definition], [*boolean* $shared]) inherited from Phalcon\\DI
+
+Returns a service definition without resolving
+
+
+
 public *mixed*  **getRaw** (*string* $name) inherited from Phalcon\\DI
 
 Returns a service definition without resolving
@@ -64,19 +70,19 @@ Returns a Phalcon\\DI\\Service instance
 
 
 
-public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **setService** (:doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>` $rawDefinition) inherited from Phalcon\\DI
+public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **setService** (*string* $name, :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>` $rawDefinition) inherited from Phalcon\\DI
 
 Sets a service using a raw Phalcon\\DI\\Service definition
 
 
 
-public *mixed*  **get** (*string* $name, [*array* $parameters], [*unknown* $noerror]) inherited from Phalcon\\DI
+public *mixed*  **get** (*string* $name, [*array* $parameters], [*boolean* $noError], [*unknown* $noerror]) inherited from Phalcon\\DI
 
 Resolves the service based on its configuration
 
 
 
-public *mixed*  **getShared** (*string* $name, [*array* $parameters], [*unknown* $noerror]) inherited from Phalcon\\DI
+public *mixed*  **getShared** (*string* $name, [*array* $parameters], [*boolean* $noError]) inherited from Phalcon\\DI
 
 Resolves a service, the resolved service is stored in the DI, subsequent requests for this service will return the same instance
 
@@ -128,11 +134,6 @@ public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **set
 
 Registers an "always shared" service in the services container
 
-
-
-public  **setRaw** (*unknown* $rawDefinition) inherited from Phalcon\\DI
-
-...
 
 
 public *boolean*  **offsetExists** (*unknown* $property) inherited from Phalcon\\DI

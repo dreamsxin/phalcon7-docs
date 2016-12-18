@@ -26,19 +26,19 @@ Removes a service from the service container
 
 
 
-abstract public *object*  **get** (*string* $name, [*array* $parameters], [*unknown* $noerror])
+abstract public *object*  **get** (*string* $name, [*array* $parameters], [*boolean* $noError], [*unknown* $noerror])
 
 Resolves the service based on its configuration
 
 
 
-abstract public *object*  **getShared** (*string* $name, [*array* $parameters], [*unknown* $noerror])
+abstract public *object*  **getShared** (*string* $name, [*array* $parameters], [*boolean* $noError])
 
 Resolves a shared service based on their configuration
 
 
 
-abstract public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **setService** (:doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>` $rawDefinition)
+abstract public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **setService** (*string* $name, :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>` $rawDefinition)
 
 Sets a service using a raw Phalcon\\DI\\Service definition
 

@@ -83,7 +83,7 @@ Gets result count
 
 public static *bool*  **clear** ()
 
-Gets result count 
+Destroy asynchronous 
 
 .. code-block:: php
 

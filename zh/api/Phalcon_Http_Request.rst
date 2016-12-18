@@ -109,6 +109,12 @@ Gets variable from $_SERVER superglobal
 
 
 
+public *string|boolean*  **getEnv** (*string* $name)
+
+Gets the value of an environment variable
+
+
+
 public *mixed*  **getParam** (*unknown* $name, [*string|array* $filters], [*mixed* $defaultValue])
 
 Gets a param by its name or numeric index

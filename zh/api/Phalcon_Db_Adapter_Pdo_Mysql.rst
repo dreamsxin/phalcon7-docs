@@ -50,6 +50,30 @@ Returns an array of Phalcon\\Db\\Column objects describing a table
 
 
 
+public *string*  **escapeBytea** (*string* $value)
+
+Convert php bytea to database bytea
+
+
+
+public *string*  **unescapeBytea** (*string* $value)
+
+Convert database bytea to php bytea
+
+
+
+public *string*  **escapeArray** (*array* $value, [*unknown* $type])
+
+Convert php array to database array
+
+
+
+public *array*  **unescapeArray** (*string* $value, [*unknown* $type])
+
+Convert database array to php array
+
+
+
 public  **__construct** (*array* $descriptor) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Constructor for Phalcon\\Db\\Adapter\\Pdo
@@ -92,7 +116,7 @@ Returns a PDO prepared statement to be executed with 'executePrepared'
 
 
 
-public *\PDOStatement*  **executePrepared** (*\PDOStatement* $statement, *array* $placeholders, *array* $dataTypes) inherited from Phalcon\\Db\\Adapter\\Pdo
+public *\PDOStatement*  **executePrepared** (*\PDOStatement* $statement, [*array* $placeholders], [*array* $dataTypes]) inherited from Phalcon\\Db\\Adapter\\Pdo
 
 Executes a prepared statement binding. This function uses integer indexes starting from zero 
 

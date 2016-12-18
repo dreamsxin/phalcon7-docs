@@ -55,7 +55,7 @@ Returns the translation related to the given key
 
 
 
-abstract public *bool*  **exists** (*string* $index) inherited from Phalcon\\Translate\\AdapterInterface
+abstract public *boolean*  **exists** (*string* $index) inherited from Phalcon\\Translate\\AdapterInterface
 
 Check whether is defined a translation key in the internal array
 

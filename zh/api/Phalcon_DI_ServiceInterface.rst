@@ -42,7 +42,7 @@ Returns the service definition
 
 
 
-abstract public *bool*  **isResolved** ()
+abstract public *boolean*  **isResolved** ()
 
 Checks if the service was resolved
 

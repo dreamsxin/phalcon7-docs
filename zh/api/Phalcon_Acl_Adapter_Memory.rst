@@ -138,13 +138,13 @@ Removes an access from a resource
 
 
 
-protected  **_allowOrDeny** ()
+protected  **_allowOrDeny** (*string* $roleName, *string* $resourceName, *string* $access, *string* $action, [*callable* $callback])
 
 Checks if a role has access to a resource
 
 
 
-public  **allow** (*string* $roleName, *string* $resourceName, *mixed* $access)
+public  **allow** (*string* $roleName, *string* $resourceName, *mixed* $access, [*callable* $callback])
 
 Allow access to a role on a resource You can use '*' as wildcard Example: 
 
@@ -167,7 +167,7 @@ Allow access to a role on a resource You can use '*' as wildcard Example:
 
 
 
-public *boolean*  **deny** (*string* $roleName, *string* $resourceName, *mixed* $access)
+public *boolean*  **deny** (*string* $roleName, *string* $resourceName, *mixed* $access, [*callable* $callback])
 
 Deny access to a role on a resource You can use '*' as wildcard Example: 
 
@@ -190,7 +190,7 @@ Deny access to a role on a resource You can use '*' as wildcard Example:
 
 
 
-public *boolean*  **isAllowed** (*string* $role, *string* $resource, *string* $access)
+public *boolean*  **isAllowed** (*mixed* $role, *mixed* $resource, *string* $access, [*mixed* $data])
 
 Check whether a role is allowed to access an action from a resource 
 

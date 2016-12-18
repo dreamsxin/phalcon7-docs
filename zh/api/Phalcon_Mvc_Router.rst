@@ -305,7 +305,7 @@ Returns the sub expressions in the regular expression matched
 
 
 
-public *bool*  **wasMatched** ()
+public *boolean*  **wasMatched** ()
 
 Checks if the router macthes any of the defined routes
 

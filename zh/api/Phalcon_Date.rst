@@ -127,6 +127,24 @@ Returns a date/time string with the specified timestamp format $time = Phalcon\\
 
 
 
+public static *int|string Returns usually integer, but string if result is too big (> PHP_INT_MAX)*  **intervalToSeconds** (*\DateInterval* $interval)
+
+
+
+
+
+public static *int|string Returns usually integer, but string if result is too big (> PHP_INT_MAX)*  **createDateTimeZone** ([*unknown* $timezone])
+
+
+
+
+
+public static *boolean*  **filter** (*unknown* $date, [*unknown* $format])
+
+Filters a variable $ret = Phalcon\\Date::filter('2012-01-22'); $ret = Phalcon\\Date::filter('2012-01-22 11:00:00', 'Y-m-d H:i:s');
+
+
+
 public static *boolean*  **valid** (*unknown* $date, [*unknown* $format])
 
 Checks if a value is a valid date $ret = Phalcon\\Date::valid('2012-01-22'); $ret = Phalcon\\Date::valid('2012-01-22 11:00:00', 'Y-m-d H:i:s');

@@ -333,7 +333,7 @@ Returns the sub expressions in the regular expression matched
 
 
 
-public *bool*  **wasMatched** () inherited from Phalcon\\Mvc\\Router
+public *boolean*  **wasMatched** () inherited from Phalcon\\Mvc\\Router
 
 Checks if the router macthes any of the defined routes
 

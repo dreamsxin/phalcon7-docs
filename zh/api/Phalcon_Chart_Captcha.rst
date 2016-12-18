@@ -13,7 +13,7 @@ Class **Phalcon\\Chart\\Captcha**
 
      header('Content-Type: image/png');
      $captcha = new \Phalcon\Chart\Captcha(NULL, NULL, 30, 150, 50);
-     echo $captcha = $qr->render('Phalcon', 15, -10);
+     echo $captcha = $captcha->render('Phalcon', 15, -10);
 
 
 
@@ -22,7 +22,7 @@ Methods
 
 public  **__construct** ()
 
-Phalcon\\Chart\\Captcha constructor $qr = new \\Phalcon\\Chart\\Captcha; $qr->generate('Phalcon is a web framework'); $qr->save('qr.png');
+Phalcon\\Chart\\Captcha constructor $captcha = new \\Phalcon\\Chart\\Captcha; $captcha->generate('Phalcon is a web framework'); $captcha->save('qr.png');
 
 
 
@@ -46,8 +46,8 @@ Generate Captcha data
 
     <?php
 
-         $qr = new \Phalcon\Chart\Captcha;
-         $qr->reander('Phalcon is a web framework');
+         $captcha = new \Phalcon\Chart\Captcha;
+         $captcha->reander('Phalcon is a web framework');
 
 
 
@@ -60,9 +60,9 @@ Save the image
 
     <?php
 
-         $qr = new \Phalcon\Chart\Captcha;
-         $qr->reander('Phalcon is a web framework');
-         $qr->save('captcha.png');
+         $captcha = new \Phalcon\Chart\Captcha;
+         $captcha->reander('Phalcon is a web framework');
+         $captcha->save('captcha.png');
 
 
 

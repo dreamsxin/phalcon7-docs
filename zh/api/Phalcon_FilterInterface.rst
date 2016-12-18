@@ -12,7 +12,7 @@ Phalcon\\FilterInterface initializer
 Methods
 -------
 
-abstract public :doc:`Phalcon\\FilterInterface <Phalcon_FilterInterface>`  **add** (*string* $name, *callable* $handler)
+abstract public :doc:`Phalcon\\FilterInterface <Phalcon_FilterInterface>`  **add** (*string* $name, *callable|closure* $handler)
 
 Adds a user-defined filter
 

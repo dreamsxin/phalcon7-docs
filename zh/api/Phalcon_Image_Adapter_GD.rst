@@ -141,6 +141,26 @@ Destroys the loaded image to free up resources.
 
 
 
+public :doc:`Phalcon\\Image\\Adapter\\GD <Phalcon_Image_Adapter_GD>`  **line** (*int* $sx, *int* $sy, *int* $ex, *int* $ey, [*string* $color])
+
+Draws a line
+
+
+
+public :doc:`Phalcon\\Image\\Adapter\\GD <Phalcon_Image_Adapter_GD>`  **polygon** (*array* $coordinates, [*string* $color])
+
+Draws a polygon 
+
+.. code-block:: php
+
+    <?php
+
+     $coordinates = array( array( 'x' => 4, 'y' => 6 ), array( 'x' => 8, 'y' => 10 ) );
+     $image->polygon($coordinates);
+
+
+
+
 public *string*  **getRealPath** () inherited from Phalcon\\Image\\Adapter
 
 Returns the real path of the image file
@@ -237,7 +257,7 @@ Composite one image onto another
 
 
 
-public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **background** (*unknown* $color, [*unknown* $quality]) inherited from Phalcon\\Image\\Adapter
+public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **background** (*unknown* $color, [*unknown* $opacity]) inherited from Phalcon\\Image\\Adapter
 
 Set the background color of an image. This is only useful for images with alpha transparency.
 
@@ -255,13 +275,19 @@ Pixelate image
 
 
 
-public *boolean*  **save** ([*unknown* $file], [*unknown* $quality]) inherited from Phalcon\\Image\\Adapter
+public *boolean*  **save** ([*unknown* $file], [*unknown* $opacity]) inherited from Phalcon\\Image\\Adapter
 
 Save the image. If the filename is omitted, the original image will be overwritten.
 
 
 
-public *string*  **render** ([*unknown* $type], [*unknown* $quality]) inherited from Phalcon\\Image\\Adapter
+public *string*  **render** ([*unknown* $type], [*unknown* $opacity]) inherited from Phalcon\\Image\\Adapter
+
+Render the image and return the binary string.
+
+
+
+public *string*  **getColorRBG** (*unknown* $color) inherited from Phalcon\\Image\\Adapter
 
 Render the image and return the binary string.
 

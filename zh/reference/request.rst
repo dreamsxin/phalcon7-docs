@@ -58,6 +58,9 @@ never sanitized and can contain illegal characters or even malicious code, which
     // Setting a default value if the param is null without filtering
     $email = $request->getPost("user_email", null, "some@example.com");
 
+    // Gets variable from the dispatcher
+    $host = $request->getParam("id");
+
     // Gets a variable from put request
     $id = $request->getPut("id");
 

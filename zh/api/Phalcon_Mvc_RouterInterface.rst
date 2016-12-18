@@ -132,7 +132,7 @@ Return the sub expressions in the regular expression matched
 
 
 
-abstract public *bool*  **wasMatched** ()
+abstract public *boolean*  **wasMatched** ()
 
 Check if the router macthes any of the defined routes
 
@@ -156,7 +156,7 @@ Returns a route object by its name
 
 
 
-abstract public *bool*  **isExactControllerName** ()
+abstract public *boolean*  **isExactControllerName** ()
 
 Returns whether controller name should not be mangled
 

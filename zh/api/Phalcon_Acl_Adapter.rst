@@ -98,19 +98,19 @@ Removes an access from a resource
 
 
 
-abstract public  **allow** (*string* $roleName, *string* $resourceName, *mixed* $access) inherited from Phalcon\\Acl\\AdapterInterface
+abstract public  **allow** (*string* $roleName, *string* $resourceName, *mixed* $access, [*unknown* $callback]) inherited from Phalcon\\Acl\\AdapterInterface
 
 Allow access to a role on a resource
 
 
 
-abstract public *boolean*  **deny** (*string* $roleName, *string* $resourceName, *mixed* $access) inherited from Phalcon\\Acl\\AdapterInterface
+abstract public *boolean*  **deny** (*string* $roleName, *string* $resourceName, *mixed* $access, [*unknown* $callback]) inherited from Phalcon\\Acl\\AdapterInterface
 
 Deny access to a role on a resource
 
 
 
-abstract public *boolean*  **isAllowed** (*string* $role, *string* $resource, *string* $access) inherited from Phalcon\\Acl\\AdapterInterface
+abstract public *boolean*  **isAllowed** (*string* $role, *string* $resource, *string* $access, [*unknown* $data]) inherited from Phalcon\\Acl\\AdapterInterface
 
 Check whether a role is allowed to access an action from a resource
 

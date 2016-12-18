@@ -61,7 +61,7 @@ Returns an Escaper service from the default DI
 
 
 
-public static *bool*  **getAutoescape** ()
+public static *boolean*  **getAutoescape** ()
 
 Get current autoescape mode
 

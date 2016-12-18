@@ -44,7 +44,7 @@ Gets the table to update
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder\\Update <Phalcon_Mvc_Model_Query_Builder_Update>`  **set** (*string|array* $set)
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder\\Update <Phalcon_Mvc_Model_Query_Builder_Update>`  **set** (*array* $set)
 
 Sets the values to update with an associative array 
 
@@ -69,7 +69,7 @@ Returns a PHQL statement built based on the builder parameters
 
 
 
-public *int*  **setConditions** (*unknown* $conditions) inherited from Phalcon\\Mvc\\Model\\Query\\Builder\\Where
+public *int*  **setConditions** (*unknown* $conditions, [*array* $bindParams], [*array* $bindTypes], [*array* $bindParams], [*unknown* $type]) inherited from Phalcon\\Mvc\\Model\\Query\\Builder\\Where
 
 Gets the type of PHQL queries
 
@@ -88,7 +88,7 @@ Returns the conditions, If the conditions is a single numeric field. We internal
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **where** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes]) inherited from Phalcon\\Mvc\\Model\\Query\\Builder\\Where
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **where** (*string|array* $conditions, [*array* $bindParams], [*array* $bindTypes]) inherited from Phalcon\\Mvc\\Model\\Query\\Builder\\Where
 
 Sets the query conditions 
 
@@ -102,7 +102,7 @@ Sets the query conditions
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **andWhere** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes]) inherited from Phalcon\\Mvc\\Model\\Query\\Builder\\Where
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **andWhere** (*string|array* $conditions, [*array* $bindParams], [*array* $bindTypes]) inherited from Phalcon\\Mvc\\Model\\Query\\Builder\\Where
 
 Appends a condition to the current conditions using a AND operator 
 
@@ -116,7 +116,7 @@ Appends a condition to the current conditions using a AND operator
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **orWhere** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes]) inherited from Phalcon\\Mvc\\Model\\Query\\Builder\\Where
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **orWhere** (*string|array* $conditions, [*array* $bindParams], [*array* $bindTypes]) inherited from Phalcon\\Mvc\\Model\\Query\\Builder\\Where
 
 Appends a condition to the current conditions using a OR operator 
 
@@ -231,7 +231,7 @@ Gets the type of PHQL queries
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **setBindParams** (*unknown* $bindparams, [*unknown* $merge]) inherited from Phalcon\\Mvc\\Model\\Query\\Builder
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **setBindParams** (*array* $bindparams, [*unknown* $merge]) inherited from Phalcon\\Mvc\\Model\\Query\\Builder
 
 Sets the bind parameters
 
@@ -249,7 +249,7 @@ Gets the merge bind parameters
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **setBindTypes** (*unknown* $bindtypes, [*unknown* $merge]) inherited from Phalcon\\Mvc\\Model\\Query\\Builder
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **setBindTypes** (*array* $bindtypes, [*unknown* $merge]) inherited from Phalcon\\Mvc\\Model\\Query\\Builder
 
 Sets the bind types
 

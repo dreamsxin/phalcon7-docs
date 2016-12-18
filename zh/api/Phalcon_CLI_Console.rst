@@ -1,9 +1,9 @@
 Class **Phalcon\\CLI\\Console**
 ===============================
 
-*extends* abstract class :doc:`Phalcon\\DI\\Injectable <Phalcon_DI_Injectable>`
+*extends* abstract class :doc:`Phalcon\\Application <Phalcon_Application>`
 
-*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`
+*implements* :doc:`Phalcon\\DI\\InjectionAwareInterface <Phalcon_DI_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
 .. role:: raw-html(raw)
    :format: html
@@ -19,28 +19,6 @@ Methods
 public  **__construct** ([*unknown* $dependencyInjector])
 
 Phalcon\\CLI\\Console constructor
-
-
-
-public  **registerModules** (*array* $modules)
-
-Register an array of modules present in the console 
-
-.. code-block:: php
-
-    <?php
-
-    $application->registerModules(array(
-    	'frontend' => array(
-    		'className' => 'Multiple\Frontend\Module',
-    		'path' => '../apps/frontend/Module.php'
-    	),
-    	'backend' => array(
-    		'className' => 'Multiple\Backend\Module',
-    		'path' => '../apps/backend/Module.php'
-    	)
-    ));
-
 
 
 
@@ -62,12 +40,6 @@ Merge modules with the existing ones
 
 
 
-public *array*  **getModules** ()
-
-Return the modules registered in the console
-
-
-
 public *mixed*  **handle** ([*array* $arguments])
 
 Handle the command-line arguments. 
@@ -83,6 +55,46 @@ Handle the command-line arguments.
      	);
      	$console->handle($arguments);
 
+
+
+
+public  **registerModules** (*array* $modules, [*boolean* $merge]) inherited from Phalcon\\Application
+
+Register an array of modules present in the application 
+
+.. code-block:: php
+
+    <?php
+
+    $this->registerModules(array(
+    	'frontend' => array(
+    		'className' => 'Multiple\Frontend\Module',
+    		'path' => '../apps/frontend/Module.php'
+    	),
+    	'backend' => array(
+    		'className' => 'Multiple\Backend\Module',
+    		'path' => '../apps/backend/Module.php'
+    	)
+    ));
+
+
+
+
+public *array*  **getModules** () inherited from Phalcon\\Application
+
+Return the modules registered in the application
+
+
+
+public :doc:`Phalcon\\Application <Phalcon_Application>`  **setDefaultModule** (*string* $defaultModule) inherited from Phalcon\\Application
+
+Sets the module name to be used if the router doesn't return a valid module
+
+
+
+public *string*  **getDefaultModule** () inherited from Phalcon\\Application
+
+Returns the default module name
 
 
 

@@ -390,3 +390,27 @@ Returns an array of Phalcon\\Db\\Column objects describing a table
 
 
 
+abstract public *string*  **escapeBytea** (*string* $value)
+
+Convert php bytea to database bytea
+
+
+
+abstract public *string*  **unescapeBytea** (*string* $value)
+
+Convert database bytea to php bytea
+
+
+
+abstract public *string*  **escapeArray** (*array* $value, [*int* $type])
+
+Convert php array to database array
+
+
+
+abstract public *array*  **unescapeArray** (*string* $value, [*int* $type])
+
+Convert database array to php array
+
+
+

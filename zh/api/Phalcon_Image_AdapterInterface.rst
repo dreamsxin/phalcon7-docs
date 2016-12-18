@@ -53,15 +53,36 @@ Add a reflection to an image. The most opaque part of the reflection will be equ
 
 
 
-abstract public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **watermark** (*unknown* $watermark, [*unknown* $offset_x], [*unknown* $offset_y], [*unknown* $opacity])
+abstract public :doc:`Phalcon\\Image\\AdapterInterface <Phalcon_Image_AdapterInterface>`  **watermark** (*unknown* $watermark, [*unknown* $offset_x], [*unknown* $offset_y], [*unknown* $opacity])
 
 Add a watermark to an image with a specified opacity. Alpha transparency will be preserved.
 
 
 
-abstract public  **text** (*unknown* $text, [*unknown* $offset_x], [*unknown* $offset_y], [*unknown* $opacity], [*unknown* $color], [*unknown* $size], [*unknown* $fontfile])
+abstract public :doc:`Phalcon\\Image\\AdapterInterface <Phalcon_Image_AdapterInterface>`  **text** (*string* $text, [*unknown* $offset_x], [*unknown* $offset_y], [*unknown* $opacity], [*unknown* $color], [*unknown* $size], [*unknown* $fontfile])
 
-...
+Add a text to an image with a specified opacity.
+
+
+
+abstract public :doc:`Phalcon\\Image\\AdapterInterface <Phalcon_Image_AdapterInterface>`  **line** (*int* $sx, *int* $sy, *int* $ex, *int* $ey, [*string* $color])
+
+Draws a line
+
+
+
+abstract public :doc:`Phalcon\\Image\\AdapterInterface <Phalcon_Image_AdapterInterface>`  **polygon** (*array* $coordinates, [*string* $color])
+
+Draws a polygon 
+
+.. code-block:: php
+
+    <?php
+
+     $coordinates = array( array( 'x' => 4, 'y' => 6 ), array( 'x' => 8, 'y' => 10 ) );
+     $image->polygon($coordinates);
+
+
 
 
 abstract public  **mask** (*unknown* $mask)
@@ -69,7 +90,7 @@ abstract public  **mask** (*unknown* $mask)
 ...
 
 
-abstract public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **background** (*unknown* $color, [*unknown* $quality])
+abstract public :doc:`Phalcon\\Image\\AdapterInterface <Phalcon_Image_AdapterInterface>`  **background** (*unknown* $color, [*unknown* $opacity])
 
 Set the background color of an image. This is only useful for images with alpha transparency.
 
@@ -85,13 +106,13 @@ abstract public  **pixelate** ([*unknown* $amount])
 ...
 
 
-abstract public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **save** ([*unknown* $file], [*unknown* $quality])
+abstract public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **save** ([*unknown* $file], [*unknown* $opacity])
 
 Save the image. If the filename is omitted, the original image will be overwritten.
 
 
 
-abstract public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **render** ([*unknown* $type], [*unknown* $quality])
+abstract public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **render** ([*unknown* $type], [*unknown* $opacity])
 
 Render the image and return the binary string.
 

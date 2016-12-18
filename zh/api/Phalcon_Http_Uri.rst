@@ -64,7 +64,7 @@ Magic __get method
 
 
 
-public *bool*  **__isset** (*string* $key)
+public *boolean*  **__isset** (*string* $key)
 
 Magic __isset method
 

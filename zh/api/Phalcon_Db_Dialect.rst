@@ -315,3 +315,9 @@ Generates the SQL to describe the table creation options
 
 
 
+abstract public *string*  **getDefaultValue** (*unknown* $defaultValue, *unknown* $columnType) inherited from Phalcon\\Db\\DialectInterface
+
+Return the default value
+
+
+

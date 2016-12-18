@@ -173,12 +173,18 @@ by the request. Inside the controller, those named parameters can be accessed as
         {
             // Get "year" parameter
             $year = $this->dispatcher->getParam("year");
+            // Or
+            $year = $this->request->getParam("year");
 
             // Get "month" parameter
             $month = $this->dispatcher->getParam("month");
+            // Or
+            $month = $this->request->getParam("month");
 
             // Get "day" parameter
             $day = $this->dispatcher->getParam("day");
+            // Or
+            $day = $this->request->getParam("day");
 
             // ...
         }
@@ -817,7 +823,7 @@ Or, you can modify specific routes to optionally accept trailing slashes:
         'controller' => 'index',
         'action' =>  'index'
     ));
-    
+
 设置后:
 
 .. code-block:: php

@@ -52,6 +52,18 @@ Returns the encryption key
 
 
 
+public :doc:`Phalcon\\CryptInterface <Phalcon_CryptInterface>`  **setOptions** (*int* $options)
+
+Sets the options
+
+
+
+public *int*  **getOptions** ()
+
+Returns the options
+
+
+
 public *string*  **encrypt** (*string* $text, [*string* $key], [*unknown* $options])
 
 Encrypts a text 
@@ -65,7 +77,7 @@ Encrypts a text
 
 
 
-public *string*  **decrypt** (*string* $text, [*string* $key], [*unknown* $options])
+public *string*  **decrypt** (*string* $text, [*string* $key], [*int* $options])
 
 Decrypts an encrypted text 
 

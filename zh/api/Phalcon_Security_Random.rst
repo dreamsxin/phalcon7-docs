@@ -61,6 +61,13 @@ Secure random number generator class.  Provides secure random number generator w
   This class partially borrows SecureRandom library from Ruby
 
 
+Constants
+---------
+
+*integer* **COLOR_RGB**
+
+*integer* **COLOR_RGBA**
+
 Methods
 -------
 
@@ -165,6 +172,12 @@ Generates a random number between 0 and $len Returns an integer: 0 <= result <= 
       $random = new \Phalcon\Security\Random();
     
       echo $random->number(16); // 8
+
+
+
+
+public  **color** ([*unknown* $type])
+
 
 
 

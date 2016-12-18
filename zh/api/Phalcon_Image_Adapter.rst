@@ -110,7 +110,7 @@ Composite one image onto another
 
 
 
-public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **background** (*unknown* $color, [*unknown* $quality])
+public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **background** (*unknown* $color, [*unknown* $opacity])
 
 Set the background color of an image. This is only useful for images with alpha transparency.
 
@@ -128,13 +128,19 @@ Pixelate image
 
 
 
-public *boolean*  **save** ([*unknown* $file], [*unknown* $quality])
+public *boolean*  **save** ([*unknown* $file], [*unknown* $opacity])
 
 Save the image. If the filename is omitted, the original image will be overwritten.
 
 
 
-public *string*  **render** ([*unknown* $type], [*unknown* $quality])
+public *string*  **render** ([*unknown* $type], [*unknown* $opacity])
+
+Render the image and return the binary string.
+
+
+
+public *string*  **getColorRBG** (*unknown* $color)
 
 Render the image and return the binary string.
 
@@ -213,5 +219,25 @@ abstract protected  **_save** (*unknown* $file, *unknown* $quality)
 abstract protected  **_render** (*unknown* $type, *unknown* $quality)
 
 ...
+
+
+abstract public :doc:`Phalcon\\Image\\AdapterInterface <Phalcon_Image_AdapterInterface>`  **line** (*int* $sx, *int* $sy, *int* $ex, *int* $ey, [*string* $color]) inherited from Phalcon\\Image\\AdapterInterface
+
+Draws a line
+
+
+
+abstract public :doc:`Phalcon\\Image\\AdapterInterface <Phalcon_Image_AdapterInterface>`  **polygon** (*array* $coordinates, [*string* $color]) inherited from Phalcon\\Image\\AdapterInterface
+
+Draws a polygon 
+
+.. code-block:: php
+
+    <?php
+
+     $coordinates = array( array( 'x' => 4, 'y' => 6 ), array( 'x' => 8, 'y' => 10 ) );
+     $image->polygon($coordinates);
+
+
 
 

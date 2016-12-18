@@ -66,19 +66,19 @@ Removes an access from a resource
 
 
 
-abstract public  **allow** (*string* $roleName, *string* $resourceName, *mixed* $access)
+abstract public  **allow** (*string* $roleName, *string* $resourceName, *mixed* $access, [*unknown* $callback])
 
 Allow access to a role on a resource
 
 
 
-abstract public *boolean*  **deny** (*string* $roleName, *string* $resourceName, *mixed* $access)
+abstract public *boolean*  **deny** (*string* $roleName, *string* $resourceName, *mixed* $access, [*unknown* $callback])
 
 Deny access to a role on a resource
 
 
 
-abstract public *boolean*  **isAllowed** (*string* $role, *string* $resource, *string* $access)
+abstract public *boolean*  **isAllowed** (*string* $role, *string* $resource, *string* $access, [*unknown* $data])
 
 Check whether a role is allowed to access an action from a resource
 

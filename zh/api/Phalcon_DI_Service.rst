@@ -86,7 +86,7 @@ Returns a parameter in a specific position
 
 
 
-public *bool*  **isResolved** ()
+public *boolean*  **isResolved** ()
 
 Returns true if the service was resolved
 
