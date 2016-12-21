@@ -106,13 +106,15 @@ CLI应用即是运行在命令行窗体上的应用。 主要用来实现后台�
             'task::',     // 可选项 --task=main
             'dev::',      // 可选项 --dev=true
             'debug'       // 无值   --debug
-	)
+	    )
     );
+
+    $opts = getopt(NULL, array('namespace:', 'dev::','action::'));
 
     // 创建console应用
     $console = new \Phalcon\CLI\Console();
     $console->setDI($di);
-    
+
     // 处理console应用参数
     $arguments = array(
         'namespace' => \Phalcon\Arr::get($opts, 'namespace'),
