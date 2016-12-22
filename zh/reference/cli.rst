@@ -1,11 +1,11 @@
 命令行应用（Command Line Applications）
 =======================================
 
-CLI应用即是运行在命令行窗体上的应用。 主要用来实现后台任务， 命令行工具等。
+CLI 应用即是运行在命令行窗体上的应用。主要用来实现后台任务，命令行工具等。
 
 结构（Structure）
 -----------------
-最小结构的CLI程序如下：
+最小结构的 CLI 程序如下：
 
 * app/config/config.php
 * app/tasks/MainTask.php
@@ -13,9 +13,57 @@ CLI应用即是运行在命令行窗体上的应用。 主要用来实现后台�
 
 创建引导（Creating a Bootstrap）
 --------------------------------
-普通的MVC程序中，启动文件用来启动整个应用。和web应用不同, 此处应用中我们使用cli.php来作为启动文件。
+普通的MVC程序中，启动文件用来启动整个应用。和web应用不同, 此处应用中我们使用`cli.php`来作为启动文件。
 
 下面是一个简单的启动文件示例：
+
+.. code-block:: php
+
+    <?php
+
+    // 使用CLI工厂类作为默认的服务容器
+    $di = new Phalcon\DI\FactoryDefault\Cli();
+
+    // 定义应用目录路径
+    defined('APPLICATION_PATH') || define('APPLICATION_PATH', realpath(dirname(__FILE__)));
+
+    /**
+     * 注册类自动加载器
+     */
+    $loader = new \Phalcon\Loader();
+    $loader->registerDirs(
+        array(
+            APPLICATION_PATH . '/tasks'
+        )
+    );
+    $loader->register();
+
+    // 加载配置文件（如果存在）
+    if (is_readable(APPLICATION_PATH . '/config/config.php')) {
+        $config =  Phalcon\Config\Adapter\Php(APPLICATION_PATH . '/config/config.php', TRUE);
+        $di->set('config', $config);
+    }
+
+    // 创建console应用
+    $console = new Phalcon\CLI\Console();
+    $console->setDI($di);
+
+    try {
+        $console->handle();
+    } catch (\Phalcon\Exception $e) {
+        echo $e->getMessage();
+        exit(255);
+    }
+
+上面的代码可以使用如下方式执行：
+
+.. code-block:: bash
+
+    $ php app/cli.php --task=main --action=main --params=1 --params=2
+
+    这样程序就会执行任务main以及动作main，并传递参数 `array(1, 2)`
+
+通过 `argv` 解析应用参数：
 
 .. code-block:: php
 
@@ -228,3 +276,11 @@ CLI应用中可以在一个action中执行另一action. 要实现这个需要在
     }
 
 当然， 通过扩展 :doc:`Phalcon\\Cli\\Task <../api/Phalcon_CLI_Task>` 来实现如上操作会是一个更好主意。
+
+运行 MVC 应用（Running MVC Application）
+-----------------------------------------
+使用MVC架构来开发的程序，在命令行下运行命令如下：
+
+.. code-block:: bash
+
+    $ php app/index.php --url="/auth/login"
