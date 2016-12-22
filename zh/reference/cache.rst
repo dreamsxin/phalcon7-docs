@@ -1,7 +1,7 @@
 使用缓存提高性能（Improving Performance with Cache）
 ====================================================
 
-Phalcon 提供的缓存组件由前端 :doc:`Phalcon\\Cache\\FrontendInterface <FrontendInterface>` 和后端 :doc:`Phalcon\\Cache\\BackendInterface <BackendInterface>` 组件组成，可以更快地接入获取使用频繁或者已经被处理的数据。
+Phalcon 提供的缓存组件由前端 :doc:`Phalcon\\Cache\\FrontendInterface <../api/Phalcon_Cache_FrontendInterface>` 和后端 :doc:`Phalcon\\Cache\\BackendInterface <../api/Phalcon_Cache_BackendInterface>` 组件组成，可以更快地接入获取使用频繁或者已经被处理的数据。
 
 前端组件如输入源或者接口，后端组件则为这个类提供了存储的选项。
 
@@ -500,7 +500,9 @@ This backend will store cached content on a Redis server (Redis_). The available
 | index      | The index of the Redis database to use                        |
 +------------+---------------------------------------------------------------+
 
-在 `Phalcon Incubator <https://github.com/phalcon/incubator>`_ 上还有更多针对这个组件可用的适配器
+共享内存缓存（Shared Memory Cache）
+-----------------------------------
+Phalcon 内部还提供了 :doc:`Phalcon\\Cache\\SHMemory <../api/Phalcon_Cache_SHMemory>` 类似 `APC` 的缓存服务。
 
 .. _Memcached: http://www.php.net/memcache
 .. _memcache: http://pecl.php.net/package/memcache
