@@ -128,13 +128,13 @@ Pixelate image
 
 
 
-public *boolean*  **save** ([*unknown* $file], [*unknown* $opacity])
+public *boolean*  **save** ([*unknown* $file], [*unknown* $opacity], [*unknown* $interlacing])
 
 Save the image. If the filename is omitted, the original image will be overwritten.
 
 
 
-public *string*  **render** ([*unknown* $type], [*unknown* $opacity])
+public *string*  **render** ([*unknown* $type], [*unknown* $opacity], [*unknown* $interlacing])
 
 Render the image and return the binary string.
 
@@ -211,12 +211,12 @@ abstract protected  **_pixelate** (*unknown* $amount)
 ...
 
 
-abstract protected  **_save** (*unknown* $file, *unknown* $quality)
+abstract protected  **_save** (*unknown* $file, [*unknown* $opacity], [*unknown* $interlacing])
 
 ...
 
 
-abstract protected  **_render** (*unknown* $type, *unknown* $quality)
+abstract protected  **_render** (*unknown* $type, [*unknown* $opacity], [*unknown* $interlacing])
 
 ...
 

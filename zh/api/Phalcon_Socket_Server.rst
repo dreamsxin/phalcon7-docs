@@ -93,12 +93,14 @@ Phalcon\\Socket\\Server constructor
 
 public  **setDaemon** (*unknown* $daemon)
 
-...
+Sets the run mode
+
 
 
 public  **setMaxChildren** (*unknown* $maxChildren)
 
-...
+Sets the run mode
+
 
 
 public *boolean*  **setEvent** (*unknown* $event)

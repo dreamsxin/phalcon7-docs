@@ -21,7 +21,7 @@ Constants
 Methods
 -------
 
-public static *int*  **call** (*unknown* $closure)
+public static *int*  **call** (*Closure* $closure)
 
 Called asynchronous 
 
@@ -36,7 +36,7 @@ Called asynchronous
 
 
 
-public static *mixed*  **recv** (*unknown* $async)
+public static *mixed*  **recv** (*int* $pid, [*int* $flag])
 
 Gets asynchronous result 
 
@@ -52,7 +52,7 @@ Gets asynchronous result
 
 
 
-public static *array*  **recvAll** ()
+public static *array*  **recvAll** ([*unknown* $flag])
 
 Gets all asynchronous result 
 

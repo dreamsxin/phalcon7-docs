@@ -176,12 +176,6 @@ Generates a random number between 0 and $len Returns an integer: 0 <= result <= 
 
 
 
-public  **color** ([*unknown* $type])
-
-
-
-
-
 public  **setDI** (:doc:`Phalcon\\DIInterface <Phalcon_DIInterface>` $dependencyInjector) inherited from Phalcon\\DI\\Injectable
 
 Sets the dependency injector

@@ -106,13 +106,13 @@ abstract public  **pixelate** ([*unknown* $amount])
 ...
 
 
-abstract public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **save** ([*unknown* $file], [*unknown* $opacity])
+abstract public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **save** ([*unknown* $file], [*unknown* $opacity], [*unknown* $interlacing])
 
 Save the image. If the filename is omitted, the original image will be overwritten.
 
 
 
-abstract public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **render** ([*unknown* $type], [*unknown* $opacity])
+abstract public :doc:`Phalcon\\Image\\Adapter <Phalcon_Image_Adapter>`  **render** ([*unknown* $type], [*unknown* $opacity], [*unknown* $interlacing])
 
 Render the image and return the binary string.
 

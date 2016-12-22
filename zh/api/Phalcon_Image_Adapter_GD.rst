@@ -117,13 +117,13 @@ Pixelate image
 
 
 
-protected *boolean*  **_save** (*string* $file, *int* $quality)
+protected *boolean*  **_save** (*string* $file, [*unknown* $opacity], [*unknown* $interlacing])
 
 Execute a save.
 
 
 
-protected *string*  **_render** (*string* $type, *int* $quality)
+protected *string*  **_render** (*string* $type, [*unknown* $opacity], [*unknown* $interlacing])
 
 Execute a render.
 
@@ -275,13 +275,13 @@ Pixelate image
 
 
 
-public *boolean*  **save** ([*unknown* $file], [*unknown* $opacity]) inherited from Phalcon\\Image\\Adapter
+public *boolean*  **save** ([*unknown* $file], [*unknown* $opacity], [*unknown* $interlacing]) inherited from Phalcon\\Image\\Adapter
 
 Save the image. If the filename is omitted, the original image will be overwritten.
 
 
 
-public *string*  **render** ([*unknown* $type], [*unknown* $opacity]) inherited from Phalcon\\Image\\Adapter
+public *string*  **render** ([*unknown* $type], [*unknown* $opacity], [*unknown* $interlacing]) inherited from Phalcon\\Image\\Adapter
 
 Render the image and return the binary string.
 

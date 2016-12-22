@@ -1,9 +1,9 @@
 使用缓存提高性能（Improving Performance with Cache）
 ====================================================
 
-Phalcon提供的 :doc:`Phalcon\\Cache <cache>` 类可以更快地接入获取使用频繁或者已经被处理的数据。
-:doc:`Phalcon\\Cache <cache>` 是用C来编写的，因此有着更高的性能并且能够减少从后端获取昂价资源所带来的负载。
-这个类使用了由前端和后端组件组成的内部结构。前端组件如输入源或者接口，后端组件则为这个类提供了存储的选项。
+Phalcon 提供的缓存组件由前端 :doc:`Phalcon\\Cache\\FrontendInterface <FrontendInterface>` 和后端 :doc:`Phalcon\\Cache\\BackendInterface <BackendInterface>` 组件组成，可以更快地接入获取使用频繁或者已经被处理的数据。
+
+前端组件如输入源或者接口，后端组件则为这个类提供了存储的选项。
 
 什么情况下使用缓存？（When to implement cache?）
 ------------------------------------------------
