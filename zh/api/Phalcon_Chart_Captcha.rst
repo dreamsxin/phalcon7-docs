@@ -12,15 +12,24 @@ Class **Phalcon\\Chart\\Captcha**
     <?php
 
      header('Content-Type: image/png');
-     $captcha = new \Phalcon\Chart\Captcha(NULL, NULL, 30, 150, 50);
-     echo $captcha = $captcha->render('Phalcon', 15, -10);
+     $captcha = new \Phalcon\Chart\Captcha(Phalcon\Text::random(Phalcon\Text::RANDOM_ALNUM, 4), NULL, 30, 150, 50);
+     echo $captcha = $captcha->render();
 
 
+
+Constants
+---------
+
+*integer* **PAD_BOTH**
+
+*integer* **PAD_LEFT**
+
+*integer* **PAD_RIGHT**
 
 Methods
 -------
 
-public  **__construct** ()
+public  **__construct** (*unknown* $word, [*unknown* $font], [*unknown* $fontSize], [*unknown* $width], [*unknown* $height], [*unknown* $pad_size], [*unknown* $pad_type])
 
 Phalcon\\Chart\\Captcha constructor $captcha = new \\Phalcon\\Chart\\Captcha; $captcha->generate('Phalcon is a web framework'); $captcha->save('qr.png');
 
@@ -38,7 +47,7 @@ Sets a font size
 
 
 
-public *String*  **render** (*string* $word, [*string* $margin], [*unknown* $foreground], [*unknown* $background])
+public *String*  **render** ([*unknown* $filename], [*string* $word], [*unknown* $offset_x], [*unknown* $offset_y], [*unknown* $foreground], [*unknown* $background], [*unknown* $width], [*unknown* $height])
 
 Generate Captcha data 
 
