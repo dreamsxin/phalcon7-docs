@@ -30,7 +30,7 @@ Phalcon\\Chart\\QRcode constructor $qr = new \\Phalcon\\Chart\\QRcode; $qr->gene
 
 
 
-public *boolean*  **generate** (*unknown* $data, [*int* $version], [*int* $level], [*int* $mode], [*boolean* $casesensitive])
+public *boolean*  **generate** (*string* $text, [*int* $version], [*int* $level], [*int* $mode], [*boolean* $casesensitive])
 
 Generate QR data
 
@@ -42,7 +42,7 @@ Render the image and return the binary string. $qr = new \\Phalcon\\Chart\\QRcod
 
 
 
-public *boolean*  **save** ([*filename* $filename], [*size* $size], [*unknown* $margin], [*unknown* $foreground], [*unknown* $background])
+public *boolean*  **save** (*filename* $filename, [*size* $size], [*unknown* $margin], [*unknown* $foreground], [*unknown* $background])
 
 Save the image $qr = new \\Phalcon\\Chart\\QRcode; $qr->generate('Phalcon is a web framework', 4, \\Phalcon\\Chart\\QRcode::LEVEL_L, \\Phalcon\\Chart\\QRcode::MODE_KANJI, TRUE); $qr->save('qr.png');
 

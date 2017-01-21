@@ -39,13 +39,13 @@ This adapter store sessions in cache
 Methods
 -------
 
-public  **__construct** (*array* $options)
+public *boolean*  **start** ()
 
-Constructor for Phalcon\\Session\\Adapter\\Cache
+Starts the session (if headers are already sent the session will not be started)
 
 
 
-public *boolean*  **open** ()
+public *boolean*  **open** (*unknown* $savePath, *unknown* $sessionName)
 
 
 
@@ -63,7 +63,7 @@ public *mixed*  **read** (*string* $sessionId)
 
 
 
-public  **write** (*string* $sessionId, *string* $data)
+public  **write** (*string* $sessionId, *unknown* $sessionData)
 
 
 
@@ -75,21 +75,21 @@ public *boolean*  **destroy** ([*unknown* $sessionId])
 
 
 
-public *boolean*  **gc** ()
+public *boolean*  **gc** ([*unknown* $maxlifetime])
 
 
+
+
+
+public  **__construct** ([*array* $options], [*int* $expire], [*string* $path], [*boolean* $secure], [*string* $domain], [*boolean* $httpOnly]) inherited from Phalcon\\Session\\Adapter
+
+Phalcon\\Session\\Adapter constructor
 
 
 
 public  **__destruct** () inherited from Phalcon\\Session\\Adapter
 
 ...
-
-
-public *boolean*  **start** () inherited from Phalcon\\Session\\Adapter
-
-Starts the session (if headers are already sent the session will not be started)
-
 
 
 public  **setOptions** (*array* $options) inherited from Phalcon\\Session\\Adapter

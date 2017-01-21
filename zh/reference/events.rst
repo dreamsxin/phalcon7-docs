@@ -318,6 +318,16 @@
 
     $eventsManager->fire("my-component:afterSomeTask", $this, $extraData, false);
 
+侦听全部事件（Listen for Any Event）
+-----------------------------------
+通过通配符 `*`，你可以侦听所有事件消息：
+
+.. code-block:: php
+
+<?php
+
+$eventsManager->attach('*', new AnyListener());
+
 侦听器优先级（Listener Priorities）
 -----------------------------------
 当附上侦听者时，你可以设置一个优先级。使用此特性，你可以指定这些侦听者被调用的固定顺序：

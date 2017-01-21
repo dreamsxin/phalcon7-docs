@@ -1,5 +1,5 @@
-Class **Phalcon\\Session\\Adapter\\Libmemcached**
-=================================================
+Class **Phalcon\\Session\\Adapter\\Memcached**
+==============================================
 
 *extends* abstract class :doc:`Phalcon\\Session\\Adapter <Phalcon_Session_Adapter>`
 
@@ -8,15 +8,15 @@ Class **Phalcon\\Session\\Adapter\\Libmemcached**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/session/adapter/libmemcached.c" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/session/adapter/memcached.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-This adapter store sessions in libmemcached  
+This adapter store sessions in memcached  
 
 .. code-block:: php
 
     <?php
 
-     $session = new Phalcon\Session\Adapter\Libmemcached(array(
+     $session = new Phalcon\Session\Adapter\Memcached(array(
          'servers' => array(
              array('host' => 'localhost', 'port' => 11211, 'weight' => 1),
          ),
@@ -39,13 +39,13 @@ This adapter store sessions in libmemcached
 Methods
 -------
 
-public  **__construct** (*array* $options)
+public *boolean*  **start** ()
 
-Constructor for Phalcon\\Session\\Adapter\\Libmemcached
+Starts the session (if headers are already sent the session will not be started)
 
 
 
-public *boolean*  **open** ()
+public *boolean*  **open** (*unknown* $savePath, *unknown* $sessionName)
 
 
 
@@ -63,7 +63,7 @@ public *mixed*  **read** (*string* $sessionId)
 
 
 
-public  **write** (*string* $sessionId, *string* $data)
+public  **write** (*string* $sessionId, *unknown* $sessionData)
 
 
 
@@ -75,21 +75,21 @@ public *boolean*  **destroy** ([*unknown* $sessionId])
 
 
 
-public *boolean*  **gc** ()
+public *boolean*  **gc** ([*unknown* $maxlifetime])
 
 
+
+
+
+public  **__construct** ([*array* $options], [*int* $expire], [*string* $path], [*boolean* $secure], [*string* $domain], [*boolean* $httpOnly]) inherited from Phalcon\\Session\\Adapter
+
+Phalcon\\Session\\Adapter constructor
 
 
 
 public  **__destruct** () inherited from Phalcon\\Session\\Adapter
 
 ...
-
-
-public *boolean*  **start** () inherited from Phalcon\\Session\\Adapter
-
-Starts the session (if headers are already sent the session will not be started)
-
 
 
 public  **setOptions** (*array* $options) inherited from Phalcon\\Session\\Adapter

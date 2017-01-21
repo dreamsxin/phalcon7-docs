@@ -58,18 +58,6 @@ Checks whether the cache has starting buffering or not
 
 
 
-public  **setLastKey** (*string* $lastKey)
-
-Sets the last key used in the cache
-
-
-
-public *string*  **getLastKey** ()
-
-Gets the last key stored by the cache
-
-
-
 public *int*  **getLifetime** ()
 
 Gets the last lifetime set
@@ -140,19 +128,19 @@ public  **__debugInfo** () inherited from Phalcon\\DI\\Injectable
 ...
 
 
-abstract public *mixed*  **get** (*int|string* $keyName, [*long* $lifetime]) inherited from Phalcon\\Cache\\BackendInterface
+abstract public *mixed*  **get** (*string* $keyName) inherited from Phalcon\\Cache\\BackendInterface
 
 Returns a cached content
 
 
 
-abstract public  **save** ([*int|string* $keyName], [*string* $content], [*long* $lifetime], [*boolean* $stopBuffer]) inherited from Phalcon\\Cache\\BackendInterface
+abstract public  **save** ([*string* $keyName], [*unknown* $value], [*long* $lifetime], [*boolean* $stopBuffer]) inherited from Phalcon\\Cache\\BackendInterface
 
 Stores cached content into the file backend and stops the frontend
 
 
 
-abstract public *boolean*  **delete** (*int|string* $keyName) inherited from Phalcon\\Cache\\BackendInterface
+abstract public *boolean*  **delete** (*string* $keyName) inherited from Phalcon\\Cache\\BackendInterface
 
 Deletes a value from the cache by its key
 
@@ -164,7 +152,7 @@ Query the existing cached keys
 
 
 
-abstract public *boolean*  **exists** ([*string* $keyName], [*long* $lifetime]) inherited from Phalcon\\Cache\\BackendInterface
+abstract public *boolean*  **exists** (*string* $keyName) inherited from Phalcon\\Cache\\BackendInterface
 
 Checks if cache exists and it hasn't expired
 

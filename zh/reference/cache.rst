@@ -17,7 +17,7 @@ Phalcon 提供的缓存组件由前端 :doc:`Phalcon\\Cache\\FrontendInterface <
 .. highlights::
 
     *温馨提示* 即使使用了这些缓存，你仍然应该定期检测缓存的命中率。
-    通过后台提供的相关工具，这一点很容易做得到，特别是使用Memcache或者APC时。
+    通过后台提供的相关工具，这一点很容易做得到，特别是使用Memcached或者APC时。
 
 缓存行为（Caching Behavior）
 ----------------------------
@@ -154,7 +154,7 @@ Memcached 后端存储器例子（Memcached Backend Example）
     <?php
 
     use Phalcon\Cache\Frontend\Data as FrontData;
-    use Phalcon\Cache\Backend\Libmemcached as BackMemCached;
+    use Phalcon\Cache\Backend\Memcached as BackMemCached;
 
     // Cache data for one hour
     $frontCache = new FrontData(
@@ -314,7 +314,7 @@ Setting the lifetime when retrieving:
     use Phalcon\Cache\Backend\Apc as ApcCache;
     use Phalcon\Cache\Backend\File as FileCache;
     use Phalcon\Cache\Frontend\Data as DataFrontend;
-    use Phalcon\Cache\Backend\Memcache as MemcacheCache;
+    use Phalcon\Cache\Backend\Memcached as MemcachedCache;
 
     $ultraFastFrontend = new DataFrontend(
         array(
@@ -343,7 +343,7 @@ Setting the lifetime when retrieving:
                     "prefix" => 'cache',
                 )
             ),
-            new MemcacheCache(
+            new MemcachedCache(
                 $fastFrontend,
                 array(
                     "prefix" => 'cache',
@@ -393,23 +393,23 @@ Setting the lifetime when retrieving:
 ------------------------------
 用于存放缓存数据的后端适配器有：
 
-+-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
-| 适配器    | 描述                                           | 信息       | 需要的扩展          | 示例                                                                              |
-+===========+================================================+============+=====================+===================================================================================+
-| File      | 在本地绝对路径的文件上存放数据                 |            |                     | :doc:`Phalcon\\Cache\\Backend\\File <../api/Phalcon_Cache_Backend_File>`          |
-+-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
-| Memcached | 在memcached服务器存放数据                      | Memcached_ | memcache_           | :doc:`Phalcon\\Cache\\Backend\\Memcache <../api/Phalcon_Cache_Backend_Memcache>`  |
-+-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
-| APC       | 在opcode缓存           （APC）中存放数据       | APC_       | `APC extension`_    | :doc:`Phalcon\\Cache\\Backend\\Apc <../api/Phalcon_Cache_Backend_Apc>`            |
-+-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
-| Mongo     | 在Mongo数据库中存放数据                        | MongoDb_   | `Mongo`_            | :doc:`Phalcon\\Cache\\Backend\\Mongo <../api/Phalcon_Cache_Backend_Mongo>`        |
-+-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
-| XCache    | 在XCache中存放数据                             | XCache_    | `xcache extension`_ | :doc:`Phalcon\\Cache\\Backend\\Xcache <../api/Phalcon_Cache_Backend_Xcache>`      |
-+-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
-| Redis     | Stores data in Redis                           | Redis_     | `redis extension`_  | :doc:`Phalcon\\Cache\\Backend\\Redis <../api/Phalcon_Cache_Backend_Redis>`        |
-+-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
-| Memeory   | 存储数据在内存中，请求完成后释放               | 无         | 无                  | 无                                                                                |
-+-----------+------------------------------------------------+------------+---------------------+-----------------------------------------------------------------------------------+
++-----------+------------------------------------------------+------------+-------------------------+-------------------------------------------------------------------------------------+
+| 适配器     | 描述                                          | 信息       | 需要的扩展              | 示例                                                                                |
++===========+================================================+============+=========================+=====================================================================================+
+| File      | 在本地绝对路径的文件上存放数据                 |            |                         | :doc:`Phalcon\\Cache\\Backend\\File <../api/Phalcon_Cache_Backend_File>`            |
++-----------+------------------------------------------------+------------+-------------------------+-------------------------------------------------------------------------------------+
+| Memcached | 在memcached服务器存放数据                      | Memcached_ | `memcached extension`_  | :doc:`Phalcon\\Cache\\Backend\\Memcached <../api/Phalcon_Cache_Backend_Memcached>`  |
++-----------+------------------------------------------------+------------+-------------------------+-------------------------------------------------------------------------------------+
+| APC       | 在opcode缓存           （APC）中存放数据       | APC_       | `APC extension`_        | :doc:`Phalcon\\Cache\\Backend\\Apc <../api/Phalcon_Cache_Backend_Apc>`              |
++-----------+------------------------------------------------+------------+-------------------------+-------------------------------------------------------------------------------------+
+| Mongo     | 在Mongo数据库中存放数据                        | MongoDb_   | `Mongo`_                | :doc:`Phalcon\\Cache\\Backend\\Mongo <../api/Phalcon_Cache_Backend_Mongo>`          |
++-----------+------------------------------------------------+------------+-------------------------+-------------------------------------------------------------------------------------+
+| XCache    | 在XCache中存放数据                             | XCache_    | `xcache extension`_     | :doc:`Phalcon\\Cache\\Backend\\Xcache <../api/Phalcon_Cache_Backend_Xcache>`        |
++-----------+------------------------------------------------+------------+-------------------------+-------------------------------------------------------------------------------------+
+| Redis     | Stores data in Redis                           | Redis_     | `redis extension`_      | :doc:`Phalcon\\Cache\\Backend\\Redis <../api/Phalcon_Cache_Backend_Redis>`          |
++-----------+------------------------------------------------+------------+-------------------------+-------------------------------------------------------------------------------------+
+| Memeory   | 存储数据在内存中，请求完成后释放               | 无         | 无                      | 无                                                                                  |
++-----------+------------------------------------------------+------------+-------------------------+-------------------------------------------------------------------------------------+
 
 自定义后端适配器（Implementing your own Backend adapters）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -463,7 +463,7 @@ Mongo 后端存储器选项（Mongo Backend Options）
 +============+=============================================================+
 | prefix     | 自动追加到缓存key前面的前缀                                 |
 +------------+-------------------------------------------------------------+
-| server     | MongoDB的连接串                                             |
+| uri        | MongoDB的连接串                                             |
 +------------+-------------------------------------------------------------+
 | db         | Mongo数据库名                                               |
 +------------+-------------------------------------------------------------+
@@ -504,8 +504,8 @@ This backend will store cached content on a Redis server (Redis_). The available
 -----------------------------------
 Phalcon 内部还提供了 :doc:`Phalcon\\Cache\\SHMemory <../api/Phalcon_Cache_SHMemory>` 类似 `APC` 的缓存服务。
 
-.. _Memcached: http://www.php.net/memcache
-.. _memcache: http://pecl.php.net/package/memcache
+.. _Memcached: http://memcached.org/
+.. _memcached extension: http://php.net/memcached
 .. _APC: http://php.net/apc
 .. _APC extension: http://pecl.php.net/package/APC
 .. _MongoDb: http://mongodb.org/

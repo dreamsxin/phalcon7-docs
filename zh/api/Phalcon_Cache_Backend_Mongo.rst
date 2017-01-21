@@ -23,7 +23,7 @@ Allows to cache output fragments, PHP data or raw data to a MongoDb backend
     
      //Create a MongoDB cache
      $cache = new Phalcon\Cache\Backend\Mongo($frontCache, array(
-    	'server' => "mongodb://localhost",
+    	'uri' => "mongodb://localhost:27017",
           'db' => 'caches',
     	'collection' => 'images'
      ));
@@ -45,25 +45,19 @@ Phalcon\\Cache\\Backend\\Mongo constructor
 
 
 
-protected *MongoCollection*  **_getCollection** ()
-
-Returns a MongoDb collection based on the backend parameters
-
-
-
-public *mixed*  **get** (*int|string* $keyName, [*long* $lifetime])
+public *mixed*  **get** (*string* $keyName)
 
 Returns a cached content
 
 
 
-public  **save** ([*int|string* $keyName], [*string* $content], [*long* $lifetime], [*boolean* $stopBuffer])
+public  **save** ([*string* $keyName], [*unknown* $value], [*long* $lifetime], [*boolean* $stopBuffer])
 
 Stores cached content into the Mongo backend and stops the frontend
 
 
 
-public *boolean*  **delete** (*int|string* $keyName)
+public *boolean*  **delete** (*string* $keyName)
 
 Deletes a value from the cache by its key
 
@@ -75,7 +69,7 @@ Query the existing cached keys
 
 
 
-public *boolean*  **exists** ([*string* $keyName], [*long* $lifetime])
+public *boolean*  **exists** (*string* $keyName)
 
 Checks if cache exists and it hasn't expired
 
@@ -86,13 +80,13 @@ public  **gc** ()
 ...
 
 
-public *mixed*  **increment** ([*unknown* $key_name], [*long* $value])
+public *mixed*  **increment** (*int|string* $keyName, [*long* $value])
 
 Increment of a given key by $value
 
 
 
-public *mixed*  **decrement** ([*unknown* $key_name], [*long* $value])
+public *mixed*  **decrement** (*int|string* $keyName, [*long* $value])
 
 Decrement of a given key by $value
 
@@ -137,18 +131,6 @@ Checks whether the last cache is fresh or cached
 public *boolean*  **isStarted** () inherited from Phalcon\\Cache\\Backend
 
 Checks whether the cache has starting buffering or not
-
-
-
-public  **setLastKey** (*string* $lastKey) inherited from Phalcon\\Cache\\Backend
-
-Sets the last key used in the cache
-
-
-
-public *string*  **getLastKey** () inherited from Phalcon\\Cache\\Backend
-
-Gets the last key stored by the cache
 
 
 

@@ -2,8 +2,8 @@
 ========================
 Socket 类为网络通信提供了一套常用的方法和属性。
 
-套接字服务类（Socket Server Class）
------------------------------------
+套接字服务端类（Socket Server Class）
+-------------------------------------
 :doc:`Phalcon\\Socket\\Server <../api/Phalcon_Socket_Server>` 可以等待客户端的连接请求以及接收客户端发送的数据。
 
 .. code-block:: php

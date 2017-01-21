@@ -71,7 +71,7 @@ Check whether the session has been started
 
 
 
-abstract public *boolean*  **destroy** ([*unknown* $session_id])
+abstract public *boolean*  **destroy** ([*unknown* $sessionId])
 
 Destroys the active session
 

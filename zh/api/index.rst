@@ -48,8 +48,7 @@ API Indice
    Phalcon_Cache_Backend
    Phalcon_Cache_Backend_Apc
    Phalcon_Cache_Backend_File
-   Phalcon_Cache_Backend_Libmemcached
-   Phalcon_Cache_Backend_Memcache
+   Phalcon_Cache_Backend_Memcached
    Phalcon_Cache_Backend_Memory
    Phalcon_Cache_Backend_Mongo
    Phalcon_Cache_Backend_Redis
@@ -144,6 +143,7 @@ API Indice
    Phalcon_Http_Client_Response
    Phalcon_Http_Cookie
    Phalcon_Http_Cookie_Exception
+   Phalcon_Http_Parser
    Phalcon_Http_Request
    Phalcon_Http_Request_Exception
    Phalcon_Http_Request_File
@@ -157,6 +157,8 @@ API Indice
    Phalcon_Image_Adapter_GD
    Phalcon_Image_Adapter_Imagick
    Phalcon_Image_Exception
+   Phalcon_Intrusive_Avltree
+   Phalcon_Intrusive_Avltree_Node
    Phalcon_JsonRPc_Client_Response
    Phalcon_JsonRpc_Client
    Phalcon_JsonRpc_Client_Exception
@@ -199,8 +201,7 @@ API Indice
    Phalcon_Mvc_Model_MetaData_Apc
    Phalcon_Mvc_Model_MetaData_Cache
    Phalcon_Mvc_Model_MetaData_Files
-   Phalcon_Mvc_Model_MetaData_Libmemcached
-   Phalcon_Mvc_Model_MetaData_Memcache
+   Phalcon_Mvc_Model_MetaData_Memcached
    Phalcon_Mvc_Model_MetaData_Memory
    Phalcon_Mvc_Model_MetaData_Mongo
    Phalcon_Mvc_Model_MetaData_Redis
@@ -254,6 +255,7 @@ API Indice
    Phalcon_Paginator_Exception
    Phalcon_Process_Exception
    Phalcon_Process_Proc
+   Phalcon_Process_Sharedmemory
    Phalcon_Queue_Beanstalk
    Phalcon_Queue_Beanstalk_Job
    Phalcon_Random
@@ -264,8 +266,7 @@ API Indice
    Phalcon_Session_Adapter
    Phalcon_Session_Adapter_Cache
    Phalcon_Session_Adapter_Files
-   Phalcon_Session_Adapter_Libmemcached
-   Phalcon_Session_Adapter_Memcache
+   Phalcon_Session_Adapter_Memcached
    Phalcon_Session_Bag
    Phalcon_Session_Exception
    Phalcon_Socket
@@ -304,6 +305,9 @@ API Indice
    Phalcon_Validation_Validator_Uniqueness
    Phalcon_Validation_Validator_Url
    Phalcon_Version
+   Phalcon_Websocket_Client
+   Phalcon_Websocket_Connection
+   Phalcon_Websocket_Server
    Phalcon_Acl_AdapterInterface
    Phalcon_Acl_ResourceAware
    Phalcon_Acl_ResourceInterface

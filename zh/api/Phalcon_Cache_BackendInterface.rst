@@ -12,7 +12,7 @@ Phalcon\\Cache\\BackendInterface initializer
 Methods
 -------
 
-abstract public *mixed*  **start** (*int|string* $keyName, [*long* $lifetime])
+abstract public *mixed*  **start** (*string* $keyName, [*long* $lifetime])
 
 Starts a cache. The $keyname allows to identify the created fragment
 
@@ -48,31 +48,19 @@ Checks whether the cache has starting buffering or not
 
 
 
-abstract public  **setLastKey** (*string* $lastKey)
-
-Sets the last key used in the cache
-
-
-
-abstract public *string*  **getLastKey** ()
-
-Gets the last key stored by the cache
-
-
-
-abstract public *mixed*  **get** (*int|string* $keyName, [*long* $lifetime])
+abstract public *mixed*  **get** (*string* $keyName)
 
 Returns a cached content
 
 
 
-abstract public  **save** ([*int|string* $keyName], [*string* $content], [*long* $lifetime], [*boolean* $stopBuffer])
+abstract public  **save** ([*string* $keyName], [*unknown* $value], [*long* $lifetime], [*boolean* $stopBuffer])
 
 Stores cached content into the file backend and stops the frontend
 
 
 
-abstract public *boolean*  **delete** (*int|string* $keyName)
+abstract public *boolean*  **delete** (*string* $keyName)
 
 Deletes a value from the cache by its key
 
@@ -84,7 +72,7 @@ Query the existing cached keys
 
 
 
-abstract public *boolean*  **exists** ([*string* $keyName], [*long* $lifetime])
+abstract public *boolean*  **exists** (*string* $keyName)
 
 Checks if cache exists and it hasn't expired
 

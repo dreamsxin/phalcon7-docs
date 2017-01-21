@@ -1,5 +1,5 @@
-Class **Phalcon\\Mvc\\Model\\MetaData\\Memcache**
-=================================================
+Class **Phalcon\\Mvc\\Model\\MetaData\\Memcached**
+==================================================
 
 *extends* abstract class :doc:`Phalcon\\Mvc\\Model\\MetaData <Phalcon_Mvc_Model_MetaData>`
 
@@ -8,18 +8,22 @@ Class **Phalcon\\Mvc\\Model\\MetaData\\Memcache**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/model/metadata/memcache.c" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/model/metadata/memcached.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Stores model meta-data in the Memcache cache. Data will erased if the web server is restarted  By default meta-data is stored for 48 hours (172800 seconds)  You can query the meta-data by printing memcache_get('$PMM$') or memcache_get('$PMM$my-app-id')  
+Stores model meta-data in the Memcached cache. Data will erased if the web server is restarted  By default meta-data is stored for 48 hours (172800 seconds)  You can query the meta-data by printing memcached_get('$PMM$') or memcached_get('$PMM$my-app-id')  
 
 .. code-block:: php
 
     <?php
 
-    $metaData = new Phalcon\Mvc\Model\Metadata\Memcache(array(
-    	'host' => 'localhost',
-    	'port' => 11211,
-      	'persistent' => TRUE
+    $metaData = new Phalcon\Mvc\Model\Metadata\Memcached(array(
+         'servers' => array(
+             array('host' => 'localhost', 'port' => 11211, 'weight' => 1),
+         ),
+         'client' => array(
+             Memcached::OPT_HASH => Memcached::HASH_MD5,
+             Memcached::OPT_PREFIX_KEY => 'prefix.',
+         ),
     	'prefix' => 'my-app-id',
     	'lifetime' => 86400
     ));
@@ -70,19 +74,19 @@ Methods
 
 public  **__construct** ([*array* $options])
 
-Phalcon\\Mvc\\Model\\MetaData\\Memcache constructor
+Phalcon\\Mvc\\Model\\MetaData\\Memcached constructor
 
 
 
 public *array*  **read** (*string* $key)
 
-Reads metadata from Memcache
+Reads metadata from Memcached
 
 
 
 public  **write** (*string* $key, *array* $data)
 
-Writes the metadata to Memcache
+Writes the metadata to Memcached
 
 
 

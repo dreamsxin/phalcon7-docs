@@ -1,5 +1,5 @@
-Class **Phalcon\\Cache\\Backend\\Libmemcached**
-===============================================
+Class **Phalcon\\Cache\\Backend\\Memcached**
+============================================
 
 *extends* abstract class :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
@@ -8,9 +8,9 @@ Class **Phalcon\\Cache\\Backend\\Libmemcached**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/cache/backend/libmemcached.c" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/cache/backend/memcached.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Allows to cache output fragments, PHP data or raw data to a libmemcached backend  This adapter uses the special memcached key "_PHCM" to store all the keys internally used by the adapter  
+Allows to cache output fragments, PHP data or raw data to a memcached backend  This adapter uses the special memcached key "_PHCM" to store all the keys internally used by the adapter  
 
 .. code-block:: php
 
@@ -22,7 +22,7 @@ Allows to cache output fragments, PHP data or raw data to a libmemcached backend
      ));
     
      //Create the Cache setting memcached connection options
-     $cache = new Phalcon\Cache\Backend\Libmemcached($frontCache, array(
+     $cache = new Phalcon\Cache\Backend\Memcached($frontCache, array(
          'servers' => array(
              array('host' => 'localhost',
                    'port' => 11211,
@@ -47,7 +47,7 @@ Methods
 
 public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontend, [*array* $options])
 
-Phalcon\\Cache\\Backend\\Libmemcached constructor
+Phalcon\\Cache\\Backend\\Memcached constructor
 
 
 
@@ -57,19 +57,19 @@ Create internal connection to memcached
 
 
 
-public *mixed*  **get** (*int|string* $keyName, [*long* $lifetime])
+public *mixed*  **get** (*string* $keyName)
 
 Returns a cached content
 
 
 
-public  **save** ([*int|string* $keyName], [*string* $content], [*long* $lifetime], [*boolean* $stopBuffer])
+public  **save** ([*string* $keyName], [*unknown* $value], [*long* $lifetime], [*boolean* $stopBuffer])
 
 Stores cached content into the Memcached backend and stops the frontend
 
 
 
-public *boolean*  **delete** (*int|string* $keyName)
+public *boolean*  **delete** (*string* $keyName)
 
 Deletes a value from the cache by its key
 
@@ -81,19 +81,19 @@ Query the existing cached keys
 
 
 
-public *boolean*  **exists** ([*string* $keyName], [*long* $lifetime])
+public *boolean*  **exists** (*string* $keyName)
 
 Checks if cache exists and it hasn't expired
 
 
 
-public *mixed*  **increment** ([*unknown* $key_name], [*long* $value])
+public *mixed*  **increment** (*string* $keyName, [*long* $value])
 
 Increment of a given key, by number $value
 
 
 
-public *mixed*  **decrement** ([*unknown* $key_name], [*long* $value])
+public *mixed*  **decrement** (*string* $keyName, [*long* $value])
 
 Decrement of a given key, by number $value
 
@@ -148,18 +148,6 @@ Checks whether the last cache is fresh or cached
 public *boolean*  **isStarted** () inherited from Phalcon\\Cache\\Backend
 
 Checks whether the cache has starting buffering or not
-
-
-
-public  **setLastKey** (*string* $lastKey) inherited from Phalcon\\Cache\\Backend
-
-Sets the last key used in the cache
-
-
-
-public *string*  **getLastKey** () inherited from Phalcon\\Cache\\Backend
-
-Gets the last key stored by the cache
 
 
 

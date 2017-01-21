@@ -32,13 +32,13 @@ Stores content in memory. Data is lost when the request is finished
 Methods
 -------
 
-public *mixed*  **get** (*string* $keyName, [*long* $lifetime])
+public *mixed*  **get** (*string* $keyName)
 
 Returns a cached content
 
 
 
-public  **save** ([*string* $keyName], [*string* $content], [*long* $lifetime], [*boolean* $stopBuffer])
+public  **save** ([*string* $keyName], [*unknown* $value], [*long* $lifetime], [*boolean* $stopBuffer])
 
 Stores cached content into the backend and stops the frontend
 
@@ -56,19 +56,19 @@ Query the existing cached keys
 
 
 
-public *boolean*  **exists** ([*string* $keyName], [*long* $lifetime])
+public *boolean*  **exists** (*string* $keyName)
 
 Checks if cache exists and it hasn't expired
 
 
 
-public *mixed*  **increment** ([*unknown* $key_name], [*unknown* $value])
+public *mixed*  **increment** (*string* $keyName, [*unknown* $value])
 
 Increment of given $keyName by $value
 
 
 
-public *long*  **decrement** ([*unknown* $key_name], [*long* $value])
+public *long*  **decrement** (*string* $keyName, [*long* $value])
 
 Decrement of $keyName by given $value
 
@@ -119,18 +119,6 @@ Checks whether the last cache is fresh or cached
 public *boolean*  **isStarted** () inherited from Phalcon\\Cache\\Backend
 
 Checks whether the cache has starting buffering or not
-
-
-
-public  **setLastKey** (*string* $lastKey) inherited from Phalcon\\Cache\\Backend
-
-Sets the last key used in the cache
-
-
-
-public *string*  **getLastKey** () inherited from Phalcon\\Cache\\Backend
-
-Gets the last key stored by the cache
 
 
 

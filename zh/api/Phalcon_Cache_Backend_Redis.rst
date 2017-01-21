@@ -52,13 +52,13 @@ Create internal connection to redisd
 
 
 
-public *mixed*  **get** (*int|string* $keyName, [*long* $lifetime])
+public *mixed*  **get** (*int|string* $keyName)
 
 Returns a cached content
 
 
 
-public  **save** ([*int|string* $keyName], [*string* $content], [*long* $lifetime], [*boolean* $stopBuffer])
+public  **save** ([*int|string* $keyName], [*unknown* $value], [*long* $lifetime], [*boolean* $stopBuffer])
 
 Stores cached content into the Redisd backend and stops the frontend
 
@@ -76,19 +76,19 @@ Query the existing cached keys
 
 
 
-public *boolean*  **exists** ([*string* $keyName], [*long* $lifetime])
+public *boolean*  **exists** (*string* $keyName)
 
 Checks if cache exists and it hasn't expired
 
 
 
-public *mixed*  **increment** ([*unknown* $key_name], [*long* $value])
+public *mixed*  **increment** (*string* $keyName, [*long* $value])
 
 Atomic increment of a given key, by number $value
 
 
 
-public *mixed*  **decrement** ([*unknown* $key_name], [*long* $value])
+public *mixed*  **decrement** (*string* $keyName, [*long* $value])
 
 Atomic decrement of a given key, by number $value
 
@@ -143,18 +143,6 @@ Checks whether the last cache is fresh or cached
 public *boolean*  **isStarted** () inherited from Phalcon\\Cache\\Backend
 
 Checks whether the cache has starting buffering or not
-
-
-
-public  **setLastKey** (*string* $lastKey) inherited from Phalcon\\Cache\\Backend
-
-Sets the last key used in the cache
-
-
-
-public *string*  **getLastKey** () inherited from Phalcon\\Cache\\Backend
-
-Gets the last key stored by the cache
 
 
 

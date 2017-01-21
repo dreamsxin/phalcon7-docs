@@ -153,7 +153,7 @@ Check whether the session has been started
 
 
 
-public *boolean*  **destroy** ([*unknown* $session_id]) inherited from Phalcon\\Session\\Adapter
+public *boolean*  **destroy** ([*unknown* $sessionId]) inherited from Phalcon\\Session\\Adapter
 
 Destroys the active session 
 
