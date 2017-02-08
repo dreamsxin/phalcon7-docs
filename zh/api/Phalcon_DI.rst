@@ -1,20 +1,20 @@
-Class **Phalcon\\DI**
+Class **Phalcon\\Di**
 =====================
 
-*implements* :doc:`Phalcon\\DIInterface <Phalcon_DIInterface>`
+*implements* :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`
 
 .. role:: raw-html(raw)
    :format: html
 
 :raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/di.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Phalcon\\DI is a component that implements Dependency Injection/Service Location of services and it's itself a container for them.  Since Phalcon is highly decoupled, Phalcon\\DI is essential to integrate the different components of the framework. The developer can also use this component to inject dependencies and manage global instances of the different classes used in the application.  Basically, this component implements the `Inversion of Control` pattern. Applying this, the objects do not receive their dependencies using setters or constructors, but requesting a service dependency injector. This reduces the overall complexity, since there is only one way to get the required dependencies within a component.  Additionally, this pattern increases testability in the code, thus making it less prone to errors.  
+Phalcon\\Di is a component that implements Dependency Injection/Service Location of services and it's itself a container for them.  Since Phalcon is highly decoupled, Phalcon\\Di is essential to integrate the different components of the framework. The developer can also use this component to inject dependencies and manage global instances of the different classes used in the application.  Basically, this component implements the `Inversion of Control` pattern. Applying this, the objects do not receive their dependencies using setters or constructors, but requesting a service dependency injector. This reduces the overall complexity, since there is only one way to get the required dependencies within a component.  Additionally, this pattern increases testability in the code, thus making it less prone to errors.  
 
 .. code-block:: php
 
     <?php
 
-     $di = new Phalcon\DI();
+     $di = new Phalcon\Di();
     
      //Using a string definition
      $di->set('request', 'Phalcon\Http\Request', true);
@@ -33,7 +33,7 @@ Methods
 
 public  **__construct** ([*unknown* $name])
 
-Phalcon\\DI constructor
+Phalcon\\Di constructor
 
 
 
@@ -55,7 +55,7 @@ Returns the custom events manager
 
 
 
-public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **set** (*string* $name, *mixed* $definition, [*boolean* $shared])
+public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **set** (*string* $name, *mixed* $definition, [*boolean* $shared])
 
 Registers a service in the services container
 
@@ -67,7 +67,7 @@ Removes a service in the services container
 
 
 
-public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **setRaw** (*string* $name, [*mixed* $definition], [*boolean* $shared])
+public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **setRaw** (*string* $name, [*mixed* $definition], [*boolean* $shared])
 
 Returns a service definition without resolving
 
@@ -79,15 +79,15 @@ Returns a service definition without resolving
 
 
 
-public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **getService** (*string* $name)
+public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **getService** (*string* $name)
 
-Returns a Phalcon\\DI\\Service instance
+Returns a Phalcon\\Di\\Service instance
 
 
 
-public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **setService** (*string* $name, :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>` $rawDefinition)
+public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **setService** (*string* $name, :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>` $rawDefinition)
 
-Sets a service using a raw Phalcon\\DI\\Service definition
+Sets a service using a raw Phalcon\\Di\\Service definition
 
 
 
@@ -115,19 +115,19 @@ Check whether the last service obtained via getShared produced a fresh instance 
 
 
 
-public :doc:`Phalcon\\DI\\Service <Phalcon_DI_Service>` [] **getServices** ()
+public :doc:`Phalcon\\Di\\Service <Phalcon_Di_Service>` [] **getServices** ()
 
 Return the services registered in the DI
 
 
 
-public static  **setDefault** (:doc:`Phalcon\\DIInterface <Phalcon_DIInterface>` $dependencyInjector)
+public static  **setDefault** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Set a default dependency injection container to be obtained into static methods
 
 
 
-public static :doc:`Phalcon\\DIInterface <Phalcon_DIInterface>`  **getDefault** ()
+public static :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDefault** ()
 
 Return the lastest DI created
 
@@ -139,13 +139,13 @@ Resets the internal default DI
 
 
 
-public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **attempt** (*string* $name, *mixed* $definition, [*boolean* $shared])
+public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **attempt** (*string* $name, *mixed* $definition, [*boolean* $shared])
 
 Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
 
 
 
-public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **setShared** (*string* $name, *mixed* $definition)
+public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **setShared** (*string* $name, *mixed* $definition)
 
 Registers an "always shared" service in the services container
 

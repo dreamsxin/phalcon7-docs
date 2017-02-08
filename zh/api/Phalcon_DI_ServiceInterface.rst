@@ -1,4 +1,4 @@
-Interface **Phalcon\\DI\\ServiceInterface**
+Interface **Phalcon\\Di\\ServiceInterface**
 ===========================================
 
 .. role:: raw-html(raw)
@@ -6,7 +6,7 @@ Interface **Phalcon\\DI\\ServiceInterface**
 
 :raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/di/serviceinterface.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Phalcon\\DI\\ServiceInterface initializer
+Phalcon\\Di\\ServiceInterface initializer
 
 
 Methods
@@ -48,7 +48,7 @@ Checks if the service was resolved
 
 
 
-abstract public *object*  **resolve** ([*array* $parameters], [:doc:`Phalcon\\DIInterface <Phalcon_DIInterface>` $dependencyInjector])
+abstract public *object*  **resolve** ([*array* $parameters], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 Resolves the service
 

@@ -18,7 +18,7 @@ Registers an autoloader related to the module
 
 
 
-abstract public  **registerServices** (:doc:`Phalcon\\DIInterface <Phalcon_DIInterface>` $dependencyInjector)
+abstract public  **registerServices** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Registers services related to the module
 

@@ -200,7 +200,7 @@
 
     <?php
 
-    use Phalcon\DIspatcher;
+    use Phalcon\Dispatcher;
     use Phalcon\Mvc\Dispatcher as MvcDispatcher;
     use Phalcon\Events\Manager as EventsManager;
 
@@ -238,7 +238,7 @@
 
     <?php
 
-    use Phalcon\DIspatcher;
+    use Phalcon\Dispatcher;
     use Phalcon\Mvc\Dispatcher as MvcDispatcher;
     use Phalcon\Events\Manager as EventsManager;
 
@@ -272,7 +272,7 @@
 获取参数（Getting Parameters）
 ------------------------------
 当路由提供了命名的参数变量，你就可以在控制器、视图或者任何一个继承了
-:doc:`Phalcon\\Di\\Injectable <../api/Phalcon_DI_Injectable>` 的组件中获得这些参数。
+:doc:`Phalcon\\Di\\Injectable <../api/Phalcon_Di_Injectable>` 的组件中获得这些参数。
 
 .. code-block:: php
 
@@ -465,7 +465,7 @@ http://example.com/admin/products/index.php
 
     <?php
 
-    use Phalcon\DIspatcher;
+    use Phalcon\Dispatcher;
     use Phalcon\Mvc\Dispatcher as MvcDispatcher;
     use Phalcon\Events\Manager as EventsManager;
     use Phalcon\Mvc\Dispatcher\Exception as DispatchException;

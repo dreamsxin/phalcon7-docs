@@ -44,7 +44,7 @@ Methods
 
 public  **__construct** ()
 
-Phalcon\\DI constructor
+Phalcon\\Di constructor
 
 
 

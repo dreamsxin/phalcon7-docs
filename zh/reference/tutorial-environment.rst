@@ -81,7 +81,7 @@
 
     $loader->registerDirs($dirs)->register();
 
-    $di = new \Phalcon\DI\FactoryDefault();
+    $di = new \Phalcon\Di\FactoryDefault();
 
     $di->set('view', function () use ($config, $environment) {
         $view = new \Phalcon\Mvc\View();

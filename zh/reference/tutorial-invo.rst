@@ -199,7 +199,7 @@ Phalcon 是一个高度解耦的框架，所以我们一个组件来充当胶水
 
     <?php
 
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di\FactoryDefault;
 
     // ...
 

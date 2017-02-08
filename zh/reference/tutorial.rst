@@ -101,7 +101,7 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
         ))->register();
 
         // Create a DI
-        $di = new Phalcon\DI\FactoryDefault();
+        $di = new Phalcon\Di\FactoryDefault();
 
         // Setup the view component
         $di->set('view', function () {
@@ -150,7 +150,7 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 在使用Phalcon时必须理解的一个非常重要的概念是 :doc:`依赖注入容器(dependency injection container) <di>`. 这听起来复杂,但实际上非常简单实用。
 
-服务容器是一个全局存储的将要被使用的应用程序功能包。每次框架需要的一个组件时，会请求这个使用协定好名称的服务容器。因为Phalcon是一个高度解耦的框架， :doc:`Phalcon\\Di <../api/Phalcon_DI>` 作为黏合剂，促使不同组件的集成，以一个透明的方式实现他们一起进行工作。
+服务容器是一个全局存储的将要被使用的应用程序功能包。每次框架需要的一个组件时，会请求这个使用协定好名称的服务容器。因为Phalcon是一个高度解耦的框架， :doc:`Phalcon\\Di <../api/Phalcon_Di>` 作为黏合剂，促使不同组件的集成，以一个透明的方式实现他们一起进行工作。
 
 .. code-block:: php
 
@@ -161,7 +161,7 @@ Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因�
     // Create a DI
     $di = new Phalcon\Db\Adapter\Pdo\Mysql();
 
-:doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_DI_FactoryDefault>` 是 :doc:`Phalcon\\Di <../api/Phalcon_DI>` 的一个变体。为了让事情变得更容易，它已注册了Phalcon的大多数组件。
+:doc:`Phalcon\\Di\\FactoryDefault <../api/Phalcon_Di_FactoryDefault>` 是 :doc:`Phalcon\\Di <../api/Phalcon_Di>` 的一个变体。为了让事情变得更容易，它已注册了Phalcon的大多数组件。
 因此，我们不需要一个一个注册这些组件。在以后更换工厂服务的时候也不会有什么问题。
 
 在接下来的部分，我们注册了“视图(view)”服务，指示框架将去指定的目录寻找视图文件。由于视图并非PHP类，它们不能被自动加载器加载。
@@ -410,7 +410,7 @@ Phalcon带来的第一个完全用C语言编写的PHP ORM。它简化了开发�
     <?php
 
     use Phalcon\Loader;
-    use Phalcon\DI\FactoryDefault;
+    use Phalcon\Di\FactoryDefault;
     use Phalcon\Mvc\View;
     use Phalcon\Mvc\Application;
     use Phalcon\Mvc\Url as UrlProvider;

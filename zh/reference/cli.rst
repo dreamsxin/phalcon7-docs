@@ -22,7 +22,7 @@ CLI 应用即是运行在命令行窗体上的应用。主要用来实现后台�
     <?php
 
     // 使用CLI工厂类作为默认的服务容器
-    $di = new Phalcon\DI\FactoryDefault\Cli();
+    $di = new Phalcon\Di\FactoryDefault\Cli();
 
     // 定义应用目录路径
     defined('APPLICATION_PATH') || define('APPLICATION_PATH', realpath(dirname(__FILE__)));
@@ -69,7 +69,7 @@ CLI 应用即是运行在命令行窗体上的应用。主要用来实现后台�
 
     <?php
 
-    use Phalcon\DI\FactoryDefault\Cli as CliDI,
+    use Phalcon\Di\FactoryDefault\Cli as CliDI,
         Phalcon\CLI\Console as ConsoleApp;
 
     define('VERSION', '1.0.0');

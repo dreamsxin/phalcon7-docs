@@ -74,13 +74,13 @@ API Indice
    Phalcon_Config_Exception
    Phalcon_Crypt
    Phalcon_Crypt_Exception
-   Phalcon_DI
-   Phalcon_DI_Exception
-   Phalcon_DI_FactoryDefault
-   Phalcon_DI_FactoryDefault_CLI
-   Phalcon_DI_Injectable
-   Phalcon_DI_Service
-   Phalcon_DI_Service_Builder
+   Phalcon_Di
+   Phalcon_Di_Exception
+   Phalcon_Di_FactoryDefault
+   Phalcon_Di_FactoryDefault_CLI
+   Phalcon_Di_Injectable
+   Phalcon_Di_Service
+   Phalcon_Di_Service_Builder
    Phalcon_Date
    Phalcon_Date_DateTime
    Phalcon_Db
@@ -320,9 +320,9 @@ API Indice
    Phalcon_Cache_FrontendInterface
    Phalcon_Config_AdapterInterface
    Phalcon_CryptInterface
-   Phalcon_DIInterface
-   Phalcon_DI_InjectionAwareInterface
-   Phalcon_DI_ServiceInterface
+   Phalcon_DiInterface
+   Phalcon_Di_InjectionAwareInterface
+   Phalcon_Di_ServiceInterface
    Phalcon_Db_AdapterInterface
    Phalcon_Db_ColumnInterface
    Phalcon_Db_DialectInterface

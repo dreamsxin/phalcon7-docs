@@ -1,4 +1,4 @@
-Interface **Phalcon\\DIInterface**
+Interface **Phalcon\\DiInterface**
 ==================================
 
 *extends* ArrayAccess
@@ -8,13 +8,13 @@ Interface **Phalcon\\DIInterface**
 
 :raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/diinterface.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Phalcon\\DIInterface initializer
+Phalcon\\DiInterface initializer
 
 
 Methods
 -------
 
-abstract public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **set** (*string* $name, *mixed* $definition, [*boolean* $shared])
+abstract public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **set** (*string* $name, *mixed* $definition, [*boolean* $shared])
 
 Registers a service in the service container
 
@@ -38,13 +38,13 @@ Resolves a shared service based on their configuration
 
 
 
-abstract public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **setService** (*string* $name, :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>` $rawDefinition)
+abstract public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **setService** (*string* $name, :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>` $rawDefinition)
 
-Sets a service using a raw Phalcon\\DI\\Service definition
+Sets a service using a raw Phalcon\\Di\\Service definition
 
 
 
-abstract public :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`  **getService** (*string* $name)
+abstract public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **getService** (*string* $name)
 
 Returns the corresponding Phalcon\\Di\\Service instance for a service
 
@@ -68,13 +68,13 @@ Return the services registered in the DI
 
 
 
-abstract public static  **setDefault** (*Phalcon_DIInterface* $dependencyInjector)
+abstract public static  **setDefault** (*Phalcon_DiInterface* $dependencyInjector)
 
 Set the default dependency injection container to be obtained into static methods
 
 
 
-abstract public static *Phalcon_DIInterface*  **getDefault** ()
+abstract public static *Phalcon_DiInterface*  **getDefault** ()
 
 Return the last DI created
 

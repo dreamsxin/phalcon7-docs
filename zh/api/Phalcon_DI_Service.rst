@@ -1,7 +1,7 @@
-Class **Phalcon\\DI\\Service**
+Class **Phalcon\\Di\\Service**
 ==============================
 
-*implements* :doc:`Phalcon\\DI\\ServiceInterface <Phalcon_DI_ServiceInterface>`
+*implements* :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`
 
 .. role:: raw-html(raw)
    :format: html
@@ -14,7 +14,7 @@ Represents individually a service in the services container
 
     <?php
 
-     $service = new Phalcon\DI\Service('request', 'Phalcon\Http\Request');
+     $service = new Phalcon\Di\Service('request', 'Phalcon\Http\Request');
      $request = $service->resolve();
 
 .. code-block:: php
@@ -68,13 +68,13 @@ Returns the service definition
 
 
 
-public *object*  **resolve** ([*array* $parameters], [:doc:`Phalcon\\DIInterface <Phalcon_DIInterface>` $dependencyInjector])
+public *object*  **resolve** ([*array* $parameters], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 Resolves the service
 
 
 
-public :doc:`Phalcon\\DI\\Service <Phalcon_DI_Service>`  **setParameter** (*long* $position, *array* $parameter)
+public :doc:`Phalcon\\Di\\Service <Phalcon_Di_Service>`  **setParameter** (*long* $position, *array* $parameter)
 
 Changes a parameter in the definition without resolve the service
 
@@ -92,7 +92,7 @@ Returns true if the service was resolved
 
 
 
-public static :doc:`Phalcon\\DI\\Service <Phalcon_DI_Service>`  **__set_state** ([*array* $properties])
+public static :doc:`Phalcon\\Di\\Service <Phalcon_Di_Service>`  **__set_state** ([*array* $properties])
 
 Restore the internal state of a service
 

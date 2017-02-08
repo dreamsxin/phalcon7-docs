@@ -1,4 +1,4 @@
-Class **Phalcon\\DI\\Service\\Builder**
+Class **Phalcon\\Di\\Service\\Builder**
 =======================================
 
 .. role:: raw-html(raw)
@@ -24,7 +24,7 @@ Resolves an array of parameters
 
 
 
-public *mixed*  **build** (:doc:`Phalcon\\DIInterface <Phalcon_DIInterface>` $dependencyInjector, *array* $definition, [*array* $parameters])
+public *mixed*  **build** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector, *array* $definition, [*array* $parameters])
 
 Builds a service using a complex service definition
 

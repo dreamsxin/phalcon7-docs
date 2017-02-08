@@ -10,7 +10,7 @@ Class **Phalcon\\Assets\\Exception**
 
 :raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/assets/exception.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Phalcon\\DI\\Exception  Exceptions thrown in Phalcon\\Assets will use this class
+Phalcon\\Di\\Exception  Exceptions thrown in Phalcon\\Assets will use this class
 
 
 Methods
