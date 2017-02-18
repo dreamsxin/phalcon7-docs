@@ -97,6 +97,8 @@ Phalcon7 作为 Phalcon 1.3 系列的继承者，所以版权理所当然的属�
    reference/binary
    reference/http
    reference/async
+   reference/intrusive
+   reference/storage
    reference/socket
    reference/websocket
    reference/i18n

@@ -1,5 +1,5 @@
-Class **Phalcon\\CLI\\Task**
-============================
+Class **Phalcon\\Cli\\Router**
+==============================
 
 *extends* abstract class :doc:`Phalcon\\Di\\Injectable <Phalcon_Di_Injectable>`
 
@@ -8,34 +8,92 @@ Class **Phalcon\\CLI\\Task**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/cli/task.c" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/cli/router.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Every command-line task should extend this class that encapsulates all the task functionality  A task can be used to run "tasks" such as migrations, cronjobs, unit-tests, or anything that you want. The Task class should at least have a "mainAction" method  
+Phalcon\\Cli\\Router is the standard framework router. Routing is the process of taking a command-line arguments and decomposing it into parameters to determine which module, task, and action of that task should receive the request    
 
 .. code-block:: php
 
     <?php
 
-    class HelloTask extends \Phalcon\CLI\Task
-    {
-    
-      //This action will be executed by default
-      public function mainAction()
-      {
-    
-      }
-    
-      public function findAction()
-      {
-    
-      }
-    
-    }
+    $router = new Phalcon\Cli\Router();
+    $router->handle(array(
+    	'module' => 'main',
+    	'task' => 'videos',
+    	'action' => 'process'
+    ));
+    echo $router->getTaskName();
 
 
 
 Methods
 -------
+
+public  **__construct** ()
+
+Phalcon\\Cli\\Router constructor
+
+
+
+public  **setDefaultModule** (*string* $moduleName)
+
+Sets the name of the default module
+
+
+
+public  **setDefaultNamespace** (*string* $namespaceName)
+
+Sets the name of the default namespace
+
+
+
+public  **setDefaultTask** (*string* $taskName)
+
+Sets the default controller name
+
+
+
+public  **setDefaultAction** (*string* $actionName)
+
+Sets the default action name
+
+
+
+public  **handle** ([*array* $arguments])
+
+Handles routing information received from command-line arguments
+
+
+
+public *string*  **getNamespaceName** ()
+
+Returns proccesed namespace name
+
+
+
+public *string*  **getModuleName** ()
+
+Returns proccesed module name
+
+
+
+public *string*  **getTaskName** ()
+
+Returns proccesed task name
+
+
+
+public *string*  **getActionName** ()
+
+Returns proccesed action name
+
+
+
+public *array*  **getParams** ()
+
+Returns proccesed extra params
+
+
 
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Di\\Injectable
 

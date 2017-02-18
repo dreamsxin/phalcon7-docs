@@ -1,4 +1,4 @@
-Class **Phalcon\\CLI\\Dispatcher**
+Class **Phalcon\\Cli\\Dispatcher**
 ==================================
 
 *extends* abstract class :doc:`Phalcon\\Dispatcher <Phalcon_Dispatcher>`
@@ -18,7 +18,7 @@ Dispatching is the process of taking the command-line arguments, extracting the 
 
     $di = new Phalcon\Di();
     
-    $dispatcher = new Phalcon\CLI\Dispatcher();
+    $dispatcher = new Phalcon\Cli\Dispatcher();
     
       $dispatcher->setDI($di);
     
@@ -90,13 +90,13 @@ Possible task class name that will be located to dispatch the request
 
 
 
-public :doc:`Phalcon\\CLI\\Task <Phalcon_CLI_Task>`  **getLastTask** ()
+public :doc:`Phalcon\\Cli\\Task <Phalcon_Cli_Task>`  **getLastTask** ()
 
 Returns the lastest dispatched controller
 
 
 
-public :doc:`Phalcon\\CLI\\Task <Phalcon_CLI_Task>`  **getActiveTask** ()
+public :doc:`Phalcon\\Cli\\Task <Phalcon_Cli_Task>`  **getActiveTask** ()
 
 Returns the active task in the dispatcher
 
@@ -192,6 +192,12 @@ Gets action params
 
 
 
+public *boolean*  **hasParam** (*mixed* $param) inherited from Phalcon\\Dispatcher
+
+Check if a param exists
+
+
+
 public  **setParam** (*mixed* $param, *mixed* $value) inherited from Phalcon\\Dispatcher
 
 Set a param by its name or numeric index
@@ -273,7 +279,7 @@ Possible class name that will be located to dispatch the request
 
 public  **camelizeNamespace** (*bool* $camelize) inherited from Phalcon\\Dispatcher
 
-Enables/Disables automatically camelize namespace  
+Enables/Disables automatically camelize namespace 
 
 .. code-block:: php
 
@@ -286,7 +292,7 @@ Enables/Disables automatically camelize namespace
 
 public  **camelizeController** (*bool* $camelize) inherited from Phalcon\\Dispatcher
 
-Enables/Disables automatically camelize controller  
+Enables/Disables automatically camelize controller 
 
 .. code-block:: php
 

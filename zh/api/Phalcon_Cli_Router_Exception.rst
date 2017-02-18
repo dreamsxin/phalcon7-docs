@@ -1,4 +1,4 @@
-Class **Phalcon\\CLI\\Router\\Exception**
+Class **Phalcon\\Cli\\Router\\Exception**
 =========================================
 
 *extends* class :doc:`Phalcon\\Exception <Phalcon_Exception>`
@@ -10,7 +10,7 @@ Class **Phalcon\\CLI\\Router\\Exception**
 
 :raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/cli/router/exception.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Exceptions thrown in Phalcon\\CLI\\Router will use this class
+Exceptions thrown in Phalcon\\Cli\\Router will use this class
 
 
 Methods

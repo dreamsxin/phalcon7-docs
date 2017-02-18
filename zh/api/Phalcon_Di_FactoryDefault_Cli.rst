@@ -1,4 +1,4 @@
-Class **Phalcon\\Di\\FactoryDefault\\CLI**
+Class **Phalcon\\Di\\FactoryDefault\\Cli**
 ==========================================
 
 *extends* class :doc:`Phalcon\\Di\\FactoryDefault <Phalcon_Di_FactoryDefault>`
@@ -18,7 +18,7 @@ Methods
 
 public  **__construct** ()
 
-Phalcon\\Di\\FactoryDefault\\CLI constructor
+Phalcon\\Di\\FactoryDefault\\Cli constructor
 
 
 

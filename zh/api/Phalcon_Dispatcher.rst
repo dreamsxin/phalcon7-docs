@@ -10,7 +10,7 @@ Abstract class **Phalcon\\Dispatcher**
 
 :raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/dispatcher.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-This is the base class for Phalcon\\Mvc\\Dispatcher and Phalcon\\CLI\\Dispatcher. This class can't be instantiated directly, you can use it to create your own dispatchers
+This is the base class for Phalcon\\Mvc\\Dispatcher and Phalcon\\Cli\\Dispatcher. This class can't be instantiated directly, you can use it to create your own dispatchers
 
 
 Constants
@@ -121,6 +121,12 @@ Gets action params
 
 
 
+public *boolean*  **hasParam** (*mixed* $param)
+
+Check if a param exists
+
+
+
 public  **setParam** (*mixed* $param, *mixed* $value)
 
 Set a param by its name or numeric index
@@ -202,7 +208,7 @@ Possible class name that will be located to dispatch the request
 
 public  **camelizeNamespace** (*bool* $camelize)
 
-Enables/Disables automatically camelize namespace  
+Enables/Disables automatically camelize namespace 
 
 .. code-block:: php
 
@@ -215,7 +221,7 @@ Enables/Disables automatically camelize namespace
 
 public  **camelizeController** (*bool* $camelize)
 
-Enables/Disables automatically camelize controller  
+Enables/Disables automatically camelize controller 
 
 .. code-block:: php
 

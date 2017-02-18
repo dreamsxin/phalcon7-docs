@@ -54,6 +54,11 @@ Gets action params
 
 
 
+abstract public  **hasParam** (*unknown* $param)
+
+...
+
+
 abstract public  **setParam** (*mixed* $param, *mixed* $value)
 
 Set a param by its name or numeric index

@@ -1,4 +1,4 @@
-Class **Phalcon\\CLI\\Console\\Exception**
+Class **Phalcon\\Cli\\Console\\Exception**
 ==========================================
 
 *extends* class :doc:`Phalcon\\Exception <Phalcon_Exception>`
@@ -10,7 +10,7 @@ Class **Phalcon\\CLI\\Console\\Exception**
 
 :raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/cli/console/exception.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Exceptions thrown in Phalcon\\CLI\\Console will use this class
+Exceptions thrown in Phalcon\\Cli\\Console will use this class
 
 
 Methods

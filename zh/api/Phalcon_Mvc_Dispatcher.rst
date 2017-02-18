@@ -204,6 +204,12 @@ Gets action params
 
 
 
+public *boolean*  **hasParam** (*mixed* $param) inherited from Phalcon\\Dispatcher
+
+Check if a param exists
+
+
+
 public  **setParam** (*mixed* $param, *mixed* $value) inherited from Phalcon\\Dispatcher
 
 Set a param by its name or numeric index
@@ -285,7 +291,7 @@ Possible class name that will be located to dispatch the request
 
 public  **camelizeNamespace** (*bool* $camelize) inherited from Phalcon\\Dispatcher
 
-Enables/Disables automatically camelize namespace  
+Enables/Disables automatically camelize namespace 
 
 .. code-block:: php
 
@@ -298,7 +304,7 @@ Enables/Disables automatically camelize namespace
 
 public  **camelizeController** (*bool* $camelize) inherited from Phalcon\\Dispatcher
 
-Enables/Disables automatically camelize controller  
+Enables/Disables automatically camelize controller 
 
 .. code-block:: php
 

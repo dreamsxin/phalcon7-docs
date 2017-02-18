@@ -1,4 +1,4 @@
-Class **Phalcon\\CLI\\Console**
+Class **Phalcon\\Cli\\Console**
 ===============================
 
 *extends* abstract class :doc:`Phalcon\\Application <Phalcon_Application>`
@@ -18,7 +18,7 @@ Methods
 
 public  **__construct** ([*unknown* $dependencyInjector])
 
-Phalcon\\CLI\\Console constructor
+Phalcon\\Cli\\Console constructor
 
 
 

@@ -1,4 +1,4 @@
-Class **Phalcon\\CLI\\Dispatcher\\Exception**
+Class **Phalcon\\Cli\\Dispatcher\\Exception**
 =============================================
 
 *extends* class :doc:`Phalcon\\Exception <Phalcon_Exception>`
@@ -10,7 +10,7 @@ Class **Phalcon\\CLI\\Dispatcher\\Exception**
 
 :raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/cli/dispatcher/exception.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Exceptions thrown in Phalcon\\CLI\\Dispatcher will use this class
+Exceptions thrown in Phalcon\\Cli\\Dispatcher will use this class
 
 
 Methods

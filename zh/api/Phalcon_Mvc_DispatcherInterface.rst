@@ -92,6 +92,11 @@ Gets action params
 
 
 
+abstract public  **hasParam** (*unknown* $param) inherited from Phalcon\\DispatcherInterface
+
+...
+
+
 abstract public  **setParam** (*mixed* $param, *mixed* $value) inherited from Phalcon\\DispatcherInterface
 
 Set a param by its name or numeric index

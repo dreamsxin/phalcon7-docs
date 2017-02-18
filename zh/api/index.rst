@@ -38,13 +38,6 @@ API Indice
    Phalcon_Binary_Exception
    Phalcon_Binary_Reader
    Phalcon_Binary_Writer
-   Phalcon_CLI_Console
-   Phalcon_CLI_Console_Exception
-   Phalcon_CLI_Dispatcher
-   Phalcon_CLI_Dispatcher_Exception
-   Phalcon_CLI_Router
-   Phalcon_CLI_Router_Exception
-   Phalcon_CLI_Task
    Phalcon_Cache_Backend
    Phalcon_Cache_Backend_Apc
    Phalcon_Cache_Backend_File
@@ -62,9 +55,13 @@ API Indice
    Phalcon_Cache_Frontend_Output
    Phalcon_Cache_Multiple
    Phalcon_Cache_SHMemory
-   Phalcon_Chart_Captcha
-   Phalcon_Chart_Exception
-   Phalcon_Chart_QRcode
+   Phalcon_Cli_Console
+   Phalcon_Cli_Console_Exception
+   Phalcon_Cli_Dispatcher
+   Phalcon_Cli_Dispatcher_Exception
+   Phalcon_Cli_Router
+   Phalcon_Cli_Router_Exception
+   Phalcon_Cli_Task
    Phalcon_Config
    Phalcon_Config_Adapter
    Phalcon_Config_Adapter_Ini
@@ -74,13 +71,6 @@ API Indice
    Phalcon_Config_Exception
    Phalcon_Crypt
    Phalcon_Crypt_Exception
-   Phalcon_Di
-   Phalcon_Di_Exception
-   Phalcon_Di_FactoryDefault
-   Phalcon_Di_FactoryDefault_CLI
-   Phalcon_Di_Injectable
-   Phalcon_Di_Service
-   Phalcon_Di_Service_Builder
    Phalcon_Date
    Phalcon_Date_DateTime
    Phalcon_Db
@@ -104,6 +94,13 @@ API Indice
    Phalcon_Debug
    Phalcon_Debug_Dump
    Phalcon_Debug_Exception
+   Phalcon_Di
+   Phalcon_Di_Exception
+   Phalcon_Di_FactoryDefault
+   Phalcon_Di_FactoryDefault_Cli
+   Phalcon_Di_Injectable
+   Phalcon_Di_Service
+   Phalcon_Di_Service_Builder
    Phalcon_Dispatcher
    Phalcon_Escaper
    Phalcon_Escaper_Exception
@@ -269,10 +266,8 @@ API Indice
    Phalcon_Session_Adapter_Memcached
    Phalcon_Session_Bag
    Phalcon_Session_Exception
-   Phalcon_Socket
-   Phalcon_Socket_Client
-   Phalcon_Socket_Exception
-   Phalcon_Socket_Server
+   Phalcon_Storage_Btree
+   Phalcon_Storage_Exception
    Phalcon_Tag
    Phalcon_Tag_Exception
    Phalcon_Tag_Select
@@ -305,9 +300,6 @@ API Indice
    Phalcon_Validation_Validator_Uniqueness
    Phalcon_Validation_Validator_Url
    Phalcon_Version
-   Phalcon_Websocket_Client
-   Phalcon_Websocket_Connection
-   Phalcon_Websocket_Server
    Phalcon_Acl_AdapterInterface
    Phalcon_Acl_ResourceAware
    Phalcon_Acl_ResourceInterface
@@ -320,15 +312,15 @@ API Indice
    Phalcon_Cache_FrontendInterface
    Phalcon_Config_AdapterInterface
    Phalcon_CryptInterface
-   Phalcon_DiInterface
-   Phalcon_Di_InjectionAwareInterface
-   Phalcon_Di_ServiceInterface
    Phalcon_Db_AdapterInterface
    Phalcon_Db_ColumnInterface
    Phalcon_Db_DialectInterface
    Phalcon_Db_IndexInterface
    Phalcon_Db_ReferenceInterface
    Phalcon_Db_ResultInterface
+   Phalcon_DiInterface
+   Phalcon_Di_InjectionAwareInterface
+   Phalcon_Di_ServiceInterface
    Phalcon_DispatcherInterface
    Phalcon_EscaperInterface
    Phalcon_Events_EventInterface
