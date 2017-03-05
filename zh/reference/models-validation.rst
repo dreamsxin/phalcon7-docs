@@ -88,14 +88,23 @@ The idea of creating validators is make them reusable between several models. A 
         }
     }
 
-Validation Messages
--------------------
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` has a messaging subsystem that provides a flexible way to output or store the
-validation messages generated during the insert/update processes.
+验证信息（Validation Messages）
+-------------------------------
+通过自定义方法 `getLabel`，我们可以实现自定义字段显示名 :doc:`了解更多 <validation>`
 
-Each message is an instance of :doc:`Phalcon\\Mvc\\Model\\Message <../api/Phalcon_Mvc_Model_Message>` and the set of
-messages generated can be retrieved with the :code:`getMessages()` method. Each message provides extended information like the field name that
-generated the message or the message type:
+.. code-block:: php
+
+    <?php
+
+    class Robots extends Phalcon\Mvc\Model {
+        public function getLabel($field) {
+            if (is_array($field)) {
+
+            } else {
+
+            }
+        }
+    }
 
 .. code-block:: php
 
@@ -111,16 +120,12 @@ generated the message or the message type:
         }
     }
 
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` can generate the following types of validation messages:
+模型会比验证器多生成下面几种类型的验证信息：
 
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
 | Type                 | Description                                                                                                                        |
 +======================+====================================================================================================================================+
-| PresenceOf           | Generated when a field with a non-null attribute on the database is trying to insert/update a null value                           |
-+----------------------+------------------------------------------------------------------------------------------------------------------------------------+
 | ConstraintViolation  | Generated when a field part of a virtual foreign key is trying to insert/update a value that doesn't exist in the referenced model |
-+----------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| InvalidValue         | Generated when a validator failed because of an invalid value                                                                      |
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
 | InvalidCreateAttempt | Produced when a record is attempted to be created but it already exists                                                            |
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+

@@ -40,7 +40,7 @@ Merge modules with the existing ones
 
 
 
-public *mixed*  **handle** ([*array* $arguments])
+public *mixed*  **handle** ([*unknown* $uri])
 
 Handle the command-line arguments. 
 

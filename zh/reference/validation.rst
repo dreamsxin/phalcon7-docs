@@ -308,6 +308,30 @@ Phalcon的验证组件中内置了一些验证器：
         }
     }
 
+通过配置文件重定义验证器信息（Custom Validator Message）
+-------------------------------------------------------
+在`messages`目录下创建配置文件`validation.php`，内容如下：
+
+.. code-block:: php
+
+    <?php
+
+    return array(
+        'PresenceOf' => '字段 :field 必须填写'
+    );
+
+也可以指定配置文件名称：
+
+.. code-block:: php
+
+    <?php
+
+    // 全局设置
+    Phalcon\Validation::setFile('MyValidation');
+
+    // 只对当前实例有效
+    $validation = new Phalcon\Validation(NULL, 'MyValidation');
+
 过滤数据（Filtering of Data）
 -----------------------------
 我们可以在数据被验证之前对其先进行过滤，以确保那些恶意的或不正确的数据不被验证。

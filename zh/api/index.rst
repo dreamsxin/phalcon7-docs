@@ -55,6 +55,7 @@ API Indice
    Phalcon_Cache_Frontend_Output
    Phalcon_Cache_Multiple
    Phalcon_Cache_SHMemory
+   Phalcon_Chart_Exception
    Phalcon_Cli_Console
    Phalcon_Cli_Console_Exception
    Phalcon_Cli_Dispatcher
@@ -260,12 +261,19 @@ API Indice
    Phalcon_Security
    Phalcon_Security_Exception
    Phalcon_Security_Random
+   Phalcon_Server
+   Phalcon_Server_Exception
+   Phalcon_Server_Http
    Phalcon_Session_Adapter
    Phalcon_Session_Adapter_Cache
    Phalcon_Session_Adapter_Files
    Phalcon_Session_Adapter_Memcached
    Phalcon_Session_Bag
    Phalcon_Session_Exception
+   Phalcon_Socket
+   Phalcon_Socket_Client
+   Phalcon_Socket_Exception
+   Phalcon_Socket_Server
    Phalcon_Storage_Btree
    Phalcon_Storage_Exception
    Phalcon_Tag

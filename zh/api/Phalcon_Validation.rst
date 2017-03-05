@@ -16,7 +16,7 @@ Allows to validate data using validators
 Methods
 -------
 
-public  **__construct** ([*array* $validators])
+public  **__construct** ([*array* $validators], [*unknown* $file])
 
 Phalcon\\Validation constructor
 
@@ -88,7 +88,7 @@ Gets the a value to validate in the array/object data source
 
 
 
-public  **setDefaultMessages** ([*unknown* $messages])
+public  **setDefaultMessages** (*array* $messages)
 
 ...
 
@@ -108,6 +108,16 @@ public *mixed*  **getLabel** (*string|array* $field)
 
 Get label for field
 
+
+
+public static  **setFile** (*unknown* $file)
+
+...
+
+
+public static  **getMessage** (*unknown* $type)
+
+...
 
 
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Di\\Injectable
