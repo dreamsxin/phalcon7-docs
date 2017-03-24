@@ -24,7 +24,7 @@ Set one or more HTTP methods that constraint the matching of the route
 
 
 
-abstract public  **reConfigure** (*string* $pattern, [*array* $paths], [*unknown* $regex])
+abstract public  **reConfigure** (*string* $pattern, [*array* $paths], [*array* $regex])
 
 Reconfigure the route adding a new pattern and a set of paths
 

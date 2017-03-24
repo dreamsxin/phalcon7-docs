@@ -146,6 +146,9 @@ Phalcon的验证组件中内置了一些验证器：
 | File         |  监测值是否是合法的文件格式               | :doc:`Example <../api/Phalcon_Validation_Validator_File>`         |
 +--------------+-------------------------------------------+-------------------------------------------------------------------+
 
+
+自定义验证器（Custom Validator）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 下面的例子中展示了如何创建自定义的验证器：
 
 .. code-block:: php
@@ -161,11 +164,11 @@ Phalcon的验证组件中内置了一些验证器：
         /**
          * 执行验证
          *
-         * @param Phalcon\Validation $validator
+         * @param Phalcon\ValidatorInterface $validator
          * @param string $attribute
          * @return boolean
          */
-        public function validate(Validation $validator, $attribute)
+        public function validate(ValidatorInterface $validator, $attribute, bool $allowEmpty)
         {
             $value = $validator->getValue($attribute);
 
@@ -195,7 +198,6 @@ Phalcon的验证组件中内置了一些验证器：
     }
 
 最重要的一点即是难证器要返回一个布尔值以标识验证是否成功。
-
 
 验证器的使用（The use of the validator）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -327,10 +329,10 @@ Phalcon的验证组件中内置了一些验证器：
     <?php
 
     // 全局设置
-    Phalcon\Validation::setFile('MyValidation');
+    Phalcon\Validation::setMessageFilename('MyValidation');
 
     // 只对当前实例有效
-    $validation = new Phalcon\Validation(NULL, 'MyValidation');
+    $validation = new Phalcon\Validation(NULL, array('messageFilename' => MyValidation'));
 
 过滤数据（Filtering of Data）
 -----------------------------
@@ -469,8 +471,8 @@ Phalcon的验证组件中内置了一些验证器：
         }
     }
 
-Avoid validate empty values
----------------------------
+允许空值（Avoid validate empty values）
+---------------------------------------
 You can pass the option 'allowEmpty' to all the built-in validators to avoid the validation to be performed if an empty value is passed:
 
 .. code-block:: php
@@ -480,7 +482,7 @@ You can pass the option 'allowEmpty' to all the built-in validators to avoid the
     use Phalcon\Validation;
     use Phalcon\Validation\Validator\Regex;
 
-    $validation = new Validation();
+    $validation = new Validation(NULL, array('allowEmpty' => true));
 
     $validation
         ->add('telephone', new Regex(array(

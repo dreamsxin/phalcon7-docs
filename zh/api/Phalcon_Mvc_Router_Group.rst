@@ -77,7 +77,7 @@ Returns the common prefix for all the routes
 
 
 
-public :doc:`Phalcon\\Mvc\\Router\\Group <Phalcon_Mvc_Router_Group>`  **beforeMatch** (*unknown* $beforeMatch)
+public :doc:`Phalcon\\Mvc\\Router\\Group <Phalcon_Mvc_Router_Group>`  **beforeMatch** (*Closure* $callback)
 
 Set a before-match condition for the whole group
 

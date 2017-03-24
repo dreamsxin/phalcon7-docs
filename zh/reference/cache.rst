@@ -408,6 +408,8 @@ Setting the lifetime when retrieving:
 +-----------+------------------------------------------------+------------+-------------------------+-------------------------------------------------------------------------------------+
 | Redis     | Stores data in Redis                           | Redis_     | `redis extension`_      | :doc:`Phalcon\\Cache\\Backend\\Redis <../api/Phalcon_Cache_Backend_Redis>`          |
 +-----------+------------------------------------------------+------------+-------------------------+-------------------------------------------------------------------------------------+
+| Yac       | Stores data in Yac                             | Redis_     | `yac extension`_        | :doc:`Phalcon\\Cache\\Backend\\Yac <../api/Phalcon_Cache_Backend_Yac>`              |
++-----------+------------------------------------------------+------------+-------------------------+-------------------------------------------------------------------------------------+
 | Memeory   | 存储数据在内存中，请求完成后释放               | 无         | 无                      | 无                                                                                  |
 +-----------+------------------------------------------------+------------+-------------------------+-------------------------------------------------------------------------------------+
 
@@ -489,6 +491,8 @@ This backend will store cached content on a Redis server (Redis_). The available
 +============+===============================================================+
 | prefix     | A prefix that is automatically prepended to the cache keys    |
 +------------+---------------------------------------------------------------+
+| redis      | Redis 对象实例，如果设置该项将忽略 host 等选项                |
++------------+---------------------------------------------------------------+
 | host       | Redis host                                                    |
 +------------+---------------------------------------------------------------+
 | port       | Redis port                                                    |
@@ -497,12 +501,22 @@ This backend will store cached content on a Redis server (Redis_). The available
 +------------+---------------------------------------------------------------+
 | persistent | Create a persistent connection to Redis                       |
 +------------+---------------------------------------------------------------+
-| index      | The index of the Redis database to use                        |
+| db         | The index of the Redis database to use                        |
++------------+---------------------------------------------------------------+
+
+Yac Backend Options
+^^^^^^^^^^^^^^^^^^^
+This backend will store cached content on a Yac (Yac_). The available options for this backend are:
+
++------------+---------------------------------------------------------------+
+| Option     | Description                                                   |
++============+===============================================================+
+| prefix     | A prefix that is automatically prepended to the cache keys    |
 +------------+---------------------------------------------------------------+
 
 共享内存缓存（Shared Memory Cache）
 -----------------------------------
-Phalcon 内部还提供了 :doc:`Phalcon\\Cache\\SHMemory <../api/Phalcon_Cache_SHMemory>` 类似 `APC` 的缓存服务。
+Phalcon 内部还内置了 :doc:`Phalcon\\Cache\\Yac <../api/Phalcon_Cache_Yac>` 类似 `APC` 的缓存服务。
 
 .. _Memcached: http://memcached.org/
 .. _memcached extension: http://php.net/memcached

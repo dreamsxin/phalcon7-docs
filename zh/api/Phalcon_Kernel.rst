@@ -34,12 +34,22 @@ public static  **setBasePath** (*unknown* $path)
 ...
 
 
+public static  **setMessagesDir** (*unknown* $path)
+
+...
+
+
 public static  **message** (*unknown* $file, [*unknown* $key_path], [*unknown* $default_value], [*unknown* $ext])
 
 ...
 
 
 public static  **setMessages** (*array* $messages)
+
+...
+
+
+public static  **getMessages** (*array* $messages)
 
 ...
 

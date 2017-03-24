@@ -243,7 +243,7 @@ Adds a route to the router that only match if the HTTP method is HEAD
 
 
 
-public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **mount** (*unknown* $group) inherited from Phalcon\\Mvc\\Router
+public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **mount** (:doc:`Phalcon\\Mvc\\Router\\Group <Phalcon_Mvc_Router_Group>` $group) inherited from Phalcon\\Mvc\\Router
 
 Mounts a group of routes in the router
 
@@ -309,7 +309,7 @@ Returns the processed action name
 
 
 
-public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **setParams** (*string* $params) inherited from Phalcon\\Mvc\\Router
+public :doc:`Phalcon\\Mvc\\Router <Phalcon_Mvc_Router>`  **setParams** (*array* $params) inherited from Phalcon\\Mvc\\Router
 
 Sets the params
 

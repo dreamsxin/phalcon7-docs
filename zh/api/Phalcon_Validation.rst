@@ -16,7 +16,7 @@ Allows to validate data using validators
 Methods
 -------
 
-public  **__construct** ([*array* $validators], [*unknown* $file])
+public  **__construct** ([*array* $validators], [*array* $options])
 
 Phalcon\\Validation constructor
 
@@ -52,7 +52,7 @@ Returns the validators added to the validation
 
 
 
-public :doc:`Phalcon\\Validation <Phalcon_Validation>`  **setEntity** ([*object* $entity])
+public :doc:`Phalcon\\Validation <Phalcon_Validation>`  **setEntity** (*object* $entity)
 
 Sets the bound entity
 
@@ -82,7 +82,13 @@ Assigns the data to an entity The entity is used to obtain the validation values
 
 
 
-public *mixed*  **getValue** (*string* $attribute)
+public *array|null*  **getData** ()
+
+Gets the a array data source
+
+
+
+public *mixed*  **getValue** (*string* $attribute, [*object* $entity])
 
 Gets the a value to validate in the array/object data source
 
@@ -93,7 +99,7 @@ public  **setDefaultMessages** (*array* $messages)
 ...
 
 
-public  **getDefaultMessage** (*unknown* $type)
+public  **getDefaultMessage** (*unknown* $type, [*unknown* $defaultValue])
 
 ...
 
@@ -104,20 +110,28 @@ Adds labels for fields
 
 
 
-public *mixed*  **getLabel** (*string|array* $field)
+public *string*  **getLabel** (*string|array* $field)
 
-Get label for field
+Gets label for field
 
 
 
-public static  **setFile** (*unknown* $file)
+public static  **setLabelDelimiter** (*unknown* $delimiter)
 
-...
+Sets delimiter for label
+
+
+
+public static  **setMessageFilename** (*string* $filename)
+
+Sets validation message file name
+
 
 
 public static  **getMessage** (*unknown* $type)
 
-...
+Gets message
+
 
 
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Di\\Injectable

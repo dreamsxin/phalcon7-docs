@@ -27,7 +27,7 @@ Checks if a value has a correct ALNUM format
 Methods
 -------
 
-public *boolean*  **validate** (:doc:`Phalcon\\Validation <Phalcon_Validation>` $validator, *string* $attribute)
+public *boolean*  **validate** (:doc:`Phalcon\\ValidationInterface <Phalcon_ValidationInterface>` $validator, *string* $attribute, [*unknown* $allowEmpty])
 
 Executes the validation
 

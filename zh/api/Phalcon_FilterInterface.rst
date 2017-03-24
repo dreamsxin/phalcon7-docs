@@ -18,7 +18,7 @@ Adds a user-defined filter
 
 
 
-abstract public *mixed*  **sanitize** (*mixed* $value, *mixed* $filters)
+abstract public *mixed*  **sanitize** (*mixed* $value, *mixed* $filters, [*unknown* $noRecursive], [*array* $options])
 
 Sanizites a value with a specified single or set of filters
 

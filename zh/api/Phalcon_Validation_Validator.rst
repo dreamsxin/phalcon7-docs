@@ -44,7 +44,7 @@ Gets an type in the validator
 
 
 
-abstract public *boolean*  **validate** (*Phalcon\\Validator* $validator, *string* $attribute) inherited from Phalcon\\Validation\\ValidatorInterface
+abstract public *boolean*  **validate** (:doc:`Phalcon\\ValidationInterface <Phalcon_ValidationInterface>` $validator, *string|array* $attribute, [*unknown* $allowEmpty]) inherited from Phalcon\\Validation\\ValidatorInterface
 
 Executes the validation
 

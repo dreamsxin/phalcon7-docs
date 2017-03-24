@@ -14,7 +14,7 @@ This class represents every route added to the router
 Methods
 -------
 
-public  **__construct** (*string* $pattern, [*array* $paths], [*array|string* $httpMethods], [*unknown* $regex])
+public  **__construct** (*string* $pattern, [*array* $paths], [*array|string* $httpMethods], [*array* $regex])
 
 Phalcon\\Mvc\\Router\\Route constructor
 
@@ -40,7 +40,7 @@ Set one or more HTTP methods that constraint the matching of the route
 
 
 
-public  **reConfigure** (*string* $pattern, [*string|array* $paths], [*unknown* $regex])
+public  **reConfigure** (*string* $pattern, [*string|array* $paths], [*array* $regex])
 
 Reconfigure the route adding a new pattern and a set of paths
 
@@ -220,7 +220,7 @@ Returns the default params
 
 
 
-public *string*  **setUrlGenerator** (*unknown* $handler)
+public *string*  **setUrlGenerator** (*Closure* $handler)
 
 Sets the Url Generator
 

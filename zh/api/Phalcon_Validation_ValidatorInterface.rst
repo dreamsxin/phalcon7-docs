@@ -30,7 +30,7 @@ Sets the validator's option
 
 
 
-abstract public *boolean*  **validate** (*Phalcon\\Validator* $validator, *string* $attribute)
+abstract public *boolean*  **validate** (:doc:`Phalcon\\ValidationInterface <Phalcon_ValidationInterface>` $validator, *string|array* $attribute, [*unknown* $allowEmpty])
 
 Executes the validation
 

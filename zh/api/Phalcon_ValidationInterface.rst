@@ -24,6 +24,23 @@ Adds a validator to a field
 
 
 
+abstract public *string*  **getLabel** (*string|array* $field)
+
+Get label for field
+
+
+
+abstract public *mixed*  **getValue** (*string* $attribute, [*unknown* $entity])
+
+Gets the a value to validate in the array/object data source
+
+
+
+abstract public  **appendMessage** (:doc:`Phalcon\\Validation\\MessageInterface <Phalcon_Validation_MessageInterface>` $message)
+
+...
+
+
 abstract public :doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>`  **getMessages** ()
 
 Returns the registered validators

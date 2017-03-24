@@ -65,13 +65,13 @@ Loads a model throwing an exception if it doesn't exist
 
 
 
-public *string*  **setModelSource** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *string* $source)
+public *string*  **setModelSource** (*Phalcon\\Mvc\\Model|string* $model, *string* $source)
 
 Sets the mapped source for a model
 
 
 
-public *string*  **getModelSource** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model)
+public *string*  **getModelSource** (*Phalcon\\Mvc\\Model|string* $model)
 
 Returns the mapped source for a model
 

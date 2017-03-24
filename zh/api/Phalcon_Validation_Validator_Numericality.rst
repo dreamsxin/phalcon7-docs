@@ -27,7 +27,7 @@ Check for a valid numeric value
 Methods
 -------
 
-public *boolean*  **validate** (:doc:`Phalcon\\Validation <Phalcon_Validation>` $validator, *string* $attribute)
+public *boolean*  **validate** (:doc:`Phalcon\\Validation <Phalcon_Validation>` $validator, *string* $attribute, [*unknown* $allowEmpty])
 
 Executes the validation
 

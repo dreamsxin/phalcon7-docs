@@ -1,5 +1,5 @@
-Class **Phalcon\\Translate\\Adapter\\Gettext**
-==============================================
+Class **Phalcon\\Translate\\Adapter\\Php**
+==========================================
 
 *extends* abstract class :doc:`Phalcon\\Translate\\Adapter <Phalcon_Translate_Adapter>`
 
@@ -8,17 +8,16 @@ Class **Phalcon\\Translate\\Adapter\\Gettext**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/translate/adapter/gettext.c" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/translate/adapter/php.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Allows to define translation lists using gettext   
+Allows to define translation lists using PHP file  
 
 .. code-block:: php
 
     <?php
 
-      $t = new \Phalcon\Translate\Adapter\Gettext(array(
+      $t = new \Phalcon\Translate\Adapter\Php(array(
           'locale' => 'en_US.utf8',
-          'defaultDomain' => 'messages',
           'directory' => __DIR__ . DIRECTORY_SEPARATOR . 'locale'
      ));
 
@@ -29,7 +28,7 @@ Methods
 
 public  **__construct** (*array* $options)
 
-Phalcon\\Translate\\Adapter\\Gettext constructor
+Phalcon\\Translate\\Adapter\\Php constructor
 
 
 
