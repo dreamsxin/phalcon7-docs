@@ -71,6 +71,7 @@ API Indice
    Phalcon_Config_Adapter_Php
    Phalcon_Config_Adapter_Yaml
    Phalcon_Config_Exception
+   Phalcon_ContinueException
    Phalcon_Crypt
    Phalcon_Crypt_Exception
    Phalcon_Date

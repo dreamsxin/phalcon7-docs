@@ -321,6 +321,12 @@ Fires an event, implicitly calls behaviors and listeners in the events manager a
 
 
 
+public *\Exception*  **getLastException** () inherited from Phalcon\\Dispatcher
+
+Returns the last exception
+
+
+
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Di\\Injectable
 
 Sets the dependency injector

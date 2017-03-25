@@ -9,6 +9,7 @@ Phalcon 通过 :doc:`Phalcon\\Translate\\Adapter\\NativeArray <../api/Phalcon_Tr
 .. code-block:: php
 
     <?php
+
     $t = new \Phalcon\Translate\Adapter\Gettext(array(
         'locale' => 'zh_CN.utf8',
         'defaultDomain' => 'messages',
@@ -40,6 +41,8 @@ Phalcon 通过 :doc:`Phalcon\\Translate\\Adapter\\NativeArray <../api/Phalcon_Tr
 
 .. code-block:: php
 
+    <?php
+
     $username = 'Phalcon';
     // 输出：“Hello, Phalcon”
     echo $t->_('Hello, %username%!', [
@@ -49,6 +52,8 @@ Phalcon 通过 :doc:`Phalcon\\Translate\\Adapter\\NativeArray <../api/Phalcon_Tr
 占位符也可以是从零开始的整数序列，比如下面的例子中， `%0%`、`%1%` 和 `%2%` 将分别被 `$price`、`$count` 和 `$total` 所替换。
 
 .. code-block:: php
+
+    <?php
 
     $price = 100;
     $count = 1;

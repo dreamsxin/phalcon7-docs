@@ -369,7 +369,7 @@ MVC 应用默认开启视图组件，以下示例演示了如何禁用视图组�
 
 HMVC 请求（HMVC request system）
 --------------------------------
-以下示例演示了如何完成 HMVC 请求：
+在 HMVC 的父子 MVC 之间，调度控制器、路由以及视图组件是分离的，以下示例演示了如何完成 HMVC 请求：
 
 .. code-block:: php
 
@@ -388,3 +388,7 @@ HMVC 请求（HMVC request system）
             echo $this->dispatcher->getActionName();
         }
     }
+
+.. highlights::
+
+    慎用 `exit` 可以使用抛出异常 :doc:`Phalcon\\ContinueException <../api/Phalcon_ContinueException>` 退出 action，注入调度控制器、路由以及视图组件时不要使用 `require_once` 返回对象。

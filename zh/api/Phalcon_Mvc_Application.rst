@@ -72,7 +72,7 @@ Handles a MVC request
 
 
 
-public *mixed*  **request** (*unknown* $uri)
+public *mixed*  **request** (*unknown* $uri, [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 Does a HMVC request in the application
 
