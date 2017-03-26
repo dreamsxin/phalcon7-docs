@@ -1,5 +1,5 @@
-API Indice
-----------
+Phalcon7 API Indice
+-------------------
 
 .. toctree::
    :maxdepth: 1
