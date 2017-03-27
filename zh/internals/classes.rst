@@ -55,17 +55,10 @@ Each class has its own file .c file, in the case of Phalcon\\Auth file would be 
 
 		zval *adapter_name, *options = NULL;
 
-		//Start a memory frame
-		PHALCON_MM_GROW();
-
 		//Receive the method parameters
-		if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "zz", &adapter_name, &options) == FAILURE) {
-			PHALCON_MM_RESTORE();
+		if (zend_parse_parameters(ZEND_NUM_ARGS(), "zz", &adapter_name, &options) == FAILURE) {
 			RETURN_NULL();
 		}
-
-		//Release the memory used
-		PHALCON_MM_RESTORE();
 	}
 
 With the above code we create the constructor of the class Phalcon\\Auth, a method is defined with the macro
@@ -80,8 +73,7 @@ If the method has parameters we receive them using zend_parse_parameters:
 
 .. code-block:: c
 
-	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "zz", &adapter_name, &options) == FAILURE) {
-		PHALCON_MM_RESTORE();
+	if (zend_parse_parameters(ZEND_NUM_ARGS(), "zz", &adapter_name, &options) == FAILURE) {
 		RETURN_NULL();
 	}
 
@@ -90,4 +82,3 @@ If we do not receive the correct number of parameters will result in an error me
 that means that the method is receiving two parameters. If they were three zval then it should be "zzz".
 
 Then the variables are received in respective order: &adapter_name, &options
-
