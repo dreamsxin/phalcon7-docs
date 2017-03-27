@@ -100,10 +100,11 @@ PHP7 中 提供 `ZVAL_COPY_VALUE`、`ZVAL_COPY`与 `ZVAL_DUP`等宏定义来实�
 	// 复制
 	ZVAL_COPY_VALUE(&b, &a);
 
-	// 复制并增加 a 引用计数，不过对不是 IS_TYPE_REFCOUNTED 的不会增加引用计数
+	// 在 ZVAL_COPY_VALUE 的基础上，复制并增加 a 引用计数，不过对不是 IS_TYPE_REFCOUNTED 的不会增加引用计数
 	ZVAL_COPY(&b, &a);
 
-	// 会复制数组所有结构属性，比如当前指针位置等信息
+	// 在 ZVAL_COPY_VALUE 的基础上，如果类型是需要引用计数（IS_TYPE_REFCOUNTED）会增加自身引用计数
+	// 如果是可被复制的（IS_TYPE_COPYABLE）或不可变的（IS_TYPE_IMMUTABLE）的类型，会执行 `zval_copy_ctor_func`
 	array_init(&c);
 	ZVAL_DUP(&a, &c);
 
