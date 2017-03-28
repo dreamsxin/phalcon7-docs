@@ -1,12 +1,12 @@
-Calling Methods
-===============
+调用方法（Calling Methods）
+===========================
 As seen when calling functions, in Phalcon the methods are called in the PHP userland. Thanks to this, a Phalcon
 user can generate a backtrace and know exactly which components are involved in a given task. They also
 allows users to replace Phalcon components by PHP classes of their own. Additionally,
 like everything else we've seen, the way to make calls is familiar to PHP developers.
 
-Instance methods
-----------------
+调用实例方法（Instance methods）
+--------------------------------
 
 .. code-block:: c
 
@@ -26,8 +26,8 @@ Instance methods
 	// Call the "exec" method in the pdo object passing the sql_statement
 	PHALCON_CALL_METHOD(&success, &pdo, "exec", &sql_statement);
 
-Static methods
---------------
+调用静态方法（Static methods）
+------------------------------
 
 .. code-block:: c
 

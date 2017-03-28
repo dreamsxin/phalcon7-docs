@@ -1,10 +1,10 @@
-Objects Manipulation
-====================
+操作对象（Objects Manipulation）
+================================
 Phalcon is a pure object-oriented framework for PHP. In this chapter, we explain how to make most common operations
 on objects using the Phalcon API.
 
-Creation/Instantiation
-----------------------
+创建与实例化（Creation/Instantiation）
+--------------------------------------
 Instantiate objects of the framework classes is easy:
 
 .. code-block:: c
@@ -40,8 +40,8 @@ Moreover, if is not a Phalcon class then objects must then initialized as follow
 	// Pass a class name as constructor's parameter
 	PHALCON_CALL_METHOD(NULL, reflection, "__construct", &class_name);
 
-Reading/Writing Properties
---------------------------
+读写属性（Reading/Writing Properties）
+--------------------------------------
 Writing scalar values:
 
 .. code-block:: c

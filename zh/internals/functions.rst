@@ -1,5 +1,5 @@
-Calling Functions
-=================
+调用函数（Calling Functions）
+=============================
 Calling functions is another common action we do when create programs in PHP. Although many functions may be called directly using its internal function pointer in C, others can simply being called using the PHP userland. For example:
 
 .. code-block:: c

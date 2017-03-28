@@ -1,19 +1,27 @@
 Classes
 =======
-As an object oriented framework, Phalcon is mostly composed of classes. The classes are organized into namespaces.
-The following are the steps to export a variable in the extension and also make it available for other classes
-inside the framework.
+Phalcon7 框架主要是由类组成，而类由命名空间统一组织。本文档将教你如何实现一个类及其方法。
 
-Registering methods and its arguments
--------------------------------------
-In the dev/php_phalcon.h register in the first part of the file the pointer to the zend class entry. Let's pretend
-we're adding a Phalcon\\Auth to the framework:
+注册类（Registering Classes）
+-----------------------------
+在 ext 目录增加 auth.h 文件，注册 Phalcon\\Auth 类：
 
 .. code-block:: c
 
+	#ifndef PHALCON_AUTH_H
+	#define PHALCON_AUTH_H
+
+	#include "php_phalcon.h"
+
 	extern zend_class_entry *phalcon_auth_ce;
 
-Then, we can add the methods prototypes, it's neccesary to add all the methods that compose our class:
+	PHALCON_INIT_CLASS(Phalcon_Auth);
+
+	#endif /* PHALCON_AUTH_H */
+
+注册方法和它的参数（Registering methods and its arguments）
+-----------------------------------------------------------
+然后，我们创建 auth.c 文件，在里面添加方法的原型：
 
 .. code-block:: c
 
@@ -21,41 +29,38 @@ Then, we can add the methods prototypes, it's neccesary to add all the methods t
 	PHP_METHOD(Phalcon_Auth, getIdentity);
 	PHP_METHOD(Phalcon_Auth, auth);
 
-Later in the same file add the information of the arguments of each method. For example, let's define the class
-constructor only takes two arguments and they're mandatory:
+之后我们为每个方法添加参数信息，在这里我们为类的构造方法添加参数信息：
 
 .. code-block:: c
 
 	ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_auth__construct, 0, 0, 2)
 		ZEND_ARG_INFO(0, adapter)
-		ZEND_ARG_INFO(0, options)
+		ZEND_ARG_ARRAY_INFO(0, options, 0)
 	ZEND_END_ARG_INFO()
 
-Now let's attach methods to the class to which they belong:
+现在，我们将所有方法赋予指定的类：
 
 .. code-block:: c
 
-	PHALCON_INIT_FUNCS(phalcon_auth_method_entry){
+	static const zend_function_entry phalcon_auth_method_entry[] = {
 		PHP_ME(Phalcon_Auth, __construct, arginfo_phalcon_auth__construct, ZEND_ACC_PUBLIC)
 		PHP_ME(Phalcon_Auth, getIdentity, NULL, ZEND_ACC_PUBLIC)
 		PHP_ME(Phalcon_Auth, auth, NULL, ZEND_ACC_PUBLIC)
 		PHP_FE_END
 	};
 
-All this happens at dev/php_phalcon.h, if you check that file you will see that everything is registered right there.
-
-Implementing a method
----------------------
-Each class has its own file .c file, in the case of Phalcon\\Auth file would be dev/auth.c:
+定义方法（Implementing a method）
+---------------------------------
+仍然在 auth.c 文件中，我们添加代码：
 
 .. code-block:: c
 
-	//PHP_METHOD(class_name, method_name)
+	// PHP_METHOD(class_name, method_name)
 	PHP_METHOD(Phalcon_Auth, __construct){
 
 		zval *adapter_name, *options = NULL;
 
-		//Receive the method parameters
+		// Receive the method parameters
 		if (zend_parse_parameters(ZEND_NUM_ARGS(), "zz", &adapter_name, &options) == FAILURE) {
 			RETURN_NULL();
 		}
