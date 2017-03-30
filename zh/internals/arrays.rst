@@ -1,10 +1,9 @@
-Working with Arrays
-===================
-Although the Zend API provides several functions for working with arrays, the Phalcon API has added others.
-Specifically helping to maintain the reference counting correctly:
+数组（Working with Arrays）
+===========================
+尽管 Zend API 提供了一些函数来处理数组，但 Phalcon API 中在此基础上封装了更多的函数（kernel/array.h），自动处理引用计数：
 
-One dimension Arrays
-^^^^^^^^^^^^^^^^^^^^
+一维数组（One dimension Arrays）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: c
 
@@ -17,6 +16,8 @@ One dimension Arrays
 	add_next_index_stringl(&fruits, SL("orange"));
 	add_next_index_stringl(&fruits, SL("lemon"));
 	add_next_index_stringl(&fruits, SL("banana"));
+
+	phalcon_array_append_str(&fruits, SL("pear"), 0);
 
 	// Get the first item in the array $fruits[0]
 	phalcon_array_fetch_long(&first_item, &fruits, 0, PH_NOISY_CC);

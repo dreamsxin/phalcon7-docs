@@ -1,14 +1,9 @@
 内存管理（Memory Management）
 ============================
-As you may know, the memory management in C is all manual. Within a PHP extension, all memory is managed by
-Zend Memory Manager, however, the management remains manual.
+正如你可能知道，C 是所有的内存是自己维护管理的，而在 PHP 扩展中，所有的内存管理由 Zend Memory Manager 管理。
 
-Manual memory management is a powerful tool that C offers. But, as PHP developers we are not used to this
-sort of thing. We like to just leave this task to the language without worrying about that.
-
-Phalcon MM
-----------
-在 PHP7 中 zval 有了新的实现方式。最基础的变化就是 zval 需要的内存不再是单独从堆上分配，不再自己存储引用计数。复杂数据类型（比如字符串、数组和对象）的引用计数由其自身来存储。这种实现方式有以下好处：
+在 PHP7 中 zval 有了新的实现方式。最基础的变化就是 zval 需要的内存不再是单独从堆上分配，不再自己存储引用计数。复杂数据类型（比如字符串、数组和对象）的引用计数由其自身来存储。
+这种实现方式有以下好处：
 简单数据类型不需要单独分配内存，也不需要计数；
 不会再有两次计数的情况。在对象中，只有对象自身存储的计数是有效的；
 由于现在计数由数值自身存储，所以也就可以和非 zval 结构的数据共享，比如 zval 和 hashtable key 之间；

@@ -1,7 +1,6 @@
-Operations between Variables
-============================
-PHP is a dynamic language, we can do almost any operation between two variables, regardless of type. Sometimes we do
-not know exactly the type of data that have the variables, using the Zend API we can do operations between them seamlessly:
+变量之间的操作（Operations between Variables）
+==============================================
+我们几乎可以做任何类型的两个变量之间的进行操作，当我们不知道确切的数据类型时，我们可以使用 Zend API 操作它们：
 
 .. code-block:: c
 
@@ -14,10 +13,9 @@ not know exactly the type of data that have the variables, using the Zend API we
 	// add_function will make the necessary conversions to produce the addition
 	add_function(&result, &first_var, &second_var);
 
-Concatenation
--------------
-Concatenation is one of the most common operations we do in PHP. However, using the Zend API can be tedious when
-oncatenating many values​​, for example:
+连接（Concatenation）
+---------------------
+在 PHP 中连接操作是最频繁的操作之一，我一样可以使用 Zend API 简单实现多个值的拼接：
 
 .. code-block:: c
 

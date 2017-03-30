@@ -1,5 +1,5 @@
-Throwing Exceptions
-===================
+异常（Throwing Exceptions）
+===========================
 When you throw an exception using the Phalcon API, the current flow of execution will be stopped, returning
 to the last PHP code block when a Phalcon method where called.
 

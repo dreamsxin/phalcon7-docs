@@ -1,5 +1,5 @@
-Classes
-=======
+类（Classes）
+=============
 Phalcon7 框架主要是由类组成，而类由命名空间统一组织。本文档将教你如何实现一个类及其方法。
 
 注册类（Registering Classes）
