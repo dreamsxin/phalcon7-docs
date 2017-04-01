@@ -41,6 +41,7 @@ Phalcon API 基于 Zend API，但是我们增加了更多的功能，方便我�
    methods
    classes
    exceptions
+   requires
 
 声明
 ^^^^
