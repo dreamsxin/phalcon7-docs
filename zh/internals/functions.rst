@@ -18,7 +18,7 @@ Calling functions is another common action we do when create programs in PHP. Al
 
 如上所述，PHP 已经有帮我们做了很多事情，C 的扩展并不意味着我们要重新发明轮子。我们也要尽量避免使用 C 非常底层的特性。使用 PHP 函数帮助我们实现和 PHP 编程中类似的行为，这样我们就可以避免可能出现的错误。
 
-在Phalcon中，`PHALCON_CALL_FUNCTION`调用的是Phalcon为我们封装的`phalcon_call_method_with_params`函数，利用该函数可以很轻松的调用内核及自定义函数，其函数调用了PHP_API。
+在Phalcon中，`PHALCON_CALL_FUNCTION`调用的是Phalcon为我们封装的`phalcon_call_method_with_params`函数，利用该函数可以很轻松的调用内核及自定义函数，其函数调用了Zend API。
   
  .. code-block:: c
 
