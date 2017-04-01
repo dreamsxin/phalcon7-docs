@@ -1,11 +1,36 @@
 操作对象（Objects Manipulation）
 ================================
-Phalcon is a pure object-oriented framework for PHP. In this chapter, we explain how to make most common operations
-on objects using the Phalcon API.
+针对对象属性的操作，Phalcon API 在 Zend API 基础上封装了更多的函数（kernel/object.h），通过传递标志位（flag）自动完引用计数的处理。
+
+标志位（flag）
+^^^^^^^^^^^^^^
+
++----------------+--------------------+
+| 标志位值       | 描述               |
++================+====================+
+| PH_NOISY       | 值不存在时发出警告 |
++----------------+--------------------+
+| PH_READONLY    | 不增加引用计数     |
++----------------+--------------------+
+| PH_COPY        | 增加引用计数       |
++----------------+--------------------+
+
+常用函数列表
+^^^^^^^^^^^^
+
++----------------------------+
+| 函数名                     |
++============================+
+| phalcon_isset_property     |
++----------------------------+
+| phalcon_read_property      |
++----------------------------+
+| phalcon_update_property    |
++----------------------------+
 
 创建与实例化（Creation/Instantiation）
 --------------------------------------
-Instantiate objects of the framework classes is easy:
+实例化框架中的类很容易：
 
 .. code-block:: c
 
