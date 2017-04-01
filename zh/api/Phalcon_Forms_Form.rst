@@ -319,6 +319,12 @@ Resolves the service based on its configuration
 
 
 
+public  **attachEvent** (*string* $eventType, *Closure* $callback) inherited from Phalcon\\Di\\Injectable
+
+Attach a listener to the events
+
+
+
 public  **__get** (*unknown* $property) inherited from Phalcon\\Di\\Injectable
 
 Magic method __get

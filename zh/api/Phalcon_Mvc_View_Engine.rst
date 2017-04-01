@@ -58,7 +58,7 @@ Returns the view component related to the adapter
 
 
 
-public :doc:`Phalcon\\Mvc\\View\\Engine <Phalcon_Mvc_View_Engine>`  **addMethod** (*string* $name, *unknown* $handler)
+public :doc:`Phalcon\\Mvc\\View\\Engine <Phalcon_Mvc_View_Engine>`  **addMethod** (*string* $name, *Closure* $handler)
 
 Adds a user-defined method
 
@@ -115,6 +115,12 @@ Check whether the DI contains a service by a name
 public *mixed*  **getResolveService** (*string* $name, [*unknown* $args], [*unknown* $noerror], [*unknown* $noshared]) inherited from Phalcon\\Di\\Injectable
 
 Resolves the service based on its configuration
+
+
+
+public  **attachEvent** (*string* $eventType, *Closure* $callback) inherited from Phalcon\\Di\\Injectable
+
+Attach a listener to the events
 
 
 

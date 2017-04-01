@@ -12,13 +12,13 @@ Phalcon\\Events\\ManagerInterface initializer
 Methods
 -------
 
-abstract public  **attach** (*string* $eventType, *object* $handler)
+abstract public  **attach** (*string* $eventType, *object* $handler, [*unknown* $priority])
 
 Attach a listener to the events manager
 
 
 
-abstract public  **detach** (*string* $type, *object* $handler)
+abstract public  **detach** (*unknown* $eventType, *object* $handler)
 
 Detach a listener from the events manager
 

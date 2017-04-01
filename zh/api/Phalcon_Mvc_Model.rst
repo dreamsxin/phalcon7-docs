@@ -1350,6 +1350,12 @@ Resolves the service based on its configuration
 
 
 
+public  **attachEvent** (*string* $eventType, *Closure* $callback) inherited from Phalcon\\Di\\Injectable
+
+Attach a listener to the events
+
+
+
 public  **__sleep** () inherited from Phalcon\\Di\\Injectable
 
 ...

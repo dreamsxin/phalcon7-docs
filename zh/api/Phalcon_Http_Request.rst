@@ -28,6 +28,12 @@ Encapsulates request information for easy and secure access from application con
 Methods
 -------
 
+public  **__construct** ()
+
+Phalcon\\Http\\Request constructor
+
+
+
 protected *mixed*  **_get** (*string* $name, *string|array* $filters, *mixed* $defaultValue, *boolean* $notAllowEmpty, *boolean* $noRecursive)
 
 Internal get wrapper to filter
@@ -430,6 +436,12 @@ Check whether the DI contains a service by a name
 public *mixed*  **getResolveService** (*string* $name, [*unknown* $args], [*unknown* $noerror], [*unknown* $noshared]) inherited from Phalcon\\Di\\Injectable
 
 Resolves the service based on its configuration
+
+
+
+public  **attachEvent** (*string* $eventType, *Closure* $callback) inherited from Phalcon\\Di\\Injectable
+
+Attach a listener to the events
 
 
 

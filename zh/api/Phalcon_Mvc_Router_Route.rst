@@ -129,6 +129,18 @@ Returns the HTTP methods that constraint matching the route
 
 
 
+public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **setPrefix** (*string* $prefix)
+
+Set a common uri prefix for the route
+
+
+
+public *string*  **getPrefix** ()
+
+Returns the common prefix for the route
+
+
+
 public :doc:`Phalcon\\Mvc\\Router\\Route <Phalcon_Mvc_Router_Route>`  **setHostname** (*unknown* $hostname)
 
 Sets a hostname restriction to the route 

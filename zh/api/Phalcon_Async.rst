@@ -21,7 +21,7 @@ Constants
 Methods
 -------
 
-public static *int*  **call** (*Closure* $closure)
+public static *int*  **call** (*Closure* $closure, [*array* $arguments])
 
 Called asynchronous 
 

@@ -327,6 +327,12 @@ Returns the last exception
 
 
 
+public *Object*  **getLastHandler** () inherited from Phalcon\\Dispatcher
+
+Returns the last handler
+
+
+
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Di\\Injectable
 
 Sets the dependency injector
@@ -366,6 +372,12 @@ Check whether the DI contains a service by a name
 public *mixed*  **getResolveService** (*string* $name, [*unknown* $args], [*unknown* $noerror], [*unknown* $noshared]) inherited from Phalcon\\Di\\Injectable
 
 Resolves the service based on its configuration
+
+
+
+public  **attachEvent** (*string* $eventType, *Closure* $callback) inherited from Phalcon\\Di\\Injectable
+
+Attach a listener to the events
 
 
 

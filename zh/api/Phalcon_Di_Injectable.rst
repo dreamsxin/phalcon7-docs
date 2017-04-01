@@ -62,6 +62,12 @@ Resolves the service based on its configuration
 
 
 
+public  **attachEvent** (*string* $eventType, *Closure* $callback)
+
+Attach a listener to the events
+
+
+
 public  **__get** (*unknown* $property)
 
 Magic method __get

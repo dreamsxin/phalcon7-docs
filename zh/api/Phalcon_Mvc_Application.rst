@@ -72,7 +72,7 @@ Handles a MVC request
 
 
 
-public *mixed*  **request** (*unknown* $uri, [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
+public *mixed*  **request** (*unknown* $uri, [*array* $data], [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector])
 
 Does a HMVC request in the application
 
@@ -163,6 +163,12 @@ Check whether the DI contains a service by a name
 public *mixed*  **getResolveService** (*string* $name, [*unknown* $args], [*unknown* $noerror], [*unknown* $noshared]) inherited from Phalcon\\Di\\Injectable
 
 Resolves the service based on its configuration
+
+
+
+public  **attachEvent** (*string* $eventType, *Closure* $callback) inherited from Phalcon\\Di\\Injectable
+
+Attach a listener to the events
 
 
 

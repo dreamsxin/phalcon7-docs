@@ -17,7 +17,7 @@ abstract public  **setUserAgent** (*unknown* $useragent)
 ...
 
 
-abstract public  **setAuth** (*unknown* $username, *unknown* $password, [*unknown* $authtype], [*unknown* $digest], [*unknown* $entityBody])
+abstract public  **setAuth** (*unknown* $username, *unknown* $password, [*unknown* $authtype], [*array* $digest], [*unknown* $entityBody])
 
 ...
 

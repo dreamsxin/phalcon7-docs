@@ -64,4 +64,9 @@ Phalcon API 提供了 `phalcon_require` 函数实现 PHP 的 `require` 功能，
 	}
 
 
-此时 `result` 变量就是我们案例中的 `$config` 变量，当然还可以使用宏`ZEND_INCLUDE`、`ZEND_INCLUDE_ONCE`、`ZEND_REQUIRE`、`ZEND_REQUIRE_ONCE`实现文件的包含。
+此时 `result` 变量就是我们案例中的 `$config` 变量，当然还可以使用 `zend_include_or_eval` 实现文件的包含，支持类型有：
+
+- `ZEND_INCLUDE`
+- `ZEND_INCLUDE_ONCE`
+- `ZEND_REQUIRE`
+- `ZEND_REQUIRE_ONCE`
