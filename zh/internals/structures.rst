@@ -35,7 +35,7 @@ PHP7中的zval的类型做了比较大的调整, 总体来说有如下17种类�
 	#define IS_CALLABLE                 14
 
 	/* internal types */
-	#define IS_INDIRECT                 15
+	#define IS_INDIRECT                 15 //间接变量，跟 compiled variables(CV) table 有关系
 	#define IS_PTR                      17
 
 标志位

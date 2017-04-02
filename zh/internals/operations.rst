@@ -1,6 +1,6 @@
 变量之间的操作（Operations between Variables）
 ==============================================
-我们几乎可以做任何类型的两个变量之间的进行操作，当我们不知道确切的数据类型时，我们可以使用 Zend API 操作它们：
+我们几乎可以做任何类型的两个变量之间的进行操作，当我们不知道确切的数据类型时，我们也可以使用 Zend API 操作它们。
 
 .. code-block:: c
 
@@ -53,6 +53,26 @@ Another way to do that is use sprintf, in this case, you need to be completely s
 	sprintf(final_string, "Today is %s %s", Z_STRVAL_P(month), Z_STRVAL_P(day));
 
 	ZVAL_STRING(&final, final_string);
+
+常用函数列表
+^^^^^^^^^^^^
+Phalcon API 在 Zend API 的基础上提供更多的函数和弘定义（kernel/operators.h）。
+
++----------------------------+
+| 函数名/宏名                |
++============================+
+| phalcon_compare            |
++----------------------------+
+| phalcon_is_equal           |
++----------------------------+
+| phalcon_less               |
++----------------------------+
+| phalcon_greater            |
++----------------------------+
+| phalcon_is_scalar          |
++----------------------------+
+| phalcon_get_intval         |
++----------------------------+
 
 It's short, but if some of your variables aren't string you will get a segmentation fault or an unexpected behavior.
 

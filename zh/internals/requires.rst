@@ -1,4 +1,4 @@
-包含（requires）
+包含（Requires）
 ================
 Phalcon API 提供了 `phalcon_require` 函数实现 PHP 的 `require` 功能，在实际开发过程中，进程会在一个文件中包含另一个或者直接从另一个文件中返回一组数据。
 
