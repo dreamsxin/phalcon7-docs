@@ -25,7 +25,7 @@
         // 通过自动加载器实例化控制器类
         $controller = new $controllerClass();
 
-        // 执行action
+        // 执行 action
         call_user_func_array(array($controller, $actionName . "Action"), $params);
 
         // $finished应该重新加载以检测MVC流
@@ -34,6 +34,10 @@
     }
 
 上面的代码缺少了验证，过滤器和额外的检查，但它演示了在调度器中正常的操作流。
+
+.. highlights::
+
+    执行 action 的过程中，可以通过 `throw Phalcon\ContinueException('提前完成 action')` 终止 action 的运行，而不影响后续的程序运行。
 
 循环调度事件（Dispatch Loop Events）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -98,18 +102,17 @@
 
     <?php
 
-    use Phalcon\Events\Event;
     use Phalcon\Mvc\Controller;
     use Phalcon\Mvc\Dispatcher;
 
     class PostsController extends Controller
     {
-        public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
+        public function beforeExecuteRoute(Dispatcher $dispatcher)
         {
             // 在每一个找到的动作前执行
         }
 
-        public function afterExecuteRoute(Event $event, Dispatcher $dispatcher)
+        public function afterExecuteRoute(Dispatcher $dispatcher)
         {
             // 在每一个找到的动作后执行
         }
@@ -140,7 +143,7 @@
             // 将流转发到index动作
             $this->dispatcher->forward(
                 array(
-                    "controller" => "post",
+                    "controller" => "Post", // 区分大小写，相当于路由处理后的数据
                     "action"     => "index"
                 )
             );
