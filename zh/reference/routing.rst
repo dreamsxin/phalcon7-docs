@@ -1220,6 +1220,17 @@ You need to create app/config/routes.php and add router initialization code, for
 
     return $router;
 
+REST 模式（REST Mode）
+----------------------
+当设置路由为 REST 模式时，会自动将 HTTP method 的值追加到 action 上：
+
+.. code-block:: php
+
+    <?php
+
+    $router = new Phalcon\Mvc\Router();
+    $router->setMode(Phalcon\Router::MODE_REST);
+
 自定义路由（Implementing your own Router）
 ------------------------------------------
 The :doc:`Phalcon\\Mvc\\RouterInterface <../api/Phalcon_Mvc_RouterInterface>` interface must be implemented to create your own router replacing

@@ -142,6 +142,53 @@ MVC 应用（MVC Applications）
 
     <?php
 
+    namespace Multiple\Frontend;
+
+    use Phalcon\Loader;
+    use Phalcon\Mvc\View;
+    use Phalcon\DiInterface;
+    use Phalcon\Mvc\Dispatcher;
+    use Phalcon\Mvc\ModuleDefinitionInterface;
+
+    class Module implements ModuleDefinitionInterface
+    {
+        /**
+         * 注册自定义加载器
+         */
+        public function registerAutoloaders()
+        {
+            $loader = new Loader();
+
+            $loader->registerNamespaces(
+                array(
+                    'Multiple\Frontend' => array(
+                        '../apps/frontend/crontollers',
+                        '../apps/frontend/models'
+                    ),
+                )
+            );
+
+            $loader->register();
+        }
+
+        /**
+         * 注册自定义服务
+         */
+        public function registerServices(DiInterface $di)
+        {
+            // Registering the view component
+            $di->set('view', function () {
+                $view = new View();
+                $view->setViewsDir('../apps/frontend/views/');
+                return $view;
+            });
+        }
+    }
+
+.. code-block:: php
+
+    <?php
+
     namespace Multiple\Backend;
 
     use Phalcon\Loader;
@@ -248,11 +295,12 @@ MVC 应用（MVC Applications）
         $application->registerModules(
             array(
                 'frontend' => array(
-                    'className' => 'Multiple\Frontend\Module',
-                    'path'      => '../apps/frontend/Module.php',
+                    'namespaceName' => 'Multiple\Frontend',
+                    'className'     => 'Module',
+                    'path'          => '../apps/frontend/Module.php',
                 ),
                 'backend'  => array(
-                    'className' => 'Multiple\Backend\BackendModule',
+                    'className' => 'Multiple\Frontend\BackendModule',
                     'path'      => '../apps/backend/Module.php',
                 )
             )
