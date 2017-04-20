@@ -149,7 +149,7 @@ Phalcon提供的调试组件可以使开发者更容易的定位代码中的错�
 .. raw:: html
 
     <div align="center">
-        <video src="/static/video/debug.mp4"controls="controls"></video>
+        <video src="/static/video/debug.mp4" controls="controls"></video>
     </div>
 
 
@@ -259,7 +259,7 @@ XDebug_ 是一个非常好（神奇）的调试工具，其和PHP内部调试工
 .. raw:: html
 
     <div align="center">
-        <video src="/static/video/xdebug.mp4"controls="controls"></video>
+        <video src="/static/video/xdebug.mp4" controls="controls"></video>
     </div>
 
 一旦安装了xdebug, 开发者便可以使用其API来取得更多的异常信息和其它信息：
