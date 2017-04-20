@@ -181,7 +181,7 @@
     {
         protected $_eventsManager;
 
-        public function setEventsManager($eventsManager)
+        public function setEventsManager(Phalcon\Events\ManagerInterface $eventsManager)
         {
             $this->_eventsManager = $eventsManager;
         }
