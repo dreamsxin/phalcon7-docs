@@ -904,7 +904,7 @@ accessed:
         echo "Great, a new robot was created successfully!";
     }
 
-These methods "create" and "update" also accept an array of values as parameter.
+可以通过向方法 :code:`Phalcon\Mvc\Model::create()`、:code:`Phalcon\Mvc\Model::update()` 以及  and :code:`Phalcon\Mvc\Model::save()` 传递数组来进行复制，我们也可以通过方法 :code:`Phalcon\Mvc\Model::assign()` 进行赋值。
 
 验证信息（Validation Messages）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
