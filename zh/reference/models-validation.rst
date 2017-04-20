@@ -1,21 +1,16 @@
-Validating Models
-=================
+模型验证（Validating Models）
+=============================
 
-Validating Data Integrity
--------------------------
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` provides several events to validate data and implement business rules. The special "validation"
-event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.
-
-The following example shows how to use it:
+验证模型数据完整性（Validating Data Integrity）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+在模型 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 中提供了几个事件（`beforeSave`、`beforeCreate`、`beforeUpdate`）用以数据的验证和过滤。
+我们推荐使用专用的事件 `validation`，它允许我们调用内置的验证类进行验证数据：
 
 .. code-block:: php
 
     <?php
 
-    namespace Store\Toys;
-
     use Phalcon\Mvc\Model;
-    use Phalcon\Validation;
     use Phalcon\Validation\Validator\Uniqueness;
     use Phalcon\Validation\Validator\InclusionIn;
 
@@ -23,39 +18,79 @@ The following example shows how to use it:
     {
         public function validation()
         {
-            $validator = new Validation();
+            $validation = new Phalcon\Validation;
 
-            $validator->add(
-                "type",
-                new InclusionIn(
-                    [
-                        "domain" => [
-                            "Mechanical",
-                            "Virtual",
-                        ]
-                    ]
+	        $validation->add("type", new InclusionIn(
+                array(
+                    "domain" => array("Mechanical", "Virtual")
                 )
             );
 
-            $validator->add(
-                "name",
-                new Uniqueness(
-                    [
-                        "message" => "The robot name must be unique",
-                    ]
+	        $validation->add("name", new Uniqueness(
+                array(
+                    "message" => "The robot name must be unique"
                 )
             );
 
-            return $this->validate($validator);
+            return $this->validate($validation);
         }
     }
 
-The above example performs a validation using the built-in validator "InclusionIn". It checks the value of the field "type" in a domain list. If
-the value is not included in the method then the validator will fail and return false.
+上面的例子使用了内置验证器`InclusionIn` 和 `Uniqueness`，更多的内置验证器请查看 :doc:`验证 <validation>` 章节。
 
-.. highlights::
+除了内置的验证程序，我们可以创建自定义验证器：
 
-    For more information on validators, see the :doc:`Validation documentation <validation>`.
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Validation\Validator;
+    use Phalcon\Validation\ValidatorInterface;
+    use Phalcon\ValidationInterface;
+
+    class MaxMinValidator extends Validator implements ValidatorInterface
+    {
+        public function validate(ValidationInterface $validator, $field, $allowEmpty = FALSE)
+        {
+            $min   = $this->getOption('min');
+            $max   = $this->getOption('max');
+
+            $value = $validator->getValue($field);
+
+            if ($min <= $value && $value <= $max) {
+                $message = new Phalcon\Validation\Message("The field doesn't have the right range of values", $field, "MaxMinValidator", 0);
+                $validator->appendMessage($message);
+                return false;
+            }
+
+            return true;
+        }
+    }
+
+Adding the validator to a model:
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Model;
+
+    class Customers extends Model
+    {
+        public function validation()
+        {
+            $validation = new Phalcon\Validation;
+
+	        $validation->add("price", new MaxMinValidator(
+                array(
+                    "min"   => 10,
+                    "max"   => 100
+                )
+            );
+
+            return $this->validate($validation);
+        }
+    }
 
 The idea of creating validators is make them reusable between several models. A validator can also be as simple as:
 
@@ -63,16 +98,14 @@ The idea of creating validators is make them reusable between several models. A 
 
     <?php
 
-    namespace Store\Toys;
-
     use Phalcon\Mvc\Model;
-    use Phalcon\Mvc\Model\Message;
+    use Phalcon\Validation\Message;
 
     class Robots extends Model
     {
         public function validation()
         {
-            if ($this->type === "Old") {
+            if ($this->type == "Old") {
                 $message = new Message(
                     "Sorry, old robots are not allowed anymore",
                     "type",
@@ -88,57 +121,11 @@ The idea of creating validators is make them reusable between several models. A 
         }
     }
 
-验证信息（Validation Messages）
--------------------------------
-通过自定义方法 `getLabel`，我们可以实现自定义字段显示名 :doc:`了解更多 <validation>`
+可以通过覆盖 :code:`Phalcon\Mvc\Model::getMessages()` 方法对默认验证信息就行转换：
 
 .. code-block:: php
 
     <?php
-
-    class Robots extends Phalcon\Mvc\Model {
-        public function getLabel($field) {
-            if (is_array($field)) {
-
-            } else {
-
-            }
-        }
-    }
-
-.. code-block:: php
-
-    <?php
-
-    if ($robot->save() === false) {
-        $messages = $robot->getMessages();
-
-        foreach ($messages as $message) {
-            echo "Message: ", $message->getMessage();
-            echo "Field: ", $message->getField();
-            echo "Type: ", $message->getType();
-        }
-    }
-
-模型会比验证器多生成下面几种类型的验证信息：
-
-+----------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| Type                 | Description                                                                                                                        |
-+======================+====================================================================================================================================+
-| ConstraintViolation  | Generated when a field part of a virtual foreign key is trying to insert/update a value that doesn't exist in the referenced model |
-+----------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| InvalidCreateAttempt | Produced when a record is attempted to be created but it already exists                                                            |
-+----------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| InvalidUpdateAttempt | Produced when a record is attempted to be updated but it doesn't exist                                                             |
-+----------------------+------------------------------------------------------------------------------------------------------------------------------------+
-
-The :code:`getMessages()` method can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
-
-.. code-block:: php
-
-    <?php
-
-    namespace Store\Toys;
 
     use Phalcon\Mvc\Model;
 
@@ -146,20 +133,17 @@ The :code:`getMessages()` method can be overridden in a model to replace/transla
     {
         public function getMessages()
         {
-            $messages = [];
-
+            $messages = array();
             foreach (parent::getMessages() as $message) {
                 switch ($message->getType()) {
-                    case "InvalidCreateAttempt":
-                        $messages[] = "The record cannot be created because it already exists";
+                    case 'InvalidCreateAttempt':
+                        $messages[] = 'The record cannot be created because it already exists';
                         break;
-
-                    case "InvalidUpdateAttempt":
-                        $messages[] = "The record cannot be updated because it doesn't exist";
+                    case 'InvalidUpdateAttempt':
+                        $messages[] = 'The record cannot be updated because it doesn\'t exist';
                         break;
-
-                    case "PresenceOf":
-                        $messages[] = "The field " . $message->getField() . " is mandatory";
+                    case 'PresenceOf':
+                        $messages[] = 'The field ' . $message->getField() . ' is mandatory';
                         break;
                 }
             }
@@ -168,8 +152,8 @@ The :code:`getMessages()` method can be overridden in a model to replace/transla
         }
     }
 
-Validation Failed Events
-------------------------
+验证失败事件（Validation Failed Events）
+----------------------------------------
 Another type of events are available when the data validation process finds any inconsistency:
 
 +--------------------------+--------------------+--------------------------------------------------------------------+

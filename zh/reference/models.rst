@@ -923,7 +923,7 @@ accessed:
         }
     }
 
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 默认会生成下列信息：
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 默认情况下会根据字段类型以及数据库操作结果生成下列验证信息：
 
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
 | Type                 | Description                                                                                                                        |
@@ -939,36 +939,7 @@ accessed:
 | InvalidUpdateAttempt | Produced when a record is attempted to be updated but it doesn't exist                                                             |
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
 
-The :code:`getMessages()` method can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Model;
-
-    class Robots extends Model
-    {
-        public function getMessages()
-        {
-            $messages = array();
-            foreach (parent::getMessages() as $message) {
-                switch ($message->getType()) {
-                    case 'InvalidCreateAttempt':
-                        $messages[] = 'The record cannot be created because it already exists';
-                        break;
-                    case 'InvalidUpdateAttempt':
-                        $messages[] = 'The record cannot be updated because it doesn\'t exist';
-                        break;
-                    case 'PresenceOf':
-                        $messages[] = 'The field ' . $message->getField() . ' is mandatory';
-                        break;
-                }
-            }
-
-            return $messages;
-        }
-    }
+更多的模型验证相关的内容查看 :doc:`模型验证 <models-validation>` 章节。
 
 模型事件与事件管理器（Events and Events Manager）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1160,128 +1131,7 @@ The following example implements an event that validates the year cannot be smal
 Some events return false as an indication to stop the current operation. If an event doesn't return anything, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
 will assume a true value.
 
-验证模型数据完整性（Validating Data Integrity）
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-在模型 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 中提供了几个事件（`beforeSave`、`beforeCreate`、`beforeUpdate`）用以数据的验证和过滤。
-我们推荐使用专用的事件 `validation`，它允许我们调用内置的验证类进行验证数据：
 
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Model;
-    use Phalcon\Validation\Validator\Uniqueness;
-    use Phalcon\Validation\Validator\InclusionIn;
-
-    class Robots extends Model
-    {
-        public function validation()
-        {
-            $validation = new Phalcon\Validation;
-
-	        $validation->add("type", new InclusionIn(
-                array(
-                    "domain" => array("Mechanical", "Virtual")
-                )
-            );
-
-	        $validation->add("name", new Uniqueness(
-                array(
-                    "message" => "The robot name must be unique"
-                )
-            );
-
-            return $this->validate($validation);
-        }
-    }
-
-The above example performs a validation using the built-in validator "InclusionIn". It checks the value of the field "type" in a domain list. If
-the value is not included in the method then the validator will fail and return false. The following built-in validators are available:
-
-上面的例子使用了内置验证器`InclusionIn` 和 `Uniqueness`，更多的内置验证器请查看 :doc:`验证 <vlidation>`。
-
-除了内置的验证程序，我们可以创建自定义验证器：
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Validation\Validator;
-    use Phalcon\Validation\ValidatorInterface;
-    use Phalcon\ValidationInterface;
-
-    class MaxMinValidator extends Validator implements ValidatorInterface
-    {
-        public function validate(ValidationInterface $validator, $field, $allowEmpty = FALSE)
-        {
-            $min   = $this->getOption('min');
-            $max   = $this->getOption('max');
-
-            $value = $validator->getValue($field);
-
-            if ($min <= $value && $value <= $max) {
-                $message = new Phalcon\Validation\Message("The field doesn't have the right range of values", $field, "MaxMinValidator", 0);
-                $validator->appendMessage($message);
-                return false;
-            }
-
-            return true;
-        }
-    }
-
-Adding the validator to a model:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Model;
-
-    class Customers extends Model
-    {
-        public function validation()
-        {
-            $validation = new Phalcon\Validation;
-
-	        $validation->add("price", new MaxMinValidator(
-                array(
-                    "min"   => 10,
-                    "max"   => 100
-                )
-            );
-
-            return $this->validate($validation);
-        }
-    }
-
-The idea of creating validators is make them reusable between several models. A validator can also be as simple as:
-
-.. code-block:: php
-
-    <?php
-
-    use Phalcon\Mvc\Model;
-    use Phalcon\Validation\Message;
-
-    class Robots extends Model
-    {
-        public function validation()
-        {
-            if ($this->type == "Old") {
-                $message = new Message(
-                    "Sorry, old robots are not allowed anymore",
-                    "type",
-                    "MyType"
-                );
-
-                $this->appendMessage($message);
-
-                return false;
-            }
-
-            return true;
-        }
-    }
 
 防止 SQL 注入（Avoiding SQL injections）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1410,18 +1260,6 @@ With the above events can also define business rules in the models:
             return true;
         }
     }
-
-验证失败事件（Validation Failed Events）
-----------------------------------------
-Another type of events are available when the data validation process finds any inconsistency:
-
-+--------------------------+--------------------+--------------------------------------------------------------------+
-| Operation                | Name               | Explanation                                                        |
-+==========================+====================+====================================================================+
-| Insert or Update         | notSaved           | Triggered when the INSERT or UPDATE operation fails for any reason |
-+--------------------------+--------------------+--------------------------------------------------------------------+
-| Insert, Delete or Update | onValidationFails  | Triggered when any data manipulation operation fails               |
-+--------------------------+--------------------+--------------------------------------------------------------------+
 
 动态更新（Use Dynamic Update）
 ------------------------------
