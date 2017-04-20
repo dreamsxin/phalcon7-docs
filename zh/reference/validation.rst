@@ -158,7 +158,7 @@ Phalcon的验证组件中内置了一些验证器：
 
 
 自定义验证器（Custom Validator）
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 下面的例子中展示了如何创建自定义的验证器：
 
 .. code-block:: php
@@ -243,7 +243,7 @@ Phalcon的验证组件中内置了一些验证器：
 -------------------------------
 :doc:`Phalcon\\Validation <../api/Phalcon_Validation>` 内置了一个消息子系统，这提供了一个非常好的验证消息回传机制，以便在验证结束后取得验证信息，比如失败原因等。
 
-每个消息由一个 :doc:`Phalcon\\Validation\\Message <../api/Phalcon_Mvc_Model_Message>` 类的实例构成。 验证过程产生的消息可以使用getMessages()方法取得。
+每个消息由一个 :doc:`Phalcon\\Validation\\Message <../api/Phalcon_Validation_Message>` 类的实例构成。 验证过程产生的消息可以使用getMessages()方法取得。
 每条消息都有一些扩展的信息组成比如产生错误的属性或消息的类型等：
 
 .. code-block:: php
@@ -321,7 +321,7 @@ Phalcon的验证组件中内置了一些验证器：
     }
 
 通过配置文件重定义验证器信息（Custom Validator Message）
--------------------------------------------------------
+--------------------------------------------------------
 在`messages`目录下创建配置文件`validation.php`，内容如下：
 
 .. code-block:: php
@@ -342,7 +342,10 @@ Phalcon的验证组件中内置了一些验证器：
     Phalcon\Validation::setMessageFilename('MyValidation');
 
     // 只对当前实例有效
-    $validation = new Phalcon\Validation(NULL, array('messageFilename' => MyValidation'));
+    $validation = new Phalcon\Validation(NULL, array(
+        'messageFilename' => 'MyValidation'
+    ));
+    $validation->add('name', new PresenceOf);
 
 过滤数据（Filtering of Data）
 -----------------------------
