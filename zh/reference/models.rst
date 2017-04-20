@@ -883,9 +883,7 @@ accessed:
 
 创建与更新结果判断（Create/Update with Confidence）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-When an application has a lot of competition, we could be expecting create a record but it is actually updated. This
-could happen if we use :code:`Phalcon\Mvc\Model::save()` to persist the records in the database. If we want to be absolutely
-sure that a record is created or updated, we can change the :code:`save()` call with :code:`create()` or :code:`update()`:
+当我们使用 :code:`Phalcon\Mvc\Model::save()` 保存数据时，可能是创建或者更新了一条数据。如果我们想确保使用创建或更新操作，需要使用 :code:`create()` 或 :code:`update()`：
 
 .. code-block:: php
 
@@ -910,12 +908,8 @@ These methods "create" and "update" also accept an array of values as parameter.
 
 验证信息（Validation Messages）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` has a messaging subsystem that provides a flexible way to output or store the
-validation messages generated during the insert/update processes.
-
-Each message consists of an instance of the class :doc:`Phalcon\\Mvc\\Model\\Message <../api/Phalcon_Validation_Message>`. The set of
-messages generated can be retrieved with the :code:`getMessages()` method. Each message provides extended information like the field name that
-generated the message or the message type:
+模型 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 拥有有一个灵活的消息子系统，当插入或者更新数据发生错误时，会生成验证消息，通过 :code:`getMessages()` 方法返回。
+每条验证信息都是类 :doc:`Phalcon\\Validation\\Message <../api/Phalcon_Validation_Message>` 的实例，包含了字段名、验证消息、类型等信息：
 
 .. code-block:: php
 
@@ -929,7 +923,7 @@ generated the message or the message type:
         }
     }
 
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` can generate the following types of validation messages:
+:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 默认会生成下列信息：
 
 +----------------------+------------------------------------------------------------------------------------------------------------------------------------+
 | Type                 | Description                                                                                                                        |
@@ -976,10 +970,9 @@ The :code:`getMessages()` method can be overridden in a model to replace/transla
         }
     }
 
-事件与事件管理器（Events and Events Manager）
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Models allow you to implement events that will be thrown when performing an insert/update/delete. They help define business rules for a
-certain model. The following are the events supported by :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` and their order of execution:
+模型事件与事件管理器（Events and Events Manager）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+模型允许我们定义事件的回调方法，通过它们帮助我们实现自己的业务逻辑。以下是模型 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 支持的事件和它们的执行顺序：
 
 +--------------------+--------------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------+
 | Operation          | Name                     | Can stop operation?   | Explanation                                                                                                                       |
@@ -1167,12 +1160,10 @@ The following example implements an event that validates the year cannot be smal
 Some events return false as an indication to stop the current operation. If an event doesn't return anything, :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>`
 will assume a true value.
 
-验证数据完整性（Validating Data Integrity）
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-:doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` provides several events to validate data and implement business rules. The special "validation"
-event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.
-
-The following example shows how to use it:
+验证模型数据完整性（Validating Data Integrity）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+在模型 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 中提供了几个事件（`beforeSave`、`beforeCreate`、`beforeUpdate`）用以数据的验证和过滤。
+我们推荐使用专用的事件 `validation`，它允许我们调用内置的验证类进行验证数据：
 
 .. code-block:: php
 
@@ -1188,13 +1179,13 @@ The following example shows how to use it:
         {
             $validation = new Phalcon\Validation;
 
-	    $validation->add("type", new InclusionIn(
+	        $validation->add("type", new InclusionIn(
                 array(
                     "domain" => array("Mechanical", "Virtual")
                 )
             );
 
-	    $validation->add("name", new Uniqueness(
+	        $validation->add("name", new Uniqueness(
                 array(
                     "message" => "The robot name must be unique"
                 )
@@ -1207,29 +1198,9 @@ The following example shows how to use it:
 The above example performs a validation using the built-in validator "InclusionIn". It checks the value of the field "type" in a domain list. If
 the value is not included in the method then the validator will fail and return false. The following built-in validators are available:
 
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-| Name         | Explanation                                                                                                                                                      | Example                                                          |
-+==============+==================================================================================================================================================================+==================================================================+
-| PresenceOf   | Validates that a field's value isn't null or empty string. This validator is automatically added based on the attributes marked as not null on the mapped table  | :doc:`Example <../api/Phalcon_Validation_Validator_PresenceOf>`  |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-| Email        | Validates that field contains a valid email format                                                                                                               | :doc:`Example <../api/Phalcon_Validation_Validator_Email>`       |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-| ExclusionIn  | Validates that a value is not within a list of possible values                                                                                                   | :doc:`Example <../api/Phalcon_Validation_Validator_ExclusionIn>` |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-| InclusionIn  | Validates that a value is within a list of possible values                                                                                                       | :doc:`Example <../api/Phalcon_Validation_Validator_InclusionIn>` |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-| Numericality | Validates that a field has a numeric format                                                                                                                      | :doc:`Example <../api/Phalcon_Validation_Validator_Numericality>`|
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-| Regex        | Validates that the value of a field matches a regular expression                                                                                                 | :doc:`Example <../api/Phalcon_Validation_Validator_Regex>`       |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-| Uniqueness   | Validates that a field or a combination of a set of fields are not present more than once in the existing records of the related table                           | :doc:`Example <../api/Phalcon_Validation_Validator_Uniqueness>`  |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-| StringLength | Validates the length of a string                                                                                                                                 | :doc:`Example <../api/Phalcon_Validation_Validator_StringLength>`|
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
-| Url          | Validates that a value has a valid URL format                                                                                                                    | :doc:`Example <../api/Phalcon_Validation_Validator_Url>`         |
-+--------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------+
+上面的例子使用了内置验证器`InclusionIn` 和 `Uniqueness`，更多的内置验证器请查看 :doc:`验证 <vlidation>`。
 
-In addition to the built-in validators, you can create your own validators:
+除了内置的验证程序，我们可以创建自定义验证器：
 
 .. code-block:: php
 
@@ -1241,7 +1212,7 @@ In addition to the built-in validators, you can create your own validators:
 
     class MaxMinValidator extends Validator implements ValidatorInterface
     {
-        public function validate(ValidationInterface $validator, $field)
+        public function validate(ValidationInterface $validator, $field, $allowEmpty = FALSE)
         {
             $min   = $this->getOption('min');
             $max   = $this->getOption('max');
@@ -1258,11 +1229,6 @@ In addition to the built-in validators, you can create your own validators:
         }
     }
 
-.. highlights::
-
-    *NOTE* Up to version 2.0.4 :code:`$model` must be :doc:`Phalcon\\Mvc\\ModelInterface <../api/Phalcon_Mvc_ModelInterface>`
-    instance (:code:`public function validate(Phalcon\Mvc\ModelInterface $model)`).
-
 Adding the validator to a model:
 
 .. code-block:: php
@@ -1277,7 +1243,7 @@ Adding the validator to a model:
         {
             $validation = new Phalcon\Validation;
 
-	    $validation->add("price", new MaxMinValidator(
+	        $validation->add("price", new MaxMinValidator(
                 array(
                     "min"   => 10,
                     "max"   => 100
