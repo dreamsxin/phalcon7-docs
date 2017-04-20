@@ -470,7 +470,7 @@ Phalcon的验证组件中内置了一些验证器：
          * @param string $attribute
          * @return boolean
          */
-        public function validate(Validation $validator, $attribute)
+        public function validate(Validation $validator, $attribute, bool $allowEmpty)
         {
             // If the attribute value is name we must stop the chain
             if ($attribute == 'name') {
