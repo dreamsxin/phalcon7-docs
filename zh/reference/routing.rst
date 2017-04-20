@@ -1231,6 +1231,11 @@ REST 模式（REST Mode）
     $router = new Phalcon\Mvc\Router();
     $router->setMode(Phalcon\Router::MODE_REST);
 
+	$_SERVER['REQUEST_METHOD'] = 'POST';
+	$router->handle('/posts/info');
+
+	echo $router->getActionName(); // 这里将输出 infoPost，如果不开启 REST 模式，将返回 info
+
 自定义路由（Implementing your own Router）
 ------------------------------------------
 The :doc:`Phalcon\\Mvc\\RouterInterface <../api/Phalcon_Mvc_RouterInterface>` interface must be implemented to create your own router replacing
