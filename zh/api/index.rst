@@ -55,7 +55,6 @@ API Indice
    Phalcon_Cache_Frontend_None
    Phalcon_Cache_Frontend_Output
    Phalcon_Cache_Multiple
-   Phalcon_Cache_Yac
    Phalcon_Chart_Exception
    Phalcon_Cli_Console
    Phalcon_Cli_Console_Exception
@@ -157,10 +156,6 @@ API Indice
    Phalcon_Image_Adapter_GD
    Phalcon_Image_Adapter_Imagick
    Phalcon_Image_Exception
-   Phalcon_Intrusive_Avltree
-   Phalcon_Intrusive_Avltree_Node
-   Phalcon_Intrusive_Rbtree
-   Phalcon_Intrusive_Rbtree_Node
    Phalcon_JsonRPc_Client_Response
    Phalcon_JsonRpc_Client
    Phalcon_JsonRpc_Client_Exception
@@ -247,6 +242,9 @@ API Indice
    Phalcon_Mvc_View
    Phalcon_Mvc_View_Engine
    Phalcon_Mvc_View_Engine_Php
+   Phalcon_Mvc_View_Engine_Volt
+   Phalcon_Mvc_View_Engine_Volt_Compiler
+   Phalcon_Mvc_View_Engine_Volt_Exception
    Phalcon_Mvc_View_Exception
    Phalcon_Mvc_View_Model
    Phalcon_Mvc_View_Simple
@@ -256,30 +254,23 @@ API Indice
    Phalcon_Paginator_Adapter_Sql
    Phalcon_Paginator_Exception
    Phalcon_Process_Exception
-   Phalcon_Process_Proc
-   Phalcon_Process_Sharedmemory
    Phalcon_Queue_Beanstalk
    Phalcon_Queue_Beanstalk_Job
    Phalcon_Random
    Phalcon_Registry
+   Phalcon_Router
+   Phalcon_Router_Exception
    Phalcon_Security
    Phalcon_Security_Exception
    Phalcon_Security_Random
-   Phalcon_Server
    Phalcon_Server_Exception
-   Phalcon_Server_Http
    Phalcon_Session_Adapter
    Phalcon_Session_Adapter_Cache
    Phalcon_Session_Adapter_Files
    Phalcon_Session_Adapter_Memcached
    Phalcon_Session_Bag
    Phalcon_Session_Exception
-   Phalcon_Socket
-   Phalcon_Socket_Client
    Phalcon_Socket_Exception
-   Phalcon_Socket_Server
-   Phalcon_Storage_Bloomfilter
-   Phalcon_Storage_Btree
    Phalcon_Storage_Exception
    Phalcon_Tag
    Phalcon_Tag_Exception
@@ -290,6 +281,10 @@ API Indice
    Phalcon_Translate_Adapter_NativeArray
    Phalcon_Translate_Adapter_Php
    Phalcon_Translate_Exception
+   Phalcon_User_Component
+   Phalcon_User_Logic
+   Phalcon_User_Module
+   Phalcon_User_Plugin
    Phalcon_Validation
    Phalcon_Validation_Exception
    Phalcon_Validation_Message
@@ -378,6 +373,7 @@ API Indice
    Phalcon_Mvc_View_EngineInterface
    Phalcon_Mvc_View_ModelInterface
    Phalcon_Paginator_AdapterInterface
+   Phalcon_RouterInterface
    Phalcon_Session_AdapterInterface
    Phalcon_Session_BagInterface
    Phalcon_Translate_AdapterInterface

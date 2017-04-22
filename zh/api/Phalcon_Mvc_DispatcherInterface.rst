@@ -56,15 +56,87 @@ Sets the default action suffix
 
 
 
+abstract public  **setDefaultModule** (*string* $module) inherited from Phalcon\\DispatcherInterface
+
+Sets the default module
+
+
+
+abstract public *string*  **getDefaultModule** () inherited from Phalcon\\DispatcherInterface
+
+Gets the default module
+
+
+
 abstract public  **setDefaultNamespace** (*string* $namespace) inherited from Phalcon\\DispatcherInterface
 
 Sets the default namespace
 
 
 
+abstract public *string*  **getDefaultNamespace** () inherited from Phalcon\\DispatcherInterface
+
+Gets the default namespace
+
+
+
+abstract public  **setDefaultHandler** (*string* $handlerName) inherited from Phalcon\\DispatcherInterface
+
+Sets the default handler name
+
+
+
+abstract public *string*  **getDefaultHandler** () inherited from Phalcon\\DispatcherInterface
+
+Gets the default handler name
+
+
+
 abstract public  **setDefaultAction** (*string* $actionName) inherited from Phalcon\\DispatcherInterface
 
 Sets the default action name
+
+
+
+abstract public *string*  **getDefaultAction** () inherited from Phalcon\\DispatcherInterface
+
+Gets the default action name
+
+
+
+abstract public  **setModuleName** (*unknown* $module) inherited from Phalcon\\DispatcherInterface
+
+Sets the module name to be dispatched
+
+
+
+abstract public *string*  **getModuleName** () inherited from Phalcon\\DispatcherInterface
+
+Gets last dispatched module name
+
+
+
+abstract public  **setNamespaceName** (*unknown* $namespace) inherited from Phalcon\\DispatcherInterface
+
+Sets the namespace to be dispatched
+
+
+
+abstract public *string*  **getNamespaceName** () inherited from Phalcon\\DispatcherInterface
+
+Gets last dispatched namespace
+
+
+
+abstract public  **setHandlerName** (*string* $handlerName) inherited from Phalcon\\DispatcherInterface
+
+Sets the handler name to be dispatched
+
+
+
+abstract public *string*  **getHandlerName** () inherited from Phalcon\\DispatcherInterface
+
+Gets last dispatched handler name
 
 
 

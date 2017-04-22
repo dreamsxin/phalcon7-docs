@@ -139,7 +139,7 @@ public static *int|string Returns usually integer, but string if result is too b
 
 
 
-public static *boolean*  **filter** (*unknown* $date, [*unknown* $format])
+public static *string*  **filter** (*unknown* $date, [*unknown* $format])
 
 Filters a variable $ret = Phalcon\\Date::filter('2012-01-22'); $ret = Phalcon\\Date::filter('2012-01-22 11:00:00', 'Y-m-d H:i:s');
 

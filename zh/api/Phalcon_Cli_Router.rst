@@ -1,9 +1,9 @@
 Class **Phalcon\\Cli\\Router**
 ==============================
 
-*extends* abstract class :doc:`Phalcon\\Di\\Injectable <Phalcon_Di_Injectable>`
+*extends* abstract class :doc:`Phalcon\\Router <Phalcon_Router>`
 
-*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
+*implements* :doc:`Phalcon\\RouterInterface <Phalcon_RouterInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
 .. role:: raw-html(raw)
    :format: html
@@ -26,6 +26,15 @@ Phalcon\\Cli\\Router is the standard framework router. Routing is the process of
 
 
 
+Constants
+---------
+
+*integer* **MODE_DEFAULT**
+
+*integer* **MODE_NONE**
+
+*integer* **MODE_REST**
+
 Methods
 -------
 
@@ -35,45 +44,9 @@ Phalcon\\Cli\\Router constructor
 
 
 
-public  **setDefaultModule** (*string* $moduleName)
+public  **setDefaultTask** (*unknown* $handlerName)
 
-Sets the name of the default module
-
-
-
-public  **setDefaultNamespace** (*string* $namespaceName)
-
-Sets the name of the default namespace
-
-
-
-public  **setDefaultTask** (*string* $taskName)
-
-Sets the default controller name
-
-
-
-public  **setDefaultAction** (*string* $actionName)
-
-Sets the default action name
-
-
-
-public  **handle** ([*array* $arguments])
-
-Handles routing information received from command-line arguments
-
-
-
-public *string*  **getNamespaceName** ()
-
-Returns proccesed namespace name
-
-
-
-public *string*  **getModuleName** ()
-
-Returns proccesed module name
+Sets the default task name
 
 
 
@@ -83,13 +56,139 @@ Returns proccesed task name
 
 
 
-public *string*  **getActionName** ()
+public  **handle** ([*array* $arguments])
+
+Handles routing information received from command-line arguments
+
+
+
+public  **setDefaultModule** (*string* $moduleName) inherited from Phalcon\\Router
+
+Sets the name of the default module
+
+
+
+public *string*  **getDefaultModule** () inherited from Phalcon\\Router
+
+Gets the name of the default module
+
+
+
+public  **setDefaultNamespace** (*string* $namespaceName) inherited from Phalcon\\Router
+
+Sets the name of the default namespace
+
+
+
+public *string*  **getDefaultNamespace** () inherited from Phalcon\\Router
+
+Gets the name of the default namespace
+
+
+
+public  **setDefaultHandler** (*unknown* $handlerName) inherited from Phalcon\\Router
+
+Sets the default handle name
+
+
+
+public *string*  **getDefaultHandler** () inherited from Phalcon\\Router
+
+Gets the default handle name
+
+
+
+public  **setDefaultAction** (*string* $actionName) inherited from Phalcon\\Router
+
+Sets the default action name
+
+
+
+public *string*  **getDefaultAction** () inherited from Phalcon\\Router
+
+Gets the default action name
+
+
+
+public  **setDefaultParams** (*array* $params) inherited from Phalcon\\Router
+
+Sets the default extra params
+
+
+
+public *string*  **getDefaultParams** () inherited from Phalcon\\Router
+
+Gets the default extra params
+
+
+
+public  **setMode** (*int* $mode) inherited from Phalcon\\Router
+
+Sets the mode
+
+
+
+public  **getMode** () inherited from Phalcon\\Router
+
+Gets the mode
+
+
+
+public  **setModuleName** (*string* $moduleName) inherited from Phalcon\\Router
+
+Sets proccesed module name
+
+
+
+public *string*  **getModuleName** () inherited from Phalcon\\Router
+
+Returns proccesed module name
+
+
+
+public  **setNamespaceName** (*string* $namespaceName) inherited from Phalcon\\Router
+
+Sets proccesed namespace name
+
+
+
+public *string*  **getNamespaceName** () inherited from Phalcon\\Router
+
+Returns proccesed namespace name
+
+
+
+public  **setHandlerName** (*unknown* $handlerName) inherited from Phalcon\\Router
+
+Sets proccesed handle name
+
+
+
+public *string*  **getHandlerName** () inherited from Phalcon\\Router
+
+Returns proccesed handle name
+
+
+
+public  **setActionName** (*string* $actionName) inherited from Phalcon\\Router
+
+Sets proccesed action name
+
+
+
+public *string*  **getActionName** () inherited from Phalcon\\Router
 
 Returns proccesed action name
 
 
 
-public *array*  **getParams** ()
+public  **setParams** (*array* $params) inherited from Phalcon\\Router
+
+Sets proccesed extra params
+
+
+
+public *array*  **getParams** () inherited from Phalcon\\Router
 
 Returns proccesed extra params
 
@@ -134,6 +233,18 @@ Fires an event, implicitly calls behaviors and listeners in the events manager a
 public *boolean*  **hasService** (*string* $name) inherited from Phalcon\\Di\\Injectable
 
 Check whether the DI contains a service by a name
+
+
+
+public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **setService** (*unknown* $name) inherited from Phalcon\\Di\\Injectable
+
+Sets a service from the DI
+
+
+
+public *object*  **getService** (*unknown* $name) inherited from Phalcon\\Di\\Injectable
+
+Obtains a service from the DI
 
 
 

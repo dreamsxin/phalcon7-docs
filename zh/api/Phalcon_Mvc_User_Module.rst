@@ -1,9 +1,9 @@
-Class **Phalcon\\Mvc\\User\\Module**
-====================================
+Abstract class **Phalcon\\Mvc\\User\\Module**
+=============================================
 
-*extends* abstract class :doc:`Phalcon\\Di\\Injectable <Phalcon_Di_Injectable>`
+*extends* abstract class :doc:`Phalcon\\User\\Module <Phalcon_User_Module>`
 
-*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
+*implements* :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
 .. role:: raw-html(raw)
    :format: html
@@ -55,6 +55,18 @@ Fires an event, implicitly calls behaviors and listeners in the events manager a
 public *boolean*  **hasService** (*string* $name) inherited from Phalcon\\Di\\Injectable
 
 Check whether the DI contains a service by a name
+
+
+
+public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **setService** (*unknown* $name) inherited from Phalcon\\Di\\Injectable
+
+Sets a service from the DI
+
+
+
+public *object*  **getService** (*unknown* $name) inherited from Phalcon\\Di\\Injectable
+
+Obtains a service from the DI
 
 
 

@@ -114,27 +114,15 @@ Sets the default action suffix
 
 
 
-public  **setModuleName** (*string* $moduleName) inherited from Phalcon\\Dispatcher
+public  **setDefaultModule** (*string* $module) inherited from Phalcon\\Dispatcher
 
-Sets the module where the controller is (only informative)
-
-
-
-public *string*  **getModuleName** () inherited from Phalcon\\Dispatcher
-
-Gets the module where the controller class is
+Sets the default module
 
 
 
-public  **setNamespaceName** (*string* $namespaceName) inherited from Phalcon\\Dispatcher
+public *string*  **getDefaultModule** () inherited from Phalcon\\Dispatcher
 
-Sets the namespace where the controller class is
-
-
-
-public *string*  **getNamespaceName** () inherited from Phalcon\\Dispatcher
-
-Gets a namespace to be prepended to the current handler name
+Returns the default module
 
 
 
@@ -150,9 +138,63 @@ Returns the default namespace
 
 
 
+public  **setDefaultHandler** (*unknown* $handlerName) inherited from Phalcon\\Dispatcher
+
+Sets the default handler
+
+
+
+public *string*  **getDefaultHandler** () inherited from Phalcon\\Dispatcher
+
+Returns the default handler
+
+
+
 public  **setDefaultAction** (*string* $actionName) inherited from Phalcon\\Dispatcher
 
 Sets the default action name
+
+
+
+public *string*  **getDefaultAction** () inherited from Phalcon\\Dispatcher
+
+Returns the default action
+
+
+
+public  **setModuleName** (*unknown* $module) inherited from Phalcon\\Dispatcher
+
+Sets the module where the controller is (only informative)
+
+
+
+public *string*  **getModuleName** () inherited from Phalcon\\Dispatcher
+
+Gets the module where the controller class is
+
+
+
+public  **setNamespaceName** (*unknown* $namespace) inherited from Phalcon\\Dispatcher
+
+Sets the namespace where the controller class is
+
+
+
+public *string*  **getNamespaceName** () inherited from Phalcon\\Dispatcher
+
+Gets a namespace to be prepended to the current handler name
+
+
+
+public  **setHandlerName** (*string* $handlerName) inherited from Phalcon\\Dispatcher
+
+Sets the action name to be dispatched
+
+
+
+public *string*  **getHandlerName** () inherited from Phalcon\\Dispatcher
+
+Gets the lastest dispatched handler name
 
 
 
@@ -333,6 +375,30 @@ Returns the last handler
 
 
 
+public *string*  **getPreviousNamespaceName** () inherited from Phalcon\\Dispatcher
+
+Returns the previons namespace
+
+
+
+public *string*  **getPreviousActionName** () inherited from Phalcon\\Dispatcher
+
+Returns the previons action
+
+
+
+public *array*  **getPreviousParams** () inherited from Phalcon\\Dispatcher
+
+Returns the previons action params
+
+
+
+public *mixed*  **getPreviousParam** (*mixed* $param, [*string|array* $filters]) inherited from Phalcon\\Dispatcher
+
+Gets a previons param by its name or numeric index
+
+
+
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Di\\Injectable
 
 Sets the dependency injector
@@ -366,6 +432,18 @@ Fires an event, implicitly calls behaviors and listeners in the events manager a
 public *boolean*  **hasService** (*string* $name) inherited from Phalcon\\Di\\Injectable
 
 Check whether the DI contains a service by a name
+
+
+
+public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **setService** (*unknown* $name) inherited from Phalcon\\Di\\Injectable
+
+Sets a service from the DI
+
+
+
+public *object*  **getService** (*unknown* $name) inherited from Phalcon\\Di\\Injectable
+
+Obtains a service from the DI
 
 
 

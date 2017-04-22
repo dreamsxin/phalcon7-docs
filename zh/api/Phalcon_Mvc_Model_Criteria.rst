@@ -306,7 +306,7 @@ Sets a HAVING condition clause. You need to escape PHQL reserved words using [ a
 
 
 
-public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **execute** (*boolean* $useRawsql)
+public :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **execute** ()
 
 Executes a find using the parameters built with the criteria
 
@@ -405,6 +405,18 @@ Fires an event, implicitly calls behaviors and listeners in the events manager a
 public *boolean*  **hasService** (*string* $name) inherited from Phalcon\\Di\\Injectable
 
 Check whether the DI contains a service by a name
+
+
+
+public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **setService** (*unknown* $name) inherited from Phalcon\\Di\\Injectable
+
+Sets a service from the DI
+
+
+
+public *object*  **getService** (*unknown* $name) inherited from Phalcon\\Di\\Injectable
+
+Obtains a service from the DI
 
 
 

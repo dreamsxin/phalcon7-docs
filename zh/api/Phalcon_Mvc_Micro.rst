@@ -107,19 +107,13 @@ Returns the internal router used by the application
 
 
 
-public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **setService** (*string* $serviceName, *mixed* $definition, [*boolean* $shared])
+public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **offsetSet** (*string* $serviceName, *mixed* $definition, [*boolean* $shared])
 
 Sets a service from the DI
 
 
 
-public *boolean*  **hasService** (*string* $serviceName)
-
-Checks if a service is registered in the DI
-
-
-
-public *object*  **getService** (*string* $serviceName)
+public *object*  **offsetGet** (*string* $serviceName)
 
 Obtains a service from the DI
 
@@ -161,35 +155,9 @@ Returns the value returned by the executed handler
 
 
 
-public *boolean*  **offsetExists** (*unknown* $serviceName)
+public *boolean*  **offsetExists** (*string* $serviceName)
 
-Check if a service is registered in the internal services container using the array syntax. Alias for Phalcon\\Mvc\\Micro::hasService()
-
-
-
-public  **offsetSet** (*unknown* $serviceName, *mixed* $definition, [*unknown* $shared])
-
-Allows to register a shared service in the internal services container using the array syntax. Alias for Phalcon\\Mvc\\Micro::setService() 
-
-.. code-block:: php
-
-    <?php
-
-    $app['request'] = new Phalcon\Http\Request();
-
-
-
-
-public *mixed*  **offsetGet** (*unknown* $serviceName)
-
-Allows to obtain a shared service in the internal services container using the array syntax. Alias for Phalcon\\Mvc\\Micro::getService() 
-
-.. code-block:: php
-
-    <?php
-
-    var_dump($app['request']);
-
+Checks if a service is registered in the DI
 
 
 
@@ -262,6 +230,24 @@ Fires an event, implicitly calls behaviors and listeners in the events manager a
 public *boolean*  **fireEventCancel** (*string* $eventName, [*unknown* $data], [*unknown* $cancelable]) inherited from Phalcon\\Di\\Injectable
 
 Fires an event, implicitly calls behaviors and listeners in the events manager are notified This method stops if one of the callbacks/listeners returns boolean false
+
+
+
+public *boolean*  **hasService** (*string* $name) inherited from Phalcon\\Di\\Injectable
+
+Check whether the DI contains a service by a name
+
+
+
+public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **setService** (*unknown* $name) inherited from Phalcon\\Di\\Injectable
+
+Sets a service from the DI
+
+
+
+public *object*  **getService** (*unknown* $name) inherited from Phalcon\\Di\\Injectable
+
+Obtains a service from the DI
 
 
 

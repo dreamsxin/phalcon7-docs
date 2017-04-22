@@ -25,6 +25,23 @@ Provides encryption facilities to phalcon applications
 
 
 
+Constants
+---------
+
+*integer* **PADDING_DEFAULT**
+
+*integer* **PADDING_ANSI_X_923**
+
+*integer* **PADDING_PKCS7**
+
+*integer* **PADDING_ISO_10126**
+
+*integer* **PADDING_ISO_IEC_7816_4**
+
+*integer* **PADDING_ZERO**
+
+*integer* **PADDING_SPACE**
+
 Methods
 -------
 
@@ -61,6 +78,18 @@ Sets the options
 public *int*  **getOptions** ()
 
 Returns the options
+
+
+
+public :doc:`Phalcon\\CryptInterface <Phalcon_CryptInterface>`  **setPadding** (*int* $padding)
+
+Sets the padding
+
+
+
+public *int*  **getPadding** ()
+
+Returns the padding
 
 
 

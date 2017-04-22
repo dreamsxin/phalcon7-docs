@@ -256,3 +256,15 @@ Returns the case sensitive
 
 
 
+public  **setMode** (*int* $mode)
+
+Sets the mode
+
+
+
+public  **getMode** ()
+
+Gets the mode
+
+
+

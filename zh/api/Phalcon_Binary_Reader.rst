@@ -93,7 +93,7 @@ Read a signed short int from the current position in the file pointer
 
 
 
-public *int*  **readUnsignedInt16** ()
+public *int*  **readUnsignedInt16** ([*unknown* $endian])
 
 Read a unsigned short int from the current position in the file pointer
 
@@ -117,7 +117,7 @@ Read a signed long int from the current position in the file pointer
 
 
 
-public *int*  **readUnsignedInt32** ()
+public *int*  **readUnsignedInt32** ([*unknown* $endian])
 
 Read a unsigned long int from the current position in the file pointer
 

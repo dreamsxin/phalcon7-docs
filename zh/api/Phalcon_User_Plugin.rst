@@ -1,87 +1,20 @@
-Class **Phalcon\\Paginator\\Adapter\\Sql**
-==========================================
+Abstract class **Phalcon\\User\\Plugin**
+========================================
 
 *extends* abstract class :doc:`Phalcon\\Di\\Injectable <Phalcon_Di_Injectable>`
 
-*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\Paginator\\AdapterInterface <Phalcon_Paginator_AdapterInterface>`
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
 
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/paginator/adapter/sql.c" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/user/plugin.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Pagination using a SQL as source of data  
-
-.. code-block:: php
-
-    <?php
-
-     $sql = "SELECT * FROM robots WHERE type = :type LIMIT :limit OFFSET :offset";
-     $sql2 = "SELECT COUNT(*) rowcount FROM robots WHERE type = :type FROM robots";
-    
-     $bind = ['type' => 'google'];
-    
-     $paginator = new \Phalcon\Paginator\Adapter\Sql(array(
-                     "db" => $this->db,
-                     "sql" => $sql,
-                     "total_sql" => $sql2,
-                     "bind" => $bind,
-                     "limit" => 20,
-                     "page" => $page
-     ));
-
+This class can be used to provide user plugins an easy access to services in the application
 
 
 Methods
 -------
-
-public  **__construct** (*array* $config)
-
-
-
-
-
-public *stdClass*  **getPaginate** ()
-
-Returns a slice of the resultset to show in the pagination
-
-
-
-public :doc:`Phalcon\\Paginator\\Adapter\\Sql <Phalcon_Paginator_Adapter_Sql>`  $this Fluent interface **setLimit** (*int* $limit)
-
-Set current rows limit
-
-
-
-public *int $limit*  **getLimit** ()
-
-Get current rows limit
-
-
-
-public  **setCurrentPage** (*int* $page)
-
-Set current page number
-
-
-
-public  **getCurrentPage** ()
-
-Get current page number
-
-
-
-public :doc:`Phalcon\\Paginator\\Adapter\\Sql <Phalcon_Paginator_Adapter_Sql>`  $this Fluent interface **setDb** (:doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $db)
-
-Set query builder object
-
-
-
-public :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`  $db **getDb** ()
-
-Get query builder object
-
-
 
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Di\\Injectable
 

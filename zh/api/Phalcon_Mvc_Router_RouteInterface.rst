@@ -84,3 +84,43 @@ Resets the internal route id generator
 
 
 
+abstract public  **setDefaults** (*array* $defaults)
+
+...
+
+
+abstract public  **getDefaultModule** ()
+
+...
+
+
+abstract public  **getDefaultNamespace** ()
+
+...
+
+
+abstract public  **getDefaultController** ()
+
+...
+
+
+abstract public  **getDefaultAction** ()
+
+...
+
+
+abstract public  **getDefaultParams** ()
+
+...
+
+
+abstract public  **setMode** (*unknown* $mode)
+
+...
+
+
+abstract public  **getMode** ()
+
+...
+
+

@@ -43,27 +43,15 @@ Sets the default action suffix
 
 
 
-public  **setModuleName** (*string* $moduleName)
+public  **setDefaultModule** (*string* $module)
 
-Sets the module where the controller is (only informative)
-
-
-
-public *string*  **getModuleName** ()
-
-Gets the module where the controller class is
+Sets the default module
 
 
 
-public  **setNamespaceName** (*string* $namespaceName)
+public *string*  **getDefaultModule** ()
 
-Sets the namespace where the controller class is
-
-
-
-public *string*  **getNamespaceName** ()
-
-Gets a namespace to be prepended to the current handler name
+Returns the default module
 
 
 
@@ -79,9 +67,63 @@ Returns the default namespace
 
 
 
+public  **setDefaultHandler** (*unknown* $handlerName)
+
+Sets the default handler
+
+
+
+public *string*  **getDefaultHandler** ()
+
+Returns the default handler
+
+
+
 public  **setDefaultAction** (*string* $actionName)
 
 Sets the default action name
+
+
+
+public *string*  **getDefaultAction** ()
+
+Returns the default action
+
+
+
+public  **setModuleName** (*unknown* $module)
+
+Sets the module where the controller is (only informative)
+
+
+
+public *string*  **getModuleName** ()
+
+Gets the module where the controller class is
+
+
+
+public  **setNamespaceName** (*unknown* $namespace)
+
+Sets the namespace where the controller class is
+
+
+
+public *string*  **getNamespaceName** ()
+
+Gets a namespace to be prepended to the current handler name
+
+
+
+public  **setHandlerName** (*string* $handlerName)
+
+Sets the action name to be dispatched
+
+
+
+public *string*  **getHandlerName** ()
+
+Gets the lastest dispatched handler name
 
 
 
@@ -262,6 +304,30 @@ Returns the last handler
 
 
 
+public *string*  **getPreviousNamespaceName** ()
+
+Returns the previons namespace
+
+
+
+public *string*  **getPreviousActionName** ()
+
+Returns the previons action
+
+
+
+public *array*  **getPreviousParams** ()
+
+Returns the previons action params
+
+
+
+public *mixed*  **getPreviousParam** (*mixed* $param, [*string|array* $filters])
+
+Gets a previons param by its name or numeric index
+
+
+
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Di\\Injectable
 
 Sets the dependency injector
@@ -295,6 +361,18 @@ Fires an event, implicitly calls behaviors and listeners in the events manager a
 public *boolean*  **hasService** (*string* $name) inherited from Phalcon\\Di\\Injectable
 
 Check whether the DI contains a service by a name
+
+
+
+public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **setService** (*unknown* $name) inherited from Phalcon\\Di\\Injectable
+
+Sets a service from the DI
+
+
+
+public *object*  **getService** (*unknown* $name) inherited from Phalcon\\Di\\Injectable
+
+Obtains a service from the DI
 
 
 

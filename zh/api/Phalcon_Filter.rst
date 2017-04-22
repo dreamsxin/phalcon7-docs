@@ -25,7 +25,7 @@ The Phalcon\\Filter component provides a set of commonly needed data filters. It
 Methods
 -------
 
-public  **__construct** ()
+public  **__construct** ([*array* $options], [*unknown* $handler])
 
 Phalcon\\Filter constructor
 

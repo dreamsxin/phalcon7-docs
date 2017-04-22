@@ -3,7 +3,7 @@ Abstract class **Phalcon\\Mvc\\User\\Logic\\Model**
 
 *extends* abstract class :doc:`Phalcon\\Mvc\\User\\Logic <Phalcon_Mvc_User_Logic>`
 
-*implements* :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
 
 .. role:: raw-html(raw)
    :format: html
@@ -61,37 +61,37 @@ abstract public  **count** ([*unknown* $arguments])
 ...
 
 
-public  **__construct** ([*string* $actionName], [*unknown* $arguments]) inherited from Phalcon\\Mvc\\User\\Logic
+public  **__construct** ([*string* $actionName], [*unknown* $arguments]) inherited from Phalcon\\User\\Logic
 
-Constructor for Phalcon\\Mvc\\User\\Logic
+Constructor for Phalcon\\User\\Logic
 
 
 
-public *string*  **getActionName** () inherited from Phalcon\\Mvc\\User\\Logic
+public *string*  **getActionName** () inherited from Phalcon\\User\\Logic
 
 Gets the action name
 
 
 
-public *array*  **getActionParams** () inherited from Phalcon\\Mvc\\User\\Logic
+public *array*  **getActionParams** () inherited from Phalcon\\User\\Logic
 
 Gets action params
 
 
 
-public  **setContent** (*mixed* $content) inherited from Phalcon\\Mvc\\User\\Logic
+public  **setContent** (*mixed* $content) inherited from Phalcon\\User\\Logic
 
 Sets content
 
 
 
-public *mixed*  **getContent** () inherited from Phalcon\\Mvc\\User\\Logic
+public *mixed*  **getContent** () inherited from Phalcon\\User\\Logic
 
 Gets content
 
 
 
-public static *object*  **call** ([*string* $actionName], [*unknown* $arguments]) inherited from Phalcon\\Mvc\\User\\Logic
+public static *object*  **call** ([*string* $actionName], [*unknown* $arguments]) inherited from Phalcon\\User\\Logic
 
 Loads an logic and prepares it for manipulation
 
@@ -136,6 +136,18 @@ Fires an event, implicitly calls behaviors and listeners in the events manager a
 public *boolean*  **hasService** (*string* $name) inherited from Phalcon\\Di\\Injectable
 
 Check whether the DI contains a service by a name
+
+
+
+public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **setService** (*unknown* $name) inherited from Phalcon\\Di\\Injectable
+
+Sets a service from the DI
+
+
+
+public *object*  **getService** (*unknown* $name) inherited from Phalcon\\Di\\Injectable
+
+Obtains a service from the DI
 
 
 

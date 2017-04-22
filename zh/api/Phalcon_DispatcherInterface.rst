@@ -18,15 +18,87 @@ Sets the default action suffix
 
 
 
+abstract public  **setDefaultModule** (*string* $module)
+
+Sets the default module
+
+
+
+abstract public *string*  **getDefaultModule** ()
+
+Gets the default module
+
+
+
 abstract public  **setDefaultNamespace** (*string* $namespace)
 
 Sets the default namespace
 
 
 
+abstract public *string*  **getDefaultNamespace** ()
+
+Gets the default namespace
+
+
+
+abstract public  **setDefaultHandler** (*string* $handlerName)
+
+Sets the default handler name
+
+
+
+abstract public *string*  **getDefaultHandler** ()
+
+Gets the default handler name
+
+
+
 abstract public  **setDefaultAction** (*string* $actionName)
 
 Sets the default action name
+
+
+
+abstract public *string*  **getDefaultAction** ()
+
+Gets the default action name
+
+
+
+abstract public  **setModuleName** (*unknown* $module)
+
+Sets the module name to be dispatched
+
+
+
+abstract public *string*  **getModuleName** ()
+
+Gets last dispatched module name
+
+
+
+abstract public  **setNamespaceName** (*unknown* $namespace)
+
+Sets the namespace to be dispatched
+
+
+
+abstract public *string*  **getNamespaceName** ()
+
+Gets last dispatched namespace
+
+
+
+abstract public  **setHandlerName** (*string* $handlerName)
+
+Sets the handler name to be dispatched
+
+
+
+abstract public *string*  **getHandlerName** ()
+
+Gets last dispatched handler name
 
 
 

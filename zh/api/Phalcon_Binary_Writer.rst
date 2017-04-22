@@ -75,7 +75,7 @@ Write a signed short int to the current position in the file pointer
 
 
 
-public :doc:`Phalcon\\Binary\\Writer <Phalcon_Binary_Writer>`  **writeUnsignedInt16** (*unknown* $num)
+public :doc:`Phalcon\\Binary\\Writer <Phalcon_Binary_Writer>`  **writeUnsignedInt16** (*unknown* $num, [*unknown* $endian])
 
 Write a unsigned short int to the current position in the file pointer
 
@@ -99,7 +99,7 @@ Write a signed long int to the current position in the file pointer
 
 
 
-public :doc:`Phalcon\\Binary\\Writer <Phalcon_Binary_Writer>`  **writeUnsignedInt32** (*unknown* $num)
+public :doc:`Phalcon\\Binary\\Writer <Phalcon_Binary_Writer>`  **writeUnsignedInt32** (*unknown* $num, [*unknown* $endian])
 
 Write a unsigned long int to the current position in the file pointer
 

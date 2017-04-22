@@ -56,6 +56,18 @@ Check whether the DI contains a service by a name
 
 
 
+public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **setService** (*unknown* $name)
+
+Sets a service from the DI
+
+
+
+public *object*  **getService** (*unknown* $name)
+
+Obtains a service from the DI
+
+
+
 public *mixed*  **getResolveService** (*string* $name, [*unknown* $args], [*unknown* $noerror], [*unknown* $noshared])
 
 Resolves the service based on its configuration

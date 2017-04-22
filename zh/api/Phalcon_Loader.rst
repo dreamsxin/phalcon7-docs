@@ -149,3 +149,9 @@ Get the path the loader is checking for a path
 
 
 
+public static :doc:`Phalcon\\Loader <Phalcon_Loader>`  **getDefault** ()
+
+Return the default loader
+
+
+

@@ -1,9 +1,9 @@
 Abstract class **Phalcon\\Mvc\\User\\Logic**
 ============================================
 
-*extends* abstract class :doc:`Phalcon\\Di\\Injectable <Phalcon_Di_Injectable>`
+*extends* abstract class :doc:`Phalcon\\User\\Logic <Phalcon_User_Logic>`
 
-*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
+*implements* :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
 .. role:: raw-html(raw)
    :format: html
@@ -16,37 +16,37 @@ This class can be used to provide user business logic an easy access to services
 Methods
 -------
 
-public  **__construct** ([*string* $actionName], [*unknown* $arguments])
+public  **__construct** ([*string* $actionName], [*unknown* $arguments]) inherited from Phalcon\\User\\Logic
 
-Constructor for Phalcon\\Mvc\\User\\Logic
+Constructor for Phalcon\\User\\Logic
 
 
 
-public *string*  **getActionName** ()
+public *string*  **getActionName** () inherited from Phalcon\\User\\Logic
 
 Gets the action name
 
 
 
-public *array*  **getActionParams** ()
+public *array*  **getActionParams** () inherited from Phalcon\\User\\Logic
 
 Gets action params
 
 
 
-public  **setContent** (*mixed* $content)
+public  **setContent** (*mixed* $content) inherited from Phalcon\\User\\Logic
 
 Sets content
 
 
 
-public *mixed*  **getContent** ()
+public *mixed*  **getContent** () inherited from Phalcon\\User\\Logic
 
 Gets content
 
 
 
-public static *object*  **call** ([*string* $actionName], [*unknown* $arguments])
+public static *object*  **call** ([*string* $actionName], [*unknown* $arguments]) inherited from Phalcon\\User\\Logic
 
 Loads an logic and prepares it for manipulation
 
@@ -91,6 +91,18 @@ Fires an event, implicitly calls behaviors and listeners in the events manager a
 public *boolean*  **hasService** (*string* $name) inherited from Phalcon\\Di\\Injectable
 
 Check whether the DI contains a service by a name
+
+
+
+public :doc:`Phalcon\\Di\\ServiceInterface <Phalcon_Di_ServiceInterface>`  **setService** (*unknown* $name) inherited from Phalcon\\Di\\Injectable
+
+Sets a service from the DI
+
+
+
+public *object*  **getService** (*unknown* $name) inherited from Phalcon\\Di\\Injectable
+
+Obtains a service from the DI
 
 
 

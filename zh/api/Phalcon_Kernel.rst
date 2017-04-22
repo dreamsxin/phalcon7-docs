@@ -39,7 +39,7 @@ public static  **setMessagesDir** (*unknown* $path)
 ...
 
 
-public static  **message** (*unknown* $file, [*unknown* $key_path], [*unknown* $default_value], [*unknown* $ext])
+public static  **message** (*unknown* $file, [*unknown* $key_path], [*unknown* $default_value], [*unknown* $ext], [*unknown* $absolute_path])
 
 ...
 
@@ -49,7 +49,27 @@ public static  **setMessages** (*array* $messages)
 ...
 
 
-public static  **getMessages** (*array* $messages)
+public static  **getMessages** ()
+
+...
+
+
+public static  **setAliasDir** (*unknown* $path)
+
+...
+
+
+public static  **alias** (*unknown* $file, *unknown* $str, [*unknown* $ext], [*unknown* $absolute_path])
+
+...
+
+
+public static  **setAlias** (*array* $alias)
+
+...
+
+
+public static  **getAlias** ()
 
 ...
 

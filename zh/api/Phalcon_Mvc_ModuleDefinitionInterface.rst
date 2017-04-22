@@ -12,7 +12,7 @@ Phalcon\\Mvc\\ModuleDefinitionInterface initializer
 Methods
 -------
 
-abstract public  **registerAutoloaders** ()
+abstract public  **registerAutoloaders** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector)
 
 Registers an autoloader related to the module
 
