@@ -155,7 +155,7 @@ MVC 应用（MVC Applications）
         /**
          * 注册自定义加载器
          */
-        public function registerAutoloaders()
+        public function registerAutoloaders(DiInterface $di)
         {
             $loader = new Loader();
 
@@ -202,7 +202,7 @@ MVC 应用（MVC Applications）
         /**
          * 注册自定义加载器
          */
-        public function registerAutoloaders()
+        public function registerAutoloaders(DiInterface $di)
         {
             $loader = new Loader();
 
