@@ -1,6 +1,8 @@
-# 引用计数（Reference Counting）
+引用计数（Reference Counting）
+==============================
 
-## 以下的方法将默认设置引用计数 1 
+默认引用计数
+------------
 
 - zend_object_std_init
 - zend_string_init
