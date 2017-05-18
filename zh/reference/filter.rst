@@ -92,6 +92,7 @@
 过滤数据（Filtering data）
 --------------------------
 此外， :doc:`Phalcon\\Filter <../api/Phalcon_Filter>` 也提供了可以进行删除或者修改输入数据以满足我们需要的格式的过滤器。
+函数 `sanitize` 的第一个参数是用户输入的数据，第二个参数是过滤器名称，第三个参数是是否递归执行，第四个参数是选项值。
 
 .. code-block:: php
 
@@ -107,6 +108,16 @@
     // 返回 "Hello"
     $filter->sanitize("  Hello   ", "trim");
 
+	// 返回 "Hello"
+    $filter->sanitize("  Hello   ", function($v) {
+		return trim($v);
+	});
+
+	// 返回 NULL
+    $filter->sanitize("Baidu", "in", NULL, FALSE, ["Google", "Bing"]);
+
+	// 返回 "Baidu"
+    $filter->sanitize("Baidu", ["in" => ["Google", "Baidu"]]);
 
 内置过滤器类型（Types of Built-in Filters）
 -------------------------------------------
@@ -150,6 +161,8 @@
 | upper     | 调用 strtoupper_  方法                                                    |
 +-----------+---------------------------------------------------------------------------+
 | xss       | 删除所有 script                                                           |
++-----------+---------------------------------------------------------------------------+
+| in        | 判断是否在设定的数组内                                                    |
 +-----------+---------------------------------------------------------------------------+
 
 创建过滤器（Creating your own Filters）
