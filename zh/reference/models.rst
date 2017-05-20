@@ -512,6 +512,11 @@ Phalcon 的结果集模拟了可滚动的游标，你可以通过位置，或者
     $customers = Customers::find();
     $arr = $customers->toArray();
 
+    $columns = array('id', 'name'); // 需要输出的字段
+    $rename = true; // 字段名是否是映射后的名称
+    $negate = false;
+    $arr = $customers->toArray($columns, $rename, $negate);
+
 绑定参数（Binding Parameters）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 在 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 中也支持绑定参数。即使使用绑定参数对性能有一点很小的影响，还是强烈建议您使用这种方法，以消除代码受SQL注入攻击的可能性。

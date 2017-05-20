@@ -50,6 +50,23 @@
         }
     }
 
+其它写法：
+
+.. code-block:: php
+
+    <?php
+
+    $validation = new Phalcon\Validation(array(
+        'name' => array('PresenceOf' => array('message' => 'The name is required')),
+        'email' => array('PresenceOf',  'Email'),
+	));
+
+    $validation->add('name', 'PresenceOf');
+    $validation->add('email', array(
+        'PresenceOf',
+        'Email' => array('message' => 'The e-mail is not valid')
+    ));
+
 由于此模型是松耦合设计的，故此我们也可以使用自己书写的验证工具：
 
 初始化验证（Initializing Validation）

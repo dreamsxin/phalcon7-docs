@@ -10,9 +10,12 @@ Phalcon中提供了 :code:`Phalcon\Arr` 数组助手类，让你更高效地处�
 
     <?php
 
-    $value = \Phalcon\Arr::get($_GET, 'name');
-    $value = \Phalcon\Arr::get($user, 'name');
-    $value = \Phalcon\Arr::path($user, array('id', 'name'));
+	$_GET['id'] = array(1, 2);
+	$_GET['name'] = array('phalcon', 'phalcon7');
+
+    $value = \Phalcon\Arr::get($_GET, 'name'); // 值为数组 array('phalcon', 'phalcon7')
+    $value = \Phalcon\Arr::first($_GET, 'name'); // 值为 phalcon
+    $value = \Phalcon\Arr::path($_GET, array('id', 'name')); // 值为 array('id' => array(1, 2), 'name' => array('phalcon', 'phalcon7'))
 
 方法的第一个参数是我们从哪里获取值，第二个参数指定了如何获取数据，第三个参数指定了如果不存在值的情况下返回的默认值。第二个参数可以是下述几种类型中的一个：
 
@@ -40,7 +43,7 @@ Phalcon中提供了 :code:`Phalcon\Arr` 数组助手类，让你更高效地处�
     $value = \Phalcon\Arr::get($data, 'sex', '男');
 
 通过路径获取值（Gets Value）
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------
 
 .. code-block:: php
 
@@ -56,7 +59,6 @@ Phalcon中提供了 :code:`Phalcon\Arr` 数组助手类，让你更高效地处�
 
 对象转换为数组（Converts an object into an array）
 --------------------------------------------------
-
 你经常要将一个对象或者对象的数组转换成一个数组，如下代码可完成这个工作：
 
 .. code-block:: php
@@ -64,6 +66,11 @@ Phalcon中提供了 :code:`Phalcon\Arr` 数组助手类，让你更高效地处�
     <?php
 
     $arr = \Phalcon\Arr::toArray($object);
+
+    $properties = array('id', 'name'); // 需要输出的字段
+    $recursive = true; // 是否递归获取，如果属性是对象或者数组
+    $negate = false;
+    $arr = \Phalcon\Arr::toArray($object, $colums, $rename, $negate);
 
 下面的例子中展示了基本的使用方法：
 
