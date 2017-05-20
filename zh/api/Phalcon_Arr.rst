@@ -48,6 +48,12 @@ Retrieve a single key from an array. If the key does not exist in the array, the
 
 
 
+public static *mixed*  **first** (*array* $array, *string|array|\Closure* $key, [*mixed* $default_value])
+
+Retrieve a single key from an array, if value an array return the first element.
+
+
+
 public static *mixed*  **choice** (*array* $array, *string* $key, *string* $value1, [*string* $value2])
 
 Choice one value, If the key does not exist in the array, the value2 will be returned instead. // Choice the "value1", if exists the value "email" of $_POST $username = \\Phalcon\\Arr::choice($_POST, 'email', 'value1', 'value2');
@@ -126,7 +132,7 @@ Return the sum of all the values in the array using a dot separated path
 
 
 
-public static *array*  **toArray** (*object|array|string* $object, [*bool* $recursive], [*array* $properties])
+public static *array*  **toArray** (*object|array|string* $object, [*array* $properties], [*bool* $recursive], [*unknown* $negate])
 
 Converts an object or an array of objects into an array 
 

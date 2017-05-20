@@ -146,7 +146,7 @@ Returns the element's label
 
 
 
-public *string*  **label** (*unknown* $attributes)
+public *string*  **label** ([*array* $attributes])
 
 Generate the HTML to label the element
 

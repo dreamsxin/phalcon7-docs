@@ -1,5 +1,5 @@
-Class **Phalcon\\Cache\\Backend\\Memory**
-=========================================
+Class **Phalcon\\Cache\\Backend\\Wiredtiger**
+=============================================
 
 *extends* abstract class :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`
 
@@ -8,49 +8,61 @@ Class **Phalcon\\Cache\\Backend\\Memory**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/cache/backend/memory.c" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/cache/backend/wiredtiger.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Stores content in memory. Data is lost when the request is finished  
+Allows to cache output fragments, PHP data or raw data to a wiredtiger backend  This adapter uses the special wiredtigerd key "_PHCY" to store all the keys internally used by the adapter  
 
 .. code-block:: php
 
     <?php
 
-    //Cache data
-    $frontCache = new Phalcon\Cache\Frontend\Data();
+     // Cache data for 2 days
+     $frontCache = new Phalcon\Cache\Frontend\Data(array(
+        "lifetime" => 172800
+     ));
     
-      $cache = new Phalcon\Cache\Backend\Memory($frontCache);
+     //Create the Cache setting wiredtigerd connection options
+     $cache = new Phalcon\Cache\Backend\Wiredtiger($frontCache, array(
+     	'home' => __DIR__.'/wiredtiger'
+    'table' => 'phalcon_test'
+    ));
     
-    //Cache arbitrary data
-    $cache->save('my-data', array(1, 2, 3, 4, 5));
+     //Cache arbitrary data
+     $cache->save('my-data', array(1, 2, 3, 4, 5));
     
-    //Get data
-    $data = $cache->get('my-data');
+     //Get data
+     $data = $cache->get('my-data');
 
 
 
 Methods
 -------
 
-public *mixed*  **get** (*string* $keyName)
+public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontend, [*array* $options])
+
+Phalcon\\Cache\\Backend\\Wiredtiger constructor
+
+
+
+public *mixed*  **get** (*int|string* $keyName)
 
 Returns a cached content
 
 
 
-public  **save** ([*string* $keyName], [*unknown* $value], [*long* $lifetime], [*boolean* $stopBuffer])
+public  **save** ([*int|string* $keyName], [*unknown* $value], [*long* $lifetime], [*boolean* $stopBuffer])
 
-Stores cached content into the backend and stops the frontend
+Stores cached content into the Wiredtigerd backend and stops the frontend
 
 
 
-public *boolean*  **delete** (*string* $keyName)
+public *boolean*  **delete** (*int|string* $keyName)
 
 Deletes a value from the cache by its key
 
 
 
-public *array*  **queryKeys** ([*string* $prefix])
+public *array*  **queryKeys** ([*unknown* $prefix])
 
 Query the existing cached keys
 
@@ -62,27 +74,21 @@ Checks if cache exists and it hasn't expired
 
 
 
-public *mixed*  **increment** (*string* $keyName, [*unknown* $value])
+public *mixed*  **increment** (*string* $keyName, [*long* $value])
 
-Increment of given $keyName by $value
+Atomic increment of a given key, by number $value
 
 
 
-public *long*  **decrement** (*string* $keyName, [*long* $value])
+public *mixed*  **decrement** (*string* $keyName, [*long* $value])
 
-Decrement of $keyName by given $value
+Atomic decrement of a given key, by number $value
 
 
 
 public *boolean*  **flush** ()
 
 Immediately invalidates all existing items.
-
-
-
-public  **__construct** (:doc:`Phalcon\\Cache\\FrontendInterface <Phalcon_Cache_FrontendInterface>` $frontend, [*array* $options]) inherited from Phalcon\\Cache\\Backend
-
-Phalcon\\Cache\\Backend constructor
 
 
 

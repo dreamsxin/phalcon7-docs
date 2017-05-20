@@ -233,6 +233,12 @@ Fires an event, implicitly calls behaviors and listeners in the events manager a
 
 
 
+public *mixed*  **fireEventData** (*string* $eventName, [*mixed* $data]) inherited from Phalcon\\Di\\Injectable
+
+Fires an event, return data
+
+
+
 public *boolean*  **hasService** (*string* $name) inherited from Phalcon\\Di\\Injectable
 
 Check whether the DI contains a service by a name
@@ -245,7 +251,7 @@ Sets a service from the DI
 
 
 
-public *object*  **getService** (*unknown* $name) inherited from Phalcon\\Di\\Injectable
+public *object|null*  **getService** (*unknown* $name) inherited from Phalcon\\Di\\Injectable
 
 Obtains a service from the DI
 

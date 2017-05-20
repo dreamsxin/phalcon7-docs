@@ -70,14 +70,28 @@ Gets the default extra params
 
 
 
-abstract public  **setMode** (*unknown* $mode)
+abstract public  **setCaseSensitive** (*boolean* $caseSensitive)
 
-...
+Sets the case sensitive
 
 
-abstract public  **getMode** ()
 
-...
+abstract public *int*  **getCaseSensitive** ()
+
+Gets the case sensitive
+
+
+
+abstract public  **setMode** (*int* $mode)
+
+Sets the mode
+
+
+
+abstract public *int*  **getMode** ()
+
+Gets the mode
+
 
 
 abstract public  **setModuleName** (*string* $moduleName)

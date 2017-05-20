@@ -332,7 +332,7 @@ Gets the connection used to write data to the model
 
 
 
-public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **assign** (*array* $data, [*array* $columnMap], [*array* $whiteList])
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **assign** (*array* $data, [*array* $columnMap], [*array* $whiteList], [*unknown* $negate])
 
 Assigns values to a model from an array 
 
@@ -1219,7 +1219,7 @@ Returns a simple representation of the object that can be used with var_dump
 
 
 
-public *array*  **toArray** ([*array* $columns], [*bool* $renameColumns])
+public *array*  **toArray** ([*array* $columns], [*bool* $renameColumns], [*unknown* $negate])
 
 Returns the instance as an array representation 
 
@@ -1338,6 +1338,12 @@ Returns the internal dependency injector
 
 
 
+public *mixed*  **fireEventData** (*string* $eventName, [*mixed* $data]) inherited from Phalcon\\Di\\Injectable
+
+Fires an event, return data
+
+
+
 public *boolean*  **hasService** (*string* $name) inherited from Phalcon\\Di\\Injectable
 
 Check whether the DI contains a service by a name
@@ -1350,7 +1356,7 @@ Sets a service from the DI
 
 
 
-public *object*  **getService** (*unknown* $name) inherited from Phalcon\\Di\\Injectable
+public *object|null*  **getService** (*unknown* $name) inherited from Phalcon\\Di\\Injectable
 
 Obtains a service from the DI
 

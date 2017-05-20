@@ -1,52 +1,82 @@
-Abstract class **Phalcon\\Mvc\\Controller**
-===========================================
+Class **Phalcon\\Cli\\Options**
+===============================
 
 *extends* abstract class :doc:`Phalcon\\Di\\Injectable <Phalcon_Di_Injectable>`
 
-*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\Mvc\\ControllerInterface <Phalcon_Mvc_ControllerInterface>`
+*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`
 
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/controller.c" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/cli/options.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Every application controller should extend this class that encapsulates all the controller functionality  The controllers provide the “flow” between models and views. Controllers are responsible for processing the incoming requests from the web browser, interrogating the models for data, and passing that data on to the views for presentation.  
 
 .. code-block:: php
 
     <?php
 
-    class PeopleController extends \Phalcon\Mvc\Controller
-    {
-    
-      //This action will be executed by default
-      public function indexAction()
-      {
-    
-      }
-    
-      public function findAction()
-      {
-    
-      }
-    
-      public function saveAction()
-      {
-       //Forwards flow to the index action
-       return $this->dispatcher->forward(array('controller' => 'people', 'action' => 'index'));
-      }
-    
-    }
+     $ops = new \Phalcon\Cli\Options('Phalcon CLI');
+      $ops->add([
+     	'type' => \Phalcon\Cli\Options::TYPE_INT,
+     	'name' => 'min'
+     ]);
+      $ops->add([
+     	'type' => \Phalcon\Cli\Options::TYPE_INT,
+     	'name' => 'max',
+     	'shortName' => 'm',
+     	'required' => false,
+     	'desc' => "int",
+     	'help' => "must be int",
+     	'defaultValue' => 1
+     ]);
+     $ops->add(\Phalcon\Cli\Options::TYPE_STRING, 'name', 'n', true, "name", "must be string", "Phalcon");
+     $values = $ops->parse();
 
 
+
+Constants
+---------
+
+*integer* **TYPE_INT**
+
+*integer* **TYPE_FLOAT**
+
+*integer* **TYPE_BOOLEAN**
+
+*integer* **TYPE_STRING**
+
+*integer* **TYPE_ARRAY**
 
 Methods
 -------
 
-final public  **__construct** ()
+public  **__construct** ([*unknown* $title], [*unknown* $program], [*unknown* $argString], [*unknown* $desc], [*unknown* $dependencyInjector])
 
-Phalcon\\Mvc\\Controller constructor
+Phalcon\\Cli\\Options constructor
 
+
+
+public  **add** (*unknown* $arg, [*unknown* $name], [*unknown* $shortname], [*unknown* $required], [*unknown* $desc], [*unknown* $help], [*unknown* $defaultValue])
+
+Add option
+
+
+
+public  **help** ()
+
+Print help
+
+
+
+public  **parse** ([*array* $options])
+
+Parse and return values
+
+
+
+public  **addOption** (*unknown* $arg, [*unknown* $name], [*unknown* $shortname], [*unknown* $required], [*unknown* $desc], [*unknown* $help], [*unknown* $defaultValue])
+
+...
 
 
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Di\\Injectable

@@ -1,85 +1,119 @@
-Class **Phalcon\\Paginator\\Adapter\\Sql**
+Class **Phalcon\\Mvc\\View\\Engine\\Volt**
 ==========================================
 
-*extends* abstract class :doc:`Phalcon\\Di\\Injectable <Phalcon_Di_Injectable>`
+*extends* abstract class :doc:`Phalcon\\Mvc\\View\\Engine <Phalcon_Mvc_View_Engine>`
 
-*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\Paginator\\AdapterInterface <Phalcon_Paginator_AdapterInterface>`
+*implements* :doc:`Phalcon\\Mvc\\View\\EngineInterface <Phalcon_Mvc_View_EngineInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/paginator/adapter/sql.c" class="btn btn-default btn-sm">Source on GitHub</a>`
-
-Pagination using a SQL as source of data  
-
-.. code-block:: php
-
-    <?php
-
-     $sql = "SELECT * FROM robots WHERE type = :type LIMIT :limit OFFSET :offset";
-     $sql2 = "SELECT COUNT(*) rowcount FROM robots WHERE type = :type FROM robots";
-    
-     $bind = ['type' => 'google'];
-    
-     $paginator = new \Phalcon\Paginator\Adapter\Sql(array(
-                     "db" => $this->db,
-                     "sql" => $sql,
-                     "total_sql" => $sql2,
-                     "bind" => $bind,
-                     "limit" => 20,
-                     "page" => $page
-     ));
-
-
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/view/engine/volt.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Methods
 -------
 
-public  **__construct** (*array* $config)
+public  **setOptions** (*array* $options)
+
+...
+
+
+public  **getOptions** ()
+
+...
+
+
+public  **getCompiler** ()
+
+...
+
+
+public  **render** (*unknown* $templatePath, *unknown* $params, [*unknown* $mustClean])
+
+...
+
+
+public  **length** (*unknown* $item)
+
+...
+
+
+public  **isIncluded** (*unknown* $needle, *unknown* $haystack)
+
+...
+
+
+public  **convertEncoding** (*unknown* $text, *unknown* $from, *unknown* $to)
+
+...
+
+
+public  **slice** (*unknown* $value, [*unknown* $start], [*unknown* $end])
+
+...
+
+
+public  **sort** (*array* $value)
+
+...
+
+
+public  **callMacro** (*unknown* $name, [*array* $arguments])
+
+...
+
+
+public  **__construct** (:doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>` $view, [:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector]) inherited from Phalcon\\Mvc\\View\\Engine
+
+Phalcon\\Mvc\\View\\Engine constructor
 
 
 
+public *array*  **getContent** () inherited from Phalcon\\Mvc\\View\\Engine
 
-
-public *stdClass*  **getPaginate** ()
-
-Returns a slice of the resultset to show in the pagination
-
-
-
-public :doc:`Phalcon\\Paginator\\Adapter\\Sql <Phalcon_Paginator_Adapter_Sql>`  $this Fluent interface **setLimit** (*int* $limit)
-
-Set current rows limit
+Returns cached ouput on another view stage
 
 
 
-public *int $limit*  **getLimit** ()
+public  **startSection** (*string* $name) inherited from Phalcon\\Mvc\\View\\Engine
 
-Get current rows limit
-
-
-
-public  **setCurrentPage** (*int* $page)
-
-Set current page number
+Start a new section block
 
 
 
-public  **getCurrentPage** ()
+public *string*  **stopSection** () inherited from Phalcon\\Mvc\\View\\Engine
 
-Get current page number
-
-
-
-public :doc:`Phalcon\\Paginator\\Adapter\\Sql <Phalcon_Paginator_Adapter_Sql>`  $this Fluent interface **setDb** (:doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $db)
-
-Set query builder object
+Stop the current section block
 
 
 
-public :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`  $db **getDb** ()
+public *string|null*  **section** (*string* $name, [*unknown* $defaultValue]) inherited from Phalcon\\Mvc\\View\\Engine
 
-Get query builder object
+Returns the content for a section block
+
+
+
+public *string*  **partial** (*string* $partialPath) inherited from Phalcon\\Mvc\\View\\Engine
+
+Renders a partial inside another view
+
+
+
+public :doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>`  **getView** () inherited from Phalcon\\Mvc\\View\\Engine
+
+Returns the view component related to the adapter
+
+
+
+public :doc:`Phalcon\\Mvc\\View\\Engine <Phalcon_Mvc_View_Engine>`  **addMethod** (*string* $name, *Closure* $handler) inherited from Phalcon\\Mvc\\View\\Engine
+
+Adds a user-defined method
+
+
+
+public *mixed*  **__call** (*string* $method, [*array* $arguments]) inherited from Phalcon\\Mvc\\View\\Engine
+
+Handles method calls when a method is not implemented
 
 
 

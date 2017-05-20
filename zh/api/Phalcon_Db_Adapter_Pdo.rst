@@ -149,6 +149,19 @@ Escapes a column/table/schema name
 
 
 
+public *string*  **escapeValue** (*mixed* $value)
+
+Escapes a value to avoid SQL injections according to the active charset in the connection 
+
+.. code-block:: php
+
+    <?php
+
+    $escapedValue = $connection->escapeValue('some dangerous value');
+
+
+
+
 public *string*  **escapeString** (*string* $str)
 
 Escapes a value to avoid SQL injections according to the active charset in the connection 
@@ -691,9 +704,9 @@ Active SQL statement in the object
 
 
 
-public *string*  **getRealSQLStatement** () inherited from Phalcon\\Db\\Adapter
+public *string*  **getExpectSQLStatement** () inherited from Phalcon\\Db\\Adapter
 
-Active SQL statement in the object without replace bound paramters
+Active SQL statement in the object with replace bound paramters
 
 
 
@@ -757,6 +770,12 @@ Fires an event, implicitly calls behaviors and listeners in the events manager a
 
 
 
+public *mixed*  **fireEventData** (*string* $eventName, [*mixed* $data]) inherited from Phalcon\\Di\\Injectable
+
+Fires an event, return data
+
+
+
 public *boolean*  **hasService** (*string* $name) inherited from Phalcon\\Di\\Injectable
 
 Check whether the DI contains a service by a name
@@ -769,7 +788,7 @@ Sets a service from the DI
 
 
 
-public *object*  **getService** (*unknown* $name) inherited from Phalcon\\Di\\Injectable
+public *object|null*  **getService** (*unknown* $name) inherited from Phalcon\\Di\\Injectable
 
 Obtains a service from the DI
 

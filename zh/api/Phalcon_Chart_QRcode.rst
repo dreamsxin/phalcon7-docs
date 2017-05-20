@@ -21,6 +21,27 @@ Class **Phalcon\\Chart\\QRcode**
 
 
 
+Constants
+---------
+
+*integer* **MODE_NUL**
+
+*integer* **MODE_NUM**
+
+*integer* **MODE_AN**
+
+*integer* **MODE_8**
+
+*integer* **MODE_KANJI**
+
+*integer* **LEVEL_L**
+
+*integer* **LEVEL_M**
+
+*integer* **LEVEL_Q**
+
+*integer* **LEVEL_H**
+
 Methods
 -------
 

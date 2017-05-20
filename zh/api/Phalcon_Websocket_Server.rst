@@ -18,7 +18,7 @@ Class **Phalcon\\Websocket\\Server**
      $server->on(Phalcon\Websocket\Server::ON_CLOSE, function($server){
          echo 'Close'.PHP_EOL;
      });
-     $server->on(Phalcon\Websocket\Server::ON_DATA, function($server, $conn){
+     $server->on(Phalcon\Websocket\Server::ON_DATA, function($server, $conn, $data){
          echo 'Data'.PHP_EOL;
      });
      $server->run();

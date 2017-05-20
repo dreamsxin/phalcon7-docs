@@ -160,3 +160,8 @@ Magic method to inaccessible a variable passed to the view
 
 
 
+public  **__toString** ()
+
+...
+
+

@@ -29,7 +29,7 @@ Constants
 Methods
 -------
 
-public  **__construct** (*unknown* $word, [*unknown* $font], [*unknown* $fontSize], [*unknown* $width], [*unknown* $height], [*unknown* $pad_size], [*unknown* $pad_type])
+public  **__construct** ([*unknown* $word], [*unknown* $font], [*unknown* $fontSize], [*unknown* $width], [*unknown* $height], [*unknown* $pad_size], [*unknown* $pad_type])
 
 Phalcon\\Chart\\Captcha constructor $captcha = new \\Phalcon\\Chart\\Captcha; $captcha->generate('Phalcon is a web framework'); $captcha->save('qr.png');
 

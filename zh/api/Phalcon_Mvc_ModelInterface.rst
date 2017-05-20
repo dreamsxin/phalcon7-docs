@@ -197,7 +197,7 @@ Gets internal database connection
 
 
 
-abstract public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **assign** (*array* $data, [*array* $columnMap], [*array* $whiteList])
+abstract public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **assign** (*array* $data, [*array* $columnMap], [*array* $whiteList], [*unknown* $negate])
 
 Assigns values to a model from an array
 

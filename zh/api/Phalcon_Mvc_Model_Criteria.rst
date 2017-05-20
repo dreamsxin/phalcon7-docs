@@ -312,6 +312,12 @@ Executes a find using the parameters built with the criteria
 
 
 
+public *int*  **count** ([*unknown* $column])
+
+Auto sets columns and return execute
+
+
+
 public :doc:`Phalcon\\Mvc\\Model\\CriteriaInterface <Phalcon_Mvc_Model_CriteriaInterface>`  **cache** (*array* $options)
 
 Sets the cache options in the criteria This method replaces all previously set cache options
@@ -402,6 +408,12 @@ Fires an event, implicitly calls behaviors and listeners in the events manager a
 
 
 
+public *mixed*  **fireEventData** (*string* $eventName, [*mixed* $data]) inherited from Phalcon\\Di\\Injectable
+
+Fires an event, return data
+
+
+
 public *boolean*  **hasService** (*string* $name) inherited from Phalcon\\Di\\Injectable
 
 Check whether the DI contains a service by a name
@@ -414,7 +426,7 @@ Sets a service from the DI
 
 
 
-public *object*  **getService** (*unknown* $name) inherited from Phalcon\\Di\\Injectable
+public *object|null*  **getService** (*unknown* $name) inherited from Phalcon\\Di\\Injectable
 
 Obtains a service from the DI
 

@@ -1,5 +1,5 @@
-Abstract class **Phalcon\\Flash**
-=================================
+Class **Phalcon\\Mvc\\View\\Engine\\Volt\\Compiler**
+====================================================
 
 *extends* abstract class :doc:`Phalcon\\Di\\Injectable <Phalcon_Di_Injectable>`
 
@@ -8,109 +8,219 @@ Abstract class **Phalcon\\Flash**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/flash.c" class="btn btn-default btn-sm">Source on GitHub</a>`
-
-Shows HTML notifications related to different circumstances. Classes can be stylized using CSS  
-
-.. code-block:: php
-
-    <?php
-
-     $flash->success("The record was successfully deleted");
-     $flash->error("Cannot open the file");
-
-
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/view/engine/volt/compiler.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
 Methods
 -------
 
-public  **__construct** ([*array* $cssClasses])
+public  **__construct** ([:doc:`Phalcon\\Mvc\\ViewInterface <Phalcon_Mvc_ViewInterface>` $view])
 
-Phalcon\\Flash constructor
-
-
-
-public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setImplicitFlush** (*boolean* $implicitFlush)
-
-Set whether the output must be implictly flushed to the output or returned as string
+...
 
 
+public  **setOptions** (*array* $options)
 
-public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setAutomaticHtml** (*boolean* $automaticHtml)
-
-Set if the output must be implictily formatted with HTML
-
+...
 
 
-public :doc:`Phalcon\\FlashInterface <Phalcon_FlashInterface>`  **setCssClasses** (*array* $cssClasses)
+public  **setOption** (*unknown* $option, *unknown* $value)
 
-Set an array with CSS classes to format the messages
-
-
-
-public *string*  **error** (*string* $message)
-
-Shows a HTML error message 
-
-.. code-block:: php
-
-    <?php
-
-     $flash->error('This is an error');
+...
 
 
+public  **getOption** (*unknown* $option)
+
+...
 
 
-public *string*  **notice** (*string* $message)
+public  **getOptions** ()
 
-Shows a HTML notice/information message 
-
-.. code-block:: php
-
-    <?php
-
-     $flash->notice('This is an information');
+...
 
 
+final public  **fireExtensionEvent** (*unknown* $name, [*unknown* $arguments])
+
+...
 
 
-public *string*  **success** (*string* $message)
+public  **addExtension** (*unknown* $extension)
 
-Shows a HTML success message 
-
-.. code-block:: php
-
-    <?php
-
-     $flash->success('The process was finished successfully');
+...
 
 
+public  **getExtensions** ()
+
+...
 
 
-public *string*  **warning** (*string* $message)
+public  **addFunction** (*unknown* $name, *unknown* $definition)
 
-Shows a HTML warning message 
-
-.. code-block:: php
-
-    <?php
-
-     $flash->warning('Hey, this is important');
+...
 
 
+public  **getFunctions** ()
+
+...
 
 
-public  **outputMessage** (*string* $type, *string* $message)
+public  **addFilter** (*unknown* $name, *unknown* $definition)
 
-Outputs a message formatting it with HTML 
-
-.. code-block:: php
-
-    <?php
-
-     $flash->outputMessage('error', $message);
+...
 
 
+public  **getFilters** ()
+
+...
+
+
+public  **setUniquePrefix** (*unknown* $prefix)
+
+...
+
+
+public  **getUniquePrefix** ()
+
+...
+
+
+public  **attributeReader** (*array* $expr)
+
+...
+
+
+public  **functionCall** (*array* $expr)
+
+...
+
+
+public  **resolveTest** (*array* $test, *unknown* $left)
+
+...
+
+
+final protected  **resolveFilter** (*array* $filter, *unknown* $left)
+
+...
+
+
+final public  **expression** (*array* $expr)
+
+...
+
+
+final protected  **_statementListOrExtends** (*unknown* $statements)
+
+...
+
+
+public  **compileForeach** (*array* $statement, [*unknown* $extendsMode])
+
+...
+
+
+public  **compileForElse** ()
+
+...
+
+
+public  **compileIf** (*array* $statement, [*unknown* $extendsMode])
+
+...
+
+
+public  **compileElseIf** (*array* $statement)
+
+...
+
+
+public  **compileCache** (*array* $statement, [*unknown* $extendsMode])
+
+...
+
+
+public  **compileSet** (*array* $statement)
+
+...
+
+
+public  **compileDo** (*array* $statement)
+
+...
+
+
+public  **compileReturn** (*array* $statement)
+
+...
+
+
+public  **compileAutoEscape** (*array* $statement, *unknown* $extendsMode)
+
+...
+
+
+public  **compileEcho** (*array* $statement)
+
+...
+
+
+public  **compileInclude** (*array* $statement)
+
+...
+
+
+public  **compileMacro** (*array* $statement, *unknown* $extendsMode)
+
+...
+
+
+public  **compileCall** (*array* $statement, *unknown* $extendsMode)
+
+...
+
+
+final protected  **_statementList** (*array* $statements, [*unknown* $extendsMode])
+
+...
+
+
+protected  **_compileSource** (*unknown* $viewCode, [*unknown* $extendsMode])
+
+...
+
+
+public  **compileString** (*unknown* $viewCode, [*unknown* $extendsMode])
+
+...
+
+
+public  **compileFile** (*unknown* $path, *unknown* $compiledPath, [*unknown* $extendsMode])
+
+...
+
+
+public  **compile** (*unknown* $templatePath, [*unknown* $extendsMode])
+
+...
+
+
+public  **getTemplatePath** ()
+
+...
+
+
+public  **getCompiledTemplatePath** ()
+
+...
+
+
+public  **parse** (*unknown* $viewCode)
+
+...
+
+
+protected  **getFinalPath** (*unknown* $path)
+
+...
 
 
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Di\\Injectable

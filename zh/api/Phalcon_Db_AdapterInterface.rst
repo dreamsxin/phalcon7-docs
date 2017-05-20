@@ -192,10 +192,9 @@ Active SQL statement in the object
 
 
 
-abstract public *string*  **getRealSQLStatement** ()
+abstract public  **getExpectSQLStatement** ()
 
-Active SQL statement in the object without replace bound paramters
-
+...
 
 
 abstract public *array*  **getSQLVariables** ()

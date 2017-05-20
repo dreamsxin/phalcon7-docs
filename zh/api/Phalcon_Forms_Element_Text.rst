@@ -154,7 +154,7 @@ Returns the element's label
 
 
 
-public *string*  **label** (*unknown* $attributes) inherited from Phalcon\\Forms\\Element
+public *string*  **label** ([*array* $attributes]) inherited from Phalcon\\Forms\\Element
 
 Generate the HTML to label the element
 
