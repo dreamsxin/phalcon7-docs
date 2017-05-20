@@ -1,26 +1,23 @@
 模型关系（Relationships between Models）
 ========================================
-There are four types of relationships: one-on-one, one-to-many, many-to-one and many-to-many. The relationship may be
-unidirectional or bidirectional, and each can be simple (a one to one model) or more complex (a combination of models).
-The model manager manages foreign key constraints for these relationships, the definition of these helps referential
-integrity as well as easy and fast access of related records to a model. Through the implementation of relations,
-it is easy to access data in related models from each record in a uniform way.
-
-有四种关系类型：1对1,1对多，多对1，多对多。关系可以是单向或者双向的，每个关系可以是简单的（一个1对1的模型）也可以是复杂的（1组模型）。
+有四种关系类型：1对1,1对多，多对1，多对多。关系可以是单向或者双向的，每个关系可以是简单的（一个1对1的模型）也可以是复杂的（一组多个模型）。
 
 单向关系（Unidirectional relationships）
 ----------------------------------------
-Unidirectional relations are those that are generated in relation to one another but not vice versa.
+单向关系在两个模型中的一个模型中定义了彼此的关系。
 
 双向关系（Bidirectional relations）
 -----------------------------------
-The bidirectional relations build relationships in both models and each model defines the inverse relationship of the other.
+双向关系在两个模型中建立关系，每个模型定义了另一个模型的反向关系。
 
 定义关系（Defining relationships）
 ----------------------------------
-In Phalcon, relationships must be defined in the :code:`initialize()` method of a model. The methods :code:`belongsTo()`, :code:`hasOne()`,
-:code:`hasMany()` and :code:`hasManyToMany()` define the relationship between one or more fields from the current model to fields in
-another model. Each of these methods requires 3 parameters: local fields, referenced model, referenced fields.
+在Phalcon中，关系必须在模型的代码：`initialize（））方法中定义。方法：code：`belongsTo（）`，：code：`hasOne（）`，
+：code：`hasMany（）`和：code：`hasManyToMany（）`定义当前模型中一个或多个字段之间的关系，
+另一个模型。这些方法中的每一个都需要3个参数：局部字段，引用模型，引用字段。
+在Phalcon中，关系必须在模型的 :code:`initialize()` 方法中定义。
+可以使用方法 :code:`belongsTo()`、:code:`hasOne()`、:code:`hasMany()` 以及 :code:`hasManyToMany()` 定义当前模型和另外一个模型中一个或多个字段之间的关系。
+这些方法中的每一个都需要3个参数：local fields（当前模型字段）, referenced model（引用模型）, referenced fields（引用字段）。
 
 +---------------+----------------------------+
 | Method        | Description                |

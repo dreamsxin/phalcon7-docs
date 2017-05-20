@@ -1,9 +1,9 @@
 模型行为（Model Behaviors）
---------------------------
-Behaviors are shared conducts that several models may adopt in order to re-use code, the ORM provides an API to implement
-behaviors in your models. Also, you can use the events and callbacks as seen before as an alternative to implement Behaviors with more freedom.
+---------------------------
+行为是几个模型可以使用的共享行为，以便重新使用代码，ORM提供了一个API来实现模型中的行为。
+此外，您可以使用的事件和回调作为实现行为的更方便的替代方法。
 
-A behavior must be added in the model initializer, a model can have zero or more behaviors:
+行为必须在模型初始化器中添加，一个模型中可以有零个或多个行为：
 
 .. code-block:: php
 
@@ -37,13 +37,13 @@ A behavior must be added in the model initializer, a model can have zero or more
 
 The following built-in behaviors are provided by the framework:
 
-+----------------+-------------------------------------------------------------------------------------------------------------------------------+
-| Name           | Description                                                                                                                   |
-+================+===============================================================================================================================+
-| Timestampable  | Allows to automatically update a model's attribute saving the datetime when a record is created or updated                    |
-+----------------+-------------------------------------------------------------------------------------------------------------------------------+
-| SoftDelete     | Instead of permanently delete a record it marks the record as deleted changing the value of a flag column                     |
-+----------------+-------------------------------------------------------------------------------------------------------------------------------+
++----------------+-------------------------------------------------------------------------------------------------+
+| Name           | Description                                                                                     |
++================+=================================================================================================+
+| Timestampable  | 允许自动更新模型的属性，以便在创建或更新记录时保存日期时间                                      |
++----------------+-------------------------------------------------------------------------------------------------+
+| SoftDelete     | 它将记录标记为已删除，而不是真实删除记录                                                        |
++----------------+-------------------------------------------------------------------------------------------------+
 
 生成时间戳（Timestampable）
 ---------------------------

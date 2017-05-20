@@ -1,11 +1,10 @@
 模型元数据（Models Meta-Data）
 ==============================
 
-To speed up development :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` helps you to query fields and constraints from tables
-related to models. To achieve this, :doc:`Phalcon\\Mvc\\Model\\MetaData <../api/Phalcon_Mvc_Model_MetaData>` is available to manage
-and cache table meta-data.
+为了加快开发速度 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 将帮助你从数据库中查询与模型有关字段和约束。
+为了实现这一点将会用 :doc:`Phalcon\\Mvc\\Model\\MetaData <../api/Phalcon_Mvc_Model_MetaData>` 管理和缓存表元数据。
 
-Sometimes it is necessary to get those attributes when working with models. You can get a meta-data instance as follows:
+有时在使用模型时需要获取和字段相关的属性。获得元数据的方法，如下所示:
 
 .. code-block:: php
 

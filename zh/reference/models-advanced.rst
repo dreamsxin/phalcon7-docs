@@ -1,10 +1,9 @@
 模型的高级用法（Working with Models (Advanced)）
 ================================================
 
-结果集类型（Hydration Modes）
------------------------------
-As mentioned above, resultsets are collections of complete objects, this means that every returned result is an object
-representing a row in the database. These objects can be modified and saved again to persistence:
+结果集结合模式（Hydration Modes）
+---------------------------------
+模型的结果集是模型对象的集合，这意味着每个返回的结果是一个对象对应数据库中的一行数据。这些对象可以被修改并保存：
 
 .. code-block:: php
 
@@ -16,9 +15,7 @@ representing a row in the database. These objects can be modified and saved agai
         $robot->save();
     }
 
-Sometimes records are obtained only to be presented to a user in read-only mode, in these cases it may be useful
-to change the way in which records are represented to facilitate their handling. The strategy used to represent objects
-returned in a resultset is called 'hydration mode':
+当我们想将结果只用于只读时，我们可以通过设置结合模式为数组或者 `stdClass`，我们将这种策略叫做 'hydration mode'：
 
 .. code-block:: php
 
@@ -49,7 +46,7 @@ returned in a resultset is called 'hydration mode':
         echo $robot->year, PHP_EOL;
     }
 
-Hydration mode can also be passed as a parameter of 'find':
+我们可以在方法 `find` 中传递结合模式：
 
 .. code-block:: php
 
@@ -69,7 +66,8 @@ Hydration mode can also be passed as a parameter of 'find':
 
 创建与更新记录（Creating Updating/Records）
 -------------------------------------------
-Phalcon\\Mvc\\Model::save() 方法允许你创建/更新记录。save方法自动调用 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 内部的create和update方法，如果想达到预期般的工作效果，正确定义实体主键是非常必须的，以确保创建和更新记录成功。
+Phalcon\\Mvc\\Model::save() 方法允许你创建/更新记录。save方法自动调用 :doc:`Phalcon\\Mvc\\Model <../api/Phalcon_Mvc_Model>` 内部的create和update方法，
+如果想达到预期般的工作效果，正确定义实体主键是非常必须的，以确保创建和更新记录成功。
 
 Also the method executes associated validators, virtual foreign keys and events that are defined in the model:
 
