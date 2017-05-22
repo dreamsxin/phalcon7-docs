@@ -142,8 +142,9 @@ CLI 应用即是运行在命令行窗体上的应用。主要用来实现后台�
 .. code-block:: php
 
     <?php
+
     $shortopts  = "";
-    $shortopts .= "ns:"; // -ns="Phalcon"
+    $shortopts .= "n:";  // -n="Phalcon"
     $shortopts .= "d::"; // -d
     $shortopts .= "D";   // -D
 
@@ -176,6 +177,56 @@ CLI 应用即是运行在命令行窗体上的应用。主要用来实现后台�
         echo $e->getMessage();
     }
 
+
+使用命令行选项类（Cli Options）
+-------------------------------
+
+.. code-block:: php
+
+    <?php
+
+    $opts = new \Phalcon\Cli\Options('Phalcon Task CLI');
+    $opts->add([
+        'type' => \Phalcon\Cli\Options::TYPE_STRING,
+        'name' => 'namespace',
+        'shortName' => 'n',
+        'required' => true,
+        'defaultValue' => 'Phalcon'
+    ]);
+    $opts->add([
+        'type' => \Phalcon\Cli\Options::TYPE_STRING,
+        'name' => 'task',
+        'shortName' => 't',
+        'required' => true,
+        'defaultValue' => 'main'
+    ]);
+    $opts->add([
+        'type' => \Phalcon\Cli\Options::TYPE_STRING,
+        'name' => 'action',
+        'shortName' => 'a',
+        'required' => true,
+        'defaultValue' => 'main'
+    ]);
+    $vals = $opts->parse();
+	if (!$vals) {
+		return;
+	}
+
+    // 创建console应用
+    $console = new \Phalcon\Cli\Console();
+
+    // 处理console应用参数
+    $arguments = array(
+        'namespace' => \Phalcon\Arr::get($vals, 'namespace'),
+        'task' => \Phalcon\Arr::get($vals, 'task'),
+        'action' => \Phalcon\Arr::get($vals, 'action')
+    );
+
+    try {
+        $console->handle($arguments);
+    } catch (\Phalcon\Exception $e) {
+        echo $e->getMessage();
+    }
 
 任务（Tasks）
 -------------

@@ -10,8 +10,8 @@ Phalcon中提供了 :code:`Phalcon\Arr` 数组助手类，让你更高效地处�
 
     <?php
 
-	$_GET['id'] = array(1, 2);
-	$_GET['name'] = array('phalcon', 'phalcon7');
+    $_GET['id'] = array(1, 2);
+    $_GET['name'] = array('phalcon', 'phalcon7');
 
     $value = \Phalcon\Arr::get($_GET, 'name'); // 值为数组 array('phalcon', 'phalcon7')
     $value = \Phalcon\Arr::first($_GET, 'name'); // 值为 phalcon
