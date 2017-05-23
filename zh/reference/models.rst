@@ -570,12 +570,9 @@ Phalcon 的结果集模拟了可滚动的游标，你可以通过位置，或者
         )
     );
 
-When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case "1" or "2" are considered strings
-and not numbers, so the placeholder could not be successfully replaced.
+当使用数字占位符时，需要将下标定义为整数即：1 or 2，例如："1" or "2" 将被认为是字符串，因此将无法成功替换占位符。
 
-Strings are automatically escaped using PDO_. This function takes into account the connection charset, so its recommended to define
-the correct charset in the connection parameters or in the database configuration, as a wrong charset will produce undesired effects
-when storing or retrieving data.
+将会使用 PDO_ 自动转义字符串，此函数会受到数据库连接字符集的影响，所以建议在连接参数或者数据库中配置正确的字符集。
 
 Additionally you can set the parameter "bindTypes", this allows defining how the parameters should be bound according to its data type:
 
@@ -611,24 +608,19 @@ Additionally you can set the parameter "bindTypes", this allows defining how the
     Since the default bind-type is :code:`Phalcon\Db\Column::BIND_PARAM_STR`, there is no need to specify the
     "bindTypes" parameter if all of the columns are of that type.
 
-If you bind arrays in bound parameters, keep in mind, that keys must be numbered from zero:
+同样的方式，可以绑定数组：
 
 .. code-block:: php
 
     <?php
 
-    $array = ["a","b","c"]; // $array: [[0] => "a", [1] => "b", [2] => "c"]
-
-    unset($array[1]); // $array: [[0] => "a", [2] => "c"]
-
-    // Now we have to renumber the keys
-    $array = array_values($array); // $array: [[0] => "a", [1] => "c"]
+    $array = ["a","b","c"];
 
     $robots = Robots::find(
         array(
-            'letter IN ({letter:array})',
+            'letter IN (:letter:)',
             'bind' => array(
-                'letter' => $array
+                'letter' => $values
             )
         )
     );
