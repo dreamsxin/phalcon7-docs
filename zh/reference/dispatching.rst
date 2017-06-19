@@ -555,6 +555,17 @@ http://example.com/admin/products/index.php
     仅仅当异常产生于调度器或者异常产生于被执行的动作时才会通知'beforeException'里面的事件。
     侦听者或者控制器事件中产生的异常则会重定向到最近的try/catch。
 
+设置错误处理器（Set error handler）
+-----------------------------------
+没有匹配到对应的路由，我们通过 `$router->notFound` 来设置控制器，如果是无法加载对应的控制器，或者找不到对应的 `Action`，我们通过 `$dispatch->setErrorHandler` 来设置：
+
+.. code-block:: php
+
+    <?php
+
+    $dispatcher->setErrorHandler('Error::index', Phalcon\Dispatcher::EXCEPTION_HANDLER_NOT_FOUND);
+    $dispatcher->setErrorHandler('Error::index', Phalcon\Dispatcher::EXCEPTION_ACTION_NOT_FOUND);
+
 自定义调度器（Implementing your own Dispatcher）
 ------------------------------------------------
 为了创建自定义调度器，必须实现  :doc:`Phalcon\\Mvc\\DispatcherInterface <../api/Phalcon_Mvc_DispatcherInterface>` 接口，

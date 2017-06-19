@@ -20,8 +20,7 @@ component designed to achieve this task. HTTP responses are usually composed by 
     // Send response to the client
     $response->send();
 
-If you are using the full MVC stack there is no need to create responses manually. However, if you need to return a response
-directly from a controller's action follow this example:
+如果您使用的是完整的 MVC 应用，则不需要手动创建响应。但是，如果您需要直接从控制器的操作返回响应，请按照下面的示例：
 
 .. code-block:: php
 
