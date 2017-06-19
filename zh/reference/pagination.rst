@@ -136,8 +136,8 @@ An example of the source data that must be used for each adapter:
     $paginator = new PaginatorSql(
         array(
             "sql" => "SELECT * FROM robots WHERE type = :type LIMIT :limit OFFSET :offset",
-            "total_sql" => "SELECT COUNT(*) rowcount FROM robots WHERE type = :type FROM robots",
-	    "bind" => ['type' => 'google'],
+            "total_sql" => "SELECT COUNT(*) rowcount FROM robots WHERE type = :type",
+	        "bind" => ['type' => 'google'],
             "limit"   => 20,
             "page"    => 1
         )
