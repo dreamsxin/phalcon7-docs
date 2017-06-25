@@ -37,6 +37,8 @@ Class **Phalcon\\Cli\\Options**
 Constants
 ---------
 
+*integer* **TYPE_ANY**
+
 *integer* **TYPE_INT**
 
 *integer* **TYPE_FLOAT**
@@ -50,7 +52,7 @@ Constants
 Methods
 -------
 
-public  **__construct** ([*unknown* $title], [*unknown* $program], [*unknown* $argString], [*unknown* $desc], [*unknown* $dependencyInjector])
+public  **__construct** ([*unknown* $title], [*unknown* $program], [*unknown* $argString], [*unknown* $desc], [*array* $options], [*unknown* $dependencyInjector])
 
 Phalcon\\Cli\\Options constructor
 

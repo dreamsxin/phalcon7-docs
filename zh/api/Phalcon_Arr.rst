@@ -78,9 +78,9 @@ Adds a value to the beginning of an associative array. // Add an empty value to 
 
 
 
-public static *array*  **map** (*mixed* $callbacks, *array* $array, [*array* $keys])
+public static *array*  **map** (*array* $array, *mixed* $callbacks, [*unknown* $keys])
 
-Recursive version of [array_map](http://php.net/array_map), applies one or more callbacks to all elements in an array, including sub-arrays. // Apply "strip_tags" to every element in the array $array = \\Phalcon\\Arr::map('strip_tags', $array); // Apply $this->filter to every element in the array $array = \\Phalcon\\Arr::map(array(array($this,'filter')), $array);
+Recursive version of [array_map](http://php.net/array_map), applies one or more callbacks to all elements in an array, including sub-arrays. // Apply "strip_tags" to every element in the array $array = \\Phalcon\\Arr::map($array, 'strip_tags'); // Apply $this->filter to every element in the array $array = \\Phalcon\\Arr::map($array, array(array($this,'filter')));
 
 
 
@@ -126,7 +126,7 @@ Filters elements of an array using a the filter $array = array('name' => 'Phalco
 
 
 
-public static *mixed*  **sum** (*array* $array, [*mixed* $path])
+public static *number*  **sum** (*array* $array, [*mixed* $path])
 
 Return the sum of all the values in the array using a dot separated path
 
