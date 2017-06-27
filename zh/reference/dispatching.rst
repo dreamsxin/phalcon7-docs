@@ -566,6 +566,19 @@ http://example.com/admin/products/index.php
     $dispatcher->setErrorHandler('Error::index', Phalcon\Dispatcher::EXCEPTION_HANDLER_NOT_FOUND);
     $dispatcher->setErrorHandler('Error::index', Phalcon\Dispatcher::EXCEPTION_ACTION_NOT_FOUND);
 
+
+控制器的驼峰转换（Camelize Controller）
+---------------------------------------
+Phalcon 默认执行控制器类名和命名空间的驼峰转换，我们可以关闭它：
+
+.. code-block:: php
+
+    <?php
+
+    $dispatcher->camelizeController(false);
+    $dispatcher->camelizeNamespace(false);
+
+
 自定义调度器（Implementing your own Dispatcher）
 ------------------------------------------------
 为了创建自定义调度器，必须实现  :doc:`Phalcon\\Mvc\\DispatcherInterface <../api/Phalcon_Mvc_DispatcherInterface>` 接口，

@@ -94,6 +94,9 @@ retrieves the headers before sending it to client:
     // Redirect specifying the HTTP status code
     $response->redirect("http://www.example.com/new-location", true, 301);
 
+    // Send response to the client
+    $response->send();
+
 All internal URIs are generated using the 'url' service (by default :doc:`Phalcon\\Mvc\\Url <url>`). This example demonstrates
 how you can redirect using a route you have defined in your application:
 
