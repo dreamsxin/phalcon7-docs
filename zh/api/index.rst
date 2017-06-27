@@ -60,6 +60,7 @@ API Indice
    Phalcon_Chart_Captcha
    Phalcon_Chart_Exception
    Phalcon_Chart_QRcode
+   Phalcon_Cli_Color
    Phalcon_Cli_Console
    Phalcon_Cli_Console_Exception
    Phalcon_Cli_Dispatcher
@@ -247,9 +248,6 @@ API Indice
    Phalcon_Mvc_View
    Phalcon_Mvc_View_Engine
    Phalcon_Mvc_View_Engine_Php
-   Phalcon_Mvc_View_Engine_Volt
-   Phalcon_Mvc_View_Engine_Volt_Compiler
-   Phalcon_Mvc_View_Engine_Volt_Exception
    Phalcon_Mvc_View_Exception
    Phalcon_Mvc_View_Model
    Phalcon_Mvc_View_Simple
@@ -261,6 +259,9 @@ API Indice
    Phalcon_Process_Exception
    Phalcon_Process_Proc
    Phalcon_Process_Sharedmemory
+   Phalcon_Profiler
+   Phalcon_Profiler_Exception
+   Phalcon_Profiler_Item
    Phalcon_Queue_Beanstalk
    Phalcon_Queue_Beanstalk_Job
    Phalcon_Random
@@ -389,6 +390,8 @@ API Indice
    Phalcon_Mvc_View_EngineInterface
    Phalcon_Mvc_View_ModelInterface
    Phalcon_Paginator_AdapterInterface
+   Phalcon_Profile_ItemInterface
+   Phalcon_ProfilerInterface
    Phalcon_RouterInterface
    Phalcon_Session_AdapterInterface
    Phalcon_Session_BagInterface
@@ -396,3 +399,4 @@ API Indice
    Phalcon_ValidationInterface
    Phalcon_Validation_MessageInterface
    Phalcon_Validation_ValidatorInterface
+   Phalcon_Websocket_EventLoopInterface

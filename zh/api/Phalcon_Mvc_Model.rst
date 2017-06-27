@@ -128,7 +128,7 @@ Returns a transaction related in the Model instance
 
 
 
-protected :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setSource** (*string* $source)
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setSource** (*string* $source)
 
 Sets table name which model should be mapped
 
@@ -140,7 +140,7 @@ Returns table name mapped in the model
 
 
 
-protected :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setSchema** (*string* $schema)
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setSchema** (*string* $schema)
 
 Sets schema name where table mapped is located
 

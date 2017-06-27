@@ -1,6 +1,10 @@
 Class **Phalcon\\Db\\Profiler**
 ===============================
 
+*extends* class :doc:`Phalcon\\Profiler <Phalcon_Profiler>`
+
+*implements* :doc:`Phalcon\\ProfilerInterface <Phalcon_ProfilerInterface>`
+
 .. role:: raw-html(raw)
    :format: html
 
@@ -37,15 +41,9 @@ Instances of Phalcon\\Db can generate execution profiles on SQL statements sent 
 Methods
 -------
 
-public :doc:`Phalcon\\Db\\Profiler <Phalcon_Db_Profiler>`  **startProfile** (*string* $sqlStatement, [*unknown* $sqlVariables], [*unknown* $sqlBindTypes])
+public :doc:`Phalcon\\Db\\Profiler\\Item <Phalcon_Db_Profiler_Item>`  **startProfile** (*string* $name, [*array* $data])
 
 Starts the profile of a SQL sentence
-
-
-
-public :doc:`Phalcon\\Db\\Profiler <Phalcon_Db_Profiler>`  **stopProfile** ()
-
-Stops the active profile
 
 
 
@@ -55,27 +53,51 @@ Returns the total number of SQL statements processed
 
 
 
-public *double*  **getTotalElapsedSeconds** ()
+public  **__construct** ([*unknown* $unique]) inherited from Phalcon\\Profiler
+
+Constructor for Phalcon\\Profiler\\Item
+
+
+
+public :doc:`Phalcon\\Profiler <Phalcon_Profiler>`  **stopProfile** ([*unknown* $name]) inherited from Phalcon\\Profiler
+
+Stops the active profile
+
+
+
+public *double*  **getTotalElapsedSeconds** () inherited from Phalcon\\Profiler
 
 Returns the total time in seconds spent by the profiles
 
 
 
-public :doc:`Phalcon\\Db\\Profiler\\Item <Phalcon_Db_Profiler_Item>` [] **getProfiles** ()
+public *int*  **getTotalUsageMemory** () inherited from Phalcon\\Profiler
+
+Returns the total time in seconds spent by the profiles
+
+
+
+public :doc:`Phalcon\\Profiler\\Item <Phalcon_Profiler_Item>` [] **getProfiles** () inherited from Phalcon\\Profiler
 
 Returns all the processed profiles
 
 
 
-public :doc:`Phalcon\\Db\\Profiler <Phalcon_Db_Profiler>`  **reset** ()
-
-Resets the profiler, cleaning up all the profiles
-
-
-
-public :doc:`Phalcon\\Db\\Profiler\\Item <Phalcon_Db_Profiler_Item>`  **getLastProfile** ()
+public :doc:`Phalcon\\Profiler\\Item <Phalcon_Profiler_Item>`  **getLastProfile** () inherited from Phalcon\\Profiler
 
 Returns the last profile executed in the profiler
+
+
+
+public :doc:`Phalcon\\Profiler\\Item <Phalcon_Profiler_Item>`  **getCurrentProfile** () inherited from Phalcon\\Profiler
+
+Returns the current profile executed in the profiler
+
+
+
+public :doc:`Phalcon\\Profiler <Phalcon_Profiler>`  **reset** () inherited from Phalcon\\Profiler
+
+Resets the profiler, cleaning up all the profiles
 
 
 
