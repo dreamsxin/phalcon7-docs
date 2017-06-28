@@ -1074,13 +1074,66 @@ The above findByRawSql could be used as follows:
 
     $di->set('modelsQuery', 'MyQuery');
 
+PHQL 事件（PHQL Events）
+------------------------
+如果需要的话 :doc:`Phalcon\\Mvc\Model\Query <../api/Phalcon_Mvc_Model_Query>` 可以发送事件到 :doc:`EventsManager <events>` 。
+支持如下的事件：
+
++---------------------------------+--------------------+--------------+--------------+
+| 事件名                          | 触发条件           | 能否中止操作 | 能否返回值   |
++=================================+====================+==============+==============+
+| beforePrepareSelect             |                    | No           | No           |
++---------------------------------+--------------------+--------------+--------------+
+| afterPrepareSelect              |                    | No           | No           |
++---------------------------------+--------------------+--------------+--------------+
+| beforePrepareInsert             |                    | No           | No           |
++---------------------------------+--------------------+--------------+--------------+
+| afterPrepareInsert              |                    | No           | No           |
++---------------------------------+--------------------+--------------+--------------+
+| beforePrepareUpdate             |                    | No           | No           |
++---------------------------------+--------------------+--------------+--------------+
+| afterPrepareUpdate              |                    | No           | No           |
++---------------------------------+--------------------+--------------+--------------+
+| beforePrepareDelete             |                    | No           | No           |
++---------------------------------+--------------------+--------------+--------------+
+| afterPrepareDelete              |                    | No           | No           |
++---------------------------------+--------------------+--------------+--------------+
+| beforeParse                     |                    | No           | No           |
++---------------------------------+--------------------+--------------+--------------+
+| afterParse                      |                    | No           | No           |
++---------------------------------+--------------------+--------------+--------------+
+| beforeExecute                   |                    | No           | No           |
++---------------------------------+--------------------+--------------+--------------+
+| afterExecute                    |                    | No           | No           |
++---------------------------------+--------------------+--------------+--------------+
+| beforeGenerateSQLStatement      |                    | No           | No           |
++---------------------------------+--------------------+--------------+--------------+
+| afterGenerateSQLStatement       |                    | No           | Yes          |
++---------------------------------+--------------------+--------------+--------------+
+| beforeExecuteSelect             |                    | No           | No           |
++---------------------------------+--------------------+--------------+--------------+
+| afterExecuteSelect              |                    | No           | No           |
++---------------------------------+--------------------+--------------+--------------+
+| beforeExecuteInsert             |                    | No           | No           |
++---------------------------------+--------------------+--------------+--------------+
+| afterExecuteInsert              |                    | No           | No           |
++---------------------------------+--------------------+--------------+--------------+
+| beforeExecuteUpdate             |                    | No           | No           |
++---------------------------------+--------------------+--------------+--------------+
+| afterExecuteUpdate              |                    | No           | No           |
++---------------------------------+--------------------+--------------+--------------+
+| beforeExecuteDelete             |                    | No           | No           |
++---------------------------------+--------------------+--------------+--------------+
+| afterExecuteDelete              |                    | No           | No           |
++---------------------------------+--------------------+--------------+--------------+
+
 注意事项（Troubleshooting）
 ---------------------------
-Some things to keep in mind when using PHQL:
+在使用 PHQL 我们需要注意一些事项:
 
-* Classes are case-sensitive, if a class is not defined with the same name as it was created this could lead to an unexpected behavior in operating systems with case-sensitive file systems such as Linux.
-* Correct charset must be defined in the connection to bind parameters with success.
-* Aliased classes aren't replaced by full namespaced classes since this only occurs in PHP code and not inside strings.
-* If column renaming is enabled avoid using column aliases with the same name as columns to be renamed, this may confuse the query resolver.
+* 类名是区分大小写的，如果 PHQL 使用的类名和真实的类名不一致，这在一些操作系统中可能会导致意外行为，比如 Linux 之类的区分大小写的文件系统。
+* 必须在定义数据库连接时，设置正确的字符集参数。
+* 在 PHQL 中，类的别名不能取代带完整命名空间的类，因为这只是字符串。
+* 如果启用了列重命名，则避免使用与重命名的列同名的列别名，这可能会混淆查询解析器。
 
 .. _SQLite: http://en.wikipedia.org/wiki/Lemon_Parser_Generator
