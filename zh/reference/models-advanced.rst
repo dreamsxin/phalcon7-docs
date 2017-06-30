@@ -649,8 +649,8 @@ obtaining the "flash" service from the DI container. By doing this, we don't hav
 
 禁用或启用特性（Disabling/Enabling Features）
 ---------------------------------------------
-In the ORM we have implemented a mechanism that allow you to enable/disable specific features or options globally on the fly.
-According to how you use the ORM you can disable that you aren't using. These options can also be temporarily disabled if required:
+在 ORM 中，我们实现了一种机制，允许您在全局上启用或者禁用特定的特性或选项。
+我们可以使用 `setup` 方法暂时启用或者禁用它：
 
 .. code-block:: php
 
@@ -681,6 +681,8 @@ The available options are:
 | phqlLiterals        | Enables/Disables literals in the PHQL parser                                          | true    |
 +---------------------+---------------------------------------------------------------------------------------+---------+
 | lateStateBinding    | Enables/Disables late state binding of the method :code:`Mvc\Model::cloneResultMap()` | false   |
++---------------------+---------------------------------------------------------------------------------------+---------+
+| strict              | 开启或者禁用严格模式，严格模式下将会根据影响行数返回操作成功还是失败                  | false   |
 +---------------------+---------------------------------------------------------------------------------------+---------+
 
 独立的组件（Stand-Alone component）
