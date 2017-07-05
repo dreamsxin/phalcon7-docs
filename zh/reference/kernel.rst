@@ -6,7 +6,7 @@ Message
 -------
 存在文件 messages/validation.php`，内容如下：
 
-``` code-block:: php
+.. code-block:: php
 
     <?php
 
@@ -28,7 +28,7 @@ Alias
 -----
 存在文件 `alias/files.php`，内容如下：
 
-``` code-block:: php
+.. code-block:: php
 
     <?php
 
@@ -40,7 +40,7 @@ Alias
 
 使用示例：
 
-``` code-block:: php
+.. code-block:: php
 
     <?php
 
