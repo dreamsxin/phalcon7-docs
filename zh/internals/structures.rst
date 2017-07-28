@@ -223,6 +223,40 @@ zval.u2.next 存的就是冲突元素在Bucket数组中的位置，所以查找�
 		zval              properties_table[1];
 	};
 
+	/* Used to call methods */
+	/* args on stack! */
+	/* Andi - EX(fbc) (function being called) needs to be initialized already in the INIT fcall opcode so that the parameters can be parsed the right way. We need to add another callback for this.
+	 */
+	typedef int (*zend_object_call_method_t)(zend_string *method, zend_object *object, INTERNAL_FUNCTION_PARAMETERS);
+	typedef union _zend_function *(*zend_object_get_method_t)(zend_object **object, zend_string *method, const zval *key);
+	typedef union _zend_function *(*zend_object_get_constructor_t)(zend_object *object);
+
+	/* Object maintenance/destruction */
+	typedef void (*zend_object_dtor_obj_t)(zend_object *object);
+	typedef void (*zend_object_free_obj_t)(zend_object *object);
+	typedef zend_object* (*zend_object_clone_obj_t)(zval *object);
+
+	/* Get class name for display in var_dump and other debugging functions.
+	 * Must be defined and must return a non-NULL value. */
+	typedef zend_string *(*zend_object_get_class_name_t)(const zend_object *object);
+
+	typedef int (*zend_object_compare_t)(zval *object1, zval *object2);
+	typedef int (*zend_object_compare_zvals_t)(zval *resul, zval *op1, zval *op2);
+
+	/* Cast an object to some other type
+	 */
+	typedef int (*zend_object_cast_t)(zval *readobj, zval *retval, int type);
+
+	/* updates *count to hold the number of elements present and returns SUCCESS.
+	 * Returns FAILURE if the object does not have any sense of overloaded dimensions */
+	typedef int (*zend_object_count_elements_t)(zval *object, zend_long *count);
+
+	typedef int (*zend_object_get_closure_t)(zval *obj, zend_class_entry **ce_ptr, union _zend_function **fptr_ptr, zend_object **obj_ptr);
+
+	typedef HashTable *(*zend_object_get_gc_t)(zval *object, zval **table, int *n);
+
+	typedef int (*zend_object_do_operation_t)(zend_uchar opcode, zval *result, zval *op1, zval *op2);
+
 	struct _zend_object_handlers {
 		/* offset of real object header (usually zero) */
 		int										offset;
