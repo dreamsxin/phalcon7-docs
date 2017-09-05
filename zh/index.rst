@@ -96,16 +96,8 @@ Phalcon7 作为 Phalcon 1.3 系列的继承者，所以版权理所当然的属�
    reference/profiler
    reference/random
    reference/image
-   reference/chart
    reference/binary
    reference/http
-   reference/async
-   reference/intrusive
-   reference/storage
-   reference/socket
-   reference/websocket
-   reference/server
-   reference/process
    reference/i18n
    reference/helpers
    reference/arr
@@ -116,6 +108,21 @@ Phalcon7 作为 Phalcon 1.3 系列的继承者，所以版权理所当然的属�
    reference/kernel
    reference/migrations
    reference/unit-testing
+   
+高级组件
+^^^^^^^^
+
+.. toctree::
+
+   reference/chart
+   reference/async
+   reference/intrusive
+   reference/storage
+   reference/socket
+   reference/websocket
+   reference/server
+   reference/process
+   reference/py
 
 进阶技巧 / 延伸阅读
 ^^^^^^^^^^^^^^^^^^^
