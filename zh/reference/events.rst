@@ -282,4 +282,3 @@ Phalcon7 中几乎所有的组件都继承自 :doc:`Phalcon\\Di\\Injectable <../
         ["data3"]=>
         int(3)
     }
-```
