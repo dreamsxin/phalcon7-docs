@@ -63,7 +63,7 @@ Gets base path
 
 
 
-public  **load** (*string* $filePath, [*string* $absolutePath]) inherited from Phalcon\\Config\\Adapter
+public  **load** (*string* $filePath, [*string* $absolutePath], [*unknown* $recursive]) inherited from Phalcon\\Config\\Adapter
 
 Load a configuration
 
@@ -168,6 +168,11 @@ Converts recursively the object to an array
 
 
 public  **count** () inherited from Phalcon\\Config
+
+...
+
+
+public static  **setup** (*array* $options) inherited from Phalcon\\Config
 
 ...
 

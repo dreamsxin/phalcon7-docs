@@ -39,7 +39,7 @@ Constants
 Methods
 -------
 
-public  **__construct** (*unknown* $command, [*unknown* $cwd], [*array* $env], [*unknown* $timeout], [*array* $options])
+public  **__construct** (*unknown* $command, [*unknown* $pidFile], [*unknown* $cwd], [*array* $env], [*unknown* $timeout], [*array* $options])
 
 Phalcon\\Process\\Proc constructor
 

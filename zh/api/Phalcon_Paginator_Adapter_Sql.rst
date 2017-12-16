@@ -1,9 +1,9 @@
 Class **Phalcon\\Paginator\\Adapter\\Sql**
 ==========================================
 
-*extends* abstract class :doc:`Phalcon\\Di\\Injectable <Phalcon_Di_Injectable>`
+*extends* abstract class :doc:`Phalcon\\Paginator\\Adapter <Phalcon_Paginator_Adapter>`
 
-*implements* :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\Paginator\\AdapterInterface <Phalcon_Paginator_AdapterInterface>`
+*implements* :doc:`Phalcon\\Paginator\\AdapterInterface <Phalcon_Paginator_AdapterInterface>`, :doc:`Phalcon\\Di\\InjectionAwareInterface <Phalcon_Di_InjectionAwareInterface>`, :doc:`Phalcon\\Events\\EventsAwareInterface <Phalcon_Events_EventsAwareInterface>`
 
 .. role:: raw-html(raw)
    :format: html
@@ -47,30 +47,6 @@ Returns a slice of the resultset to show in the pagination
 
 
 
-public :doc:`Phalcon\\Paginator\\Adapter\\Sql <Phalcon_Paginator_Adapter_Sql>`  $this Fluent interface **setLimit** (*int* $limit)
-
-Set current rows limit
-
-
-
-public *int $limit*  **getLimit** ()
-
-Get current rows limit
-
-
-
-public  **setCurrentPage** (*int* $page)
-
-Set current page number
-
-
-
-public  **getCurrentPage** ()
-
-Get current page number
-
-
-
 public :doc:`Phalcon\\Paginator\\Adapter\\Sql <Phalcon_Paginator_Adapter_Sql>`  $this Fluent interface **setDb** (:doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>` $db)
 
 Set query builder object
@@ -80,6 +56,30 @@ Set query builder object
 public :doc:`Phalcon\\Db\\AdapterInterface <Phalcon_Db_AdapterInterface>`  $db **getDb** ()
 
 Get query builder object
+
+
+
+public  **setCurrentPage** (*int* $page) inherited from Phalcon\\Paginator\\Adapter
+
+Set current page number
+
+
+
+public  **getCurrentPage** () inherited from Phalcon\\Paginator\\Adapter
+
+Get current page number
+
+
+
+public :doc:`Phalcon\\Paginator\\Adapter <Phalcon_Paginator_Adapter>`  **setLimit** (*int* $limit) inherited from Phalcon\\Paginator\\Adapter
+
+Set current rows limit
+
+
+
+public *int $limit*  **getLimit** () inherited from Phalcon\\Paginator\\Adapter
+
+Get current rows limit
 
 
 
@@ -107,21 +107,15 @@ Returns the internal event manager
 
 
 
-public *boolean*  **fireEvent** (*string* $eventName, [*unknown* $data], [*unknown* $cancelable]) inherited from Phalcon\\Di\\Injectable
+public *boolean*  **fireEvent** (*string* $eventName, [*mixed* $data], [*unknown* $cancelable]) inherited from Phalcon\\Di\\Injectable
 
 Fires an event, implicitly calls behaviors and listeners in the events manager are notified
 
 
 
-public *boolean*  **fireEventCancel** (*string* $eventName, [*unknown* $data], [*unknown* $cancelable]) inherited from Phalcon\\Di\\Injectable
+public *mixed*  **fireEventCancel** (*string* $eventName, [*mixed* $data], [*unknown* $cancelable]) inherited from Phalcon\\Di\\Injectable
 
-Fires an event, implicitly calls behaviors and listeners in the events manager are notified This method stops if one of the callbacks/listeners returns boolean false
-
-
-
-public *mixed*  **fireEventData** (*string* $eventName, [*mixed* $data]) inherited from Phalcon\\Di\\Injectable
-
-Fires an event, return data
+Fires an event, can stop the event by returning to the false
 
 
 

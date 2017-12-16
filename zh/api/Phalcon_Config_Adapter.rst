@@ -40,7 +40,7 @@ Gets base path
 
 
 
-public  **load** (*string* $filePath, [*string* $absolutePath])
+public  **load** (*string* $filePath, [*string* $absolutePath], [*unknown* $recursive])
 
 Load a configuration
 
@@ -150,6 +150,11 @@ Converts recursively the object to an array
 
 
 public  **count** () inherited from Phalcon\\Config
+
+...
+
+
+public static  **setup** (*array* $options) inherited from Phalcon\\Config
 
 ...
 

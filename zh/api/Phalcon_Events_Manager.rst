@@ -56,19 +56,25 @@ Detach a listener from the events manager
 
 
 
-public  **detachAll** ([*string* $type])
+public  **detachAll** ([*unknown* $eventType])
 
 Removes all events from the EventsManager
 
 
 
-public *mixed*  **fireQueue** (*\SplPriorityQueue* $queue, :doc:`Phalcon\\Events\\Event <Phalcon_Events_Event>` $event)
+public *mixed*  **fireQueue** (*\SplPriorityQueue* $queue, :doc:`Phalcon\\Events\\Event <Phalcon_Events_Event>` $event, [*boolean* $flag], [*mixed* $prevData])
 
 Internal handler to call a queue of events
 
 
 
-public *mixed*  **fire** (*string* $eventType, *object* $source, [*mixed* $data])
+public :doc:`Phalcon\\Events\\Event <Phalcon_Events_Event>`  **createEvent** (*unknown* $eventType, *object* $source, [*mixed* $data], [*boolean* $cancelable], [*boolean* $flag])
+
+Create an event
+
+
+
+public *mixed*  **fire** (*unknown* $event, *object* $source, [*mixed* $data], [*int* $cancelable], [*int* $flag])
 
 Fires an event in the events manager causing that active listeners be notified about it 
 
@@ -87,7 +93,7 @@ Check whether certain type of event has listeners
 
 
 
-public *array*  **getListeners** (*string* $type, [*unknown* $full])
+public *array*  **getListeners** (*unknown* $eventType, [*unknown* $full])
 
 Returns all the attached listeners of a certain type
 
@@ -99,12 +105,18 @@ Retrieve all registered events
 
 
 
-public  **dettachAll** ([*unknown* $type])
+public :doc:`Phalcon\\Events\\Event <Phalcon_Events_Event>`  **getCurrentEvent** ()
+
+Gets current event
+
+
+
+public  **dettachAll** ([*unknown* $eventType])
 
 ...
 
 
-public  **clearListeners** ([*unknown* $type])
+public  **clearListeners** ([*unknown* $eventType])
 
 ...
 

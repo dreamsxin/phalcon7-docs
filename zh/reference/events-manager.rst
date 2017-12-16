@@ -320,6 +320,14 @@
 
     $eventsManager->fire("my-component:afterSomeTask", $this, $extraData, false);
 
+你可以通过在 :code:`fire()` 中的第五个参数中传递 :code:`true` 来指明这是一个可以通过返回 :code:`false` 而强制取消的事件优先级高于第四个参数：
+
+.. code-block:: php
+
+    <?php
+
+    $eventsManager->fire("my-component:afterSomeTask", $this, $extraData, false, true);
+
 侦听全部事件（Listen for Any Event）
 -----------------------------------
 通过通配符 `*`，你可以侦听所有事件消息：

@@ -118,12 +118,12 @@
 
         protected $price;
 
-        public function getId()
+        public function __getId()
         {
             return $this->id;
         }
 
-        public function setName($name)
+        public function __setName($name)
         {
             // The name is too short?
             if (strlen($name) < 10) {
@@ -132,12 +132,12 @@
             $this->name = $name;
         }
 
-        public function getName()
+        public function __getName()
         {
             return $this->name;
         }
 
-        public function setPrice($price)
+        public function __setPrice($price)
         {
             // Negative prices aren't allowed
             if ($price < 0) {
@@ -146,7 +146,7 @@
             $this->price = $price;
         }
 
-        public function getPrice()
+        public function __getPrice()
         {
             // Convert the value to double before be used
             return (double) $this->price;
@@ -708,7 +708,7 @@ accessed:
 
         public $status;
 
-        public function getStatus()
+        public function __getStatus()
         {
             return explode(',', $this->status);
         }
@@ -1514,6 +1514,23 @@ Each generated profile contains the duration in milliseconds that each instructi
     $robot = new Robots;
     echo $robot->getRealAttribute('code');
 
+设置字段错误显示文本
+--------------------
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
+    {
+        public function getLabel($field)
+        {
+            $labels = \Phalcon\Kernel::message(__DIR__.'/../messages/songs', 'labels', NULL, NULL, TRUE);
+            return \Phalcon\Arr::get($labels, $field);
+        }
+    }
 
 .. _PDO: http://www.php.net/manual/en/pdo.prepared-statements.php
 .. _date: http://php.net/manual/en/function.date.php

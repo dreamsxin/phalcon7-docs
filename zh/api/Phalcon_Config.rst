@@ -143,6 +143,11 @@ public  **count** ()
 ...
 
 
+public static  **setup** (*array* $options)
+
+...
+
+
 public  **__wakeup** ()
 
 ...

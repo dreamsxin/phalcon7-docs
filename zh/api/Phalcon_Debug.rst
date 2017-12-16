@@ -167,6 +167,12 @@ protected  **getFileLink** (*unknown* $file, *unknown* $line, *unknown* $format)
 ...
 
 
+public static  **setLogger** (:doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>` $logger)
+
+Sets logger
+
+
+
 public static  **enable** ([:doc:`Phalcon\\Logger\\AdapterInterface <Phalcon_Logger_AdapterInterface>` $logger])
 
 Enable simple debug mode
@@ -179,9 +185,21 @@ Disable simple debug mode
 
 
 
+public static *boolean*  **isEnable** ()
+
+Check if debug mode
+
+
+
 public static  **log** (*string* $message, [*mixed* $type], [*array* $context])
 
 Logs messages
+
+
+
+public static  **dumpVar** (*mixed* $var, [*unknown* $level])
+
+Dumps a string representation of variable to output
 
 
 

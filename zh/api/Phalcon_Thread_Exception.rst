@@ -1,5 +1,5 @@
-Class **Phalcon\\JsonRpc\\Client\\Exception**
-=============================================
+Class **Phalcon\\Thread\\Exception**
+====================================
 
 *extends* class :doc:`Phalcon\\Exception <Phalcon_Exception>`
 
@@ -8,9 +8,9 @@ Class **Phalcon\\JsonRpc\\Client\\Exception**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/jsonrpc/client/exception.c" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/thread/exception.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Exceptions thrown in Phalcon\\JsonRpc\\Client will use this class
+Exceptions thrown in Phalcon\\Thread will use this class
 
 
 Methods

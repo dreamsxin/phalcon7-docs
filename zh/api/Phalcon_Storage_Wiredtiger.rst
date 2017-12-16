@@ -24,7 +24,7 @@ Create table
 
 
 
-public  **open** (*string* $uri, [*string* $config])
+public *Phalcon\\Storage\\Wiredtiger\\Cursor*  **open** (*string* $uri, [*string* $config])
 
 Open table
 

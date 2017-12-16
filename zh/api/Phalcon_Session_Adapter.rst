@@ -136,7 +136,20 @@ Check whether the session has been started
 
 
 
-public *boolean*  **destroy** ([*unknown* $sessionId])
+public *boolean*  **regenerate** ([*unknown* $delete_old_session])
+
+Update the current session id with a newly generated one  
+
+.. code-block:: php
+
+    <?php
+
+    var_dump($session->regenerate());
+
+
+
+
+public *boolean*  **destroy** ([*unknown* $regenerate])
 
 Destroys the active session 
 

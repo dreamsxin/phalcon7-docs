@@ -9,42 +9,131 @@ Class **Phalcon\\Arr**
 Provides utilities to work with arrs
 
 
+Constants
+---------
+
+*integer* **TYPE_BOOLEAN**
+
+*integer* **TYPE_LONG**
+
+*integer* **TYPE_DOUBLE**
+
+*integer* **TYPE_STRING**
+
+*integer* **AGGR_SUM**
+
+*integer* **AGGR_AVG**
+
+*integer* **AGGR_COUNT**
+
+*integer* **AGGR_FIRST**
+
+*integer* **AGGR_LAST**
+
+*integer* **AGGR_MIN**
+
+*integer* **AGGR_MAX**
+
+*integer* **AGGR_GROUP**
+
 Methods
 -------
 
 public static *boolean*  **is_assoc** (*array* $array)
 
-Tests if an array is associative or not. // Returns TRUE \\Phalcon\\Arr::is_assoc(array('username' => 'john.doe'))
+Tests if an array is associative or not. 
+
+.. code-block:: php
+
+    <?php
+
+    // Returns TRUE
+    \Phalcon\Arr::is_assoc(array('username' => 'john.doe'))
+
 
 
 
 public static *boolean*  **is_array** (*unknown* $array)
 
-Test if a value is an array with an additional check for array-like objects. // Returns TRUE \\Phalcon\\Arr::is_array(array());
+Test if a value is an array with an additional check for array-like objects. 
+
+.. code-block:: php
+
+    <?php
+
+    // Returns TRUE
+    \Phalcon\Arr::is_array(array());
+
 
 
 
 public static *mixed*  **path** (*array* $array, *mixed* $path, [*unknown* $default_value], [*string* $delimiter])
 
-Gets a value from an array using a dot separated path. // Get the value of $array['foo']['bar'] $value = \\Phalcon\\Arr::path($array, 'foo.bar'); Using a wildcard "*" will search intermediate arrays and return an array. // Get the values of "color" in theme $colors = \\Phalcon\\Arr::path($array, 'theme.*.color'); // Using an array of keys $colors = \\Phalcon\\Arr::path($array, array('theme', '*', 'color'));
+Gets a value from an array using a dot separated path. 
+
+.. code-block:: php
+
+    <?php
+
+    // Get the value of $array['foo']['bar']
+    $value = \Phalcon\Arr::path($array, 'foo.bar');
+
+Using a wildcard "*" will search intermediate arrays and return an array. 
+
+.. code-block:: php
+
+    <?php
+
+    // Get the values of "color" in theme
+    $colors = \Phalcon\Arr::path($array, 'theme.*.color');
+    
+    // Using an array of keys
+    $colors = \Phalcon\Arr::path($array, array('theme', '*', 'color'));
+
 
 
 
 public static  **set_path** (*array* $array, *string* $path, *mixed* $value, [*string* $delimiter], [*unknown* $flag])
 
-Set a value on an array by path. Using a wildcard "*" will search intermediate arrays and return an array. // Set the values of "color" in theme $array = array('theme' => array('one' => array('color' => 'green'), 'two' => array('size' => 11)); \\Phalcon\\Arr::set_path($array, 'theme.*.color', 'red'); // Result: array('theme' => array('one' => array('color' => 'red'), 'two' => array('size' => 11, 'color' => 'red'));
+Set a value on an array by path. Using a wildcard "*" will search intermediate arrays and return an array. 
+
+.. code-block:: php
+
+    <?php
+
+    // Set the values of "color" in theme
+    $array = array('theme' => array('one' => array('color' => 'green'), 'two' => array('size' => 11));
+    \Phalcon\Arr::set_path($array, 'theme.*.color', 'red');
+    // Result: array('theme' => array('one' => array('color' => 'red'), 'two' => array('size' => 11, 'color' => 'red'));
+
 
 
 
 public static *array*  **range** ([*integer* $step], [*integer* $max])
 
-Fill an array with a range of numbers. // Fill an array with values 5, 10, 15, 20 $values = \\Phalcon\\Arr::range(5, 20);
+Fill an array with a range of numbers. 
+
+.. code-block:: php
+
+    <?php
+
+    // Fill an array with values 5, 10, 15, 20
+    $values = \Phalcon\Arr::range(5, 20);
 
 
 
-public static *mixed*  **get** (*array* $array, *string|array|\Closure* $key, [*mixed* $default_value])
 
-Retrieve a single key from an array. If the key does not exist in the array, the default value will be returned instead. // Get the value "username" from $_POST, if it exists $username = \\Phalcon\\Arr::get($_POST, 'username');
+public static *mixed*  **get** (*array|object* $array, *string|array|\Closure* $key, [*mixed* $default_value])
+
+Retrieve a single key from an array. If the key does not exist in the array, the default value will be returned instead. 
+
+.. code-block:: php
+
+    <?php
+
+    // Get the value "username" from $_POST, if it exists
+    $username = \Phalcon\Arr::get($_POST, 'username');
+
 
 
 
@@ -84,7 +173,7 @@ Recursive version of [array_map](http://php.net/array_map), applies one or more 
 
 
 
-public static *array*  **merge** (*array* $array1, *unknown* $array2)
+public static *array*  **merge** (*array* $array1, *array* $array2)
 
 Recursively merge two or more arrays. Values in an associative array overwrite previous values with the same key. Values in an indexed array are appended, but only when they do not already exist in the result. Note that this does not work the same as [array_merge_recursive](http://php.net/array_merge_recursive)! $john = array('name' => 'john', 'children' => array('fred', 'paul', 'sally', 'jane')); $mary = array('name' => 'mary', 'children' => array('jane')); // John and Mary are married, merge them together $john = \\Phalcon\\Arr::merge($john, $mary); // The output of $john will now be: array('name' => 'mary', 'children' => array('fred', 'paul', 'sally', 'jane'))
 
@@ -120,7 +209,7 @@ Gets array key of the postion $array = array('name' => 'Phalcon7', 'version' => 
 
 
 
-public static *array*  **filter** (*array* $array, [*unknown* $callback])
+public static *array*  **filter** (*array* $array, [*unknown* $callback], [*unknown* $strict])
 
 Filters elements of an array using a the filter $array = array('name' => 'Phalcon7', 'version' => '1.0.x'); $key = \\Phalcon\\Arr::filter($array, 'int');
 
@@ -142,6 +231,18 @@ Converts an object or an array of objects into an array
 
     print_r(Phalcon\Arr::toArray($user);
 
+
+
+
+public static *array*  **aggr** (*array* $rows, *array* $aggregators)
+
+Aggregating
+
+
+
+public static *array*  **group** (*array* $rows, *array* $fields, *array* $aggregators)
+
+Aggregating
 
 
 

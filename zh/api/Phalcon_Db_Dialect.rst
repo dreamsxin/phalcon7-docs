@@ -93,7 +93,7 @@ Transform an intermediate representation for a schema/table into a database syst
 
 
 
-public *string*  **select** (*array* $definition)
+public *string*  **select** (*array* $definition, [*unknown* $count])
 
 Builds a SELECT statement
 

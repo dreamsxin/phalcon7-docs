@@ -14,9 +14,21 @@ This class offers contextual information of a fired event in the EventsManager
 Methods
 -------
 
-public  **__construct** (*string* $type, *object* $source, [*mixed* $data], [*boolean* $cancelable])
+public  **__construct** (*string* $type, *object* $source, [*mixed* $data], [*boolean* $cancelable], [*unknown* $flag])
 
 Phalcon\\Events\\Event constructor
+
+
+
+public  **setName** (*string* $eventName)
+
+Set the event's name
+
+
+
+public *string*  **getName** ()
+
+Returns the event's name
 
 
 
@@ -65,6 +77,12 @@ Sets if the event is cancelable
 public *boolean*  **isCancelable** ()
 
 Check whether the event is cancelable
+
+
+
+public *mixed*  **getFlag** ()
+
+Returns the event's flag
 
 
 

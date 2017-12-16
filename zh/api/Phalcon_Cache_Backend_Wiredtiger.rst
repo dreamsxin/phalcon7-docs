@@ -44,7 +44,7 @@ Phalcon\\Cache\\Backend\\Wiredtiger constructor
 
 
 
-public *mixed*  **get** (*int|string* $keyName)
+public *mixed*  **get** (*int|string* $keyName, [*unknown* $lifetime])
 
 Returns a cached content
 
@@ -92,7 +92,7 @@ Immediately invalidates all existing items.
 
 
 
-public *mixed*  **start** (*int|string* $keyName, [*long* $lifetime]) inherited from Phalcon\\Cache\\Backend
+public *mixed*  **start** (*int|string* $keyName, [*long* $lifetime], [*unknown* $nobuffer]) inherited from Phalcon\\Cache\\Backend
 
 Starts a cache. The $keyname allows to identify the created fragment
 

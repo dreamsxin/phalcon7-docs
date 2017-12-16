@@ -41,6 +41,7 @@ API Indice
    Phalcon_Cache_Backend
    Phalcon_Cache_Backend_Apc
    Phalcon_Cache_Backend_File
+   Phalcon_Cache_Backend_Lmdb
    Phalcon_Cache_Backend_Memcached
    Phalcon_Cache_Backend_Memory
    Phalcon_Cache_Backend_Mongo
@@ -58,8 +59,9 @@ API Indice
    Phalcon_Cache_Multiple
    Phalcon_Cache_Yac
    Phalcon_Chart_Captcha
-   Phalcon_Chart_Exception
+   Phalcon_Chart_Captcha_Tiny
    Phalcon_Chart_QRcode
+   Phalcon_Chart_Exception
    Phalcon_Cli_Color
    Phalcon_Cli_Console
    Phalcon_Cli_Console_Exception
@@ -118,6 +120,7 @@ API Indice
    Phalcon_Events_Listener
    Phalcon_Events_Manager
    Phalcon_Exception
+   Phalcon_ExitException
    Phalcon_Filter
    Phalcon_Filter_Exception
    Phalcon_Flash
@@ -184,6 +187,7 @@ API Indice
    Phalcon_Logger_Formatter_Syslog
    Phalcon_Logger_Item
    Phalcon_Logger_Multiple
+   Phalcon_Matrix
    Phalcon_Mvc_Application
    Phalcon_Mvc_Application_Exception
    Phalcon_Mvc_Controller
@@ -251,6 +255,7 @@ API Indice
    Phalcon_Mvc_View_Exception
    Phalcon_Mvc_View_Model
    Phalcon_Mvc_View_Simple
+   Phalcon_Paginator_Adapter
    Phalcon_Paginator_Adapter_Model
    Phalcon_Paginator_Adapter_NativeArray
    Phalcon_Paginator_Adapter_QueryBuilder
@@ -262,6 +267,10 @@ API Indice
    Phalcon_Profiler
    Phalcon_Profiler_Exception
    Phalcon_Profiler_Item
+   Phalcon_Py
+   Phalcon_Py_Exception
+   Phalcon_Py_Matplot
+   Phalcon_Py_Object
    Phalcon_Queue_Beanstalk
    Phalcon_Queue_Beanstalk_Job
    Phalcon_Random
@@ -281,15 +290,36 @@ API Indice
    Phalcon_Session_Adapter_Memcached
    Phalcon_Session_Bag
    Phalcon_Session_Exception
+   Phalcon_Socket
    Phalcon_Socket_Exception
+   Phalcon_Socket_Client
+   Phalcon_Socket_Server
+   Phalcon_Storage_Bloomfilter
+   Phalcon_Storage_Bloomfilter_Counting
    Phalcon_Storage_Btree
+   Phalcon_Storage_Datrie
    Phalcon_Storage_Exception
+   Phalcon_Storage_Leveldb
+   Phalcon_Storage_Leveldb_Iterator
+   Phalcon_Storage_Leveldb_Writebatch
+   Phalcon_Storage_Libmdbx
+   Phalcon_Storage_Libmdbx_Cursor
+   Phalcon_Storage_Lmdb
+   Phalcon_Storage_Lmdb_Cursor
    Phalcon_Storage_Wiredtiger
    Phalcon_Storage_Wiredtiger_Cursor
+   Phalcon_Sync_Event
+   Phalcon_Sync_Exception
+   Phalcon_Sync_Mutex
+   Phalcon_Sync_Readerwriter
+   Phalcon_Sync_Semaphore
+   Phalcon_Sync_Sharedmemory
    Phalcon_Tag
    Phalcon_Tag_Exception
    Phalcon_Tag_Select
    Phalcon_Text
+   Phalcon_Thread_Exception
+   Phalcon_Thread_Pool
    Phalcon_Translate_Adapter
    Phalcon_Translate_Adapter_Gettext
    Phalcon_Translate_Adapter_NativeArray

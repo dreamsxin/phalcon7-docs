@@ -1,5 +1,5 @@
-Class **Phalcon\\Mvc\\JsonRpc\\Exception**
-==========================================
+Class **Phalcon\\Py\\Exception**
+================================
 
 *extends* class :doc:`Phalcon\\Exception <Phalcon_Exception>`
 
@@ -8,9 +8,9 @@ Class **Phalcon\\Mvc\\JsonRpc\\Exception**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/jsonrpc/exception.c" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/py/exception.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Exceptions thrown in Phalcon\\Mvc\\JsonRpc class will use this class
+
 
 
 Methods

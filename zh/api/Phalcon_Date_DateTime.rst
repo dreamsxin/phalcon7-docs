@@ -38,6 +38,8 @@ Constants
 
 *string* **RFC1123**
 
+*string* **RFC7231**
+
 *string* **RFC2822**
 
 *string* **RFC3339**
@@ -238,7 +240,7 @@ public  **getOffset** () inherited from DateTime
 ...
 
 
-public  **setTime** (*unknown* $hour, *unknown* $minute, [*unknown* $second], [*unknown* $microseconds]) inherited from DateTime
+public  **setTime** (*unknown* $hour, *unknown* $minute, [*unknown* $second]) inherited from DateTime
 
 ...
 

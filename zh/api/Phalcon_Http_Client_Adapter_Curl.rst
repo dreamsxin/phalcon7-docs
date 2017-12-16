@@ -85,31 +85,31 @@ Retrieve the URI path
 
 
 
-public :doc:`Phalcon\\Http\\Client\\Response <Phalcon_Http_Client_Response>`  **get** ([*string* $uri], [*string* $data]) inherited from Phalcon\\Http\\Client\\Adapter
+public :doc:`Phalcon\\Http\\Client\\Response <Phalcon_Http_Client_Response>`  **get** ([*string* $uri], [*string* $data], [*unknown* $type]) inherited from Phalcon\\Http\\Client\\Adapter
 
 Send GET request
 
 
 
-public :doc:`Phalcon\\Http\\Client\\Response <Phalcon_Http_Client_Response>`  **head** ([*string* $uri], [*string* $data]) inherited from Phalcon\\Http\\Client\\Adapter
+public :doc:`Phalcon\\Http\\Client\\Response <Phalcon_Http_Client_Response>`  **head** ([*string* $uri], [*string* $data], [*unknown* $type]) inherited from Phalcon\\Http\\Client\\Adapter
 
 Send HEAD request
 
 
 
-public :doc:`Phalcon\\Http\\Client\\Response <Phalcon_Http_Client_Response>`  **post** ([*string* $uri], [*string* $data]) inherited from Phalcon\\Http\\Client\\Adapter
+public :doc:`Phalcon\\Http\\Client\\Response <Phalcon_Http_Client_Response>`  **post** ([*string* $uri], [*string* $data], [*unknown* $type]) inherited from Phalcon\\Http\\Client\\Adapter
 
 Send POST request
 
 
 
-public :doc:`Phalcon\\Http\\Client\\Response <Phalcon_Http_Client_Response>`  **put** ([*string* $uri], [*string* $data]) inherited from Phalcon\\Http\\Client\\Adapter
+public :doc:`Phalcon\\Http\\Client\\Response <Phalcon_Http_Client_Response>`  **put** ([*string* $uri], [*string* $data], [*unknown* $type]) inherited from Phalcon\\Http\\Client\\Adapter
 
 Send PUT request
 
 
 
-public :doc:`Phalcon\\Http\\Client\\Response <Phalcon_Http_Client_Response>`  **delete** ([*string* $uri], [*string* $data]) inherited from Phalcon\\Http\\Client\\Adapter
+public :doc:`Phalcon\\Http\\Client\\Response <Phalcon_Http_Client_Response>`  **delete** ([*string* $uri], [*string* $data], [*unknown* $type]) inherited from Phalcon\\Http\\Client\\Adapter
 
 Send DELETE request
 
@@ -139,7 +139,7 @@ Set method
 
 
 
-public :doc:`Phalcon\\Http\\Client\\Adapter <Phalcon_Http_Client_Adapter>`  **setTimeOut** (*unknown* $method) inherited from Phalcon\\Http\\Client\\Adapter
+public :doc:`Phalcon\\Http\\Client\\Adapter <Phalcon_Http_Client_Adapter>`  **setTimeOut** (*unknown* $time) inherited from Phalcon\\Http\\Client\\Adapter
 
 Set the request timeout
 

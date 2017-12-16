@@ -245,7 +245,7 @@ Transform an intermediate representation for a schema/table into a database syst
 
 
 
-public *string*  **select** (*array* $definition) inherited from Phalcon\\Db\\Dialect
+public *string*  **select** (*array* $definition, [*unknown* $count]) inherited from Phalcon\\Db\\Dialect
 
 Builds a SELECT statement
 

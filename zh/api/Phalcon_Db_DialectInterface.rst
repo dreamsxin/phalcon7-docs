@@ -30,7 +30,7 @@ Returns a SQL modified with a LOCK IN SHARE MODE clause
 
 
 
-abstract public *string*  **select** (*array* $definition)
+abstract public *string*  **select** (*array* $definition, [*unknown* $count])
 
 Builds a SELECT statement
 

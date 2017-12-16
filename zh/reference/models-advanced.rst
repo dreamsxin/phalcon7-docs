@@ -517,11 +517,12 @@ to balance the load to your databases implementing a master-slave architecture:
         /**
          * 动态选择读数据库连接
          *
+         * @param Phalcon\Mvc\Model\Query $query
          * @param array $intermediate
          * @param array $bindParams
          * @param array $bindTypes
          */
-        public function selectReadConnection($intermediate, $bindParams, $bindTypes)
+        public function selectReadConnection($query, $intermediate, $bindParams, $bindTypes)
         {
             return $this->getDI()->get('readDB');
         }
@@ -529,11 +530,12 @@ to balance the load to your databases implementing a master-slave architecture:
         /**
          * 动态选择写数据库连接
          *
+         * @param Phalcon\Mvc\Model\Query $query
          * @param array $intermediate
          * @param array $bindParams
          * @param array $bindTypes
          */
-        public function selectWriteConnection($intermediate, $bindParams, $bindTypes)
+        public function selectWriteConnection($query, $intermediate, $bindParams, $bindTypes)
         {
             return $this->getDI()->get('writeDB');
         }
@@ -555,11 +557,12 @@ according to the current query conditions:
         /**
          * 动态选择读数据库连接
          *
+         * @param Phalcon\Mvc\Model\Query $query
          * @param array $intermediate
          * @param array $bindParams
          * @param array $bindTypes
          */
-        public function selectReadConnection($intermediate, $bindParams, $bindTypes)
+        public function selectReadConnection($query, $intermediate, $bindParams, $bindTypes)
         {
             // Check if there is a 'where' clause in the select
             if (isset($intermediate['where'])) {
@@ -587,11 +590,12 @@ according to the current query conditions:
         /**
          * 动态选择写数据库连接
          *
+         * @param Phalcon\Mvc\Model\Query $query
          * @param array $intermediate
          * @param array $bindParams
          * @param array $bindTypes
          */
-        public function selectWriteConnection($intermediate, $bindParams, $bindTypes)
+        public function selectWriteConnection($query, $intermediate, $bindParams, $bindTypes)
         {
             // Check if there is a 'where' clause in the select
 
@@ -615,6 +619,32 @@ query executed:
 .. highlights::
 
     在 :doc:`Model查询器 <phql>` 中可实现同样的功能。
+
+实现分表
+^^^^^^^^
+你可根据 Query 数据来选择不同的表进行操作。
+
+也可以用如下方法实现：
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\Model;
+
+    class Robots extends Model
+    {
+        /**
+         * 动态选择表
+         *
+         * @param Phalcon\Mvc\Model\Query $query
+         */
+        public function selectSource($query)
+        {
+            return 'robots_1';
+        }
+    }
+
 
 注入服务到模型（Injecting services into Models）
 ------------------------------------------------

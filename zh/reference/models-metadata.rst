@@ -65,6 +65,20 @@ As other ORM's dependencies, the metadata manager is requested from the services
         return $metaData;
     };
 
+自定义元数据缓存 KEY
+^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: php
+
+    <?php
+
+    class Robots extends Phalcon\Mvc\Model {
+
+        public function getMetadataCachekey() {
+            return 'Robots-robots';
+        }
+    }
+
 元数据策略（Meta-Data Strategies）
 ----------------------------------
 As mentioned above the default strategy to obtain the model's meta-data is database introspection. In this strategy, the information

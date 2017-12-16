@@ -16,7 +16,7 @@ Phalcon\\Mvc\\Model\\Query\\Builder  Helps to create PHQL queries for WHERE stat
 Methods
 -------
 
-public *int*  **setConditions** (*unknown* $conditions, [*array* $bindParams], [*array* $bindTypes], [*array* $bindParams], [*unknown* $type])
+public *int*  **setConditions** (*string|array* $conditions, [*array* $bindParams], [*array* $bindTypes], [*array* $bindParams], [*boolean* $type])
 
 Gets the type of PHQL queries
 
@@ -214,6 +214,18 @@ Gets the merge bind types
 
 
 
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **setIndex** (*string* $index) inherited from Phalcon\\Mvc\\Model\\Query\\Builder
+
+Adds the index
+
+
+
+public *string*  **getIndex** () inherited from Phalcon\\Mvc\\Model\\Query\\Builder
+
+Gets the index
+
+
+
 public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder <Phalcon_Mvc_Model_Query_Builder>`  **compile** () inherited from Phalcon\\Mvc\\Model\\Query\\Builder
 
 Compile the PHQL query
@@ -256,21 +268,15 @@ Returns the internal event manager
 
 
 
-public *boolean*  **fireEvent** (*string* $eventName, [*unknown* $data], [*unknown* $cancelable]) inherited from Phalcon\\Di\\Injectable
+public *boolean*  **fireEvent** (*string* $eventName, [*mixed* $data], [*unknown* $cancelable]) inherited from Phalcon\\Di\\Injectable
 
 Fires an event, implicitly calls behaviors and listeners in the events manager are notified
 
 
 
-public *boolean*  **fireEventCancel** (*string* $eventName, [*unknown* $data], [*unknown* $cancelable]) inherited from Phalcon\\Di\\Injectable
+public *mixed*  **fireEventCancel** (*string* $eventName, [*mixed* $data], [*unknown* $cancelable]) inherited from Phalcon\\Di\\Injectable
 
-Fires an event, implicitly calls behaviors and listeners in the events manager are notified This method stops if one of the callbacks/listeners returns boolean false
-
-
-
-public *mixed*  **fireEventData** (*string* $eventName, [*mixed* $data]) inherited from Phalcon\\Di\\Injectable
-
-Fires an event, return data
+Fires an event, can stop the event by returning to the false
 
 
 

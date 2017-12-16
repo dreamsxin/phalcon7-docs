@@ -12,7 +12,7 @@ Phalcon\\Cache\\BackendInterface initializer
 Methods
 -------
 
-abstract public *mixed*  **start** (*string* $keyName, [*long* $lifetime])
+abstract public *mixed*  **start** (*string* $keyName, [*long* $lifetime], [*unknown* $nobuffer])
 
 Starts a cache. The $keyname allows to identify the created fragment
 
@@ -48,7 +48,7 @@ Checks whether the cache has starting buffering or not
 
 
 
-abstract public *mixed*  **get** (*string* $keyName)
+abstract public *mixed*  **get** (*string* $keyName, [*unknown* $lifetime])
 
 Returns a cached content
 

@@ -28,7 +28,7 @@ Constants
 Methods
 -------
 
-public  **alnum** ([*unknown* $len])
+public static  **alnum** ([*unknown* $len])
 
 Generates a random alnum string 
 
@@ -42,7 +42,7 @@ Generates a random alnum string
 
 
 
-public  **alpha** ([*unknown* $len])
+public static  **alpha** ([*unknown* $len])
 
 Generates a random alpha string 
 
@@ -56,7 +56,7 @@ Generates a random alpha string
 
 
 
-public  **hexdec** ([*unknown* $len])
+public static  **hexdec** ([*unknown* $len])
 
 Generates a random hexdec string 
 
@@ -70,7 +70,7 @@ Generates a random hexdec string
 
 
 
-public  **numeric** ([*unknown* $len])
+public static  **numeric** ([*unknown* $len])
 
 Generates a random numeric string 
 
@@ -84,7 +84,7 @@ Generates a random numeric string
 
 
 
-public  **nozero** ([*unknown* $len])
+public static  **nozero** ([*unknown* $len])
 
 Generates a random nozero numeric string 
 
@@ -98,7 +98,7 @@ Generates a random nozero numeric string
 
 
 
-public  **color** ([*unknown* $type])
+public static  **color** ([*unknown* $type])
 
 Generates a random color
 

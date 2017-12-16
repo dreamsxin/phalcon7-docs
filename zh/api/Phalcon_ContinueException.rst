@@ -10,7 +10,7 @@ Class **Phalcon\\ContinueException**
 
 :raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/continueexception.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-All framework exceptions should use or extend this exception
+
 
 
 Methods

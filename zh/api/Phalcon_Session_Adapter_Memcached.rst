@@ -69,7 +69,7 @@ public  **write** (*string* $sessionId, *unknown* $sessionData)
 
 
 
-public *boolean*  **destroy** ([*unknown* $sessionId])
+public *boolean*  **destroy** ([*unknown* $regenerate])
 
 
 
@@ -193,6 +193,19 @@ Check whether the session has been started
     <?php
 
     var_dump($session->isStarted());
+
+
+
+
+public *boolean*  **regenerate** ([*unknown* $delete_old_session]) inherited from Phalcon\\Session\\Adapter
+
+Update the current session id with a newly generated one  
+
+.. code-block:: php
+
+    <?php
+
+    var_dump($session->regenerate());
 
 
 

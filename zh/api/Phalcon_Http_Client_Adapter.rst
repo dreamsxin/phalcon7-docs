@@ -73,31 +73,31 @@ Retrieve the URI path
 
 
 
-public :doc:`Phalcon\\Http\\Client\\Response <Phalcon_Http_Client_Response>`  **get** ([*string* $uri], [*string* $data])
+public :doc:`Phalcon\\Http\\Client\\Response <Phalcon_Http_Client_Response>`  **get** ([*string* $uri], [*string* $data], [*unknown* $type])
 
 Send GET request
 
 
 
-public :doc:`Phalcon\\Http\\Client\\Response <Phalcon_Http_Client_Response>`  **head** ([*string* $uri], [*string* $data])
+public :doc:`Phalcon\\Http\\Client\\Response <Phalcon_Http_Client_Response>`  **head** ([*string* $uri], [*string* $data], [*unknown* $type])
 
 Send HEAD request
 
 
 
-public :doc:`Phalcon\\Http\\Client\\Response <Phalcon_Http_Client_Response>`  **post** ([*string* $uri], [*string* $data])
+public :doc:`Phalcon\\Http\\Client\\Response <Phalcon_Http_Client_Response>`  **post** ([*string* $uri], [*string* $data], [*unknown* $type])
 
 Send POST request
 
 
 
-public :doc:`Phalcon\\Http\\Client\\Response <Phalcon_Http_Client_Response>`  **put** ([*string* $uri], [*string* $data])
+public :doc:`Phalcon\\Http\\Client\\Response <Phalcon_Http_Client_Response>`  **put** ([*string* $uri], [*string* $data], [*unknown* $type])
 
 Send PUT request
 
 
 
-public :doc:`Phalcon\\Http\\Client\\Response <Phalcon_Http_Client_Response>`  **delete** ([*string* $uri], [*string* $data])
+public :doc:`Phalcon\\Http\\Client\\Response <Phalcon_Http_Client_Response>`  **delete** ([*string* $uri], [*string* $data], [*unknown* $type])
 
 Send DELETE request
 
@@ -127,7 +127,7 @@ Set method
 
 
 
-public :doc:`Phalcon\\Http\\Client\\Adapter <Phalcon_Http_Client_Adapter>`  **setTimeOut** (*unknown* $method)
+public :doc:`Phalcon\\Http\\Client\\Adapter <Phalcon_Http_Client_Adapter>`  **setTimeOut** (*unknown* $time)
 
 Set the request timeout
 

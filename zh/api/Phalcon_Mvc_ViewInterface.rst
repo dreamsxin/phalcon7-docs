@@ -280,7 +280,7 @@ Cache the actual view render to certain level
 
 
 
-abstract public  **setContent** (*string* $content)
+abstract public  **setContent** (*string* $content, [*unknown* $append])
 
 Externally sets the view content
 

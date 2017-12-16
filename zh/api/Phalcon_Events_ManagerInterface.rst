@@ -24,19 +24,19 @@ Detach a listener from the events manager
 
 
 
-abstract public  **detachAll** ([*string* $type])
+abstract public  **detachAll** ([*unknown* $eventType])
 
 Removes all events from the EventsManager
 
 
 
-abstract public *mixed*  **fire** (*string* $eventType, *object* $source, [*mixed* $data])
+abstract public *mixed*  **fire** (*unknown* $event, *object* $source, [*mixed* $data], [*unknown* $cancelable], [*unknown* $flag])
 
 Fires a event in the events manager causing that the acive listeners will be notified about it
 
 
 
-abstract public *array*  **getListeners** (*string* $type, [*unknown* $full])
+abstract public *array*  **getListeners** (*unknown* $eventType, [*unknown* $full])
 
 Returns all the attached listeners of a certain type
 

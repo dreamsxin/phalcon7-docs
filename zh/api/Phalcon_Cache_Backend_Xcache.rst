@@ -42,7 +42,7 @@ Phalcon\\Cache\\Backend\\Xcache constructor
 
 
 
-public *mixed*  **get** (*string* $keyName)
+public *mixed*  **get** (*string* $keyName, [*long* $lifetime])
 
 Returns cached content
 
@@ -90,7 +90,7 @@ Immediately invalidates all existing items.
 
 
 
-public *mixed*  **start** (*int|string* $keyName, [*long* $lifetime]) inherited from Phalcon\\Cache\\Backend
+public *mixed*  **start** (*int|string* $keyName, [*long* $lifetime], [*unknown* $nobuffer]) inherited from Phalcon\\Cache\\Backend
 
 Starts a cache. The $keyname allows to identify the created fragment
 
@@ -156,21 +156,15 @@ Returns the internal event manager
 
 
 
-public *boolean*  **fireEvent** (*string* $eventName, [*unknown* $data], [*unknown* $cancelable]) inherited from Phalcon\\Di\\Injectable
+public *boolean*  **fireEvent** (*string* $eventName, [*mixed* $data], [*unknown* $cancelable]) inherited from Phalcon\\Di\\Injectable
 
 Fires an event, implicitly calls behaviors and listeners in the events manager are notified
 
 
 
-public *boolean*  **fireEventCancel** (*string* $eventName, [*unknown* $data], [*unknown* $cancelable]) inherited from Phalcon\\Di\\Injectable
+public *mixed*  **fireEventCancel** (*string* $eventName, [*mixed* $data], [*unknown* $cancelable]) inherited from Phalcon\\Di\\Injectable
 
-Fires an event, implicitly calls behaviors and listeners in the events manager are notified This method stops if one of the callbacks/listeners returns boolean false
-
-
-
-public *mixed*  **fireEventData** (*string* $eventName, [*mixed* $data]) inherited from Phalcon\\Di\\Injectable
-
-Fires an event, return data
+Fires an event, can stop the event by returning to the false
 
 
 

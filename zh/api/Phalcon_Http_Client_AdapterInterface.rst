@@ -42,27 +42,27 @@ abstract public  **setFiles** (*unknown* $files)
 ...
 
 
-abstract public  **get** ([*unknown* $uri], [*unknown* $data])
+abstract public  **get** ([*unknown* $uri], [*unknown* $data], [*unknown* $type])
 
 ...
 
 
-abstract public  **head** ([*unknown* $uri], [*unknown* $data])
+abstract public  **head** ([*unknown* $uri], [*unknown* $data], [*unknown* $type])
 
 ...
 
 
-abstract public  **post** ([*unknown* $uri], [*unknown* $data])
+abstract public  **post** ([*unknown* $uri], [*unknown* $data], [*unknown* $type])
 
 ...
 
 
-abstract public  **put** ([*unknown* $uri], [*unknown* $data])
+abstract public  **put** ([*unknown* $uri], [*unknown* $data], [*unknown* $type])
 
 ...
 
 
-abstract public  **delete** ([*unknown* $uri], [*unknown* $data])
+abstract public  **delete** ([*unknown* $uri], [*unknown* $data], [*unknown* $type])
 
 ...
 

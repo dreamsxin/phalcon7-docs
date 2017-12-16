@@ -278,6 +278,18 @@ Gets a model certain attribute
 
 
 
+public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setFieldValue** (*string* $attribute, *unknown* $value)
+
+Sets a model field value
+
+
+
+public *mixed*  **getFieldValue** (*string* $attribute)
+
+Gets a model field value
+
+
+
 public :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **setConnectionService** (*string* $connectionService)
 
 Sets the DependencyInjection connection service name
@@ -473,21 +485,34 @@ Gets a unique params
 
 
 
+public *boolean*  **exists** ()
+
+Checks if the current record already exists or not
+
+
+
 protected *boolean*  **_reBuild** ()
 
 Builds a unique primary key condition
 
 
 
-protected *boolean*  **_exists** ()
-
-Checks if the current record already exists or not
-
-
-
-protected static :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **_groupResult** ()
+protected static *mixed*  **_groupResult** ()
 
 Generate a PHQL SELECT statement for an aggregate
+
+
+
+public static :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **group** (*array* $params)
+
+Generate a PHQL SELECT statement for an aggregate 
+
+.. code-block:: php
+
+    <?php
+
+    Robots::group(['aggregators' => array(array('column' => 'id', 'aggregator' => 'sum'), 'sumatory' => array('column' => 'price', 'aggregator' => 'sum'))]);
+
 
 
 
@@ -586,13 +611,13 @@ Allows to calculate the average value on a column matching the specified conditi
 
 
 
-public *boolean*  **fireEvent** (*string* $eventName, [*unknown* $data], [*unknown* $cancelable])
+public *mixed*  **fireEvent** (*string* $eventName, [*mixed* $data], [*unknown* $cancelable])
 
 Fires an event, implicitly calls behaviors and listeners in the events manager are notified
 
 
 
-public *boolean*  **fireEventCancel** (*string* $eventName, [*unknown* $data], [*unknown* $cancelable])
+public *boolean*  **fireEventCancel** (*string* $eventName, [*mixed* $data], [*unknown* $cancelable])
 
 Fires an event, implicitly calls behaviors and listeners in the events manager are notified This method stops if one of the callbacks/listeners returns boolean false
 
@@ -1335,12 +1360,6 @@ Sets the dependency injector
 public :doc:`Phalcon\\DiInterface <Phalcon_DiInterface>`  **getDI** ([*unknown* $error], [*unknown* $notUseDefault]) inherited from Phalcon\\Di\\Injectable
 
 Returns the internal dependency injector
-
-
-
-public *mixed*  **fireEventData** (*string* $eventName, [*mixed* $data]) inherited from Phalcon\\Di\\Injectable
-
-Fires an event, return data
 
 
 
