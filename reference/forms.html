@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>表单（Forms） &mdash; Phalcon7 1.2.1 文档</title>
+    <meta name="keywords" content="php, phalcon, phalcon7, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/phalcon.css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="../static/jquery.min.js"></script>
+    <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
+    <link rel="next" title="读取配置（Reading Configurations）" href="config.html" />
+    <link rel="prev" title="验证（Validation）" href="validation.html" /> 
+</head>
+<body>
+
+<header class="page-header">
+<nav class="navbar" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+				<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+		</div>
+
+		<div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+			<ul class="nav navbar-nav main-menu">
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7" class="header-nav-link">GitHub</a></li>
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7/releases" class="header-nav-link">Download</a></li>
+			  <li class="first"><a href="/api/" class="header-nav-link">API</a></li>
+			  <li class="first"><a href="/internals/" class="header-nav-link">内核开发手册</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="config.html" title="读取配置（Reading Configurations）"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="validation.html" title="验证（Validation）"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://myleftstudio.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon7 1.2.1 文档</a> &raquo;</li> 
+      </ul>
+    </div>  
+</div>
+
+<div class="container-fluid">
+	<div class="col-md-3 primary-box">
+		<div class="panel panel-default">
+			<div class="panel-heading"><a href="../index.html">內容目录</a></div>
+			<div class="panel-body"><ul>
+<li><a class="reference internal" href="#">表单（Forms）</a><ul>
+<li><a class="reference internal" href="#forms-elements">表单元素（Forms Elements）</a><ul>
+<li><a class="reference internal" href="#id1">渲染表单元素</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#initializing-forms">初始化表单（Initializing forms）</a></li>
+<li><a class="reference internal" href="#validation">验证（Validation）</a></li>
+<li><a class="reference internal" href="#filtering">过滤（Filtering）</a></li>
+<li><a class="reference internal" href="#setting-user-options">设置用户选项（Setting User Options）</a></li>
+<li><a class="reference internal" href="#forms-entities">表单与实体（Forms + Entities）</a></li>
+<li><a class="reference internal" href="#form-elements">表单控件（Form Elements）</a></li>
+<li><a class="reference internal" href="#event-callbacks">事件回调（Event Callbacks）</a></li>
+<li><a class="reference internal" href="#rendering-forms">渲染表单（Rendering Forms）</a></li>
+<li><a class="reference internal" href="#creating-form-elements">创建表单控件（Creating Form Elements）</a></li>
+<li><a class="reference internal" href="#id2">表单元素转换为数组（Creating Form Elements）</a></li>
+<li><a class="reference internal" href="#forms-manager">表单管理（Forms Manager）</a></li>
+<li><a class="reference internal" href="#external-resources">外部资源（External Resources)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+			<div class="panel-heading">上一个主题</div>
+            <div class="panel-body"><p class="topless"><a href="validation.html" title="上一章">&lt; 验证（Validation）</a></p></div>
+			<div class="panel-heading">下一个主题</div>
+            <div class="panel-body"><p class="topless"><a href="config.html" title="下一章">读取配置（Reading Configurations） &gt;</a></p></div>
+		</div>
+	</div>
+  <div class="col-md-9 second-box" valign="top">
+	<div class="document">
+		<div class="documentwrapper">
+		  <div class="bodywrapper">
+			<div class="body" >
+			  
+  <div class="section" id="forms">
+<h1>表单（Forms）<a class="headerlink" href="#forms" title="永久链接至标题">¶</a></h1>
+<p>Phalcon中提供了 <code class="code docutils literal"><span class="pre">Phalcon\Forms</span></code> 组件以方便开发者创建和维护应用中的表单。</p>
+<p>下面的例子中展示了基本的使用方法：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Form</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Element\Text</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Element\Select</span><span class="p">;</span>
+
+<span class="nv">$form</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Form</span><span class="p">();</span>
+
+<span class="nv">$form</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">Text</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">));</span>
+
+<span class="nv">$form</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">Text</span><span class="p">(</span><span class="s2">&quot;telephone&quot;</span><span class="p">));</span>
+
+<span class="nv">$form</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="k">new</span> <span class="nx">Select</span><span class="p">(</span>
+        <span class="s2">&quot;telephoneType&quot;</span><span class="p">,</span>
+        <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;H&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Home&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;C&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Cell&#39;</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>可在表单定义时穿插使用表单元素的字义：</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Contacts<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Name<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+        <span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$form</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">);</span> <span class="cp">?&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Telephone<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+        <span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$form</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s2">&quot;telephone&quot;</span><span class="p">);</span> <span class="cp">?&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Type<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+        <span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$form</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s2">&quot;telephoneType&quot;</span><span class="p">);</span> <span class="cp">?&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Save&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>开发者可根据需要渲染HTML组件。 当使用render()函数时， phalcon内部会使用 <a class="reference internal" href="../api/Phalcon_Tag.html"><em>Phalcon\Tag</em></a> 生成相应的html项，
+第二个参数中可以对一些属性进行设置。</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Name<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$form</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;maxlength&#39;</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;placeholder&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Type your name&#39;</span><span class="p">));</span> <span class="cp">?&gt;</span>
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>HTML的属性也可以在创建时指定：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$form</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="k">new</span> <span class="nx">Text</span><span class="p">(</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+        <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;maxlength&#39;</span>   <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>
+            <span class="s1">&#39;placeholder&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Type your name&#39;</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<div class="section" id="forms-elements">
+<h2>表单元素（Forms Elements）<a class="headerlink" href="#forms-elements" title="永久链接至标题">¶</a></h2>
+<p>所有 <a class="reference internal" href="../api/Phalcon_Tag.html"><em>Phalcon\Tag</em></a> 支持的 HTML 元素，都可以作为表单元素来使用。
+例如，Phalcon 内置不存在 <cite>PhalconFormsElementTel</cite> 元素类，但 <a class="reference internal" href="../api/Phalcon_Tag.html"><em>Phalcon\Tag</em></a> 中存在 <code class="code docutils literal"><span class="pre">tel</span></code> 方法，我们仍然可以用下面的方式创建表单元素：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$element</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Forms\Element</span><span class="p">(</span><span class="s1">&#39;mytel&#39;</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="s1">&#39;tel&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>构造函数的第一个参数是元素名称（name），第二个参数是元素属性，第三个参数是用户选项值（自定义数据），第四个参数是选项值（比如下拉列表的值）。</p>
+<div class="section" id="id1">
+<h3>渲染表单元素<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">echo</span> <span class="nv">$element</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="initializing-forms">
+<h2>初始化表单（Initializing forms）<a class="headerlink" href="#initializing-forms" title="永久链接至标题">¶</a></h2>
+<p>从上面的例子我们可以看到表单项也可以在form对象初始化后进行添加。当然开发者也可以对原有的Form类进行扩展：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Form</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Element\Text</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Element\Select</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">ContactForm</span> <span class="k">extends</span> <span class="nx">Form</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">Text</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">));</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">Text</span><span class="p">(</span><span class="s2">&quot;telephone&quot;</span><span class="p">));</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+            <span class="k">new</span> <span class="nx">Select</span><span class="p">(</span>
+                <span class="s2">&quot;telephoneType&quot;</span><span class="p">,</span>
+                <span class="nx">TelephoneTypes</span><span class="o">::</span><span class="na">find</span><span class="p">(),</span>
+                <span class="k">array</span><span class="p">(</span>
+                    <span class="s1">&#39;using&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                        <span class="s1">&#39;id&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;name&#39;</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>由于 <a class="reference internal" href="../api/Phalcon_Forms_Form.html"><em>Phalcon\Forms\Form</em></a> 实现了 <a class="reference internal" href="../api/Phalcon_Di_Injectable.html"><em>Phalcon\Di\Injectable</em></a> 接口，
+所以开发者可以根据自己的需要访问应用中的服务。</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Form</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Element\Text</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Element\Hidden</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">ContactForm</span> <span class="k">extends</span> <span class="nx">Form</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * This method returns the default value for field &#39;csrf&#39;</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getCsrf</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">security</span><span class="o">-&gt;</span><span class="na">getToken</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Set the same form as entity</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setEntity</span><span class="p">(</span><span class="nv">$this</span><span class="p">);</span>
+
+        <span class="c1">// Add a text element to capture the &#39;email&#39;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">Text</span><span class="p">(</span><span class="s2">&quot;email&quot;</span><span class="p">));</span>
+
+        <span class="c1">// Add a text element to put a hidden CSRF</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">Hidden</span><span class="p">(</span><span class="s2">&quot;csrf&quot;</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>相关的实体在初始化时添加到表单， 自定义的选项通过构造器传送：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Form</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Element\Text</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Element\Hidden</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">UsersForm</span> <span class="k">extends</span> <span class="nx">Form</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * Forms initializer</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param Users $user</span>
+<span class="sd">     * @param array $options</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">(</span><span class="nx">Users</span> <span class="nv">$user</span><span class="p">,</span> <span class="nv">$options</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$options</span><span class="p">[</span><span class="s1">&#39;edit&#39;</span><span class="p">])</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">Hidden</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">));</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">Text</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">));</span>
+        <span class="p">}</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">Text</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>在表单实例中必须要这样使用：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$form</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UsersForm</span><span class="p">(</span>
+    <span class="k">new</span> <span class="nx">Users</span><span class="p">(),</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;edit&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="validation">
+<h2>验证（Validation）<a class="headerlink" href="#validation" title="永久链接至标题">¶</a></h2>
+<p>Phalcon表单组件可以和 <a class="reference internal" href="validation.html"><em>validation</em></a> 集成，以提供验证。 开发者要单独为每个html元素提供内置或自定义的验证器。</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Element\Text</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Validation\Validator\PresenceOf</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Validation\Validator\StringLength</span><span class="p">;</span>
+
+<span class="nv">$name</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Text</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">);</span>
+
+<span class="nv">$name</span><span class="o">-&gt;</span><span class="na">addValidator</span><span class="p">(</span>
+    <span class="k">new</span> <span class="nx">PresenceOf</span><span class="p">(</span>
+        <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;message&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;The name is required&#39;</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="nv">$name</span><span class="o">-&gt;</span><span class="na">addValidator</span><span class="p">(</span>
+    <span class="k">new</span> <span class="nx">StringLength</span><span class="p">(</span>
+        <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;min&#39;</span>            <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+            <span class="s1">&#39;messageMinimum&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;The name is too short&#39;</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="nv">$form</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$name</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>然后， 开发者可以根据用户的输入进行验证：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$form</span><span class="o">-&gt;</span><span class="na">isValid</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$form</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$message</span><span class="p">,</span> <span class="s1">&#39;&lt;br&gt;&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>验证器执行的顺序和注册的顺序一致。</p>
+<p>默认情况下，所有的元素产生的消息是放在一起的， 所以开发者可以使用简单的foreach来遍历消息， 开发者可以按照自己的意愿组织输出：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$form</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">(</span><span class="k">false</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$attribute</span> <span class="o">=&gt;</span> <span class="nv">$messages</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s1">&#39;Messages generated by &#39;</span><span class="p">,</span> <span class="nv">$attribute</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$messages</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$message</span><span class="p">,</span> <span class="s1">&#39;&lt;br&gt;&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>或获取指定元素的消息：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$form</span><span class="o">-&gt;</span><span class="na">getMessagesFor</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$message</span><span class="p">,</span> <span class="s1">&#39;&lt;br&gt;&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="filtering">
+<h2>过滤（Filtering）<a class="headerlink" href="#filtering" title="永久链接至标题">¶</a></h2>
+<p>表单元素可以在进行验证前先进行过滤， 开发者可以为每个元素设置过滤器：</p>
+</div>
+<div class="section" id="setting-user-options">
+<h2>设置用户选项（Setting User Options）<a class="headerlink" href="#setting-user-options" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="forms-entities">
+<h2>表单与实体（Forms + Entities）<a class="headerlink" href="#forms-entities" title="永久链接至标题">¶</a></h2>
+<p>我们可以把 model/collection/plain 设置到表单对象中， 这样 phalcon 会自动的设置表单元素的值：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">();</span>
+
+<span class="nv">$form</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Form</span><span class="p">(</span><span class="nv">$robot</span><span class="p">);</span>
+
+<span class="nv">$form</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">Text</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">));</span>
+
+<span class="nv">$form</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="nx">Text</span><span class="p">(</span><span class="s2">&quot;year&quot;</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>在表单渲染时如果表单项未设置默认值， phalcon会使用对象实体值作为默认值：</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$form</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">);</span> <span class="cp">?&gt;</span>
+</pre></div>
+</div>
+<p>开发者可以使用下面的方式验证表单及利用用户的输入来设置值：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$form</span><span class="o">-&gt;</span><span class="na">bind</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">,</span> <span class="nv">$robot</span><span class="p">);</span>
+
+<span class="c1">// Check if the form is valid</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$form</span><span class="o">-&gt;</span><span class="na">isValid</span><span class="p">())</span> <span class="p">{</span>
+
+    <span class="c1">// Save the entity</span>
+    <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>也可以使用一个简单的类做为对象实体进行参数传递：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Preferences</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$timezone</span> <span class="o">=</span> <span class="s1">&#39;Europe/Amsterdam&#39;</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nv">$receiveEmails</span> <span class="o">=</span> <span class="s1">&#39;No&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>使用此类做为对象实体，这样可以使用此类中的值作为表单的默认值：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$form</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Form</span><span class="p">(</span><span class="k">new</span> <span class="nx">Preferences</span><span class="p">());</span>
+
+<span class="nv">$form</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="k">new</span> <span class="nx">Select</span><span class="p">(</span>
+        <span class="s2">&quot;timezone&quot;</span><span class="p">,</span>
+        <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;America/New_York&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;New York&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Europe/Amsterdam&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;Amsterdam&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;America/Sao_Paulo&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Sao Paulo&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Asia/Tokyo&#39;</span>        <span class="o">=&gt;</span> <span class="s1">&#39;Tokyo&#39;</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="nv">$form</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
+    <span class="k">new</span> <span class="nx">Select</span><span class="p">(</span>
+        <span class="s2">&quot;receiveEmails&quot;</span><span class="p">,</span>
+        <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;Yes&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Yes, please!&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;No&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;No, thanks&#39;</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>实体中也可以使用getters, 这样可以给开发者更多的自由， 当然也会洽使开发稍麻烦一些，不过这是值得的：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Preferences</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$timezone</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nv">$receiveEmails</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getTimezone</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;Europe/Amsterdam&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getReceiveEmails</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;No&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="form-elements">
+<h2>表单控件（Form Elements）<a class="headerlink" href="#form-elements" title="永久链接至标题">¶</a></h2>
+<p>Phalcon提供了一些内置的html元素类， 所有这些元素类仅位于 <a class="reference internal" href="../api/Phalcon_Forms_Element.html"><em>Phalcon\Forms\Element</em></a> 命名空间下：</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="53%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">名称</th>
+<th class="head">描述</th>
+<th class="head">示例</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Text</td>
+<td>产生 INPUT[type=text] 项</td>
+<td><a class="reference internal" href="../api/Phalcon_Forms_Element_Text.html"><em>Example</em></a></td>
+</tr>
+<tr class="row-odd"><td>Password</td>
+<td>产生 INPUT[type=password] 项</td>
+<td><a class="reference internal" href="../api/Phalcon_Forms_Element_Password.html"><em>Example</em></a></td>
+</tr>
+<tr class="row-even"><td>Select</td>
+<td>产生 SELECT tag (combo lists) 项</td>
+<td><a class="reference internal" href="../api/Phalcon_Forms_Element_Select.html"><em>Example</em></a></td>
+</tr>
+<tr class="row-odd"><td>Check</td>
+<td>产生 INPUT[type=check] 项</td>
+<td><a class="reference internal" href="../api/Phalcon_Forms_Element_Check.html"><em>Example</em></a></td>
+</tr>
+<tr class="row-even"><td>Textarea</td>
+<td>产生 TEXTAREA 项</td>
+<td><a class="reference internal" href="../api/Phalcon_Forms_Element_TextArea.html"><em>Example</em></a></td>
+</tr>
+<tr class="row-odd"><td>Hidden</td>
+<td>产生 INPUT[type=hidden] 项</td>
+<td><a class="reference internal" href="../api/Phalcon_Forms_Element_Hidden.html"><em>Example</em></a></td>
+</tr>
+<tr class="row-even"><td>File</td>
+<td>产生 INPUT[type=file] 项</td>
+<td><a class="reference internal" href="../api/Phalcon_Forms_Element_File.html"><em>Example</em></a></td>
+</tr>
+<tr class="row-odd"><td>Date</td>
+<td>产生 INPUT[type=date] 项</td>
+<td><a class="reference internal" href="../api/Phalcon_Forms_Element_Date.html"><em>Example</em></a></td>
+</tr>
+<tr class="row-even"><td>Numeric</td>
+<td>产生 INPUT[type=number] 项</td>
+<td><a class="reference internal" href="../api/Phalcon_Forms_Element_Numeric.html"><em>Example</em></a></td>
+</tr>
+<tr class="row-odd"><td>Submit</td>
+<td>产生 INPUT[type=submit] 项</td>
+<td><a class="reference internal" href="../api/Phalcon_Forms_Element_Submit.html"><em>Example</em></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="event-callbacks">
+<h2>事件回调（Event Callbacks）<a class="headerlink" href="#event-callbacks" title="永久链接至标题">¶</a></h2>
+<p>当扩展表单时， 我们可以在表单类中实现验证前操作及验证后操作：</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Form</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">ContactForm</span> <span class="k">extends</span> <span class="nx">Form</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">beforeValidation</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rendering-forms">
+<h2>渲染表单（Rendering Forms）<a class="headerlink" href="#rendering-forms" title="永久链接至标题">¶</a></h2>
+<p>开发者对表单的渲染操作有完全的控制，下面的的例子展示了如何使用标准方法渲染html元素：</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="o">&lt;</span><span class="nx">form</span> <span class="nx">method</span><span class="o">=</span><span class="s2">&quot;post&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;?</span><span class="nx">php</span>
+        <span class="c1">// Traverse the form</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$form</span> <span class="k">as</span> <span class="nv">$element</span><span class="p">)</span> <span class="p">{</span>
+
+            <span class="c1">// Get any generated messages for the current element</span>
+            <span class="nv">$messages</span> <span class="o">=</span> <span class="nv">$form</span><span class="o">-&gt;</span><span class="na">getMessagesFor</span><span class="p">(</span><span class="nv">$element</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">());</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="nb">count</span><span class="p">(</span><span class="nv">$messages</span><span class="p">))</span> <span class="p">{</span>
+                <span class="c1">// Print each element</span>
+                <span class="k">echo</span> <span class="s1">&#39;&lt;div class=&quot;messages&quot;&gt;&#39;</span><span class="p">;</span>
+                <span class="k">foreach</span> <span class="p">(</span><span class="nv">$messages</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">echo</span> <span class="nv">$message</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="k">echo</span> <span class="s1">&#39;&lt;/div&gt;&#39;</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="k">echo</span> <span class="s1">&#39;&lt;p&gt;&#39;</span><span class="p">;</span>
+            <span class="k">echo</span> <span class="s1">&#39;&lt;label for=&quot;&#39;</span><span class="p">,</span> <span class="nv">$element</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">(),</span> <span class="s1">&#39;&quot;&gt;&#39;</span><span class="p">,</span> <span class="nv">$element</span><span class="o">-&gt;</span><span class="na">getLabel</span><span class="p">(),</span> <span class="s1">&#39;&lt;/label&gt;&#39;</span><span class="p">;</span>
+            <span class="k">echo</span> <span class="nv">$element</span><span class="p">;</span>
+            <span class="k">echo</span> <span class="s1">&#39;&lt;/p&gt;&#39;</span><span class="p">;</span>
+
+        <span class="p">}</span>
+    <span class="cp">?&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Send&quot;</span><span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>或者可以使用更简单的方式：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">echo</span> <span class="nv">$form</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">();</span>
+<span class="c1">// or</span>
+<span class="k">echo</span> <span class="nv">$form</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="k">NULL</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="s1">&#39;&lt;label&gt;:label:&lt;/label&gt;&lt;p&gt;:element:&lt;/p&gt;&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>方法 <code class="code docutils literal"><span class="pre">render</span></code> 第一个参数用来指定渲染哪个表单元素：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">echo</span> <span class="nv">$form</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>方法 <code class="code docutils literal"><span class="pre">render</span></code> 第二个参数用来设定表单元素属性：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">echo</span> <span class="nv">$form</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;form-control&#39;</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>方法 <code class="code docutils literal"><span class="pre">render</span></code> 第三个参数可以设置元素模板：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">echo</span> <span class="nv">$form</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="k">NULL</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="s1">&#39;&lt;div class=&quot;form-group&quot;&gt;&lt;label&gt;:label:&lt;/label&gt;&lt;p&gt;:element:&lt;/p&gt;&lt;/div&gt;&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>或是在登录表单中重用表单类：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Form</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">ContactForm</span> <span class="k">extends</span> <span class="nx">Form</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">renderDecorated</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$element</span>  <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$name</span><span class="p">);</span>
+
+        <span class="c1">// Get any generated messages for the current element</span>
+        <span class="nv">$messages</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getMessagesFor</span><span class="p">(</span><span class="nv">$element</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">());</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nb">count</span><span class="p">(</span><span class="nv">$messages</span><span class="p">))</span> <span class="p">{</span>
+            <span class="c1">// Print each element</span>
+            <span class="k">echo</span> <span class="s1">&#39;&lt;div class=&quot;messages&quot;&gt;&#39;</span><span class="p">;</span>
+            <span class="k">foreach</span> <span class="p">(</span><span class="nv">$messages</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">flash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="nv">$message</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">echo</span> <span class="s1">&#39;&lt;/div&gt;&#39;</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">echo</span> <span class="s1">&#39;&lt;p&gt;&#39;</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="s1">&#39;&lt;label for=&quot;&#39;</span><span class="p">,</span> <span class="nv">$element</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">(),</span> <span class="s1">&#39;&quot;&gt;&#39;</span><span class="p">,</span> <span class="nv">$element</span><span class="o">-&gt;</span><span class="na">getLabel</span><span class="p">(),</span> <span class="s1">&#39;&lt;/label&gt;&#39;</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="nv">$element</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="s1">&#39;&lt;/p&gt;&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>视图中：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">echo</span> <span class="nv">$element</span><span class="o">-&gt;</span><span class="na">renderDecorated</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="nv">$element</span><span class="o">-&gt;</span><span class="na">renderDecorated</span><span class="p">(</span><span class="s1">&#39;telephone&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="creating-form-elements">
+<h2>创建表单控件（Creating Form Elements）<a class="headerlink" href="#creating-form-elements" title="永久链接至标题">¶</a></h2>
+<p>除了可以使用phalcon提供的html元素以外， 开发者还可以使用自定义的html元素：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Element</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">MyElement</span> <span class="k">extends</span> <span class="nx">Element</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">render</span><span class="p">(</span><span class="nv">$attributes</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$html</span> <span class="o">=</span> <span class="c1">// ... Produce some HTML</span>
+        <span class="k">return</span> <span class="nv">$html</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>表单元素转换为数组（Creating Form Elements）<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$nameElement</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Forms\Element</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;big-input&#39;</span><span class="p">),</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;some&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;value&#39;</span><span class="p">),</span> <span class="k">NULL</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">);</span>
+<span class="nv">$versionElement</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Forms\Element</span><span class="p">(</span><span class="s2">&quot;version&quot;</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;phalcon&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Phalcon&#39;</span><span class="p">,</span> <span class="s1">&#39;phalcon7&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Phalcon7&#39;</span><span class="p">),</span> <span class="s2">&quot;select&quot;</span><span class="p">);</span>
+
+<span class="nv">$form</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Forms\Form</span><span class="p">();</span>
+<span class="nv">$form</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$nameElement</span><span class="p">);</span>
+<span class="nv">$form</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$versionElement</span><span class="p">);</span>
+<span class="nv">$data</span> <span class="o">=</span> <span class="nv">$form</span><span class="o">-&gt;</span><span class="na">toArray</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><code class="code docutils literal"><span class="pre">$data</span></code> 值如下：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">array</span><span class="p">(</span>
+     <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+          <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;attributes&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+               <span class="s2">&quot;class&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;big-input&quot;</span><span class="p">,</span>
+          <span class="p">),</span>
+          <span class="s2">&quot;options&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+               <span class="s2">&quot;some&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span>
+          <span class="p">),</span>
+     <span class="p">),</span>
+     <span class="s2">&quot;version&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+          <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;version&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;optionsValues&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+               <span class="s2">&quot;phalcon&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Phalcon&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;phalcon7&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Phalcon7&quot;</span><span class="p">,</span>
+          <span class="p">),</span>
+     <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="forms-manager">
+<h2>表单管理（Forms Manager）<a class="headerlink" href="#forms-manager" title="永久链接至标题">¶</a></h2>
+<p>此组件为开发者提供了一个表单管理器， 可以用来注册表单，此组件可以使用服务容器来访问：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Forms\Manager</span> <span class="k">as</span> <span class="nx">FormsManager</span><span class="p">;</span>
+
+<span class="nv">$di</span><span class="p">[</span><span class="s1">&#39;forms&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">FormsManager</span><span class="p">();</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>表单被添加到表单管理器， 然后设置了唯一的名字：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">forms</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;login&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">LoginForm</span><span class="p">());</span>
+</pre></div>
+</div>
+<p>使用唯一名， 我们可以在应用的任何地方访问到表单：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">forms</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;login&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="external-resources">
+<h2>外部资源（External Resources)<a class="headerlink" href="#external-resources" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://vokuro.phalconphp.com">Vökuró</a> 是一个使用表单构建器来创建和维护表单的示例 [<a class="reference external" href="https://github.com/phalcon/vokuro">Github</a>]</li>
+</ul>
+</div>
+</div>
+
+
+			</div>
+		  </div>
+		</div>
+	</div>
+  </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="config.html" title="读取配置（Reading Configurations）"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="validation.html" title="验证（Validation）"
+             >上一页</a> |</li> 
+      </ul>
+    </div>
+
+<footer class="footer">
+	<div class="container">
+      <div class="row">
+          <div class="col-xs-6 col-sm-3">
+              <h4>Download</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/releases">安裝 Phalcon7</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+              <h4>Community</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7">GitHub</a></li>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/issues">Issue Tracker</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-2">
+              <h4>About</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon/wiki/%E6%8D%90%E8%B5%A0%EF%BC%88Donation%EF%BC%89">Donate</a></li>
+              </ul>
+          </div>
+          <div id="license-spaccer" class="visible-xs"></div>
+          <div id="license-wrapper" class="col-xs-12 col-sm-4">
+              <p class="license">
+
+                  Phalcon7 Framework is released under the <a href="https://github.com/dreamsxin/cphalcon7/blob/master/docs/LICENSE.md">new BSD license</a>.<br>
+                  Except where otherwise noted, content on this site is licensed under the
+                  <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a>
+              </p>
+              <div class="design">
+                  <span>Designed by:</span>
+
+                  <a href="http://www.fog-city.net/" class="fogcity" target="_blank" title="Fog City Software"><span>Fog City Software</span></a>
+              </div>
+          </div>
+      </div>
+	</div>
+</footer>
+</body>
+</html>

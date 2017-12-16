@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>调度控制器（Dispatching Controllers） &mdash; Phalcon7 1.2.1 文档</title>
+    <meta name="keywords" content="php, phalcon, phalcon7, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/phalcon.css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="../static/jquery.min.js"></script>
+    <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
+    <link rel="next" title="微应用（Micro Applications）" href="micro.html" />
+    <link rel="prev" title="路由（Routing）" href="routing.html" /> 
+</head>
+<body>
+
+<header class="page-header">
+<nav class="navbar" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+				<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+		</div>
+
+		<div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+			<ul class="nav navbar-nav main-menu">
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7" class="header-nav-link">GitHub</a></li>
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7/releases" class="header-nav-link">Download</a></li>
+			  <li class="first"><a href="/api/" class="header-nav-link">API</a></li>
+			  <li class="first"><a href="/internals/" class="header-nav-link">内核开发手册</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="micro.html" title="微应用（Micro Applications）"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="routing.html" title="路由（Routing）"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://myleftstudio.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon7 1.2.1 文档</a> &raquo;</li> 
+      </ul>
+    </div>  
+</div>
+
+<div class="container-fluid">
+	<div class="col-md-3 primary-box">
+		<div class="panel panel-default">
+			<div class="panel-heading"><a href="../index.html">內容目录</a></div>
+			<div class="panel-body"><ul>
+<li><a class="reference internal" href="#">调度控制器（Dispatching Controllers）</a><ul>
+<li><a class="reference internal" href="#the-dispatch-loop">循环调度（The Dispatch Loop）</a><ul>
+<li><a class="reference internal" href="#dispatch-loop-events">循环调度事件（Dispatch Loop Events）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#forwarding-to-other-actions">转发到其他动作（Forwarding to other actions）</a></li>
+<li><a class="reference internal" href="#preparing-parameters">准备参数（Preparing Parameters）</a></li>
+<li><a class="reference internal" href="#getting-parameters">获取参数（Getting Parameters）</a></li>
+<li><a class="reference internal" href="#preparing-actions">准备行动（Preparing actions）</a><ul>
+<li><a class="reference internal" href="#camelize-action-names">转换动作名（Camelize action names）</a></li>
+<li><a class="reference internal" href="#remove-legacy-extensions">删除遗留的扩展名（Remove legacy extensions）</a></li>
+<li><a class="reference internal" href="#inject-model-instances">注入模型实例（Inject model instances）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#not-found-handling-not-found-exceptions">处理 Not-Found 错误（Handling Not-Found Exceptions）</a></li>
+<li><a class="reference internal" href="#set-error-handler">设置错误处理器（Set error handler）</a></li>
+<li><a class="reference internal" href="#camelize-controller">控制器的驼峰转换（Camelize Controller）</a></li>
+<li><a class="reference internal" href="#implementing-your-own-dispatcher">自定义调度器（Implementing your own Dispatcher）</a></li>
+</ul>
+</li>
+</ul>
+</div>
+			<div class="panel-heading">上一个主题</div>
+            <div class="panel-body"><p class="topless"><a href="routing.html" title="上一章">&lt; 路由（Routing）</a></p></div>
+			<div class="panel-heading">下一个主题</div>
+            <div class="panel-body"><p class="topless"><a href="micro.html" title="下一章">微应用（Micro Applications） &gt;</a></p></div>
+		</div>
+	</div>
+  <div class="col-md-9 second-box" valign="top">
+	<div class="document">
+		<div class="documentwrapper">
+		  <div class="bodywrapper">
+			<div class="body" >
+			  
+  <div class="section" id="dispatching-controllers">
+<h1>调度控制器（Dispatching Controllers）<a class="headerlink" href="#dispatching-controllers" title="永久链接至标题">¶</a></h1>
+<p><a class="reference internal" href="../api/Phalcon_Mvc_Dispatcher.html"><em>Phalcon\Mvc\Dispatcher</em></a> 是MVC应用中负责实例化
+控制器和执行在这些控制器上必要动作的组件。理解它的操作和能力将能帮助我们获得更多Phalcon框架提供的服务。</p>
+<div class="section" id="the-dispatch-loop">
+<h2>循环调度（The Dispatch Loop）<a class="headerlink" href="#the-dispatch-loop" title="永久链接至标题">¶</a></h2>
+<p>在MVC流中，这是一个重要的处理环节，特别对于控制器这部分。这些处理
+发生在控制调度器中。控制器的文件将会被依次读取、加载和实例化。然后指定的action将会被执行。
+如果一个动作将这个流转发给了另一个控制器/动作，控制调度器将会再次启动。为了更好
+解释这一点，以下示例怡到好处地说明了在  <a class="reference internal" href="../api/Phalcon_Mvc_Dispatcher.html"><em>Phalcon\Mvc\Dispatcher</em></a> 中的处理过程：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// 循环调度</span>
+<span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="nv">$finished</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nv">$finished</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+
+    <span class="nv">$controllerClass</span> <span class="o">=</span> <span class="nv">$controllerName</span> <span class="o">.</span> <span class="s2">&quot;Controller&quot;</span><span class="p">;</span>
+
+    <span class="c1">// 通过自动加载器实例化控制器类</span>
+    <span class="nv">$controller</span> <span class="o">=</span> <span class="k">new</span> <span class="nv">$controllerClass</span><span class="p">();</span>
+
+    <span class="c1">// 执行 action</span>
+    <span class="nb">call_user_func_array</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="nv">$controller</span><span class="p">,</span> <span class="nv">$actionName</span> <span class="o">.</span> <span class="s2">&quot;Action&quot;</span><span class="p">),</span> <span class="nv">$params</span><span class="p">);</span>
+
+    <span class="c1">// $finished应该重新加载以检测MVC流</span>
+    <span class="c1">// 是否转发给了另一个控制器</span>
+    <span class="nv">$finished</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>上面的代码缺少了验证，过滤器和额外的检查，但它演示了在调度器中正常的操作流。</p>
+<blockquote class="highlights">
+<div>执行 action 的过程中，可以通过 <cite>throw PhalconContinueException(&#8216;提前完成 action&#8217;)</cite> 终止 action 的运行，而不影响后续的程序运行。</div></blockquote>
+<div class="section" id="dispatch-loop-events">
+<h3>循环调度事件（Dispatch Loop Events）<a class="headerlink" href="#dispatch-loop-events" title="永久链接至标题">¶</a></h3>
+<p><a class="reference internal" href="../api/Phalcon_Mvc_Dispatcher.html"><em>Phalcon\Mvc\Dispatcher</em></a> 可以发送事件给当前的 <a class="reference internal" href="events.html"><em>EventsManager</em></a> 。
+事件会以“dispatch”类型被所触发。当返回false时有些事件可以终止当前激活的操作。已支持的事件如下：</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="76%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">事件名称</th>
+<th class="head">何时触发</th>
+<th class="head">此操作是否可终止？</th>
+<th class="head">触发于</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>beforeDispatchLoop</td>
+<td>在进入循环调度前触发。此时，调度器不知道将要执行的控制器或者动作是否存在。调度器只知道路由传递过来的信息。</td>
+<td>是</td>
+<td>侦听者</td>
+</tr>
+<tr class="row-odd"><td>beforeDispatch</td>
+<td>在进入循环调度后触发。此时，调度器不知道将要执行的控制器或者动作是否存在。调度器只知道路由传递过来的信息。</td>
+<td>是</td>
+<td>侦听者</td>
+</tr>
+<tr class="row-even"><td>beforeExecuteRoute</td>
+<td>在执行控制器/动作方法前触发。此时，调度器已经初始化了控制器并知道动作是否存在。</td>
+<td>是</td>
+<td>侦听者/控制器</td>
+</tr>
+<tr class="row-odd"><td>initialize</td>
+<td>允许在请求中全局初始化控制器。</td>
+<td>否</td>
+<td>控制器</td>
+</tr>
+<tr class="row-even"><td>afterExecuteRoute</td>
+<td>在执行控制器/动作方法后触发。由于此操作不可终止，所以仅在执行动作后才使用此事件进行清理工作。</td>
+<td>否</td>
+<td>侦听者/控制器</td>
+</tr>
+<tr class="row-odd"><td>beforeNotFoundAction</td>
+<td>当控制器中的动作找不到时触发。</td>
+<td>是</td>
+<td>侦听者</td>
+</tr>
+<tr class="row-even"><td>beforeException</td>
+<td>在调度器抛出任意异常前触发。</td>
+<td>是</td>
+<td>侦听者</td>
+</tr>
+<tr class="row-odd"><td>afterDispatch</td>
+<td>在执行控制器/动作方法后触发。由于此操作不可终止，所以仅在执行动作后才使用此事件进行清理工作。</td>
+<td>是</td>
+<td>侦听者</td>
+</tr>
+<tr class="row-even"><td>afterDispatchLoop</td>
+<td>在退出循环调度后触发。</td>
+<td>否</td>
+<td>侦听者</td>
+</tr>
+</tbody>
+</table>
+<p><a class="reference internal" href="tutorial-invo.html"><em>INVO</em></a> 这篇导读说明了如何从通过结合  <a class="reference internal" href="acl.html"><em>Acl</em></a> 实现的一个安全过滤器中获得事件调度的好处。</p>
+<p>以下例子演示了如何将侦听者绑定到组件上：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher</span> <span class="k">as</span> <span class="nx">MvcDispatcher</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">;</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;dispatcher&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// 创建一个事件管理</span>
+    <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventsManager</span><span class="p">();</span>
+
+    <span class="c1">// 为“dispatch”类型附上一个侦听者</span>
+    <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span><span class="s2">&quot;dispatch&quot;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$dispatcher</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// ...</span>
+    <span class="p">});</span>
+
+    <span class="nv">$dispatcher</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MvcDispatcher</span><span class="p">();</span>
+
+    <span class="c1">// 将$eventsManager绑定到视图组件</span>
+    <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventsManager</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nv">$dispatcher</span><span class="p">;</span>
+
+<span class="p">},</span> <span class="k">true</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>一个实例化的控制器会自动作为事件调度的侦听者，所以你可以实现回调函数：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">beforeExecuteRoute</span><span class="p">(</span><span class="nx">Dispatcher</span> <span class="nv">$dispatcher</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// 在每一个找到的动作前执行</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">afterExecuteRoute</span><span class="p">(</span><span class="nx">Dispatcher</span> <span class="nv">$dispatcher</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// 在每一个找到的动作后执行</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="forwarding-to-other-actions">
+<h2>转发到其他动作（Forwarding to other actions）<a class="headerlink" href="#forwarding-to-other-actions" title="永久链接至标题">¶</a></h2>
+<p>循环调度允许我们转发执行流到另一个控制器/动作。这对于检查用户是否可以
+访问页面，将用户重定向到其他屏幕或简单地代码重用都非常有用。</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">saveAction</span><span class="p">(</span><span class="nv">$year</span><span class="p">,</span> <span class="nv">$postTitle</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// ... 储存一些产品并且转发用户</span>
+
+        <span class="c1">// 将流转发到index动作</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span>
+            <span class="k">array</span><span class="p">(</span>
+                <span class="s2">&quot;controller&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Post&quot;</span><span class="p">,</span> <span class="c1">// 区分大小写，相当于路由处理后的数据</span>
+                <span class="s2">&quot;action&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span>
+            <span class="p">)</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>请注意制造一个“forward”并不等同于制造一个HTTP的重定向。尽管这两者表面上最终效果都一样。
+“forward”不会重新加载当前页面，全部的重定向都只发生在一个请求里面，而HTTP重定向则需要两次请求
+才能完成这个流程。</p>
+<p>更多转发示例：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// 将流转发到当前控制器的另一个动作</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;action&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;search&quot;</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">// 将流转发到当前控制器的另一个动作</span>
+<span class="c1">// 传递参数</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;action&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;search&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;params&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>一个转发的动作可以接受以下参数：</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">参数</th>
+<th class="head">触发</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>controller</td>
+<td>一个待转发且有效的控制器名字。</td>
+</tr>
+<tr class="row-odd"><td>action</td>
+<td>一个待转发且有效的动作名字。</td>
+</tr>
+<tr class="row-even"><td>params</td>
+<td>一个传递给动作的数组参数。</td>
+</tr>
+<tr class="row-odd"><td>namespace</td>
+<td>一个控制器对应的命名空间名字。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="preparing-parameters">
+<h2>准备参数（Preparing Parameters）<a class="headerlink" href="#preparing-parameters" title="永久链接至标题">¶</a></h2>
+<p>多得 <a class="reference internal" href="../api/Phalcon_Mvc_Dispatcher.html"><em>Phalcon\Mvc\Dispatcher</em></a> 提供的钩子函数， 你可以简单地
+调整你的应用来匹配URL格式：</p>
+<p>例如，你想把你的URL看起来像这样：<a class="reference external" href="http://example.com/controller/key1/value1/key2/value">http://example.com/controller/key1/value1/key2/value</a></p>
+<p>默认下，参数会按URL传递的顺序传给对应的动作，你可以按期望来转换他们：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Dispatcher</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher</span> <span class="k">as</span> <span class="nx">MvcDispatcher</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">;</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;dispatcher&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// 创建一个事件管理</span>
+    <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventsManager</span><span class="p">();</span>
+
+    <span class="c1">// 附上一个侦听者</span>
+    <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span><span class="s2">&quot;dispatch:beforeDispatchLoop&quot;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$dispatcher</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="nv">$keyParams</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+        <span class="nv">$params</span>    <span class="o">=</span> <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">getParams</span><span class="p">();</span>
+
+        <span class="c1">// 用奇数参数作key，用偶数作值</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$params</span> <span class="k">as</span> <span class="nv">$number</span> <span class="o">=&gt;</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$number</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$keyParams</span><span class="p">[</span><span class="nv">$params</span><span class="p">[</span><span class="nv">$number</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 重写参数</span>
+        <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setParams</span><span class="p">(</span><span class="nv">$keyParams</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="nv">$dispatcher</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MvcDispatcher</span><span class="p">();</span>
+    <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventsManager</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nv">$dispatcher</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>如果期望的链接是这样： <a class="reference external" href="http://example.com/controller/key1:value1/key2:value">http://example.com/controller/key1:value1/key2:value</a>，那么就需要以下这样的代码：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Dispatcher</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher</span> <span class="k">as</span> <span class="nx">MvcDispatcher</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">;</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;dispatcher&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// 创建一个事件管理</span>
+    <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventsManager</span><span class="p">();</span>
+
+    <span class="c1">// 附上一个侦听者</span>
+    <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span><span class="s2">&quot;dispatch:beforeDispatchLoop&quot;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$dispatcher</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="nv">$keyParams</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+        <span class="nv">$params</span>    <span class="o">=</span> <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">getParams</span><span class="p">();</span>
+
+        <span class="c1">// 将每一个参数分解成key、值 对</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$params</span> <span class="k">as</span> <span class="nv">$number</span> <span class="o">=&gt;</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$parts</span>                <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="nv">$value</span><span class="p">);</span>
+            <span class="nv">$keyParams</span><span class="p">[</span><span class="nv">$parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="nv">$parts</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 重写参数</span>
+        <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setParams</span><span class="p">(</span><span class="nv">$keyParams</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="nv">$dispatcher</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MvcDispatcher</span><span class="p">();</span>
+    <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventsManager</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nv">$dispatcher</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="getting-parameters">
+<h2>获取参数（Getting Parameters）<a class="headerlink" href="#getting-parameters" title="永久链接至标题">¶</a></h2>
+<p>当路由提供了命名的参数变量，你就可以在控制器、视图或者任何一个继承了
+<a class="reference internal" href="../api/Phalcon_Di_Injectable.html"><em>Phalcon\Di\Injectable</em></a> 的组件中获得这些参数。</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">saveAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// 从URL传递过来的参数中获取title</span>
+        <span class="c1">// 或者在一个事件中准备</span>
+        <span class="nv">$title</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">getParam</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">);</span>
+
+        <span class="c1">// 从URL传递过来的参数中获取year</span>
+        <span class="c1">// 或者在一个事件中准备并且进行过滤</span>
+        <span class="nv">$year</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">getParam</span><span class="p">(</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="s2">&quot;int&quot;</span><span class="p">);</span>
+
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="preparing-actions">
+<h2>准备行动（Preparing actions）<a class="headerlink" href="#preparing-actions" title="永久链接至标题">¶</a></h2>
+<p>你也可以为动作定义一个调度前的映射表。</p>
+<div class="section" id="camelize-action-names">
+<h3>转换动作名（Camelize action names）<a class="headerlink" href="#camelize-action-names" title="永久链接至标题">¶</a></h3>
+<p>如果原始链接是：<a class="reference external" href="http://example.com/admin/products/show-latest-products">http://example.com/admin/products/show-latest-products</a>，
+例如你想把&#8217;show-latest-products&#8217;转换成&#8217;ShowLatestProducts&#8217;，
+需要以下代码：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Text</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher</span> <span class="k">as</span> <span class="nx">MvcDispatcher</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">;</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;dispatcher&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// 创建一个事件管理</span>
+    <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventsManager</span><span class="p">();</span>
+
+    <span class="c1">// Camelize动作</span>
+    <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span><span class="s2">&quot;dispatch:beforeDispatchLoop&quot;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$dispatcher</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setActionName</span><span class="p">(</span><span class="nx">Text</span><span class="o">::</span><span class="na">camelize</span><span class="p">(</span><span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">getActionName</span><span class="p">()));</span>
+    <span class="p">});</span>
+
+    <span class="nv">$dispatcher</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MvcDispatcher</span><span class="p">();</span>
+    <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventsManager</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nv">$dispatcher</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="remove-legacy-extensions">
+<h3>删除遗留的扩展名（Remove legacy extensions）<a class="headerlink" href="#remove-legacy-extensions" title="永久链接至标题">¶</a></h3>
+<p>如果原始链接总是包含一个&#8217;.php&#8217;扩展名：</p>
+<p><a class="reference external" href="http://example.com/admin/products/show-latest-products.php">http://example.com/admin/products/show-latest-products.php</a>
+<a class="reference external" href="http://example.com/admin/products/index.php">http://example.com/admin/products/index.php</a></p>
+<p>你可以在调度对应的控制器/动作组前将它删除：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher</span> <span class="k">as</span> <span class="nx">MvcDispatcher</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">;</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;dispatcher&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// 创建一个事件管理</span>
+    <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventsManager</span><span class="p">();</span>
+
+    <span class="c1">// 在调度前删除扩展</span>
+    <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span><span class="s2">&quot;dispatch:beforeDispatchLoop&quot;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$dispatcher</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="c1">// 删除扩展</span>
+        <span class="nv">$action</span> <span class="o">=</span> <span class="nb">preg_replace</span><span class="p">(</span><span class="s1">&#39;/\.php$/&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">getActionName</span><span class="p">());</span>
+
+        <span class="c1">// 重写动作</span>
+        <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setActionName</span><span class="p">(</span><span class="nv">$action</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="nv">$dispatcher</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MvcDispatcher</span><span class="p">();</span>
+    <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventsManager</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nv">$dispatcher</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="inject-model-instances">
+<h3>注入模型实例（Inject model instances）<a class="headerlink" href="#inject-model-instances" title="永久链接至标题">¶</a></h3>
+<p>在这个实例中，开发人员想要观察动作接收到的参数以便可以动态注入模型实例。</p>
+<p>控制器看起来像这样：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * 显示$post</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param \Posts $post</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">showAction</span><span class="p">(</span><span class="nx">Posts</span> <span class="nv">$post</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">post</span> <span class="o">=</span> <span class="nv">$post</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>&#8216;showAction&#8217;方法接收到一个 Posts 模型的实例，开发人员可以
+在调度动作和准备映射参数前进行观察：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher</span> <span class="k">as</span> <span class="nx">MvcDispatcher</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">;</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;dispatcher&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// 创建一个事件管理</span>
+    <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventsManager</span><span class="p">();</span>
+
+    <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span><span class="s2">&quot;dispatch:beforeDispatchLoop&quot;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$dispatcher</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="c1">// 可能的控制器类名</span>
+        <span class="nv">$controllerName</span> <span class="o">=</span> <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">getControllerClass</span><span class="p">();</span>
+
+        <span class="c1">// 可能的方法名</span>
+        <span class="nv">$actionName</span> <span class="o">=</span> <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">getActiveMethod</span><span class="p">();</span>
+
+        <span class="k">try</span> <span class="p">{</span>
+
+            <span class="c1">// 从反射中获取将要被执行的方法</span>
+            <span class="nv">$reflection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\ReflectionMethod</span><span class="p">(</span><span class="nv">$controllerName</span><span class="p">,</span> <span class="nv">$actionName</span><span class="p">);</span>
+
+            <span class="c1">// 参数检查</span>
+            <span class="k">foreach</span> <span class="p">(</span><span class="nv">$reflection</span><span class="o">-&gt;</span><span class="na">getParameters</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$parameter</span><span class="p">)</span> <span class="p">{</span>
+
+                <span class="c1">// 获取期望的模型名字</span>
+                <span class="nv">$className</span> <span class="o">=</span> <span class="nv">$parameter</span><span class="o">-&gt;</span><span class="na">getClass</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
+
+                <span class="c1">// 检查参数是否为模型的实例</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nb">is_subclass_of</span><span class="p">(</span><span class="nv">$className</span><span class="p">,</span> <span class="nx">Model</span><span class="o">::</span><span class="na">class</span><span class="p">))</span> <span class="p">{</span>
+
+                    <span class="nv">$model</span> <span class="o">=</span> <span class="nv">$className</span><span class="o">::</span><span class="na">findFirstById</span><span class="p">(</span><span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">getParams</span><span class="p">()[</span><span class="mi">0</span><span class="p">]);</span>
+
+                    <span class="c1">// 根据模型实例重写参数</span>
+                    <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setParams</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="nv">$model</span><span class="p">));</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// 异常触发，类或者动作不存在？</span>
+        <span class="p">}</span>
+
+    <span class="p">});</span>
+
+    <span class="nv">$dispatcher</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MvcDispatcher</span><span class="p">();</span>
+    <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventsManager</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nv">$dispatcher</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>上面示例出于学术目的已经作了简化。
+开发人员可以在执行动作前注入任何类型的依赖或者模型，以进行提高和强化。</p>
+</div>
+</div>
+<div class="section" id="not-found-handling-not-found-exceptions">
+<h2>处理 Not-Found 错误（Handling Not-Found Exceptions）<a class="headerlink" href="#not-found-handling-not-found-exceptions" title="永久链接至标题">¶</a></h2>
+<p>使用 <a class="reference internal" href="events.html"><em>EventsManager</em></a> ，可以在调度器找不到对应的控制器/动作组时而抛出异常前，插入一个钩子：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Dispatcher</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher</span> <span class="k">as</span> <span class="nx">MvcDispatcher</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher\Exception</span> <span class="k">as</span> <span class="nx">DispatchException</span><span class="p">;</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;dispatcher&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// 创建一个事件管理</span>
+    <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventsManager</span><span class="p">();</span>
+
+    <span class="c1">// 附上一个侦听者</span>
+    <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span><span class="s2">&quot;dispatch:beforeException&quot;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$dispatcher</span><span class="p">,</span> <span class="nv">$exception</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="c1">// 处理404异常</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$exception</span> <span class="nx">instanceof</span> <span class="nx">DispatchException</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span>
+                <span class="k">array</span><span class="p">(</span>
+                    <span class="s1">&#39;controller&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;index&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;action&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;show404&#39;</span>
+                <span class="p">)</span>
+            <span class="p">);</span>
+
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 代替控制器或者动作不存在时的路径</span>
+        <span class="k">switch</span> <span class="p">(</span><span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getCode</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="nx">Dispatcher</span><span class="o">::</span><span class="na">EXCEPTION_HANDLER_NOT_FOUND</span><span class="o">:</span>
+            <span class="k">case</span> <span class="nx">Dispatcher</span><span class="o">::</span><span class="na">EXCEPTION_ACTION_NOT_FOUND</span><span class="o">:</span>
+                <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span>
+                    <span class="k">array</span><span class="p">(</span>
+                        <span class="s1">&#39;controller&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;index&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;action&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;show404&#39;</span>
+                    <span class="p">)</span>
+                <span class="p">);</span>
+
+                <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+
+    <span class="nv">$dispatcher</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MvcDispatcher</span><span class="p">();</span>
+
+    <span class="c1">// 将EventsManager绑定到调度器</span>
+    <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventsManager</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nv">$dispatcher</span><span class="p">;</span>
+
+<span class="p">},</span> <span class="k">true</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>当然，这个方法也可以移至独立的插件类中，使得在循环调度产生异常时可以有超过一个类执行需要的动作：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Events\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher\Exception</span> <span class="k">as</span> <span class="nx">DispatchException</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">ExceptionsPlugin</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">beforeException</span><span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span> <span class="nx">Dispatcher</span> <span class="nv">$dispatcher</span><span class="p">,</span> <span class="nv">$exception</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// 处理404异常</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$exception</span> <span class="nx">instanceof</span> <span class="nx">DispatchException</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;controller&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;index&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;action&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;show404&#39;</span>
+            <span class="p">));</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 处理其他异常</span>
+        <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;controller&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;index&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;action&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;show503&#39;</span>
+        <span class="p">));</span>
+
+        <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<blockquote class="highlights">
+<div>仅仅当异常产生于调度器或者异常产生于被执行的动作时才会通知&#8217;beforeException&#8217;里面的事件。
+侦听者或者控制器事件中产生的异常则会重定向到最近的try/catch。</div></blockquote>
+</div>
+<div class="section" id="set-error-handler">
+<h2>设置错误处理器（Set error handler）<a class="headerlink" href="#set-error-handler" title="永久链接至标题">¶</a></h2>
+<p>没有匹配到对应的路由，我们通过 <cite>$router-&gt;notFound</cite> 来设置控制器，如果是无法加载对应的控制器，或者找不到对应的 <cite>Action</cite>，我们通过 <cite>$dispatch-&gt;setErrorHandler</cite> 来设置：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setErrorHandler</span><span class="p">(</span><span class="s1">&#39;Error::index&#39;</span><span class="p">,</span> <span class="nx">Phalcon\Dispatcher</span><span class="o">::</span><span class="na">EXCEPTION_HANDLER_NOT_FOUND</span><span class="p">);</span>
+<span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setErrorHandler</span><span class="p">(</span><span class="s1">&#39;Error::index&#39;</span><span class="p">,</span> <span class="nx">Phalcon\Dispatcher</span><span class="o">::</span><span class="na">EXCEPTION_ACTION_NOT_FOUND</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="camelize-controller">
+<h2>控制器的驼峰转换（Camelize Controller）<a class="headerlink" href="#camelize-controller" title="永久链接至标题">¶</a></h2>
+<p>Phalcon 默认执行控制器类名和命名空间的驼峰转换，我们可以关闭它：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">camelizeController</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+<span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">camelizeNamespace</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="implementing-your-own-dispatcher">
+<h2>自定义调度器（Implementing your own Dispatcher）<a class="headerlink" href="#implementing-your-own-dispatcher" title="永久链接至标题">¶</a></h2>
+<p>为了创建自定义调度器，必须实现  <a class="reference internal" href="../api/Phalcon_Mvc_DispatcherInterface.html"><em>Phalcon\Mvc\DispatcherInterface</em></a> 接口，
+从而替换Phalcon框架默认提供的调度器。</p>
+</div>
+</div>
+
+
+			</div>
+		  </div>
+		</div>
+	</div>
+  </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="micro.html" title="微应用（Micro Applications）"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="routing.html" title="路由（Routing）"
+             >上一页</a> |</li> 
+      </ul>
+    </div>
+
+<footer class="footer">
+	<div class="container">
+      <div class="row">
+          <div class="col-xs-6 col-sm-3">
+              <h4>Download</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/releases">安裝 Phalcon7</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+              <h4>Community</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7">GitHub</a></li>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/issues">Issue Tracker</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-2">
+              <h4>About</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon/wiki/%E6%8D%90%E8%B5%A0%EF%BC%88Donation%EF%BC%89">Donate</a></li>
+              </ul>
+          </div>
+          <div id="license-spaccer" class="visible-xs"></div>
+          <div id="license-wrapper" class="col-xs-12 col-sm-4">
+              <p class="license">
+
+                  Phalcon7 Framework is released under the <a href="https://github.com/dreamsxin/cphalcon7/blob/master/docs/LICENSE.md">new BSD license</a>.<br>
+                  Except where otherwise noted, content on this site is licensed under the
+                  <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a>
+              </p>
+              <div class="design">
+                  <span>Designed by:</span>
+
+                  <a href="http://www.fog-city.net/" class="fogcity" target="_blank" title="Fog City Software"><span>Fog City Software</span></a>
+              </div>
+          </div>
+      </div>
+	</div>
+</footer>
+</body>
+</html>

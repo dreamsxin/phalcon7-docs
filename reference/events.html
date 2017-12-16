@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>事件（Events） &mdash; Phalcon7 1.2.1 文档</title>
+    <meta name="keywords" content="php, phalcon, phalcon7, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/phalcon.css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="../static/jquery.min.js"></script>
+    <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
+    <link rel="next" title="事件管理器（Events Manager）" href="events-manager.html" />
+    <link rel="prev" title="使用命名空间（Working with Namespaces）" href="namespaces.html" /> 
+</head>
+<body>
+
+<header class="page-header">
+<nav class="navbar" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+				<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+		</div>
+
+		<div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+			<ul class="nav navbar-nav main-menu">
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7" class="header-nav-link">GitHub</a></li>
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7/releases" class="header-nav-link">Download</a></li>
+			  <li class="first"><a href="/api/" class="header-nav-link">API</a></li>
+			  <li class="first"><a href="/internals/" class="header-nav-link">内核开发手册</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="events-manager.html" title="事件管理器（Events Manager）"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="namespaces.html" title="使用命名空间（Working with Namespaces）"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://myleftstudio.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon7 1.2.1 文档</a> &raquo;</li> 
+      </ul>
+    </div>  
+</div>
+
+<div class="container-fluid">
+	<div class="col-md-3 primary-box">
+		<div class="panel panel-default">
+			<div class="panel-heading"><a href="../index.html">內容目录</a></div>
+			<div class="panel-body"><ul>
+<li><a class="reference internal" href="#">事件（Events）</a><ul>
+<li><a class="reference internal" href="#usage-example">使用示例（Usage Example）</a><ul>
+<li><a class="reference internal" href="#id1">事件的执行</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#events-manager">事件管理器（Events Manager）</a></li>
+<li><a class="reference internal" href="#events-list">事件列表（Events List）</a></li>
+</ul>
+</li>
+</ul>
+</div>
+			<div class="panel-heading">上一个主题</div>
+            <div class="panel-body"><p class="topless"><a href="namespaces.html" title="上一章">&lt; 使用命名空间（Working with Namespaces）</a></p></div>
+			<div class="panel-heading">下一个主题</div>
+            <div class="panel-body"><p class="topless"><a href="events-manager.html" title="下一章">事件管理器（Events Manager） &gt;</a></p></div>
+		</div>
+	</div>
+  <div class="col-md-9 second-box" valign="top">
+	<div class="document">
+		<div class="documentwrapper">
+		  <div class="bodywrapper">
+			<div class="body" >
+			  
+  <div class="section" id="events">
+<h1>事件（Events）<a class="headerlink" href="#events" title="永久链接至标题">¶</a></h1>
+<p>Phalcon7 中几乎所有的组件都继承自 <a class="reference internal" href="../api/Phalcon_Di_Injectable.html"><em>Phalcon\Di\Injectable</em></a>，它们都可以通过 <cite>attachEvent</cite> 来设置对应事件的回调函数。</p>
+<div class="section" id="usage-example">
+<h2>使用示例（Usage Example）<a class="headerlink" href="#usage-example" title="永久链接至标题">¶</a></h2>
+<p>以下面示例中，我们使用 <cite>attachEvent</cite> 设置MySQL连接中产生的事件的回调函数：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Db\Adapter\Pdo\Mysql</span> <span class="k">as</span> <span class="nx">DbAdapter</span><span class="p">;</span>
+
+<span class="nv">$connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DbAdapter</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;host&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;username&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;secret&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dbname&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;invo&quot;</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">attachEvent</span><span class="p">(</span><span class="s1">&#39;beforeExecutePrepare&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$statement</span><span class="p">,</span> <span class="nv">$prevData</span> <span class="o">=</span> <span class="k">NULL</span><span class="p">){</span>
+
+    <span class="p">});</span>
+
+<span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM products p WHERE p.status = 1&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="section" id="id1">
+<h3>事件的执行<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h3>
+<p>几乎所有 Phalcon 对象都可以通过 <code class="code docutils literal"><span class="pre">fireEvent()</span></code> 或 <code class="code docutils literal"><span class="pre">fireEventCancel()</span></code> 方法来执行事件：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">fireEvent</span><span class="p">(</span><span class="s2">&quot;my-component:afterSomeTask&quot;</span><span class="p">,</span> <span class="nv">$extraData</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="events-manager">
+<h2>事件管理器（Events Manager）<a class="headerlink" href="#events-manager" title="永久链接至标题">¶</a></h2>
+<p>此组件的目的是为了通过创建“钩子”拦截框架中大部分的组件操作。<a class="reference internal" href="events-manager.html"><em>了解更多</em></a></p>
+</div>
+<div class="section" id="events-list">
+<h2>事件列表（Events List）<a class="headerlink" href="#events-list" title="永久链接至标题">¶</a></h2>
+<p>可以通过返回 <code class="code docutils literal"><span class="pre">false</span></code> 会阻止应用后续动作并且停止继续下发的事件：</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="64%" />
+<col width="36%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Can return value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>dispatch:beforeDispatchLoop</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>dispatch:beforeDispatch</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>dispatch:beforeNotFoundAction</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>dispatch:beforeExecuteRoute</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>dispatch:beforeInitialize</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>dispatch:afterInitialize</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>application:boot</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>application:beforeHandleRouter</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>application:afterHandleRouter</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>application:beforeStartModule</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>application:afterStartModule</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>application:beforeHandleRequest</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>application:afterHandleRequest</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>application:beforeRenderView</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>router:afterHandleRouter</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>micro:beforeHandleRoute</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>micro:beforeExecuteRoute</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>micro:beforeNotFound</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>model:beforeValidation</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>model:beforeValidationOnCreate</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>model:beforeValidationOnUpdate</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>model:validation</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>model:afterValidationOnCreate</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>model:afterValidationOnUpdate</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>model:afterValidation</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>model:beforeSave</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>model:beforeUpdate</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>model:beforeCreate</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>model:beforeOperation</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>model:beforeDelete</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>view:beforeRender</td>
+<td>NO</td>
+</tr>
+</tbody>
+</table>
+<p>只能可以通过 <code class="code docutils literal"><span class="pre">stop()</span></code> 停止的继续下发的事件：</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="64%" />
+<col width="36%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Can return value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>dispatch:afterExecuteRoute</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>dispatch:afterDispatch</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>dispatch:afterDispatchLoop</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>dispatch:beforeForward</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>dispatch:beforeException</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>application:beforeCheckUseImplicitView</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>application:afterCheckUseImplicitView</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>application:afterRenderView</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>application:beforeSendResponse</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>application:afterSendResponse</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>pagination:beforeGetPaginate</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>pagination:afterGetPaginate</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>router:beforeCheckRoutes</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>router:beforeCheckRoute</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>router:matchedRoute</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>router:notMatchedRoute</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>router:afterCheckRoutes</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>micro:afterExecuteRoute</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>micro:afterHandleRoute</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>model:beforeQuery</td>
+<td>YES</td>
+</tr>
+<tr class="row-even"><td>model:afterQuery</td>
+<td>YES</td>
+</tr>
+<tr class="row-odd"><td>model:notDeleted</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>model:notSaved</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>model:onValidationFails</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>model:afterUpdate</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>model:afterCreate</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>model:afterDelete</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>model:afterSave</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>model:afterOperation</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>model:beforeToArray</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>model:afterToArray</td>
+<td>YES</td>
+</tr>
+<tr class="row-odd"><td>view:afterRender</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>query:beforePrepareSelect</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>query:afterPrepareSelect</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>query:beforePrepareInsert</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>query:afterPrepareInsert</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>query:beforePrepareUpdate</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>query:afterPrepareUpdate</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>query:beforePrepareDelete</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>query:afterPrepareDelete</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>query:beforeParse</td>
+<td>YES</td>
+</tr>
+<tr class="row-odd"><td>query:afterParse</td>
+<td>YES</td>
+</tr>
+<tr class="row-even"><td>query:beforeExecuteSelect</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>query:beforeGenerateSQLStatement</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>query:afterGenerateSQLStatement</td>
+<td>YES</td>
+</tr>
+<tr class="row-odd"><td>query:afterExecuteSelect</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>query:beforeExecuteInsert</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>query:afterExecuteInsert</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>query:beforeExecuteUpdate</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>query:afterExecuteUpdate</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>query:beforeExecuteDelete</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>query:afterExecuteDelete</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>query:beforeExecute</td>
+<td>YES</td>
+</tr>
+<tr class="row-odd"><td>query:afterExecute</td>
+<td>YES</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+			</div>
+		  </div>
+		</div>
+	</div>
+  </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="events-manager.html" title="事件管理器（Events Manager）"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="namespaces.html" title="使用命名空间（Working with Namespaces）"
+             >上一页</a> |</li> 
+      </ul>
+    </div>
+
+<footer class="footer">
+	<div class="container">
+      <div class="row">
+          <div class="col-xs-6 col-sm-3">
+              <h4>Download</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/releases">安裝 Phalcon7</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+              <h4>Community</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7">GitHub</a></li>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/issues">Issue Tracker</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-2">
+              <h4>About</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon/wiki/%E6%8D%90%E8%B5%A0%EF%BC%88Donation%EF%BC%89">Donate</a></li>
+              </ul>
+          </div>
+          <div id="license-spaccer" class="visible-xs"></div>
+          <div id="license-wrapper" class="col-xs-12 col-sm-4">
+              <p class="license">
+
+                  Phalcon7 Framework is released under the <a href="https://github.com/dreamsxin/cphalcon7/blob/master/docs/LICENSE.md">new BSD license</a>.<br>
+                  Except where otherwise noted, content on this site is licensed under the
+                  <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a>
+              </p>
+              <div class="design">
+                  <span>Designed by:</span>
+
+                  <a href="http://www.fog-city.net/" class="fogcity" target="_blank" title="Fog City Software"><span>Fog City Software</span></a>
+              </div>
+          </div>
+      </div>
+	</div>
+</footer>
+</body>
+</html>

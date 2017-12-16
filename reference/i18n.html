@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>国际化（Internationalization） &mdash; Phalcon7 1.2.1 文档</title>
+    <meta name="keywords" content="php, phalcon, phalcon7, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/phalcon.css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="../static/jquery.min.js"></script>
+    <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
+    <link rel="next" title="助手类（Helpers）" href="helpers.html" />
+    <link rel="prev" title="HTTP 请求客户端（HTTP Request Client）" href="http.html" /> 
+</head>
+<body>
+
+<header class="page-header">
+<nav class="navbar" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+				<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+		</div>
+
+		<div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+			<ul class="nav navbar-nav main-menu">
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7" class="header-nav-link">GitHub</a></li>
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7/releases" class="header-nav-link">Download</a></li>
+			  <li class="first"><a href="/api/" class="header-nav-link">API</a></li>
+			  <li class="first"><a href="/internals/" class="header-nav-link">内核开发手册</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="helpers.html" title="助手类（Helpers）"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="http.html" title="HTTP 请求客户端（HTTP Request Client）"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://myleftstudio.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon7 1.2.1 文档</a> &raquo;</li> 
+      </ul>
+    </div>  
+</div>
+
+<div class="container-fluid">
+	<div class="col-md-3 primary-box">
+		<div class="panel panel-default">
+			<div class="panel-heading"><a href="../index.html">內容目录</a></div>
+			<div class="panel-body"><ul>
+<li><a class="reference internal" href="#">国际化（Internationalization）</a><ul>
+<li><a class="reference internal" href="#locale-and-language">区域和语言（Locale And Language）</a><ul>
+<li><a class="reference internal" href="#creating-messages">创建消息列表（Creating Messages）</a></li>
+<li><a class="reference internal" href="#message-format">消息格式化（Message Format）</a></li>
+<li><a class="reference internal" href="#trace-message-file">追踪消息文件（Trace Message File）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#intl-use-intl">使用扩展 intl（Use Intl）</a><ul>
+<li><a class="reference internal" href="#find-out-best-available-locale">匹配最佳的区域设置（Find out best available Locale）</a></li>
+<li><a class="reference internal" href="#formatting-messages-based-on-locale">基于区域设置格式化信息（Formatting messages based on Locale）</a></li>
+<li><a class="reference internal" href="#locale-sensitive-comparison">特定区域设置的字符串比较（Locale-Sensitive comparison）</a></li>
+<li><a class="reference internal" href="#transliteration">音译（Transliteration）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+			<div class="panel-heading">上一个主题</div>
+            <div class="panel-body"><p class="topless"><a href="http.html" title="上一章">&lt; HTTP 请求客户端（HTTP Request Client）</a></p></div>
+			<div class="panel-heading">下一个主题</div>
+            <div class="panel-body"><p class="topless"><a href="helpers.html" title="下一章">助手类（Helpers） &gt;</a></p></div>
+		</div>
+	</div>
+  <div class="col-md-9 second-box" valign="top">
+	<div class="document">
+		<div class="documentwrapper">
+		  <div class="bodywrapper">
+			<div class="body" >
+			  
+  <div class="section" id="internationalization">
+<h1>国际化（Internationalization）<a class="headerlink" href="#internationalization" title="永久链接至标题">¶</a></h1>
+<p>国际化是指在设计软件时，使它可以无需做大的改变就能够适应不同的语言和地区的需要。对于 Web 应用程序，这有着特别重要的意义，因为潜在的用户可能会在全球范围内。</p>
+<div class="section" id="locale-and-language">
+<h2>区域和语言（Locale And Language）<a class="headerlink" href="#locale-and-language" title="永久链接至标题">¶</a></h2>
+<p>Phalcon 通过 <a class="reference internal" href="../api/Phalcon_Translate_Adapter_NativeArray.html"><em>Phalcon\Translate\Adapter\NativeArray</em></a> 和 <a class="reference internal" href="../api/Phalcon_Translate_Adapter_Gettext.html"><em>Phalcon\Translate\Adapter\Gettext</em></a> 提供了一套轻量级的语言翻译功能。</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$t</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Translate\Adapter\Gettext</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;locale&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;zh_CN.utf8&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;defaultDomain&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;messages&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;directory&#39;</span> <span class="o">=&gt;</span> <span class="nx">__DIR__</span> <span class="o">.</span> <span class="nx">DIRECTORY_SEPARATOR</span> <span class="o">.</span> <span class="s1">&#39;locale&#39;</span>
+<span class="p">));</span>
+
+<span class="k">echo</span> <span class="nv">$t</span><span class="o">-&gt;</span><span class="na">_</span><span class="p">(</span><span class="s1">&#39;Hello&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="section" id="creating-messages">
+<h3>创建消息列表（Creating Messages）<a class="headerlink" href="#creating-messages" title="永久链接至标题">¶</a></h3>
+<p>通过以下命令我们可以提取代码中所有类似 <code class="code docutils literal"><span class="pre">_(&quot;translate</span> <span class="pre">this</span> <span class="pre">words&quot;)</span></code> 文本生成 <cite>zh_CN.po</cite> 文件。</p>
+<div class="highlight-sh"><div class="highlight"><pre>$ xgettext -f *.php -d zh_CN --keyword<span class="o">=</span>_ --from-code<span class="o">=</span>UTF-8
+</pre></div>
+</div>
+<p>接着，我们可以使用工具（poedit、vim、gedit） 对生成的 <cite>po</cite> 文件进行翻译，翻译完成后生成 <cite>mo</cite> 文件：</p>
+<div class="highlight-sh"><div class="highlight"><pre>$ msgfmt -o zh_CN.mo zh_CN.po
+</pre></div>
+</div>
+<p>最后将 <cite>mo</cite> 文件拷贝到目录 <cite>locale/zh_CN.utf8/LC_MESSAGES</cite>。</p>
+</div>
+<div class="section" id="message-format">
+<h3>消息格式化（Message Format）<a class="headerlink" href="#message-format" title="永久链接至标题">¶</a></h3>
+<p>在要翻译的消息里，你可以嵌入一些占位符，并让它们通过动态的参数值来代替。你甚至可以根据目标语言格式的参数值来使用特殊的占位符。
+在下面的例子中， 占位符 {username} 在 “Hello, {username}！” 中将分别被 &#8216;Alexander&#8217;和&#8217;Qiang&#8217; 所替换。</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$username</span> <span class="o">=</span> <span class="s1">&#39;Phalcon&#39;</span><span class="p">;</span>
+<span class="c1">// 输出：“Hello, Phalcon”</span>
+<span class="k">echo</span> <span class="nv">$t</span><span class="o">-&gt;</span><span class="na">_</span><span class="p">(</span><span class="s1">&#39;Hello, %username%!&#39;</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">&#39;username&#39;</span> <span class="o">=&gt;</span> <span class="nv">$username</span><span class="p">,</span>
+<span class="p">]);</span>
+</pre></div>
+</div>
+<p>占位符也可以是从零开始的整数序列，比如下面的例子中， <cite>%0%</cite>、<cite>%1%</cite> 和 <cite>%2%</cite> 将分别被 <cite>$price</cite>、<cite>$count</cite> 和 <cite>$total</cite> 所替换。</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$price</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+<span class="nv">$count</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="nv">$total</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$t</span><span class="o">-&gt;</span><span class="na">_</span><span class="p">(</span><span class="s1">&#39;Price: {0}, Count: {1}, Total: {2}&#39;</span><span class="p">,</span> <span class="p">[</span>
+    <span class="nv">$price</span><span class="p">,</span> <span class="nv">$count</span><span class="p">,</span> <span class="nv">$total</span>
+<span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="trace-message-file">
+<h3>追踪消息文件（Trace Message File）<a class="headerlink" href="#trace-message-file" title="永久链接至标题">¶</a></h3>
+<p>如果出现无法翻译指定语言的情况，我们可以通过下面的方式追踪程序读取的语言文件：</p>
+<div class="highlight-sh"><div class="highlight"><pre>$ strace -e <span class="nv">trace</span><span class="o">=</span>open,read php test.php
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="intl-use-intl">
+<h2>使用扩展 intl（Use Intl）<a class="headerlink" href="#intl-use-intl" title="永久链接至标题">¶</a></h2>
+<p>实现国际化，我们还可以使用 <a class="reference external" href="http://pecl.php.net/package/intl">PECL</a> 扩展 <a class="reference external" href="http://pecl.php.net/package/intl">intl</a>，想了解更多可以查看 <a class="reference external" href="http://www.php.net/manual/en/intro.intl.php">PHP manual</a>，下面简单介绍 intl 在 Phalcon 如何使用。</p>
+<div class="section" id="find-out-best-available-locale">
+<h3>匹配最佳的区域设置（Find out best available Locale）<a class="headerlink" href="#find-out-best-available-locale" title="永久链接至标题">¶</a></h3>
+<p>There are several ways to find out the best available locale using <a class="reference external" href="http://pecl.php.net/package/intl">intl</a>. One of them is to check the HTTP &#8220;Accept-Language&#8221; header:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$locale</span> <span class="o">=</span> <span class="nx">Locale</span><span class="o">::</span><span class="na">acceptFromHttp</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;HTTP_ACCEPT_LANGUAGE&quot;</span><span class="p">]);</span>
+
+<span class="c1">// Locale could be something like &quot;en_GB&quot; or &quot;en&quot;</span>
+<span class="k">echo</span> <span class="nv">$locale</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Below method returns a locale identified. It is used to get language, culture, or regionally-specific behavior from the Locale API.</p>
+<p>Examples of identifiers include:</p>
+<ul class="simple">
+<li>en-US (English, United States)</li>
+<li>ru-RU (Russian, Russia)</li>
+<li>zh-Hant-TW (Chinese, Traditional Script, Taiwan)</li>
+<li>fr-CA, fr-FR (French for Canada and France respectively)</li>
+</ul>
+</div>
+<div class="section" id="formatting-messages-based-on-locale">
+<h3>基于区域设置格式化信息（Formatting messages based on Locale）<a class="headerlink" href="#formatting-messages-based-on-locale" title="永久链接至标题">¶</a></h3>
+<p>Part of creating a localized application is to produce concatenated, language-neutral messages. The <a class="reference external" href="http://www.php.net/manual/en/class.messageformatter.php">MessageFormatter</a> allows for the
+production of those messages.</p>
+<p>Printing numbers formatted based on some locale:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Prints € 4 560</span>
+<span class="nv">$formatter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MessageFormatter</span><span class="p">(</span><span class="s2">&quot;fr_FR&quot;</span><span class="p">,</span> <span class="s2">&quot;€ {0, number, integer}&quot;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$formatter</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="mi">4560</span><span class="p">));</span>
+
+<span class="c1">// Prints USD$ 4,560.5</span>
+<span class="nv">$formatter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MessageFormatter</span><span class="p">(</span><span class="s2">&quot;en_US&quot;</span><span class="p">,</span> <span class="s2">&quot;USD$ {0, number}&quot;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$formatter</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="mf">4560.50</span><span class="p">));</span>
+
+<span class="c1">// Prints ARS$ 1.250,25</span>
+<span class="nv">$formatter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MessageFormatter</span><span class="p">(</span><span class="s2">&quot;es_AR&quot;</span><span class="p">,</span> <span class="s2">&quot;ARS$ {0, number}&quot;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$formatter</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="mf">1250.25</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>Message formatting using time and date patterns:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Setting parameters</span>
+<span class="nv">$time</span>   <span class="o">=</span> <span class="nb">time</span><span class="p">();</span>
+<span class="nv">$values</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="nv">$time</span><span class="p">,</span> <span class="nv">$time</span><span class="p">);</span>
+
+<span class="c1">// Prints &quot;At 3:50:31 PM on Apr 19, 2015, there was a disturbance on planet 7.&quot;</span>
+<span class="nv">$pattern</span>   <span class="o">=</span> <span class="s2">&quot;At {1, time} on {1, date}, there was a disturbance on planet {0, number}.&quot;</span><span class="p">;</span>
+<span class="nv">$formatter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MessageFormatter</span><span class="p">(</span><span class="s2">&quot;en_US&quot;</span><span class="p">,</span> <span class="nv">$pattern</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$formatter</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="nv">$values</span><span class="p">);</span>
+
+<span class="c1">// Prints &quot;À 15:53:01 le 19 avr. 2015, il y avait une perturbation sur la planète 7.&quot;</span>
+<span class="nv">$pattern</span>   <span class="o">=</span> <span class="s2">&quot;À {1, time} le {1, date}, il y avait une perturbation sur la planète {0, number}.&quot;</span><span class="p">;</span>
+<span class="nv">$formatter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MessageFormatter</span><span class="p">(</span><span class="s2">&quot;fr_FR&quot;</span><span class="p">,</span> <span class="nv">$pattern</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$formatter</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="nv">$values</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="locale-sensitive-comparison">
+<h3>特定区域设置的字符串比较（Locale-Sensitive comparison）<a class="headerlink" href="#locale-sensitive-comparison" title="永久链接至标题">¶</a></h3>
+<p>The <a class="reference external" href="http://www.php.net/manual/en/class.collator.php">Collator</a> class provides string comparison capability with support for appropriate locale-sensitive sort orderings. Check the
+examples below on the usage of this class:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Create a collator using Spanish locale</span>
+<span class="nv">$collator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Collator</span><span class="p">(</span><span class="s2">&quot;es&quot;</span><span class="p">);</span>
+
+<span class="c1">// Returns that the strings are equal, in spite of the emphasis on the &quot;o&quot;</span>
+<span class="nv">$collator</span><span class="o">-&gt;</span><span class="na">setStrength</span><span class="p">(</span><span class="nx">Collator</span><span class="o">::</span><span class="na">PRIMARY</span><span class="p">);</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$collator</span><span class="o">-&gt;</span><span class="na">compare</span><span class="p">(</span><span class="s2">&quot;una canción&quot;</span><span class="p">,</span> <span class="s2">&quot;una cancion&quot;</span><span class="p">));</span>
+
+<span class="c1">// Returns that the strings are not equal</span>
+<span class="nv">$collator</span><span class="o">-&gt;</span><span class="na">setStrength</span><span class="p">(</span><span class="nx">Collator</span><span class="o">::</span><span class="na">DEFAULT_VALUE</span><span class="p">);</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$collator</span><span class="o">-&gt;</span><span class="na">compare</span><span class="p">(</span><span class="s2">&quot;una canción&quot;</span><span class="p">,</span> <span class="s2">&quot;una cancion&quot;</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="transliteration">
+<h3>音译（Transliteration）<a class="headerlink" href="#transliteration" title="永久链接至标题">¶</a></h3>
+<p><a class="reference external" href="http://www.php.net/manual/en/class.transliterator.php">Transliterator</a> provides transliteration of strings:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$id</span> <span class="o">=</span> <span class="s2">&quot;Any-Latin; NFD; [:Nonspacing Mark:] Remove; NFC; [:Punctuation:] Remove; Lower();&quot;</span><span class="p">;</span>
+<span class="nv">$transliterator</span> <span class="o">=</span> <span class="nx">Transliterator</span><span class="o">::</span><span class="na">create</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+
+<span class="nv">$string</span> <span class="o">=</span> <span class="s2">&quot;garçon-étudiant-où-L&#39;école&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$transliterator</span><span class="o">-&gt;</span><span class="na">transliterate</span><span class="p">(</span><span class="nv">$string</span><span class="p">);</span> <span class="c1">// garconetudiantoulecole</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+			</div>
+		  </div>
+		</div>
+	</div>
+  </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="helpers.html" title="助手类（Helpers）"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="http.html" title="HTTP 请求客户端（HTTP Request Client）"
+             >上一页</a> |</li> 
+      </ul>
+    </div>
+
+<footer class="footer">
+	<div class="container">
+      <div class="row">
+          <div class="col-xs-6 col-sm-3">
+              <h4>Download</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/releases">安裝 Phalcon7</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+              <h4>Community</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7">GitHub</a></li>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/issues">Issue Tracker</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-2">
+              <h4>About</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon/wiki/%E6%8D%90%E8%B5%A0%EF%BC%88Donation%EF%BC%89">Donate</a></li>
+              </ul>
+          </div>
+          <div id="license-spaccer" class="visible-xs"></div>
+          <div id="license-wrapper" class="col-xs-12 col-sm-4">
+              <p class="license">
+
+                  Phalcon7 Framework is released under the <a href="https://github.com/dreamsxin/cphalcon7/blob/master/docs/LICENSE.md">new BSD license</a>.<br>
+                  Except where otherwise noted, content on this site is licensed under the
+                  <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a>
+              </p>
+              <div class="design">
+                  <span>Designed by:</span>
+
+                  <a href="http://www.fog-city.net/" class="fogcity" target="_blank" title="Fog City Software"><span>Fog City Software</span></a>
+              </div>
+          </div>
+      </div>
+	</div>
+</footer>
+</body>
+</html>

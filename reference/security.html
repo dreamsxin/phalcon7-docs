@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>安全（Security） &mdash; Phalcon7 1.2.1 文档</title>
+    <meta name="keywords" content="php, phalcon, phalcon7, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/phalcon.css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="../static/jquery.min.js"></script>
+    <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
+    <link rel="next" title="Encryption/Decryption" href="crypt.html" />
+    <link rel="prev" title="使用缓存提高性能（Improving Performance with Cache）" href="cache.html" /> 
+</head>
+<body>
+
+<header class="page-header">
+<nav class="navbar" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+				<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+		</div>
+
+		<div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+			<ul class="nav navbar-nav main-menu">
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7" class="header-nav-link">GitHub</a></li>
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7/releases" class="header-nav-link">Download</a></li>
+			  <li class="first"><a href="/api/" class="header-nav-link">API</a></li>
+			  <li class="first"><a href="/internals/" class="header-nav-link">内核开发手册</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="crypt.html" title="Encryption/Decryption"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="cache.html" title="使用缓存提高性能（Improving Performance with Cache）"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://myleftstudio.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon7 1.2.1 文档</a> &raquo;</li> 
+      </ul>
+    </div>  
+</div>
+
+<div class="container-fluid">
+	<div class="col-md-3 primary-box">
+		<div class="panel panel-default">
+			<div class="panel-heading"><a href="../index.html">內容目录</a></div>
+			<div class="panel-body"><ul>
+<li><a class="reference internal" href="#">安全（Security）</a><ul>
+<li><a class="reference internal" href="#password-hashing">密码散列（Password Hashing）</a></li>
+<li><a class="reference internal" href="#cross-site-request-forgery-csrf-protection">防止跨站点请求伪造攻击（Cross-Site Request Forgery (CSRF) protection）</a></li>
+<li><a class="reference internal" href="#setting-up-the-component">设置组件（Setting up the component）</a></li>
+<li><a class="reference internal" href="#random">随机数（Random）</a></li>
+<li><a class="reference internal" href="#external-resources">外部资源（External Resources）</a></li>
+</ul>
+</li>
+</ul>
+</div>
+			<div class="panel-heading">上一个主题</div>
+            <div class="panel-body"><p class="topless"><a href="cache.html" title="上一章">&lt; 使用缓存提高性能（Improving Performance with Cache）</a></p></div>
+			<div class="panel-heading">下一个主题</div>
+            <div class="panel-body"><p class="topless"><a href="crypt.html" title="下一章">Encryption/Decryption &gt;</a></p></div>
+		</div>
+	</div>
+  <div class="col-md-9 second-box" valign="top">
+	<div class="document">
+		<div class="documentwrapper">
+		  <div class="bodywrapper">
+			<div class="body" >
+			  
+  <div class="section" id="security">
+<h1>安全（Security）<a class="headerlink" href="#security" title="永久链接至标题">¶</a></h1>
+<p>该组件可以帮助开发人员在共同安全方面的一些工作，比如密码散列和跨站点请求伪造(CSRF)保护。</p>
+<div class="section" id="password-hashing">
+<h2>密码散列（Password Hashing）<a class="headerlink" href="#password-hashing" title="永久链接至标题">¶</a></h2>
+<p>将密码以纯文本方式保存是一个糟糕的安全实践。任何可以访问数据库的人可立即访问所有用户账户，因此能够从事未经授权的活动。为解决这个问题，许多应用程序使用熟悉的
+单向散列方法比如&#8221;<a class="reference external" href="http://php.net/manual/en/function.md5.php">md5</a>&#8220;和&#8221;<a class="reference external" href="http://php.net/manual/en/function.sha1.php">sha1</a>&#8220;。然而，硬件每天都在发展，变得更快，这些算法在蛮力攻击面前变得脆弱不堪。这些攻击也被称为“彩虹表（<a class="reference external" href="http://en.wikipedia.org/wiki/Rainbow_table">rainbow tables</a> ）。</p>
+<p>为了解决这个问题我们可以使用哈希算法 <a class="reference external" href="http://en.wikipedia.org/wiki/Bcrypt">bcrypt</a>。为什么 bcrypt？ 由于其&#8221;<a class="reference external" href="http://en.wikipedia.org/wiki/Bcrypt#Algorithm">Eksblowfish</a>&#8220;键设置算法，我们可以使密码加密如同我们想要的&#8221;慢&#8221;。慢的算法使计算
+Hash背后的真实密码的过程非常困难甚至不可能。这可以在一个很长一段时间内免遭可能的彩虹表攻击。</p>
+<p>这个组件使您能够以一个简单的方法使用该算法：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">UsersController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">registerAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Users</span><span class="p">();</span>
+
+        <span class="nv">$login</span>    <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s1">&#39;login&#39;</span><span class="p">);</span>
+        <span class="nv">$password</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s1">&#39;password&#39;</span><span class="p">);</span>
+
+        <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">login</span> <span class="o">=</span> <span class="nv">$login</span><span class="p">;</span>
+
+        <span class="c1">// Store the password hashed</span>
+        <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">password</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">security</span><span class="o">-&gt;</span><span class="na">hash</span><span class="p">(</span><span class="nv">$password</span><span class="p">);</span>
+
+        <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>我们保存一个用默认因子散列的密码。更高的因子可以使密码更加可靠。我们可以用如下的方法检查密码是否正确:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">SessionController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">loginAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$login</span>    <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s1">&#39;login&#39;</span><span class="p">);</span>
+        <span class="nv">$password</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s1">&#39;password&#39;</span><span class="p">);</span>
+
+        <span class="nv">$user</span> <span class="o">=</span> <span class="nx">Users</span><span class="o">::</span><span class="na">findFirstByLogin</span><span class="p">(</span><span class="nv">$login</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$user</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">security</span><span class="o">-&gt;</span><span class="na">checkHash</span><span class="p">(</span><span class="nv">$password</span><span class="p">,</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">password</span><span class="p">))</span> <span class="p">{</span>
+                <span class="c1">// The password is valid</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">// To protect against timing attacks. Regardless of whether a user exists or not, the script will take roughly the same amount as it will always be computing a hash.</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">security</span><span class="o">-&gt;</span><span class="na">hash</span><span class="p">(</span><span class="nb">rand</span><span class="p">());</span>
+        <span class="p">}</span>
+
+        <span class="c1">// The validation has failed</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Salt使用PHP的 <a class="reference external" href="http://php.net/manual/en/function.openssl-random-pseudo-bytes.php">openssl_random_pseudo_bytes</a> 函数的伪随机字节生成的，所以需要加载扩展 <a class="reference external" href="http://php.net/manual/en/book.openssl.php">openssl</a>。</p>
+</div>
+<div class="section" id="cross-site-request-forgery-csrf-protection">
+<h2>防止跨站点请求伪造攻击（Cross-Site Request Forgery (CSRF) protection）<a class="headerlink" href="#cross-site-request-forgery-csrf-protection" title="永久链接至标题">¶</a></h2>
+<p>这是另一个常见的web站点和应用程序攻击。如用户注册或添加注释的这类表单就很容易受到这种攻击。</p>
+<p>可以想到的方式防止表单值发送自外部应用程序。为了解决这个问题，我们为每个表单生成一个一次性随机令牌（<a class="reference external" href="http://en.wikipedia.org/wiki/Cryptographic_nonce">random nonce</a>），在会话中添加令牌，然后一旦表单数据提交到
+程序之后，将提交的数据中的的令牌和存储在会中的令牌进行比较，来验证是否合法。</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nx">Tag</span><span class="o">::</span><span class="na">form</span><span class="p">(</span><span class="s1">&#39;session/login&#39;</span><span class="p">)</span> <span class="cp">?&gt;</span>
+
+    <span class="c">&lt;!-- Login and password inputs ... --&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">security</span><span class="o">-&gt;</span><span class="na">getTokenKey</span><span class="p">()</span> <span class="cp">?&gt;</span><span class="s">&quot;</span>
+        <span class="na">value</span><span class="o">=</span><span class="s">&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">security</span><span class="o">-&gt;</span><span class="na">getToken</span><span class="p">()</span> <span class="cp">?&gt;</span><span class="s">&quot;</span><span class="p">/&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>在控制器的动作中可以检查CSRF令牌是否有效:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">SessionController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">loginAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">isPost</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">security</span><span class="o">-&gt;</span><span class="na">checkToken</span><span class="p">())</span> <span class="p">{</span>
+                <span class="c1">// The token is OK</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>记得添加一个会话适配器到依赖注入器中，否则令牌检查是行不通的:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">setShared</span><span class="p">(</span><span class="s1">&#39;session&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nv">$session</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Session\Adapter\Files</span><span class="p">();</span>
+    <span class="nv">$session</span><span class="o">-&gt;</span><span class="na">start</span><span class="p">();</span>
+    <span class="k">return</span> <span class="nv">$session</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>同时也建议为表单添加一个 <a class="reference external" href="http://www.google.com/recaptcha">captcha</a> ，以完全避免这种攻击的风险。</p>
+</div>
+<div class="section" id="setting-up-the-component">
+<h2>设置组件（Setting up the component）<a class="headerlink" href="#setting-up-the-component" title="永久链接至标题">¶</a></h2>
+<p>该组件自动在服务容器中注册为“security”,你亦可以重新注册它并为它设置参数:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Security</span><span class="p">;</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;security&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+
+    <span class="nv">$security</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Security</span><span class="p">();</span>
+
+    <span class="c1">// Set the password hashing factor to 12 rounds</span>
+    <span class="nv">$security</span><span class="o">-&gt;</span><span class="na">setWorkFactor</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nv">$security</span><span class="p">;</span>
+<span class="p">},</span> <span class="k">true</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="random">
+<h2>随机数（Random）<a class="headerlink" href="#random" title="永久链接至标题">¶</a></h2>
+<p>The <a class="reference internal" href="../api/Phalcon_Security_Random.html"><em>Phalcon\Security\Random</em></a> class makes it really easy to generate lots of types of random data.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$random</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Security\Random</span><span class="p">();</span>
+
+<span class="c1">// ...</span>
+<span class="nv">$bytes</span>      <span class="o">=</span> <span class="nv">$random</span><span class="o">-&gt;</span><span class="na">bytes</span><span class="p">();</span>
+
+<span class="c1">// Generate a random hex string of length $len.</span>
+<span class="nv">$hex</span>        <span class="o">=</span> <span class="nv">$random</span><span class="o">-&gt;</span><span class="na">hex</span><span class="p">(</span><span class="nv">$len</span><span class="p">);</span>
+
+<span class="c1">// Generate a random base64 string of length $len.</span>
+<span class="nv">$base64</span>     <span class="o">=</span> <span class="nv">$random</span><span class="o">-&gt;</span><span class="na">base64</span><span class="p">(</span><span class="nv">$len</span><span class="p">);</span>
+
+<span class="c1">// Generate a random URL-safe base64 string of length $len.</span>
+<span class="nv">$base64Safe</span> <span class="o">=</span> <span class="nv">$random</span><span class="o">-&gt;</span><span class="na">base64Safe</span><span class="p">(</span><span class="nv">$len</span><span class="p">);</span>
+
+<span class="c1">// Generate a UUID (version 4). See https://en.wikipedia.org/wiki/Universally_unique_identifier</span>
+<span class="nv">$uuid</span>       <span class="o">=</span> <span class="nv">$random</span><span class="o">-&gt;</span><span class="na">uuid</span><span class="p">();</span>
+
+<span class="c1">// Generate a random integer between 0 and $n.</span>
+<span class="nv">$number</span>     <span class="o">=</span> <span class="nv">$random</span><span class="o">-&gt;</span><span class="na">number</span><span class="p">(</span><span class="nv">$n</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="external-resources">
+<h2>外部资源（External Resources）<a class="headerlink" href="#external-resources" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://vokuro.phalconphp.com">Vökuró</a>, 是一个使用的安全组件避免CSRF和密码散列的示例应用程序 [<a class="reference external" href="https://github.com/phalcon/vokuro">Github</a>]</li>
+</ul>
+</div>
+</div>
+
+
+			</div>
+		  </div>
+		</div>
+	</div>
+  </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="crypt.html" title="Encryption/Decryption"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="cache.html" title="使用缓存提高性能（Improving Performance with Cache）"
+             >上一页</a> |</li> 
+      </ul>
+    </div>
+
+<footer class="footer">
+	<div class="container">
+      <div class="row">
+          <div class="col-xs-6 col-sm-3">
+              <h4>Download</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/releases">安裝 Phalcon7</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+              <h4>Community</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7">GitHub</a></li>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/issues">Issue Tracker</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-2">
+              <h4>About</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon/wiki/%E6%8D%90%E8%B5%A0%EF%BC%88Donation%EF%BC%89">Donate</a></li>
+              </ul>
+          </div>
+          <div id="license-spaccer" class="visible-xs"></div>
+          <div id="license-wrapper" class="col-xs-12 col-sm-4">
+              <p class="license">
+
+                  Phalcon7 Framework is released under the <a href="https://github.com/dreamsxin/cphalcon7/blob/master/docs/LICENSE.md">new BSD license</a>.<br>
+                  Except where otherwise noted, content on this site is licensed under the
+                  <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a>
+              </p>
+              <div class="design">
+                  <span>Designed by:</span>
+
+                  <a href="http://www.fog-city.net/" class="fogcity" target="_blank" title="Fog City Software"><span>Fog City Software</span></a>
+              </div>
+          </div>
+      </div>
+	</div>
+</footer>
+</body>
+</html>

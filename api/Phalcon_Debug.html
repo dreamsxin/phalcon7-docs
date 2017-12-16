@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Class Phalcon\Debug &mdash; Phalcon7 1.2.1 文档</title>
+    <meta name="keywords" content="php, phalcon, phalcon7, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/phalcon.css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="../static/jquery.min.js"></script>
+    <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" /> 
+</head>
+<body>
+
+<header class="page-header">
+<nav class="navbar" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+				<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+		</div>
+
+		<div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+			<ul class="nav navbar-nav main-menu">
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7" class="header-nav-link">GitHub</a></li>
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7/releases" class="header-nav-link">Download</a></li>
+			  <li class="first"><a href="/api/" class="header-nav-link">API</a></li>
+			  <li class="first"><a href="/internals/" class="header-nav-link">内核开发手册</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li><a href="http://myleftstudio.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon7 1.2.1 文档</a> &raquo;</li> 
+      </ul>
+    </div>  
+</div>
+
+<div class="container-fluid">
+	<div class="col-md-3 primary-box">
+		<div class="panel panel-default">
+			<div class="panel-heading"><a href="../index.html">內容目录</a></div>
+			<div class="panel-body"><ul>
+<li><a class="reference internal" href="#">Class <strong>Phalcon\Debug</strong></a><ul>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+</ul>
+</li>
+</ul>
+</div>
+		</div>
+	</div>
+  <div class="col-md-9 second-box" valign="top">
+	<div class="document">
+		<div class="documentwrapper">
+		  <div class="bodywrapper">
+			<div class="body" >
+			  
+  <div class="section" id="class-phalcon-debug">
+<h1>Class <strong>Phalcon\Debug</strong><a class="headerlink" href="#class-phalcon-debug" title="永久链接至标题">¶</a></h1>
+<p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/debug.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
+<p>Provides debug capabilities to Phalcon applications</p>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
+<p>public <a class="reference internal" href=""><em>Phalcon\Debug</em></a>  <strong>setUri</strong> (<em>string</em> $uri)</p>
+<p>Change the base URI for static resources</p>
+<p>public <a class="reference internal" href=""><em>Phalcon\Debug</em></a>  <strong>setShowBackTrace</strong> (<em>boolean</em> $showBackTrace)</p>
+<p>Sets if files the exception&#8217;s backtrace must be showed</p>
+<p>public <a class="reference internal" href=""><em>Phalcon\Debug</em></a>  <strong>setShowFiles</strong> (<em>boolean</em> $showFiles)</p>
+<p>Set if files part of the backtrace must be shown in the output</p>
+<p>public <a class="reference internal" href=""><em>Phalcon\Debug</em></a>  <strong>setShowFileFragment</strong> (<em>boolean</em> $showFileFragment)</p>
+<p>Sets if files must be completely opened and showed in the output or just the fragment related to the exception</p>
+<p>public <a class="reference internal" href=""><em>Phalcon\Debug</em></a>  <strong>listen</strong> ([<em>boolean</em> $exceptions], [<em>boolean</em> $lowSeverity])</p>
+<p>Listen for uncaught exceptions and unsilent notices or warnings</p>
+<p>public <a class="reference internal" href=""><em>Phalcon\Debug</em></a>  <strong>listenExceptions</strong> ()</p>
+<p>Listen for uncaught exceptions</p>
+<p>public <a class="reference internal" href=""><em>Phalcon\Debug</em></a>  <strong>listenLowSeverity</strong> ()</p>
+<p>Listen for unsilent notices or warnings or user-defined error</p>
+<p>public  <strong>halt</strong> ()</p>
+<p>Halts the request showing a backtrace</p>
+<p>public <a class="reference internal" href=""><em>Phalcon\Debug</em></a>  <strong>debugVar</strong> (<em>mixed</em> $var, [<em>string</em> $key])</p>
+<p>Adds a variable to the debug output</p>
+<p>public <a class="reference internal" href=""><em>Phalcon\Debug</em></a>  <strong>clearVars</strong> ()</p>
+<p>Clears are variables added previously</p>
+<p>protected <em>string</em>  <strong>_escapeString</strong> ()</p>
+<p>Escapes a string with htmlentities</p>
+<p>protected <em>string</em>  <strong>_getArrayDump</strong> ()</p>
+<p>Produces a recursive representation of an array</p>
+<p>protected <em>string</em>  <strong>_getVarDump</strong> ()</p>
+<p>Produces an string representation of a variable</p>
+<p>public <em>string</em>  <strong>getMajorVersion</strong> ()</p>
+<p>Returns the major framework&#8217;s version</p>
+<p>public <em>string</em>  <strong>getVersion</strong> ()</p>
+<p>Generates a link to the current version documentation</p>
+<p>public <em>string</em>  <strong>getCssSources</strong> ()</p>
+<p>Returns the css sources</p>
+<p>public <em>string</em>  <strong>getJsSources</strong> ()</p>
+<p>Returns the javascript sources</p>
+<p>protected  <strong>showTraceItem</strong> ()</p>
+<p>Shows a backtrace item</p>
+<p>public <em>boolean</em>  <strong>onUncaughtException</strong> (<em>Exception</em> $exception)</p>
+<p>Handles uncaught exceptions</p>
+<p>public <em>boolean</em>  <strong>onUserDefinedError</strong> (<em>int</em> $severity, <em>string</em> $message, [<em>string</em> $file], [<em>string</em> $line], [<em>array</em> $context])</p>
+<p>Handles user-defined error</p>
+<p>public <em>boolean</em>  <strong>onShutdown</strong> ()</p>
+<p>Handles user-defined error</p>
+<p>public <em>int</em>  <strong>getLinesBeforeContext</strong> ()</p>
+<p>Returns the number of lines deplayed before the error line</p>
+<p>public <a class="reference internal" href=""><em>Phalcon\Debug</em></a>  <strong>setLinesBeforeContext</strong> (<em>int</em> $lines)</p>
+<p>Sets the number of lines deplayed before the error line</p>
+<p>public <em>int</em>  <strong>getLinesAfterContext</strong> ()</p>
+<p>Returns the number of lines deplayed after the error line</p>
+<p>public <a class="reference internal" href=""><em>Phalcon\Debug</em></a>  <strong>setLinesAfterContext</strong> (<em>int</em> $lines)</p>
+<p>Sets the number of lines deplayed after the error line</p>
+<p>protected  <strong>getFileLink</strong> (<em>unknown</em> $file, <em>unknown</em> $line, <em>unknown</em> $format)</p>
+<p>...</p>
+<p>public static  <strong>setLogger</strong> (<a class="reference internal" href="Phalcon_Logger_AdapterInterface.html"><em>Phalcon\Logger\AdapterInterface</em></a> $logger)</p>
+<p>Sets logger</p>
+<p>public static  <strong>enable</strong> ([<a class="reference internal" href="Phalcon_Logger_AdapterInterface.html"><em>Phalcon\Logger\AdapterInterface</em></a> $logger])</p>
+<p>Enable simple debug mode</p>
+<p>public static  <strong>disable</strong> ()</p>
+<p>Disable simple debug mode</p>
+<p>public static <em>boolean</em>  <strong>isEnable</strong> ()</p>
+<p>Check if debug mode</p>
+<p>public static  <strong>log</strong> (<em>string</em> $message, [<em>mixed</em> $type], [<em>array</em> $context])</p>
+<p>Logs messages</p>
+<p>public static  <strong>dumpVar</strong> (<em>mixed</em> $var, [<em>unknown</em> $level])</p>
+<p>Dumps a string representation of variable to output</p>
+</div>
+</div>
+
+
+			</div>
+		  </div>
+		</div>
+	</div>
+  </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li> 
+      </ul>
+    </div>
+
+<footer class="footer">
+	<div class="container">
+      <div class="row">
+          <div class="col-xs-6 col-sm-3">
+              <h4>Download</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/releases">安裝 Phalcon7</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+              <h4>Community</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7">GitHub</a></li>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/issues">Issue Tracker</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-2">
+              <h4>About</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon/wiki/%E6%8D%90%E8%B5%A0%EF%BC%88Donation%EF%BC%89">Donate</a></li>
+              </ul>
+          </div>
+          <div id="license-spaccer" class="visible-xs"></div>
+          <div id="license-wrapper" class="col-xs-12 col-sm-4">
+              <p class="license">
+
+                  Phalcon7 Framework is released under the <a href="https://github.com/dreamsxin/cphalcon7/blob/master/docs/LICENSE.md">new BSD license</a>.<br>
+                  Except where otherwise noted, content on this site is licensed under the
+                  <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a>
+              </p>
+              <div class="design">
+                  <span>Designed by:</span>
+
+                  <a href="http://www.fog-city.net/" class="fogcity" target="_blank" title="Fog City Software"><span>Fog City Software</span></a>
+              </div>
+          </div>
+      </div>
+	</div>
+</footer>
+</body>
+</html>

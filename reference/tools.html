@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Phalcon7 开发工具（Phalcon7 Developer Tools） &mdash; Phalcon7 1.2.1 文档</title>
+    <meta name="keywords" content="php, phalcon, phalcon7, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/phalcon.css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="../static/jquery.min.js"></script>
+    <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
+    <link rel="next" title="教程：让我们通过例子来学习（Tutorial: Let’s learn by example）" href="tutorial.html" />
+    <link rel="prev" title="使用 PHP 内置 web 服务器（Using PHP Built-in webserver）" href="built-in.html" /> 
+</head>
+<body>
+
+<header class="page-header">
+<nav class="navbar" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+				<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+		</div>
+
+		<div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+			<ul class="nav navbar-nav main-menu">
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7" class="header-nav-link">GitHub</a></li>
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7/releases" class="header-nav-link">Download</a></li>
+			  <li class="first"><a href="/api/" class="header-nav-link">API</a></li>
+			  <li class="first"><a href="/internals/" class="header-nav-link">内核开发手册</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="tutorial.html" title="教程：让我们通过例子来学习（Tutorial: Let’s learn by example）"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="built-in.html" title="使用 PHP 内置 web 服务器（Using PHP Built-in webserver）"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://myleftstudio.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon7 1.2.1 文档</a> &raquo;</li> 
+      </ul>
+    </div>  
+</div>
+
+<div class="container-fluid">
+	<div class="col-md-3 primary-box">
+		<div class="panel panel-default">
+			<div class="panel-heading"><a href="../index.html">內容目录</a></div>
+			<div class="panel-body"><ul>
+<li><a class="reference internal" href="#">Phalcon7 开发工具（Phalcon7 Developer Tools）</a><ul>
+<li><a class="reference internal" href="#download">下载开发工具（Download）</a><ul>
+<li><a class="reference internal" href="#linux-phalcon-phalcon-developer-tools-on-linux">Linux 系统下使用 Phalcon 开发工具（Phalcon Developer Tools on Linux）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#getting-available-commands">获取可用的命令（Getting Available Commands）</a></li>
+<li><a class="reference internal" href="#generating-a-project-skeleton">生成项目框架（Generating a Project Skeleton）</a></li>
+<li><a class="reference internal" href="#generating-controllers">生成控制器（Generating Controllers）</a></li>
+<li><a class="reference internal" href="#preparing-database-settings">数据库配置（Preparing Database Settings）</a></li>
+<li><a class="reference internal" href="#generating-models">生成模型（Generating Models）</a></li>
+<li><a class="reference internal" href="#crud-scaffold-a-crud">生成基本的 CRUD（Scaffold a CRUD）</a></li>
+<li><a class="reference internal" href="#phpstorm-integrating-tools-with-phpstorm-ide">集成工具到 PhpStorm（Integrating Tools with PhpStorm IDE）</a></li>
+<li><a class="reference internal" href="#conclusion">结束语（Conclusion）</a></li>
+</ul>
+</li>
+</ul>
+</div>
+			<div class="panel-heading">上一个主题</div>
+            <div class="panel-body"><p class="topless"><a href="built-in.html" title="上一章">&lt; 使用 PHP 内置 web 服务器（Using PHP Built-in webserver）</a></p></div>
+			<div class="panel-heading">下一个主题</div>
+            <div class="panel-body"><p class="topless"><a href="tutorial.html" title="下一章">教程：让我们通过例子来学习（Tutorial: Let&#8217;s learn by example） &gt;</a></p></div>
+		</div>
+	</div>
+  <div class="col-md-9 second-box" valign="top">
+	<div class="document">
+		<div class="documentwrapper">
+		  <div class="bodywrapper">
+			<div class="body" >
+			  
+  <div class="section" id="phalcon7-phalcon7-developer-tools">
+<h1>Phalcon7 开发工具（Phalcon7 Developer Tools）<a class="headerlink" href="#phalcon7-phalcon7-developer-tools" title="永久链接至标题">¶</a></h1>
+<p>Phalcon7 提供的这个开发工具主要是用来辅助开发，比如生成一些程序的基本框架，生成控制器、模型等。使用这个工具我们只需要一个简单的命令即可生成应用的基本框架。</p>
+<blockquote class="highlights">
+<div><strong>非常重要:</strong> 要使用这个工具我们必须要安装 Phalcon7 扩展才行。</div></blockquote>
+<div class="section" id="download">
+<h2>下载开发工具（Download）<a class="headerlink" href="#download" title="永久链接至标题">¶</a></h2>
+<p>该开发辅助工具已经包含在了源码中 <a class="reference external" href="https://github.com/dreamsxin/cphalcon7">Github</a> 。</p>
+<div class="section" id="linux-phalcon-phalcon-developer-tools-on-linux">
+<h3>Linux 系统下使用 Phalcon 开发工具（Phalcon Developer Tools on Linux）<a class="headerlink" href="#linux-phalcon-phalcon-developer-tools-on-linux" title="永久链接至标题">¶</a></h3>
+<p>为文件 <cite>phalcon.php</cite> 创建软链接：</p>
+<div class="highlight-bash"><div class="highlight"><pre>ln -s ~/cphalcon7/devtools/phalcon.php /usr/bin/phalcon
+
+chmod ugo+x /usr/bin/phalcon
+</pre></div>
+</div>
+<p>就这么简单，你已经安装好开发工具了。</p>
+</div>
+</div>
+<div class="section" id="getting-available-commands">
+<h2>获取可用的命令（Getting Available Commands）<a class="headerlink" href="#getting-available-commands" title="永久链接至标题">¶</a></h2>
+<p>我们可以在虚拟控制台上输入如下命令： <code class="code docutils literal"><span class="pre">phalcon</span> <span class="pre">commands</span></code></p>
+<div class="highlight-sh"><div class="highlight"><pre>$ phalcon commands
+
+Phalcon7 DevTools <span class="o">(</span>1.1.1<span class="o">)</span>
+
+Available commands:
+  commands         <span class="o">(</span><span class="nb">alias</span> of: list, enumerate<span class="o">)</span>
+  controller       <span class="o">(</span><span class="nb">alias</span> of: create-controller<span class="o">)</span>
+  model            <span class="o">(</span><span class="nb">alias</span> of: create-model<span class="o">)</span>
+  all-models       <span class="o">(</span><span class="nb">alias</span> of: create-all-models<span class="o">)</span>
+  project          <span class="o">(</span><span class="nb">alias</span> of: create-project<span class="o">)</span>
+  scaffold         <span class="o">(</span><span class="nb">alias</span> of: create-scaffold<span class="o">)</span>
+  migration        <span class="o">(</span><span class="nb">alias</span> of: create-migration<span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="generating-a-project-skeleton">
+<h2>生成项目框架（Generating a Project Skeleton）<a class="headerlink" href="#generating-a-project-skeleton" title="永久链接至标题">¶</a></h2>
+<p>我们可以使用Phalcon开发辅助工具生成预先定义的项目架构。 默认情况下，phalcon开发辅助工具会使用apache的mod_rewrite来生成程序的骨架. 要创建项目我们只需要在我们的
+web服务器根目录下输入如下命令：</p>
+<div class="highlight-sh"><div class="highlight"><pre>$ <span class="nb">pwd</span>
+
+/Applications/MAMP/htdocs
+
+$ phalcon create-project store
+</pre></div>
+</div>
+<p>执行命令后会生成如下的文档结构的项目：</p>
+<img class="align-center" src="../static/img/tools-2.png"><p>我们可以在命令上加 <em>&#8211;help</em> 以显示帮助信息（下面的帮助中的中文是翻译时加上去的）：</p>
+<div class="highlight-sh"><div class="highlight"><pre>$ phalcon project --help
+
+Phalcon DevTools <span class="o">(</span>2.0.8<span class="o">)</span>
+
+Help:
+  Creates a project 创建项目
+
+Usage:
+  project <span class="o">[</span>name<span class="o">]</span> <span class="o">[</span>type<span class="o">]</span> <span class="o">[</span>directory<span class="o">]</span> <span class="o">[</span>enable-webtools<span class="o">]</span>
+
+Arguments: 参数
+  <span class="nb">help</span>    Shows this <span class="nb">help</span> text 显示此帮助信息
+
+Example 例子
+  phalcon project store simple
+
+Options: 选项
+ --name               项目的名字
+ --directory<span class="o">=</span>s        项目路径，默认当前路径
+ --type<span class="o">=</span>s             项目类型（cli, micro, simple），默认 simple
+ --template-path<span class="o">=</span>s    指定模板路径，默认 simple
+ --template-engine<span class="o">=</span>s  指定模板引擎，默认 php
+ --use-config-ini     是否使用ini文件作为配置保存文件，默认不使用
+ --adapter<span class="o">=</span>s          指定数据库适配器，默认 Mysql
+ --username<span class="o">=</span>s         设置数据库账户，默认 root
+ --password<span class="o">=</span>s         设置数据库密码，默认为空
+ --dbname<span class="o">=</span>s           设置数据库名称，默认为项目名
+ --trace              出错时是否显示框架的trace信息
+ --help               Shows this <span class="nb">help</span> 显示帮助
+</pre></div>
+</div>
+<p>我们访问新生成项目的地址显示如下：</p>
+<img class="align-center" src="../static/img/tools-6.png"></div>
+<div class="section" id="generating-controllers">
+<h2>生成控制器（Generating Controllers）<a class="headerlink" href="#generating-controllers" title="永久链接至标题">¶</a></h2>
+<p>我们可以使用`phalcon create-controller &#8211;name test`或`phalcon controller &#8211;name test`来生成名为`test`的控制器。
+当然要使用此命令当前的执行命令目录必须为已存在的phalcon项目内。</p>
+<div class="highlight-sh"><div class="highlight"><pre>$ phalcon create-controller --name <span class="nb">test</span>
+</pre></div>
+</div>
+<p>上面的命令会生成如下代码：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">TestController</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="preparing-database-settings">
+<h2>数据库配置（Preparing Database Settings）<a class="headerlink" href="#preparing-database-settings" title="永久链接至标题">¶</a></h2>
+<p>当我们使用phalcon的辅助开发工具生成项目时，则生成的配置信息会被放在 <em>app/config/config.ini</em> 文件内。我们必须要正确的配置连接信息才可生成模型或基本的CRUD操作。</p>
+<p>可以在config.ini中进行修改配置信息：</p>
+<div class="highlight-ini"><div class="highlight"><pre><span class="k">[database]</span>
+<span class="na">adapter</span>  <span class="o">=</span> <span class="s">Mysql</span>
+<span class="na">host</span>     <span class="o">=</span> <span class="s">&quot;127.0.0.1&quot;</span>
+<span class="na">username</span> <span class="o">=</span> <span class="s">&quot;root&quot;</span>
+<span class="na">password</span> <span class="o">=</span> <span class="s">&quot;secret&quot;</span>
+<span class="na">dbname</span>   <span class="o">=</span> <span class="s">&quot;store_db&quot;</span>
+
+<span class="k">[phalcon]</span>
+<span class="na">controllersDir</span> <span class="o">=</span> <span class="s">&quot;../app/controllers/&quot;</span>
+<span class="na">modelsDir</span>      <span class="o">=</span> <span class="s">&quot;../app/models/&quot;</span>
+<span class="na">viewsDir</span>       <span class="o">=</span> <span class="s">&quot;../app/views/&quot;</span>
+<span class="na">baseUri</span>        <span class="o">=</span> <span class="s">&quot;/store/&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="generating-models">
+<h2>生成模型（Generating Models）<a class="headerlink" href="#generating-models" title="永久链接至标题">¶</a></h2>
+<p>使用phalcon开发辅助工具我们可以有若干种方式来生成模型。 我人可以有选择的生成若干个模型或是全部生成。 亦可以指定生成公有属性或是生成setter和getter方法。</p>
+<dl class="docutils">
+<dt>Options:</dt>
+<dd><table class="first last docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">--name=<var>s</var></span></kbd></td>
+<td>Table name 表名</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--schema=<var>s</var></span></kbd></td>
+<td>Name of the schema. [optional] schema名</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--namespace=<var>s</var></span></kbd></td>
+<td>Model&#8217;s namespace [optional] 模型命名空间</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--get-set</span></kbd></td>
+<td>Attributes will be protected and have setters/getters. [optional] 设置字段访问属性为私有 并添加setters/getters方法</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--extends=<var>s</var></span></kbd></td>
+<td>Model extends the class name supplied [optional] 指定扩展类名</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--excludefields=<var>l</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>Excludes fields defined in a comma separated list [optional]</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--doc</span></kbd></td>
+<td>Helps to improve code completion on IDEs [optional] 辅助IDE的自动完成功能</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--directory=<var>s</var></span></kbd></td>
+<td>Base path on which project will be created [optional] 项目的根目录</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--force</span></kbd></td>
+<td>Rewrite the model. [optional] 重写模型</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--trace</span></kbd></td>
+<td>Shows the trace of the framework in case of exception. [optional] 出错时显示框架trace信息</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--mapcolumn</span></kbd></td>
+<td>Get some code for map columns. [optional] 生成字映射的代码</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--abstract</span></kbd></td>
+<td>Abstract Model [optional]</td></tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<p>最简单的生成模型的方式：</p>
+<div class="highlight-sh"><div class="highlight"><pre>$ phalcon model products
+</pre></div>
+</div>
+<div class="highlight-sh"><div class="highlight"><pre>$ phalcon model --name tablename
+</pre></div>
+</div>
+<p>所有的字段设置为公有：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Products</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Model</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var integer</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="nv">$id</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var integer</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="nv">$types_id</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="nv">$name</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="nv">$price</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var integer</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="nv">$quantity</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="nv">$status</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>我们可以在生成模型时指定 <em>&#8211;get-set</em> 参数以实现对字面的保护， 这样我们可以在setter/getter方法里执行一些业务逻辑。</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Products</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Model</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var integer</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$id</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var integer</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$types_id</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$name</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$price</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var integer</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$quantity</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$status</span><span class="p">;</span>
+
+
+    <span class="sd">/**</span>
+<span class="sd">     * Method to set the value of field id</span>
+<span class="sd">     * @param integer $id</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setId</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">id</span> <span class="o">=</span> <span class="nv">$id</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Method to set the value of field types_id</span>
+<span class="sd">     * @param integer $types_id</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setTypesId</span><span class="p">(</span><span class="nv">$types_id</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">types_id</span> <span class="o">=</span> <span class="nv">$types_id</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ...</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Returns the value of field status</span>
+<span class="sd">     * @return string</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getStatus</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">status</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>另一个非常好的特性即是在我们多次生成模型时，原有的对模型的更改依然会存在。</p>
+</div>
+<div class="section" id="crud-scaffold-a-crud">
+<h2>生成基本的 CRUD（Scaffold a CRUD）<a class="headerlink" href="#crud-scaffold-a-crud" title="永久链接至标题">¶</a></h2>
+<p>使用phalcon开发辅助工具我们可以直接快速的生成一个模型的CRUD操作。 如果我们想快速的生成模型的CRUD操作只需要使用phalcon辅助开发工具的中scaffold命令即可。</p>
+<p>代码生成后，你可以根据自己的需要修改生成的代码。很多开发者可能不会去使用这个功能，其实这东西有时不是太好用，很多时候开发者往往会手动的书写相关代码。使用scaffold产生的代码可以
+帮助我们理解框架是如何工作的当然也可以帮助我们制作出快速原型来。 下面的截图展示了基于products表的scaffold:</p>
+<div class="highlight-sh"><div class="highlight"><pre>$ phalcon scaffold --table-name products
+</pre></div>
+</div>
+<p>scaffold生成器会在相关的文件夹中生成若干个文档。 下面是所生成文件的概览：</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="56%" />
+<col width="44%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">文件</th>
+<th class="head">作用</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>app/controllers/ProductsController.php</td>
+<td>Products控制器</td>
+</tr>
+<tr class="row-odd"><td>app/models/Products.php</td>
+<td>Products模型</td>
+</tr>
+<tr class="row-even"><td>app/views/layout/products.phtml</td>
+<td>Products控制器布局</td>
+</tr>
+<tr class="row-odd"><td>app/views/products/new.phtml</td>
+<td>View for the action &#8220;new&#8221;</td>
+</tr>
+<tr class="row-even"><td>app/views/products/edit.phtml</td>
+<td>View for the action &#8220;edit&#8221;</td>
+</tr>
+<tr class="row-odd"><td>app/views/products/search.phtml</td>
+<td>View for the action &#8220;search&#8221;</td>
+</tr>
+</tbody>
+</table>
+<p>在生成的Products控制器中，我们可以看到一个搜索表单和一个生成新product的链接：</p>
+<img class="align-center" src="../static/img/tools-10.png"><p>在创建页面我们可以生成经过验证的Products记录。 Phalcon会自动的验证数据库中的非空字段。</p>
+<img class="align-center" src="../static/img/tools-11.png"><p>执行搜索后，分页组件会显示颁后的结果。我们在结果列表的前面放置Edit或Delete链接，以实现相应的操作。</p>
+<img class="align-center" src="../static/img/tools-12.png"></div>
+<div class="section" id="phpstorm-integrating-tools-with-phpstorm-ide">
+<h2>集成工具到 PhpStorm（Integrating Tools with PhpStorm IDE）<a class="headerlink" href="#phpstorm-integrating-tools-with-phpstorm-ide" title="永久链接至标题">¶</a></h2>
+<p>在 PHP IDE 中包含 <cite>devtoolside1.1.0</cite> 就能在 IDE 中实现 Phalcon7 相关类和方法的自动提示。</p>
+</div>
+<div class="section" id="conclusion">
+<h2>结束语（Conclusion）<a class="headerlink" href="#conclusion" title="永久链接至标题">¶</a></h2>
+<p>Phalcon开发辅助工具为我们提供了一种简易的产生应用代码的方法，这可以减少开发时间及潜在的错误。</p>
+</div>
+</div>
+
+
+			</div>
+		  </div>
+		</div>
+	</div>
+  </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="tutorial.html" title="教程：让我们通过例子来学习（Tutorial: Let’s learn by example）"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="built-in.html" title="使用 PHP 内置 web 服务器（Using PHP Built-in webserver）"
+             >上一页</a> |</li> 
+      </ul>
+    </div>
+
+<footer class="footer">
+	<div class="container">
+      <div class="row">
+          <div class="col-xs-6 col-sm-3">
+              <h4>Download</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/releases">安裝 Phalcon7</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+              <h4>Community</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7">GitHub</a></li>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/issues">Issue Tracker</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-2">
+              <h4>About</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon/wiki/%E6%8D%90%E8%B5%A0%EF%BC%88Donation%EF%BC%89">Donate</a></li>
+              </ul>
+          </div>
+          <div id="license-spaccer" class="visible-xs"></div>
+          <div id="license-wrapper" class="col-xs-12 col-sm-4">
+              <p class="license">
+
+                  Phalcon7 Framework is released under the <a href="https://github.com/dreamsxin/cphalcon7/blob/master/docs/LICENSE.md">new BSD license</a>.<br>
+                  Except where otherwise noted, content on this site is licensed under the
+                  <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a>
+              </p>
+              <div class="design">
+                  <span>Designed by:</span>
+
+                  <a href="http://www.fog-city.net/" class="fogcity" target="_blank" title="Fog City Software"><span>Fog City Software</span></a>
+              </div>
+          </div>
+      </div>
+	</div>
+</footer>
+</body>
+</html>

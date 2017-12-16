@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>数组（Working with Arrays） &mdash; Phalcon7 1.2.1 文档</title>
+    <meta name="keywords" content="php, phalcon, phalcon7, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/phalcon.css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="../static/jquery.min.js"></script>
+    <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" /> 
+</head>
+<body>
+
+<header class="page-header">
+<nav class="navbar" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+				<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+		</div>
+
+		<div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+			<ul class="nav navbar-nav main-menu">
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7" class="header-nav-link">GitHub</a></li>
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7/releases" class="header-nav-link">Download</a></li>
+			  <li class="first"><a href="/api/" class="header-nav-link">API</a></li>
+			  <li class="first"><a href="/internals/" class="header-nav-link">内核开发手册</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li><a href="http://myleftstudio.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon7 1.2.1 文档</a> &raquo;</li> 
+      </ul>
+    </div>  
+</div>
+
+<div class="container-fluid">
+	<div class="col-md-3 primary-box">
+		<div class="panel panel-default">
+			<div class="panel-heading"><a href="../index.html">內容目录</a></div>
+			<div class="panel-body"><ul>
+<li><a class="reference internal" href="#">数组（Working with Arrays）</a><ul>
+<li><a class="reference internal" href="#flag">标志位（flag）</a></li>
+<li><a class="reference internal" href="#id1">常用函数列表</a></li>
+<li><a class="reference internal" href="#one-dimension-arrays">一维数组（One dimension Arrays）</a></li>
+</ul>
+</li>
+</ul>
+</div>
+		</div>
+	</div>
+  <div class="col-md-9 second-box" valign="top">
+	<div class="document">
+		<div class="documentwrapper">
+		  <div class="bodywrapper">
+			<div class="body" >
+			  
+  <div class="section" id="working-with-arrays">
+<h1>数组（Working with Arrays）<a class="headerlink" href="#working-with-arrays" title="永久链接至标题">¶</a></h1>
+<p>尽管 Zend API 提供了一些函数来处理数组，但 Phalcon API 中在此基础上封装了更多的函数（kernel/array.h），通过传递标志位（flag）自动完引用计数的处理。</p>
+<div class="section" id="flag">
+<h2>标志位（flag）<a class="headerlink" href="#flag" title="永久链接至标题">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">标志位值</th>
+<th class="head">描述</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>PH_NOISY</td>
+<td>值不存在时发出警告</td>
+</tr>
+<tr class="row-odd"><td>PH_READONLY</td>
+<td>不增加引用计数</td>
+</tr>
+<tr class="row-even"><td>PH_COPY</td>
+<td>增加引用计数</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id1">
+<h2>常用函数列表<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">函数名</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>phalcon_array_isset</td>
+</tr>
+<tr class="row-odd"><td>phalcon_array_fetch</td>
+</tr>
+<tr class="row-even"><td>phalcon_array_isset_fetch</td>
+</tr>
+<tr class="row-odd"><td>phalcon_array_update</td>
+</tr>
+<tr class="row-even"><td>phalcon_array_append</td>
+</tr>
+<tr class="row-odd"><td>phalcon_array_unset</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="one-dimension-arrays">
+<h2>一维数组（One dimension Arrays）<a class="headerlink" href="#one-dimension-arrays" title="永久链接至标题">¶</a></h2>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">zval</span> <span class="n">fruits</span> <span class="o">=</span> <span class="p">{},</span> <span class="n">first_item</span> <span class="o">=</span> <span class="p">{};</span>
+
+<span class="n">array_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fruits</span><span class="p">);</span>
+
+<span class="c1">// Adding items to the array</span>
+<span class="n">add_next_index_stringl</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fruits</span><span class="p">,</span> <span class="n">SL</span><span class="p">(</span><span class="s">&quot;apple&quot;</span><span class="p">));</span>
+<span class="n">add_next_index_stringl</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fruits</span><span class="p">,</span> <span class="n">SL</span><span class="p">(</span><span class="s">&quot;orange&quot;</span><span class="p">));</span>
+<span class="n">add_next_index_stringl</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fruits</span><span class="p">,</span> <span class="n">SL</span><span class="p">(</span><span class="s">&quot;lemon&quot;</span><span class="p">));</span>
+<span class="n">add_next_index_stringl</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fruits</span><span class="p">,</span> <span class="n">SL</span><span class="p">(</span><span class="s">&quot;banana&quot;</span><span class="p">));</span>
+
+<span class="n">phalcon_array_append_str</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fruits</span><span class="p">,</span> <span class="n">SL</span><span class="p">(</span><span class="s">&quot;pear&quot;</span><span class="p">),</span> <span class="mi">0</span><span class="p">);</span>
+
+<span class="c1">// Get the first item in the array $fruits[0]</span>
+<span class="n">phalcon_array_fetch_long</span><span class="p">(</span><span class="o">&amp;</span><span class="n">first_item</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fruits</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">PH_NOISY_CC</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Mixing both string and number indexes:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="c1">// Let&#39;s create the following array using the Phalcon API</span>
+<span class="c1">// $fruits = array(1, null, false, &quot;some string&quot;, 15.20, &quot;my-index&quot; =&gt; &quot;another string&quot;);</span>
+
+<span class="n">array_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fruits</span><span class="p">);</span>
+<span class="n">add_next_index_long</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fruits</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">add_next_index_null</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fruits</span><span class="p">);</span>
+<span class="n">add_next_index_bool</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fruits</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="n">add_next_index_stringl</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fruits</span><span class="p">,</span> <span class="n">SL</span><span class="p">(</span><span class="s">&quot;some string&quot;</span><span class="p">));</span>
+<span class="n">add_next_index_double</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fruits</span><span class="p">,</span> <span class="mf">15.2</span><span class="p">);</span>
+<span class="n">add_assoc_stringl_ex</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fruits</span><span class="p">,</span> <span class="n">SL</span><span class="p">(</span><span class="s">&quot;my-index&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">SL</span><span class="p">(</span><span class="s">&quot;another string&quot;</span><span class="p">));</span>
+
+<span class="c1">// Updating an existing index $fruits[2] = &quot;other value&quot;;</span>
+<span class="n">phalcon_array_update_long_string</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fruits</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">SL</span><span class="p">(</span><span class="s">&quot;other value&quot;</span><span class="p">),</span> <span class="n">PH_SEPARATE</span><span class="p">);</span>
+
+<span class="c1">// Removing an existing index unset($fruits[1]);</span>
+<span class="n">phalcon_array_unset_long</span><span class="p">(</span><span class="n">fruits</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// Removing an existing index unset($fruits[&quot;my-index&quot;]);</span>
+<span class="n">phalcon_array_unset_string</span><span class="p">(</span><span class="n">fruits</span><span class="p">,</span> <span class="n">SL</span><span class="p">(</span><span class="s">&quot;my-index&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+			</div>
+		  </div>
+		</div>
+	</div>
+  </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li> 
+      </ul>
+    </div>
+
+<footer class="footer">
+	<div class="container">
+      <div class="row">
+          <div class="col-xs-6 col-sm-3">
+              <h4>Download</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/releases">安裝 Phalcon7</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+              <h4>Community</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7">GitHub</a></li>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/issues">Issue Tracker</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-2">
+              <h4>About</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon/wiki/%E6%8D%90%E8%B5%A0%EF%BC%88Donation%EF%BC%89">Donate</a></li>
+              </ul>
+          </div>
+          <div id="license-spaccer" class="visible-xs"></div>
+          <div id="license-wrapper" class="col-xs-12 col-sm-4">
+              <p class="license">
+
+                  Phalcon7 Framework is released under the <a href="https://github.com/dreamsxin/cphalcon7/blob/master/docs/LICENSE.md">new BSD license</a>.<br>
+                  Except where otherwise noted, content on this site is licensed under the
+                  <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a>
+              </p>
+              <div class="design">
+                  <span>Designed by:</span>
+
+                  <a href="http://www.fog-city.net/" class="fogcity" target="_blank" title="Fog City Software"><span>Fog City Software</span></a>
+              </div>
+          </div>
+      </div>
+	</div>
+</footer>
+</body>
+</html>

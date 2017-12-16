@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>包含（Requires） &mdash; Phalcon7 1.2.1 文档</title>
+    <meta name="keywords" content="php, phalcon, phalcon7, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/phalcon.css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="../static/jquery.min.js"></script>
+    <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" /> 
+</head>
+<body>
+
+<header class="page-header">
+<nav class="navbar" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+				<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+		</div>
+
+		<div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+			<ul class="nav navbar-nav main-menu">
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7" class="header-nav-link">GitHub</a></li>
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7/releases" class="header-nav-link">Download</a></li>
+			  <li class="first"><a href="/api/" class="header-nav-link">API</a></li>
+			  <li class="first"><a href="/internals/" class="header-nav-link">内核开发手册</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li><a href="http://myleftstudio.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon7 1.2.1 文档</a> &raquo;</li> 
+      </ul>
+    </div>  
+</div>
+
+<div class="container-fluid">
+	<div class="col-md-3 primary-box">
+		<div class="panel panel-default">
+			<div class="panel-heading"><a href="../index.html">內容目录</a></div>
+			<div class="panel-body"><ul>
+<li><a class="reference internal" href="#">包含（Requires）</a><ul>
+<li><a class="reference internal" href="#instance">实例（instance）</a></li>
+<li><a class="reference internal" href="#implementation">内部实现（implementation）</a></li>
+</ul>
+</li>
+</ul>
+</div>
+		</div>
+	</div>
+  <div class="col-md-9 second-box" valign="top">
+	<div class="document">
+		<div class="documentwrapper">
+		  <div class="bodywrapper">
+			<div class="body" >
+			  
+  <div class="section" id="requires">
+<h1>包含（Requires）<a class="headerlink" href="#requires" title="永久链接至标题">¶</a></h1>
+<p>Phalcon API 提供了 <cite>phalcon_require</cite> 函数实现 PHP 的 <cite>require</cite> 功能，在实际开发过程中，进程会在一个文件中包含另一个或者直接从另一个文件中返回一组数据。</p>
+<div class="section" id="instance">
+<h2>实例（instance）<a class="headerlink" href="#instance" title="永久链接至标题">¶</a></h2>
+<p>假如我们要实现如下 PHP 代码的功能：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">$file = &quot;config.php&quot;;</span>
+<span class="x">$config = require($file);</span>
+</pre></div>
+</div>
+<p>在 Phalcon 中使用 API 实现起来也一样简单：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">zval config = {};</span>
+
+<span class="x">phalcon_require_ret(&amp;config, &quot;config.php&quot;);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="implementation">
+<h2>内部实现（implementation）<a class="headerlink" href="#implementation" title="永久链接至标题">¶</a></h2>
+<div class="highlight-c"><div class="highlight"><pre><span class="c1">// Check file exists</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">VCWD_STAT</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">file_sb</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Whether it is a regular file</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">S_ISREG</span><span class="p">(</span><span class="n">file_sb</span><span class="p">.</span><span class="n">st_mode</span><span class="p">))</span> <span class="p">{</span>
+                <span class="c1">// Open file</span>
+                <span class="k">if</span> <span class="p">((</span> <span class="n">fh</span><span class="p">.</span><span class="n">handle</span><span class="p">.</span><span class="n">fp</span> <span class="o">=</span> <span class="n">VCWD_FOPEN</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s">&quot;r&quot;</span><span class="p">)</span> <span class="p">))</span> <span class="p">{</span>
+                        <span class="n">fh</span><span class="p">.</span><span class="n">filename</span> <span class="o">=</span> <span class="n">file_name</span><span class="p">;</span>
+                        <span class="n">fh</span><span class="p">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">ZEND_HANDLE_FILENAME</span><span class="p">;</span>
+                        <span class="n">fh</span><span class="p">.</span><span class="n">free_filename</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+                        <span class="n">fh</span><span class="p">.</span><span class="n">opened_path</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+
+                        <span class="c1">// Compile file</span>
+                        <span class="n">op_array</span> <span class="o">=</span> <span class="n">zend_compile_file</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fh</span><span class="p">,</span> <span class="n">ZEND_REQUIRE</span> <span class="n">TSRMLS_CC</span><span class="p">);</span>
+
+                        <span class="c1">// Delete file handle</span>
+                        <span class="n">zend_destroy_file_handle</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fh</span><span class="p">);</span>
+
+                        <span class="c1">// Check compile results</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="n">op_array</span><span class="p">)</span> <span class="p">{</span>
+                                <span class="n">zval</span> <span class="n">result</span><span class="p">;</span>
+                                <span class="n">ZVAL_UNDEF</span><span class="p">(</span><span class="o">&amp;</span><span class="n">result</span><span class="p">);</span>
+
+                                <span class="c1">// Access to compile the results</span>
+                                <span class="n">zend_execute</span><span class="p">(</span><span class="n">op_array</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">result</span><span class="p">);</span>
+                                <span class="c1">// result =&gt; $config</span>
+
+                                <span class="n">ZVAL_COPY</span><span class="p">(</span><span class="o">&amp;</span><span class="n">temp</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">result</span><span class="p">);</span>
+
+                                <span class="c1">// Delete compile results</span>
+                                <span class="n">destroy_op_array</span><span class="p">(</span><span class="n">op_array</span><span class="p">);</span>
+                                <span class="n">efree</span><span class="p">(</span><span class="n">op_array</span><span class="p">);</span>
+                                <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">EG</span><span class="p">(</span><span class="n">exception</span><span class="p">))</span> <span class="p">{</span>
+                                        <span class="n">zval_ptr_dtor</span><span class="p">(</span><span class="o">&amp;</span><span class="n">result</span><span class="p">);</span>
+                                <span class="p">}</span>
+                        <span class="p">}</span>
+                <span class="p">}</span>
+        <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>此时 <cite>result</cite> 变量就是我们案例中的 <cite>$config</cite> 变量，当然还可以使用 <cite>zend_include_or_eval</cite> 实现文件的包含，支持类型有：</p>
+<ul class="simple">
+<li><cite>ZEND_INCLUDE</cite></li>
+<li><cite>ZEND_INCLUDE_ONCE</cite></li>
+<li><cite>ZEND_REQUIRE</cite></li>
+<li><cite>ZEND_REQUIRE_ONCE</cite></li>
+</ul>
+</div>
+</div>
+
+
+			</div>
+		  </div>
+		</div>
+	</div>
+  </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li> 
+      </ul>
+    </div>
+
+<footer class="footer">
+	<div class="container">
+      <div class="row">
+          <div class="col-xs-6 col-sm-3">
+              <h4>Download</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/releases">安裝 Phalcon7</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+              <h4>Community</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7">GitHub</a></li>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/issues">Issue Tracker</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-2">
+              <h4>About</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon/wiki/%E6%8D%90%E8%B5%A0%EF%BC%88Donation%EF%BC%89">Donate</a></li>
+              </ul>
+          </div>
+          <div id="license-spaccer" class="visible-xs"></div>
+          <div id="license-wrapper" class="col-xs-12 col-sm-4">
+              <p class="license">
+
+                  Phalcon7 Framework is released under the <a href="https://github.com/dreamsxin/cphalcon7/blob/master/docs/LICENSE.md">new BSD license</a>.<br>
+                  Except where otherwise noted, content on this site is licensed under the
+                  <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a>
+              </p>
+              <div class="design">
+                  <span>Designed by:</span>
+
+                  <a href="http://www.fog-city.net/" class="fogcity" target="_blank" title="Fog City Software"><span>Fog City Software</span></a>
+              </div>
+          </div>
+      </div>
+	</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>队列（Queueing） &mdash; Phalcon7 1.2.1 文档</title>
+    <meta name="keywords" content="php, phalcon, phalcon7, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/phalcon.css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="../static/jquery.min.js"></script>
+    <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
+    <link rel="next" title="数据库抽象层（Database Abstraction Layer）" href="db.html" />
+    <link rel="prev" title="命令行设置文字颜色（Command Line Text Color）" href="cli-color.html" /> 
+</head>
+<body>
+
+<header class="page-header">
+<nav class="navbar" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+				<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+		</div>
+
+		<div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+			<ul class="nav navbar-nav main-menu">
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7" class="header-nav-link">GitHub</a></li>
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7/releases" class="header-nav-link">Download</a></li>
+			  <li class="first"><a href="/api/" class="header-nav-link">API</a></li>
+			  <li class="first"><a href="/internals/" class="header-nav-link">内核开发手册</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="db.html" title="数据库抽象层（Database Abstraction Layer）"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="cli-color.html" title="命令行设置文字颜色（Command Line Text Color）"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://myleftstudio.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon7 1.2.1 文档</a> &raquo;</li> 
+      </ul>
+    </div>  
+</div>
+
+<div class="container-fluid">
+	<div class="col-md-3 primary-box">
+		<div class="panel panel-default">
+			<div class="panel-heading"><a href="../index.html">內容目录</a></div>
+			<div class="panel-body"><ul>
+<li><a class="reference internal" href="#">队列（Queueing）</a><ul>
+<li><a class="reference internal" href="#putting-jobs-into-the-queue">将任务加入队列（Putting Jobs into the Queue）</a></li>
+<li><a class="reference internal" href="#retrieving-messages">检索信息（Retrieving Messages）</a></li>
+</ul>
+</li>
+</ul>
+</div>
+			<div class="panel-heading">上一个主题</div>
+            <div class="panel-body"><p class="topless"><a href="cli-color.html" title="上一章">&lt; 命令行设置文字颜色（Command Line Text Color）</a></p></div>
+			<div class="panel-heading">下一个主题</div>
+            <div class="panel-body"><p class="topless"><a href="db.html" title="下一章">数据库抽象层（Database Abstraction Layer） &gt;</a></p></div>
+		</div>
+	</div>
+  <div class="col-md-9 second-box" valign="top">
+	<div class="document">
+		<div class="documentwrapper">
+		  <div class="bodywrapper">
+			<div class="body" >
+			  
+  <div class="section" id="queueing">
+<h1>队列（Queueing）<a class="headerlink" href="#queueing" title="永久链接至标题">¶</a></h1>
+<p>Activities like processing videos, resizing images or sending emails aren&#8217;t suitable to be executed
+online or in real time because it may slow the loading time of pages and severely impact the user experience.</p>
+<p>The best solution here is to implement background jobs. The web application puts jobs
+into a queue and which will be processed separately.</p>
+<p>While you can find more sophisticated PHP extensions to address queueing in your applications like <a class="reference external" href="http://pecl.php.net/package/amqp">RabbitMQ</a>;
+Phalcon provides a client for <a class="reference external" href="http://www.igvita.com/2010/05/20/scalable-work-queues-with-beanstalk/">Beanstalk</a>, a job queueing backend inspired by <a class="reference external" href="http://memcached.org/">Memcache</a>.
+It’s simple, lightweight, and completely specialized for job queueing.</p>
+<div class="section" id="putting-jobs-into-the-queue">
+<h2>将任务加入队列（Putting Jobs into the Queue）<a class="headerlink" href="#putting-jobs-into-the-queue" title="永久链接至标题">¶</a></h2>
+<p>After connecting to Beanstalk you can insert as many jobs as required. You can define the message
+structure according to the needs of the application:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Connect to the queue</span>
+<span class="nv">$queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Queue\Beanstalk</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;192.168.0.21&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;11300&#39;</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">// Insert the job in the queue</span>
+<span class="nv">$queue</span><span class="o">-&gt;</span><span class="na">put</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;processVideo&#39;</span> <span class="o">=&gt;</span> <span class="mi">4871</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Available connection options are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="73%" />
+<col width="14%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Option</th>
+<th class="head">Description</th>
+<th class="head">Default</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>host</td>
+<td>IP where the beanstalk server is located</td>
+<td>127.0.0.1</td>
+</tr>
+<tr class="row-odd"><td>port</td>
+<td>Connection port</td>
+<td>11300</td>
+</tr>
+</tbody>
+</table>
+<p>In the above example we stored a message which will allow a background job to process a video.
+The message is stored in the queue immediately and does not have a certain time to live.</p>
+<p>Additional options as time to run, priority and delay can be passed as second parameter:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Insert the job in the queue with options</span>
+<span class="nv">$queue</span><span class="o">-&gt;</span><span class="na">put</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;processVideo&#39;</span> <span class="o">=&gt;</span> <span class="mi">4871</span>
+    <span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;priority&#39;</span> <span class="o">=&gt;</span> <span class="mi">250</span><span class="p">,</span>
+        <span class="s1">&#39;delay&#39;</span>    <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="s1">&#39;ttr&#39;</span>      <span class="o">=&gt;</span> <span class="mi">3600</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>The following options are available:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="5%" />
+<col width="95%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Option</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>priority</td>
+<td>It&#8217;s an integer &lt; 2**32. Jobs with smaller priority values will be scheduled before jobs with larger priorities. The most urgent priority is 0; the least urgent priority is 4,294,967,295.</td>
+</tr>
+<tr class="row-odd"><td>delay</td>
+<td>It&#8217;s an integer number of seconds to wait before putting the job in the ready queue. The job will be in the &#8220;delayed&#8221; state during this time.</td>
+</tr>
+<tr class="row-even"><td>ttr</td>
+<td>Time to run &#8211; is an integer number of seconds to allow a worker to run this job. This time is counted from the moment a worker reserves this job.</td>
+</tr>
+</tbody>
+</table>
+<p>Every job put into the queue returns a &#8220;job id&#8221; which you can use to track the status of the job:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$jobId</span> <span class="o">=</span> <span class="nv">$queue</span><span class="o">-&gt;</span><span class="na">put</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;processVideo&#39;</span> <span class="o">=&gt;</span> <span class="mi">4871</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="retrieving-messages">
+<h2>检索信息（Retrieving Messages）<a class="headerlink" href="#retrieving-messages" title="永久链接至标题">¶</a></h2>
+<p>Once a job is placed into the queue, those messages can be consumed by a background worker which will have enough time to complete
+the task:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">while</span> <span class="p">((</span><span class="nv">$job</span> <span class="o">=</span> <span class="nv">$queue</span><span class="o">-&gt;</span><span class="na">peekReady</span><span class="p">())</span> <span class="o">!==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nv">$message</span> <span class="o">=</span> <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">();</span>
+
+    <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$message</span><span class="p">);</span>
+
+    <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Jobs must be removed from the queue to avoid double processing. If multiple background jobs workers are implemented,
+jobs must be &#8220;reserved&#8221; so other workers don&#8217;t re-process them while other workers have them reserved:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">while</span> <span class="p">((</span><span class="nv">$job</span> <span class="o">=</span> <span class="nv">$queue</span><span class="o">-&gt;</span><span class="na">reserve</span><span class="p">()))</span> <span class="p">{</span>
+
+    <span class="nv">$message</span> <span class="o">=</span> <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">();</span>
+
+    <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$message</span><span class="p">);</span>
+
+    <span class="nv">$job</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Our client implement a basic set of the features provided by Beanstalkd but enough to allow you to build applications
+implementing queues.</p>
+</div>
+</div>
+
+
+			</div>
+		  </div>
+		</div>
+	</div>
+  </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="db.html" title="数据库抽象层（Database Abstraction Layer）"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="cli-color.html" title="命令行设置文字颜色（Command Line Text Color）"
+             >上一页</a> |</li> 
+      </ul>
+    </div>
+
+<footer class="footer">
+	<div class="container">
+      <div class="row">
+          <div class="col-xs-6 col-sm-3">
+              <h4>Download</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/releases">安裝 Phalcon7</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+              <h4>Community</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7">GitHub</a></li>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/issues">Issue Tracker</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-2">
+              <h4>About</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon/wiki/%E6%8D%90%E8%B5%A0%EF%BC%88Donation%EF%BC%89">Donate</a></li>
+              </ul>
+          </div>
+          <div id="license-spaccer" class="visible-xs"></div>
+          <div id="license-wrapper" class="col-xs-12 col-sm-4">
+              <p class="license">
+
+                  Phalcon7 Framework is released under the <a href="https://github.com/dreamsxin/cphalcon7/blob/master/docs/LICENSE.md">new BSD license</a>.<br>
+                  Except where otherwise noted, content on this site is licensed under the
+                  <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a>
+              </p>
+              <div class="design">
+                  <span>Designed by:</span>
+
+                  <a href="http://www.fog-city.net/" class="fogcity" target="_blank" title="Fog City Software"><span>Fog City Software</span></a>
+              </div>
+          </div>
+      </div>
+	</div>
+</footer>
+</body>
+</html>

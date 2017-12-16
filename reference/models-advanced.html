@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>模型的高级用法（Working with Models (Advanced)） &mdash; Phalcon7 1.2.1 文档</title>
+    <meta name="keywords" content="php, phalcon, phalcon7, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/phalcon.css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="../static/jquery.min.js"></script>
+    <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
+    <link rel="next" title="模型行为（Model Behaviors）" href="models-behaviors.html" />
+    <link rel="prev" title="模型验证（Validating Models）" href="models-validation.html" /> 
+</head>
+<body>
+
+<header class="page-header">
+<nav class="navbar" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+				<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+		</div>
+
+		<div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+			<ul class="nav navbar-nav main-menu">
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7" class="header-nav-link">GitHub</a></li>
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7/releases" class="header-nav-link">Download</a></li>
+			  <li class="first"><a href="/api/" class="header-nav-link">API</a></li>
+			  <li class="first"><a href="/internals/" class="header-nav-link">内核开发手册</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="models-behaviors.html" title="模型行为（Model Behaviors）"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="models-validation.html" title="模型验证（Validating Models）"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://myleftstudio.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon7 1.2.1 文档</a> &raquo;</li> 
+      </ul>
+    </div>  
+</div>
+
+<div class="container-fluid">
+	<div class="col-md-3 primary-box">
+		<div class="panel panel-default">
+			<div class="panel-heading"><a href="../index.html">內容目录</a></div>
+			<div class="panel-body"><ul>
+<li><a class="reference internal" href="#">模型的高级用法（Working with Models (Advanced)）</a><ul>
+<li><a class="reference internal" href="#hydration-modes">结果集结合模式（Hydration Modes）</a></li>
+<li><a class="reference internal" href="#creating-updating-records">创建与更新记录（Creating Updating/Records）</a><ul>
+<li><a class="reference internal" href="#auto-generated-identity-columns">自动生成标识列（Auto-generated identity columns）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#skipping-columns">忽略指定列的数据（Skipping Columns）</a><ul>
+<li><a class="reference internal" href="#dynamic-update">动态更新（Dynamic Update）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#independent-column-mapping">独立的列映射（Independent Column Mapping）</a></li>
+<li><a class="reference internal" href="#record-snapshots">记录快照（Record Snapshots）</a></li>
+<li><a class="reference internal" href="#pointing-to-a-different-schema">设置模式（Pointing to a different schema）</a></li>
+<li><a class="reference internal" href="#setting-multiple-databases">设置多个数据库（Setting multiple databases）</a><ul>
+<li><a class="reference internal" href="#reading-and-writing-separation">实现读写分离（Reading and Writing Separation）</a></li>
+<li><a class="reference internal" href="#id1">实现分表</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#injecting-services-into-models">注入服务到模型（Injecting services into Models）</a></li>
+<li><a class="reference internal" href="#disabling-enabling-features">禁用或启用特性（Disabling/Enabling Features）</a></li>
+<li><a class="reference internal" href="#stand-alone-component">独立的组件（Stand-Alone component）</a></li>
+</ul>
+</li>
+</ul>
+</div>
+			<div class="panel-heading">上一个主题</div>
+            <div class="panel-body"><p class="topless"><a href="models-validation.html" title="上一章">&lt; 模型验证（Validating Models）</a></p></div>
+			<div class="panel-heading">下一个主题</div>
+            <div class="panel-body"><p class="topless"><a href="models-behaviors.html" title="下一章">模型行为（Model Behaviors） &gt;</a></p></div>
+		</div>
+	</div>
+  <div class="col-md-9 second-box" valign="top">
+	<div class="document">
+		<div class="documentwrapper">
+		  <div class="bodywrapper">
+			<div class="body" >
+			  
+  <div class="section" id="working-with-models-advanced">
+<h1>模型的高级用法（Working with Models (Advanced)）<a class="headerlink" href="#working-with-models-advanced" title="永久链接至标题">¶</a></h1>
+<div class="section" id="hydration-modes">
+<h2>结果集结合模式（Hydration Modes）<a class="headerlink" href="#hydration-modes" title="永久链接至标题">¶</a></h2>
+<p>模型的结果集是模型对象的集合，这意味着每个返回的结果是一个对象对应数据库中的一行数据。这些对象可以被修改并保存：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Manipulating a resultset of complete objects</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$robot</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">year</span> <span class="o">=</span> <span class="mi">2000</span><span class="p">;</span>
+    <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>当我们想将结果只用于只读时，我们可以通过设置结合模式为数组或者 <cite>stdClass</cite>，我们将这种策略叫做 &#8216;hydration mode&#8217;：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Resultset</span><span class="p">;</span>
+
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">();</span>
+
+<span class="c1">// Return every robot as an array</span>
+<span class="nv">$robots</span><span class="o">-&gt;</span><span class="na">setHydrateMode</span><span class="p">(</span><span class="nx">Resultset</span><span class="o">::</span><span class="na">HYDRATE_ARRAYS</span><span class="p">);</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$robots</span> <span class="k">as</span> <span class="nv">$robot</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$robot</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">],</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Return every robot as a stdClass</span>
+<span class="nv">$robots</span><span class="o">-&gt;</span><span class="na">setHydrateMode</span><span class="p">(</span><span class="nx">Resultset</span><span class="o">::</span><span class="na">HYDRATE_OBJECTS</span><span class="p">);</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$robots</span> <span class="k">as</span> <span class="nv">$robot</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">year</span><span class="p">,</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Return every robot as a Robots instance</span>
+<span class="nv">$robots</span><span class="o">-&gt;</span><span class="na">setHydrateMode</span><span class="p">(</span><span class="nx">Resultset</span><span class="o">::</span><span class="na">HYDRATE_RECORDS</span><span class="p">);</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$robots</span> <span class="k">as</span> <span class="nv">$robot</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">year</span><span class="p">,</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>我们可以在方法 <cite>find</cite> 中传递结合模式：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Resultset</span><span class="p">;</span>
+
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;hydration&#39;</span> <span class="o">=&gt;</span> <span class="nx">Resultset</span><span class="o">::</span><span class="na">HYDRATE_ARRAYS</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$robots</span> <span class="k">as</span> <span class="nv">$robot</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$robot</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">],</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="creating-updating-records">
+<h2>创建与更新记录（Creating Updating/Records）<a class="headerlink" href="#creating-updating-records" title="永久链接至标题">¶</a></h2>
+<p>Phalcon\Mvc\Model::save() 方法允许你创建/更新记录。save方法自动调用 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> 内部的create和update方法，
+如果想达到预期般的工作效果，正确定义实体主键是非常必须的，以确保创建和更新记录成功。</p>
+<p>Also the method executes associated validators, virtual foreign keys and events that are defined in the model:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$robot</span>       <span class="o">=</span> <span class="k">new</span> <span class="nx">Robots</span><span class="p">();</span>
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">type</span> <span class="o">=</span> <span class="s2">&quot;mechanical&quot;</span><span class="p">;</span>
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s2">&quot;Astro Boy&quot;</span><span class="p">;</span>
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">year</span> <span class="o">=</span> <span class="mi">1952</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">()</span> <span class="o">==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;Umh, We can&#39;t store robots right now: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$message</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;Great, a new robot was saved successfully!&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>An array could be passed to &#8220;save&#8221; to avoid assign every column manually. <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> will check if there are setters implemented for
+the columns passed in the array giving priority to them instead of assign directly the values of the attributes:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$robot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Robots</span><span class="p">();</span>
+
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;mechanical&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Astro Boy&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;year&quot;</span> <span class="o">=&gt;</span> <span class="mi">1952</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Values assigned directly or via the array of attributes are escaped/sanitized according to the related attribute data type. So you can pass
+an insecure array without worrying about possible SQL injections:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$robot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Robots</span><span class="p">();</span>
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">);</span>
+</pre></div>
+</div>
+<blockquote class="highlights">
+<div>Without precautions mass assignment could allow attackers to set any database column&#8217;s value. Only use this feature
+if you want to permit a user to insert/update every column in the model, even if those fields are not in the submitted
+form.</div></blockquote>
+<p>You can set an additional parameter in &#8216;save&#8217; to set a whitelist of fields that only must taken into account when doing
+the mass assignment:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$robot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Robots</span><span class="p">();</span>
+
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span>
+    <span class="nv">$_POST</span><span class="p">,</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;type&#39;</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<div class="section" id="auto-generated-identity-columns">
+<h3>自动生成标识列（Auto-generated identity columns）<a class="headerlink" href="#auto-generated-identity-columns" title="永久链接至标题">¶</a></h3>
+<p>Some models may have identity columns. These columns usually are the primary key of the mapped table. <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a>
+can recognize the identity column omitting it in the generated SQL INSERT, so the database system can generate an auto-generated value for it.
+Always after creating a record, the identity field will be registered with the value generated in the database system for it:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+
+<span class="k">echo</span> <span class="s2">&quot;The generated id is: &quot;</span><span class="p">,</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> is able to recognize the identity column. Depending on the database system, those columns may be
+serial columns like in PostgreSQL or auto_increment columns in the case of MySQL.</p>
+<p>PostgreSQL uses sequences to generate auto-numeric values, by default, Phalcon tries to obtain the generated value from the sequence &#8220;table_field_seq&#8221;,
+for example: robots_id_seq, if that sequence has a different name, the method &#8220;getSequenceName&#8221; needs to be implemented:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getSequenceName</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">&quot;robots_sequence_name&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="skipping-columns">
+<h2>忽略指定列的数据（Skipping Columns）<a class="headerlink" href="#skipping-columns" title="永久链接至标题">¶</a></h2>
+<p>To tell <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> that always omits some fields in the creation and/or update of records in order
+to delegate the database system the assignation of the values by a trigger or a default:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Skips fields/columns on both INSERT/UPDATE operations</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">skipAttributes</span><span class="p">(</span>
+            <span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;year&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;price&#39;</span>
+            <span class="p">)</span>
+        <span class="p">);</span>
+
+        <span class="c1">// Skips only when inserting</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">skipAttributesOnCreate</span><span class="p">(</span>
+            <span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;created_at&#39;</span>
+            <span class="p">)</span>
+        <span class="p">);</span>
+
+        <span class="c1">// Skips only when updating</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">skipAttributesOnUpdate</span><span class="p">(</span>
+            <span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;modified_in&#39;</span>
+            <span class="p">)</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This will ignore globally these fields on each INSERT/UPDATE operation on the whole application.
+If you want to ignore different attributes on different INSERT/UPDATE operations, you can specify the second parameter (boolean) - true
+for replacement. Forcing a default value can be done in the following way:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Db\RawValue</span><span class="p">;</span>
+
+<span class="nv">$robot</span>             <span class="o">=</span> <span class="k">new</span> <span class="nx">Robots</span><span class="p">();</span>
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span>       <span class="o">=</span> <span class="s1">&#39;Bender&#39;</span><span class="p">;</span>
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">year</span>       <span class="o">=</span> <span class="mi">1999</span><span class="p">;</span>
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">created_at</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RawValue</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">);</span>
+
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>A callback also can be used to create a conditional assignment of automatic default values:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Db\RawValue</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">beforeCreate</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">price</span> <span class="o">&gt;</span> <span class="mi">10000</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">type</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RawValue</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<blockquote class="highlights">
+<div>Never use a <a class="reference internal" href="../api/Phalcon_Db_RawValue.html"><em>Phalcon\Db\RawValue</em></a> to assign external data (such as user input)
+or variable data. The value of these fields is ignored when binding parameters to the query.
+So it could be used to attack the application injecting SQL.</div></blockquote>
+<div class="section" id="dynamic-update">
+<h3>动态更新（Dynamic Update）<a class="headerlink" href="#dynamic-update" title="永久链接至标题">¶</a></h3>
+<p>SQL UPDATE statements are by default created with every column defined in the model (full all-field SQL update).
+You can change specific models to make dynamic updates, in this case, just the fields that had changed
+are used to create the final SQL statement.</p>
+<p>In some cases this could improve the performance by reducing the traffic between the application and the database server,
+this specially helps when the table has blob/text fields:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">useDynamicUpdate</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="independent-column-mapping">
+<h2>独立的列映射（Independent Column Mapping）<a class="headerlink" href="#independent-column-mapping" title="永久链接至标题">¶</a></h2>
+<p>The ORM supports an independent column map, which allows the developer to use different column names in the model to the ones in
+the table. Phalcon will recognize the new column names and will rename them accordingly to match the respective columns in the database.
+This is a great feature when one needs to rename fields in the database without having to worry about all the queries
+in the code. A change in the column map in the model will take care of the rest. For example:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Store\Toys</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$code</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nv">$theName</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nv">$theType</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nv">$theYear</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">columnMap</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Keys are the real names in the table and</span>
+        <span class="c1">// the values their names in the application</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="s2">&quot;id&quot;</span>       <span class="o">=&gt;</span> <span class="s2">&quot;code&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;the_name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;theName&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;the_type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;theType&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;the_year&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;theYear&quot;</span><span class="p">,</span>
+        <span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Then you can use the new names naturally in your code:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Store\Toys\Robots</span><span class="p">;</span>
+
+<span class="c1">// Find a robot by its name</span>
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span>
+    <span class="s2">&quot;theName = &#39;Voltron&#39;&quot;</span>
+<span class="p">);</span>
+
+<span class="k">echo</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">theName</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+<span class="c1">// Get robots ordered by type</span>
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;order&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;theType DESC&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$robots</span> <span class="k">as</span> <span class="nv">$robot</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;Code: &quot;</span><span class="p">,</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">code</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Create a robot</span>
+<span class="nv">$robot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Robots</span><span class="p">();</span>
+
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">code</span>    <span class="o">=</span> <span class="s2">&quot;10101&quot;</span><span class="p">;</span>
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">theName</span> <span class="o">=</span> <span class="s2">&quot;Bender&quot;</span><span class="p">;</span>
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">theType</span> <span class="o">=</span> <span class="s2">&quot;Industrial&quot;</span><span class="p">;</span>
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">theYear</span> <span class="o">=</span> <span class="mi">2999</span><span class="p">;</span>
+
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Take into consideration the following the next when renaming your columns:</p>
+<ul class="simple">
+<li>References to attributes in relationships/validators must use the new names</li>
+<li>Refer the real column names will result in an exception by the ORM</li>
+</ul>
+<p>The independent column map allow you to:</p>
+<ul class="simple">
+<li>Write applications using your own conventions</li>
+<li>Eliminate vendor prefixes/suffixes in your code</li>
+<li>Change column names without change your application code</li>
+</ul>
+</div>
+<div class="section" id="record-snapshots">
+<h2>记录快照（Record Snapshots）<a class="headerlink" href="#record-snapshots" title="永久链接至标题">¶</a></h2>
+<p>Specific models could be set to maintain a record snapshot when they&#8217;re queried. You can use this feature to implement auditing or just to know what
+fields are changed according to the data queried from the persistence:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Store\Toys</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">keepSnapshots</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>When activating this feature the application consumes a bit more of memory to keep track of the original values obtained from the persistence.
+In models that have this feature activated you can check what fields changed:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Store\Toys\Robots</span><span class="p">;</span>
+
+<span class="c1">// Get a record from the database</span>
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">();</span>
+
+<span class="c1">// Change a column</span>
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s2">&quot;Other name&quot;</span><span class="p">;</span>
+
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">getChangedFields</span><span class="p">());</span> <span class="c1">// [&quot;name&quot;]</span>
+
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">hasChanged</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">));</span> <span class="c1">// true</span>
+
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">hasChanged</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">));</span> <span class="c1">// false</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pointing-to-a-different-schema">
+<h2>设置模式（Pointing to a different schema）<a class="headerlink" href="#pointing-to-a-different-schema" title="永久链接至标题">¶</a></h2>
+<p>如果一个模型映射到一个在非默认的schemas/数据库中的表，你可以通过 <code class="code docutils literal"><span class="pre">setSchema()</span></code> 方法去定义它：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Store\Toys</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setSchema</span><span class="p">(</span><span class="s2">&quot;toys&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setting-multiple-databases">
+<h2>设置多个数据库（Setting multiple databases）<a class="headerlink" href="#setting-multiple-databases" title="永久链接至标题">¶</a></h2>
+<p>In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when
+<a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> needs to connect to the database it requests the &#8220;db&#8221; service
+in the application&#8217;s services container. You can overwrite this service setting it in the initialize method:</p>
+<p>在Phalcon中，所有模型可以属于同一个数据库连接，也可以分属独立的数据库连接。实际上，当 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a>
+需要连接数据库的时候，它在应用服务容器内请求&#8221;db&#8221;这个服务。 可以通过在 initialize 方法内重写这个服务的设置。</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Db\Adapter\Pdo\Mysql</span> <span class="k">as</span> <span class="nx">MysqlPdo</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Db\Adapter\Pdo\PostgreSQL</span> <span class="k">as</span> <span class="nx">PostgreSQLPdo</span><span class="p">;</span>
+
+<span class="c1">// This service returns a MySQL database</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;dbMysql&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">MysqlPdo</span><span class="p">(</span>
+        <span class="k">array</span><span class="p">(</span>
+            <span class="s2">&quot;host&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;username&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;secret&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;dbname&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;invo&quot;</span>
+        <span class="p">)</span>
+    <span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// This service returns a PostgreSQL database</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;dbPostgres&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">PostgreSQLPdo</span><span class="p">(</span>
+        <span class="k">array</span><span class="p">(</span>
+            <span class="s2">&quot;host&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;username&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;postgres&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;dbname&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;invo&quot;</span>
+        <span class="p">)</span>
+    <span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Then, in the initialize method, we define the connection service for the model:</p>
+<p>然后，在 Initialize 方法内，我们为这个模型定义数据库连接。</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setConnectionService</span><span class="p">(</span><span class="s1">&#39;dbPostgres&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="reading-and-writing-separation">
+<h3>实现读写分离（Reading and Writing Separation）<a class="headerlink" href="#reading-and-writing-separation" title="永久链接至标题">¶</a></h3>
+<p>But Phalcon offers you more flexibility, you can define the connection that must be used to &#8216;read&#8217; and for &#8216;write&#8217;. This is specially useful
+to balance the load to your databases implementing a master-slave architecture:</p>
+<p>另外Phalcon还提供了更多的灵活性，你可分别定义用来读取和写入的数据库连接。这对实现主从架构的数据库负载均衡非常有用。</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setReadConnectionService</span><span class="p">(</span><span class="s1">&#39;dbSlave&#39;</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setWriteConnectionService</span><span class="p">(</span><span class="s1">&#39;dbMaster&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>也可以用如下方法实现：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * 动态选择读数据库连接</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param Phalcon\Mvc\Model\Query $query</span>
+<span class="sd">     * @param array $intermediate</span>
+<span class="sd">     * @param array $bindParams</span>
+<span class="sd">     * @param array $bindTypes</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">selectReadConnection</span><span class="p">(</span><span class="nv">$query</span><span class="p">,</span> <span class="nv">$intermediate</span><span class="p">,</span> <span class="nv">$bindParams</span><span class="p">,</span> <span class="nv">$bindTypes</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDI</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;readDB&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * 动态选择写数据库连接</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param Phalcon\Mvc\Model\Query $query</span>
+<span class="sd">     * @param array $intermediate</span>
+<span class="sd">     * @param array $bindParams</span>
+<span class="sd">     * @param array $bindTypes</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">selectWriteConnection</span><span class="p">(</span><span class="nv">$query</span><span class="p">,</span> <span class="nv">$intermediate</span><span class="p">,</span> <span class="nv">$bindParams</span><span class="p">,</span> <span class="nv">$bindTypes</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDI</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;writeDB&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The ORM also provides Horizontal Sharding facilities, by allowing you to implement a &#8216;shard&#8217; selection
+according to the current query conditions:</p>
+<p>另外ORM还可以通过根据当前查询条件来实现一个 &#8216;shared&#8217; 选择器，来实现水平切分的功能。</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * 动态选择读数据库连接</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param Phalcon\Mvc\Model\Query $query</span>
+<span class="sd">     * @param array $intermediate</span>
+<span class="sd">     * @param array $bindParams</span>
+<span class="sd">     * @param array $bindTypes</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">selectReadConnection</span><span class="p">(</span><span class="nv">$query</span><span class="p">,</span> <span class="nv">$intermediate</span><span class="p">,</span> <span class="nv">$bindParams</span><span class="p">,</span> <span class="nv">$bindTypes</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Check if there is a &#39;where&#39; clause in the select</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$intermediate</span><span class="p">[</span><span class="s1">&#39;where&#39;</span><span class="p">]))</span> <span class="p">{</span>
+
+            <span class="nv">$conditions</span> <span class="o">=</span> <span class="nv">$intermediate</span><span class="p">[</span><span class="s1">&#39;where&#39;</span><span class="p">];</span>
+
+            <span class="c1">// Choose the possible shard according to the conditions</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$conditions</span><span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;id&#39;</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$id</span> <span class="o">=</span> <span class="nv">$conditions</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">][</span><span class="s1">&#39;value&#39;</span><span class="p">];</span>
+
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$id</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nv">$id</span> <span class="o">&lt;</span> <span class="mi">10000</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDI</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;dbShard1&#39;</span><span class="p">);</span>
+                <span class="p">}</span>
+
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$id</span> <span class="o">&gt;</span> <span class="mi">10000</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDI</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;dbShard2&#39;</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Use a default shard</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDI</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;dbShard0&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * 动态选择写数据库连接</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param Phalcon\Mvc\Model\Query $query</span>
+<span class="sd">     * @param array $intermediate</span>
+<span class="sd">     * @param array $bindParams</span>
+<span class="sd">     * @param array $bindTypes</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">selectWriteConnection</span><span class="p">(</span><span class="nv">$query</span><span class="p">,</span> <span class="nv">$intermediate</span><span class="p">,</span> <span class="nv">$bindParams</span><span class="p">,</span> <span class="nv">$bindTypes</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Check if there is a &#39;where&#39; clause in the select</span>
+
+        <span class="c1">// Use a default shard</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDI</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;dbShard0&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The method &#8216;selectReadConnection&#8217; is called to choose the right connection, this method intercepts any new
+query executed:</p>
+<p>&#8216;selectReadConnection&#8217; 方法用来选择正确的数据库连接，这个方法拦截任何新的查询操作：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span><span class="s1">&#39;id = 101&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<blockquote class="highlights">
+<div>在 <a class="reference internal" href="phql.html"><em>Model查询器</em></a> 中可实现同样的功能。</div></blockquote>
+</div>
+<div class="section" id="id1">
+<h3>实现分表<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h3>
+<p>你可根据 Query 数据来选择不同的表进行操作。</p>
+<p>也可以用如下方法实现：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * 动态选择表</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param Phalcon\Mvc\Model\Query $query</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">selectSource</span><span class="p">(</span><span class="nv">$query</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;robots_1&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="injecting-services-into-models">
+<h2>注入服务到模型（Injecting services into Models）<a class="headerlink" href="#injecting-services-into-models" title="永久链接至标题">¶</a></h2>
+<p>You may be required to access the application services within a model, the following example explains how to do that:</p>
+<p>你可能需要在模型中用到应用中注入的服务，下面的例子会教你如何去做：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">notSaved</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Obtain the flash service from the DI container</span>
+        <span class="nv">$flash</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDI</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getFlash</span><span class="p">();</span>
+
+        <span class="c1">// Show validation messages</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$flash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="nv">$message</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The &#8220;notSaved&#8221; event is triggered every time that a &#8220;create&#8221; or &#8220;update&#8221; action fails. So we&#8217;re flashing the validation messages
+obtaining the &#8220;flash&#8221; service from the DI container. By doing this, we don&#8217;t have to print messages after each save.</p>
+<p>每当 &#8220;create&#8221; 或者 &#8220;update&#8221; 操作失败时会触发 &#8220;notSave&#8221; 事件。所以我们从DI中获取 &#8220;flash&#8221; 服务并推送确认消息。这样的话，我们不需要每次在save之后去打印信息。</p>
+</div>
+<div class="section" id="disabling-enabling-features">
+<h2>禁用或启用特性（Disabling/Enabling Features）<a class="headerlink" href="#disabling-enabling-features" title="永久链接至标题">¶</a></h2>
+<p>在 ORM 中，我们实现了一种机制，允许您在全局上启用或者禁用特定的特性或选项。
+我们可以使用 <cite>setup</cite> 方法暂时启用或者禁用它：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="nx">Model</span><span class="o">::</span><span class="na">setup</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;events&#39;</span>         <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+        <span class="s1">&#39;columnRenaming&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>The available options are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="74%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Option</th>
+<th class="head">Description</th>
+<th class="head">Default</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>events</td>
+<td>Enables/Disables callbacks, hooks and event notifications from all the models</td>
+<td>true</td>
+</tr>
+<tr class="row-odd"><td>columnRenaming</td>
+<td>Enables/Disables the column renaming</td>
+<td>true</td>
+</tr>
+<tr class="row-even"><td>notNullValidations</td>
+<td>The ORM automatically validate the not null columns present in the mapped table</td>
+<td>true</td>
+</tr>
+<tr class="row-odd"><td>virtualForeignKeys</td>
+<td>Enables/Disables the virtual foreign keys</td>
+<td>true</td>
+</tr>
+<tr class="row-even"><td>phqlLiterals</td>
+<td>Enables/Disables literals in the PHQL parser</td>
+<td>true</td>
+</tr>
+<tr class="row-odd"><td>lateStateBinding</td>
+<td>Enables/Disables late state binding of the method <code class="code docutils literal"><span class="pre">Mvc\Model::cloneResultMap()</span></code></td>
+<td>false</td>
+</tr>
+<tr class="row-even"><td>strict</td>
+<td>开启或者禁用严格模式，严格模式下将会根据影响行数返回操作成功还是失败</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="stand-alone-component">
+<h2>独立的组件（Stand-Alone component）<a class="headerlink" href="#stand-alone-component" title="永久链接至标题">¶</a></h2>
+<p>Using <a class="reference internal" href="models.html"><em>Phalcon\Mvc\Model</em></a> in a stand-alone mode can be demonstrated below:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Di</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Manager</span> <span class="k">as</span> <span class="nx">ModelsManager</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Db\Adapter\Pdo\Sqlite</span> <span class="k">as</span> <span class="nx">Connection</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Metadata\Memory</span> <span class="k">as</span> <span class="nx">MetaData</span><span class="p">;</span>
+
+<span class="nv">$di</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Di</span><span class="p">();</span>
+
+<span class="c1">// Setup a connection</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
+    <span class="s1">&#39;db&#39;</span><span class="p">,</span>
+    <span class="k">new</span> <span class="nx">Connection</span><span class="p">(</span>
+        <span class="k">array</span><span class="p">(</span>
+            <span class="s2">&quot;dbname&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;sample.db&quot;</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">// Set a models manager</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;modelsManager&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">ModelsManager</span><span class="p">());</span>
+
+<span class="c1">// Use the memory meta-data adapter or other</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;modelsMetadata&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">MetaData</span><span class="p">());</span>
+
+<span class="c1">// Create a model</span>
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c1">// Use the model</span>
+<span class="k">echo</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">count</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+			</div>
+		  </div>
+		</div>
+	</div>
+  </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="models-behaviors.html" title="模型行为（Model Behaviors）"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="models-validation.html" title="模型验证（Validating Models）"
+             >上一页</a> |</li> 
+      </ul>
+    </div>
+
+<footer class="footer">
+	<div class="container">
+      <div class="row">
+          <div class="col-xs-6 col-sm-3">
+              <h4>Download</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/releases">安裝 Phalcon7</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+              <h4>Community</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7">GitHub</a></li>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/issues">Issue Tracker</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-2">
+              <h4>About</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon/wiki/%E6%8D%90%E8%B5%A0%EF%BC%88Donation%EF%BC%89">Donate</a></li>
+              </ul>
+          </div>
+          <div id="license-spaccer" class="visible-xs"></div>
+          <div id="license-wrapper" class="col-xs-12 col-sm-4">
+              <p class="license">
+
+                  Phalcon7 Framework is released under the <a href="https://github.com/dreamsxin/cphalcon7/blob/master/docs/LICENSE.md">new BSD license</a>.<br>
+                  Except where otherwise noted, content on this site is licensed under the
+                  <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a>
+              </p>
+              <div class="design">
+                  <span>Designed by:</span>
+
+                  <a href="http://www.fog-city.net/" class="fogcity" target="_blank" title="Fog City Software"><span>Fog City Software</span></a>
+              </div>
+          </div>
+      </div>
+	</div>
+</footer>
+</body>
+</html>

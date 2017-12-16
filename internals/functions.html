@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>调用函数（Calling Functions） &mdash; Phalcon7 1.2.1 文档</title>
+    <meta name="keywords" content="php, phalcon, phalcon7, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/phalcon.css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="../static/jquery.min.js"></script>
+    <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" /> 
+</head>
+<body>
+
+<header class="page-header">
+<nav class="navbar" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+				<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+		</div>
+
+		<div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+			<ul class="nav navbar-nav main-menu">
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7" class="header-nav-link">GitHub</a></li>
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7/releases" class="header-nav-link">Download</a></li>
+			  <li class="first"><a href="/api/" class="header-nav-link">API</a></li>
+			  <li class="first"><a href="/internals/" class="header-nav-link">内核开发手册</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li><a href="http://myleftstudio.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon7 1.2.1 文档</a> &raquo;</li> 
+      </ul>
+    </div>  
+</div>
+
+<div class="container-fluid">
+	<div class="col-md-3 primary-box">
+		<div class="panel panel-default">
+			<div class="panel-heading"><a href="../index.html">內容目录</a></div>
+			<div class="panel-body"><ul>
+<li><a class="reference internal" href="#">调用函数（Calling Functions）</a><ul>
+<li><a class="reference internal" href="#id1">文件读写</a></li>
+</ul>
+</li>
+</ul>
+</div>
+		</div>
+	</div>
+  <div class="col-md-9 second-box" valign="top">
+	<div class="document">
+		<div class="documentwrapper">
+		  <div class="bodywrapper">
+			<div class="body" >
+			  
+  <div class="section" id="calling-functions">
+<h1>调用函数（Calling Functions）<a class="headerlink" href="#calling-functions" title="永久链接至标题">¶</a></h1>
+<p>Phalcon API 在 Zend API 的基础上实现了 <cite>phalcon_call_method_with_params</cite> 函数，并以此为基础定义了宏 <cite>PHALCON_CALL_FUNCTION</cite>，利用这些 API 可以很轻松的调用内核及自定义函数。</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="c1">// $length = strlen(some_variable);</span>
+<span class="n">PHALCON_CALL_FUNCTION</span><span class="p">(</span><span class="o">&amp;</span><span class="n">length</span><span class="p">,</span> <span class="s">&quot;strlen&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">some_variable</span><span class="p">);</span>
+
+<span class="c1">// Calling substr() with its 3 arguments returning the substring into &quot;part&quot;</span>
+<span class="n">PHALCON_CALL_FUNCTION</span><span class="p">(</span><span class="o">&amp;</span><span class="n">part</span><span class="p">,</span> <span class="s">&quot;substr&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">some_variable</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">start</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">length</span><span class="p">);</span>
+
+<span class="c1">// Calling ob_start(), this function does not return anything</span>
+<span class="n">PHALCON_CALL_FUNCTION</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="s">&quot;ob_start&quot;</span><span class="p">);</span>
+
+<span class="c1">// Closing a file with fclose</span>
+<span class="n">PHALCON_CALL_FUNCTION</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="s">&quot;fclose&quot;</span><span class="p">,</span> <span class="n">file_handler</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>如上所述，PHP 已经有帮我们做了很多事情，C 的扩展并不意味着我们要重新发明轮子。我们也要尽量避免使用 C 非常底层的特性。使用 PHP 函数帮助我们实现和 PHP 编程中类似的行为，这样我们就可以避免可能出现的错误。</p>
+<p>下面是 Zend API 的相关定义：</p>
+<blockquote>
+<div><div class="highlight-c"><div class="highlight"><pre><span class="cp">#define call_user_function_ex(function_table, object, function_name, retval_ptr, param_count, params, no_separation, symbol_table) \</span>
+<span class="cp">        _call_user_function_ex(object, function_name, retval_ptr, param_count, params, no_separation)</span>
+</pre></div>
+</div>
+<p>除了 <cite>call_user_function_ex</cite> 以及 <cite>call_user_function</cite>，还有`zend_call_method`;</p>
+</div></blockquote>
+<div class="section" id="id1">
+<h2>文件读写<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>The following code opens a file in C and write something on it. Its functionality is limited because it only works on
+local files:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="kt">FILE</span> <span class="o">*</span> <span class="n">pFile</span><span class="p">;</span>
+<span class="n">pFile</span> <span class="o">=</span> <span class="n">fopen</span> <span class="p">(</span><span class="s">&quot;myfile.txt&quot;</span><span class="p">,</span><span class="s">&quot;w&quot;</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">pFile</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">fputs</span> <span class="p">(</span><span class="s">&quot;fopen example&quot;</span><span class="p">,</span><span class="n">pFile</span><span class="p">);</span>
+        <span class="n">fclose</span> <span class="p">(</span><span class="n">pFile</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now write the same code using the PHP userland:</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="n">ZVAL_STRING</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mode</span><span class="p">,</span> <span class="s">&quot;w&quot;</span><span class="p">);</span>
+
+<span class="n">PHALCON_CALL_FUNCTION</span><span class="p">(</span><span class="o">&amp;</span><span class="n">file_handler</span><span class="p">,</span> <span class="s">&quot;fopen&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">file_path</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">mode</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">PHALCON_IS_NOT_FALSE</span><span class="p">(</span><span class="o">&amp;</span><span class="n">file_handler</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">ZVAL_STRING</span><span class="p">(</span><span class="o">&amp;</span><span class="n">text</span><span class="p">,</span> <span class="s">&quot;fopen example&quot;</span><span class="p">);</span>
+
+        <span class="n">PHALCON_CALL_FUNCTION</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="s">&quot;fputs&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">file_handler</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">text</span><span class="p">);</span>
+
+        <span class="n">PHALCON_CALL_FUNCTION</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="s">&quot;fclose&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">file_handler</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>Although both codes perform the same task, the former is more powerful as it could open a PHP stream, a file in a URL</dt>
+<dd>or a local file. We can also write the same code using the PHP API, without losing functionality. However, the
+above code is more familiar if we are primarily PHP developers.</dd>
+</dl>
+<p>The same code in PHP:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$fp</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="nv">$file_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="nv">$fp</span><span class="p">){</span>
+        <span class="nb">fputs</span><span class="p">(</span><span class="nv">$fp</span><span class="p">,</span> <span class="s2">&quot;fopen example&quot;</span><span class="p">);</span>
+        <span class="nb">fclose</span><span class="p">(</span><span class="nv">$fp</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+			</div>
+		  </div>
+		</div>
+	</div>
+  </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li> 
+      </ul>
+    </div>
+
+<footer class="footer">
+	<div class="container">
+      <div class="row">
+          <div class="col-xs-6 col-sm-3">
+              <h4>Download</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/releases">安裝 Phalcon7</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+              <h4>Community</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7">GitHub</a></li>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/issues">Issue Tracker</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-2">
+              <h4>About</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon/wiki/%E6%8D%90%E8%B5%A0%EF%BC%88Donation%EF%BC%89">Donate</a></li>
+              </ul>
+          </div>
+          <div id="license-spaccer" class="visible-xs"></div>
+          <div id="license-wrapper" class="col-xs-12 col-sm-4">
+              <p class="license">
+
+                  Phalcon7 Framework is released under the <a href="https://github.com/dreamsxin/cphalcon7/blob/master/docs/LICENSE.md">new BSD license</a>.<br>
+                  Except where otherwise noted, content on this site is licensed under the
+                  <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a>
+              </p>
+              <div class="design">
+                  <span>Designed by:</span>
+
+                  <a href="http://www.fog-city.net/" class="fogcity" target="_blank" title="Fog City Software"><span>Fog City Software</span></a>
+              </div>
+          </div>
+      </div>
+	</div>
+</footer>
+</body>
+</html>

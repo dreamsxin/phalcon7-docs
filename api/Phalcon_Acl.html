@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Abstract class Phalcon\Acl &mdash; Phalcon7 1.2.1 文档</title>
+    <meta name="keywords" content="php, phalcon, phalcon7, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/phalcon.css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="../static/jquery.min.js"></script>
+    <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" /> 
+</head>
+<body>
+
+<header class="page-header">
+<nav class="navbar" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+				<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+		</div>
+
+		<div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+			<ul class="nav navbar-nav main-menu">
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7" class="header-nav-link">GitHub</a></li>
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7/releases" class="header-nav-link">Download</a></li>
+			  <li class="first"><a href="/api/" class="header-nav-link">API</a></li>
+			  <li class="first"><a href="/internals/" class="header-nav-link">内核开发手册</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li><a href="http://myleftstudio.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon7 1.2.1 文档</a> &raquo;</li> 
+      </ul>
+    </div>  
+</div>
+
+<div class="container-fluid">
+	<div class="col-md-3 primary-box">
+		<div class="panel panel-default">
+			<div class="panel-heading"><a href="../index.html">內容目录</a></div>
+			<div class="panel-body"><ul>
+<li><a class="reference internal" href="#">Abstract class <strong>Phalcon\Acl</strong></a><ul>
+<li><a class="reference internal" href="#constants">Constants</a></li>
+</ul>
+</li>
+</ul>
+</div>
+		</div>
+	</div>
+  <div class="col-md-9 second-box" valign="top">
+	<div class="document">
+		<div class="documentwrapper">
+		  <div class="bodywrapper">
+			<div class="body" >
+			  
+  <div class="section" id="abstract-class-phalcon-acl">
+<h1>Abstract class <strong>Phalcon\Acl</strong><a class="headerlink" href="#abstract-class-phalcon-acl" title="永久链接至标题">¶</a></h1>
+<p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/acl.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
+<p>This component allows to manage ACL lists. An access control list (ACL) is a list of permissions attached to an object. An ACL specifies which users or system processes are granted access to objects, as well as what operations are allowed on given objects.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$acl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Acl\Adapter\Memory</span><span class="p">();</span>
+
+<span class="c1">//Default action is deny access</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">setDefaultAction</span><span class="p">(</span><span class="nx">Phalcon\Acl</span><span class="o">::</span><span class="na">DENY</span><span class="p">);</span>
+
+<span class="c1">//Create some roles</span>
+<span class="nv">$roleAdmins</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Acl\Role</span><span class="p">(</span><span class="s1">&#39;Administrators&#39;</span><span class="p">,</span> <span class="s1">&#39;Super-User role&#39;</span><span class="p">);</span>
+<span class="nv">$roleGuests</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Acl\Role</span><span class="p">(</span><span class="s1">&#39;Guests&#39;</span><span class="p">);</span>
+
+<span class="c1">//Add &quot;Guests&quot; role to acl</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span><span class="nv">$roleGuests</span><span class="p">);</span>
+
+<span class="c1">//Add &quot;Designers&quot; role to acl</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span><span class="s1">&#39;Designers&#39;</span><span class="p">);</span>
+
+<span class="c1">//Define the &quot;Customers&quot; resource</span>
+<span class="nv">$customersResource</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Acl\Resource</span><span class="p">(</span><span class="s1">&#39;Customers&#39;</span><span class="p">,</span> <span class="s1">&#39;Customers management&#39;</span><span class="p">);</span>
+
+<span class="c1">//Add &quot;customers&quot; resource with a couple of operations</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addResource</span><span class="p">(</span><span class="nv">$customersResource</span><span class="p">,</span> <span class="s1">&#39;search&#39;</span><span class="p">);</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addResource</span><span class="p">(</span><span class="nv">$customersResource</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;create&#39;</span><span class="p">,</span> <span class="s1">&#39;update&#39;</span><span class="p">));</span>
+
+<span class="c1">//Set access level for roles into resources</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="s1">&#39;Guests&#39;</span><span class="p">,</span> <span class="s1">&#39;Customers&#39;</span><span class="p">,</span> <span class="s1">&#39;search&#39;</span><span class="p">);</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="s1">&#39;Guests&#39;</span><span class="p">,</span> <span class="s1">&#39;Customers&#39;</span><span class="p">,</span> <span class="s1">&#39;create&#39;</span><span class="p">);</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">deny</span><span class="p">(</span><span class="s1">&#39;Guests&#39;</span><span class="p">,</span> <span class="s1">&#39;Customers&#39;</span><span class="p">,</span> <span class="s1">&#39;update&#39;</span><span class="p">);</span>
+
+<span class="c1">//Check whether role has access to the operations</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="s1">&#39;Guests&#39;</span><span class="p">,</span> <span class="s1">&#39;Customers&#39;</span><span class="p">,</span> <span class="s1">&#39;edit&#39;</span><span class="p">);</span> <span class="c1">//Returns 0</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="s1">&#39;Guests&#39;</span><span class="p">,</span> <span class="s1">&#39;Customers&#39;</span><span class="p">,</span> <span class="s1">&#39;search&#39;</span><span class="p">);</span> <span class="c1">//Returns 1</span>
+<span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="s1">&#39;Guests&#39;</span><span class="p">,</span> <span class="s1">&#39;Customers&#39;</span><span class="p">,</span> <span class="s1">&#39;create&#39;</span><span class="p">);</span> <span class="c1">//Returns 1</span>
+</pre></div>
+</div>
+<div class="section" id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="永久链接至标题">¶</a></h2>
+<p><em>integer</em> <strong>ALLOW</strong></p>
+<p><em>integer</em> <strong>DENY</strong></p>
+</div>
+</div>
+
+
+			</div>
+		  </div>
+		</div>
+	</div>
+  </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li> 
+      </ul>
+    </div>
+
+<footer class="footer">
+	<div class="container">
+      <div class="row">
+          <div class="col-xs-6 col-sm-3">
+              <h4>Download</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/releases">安裝 Phalcon7</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+              <h4>Community</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7">GitHub</a></li>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/issues">Issue Tracker</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-2">
+              <h4>About</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon/wiki/%E6%8D%90%E8%B5%A0%EF%BC%88Donation%EF%BC%89">Donate</a></li>
+              </ul>
+          </div>
+          <div id="license-spaccer" class="visible-xs"></div>
+          <div id="license-wrapper" class="col-xs-12 col-sm-4">
+              <p class="license">
+
+                  Phalcon7 Framework is released under the <a href="https://github.com/dreamsxin/cphalcon7/blob/master/docs/LICENSE.md">new BSD license</a>.<br>
+                  Except where otherwise noted, content on this site is licensed under the
+                  <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a>
+              </p>
+              <div class="design">
+                  <span>Designed by:</span>
+
+                  <a href="http://www.fog-city.net/" class="fogcity" target="_blank" title="Fog City Software"><span>Fog City Software</span></a>
+              </div>
+          </div>
+      </div>
+	</div>
+</footer>
+</body>
+</html>

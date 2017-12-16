@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>微应用（Micro Applications） &mdash; Phalcon7 1.2.1 文档</title>
+    <meta name="keywords" content="php, phalcon, phalcon7, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/phalcon.css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="../static/jquery.min.js"></script>
+    <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
+    <link rel="next" title="使用命名空间（Working with Namespaces）" href="namespaces.html" />
+    <link rel="prev" title="调度控制器（Dispatching Controllers）" href="dispatching.html" /> 
+</head>
+<body>
+
+<header class="page-header">
+<nav class="navbar" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+				<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+		</div>
+
+		<div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+			<ul class="nav navbar-nav main-menu">
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7" class="header-nav-link">GitHub</a></li>
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7/releases" class="header-nav-link">Download</a></li>
+			  <li class="first"><a href="/api/" class="header-nav-link">API</a></li>
+			  <li class="first"><a href="/internals/" class="header-nav-link">内核开发手册</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="namespaces.html" title="使用命名空间（Working with Namespaces）"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="dispatching.html" title="调度控制器（Dispatching Controllers）"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://myleftstudio.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon7 1.2.1 文档</a> &raquo;</li> 
+      </ul>
+    </div>  
+</div>
+
+<div class="container-fluid">
+	<div class="col-md-3 primary-box">
+		<div class="panel panel-default">
+			<div class="panel-heading"><a href="../index.html">內容目录</a></div>
+			<div class="panel-body"><ul>
+<li><a class="reference internal" href="#">微应用（Micro Applications）</a><ul>
+<li><a class="reference internal" href="#creating-a-micro-application">创建微应用（Creating a Micro Application）</a></li>
+<li><a class="reference internal" href="#defining-routes">定义路由（Defining routes）</a><ul>
+<li><a class="reference internal" href="#routes-with-parameters">路由参数（Routes with Parameters）</a></li>
+<li><a class="reference internal" href="#starting-route">起始路由（Starting Route）</a></li>
+<li><a class="reference internal" href="#rewrite-rules">重写规则（Rewrite Rules）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#working-with-responses">处理响应（Working with Responses）</a></li>
+<li><a class="reference internal" href="#making-redirections">重定向（Making redirections）</a></li>
+<li><a class="reference internal" href="#url-generating-urls-for-routes">根据路由生成 URL（Generating URLs for Routes）</a></li>
+<li><a class="reference internal" href="#interacting-with-the-dependency-injector">与依赖注入的交互（Interacting with the Dependency Injector）</a></li>
+<li><a class="reference internal" href="#not-found-not-found-handler">处理Not-Found（Not-Found Handler）</a></li>
+<li><a class="reference internal" href="#models-in-micro-applications">微应用中的模型（Models in Micro Applications）</a></li>
+<li><a class="reference internal" href="#micro-application-events">微应用中的事件（Micro Application Events）</a></li>
+<li><a class="reference internal" href="#middleware-events">中间件事件（Middleware events）</a></li>
+<li><a class="reference internal" href="#using-controllers-as-handlers">使用控制器处理（Using Controllers as Handlers）</a></li>
+<li><a class="reference internal" href="#returning-responses">返回响应（Returning Responses）</a></li>
+<li><a class="reference internal" href="#rendering-views">渲染视图（Rendering Views）</a></li>
+<li><a class="reference internal" href="#error-handling">异常处理（Error Handling）</a></li>
+<li><a class="reference internal" href="#related-sources">相关资源（Related Sources）</a></li>
+</ul>
+</li>
+</ul>
+</div>
+			<div class="panel-heading">上一个主题</div>
+            <div class="panel-body"><p class="topless"><a href="dispatching.html" title="上一章">&lt; 调度控制器（Dispatching Controllers）</a></p></div>
+			<div class="panel-heading">下一个主题</div>
+            <div class="panel-body"><p class="topless"><a href="namespaces.html" title="下一章">使用命名空间（Working with Namespaces） &gt;</a></p></div>
+		</div>
+	</div>
+  <div class="col-md-9 second-box" valign="top">
+	<div class="document">
+		<div class="documentwrapper">
+		  <div class="bodywrapper">
+			<div class="body" >
+			  
+  <div class="section" id="micro-applications">
+<h1>微应用（Micro Applications）<a class="headerlink" href="#micro-applications" title="永久链接至标题">¶</a></h1>
+<p>使用Phalcon框架开发者可以创建微框架应用。 这样开发者只需要书写极少的代码即可创建一个PHP应用。 微应用适用于书写小的应用， API或原型等</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Micro</span><span class="p">;</span>
+
+<span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Micro</span><span class="p">();</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/say/welcome/{name}&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;&lt;h1&gt;Welcome </span><span class="si">$name</span><span class="s2">!&lt;/h1&gt;&quot;</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="section" id="creating-a-micro-application">
+<h2>创建微应用（Creating a Micro Application）<a class="headerlink" href="#creating-a-micro-application" title="永久链接至标题">¶</a></h2>
+<p>Phalcon中 使用 <a class="reference internal" href="../api/Phalcon_Mvc_Micro.html"><em>Phalcon\Mvc\Micro</em></a> 来实现微应用。</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Micro</span><span class="p">;</span>
+
+<span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Micro</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="defining-routes">
+<h2>定义路由（Defining routes）<a class="headerlink" href="#defining-routes" title="永久链接至标题">¶</a></h2>
+<p>实例化后， 开发者需要添加一些路由规则。 Phalcon内部使用 <a class="reference internal" href="../api/Phalcon_Mvc_Router.html"><em>Phalcon\Mvc\Router</em></a> 来管理路由。 路由必须以 / 开头。
+定义路由时通常会书写http方法约束， 这样路由规则只适用于那些和规则及htttp方法相匹配的路由。 下面的方法展示了如何定义了HTTP get方法路由：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/say/hello/{name}&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;&lt;h1&gt;Hello! </span><span class="si">$name</span><span class="s2">&lt;/h1&gt;&quot;</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>get 方法指定了要匹配的请求方法。 路由规则 <code class="code docutils literal"><span class="pre">/say/hello/{name}</span></code> 中含有一个参数 <code class="code docutils literal"><span class="pre">{$name}</span></code>, 此参数会直接传递给路由的处理器（此处为匿名函数）。 路由规则匹配时处理器即会执行。
+处理器是PHP中任何可以被调用的项。 下面的示例中展示了如何定义不同种类的处理器：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">//  函数</span>
+<span class="k">function</span> <span class="nf">say_hello</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;&lt;h1&gt;Hello! </span><span class="si">$name</span><span class="s2">&lt;/h1&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/say/hello/{name}&#39;</span><span class="p">,</span> <span class="s2">&quot;say_hello&quot;</span><span class="p">);</span>
+
+<span class="c1">//  静态方法</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/say/hello/{name}&#39;</span><span class="p">,</span> <span class="s2">&quot;SomeClass::someSayMethod&quot;</span><span class="p">);</span>
+
+<span class="c1">//  对象内的方法</span>
+<span class="nv">$myController</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyController</span><span class="p">();</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/say/hello/{name}&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="nv">$myController</span><span class="p">,</span> <span class="s2">&quot;someAction&quot;</span><span class="p">));</span>
+
+<span class="c1">// 匿名函数</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/say/hello/{name}&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;&lt;h1&gt;Hello! </span><span class="si">$name</span><span class="s2">&lt;/h1&gt;&quot;</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../api/Phalcon_Mvc_Micro.html"><em>Phalcon\Mvc\Micro</em></a> 提供了一系列的用于定义http方法的限定方法：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// 匹配HTTP GET 方法：</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/api/products&#39;</span><span class="p">,</span> <span class="s2">&quot;get_products&quot;</span><span class="p">);</span>
+
+<span class="c1">// 匹配HTTP POST方法</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;/api/products/add&#39;</span><span class="p">,</span> <span class="s2">&quot;add_product&quot;</span><span class="p">);</span>
+
+<span class="c1">// 匹配HTTP PUT 方法</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">put</span><span class="p">(</span><span class="s1">&#39;/api/products/update/{id}&#39;</span><span class="p">,</span> <span class="s2">&quot;update_product&quot;</span><span class="p">);</span>
+
+<span class="c1">// 匹配HTTP DELETE方法</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="s1">&#39;/api/products/remove/{id}&#39;</span><span class="p">,</span> <span class="s2">&quot;delete_product&quot;</span><span class="p">);</span>
+
+<span class="c1">// 匹配HTTP OPTIONS方法</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">options</span><span class="p">(</span><span class="s1">&#39;/api/products/info/{id}&#39;</span><span class="p">,</span> <span class="s2">&quot;info_product&quot;</span><span class="p">);</span>
+
+<span class="c1">// 匹配HTTP PATCH方法</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">patch</span><span class="p">(</span><span class="s1">&#39;/api/products/update/{id}&#39;</span><span class="p">,</span> <span class="s2">&quot;info_product&quot;</span><span class="p">);</span>
+
+<span class="c1">// 匹配HTTP GET 或 POST方法</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">map</span><span class="p">(</span><span class="s1">&#39;/repos/store/refs&#39;</span><span class="p">,</span> <span class="s2">&quot;action_product&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">via</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>To access the HTTP method data <code class="code docutils literal"><span class="pre">$app</span></code> needs to be passed into the closure:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Matches if the HTTP method is POST</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;/api/products/add&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(</span><span class="s2">&quot;productID&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<div class="section" id="routes-with-parameters">
+<h3>路由参数（Routes with Parameters）<a class="headerlink" href="#routes-with-parameters" title="永久链接至标题">¶</a></h3>
+<p>如上面的例子中展示的那样在路由中定义参数是非常容易的。 参数名需要放在花括号内。 参数格式亦可使用正则表达式以确保数据一致性。 例子如下：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// 此路由有两个参数每个参数有一格式</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/posts/{year:[0-9]+}/{title:[a-zA-Z\-]+}&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$year</span><span class="p">,</span> <span class="nv">$title</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;&lt;h1&gt;Title: </span><span class="si">$title</span><span class="s2">&lt;/h1&gt;&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">&quot;&lt;h2&gt;Year: </span><span class="si">$year</span><span class="s2">&lt;/h2&gt;&quot;</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="starting-route">
+<h3>起始路由（Starting Route）<a class="headerlink" href="#starting-route" title="永久链接至标题">¶</a></h3>
+<p>通常情况下， 应用一般由 / 路径开始访问， 当然此访问多为 GET方法。 这种情况代码如下：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// 超始路由</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;&lt;h1&gt;Welcome!&lt;/h1&gt;&quot;</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rewrite-rules">
+<h3>重写规则（Rewrite Rules）<a class="headerlink" href="#rewrite-rules" title="永久链接至标题">¶</a></h3>
+<p>下面的规则用来实现apache重写：</p>
+<div class="highlight-apacheconf"><div class="highlight"><pre><span class="nt">&lt;IfModule</span> <span class="s">mod_rewrite.c</span><span class="nt">&gt;</span>
+    <span class="nb">RewriteEngine</span> <span class="k">On</span>
+    <span class="nb">RewriteCond</span> %{REQUEST_FILENAME} !-f
+    <span class="nb">RewriteRule</span> ^((?s).*)$ index.php?_url=/$1 [QSA,L]
+<span class="nt">&lt;/IfModule&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="working-with-responses">
+<h2>处理响应（Working with Responses）<a class="headerlink" href="#working-with-responses" title="永久链接至标题">¶</a></h2>
+<p>开发者可以在路由处理器中设置任务种类的响应：直接输出， 使用模板引擎， 包含视图， 返回json数据等。</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// 直接输出</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/say/hello&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;&lt;h1&gt;Hello! </span><span class="si">$name</span><span class="s2">&lt;/h1&gt;&quot;</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="c1">// 包含其它文件</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/show/results&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">require</span> <span class="s1">&#39;views/results.php&#39;</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="c1">// 返回JSON</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/get/some-json&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">(</span>
+        <span class="k">array</span><span class="p">(</span>
+            <span class="s2">&quot;some&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;important&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;data&quot;</span>
+        <span class="p">)</span>
+    <span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>另外开发者还可以使用 <a class="reference internal" href="response.html"><em>&#8220;response&#8221;</em></a> ， 这样开发者可以更好的处理结果：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/show/data&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// 设置返回头部内容格式</span>
+    <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">response</span><span class="o">-&gt;</span><span class="na">setContentType</span><span class="p">(</span><span class="s1">&#39;text/plain&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">sendHeaders</span><span class="p">();</span>
+
+    <span class="c1">// 输出文件内容</span>
+    <span class="nb">readfile</span><span class="p">(</span><span class="s2">&quot;data.txt&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>或回复response对象：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/show/data&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// 创建Response类实例</span>
+    <span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Http\Response</span><span class="p">();</span>
+
+    <span class="c1">// Set the Content-Type header 设置返回内容的类型</span>
+    <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setContentType</span><span class="p">(</span><span class="s1">&#39;text/plain&#39;</span><span class="p">);</span>
+
+    <span class="c1">// 设置文件内容参数</span>
+    <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setContent</span><span class="p">(</span><span class="nb">file_get_contents</span><span class="p">(</span><span class="s2">&quot;data.txt&quot;</span><span class="p">));</span>
+
+    <span class="c1">// 返回response实例对象</span>
+    <span class="k">return</span> <span class="nv">$response</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="making-redirections">
+<h2>重定向（Making redirections）<a class="headerlink" href="#making-redirections" title="永久链接至标题">¶</a></h2>
+<p>重定向用来在当前的处理中跳转到其它的处理流：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// 此路由重定向到其它的路由</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;/old/welcome&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">response</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="s2">&quot;new/welcome&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">sendHeaders</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;/new/welcome&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s1">&#39;This is the new Welcome&#39;</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="url-generating-urls-for-routes">
+<h2>根据路由生成 URL（Generating URLs for Routes）<a class="headerlink" href="#url-generating-urls-for-routes" title="永久链接至标题">¶</a></h2>
+<p>Phalcon中使用 <a class="reference internal" href="url.html"><em>Phalcon\Mvc\Url</em></a> 来生成其它的基于路由的URL。 开发者可以为路由设置名字， 通过这种方式 &#8220;url&#8221; 服务可以产生相关的路由：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// 设置名为 &quot;show-post&quot;的路由</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/blog/{year}/{title}&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$year</span><span class="p">,</span> <span class="nv">$title</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// ... Show the post here</span>
+
+<span class="p">})</span><span class="o">-&gt;</span><span class="na">setName</span><span class="p">(</span><span class="s1">&#39;show-post&#39;</span><span class="p">);</span>
+
+<span class="c1">// 产生URL</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="k">echo</span> <span class="s1">&#39;&lt;a href=&quot;&#39;</span><span class="p">,</span> <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">url</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span>
+        <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;for&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;show-post&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;php-is-a-great-framework&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;year&#39;</span>  <span class="o">=&gt;</span> <span class="mi">2015</span>
+        <span class="p">)</span>
+    <span class="p">),</span> <span class="s1">&#39;&quot;&gt;Show the post&lt;/a&gt;&#39;</span><span class="p">;</span>
+
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="interacting-with-the-dependency-injector">
+<h2>与依赖注入的交互（Interacting with the Dependency Injector）<a class="headerlink" href="#interacting-with-the-dependency-injector" title="永久链接至标题">¶</a></h2>
+<p>微应用中， <a class="reference internal" href="di.html"><em>Phalcon\Di\FactoryDefault</em></a> 是隐含生成的， 不过开发者可以明确的生成此类的实例以用来管理相关的服务：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Micro</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Di\FactoryDefault</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Config\Adapter\Ini</span> <span class="k">as</span> <span class="nx">IniConfig</span><span class="p">;</span>
+
+<span class="nv">$di</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FactoryDefault</span><span class="p">();</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;config&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">IniConfig</span><span class="p">(</span><span class="s2">&quot;config.ini&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Micro</span><span class="p">();</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">setDI</span><span class="p">(</span><span class="nv">$di</span><span class="p">);</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Read a setting from the config</span>
+    <span class="k">echo</span> <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">config</span><span class="o">-&gt;</span><span class="na">app_name</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;/contact&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">flash</span><span class="o">-&gt;</span><span class="na">success</span><span class="p">(</span><span class="s1">&#39;Yes!, the contact was made!&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>服务容器中可以使用数据类的语法来设置或取服务实例：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Micro</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Db\Adapter\Pdo\Mysql</span> <span class="k">as</span> <span class="nx">MysqlAdapter</span><span class="p">;</span>
+
+<span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Micro</span><span class="p">();</span>
+
+<span class="c1">// 设置数据库服务实例</span>
+<span class="nv">$app</span><span class="p">[</span><span class="s1">&#39;db&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">MysqlAdapter</span><span class="p">(</span>
+        <span class="k">array</span><span class="p">(</span>
+            <span class="s2">&quot;host&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;username&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;secret&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;dbname&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;test_db&quot;</span>
+        <span class="p">)</span>
+    <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/blog&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$news</span> <span class="o">=</span> <span class="nv">$app</span><span class="p">[</span><span class="s1">&#39;db&#39;</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM news&#39;</span><span class="p">);</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$news</span> <span class="k">as</span> <span class="nv">$new</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$new</span><span class="o">-&gt;</span><span class="na">title</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="not-found-not-found-handler">
+<h2>处理Not-Found（Not-Found Handler）<a class="headerlink" href="#not-found-not-found-handler" title="永久链接至标题">¶</a></h2>
+<p>当用户访问未定义的路由时， 微应用会试着执行 &#8220;Not-Found&#8221;处理器。 示例如下：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">notFound</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">response</span><span class="o">-&gt;</span><span class="na">setStatusCode</span><span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="s2">&quot;Not Found&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">sendHeaders</span><span class="p">();</span>
+    <span class="k">echo</span> <span class="s1">&#39;This is crazy, but this page was not found!&#39;</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="models-in-micro-applications">
+<h2>微应用中的模型（Models in Micro Applications）<a class="headerlink" href="#models-in-micro-applications" title="永久链接至标题">¶</a></h2>
+<p>Phalcon中开发者可以直接使用 <a class="reference internal" href="models.html"><em>Models</em></a> ， 开发者只需要一个类自动加载器来加载模型：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$loader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Loader</span><span class="p">();</span>
+
+<span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">registerDirs</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/models/&#39;</span>
+    <span class="p">)</span>
+<span class="p">)</span><span class="o">-&gt;</span><span class="na">register</span><span class="p">();</span>
+
+<span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Mvc\Micro</span><span class="p">();</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/products/find&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+
+    <span class="k">foreach</span> <span class="p">(</span><span class="nx">Products</span><span class="o">::</span><span class="na">find</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$product</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$product</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span> <span class="s1">&#39;&lt;br&gt;&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">});</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="micro-application-events">
+<h2>微应用中的事件（Micro Application Events）<a class="headerlink" href="#micro-application-events" title="永久链接至标题">¶</a></h2>
+<p>当有事件发生时 <a class="reference internal" href="../api/Phalcon_Mvc_Micro.html"><em>Phalcon\Mvc\Micro</em></a> 会发送事件到 <a class="reference internal" href="events.html"><em>EventsManager</em></a> 。 这里使用 &#8220;micro&#8221; 来绑定处理事件。 支持如下事件：</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="61%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">事件名</th>
+<th class="head">如何触发</th>
+<th class="head">是否可中断执行</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>beforeHandleRoute</td>
+<td>处理方法调用之前执行， 此时应用程序还不知道是否存在匹配的路由</td>
+<td>是</td>
+</tr>
+<tr class="row-odd"><td>beforeExecuteRoute</td>
+<td>存在匹配的路由及相关的处理器， 不过处理器还未被执行</td>
+<td>是</td>
+</tr>
+<tr class="row-even"><td>afterExecuteRoute</td>
+<td>处理器执行之后触发</td>
+<td>否</td>
+</tr>
+<tr class="row-odd"><td>beforeNotFound</td>
+<td>NotFound触发之前执行</td>
+<td>是</td>
+</tr>
+<tr class="row-even"><td>afterHandleRoute</td>
+<td>处理器执行之后执行</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<p>下面的例子中， 我们阐述了如何使用事件来控制应用的安全性:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Micro</span><span class="p">,</span>
+    <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">;</span>
+
+<span class="c1">// 创建事件监听器</span>
+<span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventsManager</span><span class="p">();</span>
+
+<span class="c1">// 监听应用的所有事件</span>
+<span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span><span class="s1">&#39;micro&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;beforeExecuteRoute&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$app</span><span class="o">-&gt;</span><span class="na">session</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;auth&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+
+            <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">flashSession</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s2">&quot;The user isn&#39;t authenticated&quot;</span><span class="p">);</span>
+            <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">response</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">sendHeaders</span><span class="p">();</span>
+
+            <span class="c1">// 返回false来中止操作</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Micro</span><span class="p">();</span>
+
+<span class="c1">// 绑定事件管理器到应用</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventsManager</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="middleware-events">
+<h2>中间件事件（Middleware events）<a class="headerlink" href="#middleware-events" title="永久链接至标题">¶</a></h2>
+<p>此外， 应用事件亦可使用 &#8216;before&#8217;, &#8216;after&#8217;, &#8216;finish&#8217;等来绑定：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\Micro</span><span class="p">();</span>
+
+<span class="c1">// 每个路由匹配之前执行</span>
+<span class="c1">// 返回false来中止程序执行</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">before</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$app</span><span class="p">[</span><span class="s1">&#39;session&#39;</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;auth&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="nv">$app</span><span class="p">[</span><span class="s1">&#39;flashSession&#39;</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s2">&quot;The user isn&#39;t authenticated&quot;</span><span class="p">);</span>
+        <span class="nv">$app</span><span class="p">[</span><span class="s1">&#39;response&#39;</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="s2">&quot;/error&quot;</span><span class="p">);</span>
+
+        <span class="c1">// Return false stops the normal execution</span>
+        <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">map</span><span class="p">(</span><span class="s1">&#39;/api/robots&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;status&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;OK&#39;</span>
+    <span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">after</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 路由处理器执行后执行</span>
+    <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$app</span><span class="o">-&gt;</span><span class="na">getReturnedValue</span><span class="p">());</span>
+<span class="p">});</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">finish</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 路由处理器执行后执行</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>开发者可以对同一事件注册多个处理器:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">finish</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 第一个结束处理器</span>
+<span class="p">});</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">finish</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 第二个结束处理器</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>把这些代码放在另外的文件中以达到重用的目的:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Micro\MiddlewareInterface</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * CacheMiddleware</span>
+<span class="sd"> *</span>
+<span class="sd"> * 使用缓存来提升性能</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">CacheMiddleware</span> <span class="k">implements</span> <span class="nx">MiddlewareInterface</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">call</span><span class="p">(</span><span class="nv">$application</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$cache</span>  <span class="o">=</span> <span class="nv">$application</span><span class="p">[</span><span class="s1">&#39;cache&#39;</span><span class="p">];</span>
+        <span class="nv">$router</span> <span class="o">=</span> <span class="nv">$application</span><span class="p">[</span><span class="s1">&#39;router&#39;</span><span class="p">];</span>
+
+        <span class="nv">$key</span>    <span class="o">=</span> <span class="nb">preg_replace</span><span class="p">(</span><span class="s1">&#39;/^[a-zA-Z0-9]/&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">getRewriteUri</span><span class="p">());</span>
+
+        <span class="c1">// 检查请示是否被处理了</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">exists</span><span class="p">(</span><span class="nv">$key</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">echo</span> <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$key</span><span class="p">);</span>
+
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>添加实例到应用:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">before</span><span class="p">(</span><span class="k">new</span> <span class="nx">CacheMiddleware</span><span class="p">());</span>
+</pre></div>
+</div>
+<p>支持如下的中间件事件：</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="55%" />
+<col width="23%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">事件名</th>
+<th class="head">触发</th>
+<th class="head">是否可中止操作?</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>before</td>
+<td>应用请求处理之前执行，常用来控制应用的访问权限</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>after</td>
+<td>请求处理后执行，可以用来准备回复内容</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>finish</td>
+<td>发送回复内容后执行， 可以用来执行清理工作</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="using-controllers-as-handlers">
+<h2>使用控制器处理（Using Controllers as Handlers）<a class="headerlink" href="#using-controllers-as-handlers" title="永久链接至标题">¶</a></h2>
+<p>中型的应用可以使用 <code class="code docutils literal"><span class="pre">Mvc\Micro</span></code> 来组织控制器中的处理器。 开发者也可以使用 <a class="reference internal" href="../api/Phalcon_Mvc_Micro_Collection.html"><em>Phalcon\Mvc\Micro\Collection</em></a> 来对控制器中的处理器进行归组：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Micro\Collection</span> <span class="k">as</span> <span class="nx">MicroCollection</span><span class="p">;</span>
+
+<span class="nv">$posts</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MicroCollection</span><span class="p">();</span>
+
+<span class="c1">// 设置主处理器，这里是控制器的实例</span>
+<span class="nv">$posts</span><span class="o">-&gt;</span><span class="na">setHandler</span><span class="p">(</span><span class="k">new</span> <span class="nx">PostsController</span><span class="p">());</span>
+
+<span class="c1">// 对所有路由设置前缀</span>
+<span class="nv">$posts</span><span class="o">-&gt;</span><span class="na">setPrefix</span><span class="p">(</span><span class="s1">&#39;/posts&#39;</span><span class="p">);</span>
+
+<span class="c1">//  使用PostsController中的index action</span>
+<span class="nv">$posts</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span><span class="p">);</span>
+
+<span class="c1">// 使用PostController中的show action</span>
+<span class="nv">$posts</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/show/{slug}&#39;</span><span class="p">,</span> <span class="s1">&#39;show&#39;</span><span class="p">);</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">mount</span><span class="p">(</span><span class="nv">$posts</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>PostsController形如下：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PostsController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">show</span><span class="p">(</span><span class="nv">$slug</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>上面的例子中，我们直接对控制器进行了实例化， 使用集合时Phalcon会提供了迟加载的能力， 这样程序只有在匹配路由时才加载控制器：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$posts</span><span class="o">-&gt;</span><span class="na">setHandler</span><span class="p">(</span><span class="s1">&#39;PostsController&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+<span class="nv">$posts</span><span class="o">-&gt;</span><span class="na">setHandler</span><span class="p">(</span><span class="s1">&#39;Blog\Controllers\PostsController&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="returning-responses">
+<h2>返回响应（Returning Responses）<a class="headerlink" href="#returning-responses" title="永久链接至标题">¶</a></h2>
+<p>处理器可能会返回原生的 <a class="reference internal" href="response.html"><em>Phalcon\Http\Response</em></a> 实例或实现了相关接口的组件。 当返回Response对象时， 应用会自动的把处理结果返回到客户端。</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Micro</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Http\Response</span><span class="p">;</span>
+
+<span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Micro</span><span class="p">();</span>
+
+<span class="c1">// 返回Response实例</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/welcome/index&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+
+    <span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">();</span>
+
+    <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setStatusCode</span><span class="p">(</span><span class="mi">401</span><span class="p">,</span> <span class="s2">&quot;Unauthorized&quot;</span><span class="p">);</span>
+
+    <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setContent</span><span class="p">(</span><span class="s2">&quot;Access is not authorized&quot;</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nv">$response</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rendering-views">
+<h2>渲染视图（Rendering Views）<a class="headerlink" href="#rendering-views" title="永久链接至标题">¶</a></h2>
+<p><a class="reference internal" href="views.html"><em>Phalcon\Mvc\View\Simple</em></a> 可用来渲染视图， 示例如下：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\Micro</span><span class="p">();</span>
+
+<span class="nv">$app</span><span class="p">[</span><span class="s1">&#39;view&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nv">$view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Mvc\View\Simple</span><span class="p">();</span>
+    <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s1">&#39;app/views/&#39;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nv">$view</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// 返回渲染过的视图</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/products/show&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// 渲染视图时传递参数</span>
+    <span class="k">echo</span> <span class="nv">$app</span><span class="p">[</span><span class="s1">&#39;view&#39;</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;products/show&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;id&#39;</span>   <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Artichoke&#39;</span>
+    <span class="p">));</span>
+
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Please note that this code block uses <a class="reference internal" href="../api/Phalcon_Mvc_View_Simple.html"><em>Phalcon\Mvc\View\Simple</em></a> which uses relative paths instead of controllers and actions.
+If you would like to use <a class="reference internal" href="../api/Phalcon_Mvc_View_Simple.html"><em>Phalcon\Mvc\View\Simple</em></a> instead, you will need to change the parameters of the <code class="code docutils literal"><span class="pre">render()</span></code> method:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\Micro</span><span class="p">();</span>
+
+<span class="nv">$app</span><span class="p">[</span><span class="s1">&#39;view&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nv">$view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Mvc\View</span><span class="p">();</span>
+    <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s1">&#39;app/views/&#39;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nv">$view</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// Return a rendered view</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/products/show&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// Render app/views/products/show.phtml passing some variables</span>
+    <span class="k">echo</span> <span class="nv">$app</span><span class="p">[</span><span class="s1">&#39;view&#39;</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;products&#39;</span><span class="p">,</span> <span class="s1">&#39;show&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;id&#39;</span>   <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Artichoke&#39;</span>
+    <span class="p">));</span>
+
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="error-handling">
+<h2>异常处理（Error Handling）<a class="headerlink" href="#error-handling" title="永久链接至标题">¶</a></h2>
+<p>A proper response can be generated if an exception is raised in a micro handler:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\Micro</span><span class="p">();</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Exception</span><span class="p">(</span><span class="s2">&quot;An error&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span>
+    <span class="k">function</span> <span class="p">(</span><span class="nv">$exception</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;An error has occurred&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>If the handler returns &#8220;false&#8221; the exception is stopped.</p>
+</div>
+<div class="section" id="related-sources">
+<h2>相关资源（Related Sources）<a class="headerlink" href="#related-sources" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="tutorial-rest.html"><em>Creating a Simple REST API</em></a> 例子中讲解了如何使用微应用来创建Restfull服务：</li>
+<li><a class="reference external" href="http://store.phalconphp.com">Stickers Store</a> 也是一个简单的使用微应用的例子 [<a class="reference external" href="https://github.com/phalcon/store">Github</a>].</li>
+</ul>
+</div>
+</div>
+
+
+			</div>
+		  </div>
+		</div>
+	</div>
+  </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="namespaces.html" title="使用命名空间（Working with Namespaces）"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="dispatching.html" title="调度控制器（Dispatching Controllers）"
+             >上一页</a> |</li> 
+      </ul>
+    </div>
+
+<footer class="footer">
+	<div class="container">
+      <div class="row">
+          <div class="col-xs-6 col-sm-3">
+              <h4>Download</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/releases">安裝 Phalcon7</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+              <h4>Community</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7">GitHub</a></li>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/issues">Issue Tracker</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-2">
+              <h4>About</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon/wiki/%E6%8D%90%E8%B5%A0%EF%BC%88Donation%EF%BC%89">Donate</a></li>
+              </ul>
+          </div>
+          <div id="license-spaccer" class="visible-xs"></div>
+          <div id="license-wrapper" class="col-xs-12 col-sm-4">
+              <p class="license">
+
+                  Phalcon7 Framework is released under the <a href="https://github.com/dreamsxin/cphalcon7/blob/master/docs/LICENSE.md">new BSD license</a>.<br>
+                  Except where otherwise noted, content on this site is licensed under the
+                  <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a>
+              </p>
+              <div class="design">
+                  <span>Designed by:</span>
+
+                  <a href="http://www.fog-city.net/" class="fogcity" target="_blank" title="Fog City Software"><span>Fog City Software</span></a>
+              </div>
+          </div>
+      </div>
+	</div>
+</footer>
+</body>
+</html>

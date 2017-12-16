@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>教程：让我们通过例子来学习（Tutorial: Let’s learn by example） &mdash; Phalcon7 1.2.1 文档</title>
+    <meta name="keywords" content="php, phalcon, phalcon7, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/phalcon.css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="../static/jquery.min.js"></script>
+    <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
+    <link rel="next" title="教程：INVO 简介（Tutorial: Introducing INVO）" href="tutorial-invo.html" />
+    <link rel="prev" title="Phalcon7 开发工具（Phalcon7 Developer Tools）" href="tools.html" /> 
+</head>
+<body>
+
+<header class="page-header">
+<nav class="navbar" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+				<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+		</div>
+
+		<div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+			<ul class="nav navbar-nav main-menu">
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7" class="header-nav-link">GitHub</a></li>
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7/releases" class="header-nav-link">Download</a></li>
+			  <li class="first"><a href="/api/" class="header-nav-link">API</a></li>
+			  <li class="first"><a href="/internals/" class="header-nav-link">内核开发手册</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="tutorial-invo.html" title="教程：INVO 简介（Tutorial: Introducing INVO）"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="tools.html" title="Phalcon7 开发工具（Phalcon7 Developer Tools）"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://myleftstudio.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon7 1.2.1 文档</a> &raquo;</li> 
+      </ul>
+    </div>  
+</div>
+
+<div class="container-fluid">
+	<div class="col-md-3 primary-box">
+		<div class="panel panel-default">
+			<div class="panel-heading"><a href="../index.html">內容目录</a></div>
+			<div class="panel-body"><ul>
+<li><a class="reference internal" href="#">教程：让我们通过例子来学习（Tutorial: Let&#8217;s learn by example）</a><ul>
+<li><a class="reference internal" href="#checking-your-installation">确认安装（Checking your installation）</a></li>
+<li><a class="reference internal" href="#creating-a-project">创建项目（Creating a project）</a><ul>
+<li><a class="reference internal" href="#file-structure">文件结构（File structure）</a></li>
+<li><a class="reference internal" href="#url-beautiful-urls">优美的 URL（Beautiful URLs）</a></li>
+<li><a class="reference internal" href="#bootstrap">引导程序（Bootstrap）</a></li>
+<li><a class="reference internal" href="#autoloaders">自动加载（Autoloaders）</a></li>
+<li><a class="reference internal" href="#dependency-management">依赖管理（Dependency Management）</a></li>
+<li><a class="reference internal" href="#creating-a-controller">创建控制器（Creating a Controller）</a></li>
+<li><a class="reference internal" href="#sending-output-to-a-view">输出到视图（Sending output to a view）</a></li>
+<li><a class="reference internal" href="#designing-a-sign-up-form">设计注册表单（Designing a sign up form）</a></li>
+<li><a class="reference internal" href="#creating-a-model">创建模型（Creating a Model）</a></li>
+<li><a class="reference internal" href="#setting-a-database-connection">设置数据库连接（Setting a Database Connection）</a></li>
+<li><a class="reference internal" href="#storing-data-using-models">使用模型保存数据（Storing data using models）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#conclusion">结束语（Conclusion）</a></li>
+</ul>
+</li>
+</ul>
+</div>
+			<div class="panel-heading">上一个主题</div>
+            <div class="panel-body"><p class="topless"><a href="tools.html" title="上一章">&lt; Phalcon7 开发工具（Phalcon7 Developer Tools）</a></p></div>
+			<div class="panel-heading">下一个主题</div>
+            <div class="panel-body"><p class="topless"><a href="tutorial-invo.html" title="下一章">教程：INVO 简介（Tutorial: Introducing INVO） &gt;</a></p></div>
+		</div>
+	</div>
+  <div class="col-md-9 second-box" valign="top">
+	<div class="document">
+		<div class="documentwrapper">
+		  <div class="bodywrapper">
+			<div class="body" >
+			  
+  <div class="section" id="tutorial-let-s-learn-by-example">
+<h1>教程：让我们通过例子来学习（Tutorial: Let&#8217;s learn by example）<a class="headerlink" href="#tutorial-let-s-learn-by-example" title="永久链接至标题">¶</a></h1>
+<p>通过这第一个教程，我们将引导您从基础完成创建简单的带有注册表单的应用。
+我们也将解释框架行为的基本方面。如果您对Phalcon的自动代码生成工具有兴趣，
+您可以查看 <a class="reference internal" href="tools.html"><em>developer tools</em></a>。</p>
+<div class="section" id="checking-your-installation">
+<h2>确认安装（Checking your installation）<a class="headerlink" href="#checking-your-installation" title="永久链接至标题">¶</a></h2>
+<p>我们假设你已经安装了Phalcon。请检查你的phpinfo()输出了一个&#8221;Phalcon&#8221;部分引用或者执行以下代码片段:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span> <span class="nb">print_r</span><span class="p">(</span><span class="nb">get_loaded_extensions</span><span class="p">());</span> <span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+<p>Phalcon 拓展应该作为输出的一部分出现:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">Array</span>
+<span class="x">(</span>
+<span class="x">    [0] =&gt; Core</span>
+<span class="x">    [1] =&gt; libxml</span>
+<span class="x">    [2] =&gt; filter</span>
+<span class="x">    [3] =&gt; SPL</span>
+<span class="x">    [4] =&gt; standard</span>
+<span class="x">    [5] =&gt; phalcon</span>
+<span class="x">    [6] =&gt; pdo_mysql</span>
+<span class="x">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="creating-a-project">
+<h2>创建项目（Creating a project）<a class="headerlink" href="#creating-a-project" title="永久链接至标题">¶</a></h2>
+<p>使用本指南的最好方法就是依次按照每一步来做。</p>
+<div class="section" id="file-structure">
+<h3>文件结构（File structure）<a class="headerlink" href="#file-structure" title="永久链接至标题">¶</a></h3>
+<p>Phalcon不会强制要求应用程序的开发遵循特定的文件结构。因为它是松散耦合的，你可以实现Phalcon驱动的应用程序，以及使用对你来说最舒服的文件结构。</p>
+<p>本教程的目的以此为起点，我们建议使用以下结构：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">tutorial/</span>
+<span class="x">  app/</span>
+<span class="x">    controllers/</span>
+<span class="x">    models/</span>
+<span class="x">    views/</span>
+<span class="x">  public/</span>
+<span class="x">    css/</span>
+<span class="x">    img/</span>
+<span class="x">    js/</span>
+</pre></div>
+</div>
+<p>需要注意的是，你不需要任何有关Phalcon的 &#8220;library&#8221; 目录。该框架已经被加载到内存中，供您使用。</p>
+</div>
+<div class="section" id="url-beautiful-urls">
+<h3>优美的 URL（Beautiful URLs）<a class="headerlink" href="#url-beautiful-urls" title="永久链接至标题">¶</a></h3>
+<p>在本教程中，我们将使用相当（友好）URL。友好的URL不但利于SEO而且便于用户记忆。Phalcon支持一些最流行的Web服务器提供重写模块。让你的应用程序的URL友好不是必要的，没有它们你可以同样轻松地开发。</p>
+<p>在这个例子中，我们将使用Apache的重写模块。让我们在 <cite>/tutorial/.htaccess</cite> 文件中创建几个重写规则:</p>
+<div class="highlight-apacheconf"><div class="highlight"><pre><span class="c">#/tutorial/.htaccess</span>
+<span class="nt">&lt;IfModule</span> <span class="s">mod_rewrite.c</span><span class="nt">&gt;</span>
+    <span class="nb">RewriteEngine</span> <span class="k">on</span>
+    <span class="nb">RewriteRule</span>  ^$ public/    [L]
+    <span class="nb">RewriteRule</span>  ((?s).*) public/$1 [L]
+<span class="nt">&lt;/IfModule&gt;</span>
+</pre></div>
+</div>
+<p>对该项目的所有请求都将被重定向到为public/文档根目录。此步骤可确保内部项目的文件夹仍然对公共访客隐藏，从而消除了一些安全威胁。</p>
+<p>第二组规则将检查是否存在所请求的文件，如果存在所要请求的文件，就不需要Web服务器模块来重写：</p>
+<div class="highlight-apacheconf"><div class="highlight"><pre><span class="c">#/tutorial/public/.htaccess</span>
+<span class="nt">&lt;IfModule</span> <span class="s">mod_rewrite.c</span><span class="nt">&gt;</span>
+    <span class="nb">RewriteEngine</span> <span class="k">On</span>
+    <span class="nb">RewriteCond</span> %{REQUEST_FILENAME} !-d
+    <span class="nb">RewriteCond</span> %{REQUEST_FILENAME} !-f
+    <span class="nb">RewriteRule</span> ^((?s).*)$ index.php?_url=/$1 [QSA,L]
+<span class="nt">&lt;/IfModule&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="bootstrap">
+<h3>引导程序（Bootstrap）<a class="headerlink" href="#bootstrap" title="永久链接至标题">¶</a></h3>
+<p>你需要创建的第一个文件是引导文件。这个文件很重要，因为它作为你的应用程序的基础，用它来控制应用程序的各个方面。
+在这个文件中，你可以实现组件的初始化和应用程序的行为。</p>
+<p>这个引导文件 tutorial/public/index.php 文件应该看起来像:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">try</span> <span class="p">{</span>
+
+    <span class="c1">// Register an autoloader</span>
+    <span class="nv">$loader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Loader</span><span class="p">();</span>
+    <span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">registerDirs</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;../app/controllers/&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;../app/models/&#39;</span>
+    <span class="p">))</span><span class="o">-&gt;</span><span class="na">register</span><span class="p">();</span>
+
+    <span class="c1">// Create a DI</span>
+    <span class="nv">$di</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Di\FactoryDefault</span><span class="p">();</span>
+
+    <span class="c1">// Setup the view component</span>
+    <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;view&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\View</span><span class="p">();</span>
+        <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s1">&#39;../app/views/&#39;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nv">$view</span><span class="p">;</span>
+    <span class="p">});</span>
+
+    <span class="c1">// Setup a base URI so that all generated URIs include the &quot;tutorial&quot; folder</span>
+    <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$url</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\Url</span><span class="p">();</span>
+        <span class="nv">$url</span><span class="o">-&gt;</span><span class="na">setBaseUri</span><span class="p">(</span><span class="s1">&#39;/tutorial/&#39;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nv">$url</span><span class="p">;</span>
+    <span class="p">});</span>
+
+    <span class="c1">// Handle the request</span>
+    <span class="nv">$application</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\Application</span><span class="p">();</span>
+
+    <span class="k">echo</span> <span class="nv">$application</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">();</span>
+
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+     <span class="k">echo</span> <span class="s2">&quot;Exception: &quot;</span><span class="p">,</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="autoloaders">
+<h3>自动加载（Autoloaders）<a class="headerlink" href="#autoloaders" title="永久链接至标题">¶</a></h3>
+<p>我们可以看出，引导程序的第一部分是注册一个自动加载器。在这个应用程序里，它将用于加载控制器和模型类。例如，我们可以为控制器注册一个或多个目录来增加应用程序的灵活性的。在我们的例子中，我们使用了 <a class="reference internal" href="../api/Phalcon_Loader.html"><em>Phalcon\Loader</em></a> 组件。</p>
+<p>有了它，我们可以加载使用各种策略类，但在这个例子中，我们选择了在预定义的目录中查找类：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// ...</span>
+
+<span class="nv">$loader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Loader</span><span class="p">();</span>
+<span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">registerDirs</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;../app/controllers/&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;../app/models/&#39;</span>
+    <span class="p">)</span>
+<span class="p">)</span><span class="o">-&gt;</span><span class="na">register</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dependency-management">
+<h3>依赖管理（Dependency Management）<a class="headerlink" href="#dependency-management" title="永久链接至标题">¶</a></h3>
+<p>在使用Phalcon时必须理解的一个非常重要的概念是 <a class="reference internal" href="di.html"><em>依赖注入容器(dependency injection container)</em></a>. 这听起来复杂,但实际上非常简单实用。</p>
+<p>服务容器是一个全局存储的将要被使用的应用程序功能包。每次框架需要的一个组件时，会请求这个使用协定好名称的服务容器。因为Phalcon是一个高度解耦的框架， <a class="reference internal" href="../api/Phalcon_Di.html"><em>Phalcon\Di</em></a> 作为黏合剂，促使不同组件的集成，以一个透明的方式实现他们一起进行工作。</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// ...</span>
+
+<span class="c1">// Create a DI</span>
+<span class="nv">$di</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Db\Adapter\Pdo\Mysql</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../api/Phalcon_Di_FactoryDefault.html"><em>Phalcon\Di\FactoryDefault</em></a> 是 <a class="reference internal" href="../api/Phalcon_Di.html"><em>Phalcon\Di</em></a> 的一个变体。为了让事情变得更容易，它已注册了Phalcon的大多数组件。
+因此，我们不需要一个一个注册这些组件。在以后更换工厂服务的时候也不会有什么问题。</p>
+<p>在接下来的部分，我们注册了“视图(view)”服务，指示框架将去指定的目录寻找视图文件。由于视图并非PHP类，它们不能被自动加载器加载。</p>
+<p>服务可以通过多种方式进行登记，但在我们的教程中，我们将使用一个匿名函数 <a class="reference external" href="http://php.net/manual/zh/functions.anonymous.php">anonymous function</a>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// ...</span>
+
+<span class="c1">// Setup the view component</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;view&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nv">$view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\View</span><span class="p">();</span>
+    <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s1">&#39;../app/views/&#39;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nv">$view</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>接下来，我们注册一个基础URI，这样通过Phalcon生成包括我们之前设置的“tutorial”文件夹在内的所有的URI。
+我们使用类  <a class="reference internal" href="../api/Phalcon_Tag.html"><em>Phalcon\Tag</em></a>  生成超链接，这将在本教程后续部分很重要。</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// ...</span>
+
+<span class="c1">// Setup a base URI so that all generated URIs include the &quot;tutorial&quot; folder</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nv">$url</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\Url</span><span class="p">();</span>
+    <span class="nv">$url</span><span class="o">-&gt;</span><span class="na">setBaseUri</span><span class="p">(</span><span class="s1">&#39;/tutorial/&#39;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nv">$url</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>在这个文件的最后部分，我们发现 <a class="reference internal" href="../api/Phalcon_Mvc_Application.html"><em>Phalcon\Mvc\Application</em></a>。其目的是初始化请求环境，并接收路由到来的请求，接着分发任何发现的动作；收集所有的响应，并在过程完成后返回它们。</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// ...</span>
+
+<span class="nv">$application</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\Application</span><span class="p">(</span><span class="nv">$di</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="nv">$application</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>正如你所看到的，引导文件很短，我们并不需要引入任何其他文件。在不到30行的代码里，我们已经为自己设定一个灵活的MVC应用程序。</p>
+</div>
+<div class="section" id="creating-a-controller">
+<h3>创建控制器（Creating a Controller）<a class="headerlink" href="#creating-a-controller" title="永久链接至标题">¶</a></h3>
+<p>默认情况下Phalcon会寻找一个名为“Index”的控制器。当请求中没有控制器或动作时，则使用“Index”控制器作为起点。这个“Index”控制器 (app/controllers/IndexController.php) 看起来类似：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">IndexController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;&lt;h1&gt;Hello!&lt;/h1&gt;&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>该控制器类必须有“Controller”后缀，且控制器动作必须有“Action”后缀。如果你从浏览器访问应用程序，你应该看到这样的事情：</p>
+<img class="align-center" src="../static/img/tutorial-1.png"><p>恭喜, 让Phalcon带你飞!</p>
+</div>
+<div class="section" id="sending-output-to-a-view">
+<h3>输出到视图（Sending output to a view）<a class="headerlink" href="#sending-output-to-a-view" title="永久链接至标题">¶</a></h3>
+<p>从控制器发送输出到屏幕上有时是必要的，但是在MVC社区，大多数纯粹主义者证明这样做不可取。一切必须传递给视图，视图负责在屏幕上输出数据。Phalcon将在最后执行的控制器的同名目录中，查找最后执行的动作的同名的视图。在我们的例子 (app/views/index/index.phtml) ：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="s2">&quot;&lt;h1&gt;Hello!&lt;/h1&gt;&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>我们的控制器 (app/controllers/IndexController.php) 现在定义了一个空的动作：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">IndexController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>浏览器输出应该保持不变。当这个动作已经执行结束 <a class="reference internal" href="../api/Phalcon_Mvc_View.html"><em>Phalcon\Mvc\View</em></a> 静态组件会自动创建。
+学习更多关于 <a class="reference internal" href="views.html"><em>视图使用教程</em></a> 。</p>
+</div>
+<div class="section" id="designing-a-sign-up-form">
+<h3>设计注册表单（Designing a sign up form）<a class="headerlink" href="#designing-a-sign-up-form" title="永久链接至标题">¶</a></h3>
+<p>现在我们将改变 <cite>index.phtml视图文件</cite>，添加一个链接到一个名为“signup”的新控制器。我们的目标是在应用程序中允许用户注册。</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">echo</span> <span class="s2">&quot;&lt;h1&gt;Hello!&lt;/h1&gt;&quot;</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">linkTo</span><span class="p">(</span><span class="s2">&quot;signup&quot;</span><span class="p">,</span> <span class="s2">&quot;Sign Up Here!&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>生成的HTML代码显示一个锚 (&#8220;a&#8221;) HTML标签链接到一个新的控制器：</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hello!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/tutorial/signup&quot;</span><span class="p">&gt;</span>Sign Up Here!<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>我们使用类 <a class="reference internal" href="../api/Phalcon_Tag.html"><em>Phalcon\Tag</em></a> 去生成标记。 这是一个让我们构建HTML标记的实用类。 关于生成HTML更详细的文章可以查看 <a class="reference internal" href="tags.html"><em>视图助手</em></a></p>
+<img class="align-center" src="../static/img/tutorial-2.png"><p>这是一个注册控制器（app/controllers/SignupController.php）：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">SignupController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>这个空index动作整洁的传递了表单定义给一个视图（app/views/signup/index.phtml）：</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Sign up using this form<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+
+<span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">form</span><span class="p">(</span><span class="s2">&quot;signup/register&quot;</span><span class="p">);</span> <span class="cp">?&gt;</span>
+
+ <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;name&quot;</span><span class="p">&gt;</span>Name<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">textField</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span> <span class="cp">?&gt;</span>
+ <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+ <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;email&quot;</span><span class="p">&gt;</span>E-Mail<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">textField</span><span class="p">(</span><span class="s2">&quot;email&quot;</span><span class="p">)</span> <span class="cp">?&gt;</span>
+ <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+ <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">submitButton</span><span class="p">(</span><span class="s2">&quot;Register&quot;</span><span class="p">)</span> <span class="cp">?&gt;</span>
+ <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>在浏览器中查看表单将显示类似的页面：</p>
+<img class="align-center" src="../static/img/tutorial-3.png"><p><a class="reference internal" href="../api/Phalcon_Tag.html"><em>Phalcon\Tag</em></a> 还提供了有用的方法来构建表单元素。</p>
+<p><code class="code docutils literal"><span class="pre">Phalcon\Tag::form()</span></code> 方法第一个参数，它是一个相对`uri`到这个应用的一个控制器/动作。</p>
+<p>通过单击“Send”按钮，您将注意到框架抛出了一个异常，这表明我们是错过了在控制器中注册“register”动作。我们的 <cite>public/index.php</cite> 文件抛出这个异常：</p>
+<blockquote>
+<div>Exception: Action &#8220;register&#8221; was not found on handler &#8220;signup&#8221;</div></blockquote>
+<p>实现该方法将移除异常：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">SignupController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">registerAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>如果你再点击“Send”按钮,您将看到一个空白页。提供的名称和电子邮件的输入的这个用户应该被存储在数据库中。根据MVC的指导方针,必须通过数据库交互模型，确保整洁的面向对象的代码。</p>
+</div>
+<div class="section" id="creating-a-model">
+<h3>创建模型（Creating a Model）<a class="headerlink" href="#creating-a-model" title="永久链接至标题">¶</a></h3>
+<p>Phalcon带来的第一个完全用C语言编写的PHP ORM。它简化了开发， 而不是增加了开发的复杂性。</p>
+<p>创建我们的第一个模型之前，我们需要在Phalcon以外创建一个数据库表。一个用来存储注册用户的简单表，可以这样定义：</p>
+<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">`</span><span class="n">users</span><span class="o">`</span> <span class="p">(</span>
+  <span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">name</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">70</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="o">`</span><span class="n">email</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">70</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+  <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>模型应该位于 app/models 目录 (app/models/Users.php). 这个模型对应“users”表:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Users</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$id</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nv">$name</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nv">$email</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setting-a-database-connection">
+<h3>设置数据库连接（Setting a Database Connection）<a class="headerlink" href="#setting-a-database-connection" title="永久链接至标题">¶</a></h3>
+<p>为了能够使用一个数据库连接，然后通过我们的模型访问数据，我们需要在我们的引导过程指定它。数据库连接是我们的应用程序可以使用的数个组件中的另一个服务：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Loader</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Di\FactoryDefault</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\View</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Application</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Url</span> <span class="k">as</span> <span class="nx">UrlProvider</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Db\Adapter\Pdo\Mysql</span> <span class="k">as</span> <span class="nx">DbAdapter</span><span class="p">;</span>
+
+<span class="k">try</span> <span class="p">{</span>
+
+    <span class="c1">// Register an autoloader</span>
+    <span class="nv">$loader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Loader</span><span class="p">();</span>
+    <span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">registerDirs</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;../app/controllers/&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;../app/models/&#39;</span>
+    <span class="p">))</span><span class="o">-&gt;</span><span class="na">register</span><span class="p">();</span>
+
+    <span class="c1">// Create a DI</span>
+    <span class="nv">$di</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FactoryDefault</span><span class="p">();</span>
+
+    <span class="c1">// Setup the database service</span>
+    <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;db&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">DbAdapter</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s2">&quot;host&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;username&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;password&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;secret&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;dbname&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;test_db&quot;</span>
+        <span class="p">));</span>
+    <span class="p">});</span>
+
+    <span class="c1">// Setup the view component</span>
+    <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;view&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">View</span><span class="p">();</span>
+        <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="s1">&#39;../app/views/&#39;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nv">$view</span><span class="p">;</span>
+    <span class="p">});</span>
+
+    <span class="c1">// Setup a base URI so that all generated URIs include the &quot;tutorial&quot; folder</span>
+    <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$url</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UrlProvider</span><span class="p">();</span>
+        <span class="nv">$url</span><span class="o">-&gt;</span><span class="na">setBaseUri</span><span class="p">(</span><span class="s1">&#39;/tutorial/&#39;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nv">$url</span><span class="p">;</span>
+    <span class="p">});</span>
+
+    <span class="c1">// Handle the request</span>
+    <span class="nv">$application</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Application</span><span class="p">(</span><span class="nv">$di</span><span class="p">);</span>
+
+    <span class="k">echo</span> <span class="nv">$application</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">();</span>
+
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+     <span class="k">echo</span> <span class="s2">&quot;Exception: &quot;</span><span class="p">,</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>使用正确的数据库参数，我们的模型已经准备和应用程序的其余部分工作。</p>
+</div>
+<div class="section" id="storing-data-using-models">
+<h3>使用模型保存数据（Storing data using models）<a class="headerlink" href="#storing-data-using-models" title="永久链接至标题">¶</a></h3>
+<p>下一个步骤是从表单接收数据存储在表中。</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">SignupController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">registerAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+        <span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Users</span><span class="p">();</span>
+
+        <span class="c1">// Store and check for errors</span>
+        <span class="nv">$success</span> <span class="o">=</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">getPost</span><span class="p">(),</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">));</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$success</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">echo</span> <span class="s2">&quot;Thanks for registering!&quot;</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">echo</span> <span class="s2">&quot;Sorry, the following problems were generated: &quot;</span><span class="p">;</span>
+            <span class="k">foreach</span> <span class="p">(</span><span class="nv">$user</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">echo</span> <span class="nv">$message</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">(),</span> <span class="s2">&quot;&lt;br/&gt;&quot;</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">disable</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>然后我们实例化用户类，它对应于一个用户记录。类的公共属性映射到用户表中的记录的字段。在新记录中设置相应的值并调用save()将在数据库中存储的数据记录。save()方法返回一个布尔值，表示存储的数据是否成功。</p>
+<p>ORM自动转义输入以防止SQL注入，所以我们只需要将请求传递给save()方法。</p>
+<p>附加的自动验证会验证字段定义为not null(必需)。如果我们不输入任何必需的注册表单中的字段，我们的屏幕将会看起来像这样：</p>
+<img class="align-center" src="../static/img/tutorial-4.png"></div>
+</div>
+<div class="section" id="conclusion">
+<h2>结束语（Conclusion）<a class="headerlink" href="#conclusion" title="永久链接至标题">¶</a></h2>
+<p>这是一个非常简单的教程，正如你所看到的，使用Phalcon很容易开始构建应用程序。Phalcon是一个在你的web服务器上没有干扰、易于开发、特性优良的扩展。我们邀请你继续阅读手册，这样你就可以发现Phalcon提供的附加功能!</p>
+</div>
+</div>
+
+
+			</div>
+		  </div>
+		</div>
+	</div>
+  </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="tutorial-invo.html" title="教程：INVO 简介（Tutorial: Introducing INVO）"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="tools.html" title="Phalcon7 开发工具（Phalcon7 Developer Tools）"
+             >上一页</a> |</li> 
+      </ul>
+    </div>
+
+<footer class="footer">
+	<div class="container">
+      <div class="row">
+          <div class="col-xs-6 col-sm-3">
+              <h4>Download</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/releases">安裝 Phalcon7</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+              <h4>Community</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7">GitHub</a></li>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/issues">Issue Tracker</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-2">
+              <h4>About</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon/wiki/%E6%8D%90%E8%B5%A0%EF%BC%88Donation%EF%BC%89">Donate</a></li>
+              </ul>
+          </div>
+          <div id="license-spaccer" class="visible-xs"></div>
+          <div id="license-wrapper" class="col-xs-12 col-sm-4">
+              <p class="license">
+
+                  Phalcon7 Framework is released under the <a href="https://github.com/dreamsxin/cphalcon7/blob/master/docs/LICENSE.md">new BSD license</a>.<br>
+                  Except where otherwise noted, content on this site is licensed under the
+                  <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a>
+              </p>
+              <div class="design">
+                  <span>Designed by:</span>
+
+                  <a href="http://www.fog-city.net/" class="fogcity" target="_blank" title="Fog City Software"><span>Fog City Software</span></a>
+              </div>
+          </div>
+      </div>
+	</div>
+</footer>
+</body>
+</html>

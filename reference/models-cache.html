@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>缓存对象关系映射（Caching in the ORM） &mdash; Phalcon7 1.2.1 文档</title>
+    <meta name="keywords" content="php, phalcon, phalcon7, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/phalcon.css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="../static/jquery.min.js"></script>
+    <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
+    <link rel="next" title="使用视图（Using Views）" href="views.html" />
+    <link rel="prev" title="Phalcon 查询语言（Phalcon Query Language (PHQL)）" href="phql.html" /> 
+</head>
+<body>
+
+<header class="page-header">
+<nav class="navbar" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+				<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+		</div>
+
+		<div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+			<ul class="nav navbar-nav main-menu">
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7" class="header-nav-link">GitHub</a></li>
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7/releases" class="header-nav-link">Download</a></li>
+			  <li class="first"><a href="/api/" class="header-nav-link">API</a></li>
+			  <li class="first"><a href="/internals/" class="header-nav-link">内核开发手册</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="views.html" title="使用视图（Using Views）"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="phql.html" title="Phalcon 查询语言（Phalcon Query Language (PHQL)）"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://myleftstudio.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon7 1.2.1 文档</a> &raquo;</li> 
+      </ul>
+    </div>  
+</div>
+
+<div class="container-fluid">
+	<div class="col-md-3 primary-box">
+		<div class="panel panel-default">
+			<div class="panel-heading"><a href="../index.html">內容目录</a></div>
+			<div class="panel-body"><ul>
+<li><a class="reference internal" href="#">缓存对象关系映射（Caching in the ORM）</a><ul>
+<li><a class="reference internal" href="#caching-resultsets">缓存结果集（Caching Resultsets）</a></li>
+<li><a class="reference internal" href="#find-findfirst-overriding-find-findfirst">重写 find 与 findFirst 方法（Overriding find/findFirst）</a></li>
+<li><a class="reference internal" href="#forcing-cache">强制缓存（Forcing Cache）</a></li>
+<li><a class="reference internal" href="#phql-caching-phql-queries">缓存 PHQL 查询（Caching PHQL Queries）</a></li>
+<li><a class="reference internal" href="#reusable-related-records">可重用的相关记录（Reusable Related Records）</a></li>
+<li><a class="reference internal" href="#caching-related-records">缓存相关记录（Caching Related Records）</a></li>
+<li><a class="reference internal" href="#caching-related-records-recursively">递归缓存相关记录（Caching Related Records Recursively）</a></li>
+<li><a class="reference internal" href="#caching-based-on-conditions">基于条件的缓存（Caching based on Conditions）</a></li>
+<li><a class="reference internal" href="#phql-caching-of-phql-planning">缓存 PHQL 查询计划（Caching of PHQL planning）</a></li>
+</ul>
+</li>
+</ul>
+</div>
+			<div class="panel-heading">上一个主题</div>
+            <div class="panel-body"><p class="topless"><a href="phql.html" title="上一章">&lt; Phalcon 查询语言（Phalcon Query Language (PHQL)）</a></p></div>
+			<div class="panel-heading">下一个主题</div>
+            <div class="panel-body"><p class="topless"><a href="views.html" title="下一章">使用视图（Using Views） &gt;</a></p></div>
+		</div>
+	</div>
+  <div class="col-md-9 second-box" valign="top">
+	<div class="document">
+		<div class="documentwrapper">
+		  <div class="bodywrapper">
+			<div class="body" >
+			  
+  <div class="section" id="caching-in-the-orm">
+<h1>缓存对象关系映射（Caching in the ORM）<a class="headerlink" href="#caching-in-the-orm" title="永久链接至标题">¶</a></h1>
+<p>现实中的每个应用都不同，一些应用的模型数据经常改变而另一些模型的数据几乎不同。访问数据库在很多时候对我们应用的来说
+是个瓶颈。这是由于我们每次访问应用时都会和数据库数据通信，和数据库进行通信的代价是很大的。因此在必要时我们可以通过增加
+缓存层来获取更高的性能。
+本章内容的重点即是探讨实施缓存来提高性能的可行性。Phalcon框架给我们提供了灵活的缓存技术来实现我们的应用缓存。</p>
+<div class="section" id="caching-resultsets">
+<h2>缓存结果集（Caching Resultsets）<a class="headerlink" href="#caching-resultsets" title="永久链接至标题">¶</a></h2>
+<p>一个非常可行的方案是我们可以为那些不经常改变且经常访问的数据库数据进行缓存，比如把他们放入内存，这样可以加快程序的执行速度。</p>
+<p>当 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> 需要使用缓存数据的服务时Model可以直接从DI中取得此缓存服务modelsCache(惯例名).</p>
+<p>Phalcon提供了一个组件（服务）可以用来 <a class="reference internal" href="cache.html"><em>缓存</em></a> 任何种类的数据，下面我们会解释如何在model使用它。第一步我们要在启动文件注册
+这个服务:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Cache\Frontend\Data</span> <span class="k">as</span> <span class="nx">FrontendData</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Cache\Backend\Memcache</span> <span class="k">as</span> <span class="nx">BackendMemcache</span><span class="p">;</span>
+
+<span class="c1">// 设置模型缓存服务</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;modelsCache&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// 默认缓存时间为一天</span>
+    <span class="nv">$frontCache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FrontendData</span><span class="p">(</span>
+        <span class="k">array</span><span class="p">(</span>
+            <span class="s2">&quot;lifetime&quot;</span> <span class="o">=&gt;</span> <span class="mi">86400</span>
+        <span class="p">)</span>
+    <span class="p">);</span>
+
+    <span class="c1">// Memcached连接配置 这里使用的是Memcache适配器</span>
+    <span class="nv">$cache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BackendMemcache</span><span class="p">(</span>
+        <span class="nv">$frontCache</span><span class="p">,</span>
+        <span class="k">array</span><span class="p">(</span>
+            <span class="s2">&quot;host&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;port&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;11211&quot;</span>
+        <span class="p">)</span>
+    <span class="p">);</span>
+
+    <span class="k">return</span> <span class="nv">$cache</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>在注册缓存服务时我们可以按照我们的所需进行配置。一旦完成正确的缓存设置之后，我们可以按如下的方式缓存查询的结果了:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// 直接取Products模型里的数据（未缓存）</span>
+<span class="nv">$products</span> <span class="o">=</span> <span class="nx">Products</span><span class="o">::</span><span class="na">find</span><span class="p">();</span>
+
+<span class="c1">// 缓存查询结果.缓存时间为默认1天。</span>
+<span class="nv">$products</span> <span class="o">=</span> <span class="nx">Products</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;cache&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s2">&quot;key&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;my-cache&quot;</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">// 缓存查询结果时间为300秒</span>
+<span class="nv">$products</span> <span class="o">=</span> <span class="nx">Products</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;cache&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s2">&quot;key&quot;</span>      <span class="o">=&gt;</span> <span class="s2">&quot;my-cache&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;lifetime&quot;</span> <span class="o">=&gt;</span> <span class="mi">300</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">// 使用自定义缓存</span>
+<span class="nv">$products</span> <span class="o">=</span> <span class="nx">Products</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;cache&quot;</span> <span class="o">=&gt;</span> <span class="nv">$myCache</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="nx">这里我们也可以缓存关联表的数据</span><span class="o">:</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Query some post</span>
+<span class="nv">$post</span>     <span class="o">=</span> <span class="nx">Post</span><span class="o">::</span><span class="na">findFirst</span><span class="p">();</span>
+
+<span class="c1">// Get comments related to a post, also cache it</span>
+<span class="nv">$comments</span> <span class="o">=</span> <span class="nv">$post</span><span class="o">-&gt;</span><span class="na">getComments</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;cache&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s2">&quot;key&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;my-key&quot;</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">// Get comments related to a post, setting lifetime</span>
+<span class="nv">$comments</span> <span class="o">=</span> <span class="nv">$post</span><span class="o">-&gt;</span><span class="na">getComments</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;cache&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s2">&quot;key&quot;</span>      <span class="o">=&gt;</span> <span class="s2">&quot;my-key&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;lifetime&quot;</span> <span class="o">=&gt;</span> <span class="mi">3600</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>如果想删除已经缓存的结果，则只需要使用前面指定的缓存的键值进行删除即可。</p>
+<p>注意并不是所有的结果都必须缓存下来。那些经常改变的数据就不应该被缓存，这样做只会影响应用的性能。另外对于那些特别大的
+不易变的数据集，开发者应用根据实际情况进行选择是否进行缓存。</p>
+</div>
+<div class="section" id="find-findfirst-overriding-find-findfirst">
+<h2>重写 find 与 findFirst 方法（Overriding find/findFirst）<a class="headerlink" href="#find-findfirst-overriding-find-findfirst" title="永久链接至标题">¶</a></h2>
+<p>从上面的我们可以看到这两个方法是从 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model继承而来</em></a>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nv">$parameters</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">parent</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">findFirst</span><span class="p">(</span><span class="nv">$parameters</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">parent</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>这样做会影响到所有此类的对象对这两个函数的调用，我们可以在其中添加一个缓存层，如果未有其它缓存的
+话（比如modelsCache）。例如，一个基本的缓存实现是我们在此类中添加一个静态的变量以避免在同一请求中
+多次查询数据库：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="k">static</span> <span class="nv">$_cache</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Implement a method that returns a string key based</span>
+<span class="sd">     * on the query parameters</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">_createKey</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$uniqueKey</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$parameters</span> <span class="k">as</span> <span class="nv">$key</span> <span class="o">=&gt;</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nb">is_scalar</span><span class="p">(</span><span class="nv">$value</span><span class="p">))</span> <span class="p">{</span>
+                <span class="nv">$uniqueKey</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$key</span> <span class="o">.</span> <span class="s1">&#39;:&#39;</span> <span class="o">.</span> <span class="nv">$value</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nb">is_array</span><span class="p">(</span><span class="nv">$value</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="nv">$uniqueKey</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$key</span> <span class="o">.</span> <span class="s1">&#39;:[&#39;</span> <span class="o">.</span> <span class="nx">self</span><span class="o">::</span><span class="na">_createKey</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="o">.</span><span class="s1">&#39;]&#39;</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nb">join</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="nv">$uniqueKey</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nv">$parameters</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Create an unique key based on the parameters</span>
+        <span class="nv">$key</span> <span class="o">=</span> <span class="nx">self</span><span class="o">::</span><span class="na">_createKey</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nx">self</span><span class="o">::</span><span class="nv">$_cache</span><span class="p">[</span><span class="nv">$key</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="c1">// Store the result in the memory cache</span>
+            <span class="nx">self</span><span class="o">::</span><span class="nv">$_cache</span><span class="p">[</span><span class="nv">$key</span><span class="p">]</span> <span class="o">=</span> <span class="k">parent</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Return the result in the cache</span>
+        <span class="k">return</span> <span class="nx">self</span><span class="o">::</span><span class="nv">$_cache</span><span class="p">[</span><span class="nv">$key</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">findFirst</span><span class="p">(</span><span class="nv">$parameters</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>访问数据要远比计算key值慢的多，我们在这里定义自己需要的key生成方式。注意好的键可以避免冲突，这样就可以依据不同的key值取得不同的缓存结果。</p>
+<p>上面的例子中我们把缓存放在了内存中，这做为第一级的缓存。当然我们也可以在第一层缓存的基本上实现第二层的缓存比如使用 APC/XCache 或是使用NoSQL数据库（如MongoDB等）：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nv">$parameters</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Create an unique key based on the parameters</span>
+    <span class="nv">$key</span> <span class="o">=</span> <span class="nx">self</span><span class="o">::</span><span class="na">_createKey</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nx">self</span><span class="o">::</span><span class="nv">$_cache</span><span class="p">[</span><span class="nv">$key</span><span class="p">]))</span> <span class="p">{</span>
+
+        <span class="c1">// We&#39;re using APC as second cache</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">apc_exists</span><span class="p">(</span><span class="nv">$key</span><span class="p">))</span> <span class="p">{</span>
+
+            <span class="nv">$data</span> <span class="o">=</span> <span class="nb">apc_fetch</span><span class="p">(</span><span class="nv">$key</span><span class="p">);</span>
+
+            <span class="c1">// Store the result in the memory cache</span>
+            <span class="nx">self</span><span class="o">::</span><span class="nv">$_cache</span><span class="p">[</span><span class="nv">$key</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$data</span><span class="p">;</span>
+
+            <span class="k">return</span> <span class="nv">$data</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// There are no memory or apc cache</span>
+        <span class="nv">$data</span> <span class="o">=</span> <span class="k">parent</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">);</span>
+
+        <span class="c1">// Store the result in the memory cache</span>
+        <span class="nx">self</span><span class="o">::</span><span class="nv">$_cache</span><span class="p">[</span><span class="nv">$key</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$data</span><span class="p">;</span>
+
+        <span class="c1">// Store the result in APC</span>
+        <span class="nb">apc_store</span><span class="p">(</span><span class="nv">$key</span><span class="p">,</span> <span class="nv">$data</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$data</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Return the result in the cache</span>
+    <span class="k">return</span> <span class="nx">self</span><span class="o">::</span><span class="nv">$_cache</span><span class="p">[</span><span class="nv">$key</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>这样我们可以对可模型的缓存进行完全的控制，如果多个模型需要进行如此缓存可以建立一个基础类：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">CacheableModel</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">_createKey</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// ... Create a cache key based on the parameters</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nv">$parameters</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// ... Custom caching strategy</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">findFirst</span><span class="p">(</span><span class="nv">$parameters</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// ... Custom caching strategy</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>然后把这个类作为其它缓存类的基类：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">CacheableModel</span>
+<span class="p">{</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="forcing-cache">
+<h2>强制缓存（Forcing Cache）<a class="headerlink" href="#forcing-cache" title="永久链接至标题">¶</a></h2>
+<p>前面的例子中我们在 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> 中使用框架内建的缓存组件。为实现强制缓存我们传递了cache作为参数：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// 缓存查询结果5分钟</span>
+<span class="nv">$products</span> <span class="o">=</span> <span class="nx">Products</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;cache&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s2">&quot;key&quot;</span>      <span class="o">=&gt;</span> <span class="s2">&quot;my-cache&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;lifetime&quot;</span> <span class="o">=&gt;</span> <span class="mi">300</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>为了自由的对特定的查询结果进行缓存我们，比如我们想对模型中的所有查询结果进行缓存我们可以重写find/findFirst方法：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">_createKey</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// ... Create a cache key based on the parameters</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nv">$parameters</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Convert the parameters to an array</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">is_array</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nv">$parameters</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Check if a cache key wasn&#39;t passed</span>
+        <span class="c1">// and create the cache parameters</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">[</span><span class="s1">&#39;cache&#39;</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="nv">$parameters</span><span class="p">[</span><span class="s1">&#39;cache&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+                <span class="s2">&quot;key&quot;</span>      <span class="o">=&gt;</span> <span class="nx">self</span><span class="o">::</span><span class="na">_createKey</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">),</span>
+                <span class="s2">&quot;lifetime&quot;</span> <span class="o">=&gt;</span> <span class="mi">300</span>
+            <span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="k">parent</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">findFirst</span><span class="p">(</span><span class="nv">$parameters</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="phql-caching-phql-queries">
+<h2>缓存 PHQL 查询（Caching PHQL Queries）<a class="headerlink" href="#phql-caching-phql-queries" title="永久链接至标题">¶</a></h2>
+<p>ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL进行实现的。这个语言可以让我们非常自由的创建各种查询，当然这些查询也可以被缓存：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$phql</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM Cars WHERE name = :name:&quot;</span><span class="p">;</span>
+
+<span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">modelsManager</span><span class="o">-&gt;</span><span class="na">createQuery</span><span class="p">(</span><span class="nv">$phql</span><span class="p">);</span>
+
+<span class="nv">$query</span><span class="o">-&gt;</span><span class="na">cache</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;key&quot;</span>      <span class="o">=&gt;</span> <span class="s2">&quot;cars-by-name&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;lifetime&quot;</span> <span class="o">=&gt;</span> <span class="mi">300</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="nv">$cars</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Audi&#39;</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>如果不想使用隐式的缓存尽管使用你想用的缓存方式：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$phql</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM Cars WHERE name = :name:&quot;</span><span class="p">;</span>
+
+<span class="nv">$cars</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">modelsManager</span><span class="o">-&gt;</span><span class="na">executeQuery</span><span class="p">(</span>
+    <span class="nv">$phql</span><span class="p">,</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Audi&#39;</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="nb">apc_store</span><span class="p">(</span><span class="s1">&#39;my-cars&#39;</span><span class="p">,</span> <span class="nv">$cars</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="reusable-related-records">
+<h2>可重用的相关记录（Reusable Related Records）<a class="headerlink" href="#reusable-related-records" title="永久链接至标题">¶</a></h2>
+<p>一些模型有关联的数据表我们直接使用关联的数据：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Get some invoice</span>
+<span class="nv">$invoice</span>  <span class="o">=</span> <span class="nx">Invoices</span><span class="o">::</span><span class="na">findFirst</span><span class="p">();</span>
+
+<span class="c1">// Get the customer related to the invoice</span>
+<span class="nv">$customer</span> <span class="o">=</span> <span class="nv">$invoice</span><span class="o">-&gt;</span><span class="na">customer</span><span class="p">;</span>
+
+<span class="c1">// Print his/her name</span>
+<span class="k">echo</span> <span class="nv">$customer</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>这个例子非常简单，依据查询到的订单信息取得用户信息之后再取得用户名。下面的情景也是如何：我们查询了一些订单的信息，然后取得这些订单相关联
+用户的信息，之后取得用户名：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Get a set of invoices</span>
+<span class="c1">// SELECT * FROM invoices;</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nx">Invoices</span><span class="o">::</span><span class="na">find</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$invoice</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// Get the customer related to the invoice</span>
+    <span class="c1">// SELECT * FROM customers WHERE id = ?;</span>
+    <span class="nv">$customer</span> <span class="o">=</span> <span class="nv">$invoice</span><span class="o">-&gt;</span><span class="na">customer</span><span class="p">;</span>
+
+    <span class="c1">// Print his/her name</span>
+    <span class="k">echo</span> <span class="nv">$customer</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>每个客户可能会有一个或多个帐单，这就意味着客户对象没必须取多次。为了避免一次次的重复取客户信息，我们这里设置关系为reusable为true,
+这样ORM即知可以重复使用客户信息：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Invoices</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsTo</span><span class="p">(</span>
+            <span class="s2">&quot;customers_id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Customer&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">,</span>
+            <span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;reusable&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span>
+            <span class="p">)</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>此Cache存在于内存中，这意味着当请示结束时缓存数据即被释放。我们也可以通过重写模型管理器的方式实现更加复杂的缓存：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Manager</span> <span class="k">as</span> <span class="nx">ModelManager</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">CustomModelsManager</span> <span class="k">extends</span> <span class="nx">ModelManager</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * Returns a reusable object from the cache</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param string $modelName</span>
+<span class="sd">     * @param string $key</span>
+<span class="sd">     * @return object</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getReusableRecords</span><span class="p">(</span><span class="nv">$modelName</span><span class="p">,</span> <span class="nv">$key</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// If the model is Products use the APC cache</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$modelName</span> <span class="o">==</span> <span class="s1">&#39;Products&#39;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">apc_fetch</span><span class="p">(</span><span class="nv">$key</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// For the rest, use the memory cache</span>
+        <span class="k">return</span> <span class="k">parent</span><span class="o">::</span><span class="na">getReusableRecords</span><span class="p">(</span><span class="nv">$modelName</span><span class="p">,</span> <span class="nv">$key</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Stores a reusable record in the cache</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param string $modelName</span>
+<span class="sd">     * @param string $key</span>
+<span class="sd">     * @param mixed $records</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setReusableRecords</span><span class="p">(</span><span class="nv">$modelName</span><span class="p">,</span> <span class="nv">$key</span><span class="p">,</span> <span class="nv">$records</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// If the model is Products use the APC cache</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$modelName</span> <span class="o">==</span> <span class="s1">&#39;Products&#39;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nb">apc_store</span><span class="p">(</span><span class="nv">$key</span><span class="p">,</span> <span class="nv">$records</span><span class="p">);</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// For the rest, use the memory cache</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">setReusableRecords</span><span class="p">(</span><span class="nv">$modelName</span><span class="p">,</span> <span class="nv">$key</span><span class="p">,</span> <span class="nv">$records</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>别忘记注册模型管理器到DI中：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">setShared</span><span class="p">(</span><span class="s1">&#39;modelsManager&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">CustomModelsManager</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="caching-related-records">
+<h2>缓存相关记录（Caching Related Records）<a class="headerlink" href="#caching-related-records" title="永久链接至标题">¶</a></h2>
+<p>当使用find或findFirst查询关联数据时，ORM内部会自动的依据以下规则创建查询条件于：</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="68%" />
+<col width="16%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">类型</th>
+<th class="head">描述</th>
+<th class="head">隐含方法</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Belongs-To</td>
+<td>直接的返回模型相关的记录</td>
+<td>findFirst</td>
+</tr>
+<tr class="row-odd"><td>Has-One</td>
+<td>直接的返回模型相关的记录</td>
+<td>findFirst</td>
+</tr>
+<tr class="row-even"><td>Has-Many</td>
+<td>返回模型相关的记录集合</td>
+<td>find</td>
+</tr>
+</tbody>
+</table>
+<p>这意味着当我们取得关联记录时，我们需要解析如何如何取得数据的方法：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Get some invoice</span>
+<span class="nv">$invoice</span>  <span class="o">=</span> <span class="nx">Invoices</span><span class="o">::</span><span class="na">findFirst</span><span class="p">();</span>
+
+<span class="c1">// Get the customer related to the invoice</span>
+<span class="nv">$customer</span> <span class="o">=</span> <span class="nv">$invoice</span><span class="o">-&gt;</span><span class="na">customer</span><span class="p">;</span> <span class="c1">// Invoices::findFirst(&#39;...&#39;);</span>
+
+<span class="c1">// Same as above</span>
+<span class="nv">$customer</span> <span class="o">=</span> <span class="nv">$invoice</span><span class="o">-&gt;</span><span class="na">getCustomer</span><span class="p">();</span> <span class="c1">// Invoices::findFirst(&#39;...&#39;);</span>
+</pre></div>
+</div>
+<p>因此，我们可以替换掉Invoices模型中的findFirst方法然后实现我们使用适合的方法</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Invoices</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">findFirst</span><span class="p">(</span><span class="nv">$parameters</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// .. custom caching strategy</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="caching-related-records-recursively">
+<h2>递归缓存相关记录（Caching Related Records Recursively）<a class="headerlink" href="#caching-related-records-recursively" title="永久链接至标题">¶</a></h2>
+<p>在这种场景下我们假定我们每次取主记录时都会取模型的关联记录，如果我们此时保存这些记录可能会为为我们的系统带来一些性能上的提升：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Invoices</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">_createKey</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// ... Create a cache key based on the parameters</span>
+    <span class="p">}</span>
+
+    <span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">_getCache</span><span class="p">(</span><span class="nv">$key</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Returns data from a cache</span>
+    <span class="p">}</span>
+
+    <span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">_setCache</span><span class="p">(</span><span class="nv">$key</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Stores data in the cache</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nv">$parameters</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Create a unique key</span>
+        <span class="nv">$key</span>     <span class="o">=</span> <span class="nx">self</span><span class="o">::</span><span class="na">_createKey</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">);</span>
+
+        <span class="c1">// Check if there are data in the cache</span>
+        <span class="nv">$results</span> <span class="o">=</span> <span class="nx">self</span><span class="o">::</span><span class="na">_getCache</span><span class="p">(</span><span class="nv">$key</span><span class="p">);</span>
+
+        <span class="c1">// Valid data is an object</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">is_object</span><span class="p">(</span><span class="nv">$results</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$results</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nv">$results</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+
+        <span class="nv">$invoices</span> <span class="o">=</span> <span class="k">parent</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">);</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$invoices</span> <span class="k">as</span> <span class="nv">$invoice</span><span class="p">)</span> <span class="p">{</span>
+
+            <span class="c1">// Query the related customer</span>
+            <span class="nv">$customer</span> <span class="o">=</span> <span class="nv">$invoice</span><span class="o">-&gt;</span><span class="na">customer</span><span class="p">;</span>
+
+            <span class="c1">// Assign it to the record</span>
+            <span class="nv">$invoice</span><span class="o">-&gt;</span><span class="na">customer</span> <span class="o">=</span> <span class="nv">$customer</span><span class="p">;</span>
+
+            <span class="nv">$results</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$invoice</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Store the invoices in the cache + their customers</span>
+        <span class="nx">self</span><span class="o">::</span><span class="na">_setCache</span><span class="p">(</span><span class="nv">$key</span><span class="p">,</span> <span class="nv">$results</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$results</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Add relations and initialize other stuff</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>从已经缓存的订单中取得用户信息，可以减少系统的负载。注意我们也可以使用PHQL来实现这个，下面使用了PHQL来实现：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Invoices</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">initialize</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Add relations and initialize other stuff</span>
+    <span class="p">}</span>
+
+    <span class="k">protected</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">_createKey</span><span class="p">(</span><span class="nv">$conditions</span><span class="p">,</span> <span class="nv">$params</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// ... Create a cache key based on the parameters</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getInvoicesCustomers</span><span class="p">(</span><span class="nv">$conditions</span><span class="p">,</span> <span class="nv">$params</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$phql</span>  <span class="o">=</span> <span class="s2">&quot;SELECT Invoices.*, Customers.*</span>
+<span class="s2">        FROM Invoices JOIN Customers WHERE &quot;</span> <span class="o">.</span> <span class="nv">$conditions</span><span class="p">;</span>
+
+        <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getModelsManager</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">executeQuery</span><span class="p">(</span><span class="nv">$phql</span><span class="p">);</span>
+
+        <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">cache</span><span class="p">(</span>
+            <span class="k">array</span><span class="p">(</span>
+                <span class="s2">&quot;key&quot;</span>      <span class="o">=&gt;</span> <span class="nx">self</span><span class="o">::</span><span class="na">_createKey</span><span class="p">(</span><span class="nv">$conditions</span><span class="p">,</span> <span class="nv">$params</span><span class="p">),</span>
+                <span class="s2">&quot;lifetime&quot;</span> <span class="o">=&gt;</span> <span class="mi">300</span>
+            <span class="p">)</span>
+        <span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="nv">$params</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="caching-based-on-conditions">
+<h2>基于条件的缓存（Caching based on Conditions）<a class="headerlink" href="#caching-based-on-conditions" title="永久链接至标题">¶</a></h2>
+<p>此例中，我依据当的条件实施缓存：</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">类型</th>
+<th class="head">缓存</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1 - 10000</td>
+<td>mongo1</td>
+</tr>
+<tr class="row-odd"><td>10000 - 20000</td>
+<td>mongo2</td>
+</tr>
+<tr class="row-even"><td>&gt; 20000</td>
+<td>mongo3</td>
+</tr>
+</tbody>
+</table>
+<p>最简单的方式即是为模型类添加一个静态的方法，此方法中我们指定要使用的缓存：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">queryCache</span><span class="p">(</span><span class="nv">$initial</span><span class="p">,</span> <span class="nv">$final</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$initial</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nv">$final</span> <span class="o">&lt;</span> <span class="mi">10000</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">self</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
+                <span class="k">array</span><span class="p">(</span>
+                    <span class="s1">&#39;id &gt;= &#39;</span> <span class="o">.</span> <span class="nv">$initial</span> <span class="o">.</span> <span class="s1">&#39; AND id &lt;= &#39;</span><span class="o">.</span><span class="nv">$final</span><span class="p">,</span>
+                    <span class="s1">&#39;cache&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                        <span class="s1">&#39;service&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mongo1&#39;</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+            <span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$initial</span> <span class="o">&gt;=</span> <span class="mi">10000</span> <span class="o">&amp;&amp;</span> <span class="nv">$final</span> <span class="o">&lt;=</span> <span class="mi">20000</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">self</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
+                <span class="k">array</span><span class="p">(</span>
+                    <span class="s1">&#39;id &gt;= &#39;</span> <span class="o">.</span> <span class="nv">$initial</span> <span class="o">.</span> <span class="s1">&#39; AND id &lt;= &#39;</span><span class="o">.</span><span class="nv">$final</span><span class="p">,</span>
+                    <span class="s1">&#39;cache&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                        <span class="s1">&#39;service&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mongo2&#39;</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+            <span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$initial</span> <span class="o">&gt;</span> <span class="mi">20000</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">self</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
+                <span class="k">array</span><span class="p">(</span>
+                    <span class="s1">&#39;id &gt;= &#39;</span> <span class="o">.</span> <span class="nv">$initial</span><span class="p">,</span>
+                    <span class="s1">&#39;cache&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                        <span class="s1">&#39;service&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mongo3&#39;</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+            <span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>这个方法是可以解决问题，不过如果我们需要添加其它的参数比如排序或条件等我们还要创建更复杂的方法。另外当我们使用find/findFirst来查询关联数据时此方法亦会失效：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="s1">&#39;id &lt; 1000&#39;</span><span class="p">);</span>
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="s1">&#39;id &gt; 100 AND type = &quot;A&quot;&#39;</span><span class="p">);</span>
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="s1">&#39;(id &gt; 100 AND type = &quot;A&quot;) AND id &lt; 2000&#39;</span><span class="p">);</span>
+
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;(id &gt; ?0 AND type = &quot;A&quot;) AND id &lt; ?1&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;bind&#39;</span>  <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">2000</span><span class="p">),</span>
+        <span class="s1">&#39;order&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;type&#39;</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>为了实现这个我们需要拦截中间语言解析，然后书写相关的代码以定制缓存：
+首先我们需要创建自定义的创建器，然后我们可以使用它来创建守全自己定义的查询：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Query\Builder</span> <span class="k">as</span> <span class="nx">QueryBuilder</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">CustomQueryBuilder</span> <span class="k">extends</span> <span class="nx">QueryBuilder</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getQuery</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$query</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CustomQuery</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getPhql</span><span class="p">());</span>
+        <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">setDI</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDI</span><span class="p">());</span>
+        <span class="k">return</span> <span class="nv">$query</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>这里我们返回的是CustomQuery而不是不直接的返回 <a class="reference internal" href="../api/Phalcon_Mvc_Model_Query.html"><em>Phalcon\Mvc\Model\Query</em></a>， 类定义如下所示：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Query</span> <span class="k">as</span> <span class="nx">ModelQuery</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">CustomQuery</span> <span class="k">extends</span> <span class="nx">ModelQuery</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * The execute method is overridden</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">execute</span><span class="p">(</span><span class="nv">$params</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$types</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Parse the intermediate representation for the SELECT</span>
+        <span class="nv">$ir</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">parse</span><span class="p">();</span>
+
+        <span class="c1">// Check if the query has conditions</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$ir</span><span class="p">[</span><span class="s1">&#39;where&#39;</span><span class="p">]))</span> <span class="p">{</span>
+
+            <span class="c1">// The fields in the conditions can have any order</span>
+            <span class="c1">// We need to recursively check the conditions tree</span>
+            <span class="c1">// to find the info we&#39;re looking for</span>
+            <span class="nv">$visitor</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CustomNodeVisitor</span><span class="p">();</span>
+
+            <span class="c1">// Recursively visits the nodes</span>
+            <span class="nv">$visitor</span><span class="o">-&gt;</span><span class="na">visit</span><span class="p">(</span><span class="nv">$ir</span><span class="p">[</span><span class="s1">&#39;where&#39;</span><span class="p">]);</span>
+
+            <span class="nv">$initial</span> <span class="o">=</span> <span class="nv">$visitor</span><span class="o">-&gt;</span><span class="na">getInitial</span><span class="p">();</span>
+            <span class="nv">$final</span>   <span class="o">=</span> <span class="nv">$visitor</span><span class="o">-&gt;</span><span class="na">getFinal</span><span class="p">();</span>
+
+            <span class="c1">// Select the cache according to the range</span>
+            <span class="c1">// ...</span>
+
+            <span class="c1">// Check if the cache has data</span>
+            <span class="c1">// ...</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Execute the query</span>
+        <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_executeSelect</span><span class="p">(</span><span class="nv">$ir</span><span class="p">,</span> <span class="nv">$params</span><span class="p">,</span> <span class="nv">$types</span><span class="p">);</span>
+
+        <span class="c1">// Cache the result</span>
+        <span class="c1">// ...</span>
+
+        <span class="k">return</span> <span class="nv">$result</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>这里我们实现了一个帮助类用以递归的的检查条件以查询字段用以识我们知了需要使用缓存的范围（即检查条件以确认实施查询缓存的范围）：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">CustomNodeVisitor</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="nv">$_initial</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="k">protected</span> <span class="nv">$_final</span> <span class="o">=</span> <span class="mi">25000</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">visit</span><span class="p">(</span><span class="nv">$node</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">switch</span> <span class="p">(</span><span class="nv">$node</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">])</span> <span class="p">{</span>
+
+            <span class="k">case</span> <span class="s1">&#39;binary-op&#39;</span><span class="o">:</span>
+
+                <span class="nv">$left</span>  <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">visit</span><span class="p">(</span><span class="nv">$node</span><span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">]);</span>
+                <span class="nv">$right</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">visit</span><span class="p">(</span><span class="nv">$node</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]);</span>
+                <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$left</span> <span class="o">||</span> <span class="o">!</span><span class="nv">$right</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+                <span class="p">}</span>
+
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$left</span><span class="o">==</span><span class="s1">&#39;id&#39;</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nv">$node</span><span class="p">[</span><span class="s1">&#39;op&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;&gt;&#39;</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_initial</span> <span class="o">=</span> <span class="nv">$right</span><span class="p">;</span>
+                    <span class="p">}</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nv">$node</span><span class="p">[</span><span class="s1">&#39;op&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;=&#39;</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_initial</span> <span class="o">=</span> <span class="nv">$right</span><span class="p">;</span>
+                    <span class="p">}</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nv">$node</span><span class="p">[</span><span class="s1">&#39;op&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;&gt;=&#39;</span><span class="p">)</span>    <span class="p">{</span>
+                        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_initial</span> <span class="o">=</span> <span class="nv">$right</span><span class="p">;</span>
+                    <span class="p">}</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nv">$node</span><span class="p">[</span><span class="s1">&#39;op&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;&lt;&#39;</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_final</span> <span class="o">=</span> <span class="nv">$right</span><span class="p">;</span>
+                    <span class="p">}</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nv">$node</span><span class="p">[</span><span class="s1">&#39;op&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;&lt;=&#39;</span><span class="p">)</span>    <span class="p">{</span>
+                        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_final</span> <span class="o">=</span> <span class="nv">$right</span><span class="p">;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+                <span class="k">break</span><span class="p">;</span>
+
+            <span class="k">case</span> <span class="s1">&#39;qualified&#39;</span><span class="o">:</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$node</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;id&#39;</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="s1">&#39;id&#39;</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="k">break</span><span class="p">;</span>
+
+            <span class="k">case</span> <span class="s1">&#39;literal&#39;</span><span class="o">:</span>
+                <span class="k">return</span> <span class="nv">$node</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">];</span>
+
+            <span class="k">default</span><span class="o">:</span>
+                <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getInitial</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_initial</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getFinal</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_final</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>最后，我们替换Robots模型中的查询方法以使用我们创建的自定义类：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nv">$parameters</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">is_array</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nv">$parameters</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nv">$builder</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CustomQueryBuilder</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">);</span>
+        <span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">from</span><span class="p">(</span><span class="nb">get_called_class</span><span class="p">());</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">[</span><span class="s1">&#39;bind&#39;</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">[</span><span class="s1">&#39;bind&#39;</span><span class="p">]);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="phql-caching-of-phql-planning">
+<h2>缓存 PHQL 查询计划（Caching of PHQL planning）<a class="headerlink" href="#phql-caching-of-phql-planning" title="永久链接至标题">¶</a></h2>
+<p>像大多数现代的操作系统一样PHQL内部会缓存执行计划，如果同样的语句多次执行，PHQL会使用之前生成的查询计划以提升系统的性能，
+对开发者来说只采用绑定参数的形式传递参数即可实现：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nv">$phql</span>   <span class="o">=</span> <span class="s2">&quot;SELECT * FROM Store</span><span class="se">\R</span><span class="s2">obots WHERE id = &quot;</span> <span class="o">.</span> <span class="nv">$i</span><span class="p">;</span>
+    <span class="nv">$robots</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">modelsManager</span><span class="o">-&gt;</span><span class="na">executeQuery</span><span class="p">(</span><span class="nv">$phql</span><span class="p">);</span>
+
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>上面的例子中，Phalcon产生了10个查询计划，这导致了应用的内存使用量增加。重写以上代码，我们使用绑定参数的这个优点可以减少系统和数据库的过多操作：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$phql</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM Store</span><span class="se">\R</span><span class="s2">obots WHERE id = ?0&quot;</span><span class="p">;</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nv">$robots</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">modelsManager</span><span class="o">-&gt;</span><span class="na">executeQuery</span><span class="p">(</span><span class="nv">$phql</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="nv">$i</span><span class="p">));</span>
+
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>得用PHQL查询亦可以提供查询性能：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$phql</span>  <span class="o">=</span> <span class="s2">&quot;SELECT * FROM Store</span><span class="se">\R</span><span class="s2">obots WHERE id = ?0&quot;</span><span class="p">;</span>
+<span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">modelsManager</span><span class="o">-&gt;</span><span class="na">createQuery</span><span class="p">(</span><span class="nv">$phql</span><span class="p">);</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nv">$robots</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="nv">$phql</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="nv">$i</span><span class="p">));</span>
+
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/Prepared_statement">预先准备的查询语句</a> 的查询计划亦可以被大多数的数据库所缓存，这样可以减少执行的时间，也可以使用我们的系统免受 <a class="reference external" href="http://en.wikipedia.org/wiki/SQL_injection">SQL注入</a> 的影响。</p>
+</div>
+</div>
+
+
+			</div>
+		  </div>
+		</div>
+	</div>
+  </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="views.html" title="使用视图（Using Views）"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="phql.html" title="Phalcon 查询语言（Phalcon Query Language (PHQL)）"
+             >上一页</a> |</li> 
+      </ul>
+    </div>
+
+<footer class="footer">
+	<div class="container">
+      <div class="row">
+          <div class="col-xs-6 col-sm-3">
+              <h4>Download</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/releases">安裝 Phalcon7</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+              <h4>Community</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7">GitHub</a></li>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/issues">Issue Tracker</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-2">
+              <h4>About</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon/wiki/%E6%8D%90%E8%B5%A0%EF%BC%88Donation%EF%BC%89">Donate</a></li>
+              </ul>
+          </div>
+          <div id="license-spaccer" class="visible-xs"></div>
+          <div id="license-wrapper" class="col-xs-12 col-sm-4">
+              <p class="license">
+
+                  Phalcon7 Framework is released under the <a href="https://github.com/dreamsxin/cphalcon7/blob/master/docs/LICENSE.md">new BSD license</a>.<br>
+                  Except where otherwise noted, content on this site is licensed under the
+                  <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a>
+              </p>
+              <div class="design">
+                  <span>Designed by:</span>
+
+                  <a href="http://www.fog-city.net/" class="fogcity" target="_blank" title="Fog City Software"><span>Fog City Software</span></a>
+              </div>
+          </div>
+      </div>
+	</div>
+</footer>
+</body>
+</html>

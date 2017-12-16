@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Class Phalcon\Mvc\Dispatcher &mdash; Phalcon7 1.2.1 文档</title>
+    <meta name="keywords" content="php, phalcon, phalcon7, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/phalcon.css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="../static/jquery.min.js"></script>
+    <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" /> 
+</head>
+<body>
+
+<header class="page-header">
+<nav class="navbar" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+				<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+		</div>
+
+		<div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+			<ul class="nav navbar-nav main-menu">
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7" class="header-nav-link">GitHub</a></li>
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7/releases" class="header-nav-link">Download</a></li>
+			  <li class="first"><a href="/api/" class="header-nav-link">API</a></li>
+			  <li class="first"><a href="/internals/" class="header-nav-link">内核开发手册</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li><a href="http://myleftstudio.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon7 1.2.1 文档</a> &raquo;</li> 
+      </ul>
+    </div>  
+</div>
+
+<div class="container-fluid">
+	<div class="col-md-3 primary-box">
+		<div class="panel panel-default">
+			<div class="panel-heading"><a href="../index.html">內容目录</a></div>
+			<div class="panel-body"><ul>
+<li><a class="reference internal" href="#">Class <strong>Phalcon\Mvc\Dispatcher</strong></a><ul>
+<li><a class="reference internal" href="#constants">Constants</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+</ul>
+</li>
+</ul>
+</div>
+		</div>
+	</div>
+  <div class="col-md-9 second-box" valign="top">
+	<div class="document">
+		<div class="documentwrapper">
+		  <div class="bodywrapper">
+			<div class="body" >
+			  
+  <div class="section" id="class-phalcon-mvc-dispatcher">
+<h1>Class <strong>Phalcon\Mvc\Dispatcher</strong><a class="headerlink" href="#class-phalcon-mvc-dispatcher" title="永久链接至标题">¶</a></h1>
+<p><em>extends</em> abstract class <a class="reference internal" href="Phalcon_Dispatcher.html"><em>Phalcon\Dispatcher</em></a></p>
+<p><em>implements</em> <a class="reference internal" href="Phalcon_DispatcherInterface.html"><em>Phalcon\DispatcherInterface</em></a>, <a class="reference internal" href="Phalcon_Di_InjectionAwareInterface.html"><em>Phalcon\Di\InjectionAwareInterface</em></a>, <a class="reference internal" href="Phalcon_Events_EventsAwareInterface.html"><em>Phalcon\Events\EventsAwareInterface</em></a>, <a class="reference internal" href="Phalcon_Mvc_DispatcherInterface.html"><em>Phalcon\Mvc\DispatcherInterface</em></a></p>
+<p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/dispatcher.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
+<p>Dispatching is the process of taking the request object, extracting the module name, controller name, action name, and optional parameters contained in it, and then instantiating a controller and calling an action of that controller.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$di</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Di</span><span class="p">();</span>
+
+<span class="nv">$dispatcher</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\Dispatcher</span><span class="p">();</span>
+
+  <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setDI</span><span class="p">(</span><span class="nv">$di</span><span class="p">);</span>
+
+<span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setControllerName</span><span class="p">(</span><span class="s1">&#39;posts&#39;</span><span class="p">);</span>
+<span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setActionName</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">);</span>
+<span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setParams</span><span class="p">(</span><span class="k">array</span><span class="p">());</span>
+
+<span class="nv">$controller</span> <span class="o">=</span> <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">dispatch</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="section" id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="永久链接至标题">¶</a></h2>
+<p><em>integer</em> <strong>EXCEPTION_NO_DI</strong></p>
+<p><em>integer</em> <strong>EXCEPTION_CYCLIC_ROUTING</strong></p>
+<p><em>integer</em> <strong>EXCEPTION_HANDLER_NOT_FOUND</strong></p>
+<p><em>integer</em> <strong>EXCEPTION_INVALID_HANDLER</strong></p>
+<p><em>integer</em> <strong>EXCEPTION_INVALID_PARAMS</strong></p>
+<p><em>integer</em> <strong>EXCEPTION_ACTION_NOT_FOUND</strong></p>
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
+<p>public  <strong>setControllerSuffix</strong> (<em>string</em> $controllerSuffix)</p>
+<p>Sets the default controller suffix</p>
+<p>public  <strong>setDefaultController</strong> (<em>string</em> $controllerName)</p>
+<p>Sets the default controller name</p>
+<p>public  <strong>setControllerName</strong> (<em>string</em> $controllerName, [<em>unknown</em> $isExact])</p>
+<p>Sets the controller name to be dispatched</p>
+<p>public <em>string</em>  <strong>getControllerName</strong> ()</p>
+<p>Gets last dispatched controller name</p>
+<p>protected  <strong>_throwDispatchException</strong> ()</p>
+<p>Throws an internal exception</p>
+<p>protected  <strong>_handleException</strong> ()</p>
+<p>Handles a user exception phalcon_dispatcher_fire_event() first</p>
+<p>public <em>string</em>  <strong>getControllerClass</strong> ()</p>
+<p>Possible controller class name that will be located to dispatch the request</p>
+<p>public <a class="reference internal" href="Phalcon_Mvc_ControllerInterface.html"><em>Phalcon\Mvc\ControllerInterface</em></a>  <strong>getLastController</strong> ()</p>
+<p>Returns the lastest dispatched controller</p>
+<p>public <a class="reference internal" href="Phalcon_Mvc_ControllerInterface.html"><em>Phalcon\Mvc\ControllerInterface</em></a>  <strong>getActiveController</strong> ()</p>
+<p>Returns the active controller in the dispatcher</p>
+<p>public <em>string</em>  <strong>getPreviousControllerName</strong> ()</p>
+<p>Returns the previous controller in the dispatcher</p>
+<p>public <em>string</em>  <strong>getPreviousActionName</strong> ()</p>
+<p>Returns the previous action in the dispatcher</p>
+<p>public  <strong>__construct</strong> () inherited from Phalcon\Dispatcher</p>
+<p>Phalcon\Dispatcher constructor</p>
+<p>public  <strong>setActionSuffix</strong> (<em>string</em> $actionSuffix) inherited from Phalcon\Dispatcher</p>
+<p>Sets the default action suffix</p>
+<p>public  <strong>setDefaultModule</strong> (<em>string</em> $module) inherited from Phalcon\Dispatcher</p>
+<p>Sets the default module</p>
+<p>public <em>string</em>  <strong>getDefaultModule</strong> () inherited from Phalcon\Dispatcher</p>
+<p>Returns the default module</p>
+<p>public  <strong>setDefaultNamespace</strong> (<em>string</em> $namespace) inherited from Phalcon\Dispatcher</p>
+<p>Sets the default namespace</p>
+<p>public <em>string</em>  <strong>getDefaultNamespace</strong> () inherited from Phalcon\Dispatcher</p>
+<p>Returns the default namespace</p>
+<p>public  <strong>setDefaultHandler</strong> (<em>unknown</em> $handlerName) inherited from Phalcon\Dispatcher</p>
+<p>Sets the default handler</p>
+<p>public <em>string</em>  <strong>getDefaultHandler</strong> () inherited from Phalcon\Dispatcher</p>
+<p>Returns the default handler</p>
+<p>public  <strong>setDefaultAction</strong> (<em>string</em> $actionName) inherited from Phalcon\Dispatcher</p>
+<p>Sets the default action name</p>
+<p>public <em>string</em>  <strong>getDefaultAction</strong> () inherited from Phalcon\Dispatcher</p>
+<p>Returns the default action</p>
+<p>public  <strong>setModuleName</strong> (<em>unknown</em> $module) inherited from Phalcon\Dispatcher</p>
+<p>Sets the module where the controller is (only informative)</p>
+<p>public <em>string</em>  <strong>getModuleName</strong> () inherited from Phalcon\Dispatcher</p>
+<p>Gets the module where the controller class is</p>
+<p>public  <strong>setNamespaceName</strong> (<em>unknown</em> $namespace) inherited from Phalcon\Dispatcher</p>
+<p>Sets the namespace where the controller class is</p>
+<p>public <em>string</em>  <strong>getNamespaceName</strong> () inherited from Phalcon\Dispatcher</p>
+<p>Gets a namespace to be prepended to the current handler name</p>
+<p>public  <strong>setHandlerName</strong> (<em>string</em> $handlerName) inherited from Phalcon\Dispatcher</p>
+<p>Sets the action name to be dispatched</p>
+<p>public <em>string</em>  <strong>getHandlerName</strong> () inherited from Phalcon\Dispatcher</p>
+<p>Gets the lastest dispatched handler name</p>
+<p>public  <strong>setActionName</strong> (<em>string</em> $actionName) inherited from Phalcon\Dispatcher</p>
+<p>Sets the action name to be dispatched</p>
+<p>public <em>string</em>  <strong>getActionName</strong> () inherited from Phalcon\Dispatcher</p>
+<p>Gets the lastest dispatched action name</p>
+<p>public  <strong>setLogicBinding</strong> (<em>boolean</em> $value) inherited from Phalcon\Dispatcher</p>
+<p>Enable/Disable logic binding during dispatch</p>
+<p>public <em>boolean</em>  <strong>isLogicBinding</strong> () inherited from Phalcon\Dispatcher</p>
+<p>Check if logic binding</p>
+<p>public  <strong>setParams</strong> (<em>array</em> $params) inherited from Phalcon\Dispatcher</p>
+<p>Sets action params to be dispatched</p>
+<p>public <em>array</em>  <strong>getParams</strong> () inherited from Phalcon\Dispatcher</p>
+<p>Gets action params</p>
+<p>public <em>boolean</em>  <strong>hasParam</strong> (<em>mixed</em> $param) inherited from Phalcon\Dispatcher</p>
+<p>Check if a param exists</p>
+<p>public  <strong>setParam</strong> (<em>mixed</em> $param, <em>mixed</em> $value) inherited from Phalcon\Dispatcher</p>
+<p>Set a param by its name or numeric index</p>
+<p>public <em>mixed</em>  <strong>getParam</strong> (<em>mixed</em> $param, [<em>string|array</em> $filters]) inherited from Phalcon\Dispatcher</p>
+<p>Gets a param by its name or numeric index</p>
+<p>public <a class="reference internal" href="Phalcon_Mvc_Controller.html"><em>Phalcon\Mvc\Controller</em></a>  <strong>getActiveHandler</strong> () inherited from Phalcon\Dispatcher</p>
+<p>Returns the current handler to be/executed in the dispatcher</p>
+<p>public <em>string</em>  <strong>getActiveMethod</strong> () inherited from Phalcon\Dispatcher</p>
+<p>Returns the current method to be/executed in the dispatcher</p>
+<p>public <em>boolean</em>  <strong>isFinished</strong> () inherited from Phalcon\Dispatcher</p>
+<p>Checks if the dispatch loop is finished or has more pendent controllers/tasks to disptach</p>
+<p>public  <strong>setFinished</strong> (<em>boolean</em> $finished) inherited from Phalcon\Dispatcher</p>
+<p>Sets the finished</p>
+<p>public  <strong>setReturnedValue</strong> (<em>mixed</em> $value) inherited from Phalcon\Dispatcher</p>
+<p>Sets the latest returned value by an action manually</p>
+<p>public <em>mixed</em>  <strong>getReturnedValue</strong> () inherited from Phalcon\Dispatcher</p>
+<p>Returns value returned by the lastest dispatched action</p>
+<p>public <em>object</em>  <strong>dispatch</strong> () inherited from Phalcon\Dispatcher</p>
+<p>Dispatches a handle action taking into account the routing parameters</p>
+<p>public <em>bool</em>  <strong>forward</strong> (<em>string|array</em> $forward) inherited from Phalcon\Dispatcher</p>
+<p>Forwards the execution flow to another controller/action Dispatchers are unique per module. Forwarding between modules is not allowed</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+  <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;controller&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;posts&#39;</span><span class="p">,</span> <span class="s1">&#39;action&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;index&#39;</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>public <em>boolean</em>  <strong>wasForwarded</strong> () inherited from Phalcon\Dispatcher</p>
+<p>Check if the current executed action was forwarded by another one</p>
+<p>public <em>string</em>  <strong>getHandlerClass</strong> () inherited from Phalcon\Dispatcher</p>
+<p>Possible class name that will be located to dispatch the request</p>
+<p>public  <strong>camelizeNamespace</strong> (<em>bool</em> $camelize) inherited from Phalcon\Dispatcher</p>
+<p>Enables/Disables automatically camelize namespace</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+  <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">camelizeNamespace</span><span class="p">(</span><span class="k">FALSE</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>public  <strong>camelizeController</strong> (<em>bool</em> $camelize) inherited from Phalcon\Dispatcher</p>
+<p>Enables/Disables automatically camelize controller</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+  <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">camelizeController</span><span class="p">(</span><span class="k">FALSE</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>public <a class="reference internal" href="Phalcon_DispatcherInterface.html"><em>Phalcon\DispatcherInterface</em></a>  <strong>setErrorHandler</strong> (<em>unknown</em> $callback, [<em>int</em> $exception_code]) inherited from Phalcon\Dispatcher</p>
+<p>Set error handler</p>
+<p>public <em>mixed</em>  <strong>getErrorHandler</strong> (<em>int</em> $exception_code) inherited from Phalcon\Dispatcher</p>
+<p>Get error handler</p>
+<p>public <em>Exception</em>  <strong>getLastException</strong> () inherited from Phalcon\Dispatcher</p>
+<p>Returns the last exception</p>
+<p>public <em>Object</em>  <strong>getLastHandler</strong> () inherited from Phalcon\Dispatcher</p>
+<p>Returns the last handler</p>
+<p>public <em>string</em>  <strong>getPreviousNamespaceName</strong> () inherited from Phalcon\Dispatcher</p>
+<p>Returns the previons namespace</p>
+<p>public <em>array</em>  <strong>getPreviousParams</strong> () inherited from Phalcon\Dispatcher</p>
+<p>Returns the previons action params</p>
+<p>public <em>mixed</em>  <strong>getPreviousParam</strong> (<em>mixed</em> $param, [<em>string|array</em> $filters]) inherited from Phalcon\Dispatcher</p>
+<p>Gets a previons param by its name or numeric index</p>
+<p>public  <strong>setDI</strong> (<a class="reference internal" href="Phalcon_DiInterface.html"><em>Phalcon\DiInterface</em></a> $dependencyInjector) inherited from Phalcon\Di\Injectable</p>
+<p>Sets the dependency injector</p>
+<p>public <a class="reference internal" href="Phalcon_DiInterface.html"><em>Phalcon\DiInterface</em></a>  <strong>getDI</strong> ([<em>unknown</em> $error], [<em>unknown</em> $notUseDefault]) inherited from Phalcon\Di\Injectable</p>
+<p>Returns the internal dependency injector</p>
+<p>public  <strong>setEventsManager</strong> (<a class="reference internal" href="Phalcon_Events_ManagerInterface.html"><em>Phalcon\Events\ManagerInterface</em></a> $eventsManager) inherited from Phalcon\Di\Injectable</p>
+<p>Sets the event manager</p>
+<p>public <a class="reference internal" href="Phalcon_Events_ManagerInterface.html"><em>Phalcon\Events\ManagerInterface</em></a>  <strong>getEventsManager</strong> () inherited from Phalcon\Di\Injectable</p>
+<p>Returns the internal event manager</p>
+<p>public <em>boolean</em>  <strong>fireEvent</strong> (<em>string</em> $eventName, [<em>mixed</em> $data], [<em>unknown</em> $cancelable]) inherited from Phalcon\Di\Injectable</p>
+<p>Fires an event, implicitly calls behaviors and listeners in the events manager are notified</p>
+<p>public <em>mixed</em>  <strong>fireEventCancel</strong> (<em>string</em> $eventName, [<em>mixed</em> $data], [<em>unknown</em> $cancelable]) inherited from Phalcon\Di\Injectable</p>
+<p>Fires an event, can stop the event by returning to the false</p>
+<p>public <em>boolean</em>  <strong>hasService</strong> (<em>string</em> $name) inherited from Phalcon\Di\Injectable</p>
+<p>Check whether the DI contains a service by a name</p>
+<p>public <a class="reference internal" href="Phalcon_Di_ServiceInterface.html"><em>Phalcon\Di\ServiceInterface</em></a>  <strong>setService</strong> (<em>unknown</em> $name) inherited from Phalcon\Di\Injectable</p>
+<p>Sets a service from the DI</p>
+<p>public <em>object|null</em>  <strong>getService</strong> (<em>unknown</em> $name) inherited from Phalcon\Di\Injectable</p>
+<p>Obtains a service from the DI</p>
+<p>public <em>mixed</em>  <strong>getResolveService</strong> (<em>string</em> $name, [<em>unknown</em> $args], [<em>unknown</em> $noerror], [<em>unknown</em> $noshared]) inherited from Phalcon\Di\Injectable</p>
+<p>Resolves the service based on its configuration</p>
+<p>public  <strong>attachEvent</strong> (<em>string</em> $eventType, <em>Closure</em> $callback) inherited from Phalcon\Di\Injectable</p>
+<p>Attach a listener to the events</p>
+<p>public  <strong>__get</strong> (<em>unknown</em> $property) inherited from Phalcon\Di\Injectable</p>
+<p>Magic method __get</p>
+<p>public  <strong>__sleep</strong> () inherited from Phalcon\Di\Injectable</p>
+<p>...</p>
+<p>public  <strong>__debugInfo</strong> () inherited from Phalcon\Di\Injectable</p>
+<p>...</p>
+</div>
+</div>
+
+
+			</div>
+		  </div>
+		</div>
+	</div>
+  </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li> 
+      </ul>
+    </div>
+
+<footer class="footer">
+	<div class="container">
+      <div class="row">
+          <div class="col-xs-6 col-sm-3">
+              <h4>Download</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/releases">安裝 Phalcon7</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+              <h4>Community</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7">GitHub</a></li>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/issues">Issue Tracker</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-2">
+              <h4>About</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon/wiki/%E6%8D%90%E8%B5%A0%EF%BC%88Donation%EF%BC%89">Donate</a></li>
+              </ul>
+          </div>
+          <div id="license-spaccer" class="visible-xs"></div>
+          <div id="license-wrapper" class="col-xs-12 col-sm-4">
+              <p class="license">
+
+                  Phalcon7 Framework is released under the <a href="https://github.com/dreamsxin/cphalcon7/blob/master/docs/LICENSE.md">new BSD license</a>.<br>
+                  Except where otherwise noted, content on this site is licensed under the
+                  <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a>
+              </p>
+              <div class="design">
+                  <span>Designed by:</span>
+
+                  <a href="http://www.fog-city.net/" class="fogcity" target="_blank" title="Fog City Software"><span>Fog City Software</span></a>
+              </div>
+          </div>
+      </div>
+	</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>模型事务（Model Transactions） &mdash; Phalcon7 1.2.1 文档</title>
+    <meta name="keywords" content="php, phalcon, phalcon7, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/phalcon.css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="../static/jquery.min.js"></script>
+    <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
+    <link rel="next" title="模型验证（Validating Models）" href="models-validation.html" />
+    <link rel="prev" title="模型元数据（Models Meta-Data）" href="models-metadata.html" /> 
+</head>
+<body>
+
+<header class="page-header">
+<nav class="navbar" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+				<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+		</div>
+
+		<div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+			<ul class="nav navbar-nav main-menu">
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7" class="header-nav-link">GitHub</a></li>
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7/releases" class="header-nav-link">Download</a></li>
+			  <li class="first"><a href="/api/" class="header-nav-link">API</a></li>
+			  <li class="first"><a href="/internals/" class="header-nav-link">内核开发手册</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="models-validation.html" title="模型验证（Validating Models）"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="models-metadata.html" title="模型元数据（Models Meta-Data）"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://myleftstudio.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon7 1.2.1 文档</a> &raquo;</li> 
+      </ul>
+    </div>  
+</div>
+
+<div class="container-fluid">
+	<div class="col-md-3 primary-box">
+		<div class="panel panel-default">
+			<div class="panel-heading"><a href="../index.html">內容目录</a></div>
+			<div class="panel-body"><ul>
+<li><a class="reference internal" href="#">模型事务（Model Transactions）</a><ul>
+<li><a class="reference internal" href="#manual-transactions">自定义事务（Manual Transactions）</a></li>
+<li><a class="reference internal" href="#implicit-transactions">隐含的事务（Implicit Transactions）</a></li>
+<li><a class="reference internal" href="#isolated-transactions">单独的事务（Isolated Transactions）</a></li>
+</ul>
+</li>
+</ul>
+</div>
+			<div class="panel-heading">上一个主题</div>
+            <div class="panel-body"><p class="topless"><a href="models-metadata.html" title="上一章">&lt; 模型元数据（Models Meta-Data）</a></p></div>
+			<div class="panel-heading">下一个主题</div>
+            <div class="panel-body"><p class="topless"><a href="models-validation.html" title="下一章">模型验证（Validating Models） &gt;</a></p></div>
+		</div>
+	</div>
+  <div class="col-md-9 second-box" valign="top">
+	<div class="document">
+		<div class="documentwrapper">
+		  <div class="bodywrapper">
+			<div class="body" >
+			  
+  <div class="section" id="model-transactions">
+<h1>模型事务（Model Transactions）<a class="headerlink" href="#model-transactions" title="永久链接至标题">¶</a></h1>
+<p>当一个进程执行多个数据库操作时，通常需要每一步都是成功完成以便保证数据完整性。事务可以确保在数据提交到数据库保存之前所有数据库操作都成功执行。</p>
+<p>Phalcon中通过事务，可以在所有操作都成功执行之后提交到服务器，或者当有错误发生时回滚所有的操作。</p>
+<div class="section" id="manual-transactions">
+<h2>自定义事务（Manual Transactions）<a class="headerlink" href="#manual-transactions" title="永久链接至标题">¶</a></h2>
+<p>如果一个应用只用到了一个数据库连接并且这些事务都不太复杂，那么可以通过简单的将当前数据库连接设置成事务模式实现事务功能，根据操作的成功与否提交或者回滚：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">RobotsController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">saveAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Start a transaction</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">begin</span><span class="p">();</span>
+
+        <span class="nv">$robot</span>              <span class="o">=</span> <span class="k">new</span> <span class="nx">Robots</span><span class="p">();</span>
+        <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span>        <span class="o">=</span> <span class="s2">&quot;WALL·E&quot;</span><span class="p">;</span>
+        <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">created_at</span>  <span class="o">=</span> <span class="nb">date</span><span class="p">(</span><span class="s2">&quot;Y-m-d&quot;</span><span class="p">);</span>
+
+        <span class="c1">// The model failed to save, so rollback the transaction</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">()</span> <span class="o">==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">rollback</span><span class="p">();</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nv">$robotPart</span>            <span class="o">=</span> <span class="k">new</span> <span class="nx">RobotParts</span><span class="p">();</span>
+        <span class="nv">$robotPart</span><span class="o">-&gt;</span><span class="na">robots_id</span> <span class="o">=</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">;</span>
+        <span class="nv">$robotPart</span><span class="o">-&gt;</span><span class="na">type</span>      <span class="o">=</span> <span class="s2">&quot;head&quot;</span><span class="p">;</span>
+
+        <span class="c1">// The model failed to save, so rollback the transaction</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$robotPart</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">()</span> <span class="o">==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">rollback</span><span class="p">();</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Commit the transaction</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">commit</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="implicit-transactions">
+<h2>隐含的事务（Implicit Transactions）<a class="headerlink" href="#implicit-transactions" title="永久链接至标题">¶</a></h2>
+<p>也可以通过已有的关系来存储记录以及其相关记录，这种操作将隐式的创建一个事务来保证所有数据能够正确的保存：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$robotPart</span>          <span class="o">=</span> <span class="k">new</span> <span class="nx">RobotParts</span><span class="p">();</span>
+<span class="nv">$robotPart</span><span class="o">-&gt;</span><span class="na">type</span>    <span class="o">=</span> <span class="s2">&quot;head&quot;</span><span class="p">;</span>
+
+<span class="nv">$robot</span>              <span class="o">=</span> <span class="k">new</span> <span class="nx">Robots</span><span class="p">();</span>
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span>        <span class="o">=</span> <span class="s2">&quot;WALL·E&quot;</span><span class="p">;</span>
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">created_at</span>  <span class="o">=</span> <span class="nb">date</span><span class="p">(</span><span class="s2">&quot;Y-m-d&quot;</span><span class="p">);</span>
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">robotPart</span>   <span class="o">=</span> <span class="nv">$robotPart</span><span class="p">;</span>
+
+<span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span> <span class="c1">// Creates an implicit transaction to store both records</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="isolated-transactions">
+<h2>单独的事务（Isolated Transactions）<a class="headerlink" href="#isolated-transactions" title="永久链接至标题">¶</a></h2>
+<p>单独事务在一个新的连接中执行所有的SQL，虚拟外键检查和业务规则与主数据库连接是相互独立的。
+这种事务需要一个事务管理器来全局的管理每一个事务，保证他们在请求结束前能正确的回滚或者提交。</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Transaction\Failed</span> <span class="k">as</span> <span class="nx">TxFailed</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Transaction\Manager</span> <span class="k">as</span> <span class="nx">TxManager</span><span class="p">;</span>
+
+<span class="k">try</span> <span class="p">{</span>
+
+    <span class="c1">// Create a transaction manager</span>
+    <span class="nv">$manager</span>     <span class="o">=</span> <span class="k">new</span> <span class="nx">TxManager</span><span class="p">();</span>
+
+    <span class="c1">// Request a transaction</span>
+    <span class="nv">$transaction</span> <span class="o">=</span> <span class="nv">$manager</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
+
+    <span class="nv">$robot</span>              <span class="o">=</span> <span class="k">new</span> <span class="nx">Robots</span><span class="p">();</span>
+    <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">setTransaction</span><span class="p">(</span><span class="nv">$transaction</span><span class="p">);</span>
+    <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">name</span>        <span class="o">=</span> <span class="s2">&quot;WALL·E&quot;</span><span class="p">;</span>
+    <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">created_at</span>  <span class="o">=</span> <span class="nb">date</span><span class="p">(</span><span class="s2">&quot;Y-m-d&quot;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">()</span> <span class="o">==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$transaction</span><span class="o">-&gt;</span><span class="na">rollback</span><span class="p">(</span><span class="s2">&quot;Cannot save robot&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nv">$robotPart</span>              <span class="o">=</span> <span class="k">new</span> <span class="nx">RobotParts</span><span class="p">();</span>
+    <span class="nv">$robotPart</span><span class="o">-&gt;</span><span class="na">setTransaction</span><span class="p">(</span><span class="nv">$transaction</span><span class="p">);</span>
+    <span class="nv">$robotPart</span><span class="o">-&gt;</span><span class="na">robots_id</span>   <span class="o">=</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">;</span>
+    <span class="nv">$robotPart</span><span class="o">-&gt;</span><span class="na">type</span>        <span class="o">=</span> <span class="s2">&quot;head&quot;</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$robotPart</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">()</span> <span class="o">==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$transaction</span><span class="o">-&gt;</span><span class="na">rollback</span><span class="p">(</span><span class="s2">&quot;Cannot save robot part&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Everything&#39;s gone fine, let&#39;s commit the transaction</span>
+    <span class="nv">$transaction</span><span class="o">-&gt;</span><span class="na">commit</span><span class="p">();</span>
+
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">TxFailed</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;Failed, reason: &quot;</span><span class="p">,</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>事务可以用以保证以一致性的方式删除多条记录：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Transaction\Failed</span> <span class="k">as</span> <span class="nx">TxFailed</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Transaction\Manager</span> <span class="k">as</span> <span class="nx">TxManager</span><span class="p">;</span>
+
+<span class="k">try</span> <span class="p">{</span>
+
+    <span class="c1">// Create a transaction manager</span>
+    <span class="nv">$manager</span>     <span class="o">=</span> <span class="k">new</span> <span class="nx">TxManager</span><span class="p">();</span>
+
+    <span class="c1">// Request a transaction</span>
+    <span class="nv">$transaction</span> <span class="o">=</span> <span class="nv">$manager</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
+
+    <span class="c1">// Get the robots to be deleted</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="s2">&quot;type = &#39;mechanical&#39;&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$robot</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">setTransaction</span><span class="p">(</span><span class="nv">$transaction</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">()</span> <span class="o">==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Something&#39;s gone wrong, we should rollback the transaction</span>
+            <span class="k">foreach</span> <span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">getMessages</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$transaction</span><span class="o">-&gt;</span><span class="na">rollback</span><span class="p">(</span><span class="nv">$message</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Everything&#39;s gone fine, let&#39;s commit the transaction</span>
+    <span class="nv">$transaction</span><span class="o">-&gt;</span><span class="na">commit</span><span class="p">();</span>
+
+    <span class="k">echo</span> <span class="s2">&quot;Robots were deleted successfully!&quot;</span><span class="p">;</span>
+
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">TxFailed</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;Failed, reason: &quot;</span><span class="p">,</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>事务对象可以重用，不管事务对象是在什么地方获取的。只有当一个commit()或者一个rollback()执行时才会创建一个新的事务对象。可以通过服务容器在整个应用中来创建和管理全局师傅管理器。</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Transaction\Manager</span> <span class="k">as</span> <span class="nx">TransactionManager</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">setShared</span><span class="p">(</span><span class="s1">&#39;transactions&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">TransactionManager</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>然后在控制器或者视图中访问：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">ProductsController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">saveAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Obtain the TransactionsManager from the services container</span>
+        <span class="nv">$manager</span>     <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">di</span><span class="o">-&gt;</span><span class="na">getTransactions</span><span class="p">();</span>
+
+        <span class="c1">// Or</span>
+        <span class="nv">$manager</span>     <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">transactions</span><span class="p">;</span>
+
+        <span class="c1">// Request a transaction</span>
+        <span class="nv">$transaction</span> <span class="o">=</span> <span class="nv">$manager</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
+
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>While a transaction is active, the transaction manager will always return the same transaction across the application.</p>
+</div>
+</div>
+
+
+			</div>
+		  </div>
+		</div>
+	</div>
+  </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="models-validation.html" title="模型验证（Validating Models）"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="models-metadata.html" title="模型元数据（Models Meta-Data）"
+             >上一页</a> |</li> 
+      </ul>
+    </div>
+
+<footer class="footer">
+	<div class="container">
+      <div class="row">
+          <div class="col-xs-6 col-sm-3">
+              <h4>Download</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/releases">安裝 Phalcon7</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+              <h4>Community</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7">GitHub</a></li>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/issues">Issue Tracker</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-2">
+              <h4>About</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon/wiki/%E6%8D%90%E8%B5%A0%EF%BC%88Donation%EF%BC%89">Donate</a></li>
+              </ul>
+          </div>
+          <div id="license-spaccer" class="visible-xs"></div>
+          <div id="license-wrapper" class="col-xs-12 col-sm-4">
+              <p class="license">
+
+                  Phalcon7 Framework is released under the <a href="https://github.com/dreamsxin/cphalcon7/blob/master/docs/LICENSE.md">new BSD license</a>.<br>
+                  Except where otherwise noted, content on this site is licensed under the
+                  <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a>
+              </p>
+              <div class="design">
+                  <span>Designed by:</span>
+
+                  <a href="http://www.fog-city.net/" class="fogcity" target="_blank" title="Fog City Software"><span>Fog City Software</span></a>
+              </div>
+          </div>
+      </div>
+	</div>
+</footer>
+</body>
+</html>

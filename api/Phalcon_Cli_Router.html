@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Class Phalcon\Cli\Router &mdash; Phalcon7 1.2.1 文档</title>
+    <meta name="keywords" content="php, phalcon, phalcon7, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/phalcon.css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="../static/jquery.min.js"></script>
+    <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" /> 
+</head>
+<body>
+
+<header class="page-header">
+<nav class="navbar" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+				<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+		</div>
+
+		<div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+			<ul class="nav navbar-nav main-menu">
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7" class="header-nav-link">GitHub</a></li>
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7/releases" class="header-nav-link">Download</a></li>
+			  <li class="first"><a href="/api/" class="header-nav-link">API</a></li>
+			  <li class="first"><a href="/internals/" class="header-nav-link">内核开发手册</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li><a href="http://myleftstudio.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon7 1.2.1 文档</a> &raquo;</li> 
+      </ul>
+    </div>  
+</div>
+
+<div class="container-fluid">
+	<div class="col-md-3 primary-box">
+		<div class="panel panel-default">
+			<div class="panel-heading"><a href="../index.html">內容目录</a></div>
+			<div class="panel-body"><ul>
+<li><a class="reference internal" href="#">Class <strong>Phalcon\Cli\Router</strong></a><ul>
+<li><a class="reference internal" href="#constants">Constants</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+</ul>
+</li>
+</ul>
+</div>
+		</div>
+	</div>
+  <div class="col-md-9 second-box" valign="top">
+	<div class="document">
+		<div class="documentwrapper">
+		  <div class="bodywrapper">
+			<div class="body" >
+			  
+  <div class="section" id="class-phalcon-cli-router">
+<h1>Class <strong>Phalcon\Cli\Router</strong><a class="headerlink" href="#class-phalcon-cli-router" title="永久链接至标题">¶</a></h1>
+<p><em>extends</em> abstract class <a class="reference internal" href="Phalcon_Router.html"><em>Phalcon\Router</em></a></p>
+<p><em>implements</em> <a class="reference internal" href="Phalcon_RouterInterface.html"><em>Phalcon\RouterInterface</em></a>, <a class="reference internal" href="Phalcon_Di_InjectionAwareInterface.html"><em>Phalcon\Di\InjectionAwareInterface</em></a>, <a class="reference internal" href="Phalcon_Events_EventsAwareInterface.html"><em>Phalcon\Events\EventsAwareInterface</em></a></p>
+<p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/cli/router.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
+<p>Phalcon\Cli\Router is the standard framework router. Routing is the process of taking a command-line arguments and decomposing it into parameters to determine which module, task, and action of that task should receive the request</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Cli\Router</span><span class="p">();</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;module&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;main&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;task&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;videos&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;action&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;process&#39;</span>
+<span class="p">));</span>
+<span class="k">echo</span> <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">getTaskName</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="section" id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="永久链接至标题">¶</a></h2>
+<p><em>integer</em> <strong>MODE_DEFAULT</strong></p>
+<p><em>integer</em> <strong>MODE_NONE</strong></p>
+<p><em>integer</em> <strong>MODE_REST</strong></p>
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
+<p>public  <strong>__construct</strong> ()</p>
+<p>Phalcon\Cli\Router constructor</p>
+<p>public  <strong>setDefaultTask</strong> (<em>unknown</em> $handlerName)</p>
+<p>Sets the default task name</p>
+<p>public <em>string</em>  <strong>getTaskName</strong> ()</p>
+<p>Returns proccesed task name</p>
+<p>public  <strong>handle</strong> ([<em>array</em> $arguments])</p>
+<p>Handles routing information received from command-line arguments</p>
+<p>public  <strong>setDefaultModule</strong> (<em>string</em> $moduleName) inherited from Phalcon\Router</p>
+<p>Sets the name of the default module</p>
+<p>public <em>string</em>  <strong>getDefaultModule</strong> () inherited from Phalcon\Router</p>
+<p>Gets the name of the default module</p>
+<p>public  <strong>setDefaultNamespace</strong> (<em>string</em> $namespaceName) inherited from Phalcon\Router</p>
+<p>Sets the name of the default namespace</p>
+<p>public <em>string</em>  <strong>getDefaultNamespace</strong> () inherited from Phalcon\Router</p>
+<p>Gets the name of the default namespace</p>
+<p>public  <strong>setDefaultHandler</strong> (<em>unknown</em> $handlerName) inherited from Phalcon\Router</p>
+<p>Sets the default handle name</p>
+<p>public <em>string</em>  <strong>getDefaultHandler</strong> () inherited from Phalcon\Router</p>
+<p>Gets the default handle name</p>
+<p>public  <strong>setDefaultAction</strong> (<em>string</em> $actionName) inherited from Phalcon\Router</p>
+<p>Sets the default action name</p>
+<p>public <em>string</em>  <strong>getDefaultAction</strong> () inherited from Phalcon\Router</p>
+<p>Gets the default action name</p>
+<p>public  <strong>setDefaultParams</strong> (<em>array</em> $params) inherited from Phalcon\Router</p>
+<p>Sets the default extra params</p>
+<p>public <em>string</em>  <strong>getDefaultParams</strong> () inherited from Phalcon\Router</p>
+<p>Gets the default extra params</p>
+<p>public <em>string</em>  <strong>setCaseSensitive</strong> (<em>boolean</em> $caseSensitive) inherited from Phalcon\Router</p>
+<p>Sets the case sensitive</p>
+<p>public <em>boolean</em>  <strong>getCaseSensitive</strong> () inherited from Phalcon\Router</p>
+<p>Returns the case sensitive</p>
+<p>public  <strong>setMode</strong> (<em>int</em> $mode) inherited from Phalcon\Router</p>
+<p>Sets the mode</p>
+<p>public  <strong>getMode</strong> () inherited from Phalcon\Router</p>
+<p>Gets the mode</p>
+<p>public  <strong>setModuleName</strong> (<em>string</em> $moduleName) inherited from Phalcon\Router</p>
+<p>Sets proccesed module name</p>
+<p>public <em>string</em>  <strong>getModuleName</strong> () inherited from Phalcon\Router</p>
+<p>Returns proccesed module name</p>
+<p>public  <strong>setNamespaceName</strong> (<em>string</em> $namespaceName) inherited from Phalcon\Router</p>
+<p>Sets proccesed namespace name</p>
+<p>public <em>string</em>  <strong>getNamespaceName</strong> () inherited from Phalcon\Router</p>
+<p>Returns proccesed namespace name</p>
+<p>public  <strong>setHandlerName</strong> (<em>unknown</em> $handlerName) inherited from Phalcon\Router</p>
+<p>Sets proccesed handle name</p>
+<p>public <em>string</em>  <strong>getHandlerName</strong> () inherited from Phalcon\Router</p>
+<p>Returns proccesed handle name</p>
+<p>public  <strong>setActionName</strong> (<em>string</em> $actionName) inherited from Phalcon\Router</p>
+<p>Sets proccesed action name</p>
+<p>public <em>string</em>  <strong>getActionName</strong> () inherited from Phalcon\Router</p>
+<p>Returns proccesed action name</p>
+<p>public  <strong>setParams</strong> (<em>array</em> $params) inherited from Phalcon\Router</p>
+<p>Sets proccesed extra params</p>
+<p>public <em>array</em>  <strong>getParams</strong> () inherited from Phalcon\Router</p>
+<p>Returns proccesed extra params</p>
+<p>public  <strong>setDI</strong> (<a class="reference internal" href="Phalcon_DiInterface.html"><em>Phalcon\DiInterface</em></a> $dependencyInjector) inherited from Phalcon\Di\Injectable</p>
+<p>Sets the dependency injector</p>
+<p>public <a class="reference internal" href="Phalcon_DiInterface.html"><em>Phalcon\DiInterface</em></a>  <strong>getDI</strong> ([<em>unknown</em> $error], [<em>unknown</em> $notUseDefault]) inherited from Phalcon\Di\Injectable</p>
+<p>Returns the internal dependency injector</p>
+<p>public  <strong>setEventsManager</strong> (<a class="reference internal" href="Phalcon_Events_ManagerInterface.html"><em>Phalcon\Events\ManagerInterface</em></a> $eventsManager) inherited from Phalcon\Di\Injectable</p>
+<p>Sets the event manager</p>
+<p>public <a class="reference internal" href="Phalcon_Events_ManagerInterface.html"><em>Phalcon\Events\ManagerInterface</em></a>  <strong>getEventsManager</strong> () inherited from Phalcon\Di\Injectable</p>
+<p>Returns the internal event manager</p>
+<p>public <em>boolean</em>  <strong>fireEvent</strong> (<em>string</em> $eventName, [<em>mixed</em> $data], [<em>unknown</em> $cancelable]) inherited from Phalcon\Di\Injectable</p>
+<p>Fires an event, implicitly calls behaviors and listeners in the events manager are notified</p>
+<p>public <em>mixed</em>  <strong>fireEventCancel</strong> (<em>string</em> $eventName, [<em>mixed</em> $data], [<em>unknown</em> $cancelable]) inherited from Phalcon\Di\Injectable</p>
+<p>Fires an event, can stop the event by returning to the false</p>
+<p>public <em>boolean</em>  <strong>hasService</strong> (<em>string</em> $name) inherited from Phalcon\Di\Injectable</p>
+<p>Check whether the DI contains a service by a name</p>
+<p>public <a class="reference internal" href="Phalcon_Di_ServiceInterface.html"><em>Phalcon\Di\ServiceInterface</em></a>  <strong>setService</strong> (<em>unknown</em> $name) inherited from Phalcon\Di\Injectable</p>
+<p>Sets a service from the DI</p>
+<p>public <em>object|null</em>  <strong>getService</strong> (<em>unknown</em> $name) inherited from Phalcon\Di\Injectable</p>
+<p>Obtains a service from the DI</p>
+<p>public <em>mixed</em>  <strong>getResolveService</strong> (<em>string</em> $name, [<em>unknown</em> $args], [<em>unknown</em> $noerror], [<em>unknown</em> $noshared]) inherited from Phalcon\Di\Injectable</p>
+<p>Resolves the service based on its configuration</p>
+<p>public  <strong>attachEvent</strong> (<em>string</em> $eventType, <em>Closure</em> $callback) inherited from Phalcon\Di\Injectable</p>
+<p>Attach a listener to the events</p>
+<p>public  <strong>__get</strong> (<em>unknown</em> $property) inherited from Phalcon\Di\Injectable</p>
+<p>Magic method __get</p>
+<p>public  <strong>__sleep</strong> () inherited from Phalcon\Di\Injectable</p>
+<p>...</p>
+<p>public  <strong>__debugInfo</strong> () inherited from Phalcon\Di\Injectable</p>
+<p>...</p>
+</div>
+</div>
+
+
+			</div>
+		  </div>
+		</div>
+	</div>
+  </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li> 
+      </ul>
+    </div>
+
+<footer class="footer">
+	<div class="container">
+      <div class="row">
+          <div class="col-xs-6 col-sm-3">
+              <h4>Download</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/releases">安裝 Phalcon7</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+              <h4>Community</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7">GitHub</a></li>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/issues">Issue Tracker</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-2">
+              <h4>About</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon/wiki/%E6%8D%90%E8%B5%A0%EF%BC%88Donation%EF%BC%89">Donate</a></li>
+              </ul>
+          </div>
+          <div id="license-spaccer" class="visible-xs"></div>
+          <div id="license-wrapper" class="col-xs-12 col-sm-4">
+              <p class="license">
+
+                  Phalcon7 Framework is released under the <a href="https://github.com/dreamsxin/cphalcon7/blob/master/docs/LICENSE.md">new BSD license</a>.<br>
+                  Except where otherwise noted, content on this site is licensed under the
+                  <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a>
+              </p>
+              <div class="design">
+                  <span>Designed by:</span>
+
+                  <a href="http://www.fog-city.net/" class="fogcity" target="_blank" title="Fog City Software"><span>Fog City Software</span></a>
+              </div>
+          </div>
+      </div>
+	</div>
+</footer>
+</body>
+</html>

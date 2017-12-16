@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>教程：运行环境（Tutorial: Environments） &mdash; Phalcon7 1.2.1 文档</title>
+    <meta name="keywords" content="php, phalcon, phalcon7, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/phalcon.css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="../static/jquery.min.js"></script>
+    <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
+    <link rel="next" title="示例列表（List of examples）" href="samples.html" />
+    <link rel="prev" title="教程：创建简单的 REST API（Tutorial: Creating a Simple REST API）" href="tutorial-rest.html" /> 
+</head>
+<body>
+
+<header class="page-header">
+<nav class="navbar" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+				<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+		</div>
+
+		<div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+			<ul class="nav navbar-nav main-menu">
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7" class="header-nav-link">GitHub</a></li>
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7/releases" class="header-nav-link">Download</a></li>
+			  <li class="first"><a href="/api/" class="header-nav-link">API</a></li>
+			  <li class="first"><a href="/internals/" class="header-nav-link">内核开发手册</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="samples.html" title="示例列表（List of examples）"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="tutorial-rest.html" title="教程：创建简单的 REST API（Tutorial: Creating a Simple REST API）"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://myleftstudio.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon7 1.2.1 文档</a> &raquo;</li> 
+      </ul>
+    </div>  
+</div>
+
+<div class="container-fluid">
+	<div class="col-md-3 primary-box">
+		<div class="panel panel-default">
+			<div class="panel-heading"><a href="../index.html">內容目录</a></div>
+			<div class="panel-body"><ul>
+<li><a class="reference internal" href="#">教程：运行环境（Tutorial: Environments）</a><ul>
+<li><a class="reference internal" href="#project-structure">项目结构（Project Structure）</a></li>
+<li><a class="reference internal" href="#bootstrap">引导文件（Bootstrap）</a></li>
+</ul>
+</li>
+</ul>
+</div>
+			<div class="panel-heading">上一个主题</div>
+            <div class="panel-body"><p class="topless"><a href="tutorial-rest.html" title="上一章">&lt; 教程：创建简单的 REST API（Tutorial: Creating a Simple REST API）</a></p></div>
+			<div class="panel-heading">下一个主题</div>
+            <div class="panel-body"><p class="topless"><a href="samples.html" title="下一章">示例列表（List of examples） &gt;</a></p></div>
+		</div>
+	</div>
+  <div class="col-md-9 second-box" valign="top">
+	<div class="document">
+		<div class="documentwrapper">
+		  <div class="bodywrapper">
+			<div class="body" >
+			  
+  <div class="section" id="tutorial-environments">
+<h1>教程：运行环境（Tutorial: Environments）<a class="headerlink" href="#tutorial-environments" title="永久链接至标题">¶</a></h1>
+<p>在本章节中，我们将会说明如何让同一套代码在开发环境和生产环境使用不同的配置文件，以及调用不同类。</p>
+<div class="section" id="project-structure">
+<h2>项目结构（Project Structure）<a class="headerlink" href="#project-structure" title="永久链接至标题">¶</a></h2>
+<p>下面是我们的项目结构：</p>
+<div class="highlight-bash"><div class="highlight"><pre>evn/
+app/
+    config/
+    config.php
+    config.dev.php
+    controllers/
+    dev/
+    models/
+    dev/
+    views/
+    dev/
+    public/
+    index.php
+</pre></div>
+</div>
+<p>可以看到，在这里控制器、模型和视图目录分别多了一个，我将利用自动加载器查找目录的优先顺序来实现不同环境调用不同类，以及利用视图类查找视图文件的先后顺序来实现渲染不同的视图文件。</p>
+</div>
+<div class="section" id="bootstrap">
+<h2>引导文件（Bootstrap）<a class="headerlink" href="#bootstrap" title="永久链接至标题">¶</a></h2>
+<p>下面是引导文件 <cite>public/index.php</cite> 的实现，在这里我们是通过域名的不同来区别开发或生产环境，你们也可以通过配置来设定环境变量：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$config_basedir</span> <span class="o">=</span> <span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/../apps/config/&#39;</span><span class="p">;</span>
+<span class="nx">Phalcon\Config\Adapter\Php</span><span class="o">::</span><span class="na">setBasePath</span><span class="p">(</span><span class="nv">$config_basedir</span><span class="p">);</span>
+
+<span class="nv">$config</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Config\Adapter\Php</span><span class="p">(</span><span class="s1">&#39;config.php&#39;</span><span class="p">);</span>
+
+<span class="nv">$host</span> <span class="o">=</span> <span class="nx">Phalcon\Arr</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">,</span> <span class="s1">&#39;HTTP_HOST&#39;</span><span class="p">,</span> <span class="s1">&#39;localhost&#39;</span><span class="p">);</span>
+
+<span class="c1">// 如果域名中包含 dev，就认为是开发环境</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">stripos</span><span class="p">(</span><span class="nv">$host</span><span class="p">,</span> <span class="s1">&#39;dev&#39;</span><span class="p">)</span> <span class="o">!==</span> <span class="k">FALSE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$environment</span> <span class="o">=</span> <span class="s1">&#39;dev&#39;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">stripos</span><span class="p">(</span><span class="nv">$host</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">)</span> <span class="o">!==</span> <span class="k">FALSE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$environment</span> <span class="o">=</span> <span class="s1">&#39;test&#39;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nv">$environment</span> <span class="o">=</span> <span class="s1">&#39;prod&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$environment</span> <span class="o">==</span> <span class="s1">&#39;dev&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$filename</span> <span class="o">=</span> <span class="s1">&#39;config.dev.php&#39;</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">file_exists</span><span class="p">(</span><span class="nv">$config_basedir</span> <span class="o">.</span> <span class="nv">$filename</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">merge</span><span class="p">(</span><span class="nv">$config</span><span class="o">-&gt;</span><span class="na">load</span><span class="p">(</span><span class="nv">$filename</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$environment</span> <span class="o">==</span> <span class="s1">&#39;test&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$filename</span> <span class="o">=</span> <span class="s1">&#39;config.test.php&#39;</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">file_exists</span><span class="p">(</span><span class="nv">$config_basedir</span> <span class="o">.</span> <span class="nv">$filename</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">merge</span><span class="p">(</span><span class="nv">$config</span><span class="o">-&gt;</span><span class="na">load</span><span class="p">(</span><span class="nv">$filename</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nv">$loader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Loader</span><span class="p">();</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$environment</span> <span class="o">==</span> <span class="s1">&#39;dev&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$dirs</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+        <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">controllersDir</span> <span class="o">.</span> <span class="s1">&#39;dev/&#39;</span><span class="p">,</span>
+        <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">controllersDir</span><span class="p">,</span>
+        <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">modelsDir</span> <span class="o">.</span> <span class="s1">&#39;dev/&#39;</span><span class="p">,</span>
+        <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">modelsDir</span><span class="p">,</span>
+    <span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nv">$dirs</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+        <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">controllersDir</span><span class="p">,</span>
+        <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">modelsDir</span><span class="p">,</span>
+    <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">registerDirs</span><span class="p">(</span><span class="nv">$dirs</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">register</span><span class="p">();</span>
+
+<span class="nv">$di</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Di\FactoryDefault</span><span class="p">();</span>
+
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;view&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$config</span><span class="p">,</span> <span class="nv">$environment</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Mvc\View</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$environment</span> <span class="o">==</span> <span class="s1">&#39;dev&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$dirs</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+            <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">viewsDir</span> <span class="o">.</span> <span class="s1">&#39;dev/&#39;</span><span class="p">,</span>
+            <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">viewsDir</span><span class="p">,</span>
+        <span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nv">$dirs</span> <span class="o">=</span> <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">viewsDir</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setBasePath</span><span class="p">(</span><span class="nv">$dirs</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nv">$view</span><span class="p">;</span>
+<span class="p">},</span> <span class="k">true</span><span class="p">);</span>
+
+<span class="c1">// 如果为生产环境，则设置 metadata 缓存</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$environment</span> <span class="o">==</span> <span class="s1">&#39;prod&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;modelsMetadata&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$metaData</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Mvc\Model\Metadata\Files</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;metaDataDir&#39;</span> <span class="o">=&gt;</span> <span class="nx">__DIR__</span> <span class="o">.</span> <span class="nx">DIRECTORY_SEPARATOR</span> <span class="o">.</span> <span class="s1">&#39;../apps/cache/metadata/&#39;</span>
+         <span class="p">));</span>
+         <span class="k">return</span> <span class="nv">$metaData</span><span class="p">;</span>
+    <span class="p">},</span> <span class="k">true</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+			</div>
+		  </div>
+		</div>
+	</div>
+  </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="samples.html" title="示例列表（List of examples）"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="tutorial-rest.html" title="教程：创建简单的 REST API（Tutorial: Creating a Simple REST API）"
+             >上一页</a> |</li> 
+      </ul>
+    </div>
+
+<footer class="footer">
+	<div class="container">
+      <div class="row">
+          <div class="col-xs-6 col-sm-3">
+              <h4>Download</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/releases">安裝 Phalcon7</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+              <h4>Community</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7">GitHub</a></li>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/issues">Issue Tracker</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-2">
+              <h4>About</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon/wiki/%E6%8D%90%E8%B5%A0%EF%BC%88Donation%EF%BC%89">Donate</a></li>
+              </ul>
+          </div>
+          <div id="license-spaccer" class="visible-xs"></div>
+          <div id="license-wrapper" class="col-xs-12 col-sm-4">
+              <p class="license">
+
+                  Phalcon7 Framework is released under the <a href="https://github.com/dreamsxin/cphalcon7/blob/master/docs/LICENSE.md">new BSD license</a>.<br>
+                  Except where otherwise noted, content on this site is licensed under the
+                  <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a>
+              </p>
+              <div class="design">
+                  <span>Designed by:</span>
+
+                  <a href="http://www.fog-city.net/" class="fogcity" target="_blank" title="Fog City Software"><span>Fog City Software</span></a>
+              </div>
+          </div>
+      </div>
+	</div>
+</footer>
+</body>
+</html>

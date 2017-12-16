@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>注释解析器（Annotations Parser） &mdash; Phalcon7 1.2.1 文档</title>
+    <meta name="keywords" content="php, phalcon, phalcon7, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/phalcon.css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="../static/jquery.min.js"></script>
+    <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
+    <link rel="next" title="命令行应用（Command Line Applications）" href="cli.html" />
+    <link rel="prev" title="日志记录（Logging）" href="logging.html" /> 
+</head>
+<body>
+
+<header class="page-header">
+<nav class="navbar" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+				<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+		</div>
+
+		<div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+			<ul class="nav navbar-nav main-menu">
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7" class="header-nav-link">GitHub</a></li>
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7/releases" class="header-nav-link">Download</a></li>
+			  <li class="first"><a href="/api/" class="header-nav-link">API</a></li>
+			  <li class="first"><a href="/internals/" class="header-nav-link">内核开发手册</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="cli.html" title="命令行应用（Command Line Applications）"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="logging.html" title="日志记录（Logging）"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://myleftstudio.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon7 1.2.1 文档</a> &raquo;</li> 
+      </ul>
+    </div>  
+</div>
+
+<div class="container-fluid">
+	<div class="col-md-3 primary-box">
+		<div class="panel panel-default">
+			<div class="panel-heading"><a href="../index.html">內容目录</a></div>
+			<div class="panel-body"><ul>
+<li><a class="reference internal" href="#">注释解析器（Annotations Parser）</a><ul>
+<li><a class="reference internal" href="#reading-annotations">读取注释（Reading Annotations）</a></li>
+<li><a class="reference internal" href="#types-of-annotations">注释类型（Types of Annotations）</a></li>
+<li><a class="reference internal" href="#practical-usage">实际使用（Practical Usage）</a><ul>
+<li><a class="reference internal" href="#cache-enabler-with-annotations">注释开启缓存（Cache Enabler with Annotations）</a></li>
+<li><a class="reference internal" href="#private-public-areas-with-annotations">Private/Public areas with Annotations</a></li>
+<li><a class="reference internal" href="#choose-the-template-to-render">选择渲染模版（Choose the template to render）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#annotations-adapters">注释适配器（Annotations Adapters）</a><ul>
+<li><a class="reference internal" href="#implementing-your-own-adapters">自定义适配器（Implementing your own adapters）</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#external-resources">外部资源（External Resources）</a></li>
+</ul>
+</li>
+</ul>
+</div>
+			<div class="panel-heading">上一个主题</div>
+            <div class="panel-body"><p class="topless"><a href="logging.html" title="上一章">&lt; 日志记录（Logging）</a></p></div>
+			<div class="panel-heading">下一个主题</div>
+            <div class="panel-body"><p class="topless"><a href="cli.html" title="下一章">命令行应用（Command Line Applications） &gt;</a></p></div>
+		</div>
+	</div>
+  <div class="col-md-9 second-box" valign="top">
+	<div class="document">
+		<div class="documentwrapper">
+		  <div class="bodywrapper">
+			<div class="body" >
+			  
+  <div class="section" id="annotations-parser">
+<h1>注释解析器（Annotations Parser）<a class="headerlink" href="#annotations-parser" title="永久链接至标题">¶</a></h1>
+<p>这是第一个为PHP用C语言写的注释解析器。
+<code class="code docutils literal"><span class="pre">Phalcon\Annotations</span></code> 是一个通用组件，为应用中的PHP类提供易于解析和缓存注释的功能。</p>
+<p>注释内容是读自类，方法和属性的注释区域。一个注释单元可以放在注释区域的任何位置。</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * This is the class description</span>
+<span class="sd"> *</span>
+<span class="sd"> * @AmazingClass(true)</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">Example</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * This a property with a special feature</span>
+<span class="sd">     *</span>
+<span class="sd">     * @SpecialFeature</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$someProperty</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * This is a method</span>
+<span class="sd">     *</span>
+<span class="sd">     * @SpecialFeature</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">someMethod</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>在上面的例子中，我们发现注释块中除了注释单元，还可以有注释内容，一个注释单元语法如下：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">/**</span>
+<span class="x"> * @Annotation-Name</span>
+<span class="x"> * @Annotation-Name(param1, param2, ...)</span>
+<span class="x"> */</span>
+</pre></div>
+</div>
+<p>当然，一个注释单元可以放在注释内容里的任意位置：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * This a property with a special feature</span>
+<span class="sd"> *</span>
+<span class="sd"> * @SpecialFeature</span>
+<span class="sd"> *</span>
+<span class="sd"> * More comments</span>
+<span class="sd"> *</span>
+<span class="sd"> * @AnotherSpecialFeature(true)</span>
+<span class="sd"> */</span>
+</pre></div>
+</div>
+<p>这个解析器是高度灵活的，下面这样的注释单元是合法可解析的：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * This a property with a special feature @SpecialFeature({</span>
+<span class="sd">someParameter=&quot;the value&quot;, false</span>
+
+<span class="sd"> })  More comments @AnotherSpecialFeature(true) @MoreAnnotations</span>
+<span class="sd"> **/</span>
+</pre></div>
+</div>
+<p>然而，为了使代码更容易维护和理解，我们推荐把注释单元放在注释块的最后：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * This a property with a special feature</span>
+<span class="sd"> * More comments</span>
+<span class="sd"> *</span>
+<span class="sd"> * @SpecialFeature({someParameter=&quot;the value&quot;, false})</span>
+<span class="sd"> * @AnotherSpecialFeature(true)</span>
+<span class="sd"> */</span>
+</pre></div>
+</div>
+<div class="section" id="reading-annotations">
+<h2>读取注释（Reading Annotations）<a class="headerlink" href="#reading-annotations" title="永久链接至标题">¶</a></h2>
+<p>实现反射器（Reflector）可以轻松获取被定义在类中的注释，使用一个面向对象的接口即可：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Annotations\Adapter\Memory</span> <span class="k">as</span> <span class="nx">MemoryAdapter</span><span class="p">;</span>
+
+<span class="nv">$reader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MemoryAdapter</span><span class="p">();</span>
+
+<span class="c1">// 反射在Example类的注释</span>
+<span class="nv">$reflector</span> <span class="o">=</span> <span class="nv">$reader</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;Example&#39;</span><span class="p">);</span>
+
+<span class="c1">// 读取类中注释块中的注释</span>
+<span class="nv">$annotations</span> <span class="o">=</span> <span class="nv">$reflector</span><span class="o">-&gt;</span><span class="na">getClassAnnotations</span><span class="p">();</span>
+
+<span class="c1">// 遍历注释</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$annotations</span> <span class="k">as</span> <span class="nv">$annotation</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// 打印注释名称</span>
+    <span class="k">echo</span> <span class="nv">$annotation</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">(),</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+    <span class="c1">// 打印注释参数个数</span>
+    <span class="k">echo</span> <span class="nv">$annotation</span><span class="o">-&gt;</span><span class="na">numberArguments</span><span class="p">(),</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+    <span class="c1">// 打印注释参数</span>
+    <span class="nb">print_r</span><span class="p">(</span><span class="nv">$annotation</span><span class="o">-&gt;</span><span class="na">getArguments</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>虽然这个注释的读取过程是非常快速的，然而，出于性能原因，我们建议使用一个适配器储存解析后的注释内容。
+适配器把处理后的注释内容缓存起来，避免每次读取都需要解析一遍注释。</p>
+<p><a class="reference internal" href="../api/Phalcon_Annotations_Adapter_Memory.html"><em>Phalcon\Annotations\Adapter\Memory</em></a> 被用在上面的例子中。这个适配器只在请求过程中缓存注释（译者注：请求完成后缓存将被清空），因为这个原因，这个适配器非常适合用于开发环境中。当应用跑在生产环境中还有其他适配器可以替换。</p>
+</div>
+<div class="section" id="types-of-annotations">
+<h2>注释类型（Types of Annotations）<a class="headerlink" href="#types-of-annotations" title="永久链接至标题">¶</a></h2>
+<p>注释单元可以有参数也可以没有。参数可以为简单的文字(strings, number, boolean, null)，数组，哈希列表或者其他注释单元：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * 简单的注释单元</span>
+<span class="sd"> *</span>
+<span class="sd"> * @SomeAnnotation</span>
+<span class="sd"> */</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * 带参数的注释单元</span>
+<span class="sd"> *</span>
+<span class="sd"> * @SomeAnnotation(&quot;hello&quot;, &quot;world&quot;, 1, 2, 3, false, true)</span>
+<span class="sd"> */</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * 带名称限定参数的注释单元</span>
+<span class="sd"> *</span>
+<span class="sd"> * @SomeAnnotation(first=&quot;hello&quot;, second=&quot;world&quot;, third=1)</span>
+<span class="sd"> * @SomeAnnotation(first: &quot;hello&quot;, second: &quot;world&quot;, third: 1)</span>
+<span class="sd"> */</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * 数组参数</span>
+<span class="sd"> *</span>
+<span class="sd"> * @SomeAnnotation([1, 2, 3, 4])</span>
+<span class="sd"> * @SomeAnnotation({1, 2, 3, 4})</span>
+<span class="sd"> */</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * 哈希列表参数</span>
+<span class="sd"> *</span>
+<span class="sd"> * @SomeAnnotation({first=1, second=2, third=3})</span>
+<span class="sd"> * @SomeAnnotation({&#39;first&#39;=1, &#39;second&#39;=2, &#39;third&#39;=3})</span>
+<span class="sd"> * @SomeAnnotation({&#39;first&#39;: 1, &#39;second&#39;: 2, &#39;third&#39;: 3})</span>
+<span class="sd"> * @SomeAnnotation([&#39;first&#39;: 1, &#39;second&#39;: 2, &#39;third&#39;: 3])</span>
+<span class="sd"> */</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * 嵌套数组/哈希列表</span>
+<span class="sd"> *</span>
+<span class="sd"> * @SomeAnnotation({&quot;name&quot;=&quot;SomeName&quot;, &quot;other&quot;={</span>
+<span class="sd"> *     &quot;foo1&quot;: &quot;bar1&quot;, &quot;foo2&quot;: &quot;bar2&quot;, {1, 2, 3},</span>
+<span class="sd"> * }})</span>
+<span class="sd"> */</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * 嵌套注释单元</span>
+<span class="sd"> *</span>
+<span class="sd"> * @SomeAnnotation(first=@AnotherAnnotation(1, 2, 3))</span>
+<span class="sd"> */</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="practical-usage">
+<h2>实际使用（Practical Usage）<a class="headerlink" href="#practical-usage" title="永久链接至标题">¶</a></h2>
+<p>接下来我们将解释PHP应用程序中的注释的一些实际的例子：</p>
+<div class="section" id="cache-enabler-with-annotations">
+<h3>注释开启缓存（Cache Enabler with Annotations）<a class="headerlink" href="#cache-enabler-with-annotations" title="永久链接至标题">¶</a></h3>
+<p>我们假设一下，假设我们接下来的控制器和开发者想要建一个插件，如果被执行的方法被标记为可缓存的话，这个插件可以自动开启缓存。首先，我们先注册这个插件到Dispatcher服务中，这样这个插件将被通知当控制器的路由被执行的时候：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher</span> <span class="k">as</span> <span class="nx">MvcDispatcher</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">;</span>
+
+<span class="nv">$di</span><span class="p">[</span><span class="s1">&#39;dispatcher&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+
+    <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventsManager</span><span class="p">();</span>
+
+    <span class="c1">// 添加插件到dispatch事件中</span>
+    <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span><span class="s1">&#39;dispatch&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">CacheEnablerPlugin</span><span class="p">());</span>
+
+    <span class="nv">$dispatcher</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MvcDispatcher</span><span class="p">();</span>
+
+    <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventsManager</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nv">$dispatcher</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>CacheEnablerPlugin 这个插件拦截每一个被dispatcher执行的action，检查如果需要则启动缓存：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Events\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\User\Plugin</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * 为视图启动缓存，如果被执行的action带有@Cache 注释单元。</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">CacheEnablerPlugin</span> <span class="k">extends</span> <span class="nx">Plugin</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * 这个事件在dispatcher中的每个路由被执行前执行</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">beforeExecuteRoute</span><span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span> <span class="nx">Dispatcher</span> <span class="nv">$dispatcher</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// 解析目前访问的控制的方法的注释</span>
+        <span class="nv">$annotations</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">annotations</span><span class="o">-&gt;</span><span class="na">getMethod</span><span class="p">(</span>
+            <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">getControllerClass</span><span class="p">(),</span>
+            <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">getActiveMethod</span><span class="p">()</span>
+        <span class="p">);</span>
+
+        <span class="c1">// 检查是否方法中带有注释名称‘Cache’的注释单元</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$annotations</span><span class="o">-&gt;</span><span class="na">has</span><span class="p">(</span><span class="s1">&#39;Cache&#39;</span><span class="p">))</span> <span class="p">{</span>
+
+            <span class="c1">// 这个方法带有‘Cache’注释单元</span>
+            <span class="nv">$annotation</span> <span class="o">=</span> <span class="nv">$annotations</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;Cache&#39;</span><span class="p">);</span>
+
+            <span class="c1">// 获取注释单元的‘lifetime’参数</span>
+            <span class="nv">$lifetime</span> <span class="o">=</span> <span class="nv">$annotation</span><span class="o">-&gt;</span><span class="na">getNamedParameter</span><span class="p">(</span><span class="s1">&#39;lifetime&#39;</span><span class="p">);</span>
+
+            <span class="nv">$options</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;lifetime&#39;</span> <span class="o">=&gt;</span> <span class="nv">$lifetime</span><span class="p">);</span>
+
+            <span class="c1">// 检查注释单元中是否有用户定义的‘key’参数</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$annotation</span><span class="o">-&gt;</span><span class="na">hasNamedParameter</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">))</span> <span class="p">{</span>
+                <span class="nv">$options</span><span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$annotation</span><span class="o">-&gt;</span><span class="na">getNamedParameter</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="c1">// 为当前dispatcher访问的方法开启cache</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">cache</span><span class="p">(</span><span class="nv">$options</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>现在，我们可以使用注释单元在控制器中：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">NewsController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * This is a comment</span>
+<span class="sd">     *</span>
+<span class="sd">     * @Cache(lifetime=86400)</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">showAllAction</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">article</span> <span class="o">=</span> <span class="nx">Articles</span><span class="o">::</span><span class="na">find</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * This is a comment</span>
+<span class="sd">     *</span>
+<span class="sd">     * @Cache(key=&quot;my-key&quot;, lifetime=86400)</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">showAction</span><span class="p">(</span><span class="nv">$slug</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">article</span> <span class="o">=</span> <span class="nx">Articles</span><span class="o">::</span><span class="na">findFirstByTitle</span><span class="p">(</span><span class="nv">$slug</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="private-public-areas-with-annotations">
+<h3>Private/Public areas with Annotations<a class="headerlink" href="#private-public-areas-with-annotations" title="永久链接至标题">¶</a></h3>
+<p>You can use annotations to tell the ACL which controllers belong to the administrative areas:</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Acl</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Acl\Role</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Acl\Resource</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Events\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\User\Plugin</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Acl\Adapter\Memory</span> <span class="k">as</span> <span class="nx">AclList</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * SecurityAnnotationsPlugin</span>
+<span class="sd"> *</span>
+<span class="sd"> * This is the security plugin which controls that users only have access to the modules they&#39;re assigned to</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">SecurityAnnotationsPlugin</span> <span class="k">extends</span> <span class="nx">Plugin</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * This action is executed before execute any action in the application</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param Event $event</span>
+<span class="sd">     * @param Dispatcher $dispatcher</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">beforeDispatch</span><span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span> <span class="nx">Dispatcher</span> <span class="nv">$dispatcher</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Possible controller class name</span>
+        <span class="nv">$controllerName</span> <span class="o">=</span> <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">getControllerClass</span><span class="p">();</span>
+
+        <span class="c1">// Possible method name</span>
+        <span class="nv">$actionName</span> <span class="o">=</span> <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">getActiveMethod</span><span class="p">();</span>
+
+        <span class="c1">// Get annotations in the controller class</span>
+        <span class="nv">$annotations</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">annotations</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$controllerName</span><span class="p">);</span>
+
+        <span class="c1">// The controller is private?</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$annotations</span><span class="o">-&gt;</span><span class="na">getClassAnnotations</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">has</span><span class="p">(</span><span class="s1">&#39;Private&#39;</span><span class="p">))</span> <span class="p">{</span>
+
+            <span class="c1">// Check if the session variable is active?</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">session</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;auth&#39;</span><span class="p">))</span> <span class="p">{</span>
+
+                <span class="c1">// The user is no logged redirect to login</span>
+                <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span>
+                    <span class="k">array</span><span class="p">(</span>
+                        <span class="s1">&#39;controller&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;session&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;action&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;login&#39;</span>
+                    <span class="p">)</span>
+                <span class="p">);</span>
+
+                <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Continue normally</span>
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="choose-the-template-to-render">
+<h3>选择渲染模版（Choose the template to render）<a class="headerlink" href="#choose-the-template-to-render" title="永久链接至标题">¶</a></h3>
+<p>在这个例子中，当方法被执行的时候，我们将使用注释单元去告诉:doc:<cite>Phalcon\Mvc\View\Simple &lt;views&gt;</cite>，哪一个模板文件需要渲染：</p>
+</div>
+</div>
+<div class="section" id="annotations-adapters">
+<h2>注释适配器（Annotations Adapters）<a class="headerlink" href="#annotations-adapters" title="永久链接至标题">¶</a></h2>
+<p>这些组件利用了适配器去缓存或者不缓存已经解析和处理过的注释内容，从而提升了性能或者为开发环境提供了开发/测试的适配器：</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="5%" />
+<col width="59%" />
+<col width="36%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+<th class="head">API</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Memory</td>
+<td>这个注释只缓存在内存中。当请求结束时缓存将被清空，每次请求都重新解析注释内容. 这个适配器适合用于开发环境中</td>
+<td><a class="reference internal" href="../api/Phalcon_Annotations_Adapter_Memory.html"><em>Phalcon\Annotations\Adapter\Memory</em></a></td>
+</tr>
+<tr class="row-odd"><td>Files</td>
+<td>已解析和已处理的注释将被永久保存在PHP文件中提高性能。这个适配器必须和字节码缓存一起使用。</td>
+<td><a class="reference internal" href="../api/Phalcon_Annotations_Adapter_Files.html"><em>Phalcon\Annotations\Adapter\Files</em></a></td>
+</tr>
+<tr class="row-even"><td>APC</td>
+<td>已解析和已处理的注释将永久保存在APC缓存中提升性能。 这是一个速度非常快的适配器。</td>
+<td><a class="reference internal" href="../api/Phalcon_Annotations_Adapter_Apc.html"><em>Phalcon\Annotations\Adapter\Apc</em></a></td>
+</tr>
+<tr class="row-odd"><td>XCache</td>
+<td>已解析和已处理的注释将永久保存在XCache缓存中提升性能。这也是一个速度非常快的适配器。</td>
+<td><a class="reference internal" href="../api/Phalcon_Annotations_Adapter_Xcache.html"><em>Phalcon\Annotations\Adapter\Xcache</em></a></td>
+</tr>
+<tr class="row-even"><td>Cache</td>
+<td>已解析和已处理的注释缓存在缓存组件中提升性能。</td>
+<td><a class="reference internal" href="../api/Phalcon_Annotations_Adapter_Cache.html"><em>Phalcon\Annotations\Adapter\Cache</em></a></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="implementing-your-own-adapters">
+<h3>自定义适配器（Implementing your own adapters）<a class="headerlink" href="#implementing-your-own-adapters" title="永久链接至标题">¶</a></h3>
+<p>为了建立自己的注释适配器或者继承一个已存在的适配器，这个 <a class="reference internal" href="../api/Phalcon_Annotations_AdapterInterface.html"><em>Phalcon\Annotations\AdapterInterface</em></a> 接口都必须实现。</p>
+</div>
+</div>
+<div class="section" id="external-resources">
+<h2>外部资源（External Resources）<a class="headerlink" href="#external-resources" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://blog.phalconphp.com/post/47471246411">Tutorial: Creating a custom model&#8217;s initializer with Annotations</a></li>
+</ul>
+</div>
+</div>
+
+
+			</div>
+		  </div>
+		</div>
+	</div>
+  </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="cli.html" title="命令行应用（Command Line Applications）"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="logging.html" title="日志记录（Logging）"
+             >上一页</a> |</li> 
+      </ul>
+    </div>
+
+<footer class="footer">
+	<div class="container">
+      <div class="row">
+          <div class="col-xs-6 col-sm-3">
+              <h4>Download</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/releases">安裝 Phalcon7</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+              <h4>Community</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7">GitHub</a></li>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/issues">Issue Tracker</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-2">
+              <h4>About</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon/wiki/%E6%8D%90%E8%B5%A0%EF%BC%88Donation%EF%BC%89">Donate</a></li>
+              </ul>
+          </div>
+          <div id="license-spaccer" class="visible-xs"></div>
+          <div id="license-wrapper" class="col-xs-12 col-sm-4">
+              <p class="license">
+
+                  Phalcon7 Framework is released under the <a href="https://github.com/dreamsxin/cphalcon7/blob/master/docs/LICENSE.md">new BSD license</a>.<br>
+                  Except where otherwise noted, content on this site is licensed under the
+                  <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a>
+              </p>
+              <div class="design">
+                  <span>Designed by:</span>
+
+                  <a href="http://www.fog-city.net/" class="fogcity" target="_blank" title="Fog City Software"><span>Fog City Software</span></a>
+              </div>
+          </div>
+      </div>
+	</div>
+</footer>
+</body>
+</html>

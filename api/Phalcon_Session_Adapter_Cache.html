@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Class Phalcon\Session\Adapter\Cache &mdash; Phalcon7 1.2.1 文档</title>
+    <meta name="keywords" content="php, phalcon, phalcon7, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/phalcon.css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="../static/jquery.min.js"></script>
+    <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" /> 
+</head>
+<body>
+
+<header class="page-header">
+<nav class="navbar" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+				<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+		</div>
+
+		<div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+			<ul class="nav navbar-nav main-menu">
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7" class="header-nav-link">GitHub</a></li>
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7/releases" class="header-nav-link">Download</a></li>
+			  <li class="first"><a href="/api/" class="header-nav-link">API</a></li>
+			  <li class="first"><a href="/internals/" class="header-nav-link">内核开发手册</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li><a href="http://myleftstudio.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon7 1.2.1 文档</a> &raquo;</li> 
+      </ul>
+    </div>  
+</div>
+
+<div class="container-fluid">
+	<div class="col-md-3 primary-box">
+		<div class="panel panel-default">
+			<div class="panel-heading"><a href="../index.html">內容目录</a></div>
+			<div class="panel-body"><ul>
+<li><a class="reference internal" href="#">Class <strong>Phalcon\Session\Adapter\Cache</strong></a><ul>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+</ul>
+</li>
+</ul>
+</div>
+		</div>
+	</div>
+  <div class="col-md-9 second-box" valign="top">
+	<div class="document">
+		<div class="documentwrapper">
+		  <div class="bodywrapper">
+			<div class="body" >
+			  
+  <div class="section" id="class-phalcon-session-adapter-cache">
+<h1>Class <strong>Phalcon\Session\Adapter\Cache</strong><a class="headerlink" href="#class-phalcon-session-adapter-cache" title="永久链接至标题">¶</a></h1>
+<p><em>extends</em> abstract class <a class="reference internal" href="Phalcon_Session_Adapter.html"><em>Phalcon\Session\Adapter</em></a></p>
+<p><em>implements</em> ArrayAccess, Traversable, IteratorAggregate, Countable, <a class="reference internal" href="Phalcon_Session_AdapterInterface.html"><em>Phalcon\Session\AdapterInterface</em></a></p>
+<p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/session/adapter/cache.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
+<p>This adapter store sessions in cache</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+ <span class="nv">$frontCache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Cache\Frontend\Data</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;lifetime&quot;</span> <span class="o">=&gt;</span> <span class="mi">3600</span>
+ <span class="p">));</span>
+
+ <span class="nv">$cache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Cache\Backend\Redis</span><span class="p">(</span><span class="nv">$frontCache</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">6379</span><span class="p">,</span>
+    <span class="s1">&#39;auth&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;foobared&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;persistent&#39;</span> <span class="o">=&gt;</span> <span class="k">false</span>
+ <span class="p">));</span>
+
+ <span class="nv">$session</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Session\Adapter\Cache</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+     <span class="s1">&#39;service&#39;</span> <span class="o">=&gt;</span> <span class="nv">$cache</span> <span class="c1">// or service name</span>
+ <span class="p">));</span>
+
+ <span class="nv">$session</span><span class="o">-&gt;</span><span class="na">start</span><span class="p">();</span>
+
+ <span class="nv">$session</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;var&#39;</span><span class="p">,</span> <span class="s1">&#39;some-value&#39;</span><span class="p">);</span>
+
+ <span class="k">echo</span> <span class="nv">$session</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;var&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
+<p>public <em>boolean</em>  <strong>start</strong> ()</p>
+<p>Starts the session (if headers are already sent the session will not be started)</p>
+<p>public <em>boolean</em>  <strong>open</strong> (<em>unknown</em> $savePath, <em>unknown</em> $sessionName)</p>
+<p>public <em>boolean</em>  <strong>close</strong> ()</p>
+<p>public <em>mixed</em>  <strong>read</strong> (<em>string</em> $sessionId)</p>
+<p>public  <strong>write</strong> (<em>string</em> $sessionId, <em>unknown</em> $sessionData)</p>
+<p>public <em>boolean</em>  <strong>destroy</strong> ([<em>unknown</em> $regenerate])</p>
+<p>public <em>boolean</em>  <strong>gc</strong> ([<em>unknown</em> $maxlifetime])</p>
+<p>public  <strong>__construct</strong> ([<em>array</em> $options], [<em>int</em> $expire], [<em>string</em> $path], [<em>boolean</em> $secure], [<em>string</em> $domain], [<em>boolean</em> $httpOnly]) inherited from Phalcon\Session\Adapter</p>
+<p>Phalcon\Session\Adapter constructor</p>
+<p>public  <strong>__destruct</strong> () inherited from Phalcon\Session\Adapter</p>
+<p>...</p>
+<p>public  <strong>setOptions</strong> (<em>array</em> $options) inherited from Phalcon\Session\Adapter</p>
+<p>Sets session&#8217;s options</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$session</span><span class="o">-&gt;</span><span class="na">setOptions</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;uniqueId&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;my-private-app&#39;</span>
+<span class="p">));</span>
+</pre></div>
+</div>
+<p>public <em>array</em>  <strong>getOptions</strong> () inherited from Phalcon\Session\Adapter</p>
+<p>Get internal options</p>
+<p>public <em>mixed</em>  <strong>get</strong> (<em>string</em> $index, [<em>mixed</em> $defaultValue]) inherited from Phalcon\Session\Adapter</p>
+<p>Gets a session variable from an application context</p>
+<p>public  <strong>set</strong> (<em>string</em> $index, <em>string</em> $value) inherited from Phalcon\Session\Adapter</p>
+<p>Sets a session variable in an application context</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$session</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;auth&#39;</span><span class="p">,</span> <span class="s1">&#39;yes&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>public  <strong>sets</strong> (<em>array</em> $data) inherited from Phalcon\Session\Adapter</p>
+<p>Sets a session variables in an application context</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$session</span><span class="o">-&gt;</span><span class="na">sets</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;auth&#39;</span><span class="p">,</span> <span class="s1">&#39;yes&#39;</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>public <em>boolean</em>  <strong>has</strong> (<em>string</em> $index) inherited from Phalcon\Session\Adapter</p>
+<p>Check whether a session variable is set in an application context</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$session</span><span class="o">-&gt;</span><span class="na">has</span><span class="p">(</span><span class="s1">&#39;auth&#39;</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>public  <strong>remove</strong> (<em>string</em> $index) inherited from Phalcon\Session\Adapter</p>
+<p>Removes a session variable from an application context</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$session</span><span class="o">-&gt;</span><span class="na">remove</span><span class="p">(</span><span class="s1">&#39;auth&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>public <em>string</em>  <strong>getId</strong> () inherited from Phalcon\Session\Adapter</p>
+<p>Returns active session id</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">echo</span> <span class="nv">$session</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>public <em>boolean</em>  <strong>isStarted</strong> () inherited from Phalcon\Session\Adapter</p>
+<p>Check whether the session has been started</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$session</span><span class="o">-&gt;</span><span class="na">isStarted</span><span class="p">());</span>
+</pre></div>
+</div>
+<p>public <em>boolean</em>  <strong>regenerate</strong> ([<em>unknown</em> $delete_old_session]) inherited from Phalcon\Session\Adapter</p>
+<p>Update the current session id with a newly generated one</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$session</span><span class="o">-&gt;</span><span class="na">regenerate</span><span class="p">());</span>
+</pre></div>
+</div>
+<p>public  <strong>__get</strong> (<em>unknown</em> $property) inherited from Phalcon\Session\Adapter</p>
+<p>...</p>
+<p>public  <strong>__set</strong> (<em>unknown</em> $property, <em>unknown</em> $value) inherited from Phalcon\Session\Adapter</p>
+<p>...</p>
+<p>public  <strong>__isset</strong> (<em>unknown</em> $property) inherited from Phalcon\Session\Adapter</p>
+<p>...</p>
+<p>public  <strong>__unset</strong> (<em>unknown</em> $property) inherited from Phalcon\Session\Adapter</p>
+<p>...</p>
+<p>public  <strong>offsetGet</strong> (<em>unknown</em> $property) inherited from Phalcon\Session\Adapter</p>
+<p>...</p>
+<p>public  <strong>offsetSet</strong> (<em>unknown</em> $property, <em>unknown</em> $value) inherited from Phalcon\Session\Adapter</p>
+<p>...</p>
+<p>public  <strong>offsetExists</strong> (<em>unknown</em> $property) inherited from Phalcon\Session\Adapter</p>
+<p>...</p>
+<p>public  <strong>offsetUnset</strong> (<em>unknown</em> $property) inherited from Phalcon\Session\Adapter</p>
+<p>...</p>
+<p>public  <strong>count</strong> () inherited from Phalcon\Session\Adapter</p>
+<p>...</p>
+<p>public  <strong>getIterator</strong> () inherited from Phalcon\Session\Adapter</p>
+<p>...</p>
+<p>public  <strong>setId</strong> (<em>unknown</em> $sid) inherited from Phalcon\Session\Adapter</p>
+<p>Set the current session id</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$session</span><span class="o">-&gt;</span><span class="na">setId</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+			</div>
+		  </div>
+		</div>
+	</div>
+  </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li> 
+      </ul>
+    </div>
+
+<footer class="footer">
+	<div class="container">
+      <div class="row">
+          <div class="col-xs-6 col-sm-3">
+              <h4>Download</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/releases">安裝 Phalcon7</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+              <h4>Community</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7">GitHub</a></li>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/issues">Issue Tracker</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-2">
+              <h4>About</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon/wiki/%E6%8D%90%E8%B5%A0%EF%BC%88Donation%EF%BC%89">Donate</a></li>
+              </ul>
+          </div>
+          <div id="license-spaccer" class="visible-xs"></div>
+          <div id="license-wrapper" class="col-xs-12 col-sm-4">
+              <p class="license">
+
+                  Phalcon7 Framework is released under the <a href="https://github.com/dreamsxin/cphalcon7/blob/master/docs/LICENSE.md">new BSD license</a>.<br>
+                  Except where otherwise noted, content on this site is licensed under the
+                  <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a>
+              </p>
+              <div class="design">
+                  <span>Designed by:</span>
+
+                  <a href="http://www.fog-city.net/" class="fogcity" target="_blank" title="Fog City Software"><span>Fog City Software</span></a>
+              </div>
+          </div>
+      </div>
+	</div>
+</footer>
+</body>
+</html>

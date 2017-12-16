@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>上下文编码（Contextual Escaping） &mdash; Phalcon7 1.2.1 文档</title>
+    <meta name="keywords" content="php, phalcon, phalcon7, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/phalcon.css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="../static/jquery.min.js"></script>
+    <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
+    <link rel="next" title="验证（Validation）" href="validation.html" />
+    <link rel="prev" title="过滤与清理（Filtering and Sanitizing）" href="filter.html" /> 
+</head>
+<body>
+
+<header class="page-header">
+<nav class="navbar" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+				<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+		</div>
+
+		<div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+			<ul class="nav navbar-nav main-menu">
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7" class="header-nav-link">GitHub</a></li>
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7/releases" class="header-nav-link">Download</a></li>
+			  <li class="first"><a href="/api/" class="header-nav-link">API</a></li>
+			  <li class="first"><a href="/internals/" class="header-nav-link">内核开发手册</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="validation.html" title="验证（Validation）"
+             accesskey="N">下一页</a> |</li>
+        <li class="right" >
+          <a href="filter.html" title="过滤与清理（Filtering and Sanitizing）"
+             accesskey="P">上一页</a> |</li>
+        <li><a href="http://myleftstudio.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon7 1.2.1 文档</a> &raquo;</li> 
+      </ul>
+    </div>  
+</div>
+
+<div class="container-fluid">
+	<div class="col-md-3 primary-box">
+		<div class="panel panel-default">
+			<div class="panel-heading"><a href="../index.html">內容目录</a></div>
+			<div class="panel-body"><ul>
+<li><a class="reference internal" href="#">上下文编码（Contextual Escaping）</a><ul>
+<li><a class="reference internal" href="#html-escaping-html">HTML 编码（Escaping HTML）</a></li>
+<li><a class="reference internal" href="#html-escaping-html-attributes">HTML 属性编码（Escaping HTML Attributes）</a></li>
+<li><a class="reference internal" href="#url-escaping-urls">URL 编码（Escaping URLs）</a></li>
+<li><a class="reference internal" href="#css-escaping-css">CSS 编码（Escaping CSS）</a></li>
+<li><a class="reference internal" href="#javascript-escaping-javascript">JavaScript 编码（Escaping JavaScript）</a></li>
+</ul>
+</li>
+</ul>
+</div>
+			<div class="panel-heading">上一个主题</div>
+            <div class="panel-body"><p class="topless"><a href="filter.html" title="上一章">&lt; 过滤与清理（Filtering and Sanitizing）</a></p></div>
+			<div class="panel-heading">下一个主题</div>
+            <div class="panel-body"><p class="topless"><a href="validation.html" title="下一章">验证（Validation） &gt;</a></p></div>
+		</div>
+	</div>
+  <div class="col-md-9 second-box" valign="top">
+	<div class="document">
+		<div class="documentwrapper">
+		  <div class="bodywrapper">
+			<div class="body" >
+			  
+  <div class="section" id="contextual-escaping">
+<h1>上下文编码（Contextual Escaping）<a class="headerlink" href="#contextual-escaping" title="永久链接至标题">¶</a></h1>
+<p>网站及其它B/S应用极易受到 <a class="reference external" href="https://www.owasp.org/index.php/XSS">XSS</a> 攻击，尽管PHP提供了转义功能，在某些情况下依然不够安全。在Phalcon中 <a class="reference internal" href="../api/Phalcon_Escaper.html"><em>Phalcon\Escaper</em></a> 提供了上下文转义功能，这个模块是由C语言实现的，
+这在进行转义时可以有更好的性能。</p>
+<p>Phalcon的上下文转义组件基于 <a class="reference external" href="https://www.owasp.org">OWASP</a> 提供的`XSS (Cross Site Scripting) 预防作弊表`_</p>
+<p>另外，这个组件依赖于 <a class="reference external" href="http://php.net/manual/en/book.mbstring.php">mbstring</a> 扩展，以支持几乎所有的字符集。</p>
+<p>下面的例子中展示了这个组件是如何工作的：</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+    <span class="c1">// 带有额外的html标签的恶意的文档标题</span>
+    <span class="nv">$maliciousTitle</span> <span class="o">=</span> <span class="s1">&#39;&lt;/title&gt;&lt;script&gt;alert(1)&lt;/script&gt;&#39;</span><span class="p">;</span>
+
+    <span class="c1">// 恶意的css类名</span>
+    <span class="nv">$className</span>      <span class="o">=</span> <span class="s1">&#39;;`(&#39;</span><span class="p">;</span>
+
+    <span class="c1">// 恶意的css字体名</span>
+    <span class="nv">$fontName</span>       <span class="o">=</span> <span class="s1">&#39;Verdana&quot;&lt;/style&gt;&#39;</span><span class="p">;</span>
+
+    <span class="c1">// 恶意的Javascript文本</span>
+    <span class="nv">$javascriptText</span> <span class="o">=</span> <span class="s2">&quot;&#39;;&lt;/script&gt;Hello&quot;</span><span class="p">;</span>
+
+    <span class="c1">// 创建转义实例对象</span>
+    <span class="nv">$e</span>              <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Escaper</span><span class="p">();</span>
+
+<span class="cp">?&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;Content-Type&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span> <span class="p">/&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">escapeHtml</span><span class="p">(</span><span class="nv">$maliciousTitle</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">style</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span><span class="p">&gt;</span>
+    <span class="o">.</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">escapeCss</span><span class="p">(</span><span class="nv">$className</span><span class="p">);</span> <span class="cp">?&gt;</span> <span class="p">{</span>
+        <span class="nb">font-family</span><span class="o">:</span> <span class="s2">&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">escapeCss</span><span class="p">(</span><span class="nv">$fontName</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="s2">&quot;</span><span class="p">;</span>
+        <span class="nb">color</span><span class="o">:</span> <span class="nb">red</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#39;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">escapeHtmlAttr</span><span class="p">(</span><span class="nv">$className</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="s">&#39;</span><span class="p">&gt;</span>hello<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span><span class="kd">var</span> <span class="nx">some</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">escapeJs</span><span class="p">(</span><span class="nv">$javascriptText</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="s1">&#39;</span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>结果如下：</p>
+<img class="align-center" src="../static/img/escape.jpeg"><p>Phalcon会根据文本所处的上下文进行转义。 恰当的上下文环境对防范XSS攻击来说是非常重要的。</p>
+<div class="section" id="html-escaping-html">
+<h2>HTML 编码（Escaping HTML）<a class="headerlink" href="#html-escaping-html" title="永久链接至标题">¶</a></h2>
+<p>最不安全的情形即是在html标签中插入非安全的数据。</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;comments&quot;</span><span class="p">&gt;</span><span class="c">&lt;!-- Escape untrusted data here! --&gt;</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>我们可以使用 <code class="code docutils literal"><span class="pre">escapeHtml</span></code> 方法对这些文本进行转义：</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;comments&quot;</span><span class="p">&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">escapeHtml</span><span class="p">(</span><span class="s1">&#39;&gt;&lt;/div&gt;&lt;h1&gt;myattack&lt;/h1&gt;&#39;</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>结果如下：</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;comments&quot;</span><span class="p">&gt;</span><span class="ni">&amp;gt;&amp;lt;</span>/div<span class="ni">&amp;gt;&amp;lt;</span>h1<span class="ni">&amp;gt;</span>myattack<span class="ni">&amp;lt;</span>/h1<span class="ni">&amp;gt;</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="html-escaping-html-attributes">
+<h2>HTML 属性编码（Escaping HTML Attributes）<a class="headerlink" href="#html-escaping-html-attributes" title="永久链接至标题">¶</a></h2>
+<p>对html属性进行转义和对html内容进行转义略有不同。对html的属性进行转义是通过对所有的非字母和数字转义来实现的。类例的转义都会如此进行的，除了一些复杂的属性外如：href和url:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="p">&lt;</span><span class="nt">table</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;Escape untrusted data here!&quot;</span><span class="p">&gt;&lt;</span><span class="nt">tr</span><span class="p">&gt;&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Hello<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;&lt;/</span><span class="nt">tr</span><span class="p">&gt;&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>我们这里使用 <code class="code docutils literal"><span class="pre">escapeHtmlAttr</span></code> 方法对html属性进行转义：</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="p">&lt;</span><span class="nt">table</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">escapeHtmlAttr</span><span class="p">(</span><span class="s1">&#39;&quot;&gt;&lt;h1&gt;Hello&lt;/table&#39;</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="s">&quot;</span><span class="p">&gt;&lt;</span><span class="nt">tr</span><span class="p">&gt;&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Hello<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;&lt;/</span><span class="nt">tr</span><span class="p">&gt;&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>结果如下：</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="p">&lt;</span><span class="nt">table</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;&amp;#x22;&amp;#x3e;&amp;#x3c;h1&amp;#x3e;Hello&amp;#x3c;&amp;#x2f;table&quot;</span><span class="p">&gt;&lt;</span><span class="nt">tr</span><span class="p">&gt;&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Hello<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;&lt;/</span><span class="nt">tr</span><span class="p">&gt;&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="url-escaping-urls">
+<h2>URL 编码（Escaping URLs）<a class="headerlink" href="#url-escaping-urls" title="永久链接至标题">¶</a></h2>
+<p>一些html的属性如href或url需要使用特定的方法进行转义：</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;Escape untrusted data here!&quot;</span><span class="p">&gt;</span>Some link<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>我们这里使用 <code class="code docutils literal"><span class="pre">escapeUrl</span></code> 方法进行url的转义：</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">escapeUrl</span><span class="p">(</span><span class="s1">&#39;&quot;&gt;&lt;script&gt;alert(1)&lt;/script&gt;&lt;a href=&quot;#&#39;</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="s">&quot;</span><span class="p">&gt;</span>Some link<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>结果如下：</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;%22%3E%3Cscript%3Ealert%281%29%3C%2Fscript%3E%3Ca%20href%3D%22%23&quot;</span><span class="p">&gt;</span>Some link<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="css-escaping-css">
+<h2>CSS 编码（Escaping CSS）<a class="headerlink" href="#css-escaping-css" title="永久链接至标题">¶</a></h2>
+<p>CSS标识/值也可以进行转义:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="p">&lt;</span><span class="nt">a</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;color: Escape untrusted data here&quot;</span><span class="p">&gt;</span>Some link<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>这里我们使用 <code class="code docutils literal"><span class="pre">escapeCss</span></code> 方法进行转义：</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="p">&lt;</span><span class="nt">a</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;color: </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">escapeCss</span><span class="p">(</span><span class="s1">&#39;&quot;&gt;&lt;script&gt;alert(1)&lt;/script&gt;&lt;a href=&quot;#&#39;</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="s">&quot;</span><span class="p">&gt;</span>Some link<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>结果：</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="p">&lt;</span><span class="nt">a</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;color: \22 \3e \3c script\3e alert\28 1\29 \3c \2f script\3e \3c a\20 href\3d \22 \23 &quot;</span><span class="p">&gt;</span>Some link<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="javascript-escaping-javascript">
+<h2>JavaScript 编码（Escaping JavaScript）<a class="headerlink" href="#javascript-escaping-javascript" title="永久链接至标题">¶</a></h2>
+<p>插入JavaScript代码的字符串也需要进行适当的转义：</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span><span class="nb">document</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="s1">&#39;Escape untrusted data here&#39;</span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>这里我们使用 <code class="code docutils literal"><span class="pre">escapeJs</span></code> 进行转义：</p>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span><span class="nb">document</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">escapeJs</span><span class="p">(</span><span class="s2">&quot;&#39;; alert(100); var x=&#39;&quot;</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="s1">&#39;</span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-html"><div class="highlight"><pre><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span><span class="nb">document</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="s1">&#39;\x27; alert(100); var x\x3d\x27&#39;</span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+			</div>
+		  </div>
+		</div>
+	</div>
+  </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="right" >
+          <a href="validation.html" title="验证（Validation）"
+             >下一页</a> |</li>
+        <li class="right" >
+          <a href="filter.html" title="过滤与清理（Filtering and Sanitizing）"
+             >上一页</a> |</li> 
+      </ul>
+    </div>
+
+<footer class="footer">
+	<div class="container">
+      <div class="row">
+          <div class="col-xs-6 col-sm-3">
+              <h4>Download</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/releases">安裝 Phalcon7</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+              <h4>Community</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7">GitHub</a></li>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/issues">Issue Tracker</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-2">
+              <h4>About</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon/wiki/%E6%8D%90%E8%B5%A0%EF%BC%88Donation%EF%BC%89">Donate</a></li>
+              </ul>
+          </div>
+          <div id="license-spaccer" class="visible-xs"></div>
+          <div id="license-wrapper" class="col-xs-12 col-sm-4">
+              <p class="license">
+
+                  Phalcon7 Framework is released under the <a href="https://github.com/dreamsxin/cphalcon7/blob/master/docs/LICENSE.md">new BSD license</a>.<br>
+                  Except where otherwise noted, content on this site is licensed under the
+                  <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a>
+              </p>
+              <div class="design">
+                  <span>Designed by:</span>
+
+                  <a href="http://www.fog-city.net/" class="fogcity" target="_blank" title="Fog City Software"><span>Fog City Software</span></a>
+              </div>
+          </div>
+      </div>
+	</div>
+</footer>
+</body>
+</html>
