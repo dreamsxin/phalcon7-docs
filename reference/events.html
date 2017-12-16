@@ -429,6 +429,58 @@
 </tr>
 </tbody>
 </table>
+<p>示例：</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Events\Manager</span><span class="p">();</span>
+
+<span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span><span class="s1">&#39;model:beforeQuery&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$model</span><span class="p">,</span> <span class="nv">$data</span><span class="p">,</span> <span class="nv">$prevdata</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$prevdata</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;data&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nv">$prevdata</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span><span class="s1">&#39;model:beforeQuery&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$model</span><span class="p">,</span> <span class="nv">$data</span><span class="p">,</span> <span class="nv">$prevdata</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$prevdata</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[];</span>
+    <span class="p">}</span>
+    <span class="nv">$prevdata</span><span class="p">[</span><span class="s1">&#39;data2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nv">$prevdata</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="nv">$di</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Di\FactoryDefault</span><span class="p">;</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;modelsManager&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$eventsManager</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$modelsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\Model\Manager</span><span class="p">();</span>
+    <span class="nv">$modelsManager</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventsManager</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nv">$modelsManager</span><span class="p">;</span>
+<span class="p">},</span> <span class="k">true</span><span class="p">);</span>
+
+<span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\Model</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">beforeQuery</span><span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$data</span><span class="p">,</span> <span class="nv">$prevdata</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$prevdata</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="p">[];</span>
+        <span class="p">}</span>
+        <span class="nv">$prevdata</span><span class="p">[</span><span class="s1">&#39;data3&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nv">$prevdata</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nb">var_dump</span><span class="p">(</span><span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">());</span>
+</pre></div>
+</div>
+<p>输出：</p>
+<div class="highlight-html"><div class="highlight"><pre>array(2) {
+    [&quot;data&quot;]=&gt;
+    int(1)
+    [&quot;data2&quot;]=&gt;
+    int(2)
+    [&quot;data3&quot;]=&gt;
+    int(3)
+}
+</pre></div>
+</div>
+<p><a href="#id2"><span class="problematic" id="id3">``</span></a><a href="#id4"><span class="problematic" id="id5">`</span></a></p>
 </div>
 </div>
 
