@@ -226,3 +226,60 @@ Phalcon7 中几乎所有的组件都继承自 :doc:`Phalcon\\Di\\Injectable <../
 +-----------------------------------------+-----------------------+
 | query:afterExecute                      | YES                   |
 +-----------------------------------------+-----------------------+
+
+示例：
+
+
+.. code-block:: php
+
+    <?php
+
+    $eventsManager = new Phalcon\Events\Manager();
+
+    $eventsManager->attach('model:beforeQuery', function($event, $model, $data, $prevdata) {
+	    if (!$prevdata) {
+	        return ['data' => 1];
+        }
+        return $prevdata;
+    });
+
+    $eventsManager->attach('model:beforeQuery', function($event, $model, $data, $prevdata) {
+        if (!$prevdata) {
+            return [];
+        }
+        $prevdata['data2'] = 2;
+        return $prevdata;
+    });
+
+    $di = new Phalcon\Di\FactoryDefault;
+    $di->set('modelsManager', function() use ($eventsManager) {
+        $modelsManager = new Phalcon\Mvc\Model\Manager();
+        $modelsManager->setEventsManager($eventsManager);
+        return $modelsManager;
+    }, true);
+
+    class Robots extends Phalcon\Mvc\Model {
+        public function beforeQuery($event, $data, $prevdata) {
+            if (!$prevdata) {
+                return [];
+            }
+            $prevdata['data3'] = 3;
+            return $prevdata;
+        }
+    }
+
+    var_dump(Robots::find());
+
+输出：
+
+.. code-block:: html
+
+    array(2) {
+        ["data"]=>
+        int(1)
+        ["data2"]=>
+        int(2)
+        ["data3"]=>
+        int(3)
+    }
+```
