@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
     <link rel="next" title="日志记录（Logging）" href="logging.html" />
     <link rel="prev" title="多语言支持（Multi-lingual Support）" href="translate.html" /> 
@@ -109,11 +111,11 @@
 			  
   <div class="section" id="universal-class-loader">
 <h1>自动加载器（Universal Class Loader）<a class="headerlink" href="#universal-class-loader" title="永久链接至标题">¶</a></h1>
-<p><a class="reference internal" href="../api/Phalcon_Loader.html"><em>Phalcon\Loader</em></a> 组件允许你定义类的自动加载则规。</p>
+<p><a class="reference internal" href="../api/Phalcon_Loader.html"><span class="doc">Phalcon\Loader</span></a> 组件允许你定义类的自动加载则规。</p>
 <p>该组件基于 PHP 的 <cite>spl_autoload_register</cite> 函数实现尚未被定义的类（class）和接口（interface）的自动加载 <a class="reference external" href="http://www.php.net/manual/en/language.oop5.autoload.php">autoloading classes</a>。
 利用该组件实现 <a class="reference external" href="http://en.wikipedia.org/wiki/Lazy_initialization">lazy initialization</a>。我们可以从其他项目或者第三方库加载文件，
 兼容 <a class="reference external" href="https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md">PSR-0</a> and <a class="reference external" href="https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4.md">PSR-4</a> 标准.</p>
-<p><a class="reference internal" href="../api/Phalcon_Loader.html"><em>Phalcon\Loader</em></a> 提供了 4 种加载方式，可以组合使用它们。</p>
+<p><a class="reference internal" href="../api/Phalcon_Loader.html"><span class="doc">Phalcon\Loader</span></a> 提供了 4 种加载方式，可以组合使用它们。</p>
 <div class="section" id="registering-namespaces">
 <h2>注册命名空间（Registering Namespaces）<a class="headerlink" href="#registering-namespaces" title="永久链接至标题">¶</a></h2>
 <p>当我们使用命名空间组织代码或者使用带有命名空间的外部库时，可以使用 <cite>registerNamespaces</cite> 提供的加载机制。
@@ -264,7 +266,7 @@ are using additional extensions you could set it with the method &#8220;setExten
 </div>
 <div class="section" id="security-layer">
 <h2>安全层（Security Layer）<a class="headerlink" href="#security-layer" title="永久链接至标题">¶</a></h2>
-<p><a class="reference internal" href="../api/Phalcon_Loader.html"><em>Phalcon\Loader</em></a> offers a security layer sanitizing by default class names avoiding possible inclusion of unauthorized files.
+<p><a class="reference internal" href="../api/Phalcon_Loader.html"><span class="doc">Phalcon\Loader</span></a> offers a security layer sanitizing by default class names avoiding possible inclusion of unauthorized files.
 Consider the following example:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
@@ -291,7 +293,7 @@ a malicious prepared string is used as parameter this would allow to execute any
 </div>
 <p>If &#8216;../processes/important-process.php&#8217; is a valid file, an external user could execute the file without
 authorization.</p>
-<p>To avoid these or most sophisticated attacks, <a class="reference internal" href="../api/Phalcon_Loader.html"><em>Phalcon\Loader</em></a> removes any invalid character from the class name
+<p>To avoid these or most sophisticated attacks, <a class="reference internal" href="../api/Phalcon_Loader.html"><span class="doc">Phalcon\Loader</span></a> removes any invalid character from the class name
 reducing the possibility of being attacked.</p>
 </div>
 <div class="section" id="autoloading-events">

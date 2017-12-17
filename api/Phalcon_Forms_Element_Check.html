@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" /> 
 </head>
 <body>
@@ -89,8 +91,8 @@
 			  
   <div class="section" id="class-phalcon-forms-element-check">
 <h1>Class <strong>Phalcon\Forms\Element\Check</strong><a class="headerlink" href="#class-phalcon-forms-element-check" title="永久链接至标题">¶</a></h1>
-<p><em>extends</em> class <a class="reference internal" href="Phalcon_Forms_Element.html"><em>Phalcon\Forms\Element</em></a></p>
-<p><em>implements</em> <a class="reference internal" href="Phalcon_Forms_ElementInterface.html"><em>Phalcon\Forms\ElementInterface</em></a></p>
+<p><em>extends</em> class <a class="reference internal" href="Phalcon_Forms_Element.html"><span class="doc">Phalcon\Forms\Element</span></a></p>
+<p><em>implements</em> <a class="reference internal" href="Phalcon_Forms_ElementInterface.html"><span class="doc">Phalcon\Forms\ElementInterface</span></a></p>
 <p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/forms/element/check.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
 <p>Component INPUT[type=check] for forms</p>
 <div class="section" id="methods">
@@ -99,65 +101,65 @@
 <p>Phalcon\Forms\Element\Check constructor</p>
 <p>public <em>string</em>  <strong>render</strong> ([<em>array</em> $attributes])</p>
 <p>Renders the element widget returning html</p>
-<p>public <a class="reference internal" href="Phalcon_Forms_ElementInterface.html"><em>Phalcon\Forms\ElementInterface</em></a>  <strong>setForm</strong> (<a class="reference internal" href="Phalcon_Forms_Form.html"><em>Phalcon\Forms\Form</em></a> $form) inherited from Phalcon\Forms\Element</p>
+<p>public <a class="reference internal" href="Phalcon_Forms_ElementInterface.html"><span class="doc">Phalcon\Forms\ElementInterface</span></a>  <strong>setForm</strong> (<a class="reference internal" href="Phalcon_Forms_Form.html"><span class="doc">Phalcon\Forms\Form</span></a> $form) inherited from Phalcon\Forms\Element</p>
 <p>Sets the parent form to the element</p>
-<p>public <a class="reference internal" href="Phalcon_Forms_ElementInterface.html"><em>Phalcon\Forms\ElementInterface</em></a>  <strong>getForm</strong> () inherited from Phalcon\Forms\Element</p>
+<p>public <a class="reference internal" href="Phalcon_Forms_ElementInterface.html"><span class="doc">Phalcon\Forms\ElementInterface</span></a>  <strong>getForm</strong> () inherited from Phalcon\Forms\Element</p>
 <p>Returns the parent form to the element</p>
-<p>public <a class="reference internal" href="Phalcon_Forms_ElementInterface.html"><em>Phalcon\Forms\ElementInterface</em></a>  <strong>setName</strong> (<em>string</em> $name) inherited from Phalcon\Forms\Element</p>
+<p>public <a class="reference internal" href="Phalcon_Forms_ElementInterface.html"><span class="doc">Phalcon\Forms\ElementInterface</span></a>  <strong>setName</strong> (<em>string</em> $name) inherited from Phalcon\Forms\Element</p>
 <p>Sets the element&#8217;s name</p>
 <p>public <em>string</em>  <strong>getName</strong> () inherited from Phalcon\Forms\Element</p>
 <p>Returns the element&#8217;s name</p>
-<p>public <a class="reference internal" href="Phalcon_Forms_ElementInterface.html"><em>Phalcon\Forms\ElementInterface</em></a>  <strong>setFilters</strong> (<em>array|string</em> $filters) inherited from Phalcon\Forms\Element</p>
+<p>public <a class="reference internal" href="Phalcon_Forms_ElementInterface.html"><span class="doc">Phalcon\Forms\ElementInterface</span></a>  <strong>setFilters</strong> (<em>array|string</em> $filters) inherited from Phalcon\Forms\Element</p>
 <p>Sets the element&#8217;s filters</p>
-<p>public <a class="reference internal" href="Phalcon_Forms_ElementInterface.html"><em>Phalcon\Forms\ElementInterface</em></a>  <strong>addFilter</strong> (<em>string</em> $filter) inherited from Phalcon\Forms\Element</p>
+<p>public <a class="reference internal" href="Phalcon_Forms_ElementInterface.html"><span class="doc">Phalcon\Forms\ElementInterface</span></a>  <strong>addFilter</strong> (<em>string</em> $filter) inherited from Phalcon\Forms\Element</p>
 <p>Adds a filter to current list of filters</p>
 <p>public <em>mixed</em>  <strong>getFilters</strong> () inherited from Phalcon\Forms\Element</p>
 <p>Returns the element&#8217;s filters</p>
-<p>public <a class="reference internal" href="Phalcon_Forms_ElementInterface.html"><em>Phalcon\Forms\ElementInterface</em></a>  <strong>addValidators</strong> (<em>unknown</em> $validators, [<em>unknown</em> $merge]) inherited from Phalcon\Forms\Element</p>
+<p>public <a class="reference internal" href="Phalcon_Forms_ElementInterface.html"><span class="doc">Phalcon\Forms\ElementInterface</span></a>  <strong>addValidators</strong> (<em>unknown</em> $validators, [<em>unknown</em> $merge]) inherited from Phalcon\Forms\Element</p>
 <p>Adds a group of validators</p>
-<p>public <a class="reference internal" href="Phalcon_Forms_ElementInterface.html"><em>Phalcon\Forms\ElementInterface</em></a>  <strong>addValidator</strong> (<em>unknown</em> $validator) inherited from Phalcon\Forms\Element</p>
+<p>public <a class="reference internal" href="Phalcon_Forms_ElementInterface.html"><span class="doc">Phalcon\Forms\ElementInterface</span></a>  <strong>addValidator</strong> (<em>unknown</em> $validator) inherited from Phalcon\Forms\Element</p>
 <p>Adds a validator to the element</p>
-<p>public <a class="reference internal" href="Phalcon_Validation_ValidatorInterface.html"><em>Phalcon\Validation\ValidatorInterface</em></a> [] <strong>getValidators</strong> () inherited from Phalcon\Forms\Element</p>
+<p>public <a class="reference internal" href="Phalcon_Validation_ValidatorInterface.html"><span class="doc">Phalcon\Validation\ValidatorInterface</span></a> [] <strong>getValidators</strong> () inherited from Phalcon\Forms\Element</p>
 <p>Returns the validators registered for the element</p>
 <p>public <em>array</em>  <strong>prepareAttributes</strong> ([<em>array</em> $attributes], [<em>boolean</em> $useChecked]) inherited from Phalcon\Forms\Element</p>
 <p>Returns an array of prepared attributes for Phalcon\Tag helpers according to the element&#8217;s parameters</p>
-<p>public <a class="reference internal" href="Phalcon_Forms_ElementInterface.html"><em>Phalcon\Forms\ElementInterface</em></a>  <strong>setAttribute</strong> (<em>string</em> $attribute, <em>mixed</em> $value) inherited from Phalcon\Forms\Element</p>
+<p>public <a class="reference internal" href="Phalcon_Forms_ElementInterface.html"><span class="doc">Phalcon\Forms\ElementInterface</span></a>  <strong>setAttribute</strong> (<em>string</em> $attribute, <em>mixed</em> $value) inherited from Phalcon\Forms\Element</p>
 <p>Sets a default attribute for the element</p>
 <p>public <em>mixed</em>  <strong>getAttribute</strong> (<em>string</em> $attribute, [<em>mixed</em> $defaultValue]) inherited from Phalcon\Forms\Element</p>
 <p>Returns the value of an attribute if present</p>
-<p>public <a class="reference internal" href="Phalcon_Forms_ElementInterface.html"><em>Phalcon\Forms\ElementInterface</em></a>  <strong>setAttributes</strong> (<em>array</em> $attributes) inherited from Phalcon\Forms\Element</p>
+<p>public <a class="reference internal" href="Phalcon_Forms_ElementInterface.html"><span class="doc">Phalcon\Forms\ElementInterface</span></a>  <strong>setAttributes</strong> (<em>array</em> $attributes) inherited from Phalcon\Forms\Element</p>
 <p>Sets default attributes for the element</p>
 <p>public <em>array</em>  <strong>getAttributes</strong> () inherited from Phalcon\Forms\Element</p>
 <p>Returns the default attributes for the element</p>
-<p>public <a class="reference internal" href="Phalcon_Forms_ElementInterface.html"><em>Phalcon\Forms\ElementInterface</em></a>  <strong>setUserOption</strong> (<em>string</em> $option, <em>mixed</em> $value) inherited from Phalcon\Forms\Element</p>
+<p>public <a class="reference internal" href="Phalcon_Forms_ElementInterface.html"><span class="doc">Phalcon\Forms\ElementInterface</span></a>  <strong>setUserOption</strong> (<em>string</em> $option, <em>mixed</em> $value) inherited from Phalcon\Forms\Element</p>
 <p>Sets an option for the element</p>
 <p>public <em>mixed</em>  <strong>getUserOption</strong> (<em>string</em> $option, [<em>mixed</em> $defaultValue]) inherited from Phalcon\Forms\Element</p>
 <p>Returns the value of an option if present</p>
-<p>public <a class="reference internal" href="Phalcon_Forms_ElementInterface.html"><em>Phalcon\Forms\ElementInterface</em></a>  <strong>setUserOptions</strong> (<em>array</em> $options) inherited from Phalcon\Forms\Element</p>
+<p>public <a class="reference internal" href="Phalcon_Forms_ElementInterface.html"><span class="doc">Phalcon\Forms\ElementInterface</span></a>  <strong>setUserOptions</strong> (<em>array</em> $options) inherited from Phalcon\Forms\Element</p>
 <p>Sets options for the element</p>
 <p>public <em>array</em>  <strong>getUserOptions</strong> () inherited from Phalcon\Forms\Element</p>
 <p>Returns the options for the element</p>
-<p>public <a class="reference internal" href="Phalcon_Forms_ElementInterface.html"><em>Phalcon\Forms\ElementInterface</em></a>  <strong>setLabel</strong> (<em>string</em> $label) inherited from Phalcon\Forms\Element</p>
+<p>public <a class="reference internal" href="Phalcon_Forms_ElementInterface.html"><span class="doc">Phalcon\Forms\ElementInterface</span></a>  <strong>setLabel</strong> (<em>string</em> $label) inherited from Phalcon\Forms\Element</p>
 <p>Sets the element label</p>
 <p>public <em>string</em>  <strong>getLabel</strong> () inherited from Phalcon\Forms\Element</p>
 <p>Returns the element&#8217;s label</p>
 <p>public <em>string</em>  <strong>label</strong> ([<em>array</em> $attributes]) inherited from Phalcon\Forms\Element</p>
 <p>Generate the HTML to label the element</p>
-<p>public <a class="reference internal" href="Phalcon_Forms_ElementInterface.html"><em>Phalcon\Forms\ElementInterface</em></a>  <strong>setDefault</strong> (<em>mixed</em> $value) inherited from Phalcon\Forms\Element</p>
+<p>public <a class="reference internal" href="Phalcon_Forms_ElementInterface.html"><span class="doc">Phalcon\Forms\ElementInterface</span></a>  <strong>setDefault</strong> (<em>mixed</em> $value) inherited from Phalcon\Forms\Element</p>
 <p>Sets a default value in case the form does not use an entity or there is no value available for the element in $_POST</p>
 <p>public <em>mixed</em>  <strong>getDefault</strong> () inherited from Phalcon\Forms\Element</p>
 <p>Returns the default value assigned to the element</p>
 <p>public <em>mixed</em>  <strong>getValue</strong> () inherited from Phalcon\Forms\Element</p>
 <p>Returns the element&#8217;s value</p>
-<p>public <a class="reference internal" href="Phalcon_Validation_Message_Group.html"><em>Phalcon\Validation\Message\Group</em></a>  <strong>getMessages</strong> () inherited from Phalcon\Forms\Element</p>
+<p>public <a class="reference internal" href="Phalcon_Validation_Message_Group.html"><span class="doc">Phalcon\Validation\Message\Group</span></a>  <strong>getMessages</strong> () inherited from Phalcon\Forms\Element</p>
 <p>Returns the messages that belongs to the element The element needs to be attached to a form</p>
 <p>public <em>boolean</em>  <strong>hasMessages</strong> () inherited from Phalcon\Forms\Element</p>
 <p>Checks whether there are messages attached to the element</p>
-<p>public <a class="reference internal" href="Phalcon_Forms_ElementInterface.html"><em>Phalcon\Forms\ElementInterface</em></a>  <strong>setMessages</strong> (<a class="reference internal" href="Phalcon_Validation_Message_Group.html"><em>Phalcon\Validation\Message\Group</em></a> $group) inherited from Phalcon\Forms\Element</p>
+<p>public <a class="reference internal" href="Phalcon_Forms_ElementInterface.html"><span class="doc">Phalcon\Forms\ElementInterface</span></a>  <strong>setMessages</strong> (<a class="reference internal" href="Phalcon_Validation_Message_Group.html"><span class="doc">Phalcon\Validation\Message\Group</span></a> $group) inherited from Phalcon\Forms\Element</p>
 <p>Sets the validation messages related to the element</p>
-<p>public <a class="reference internal" href="Phalcon_Forms_ElementInterface.html"><em>Phalcon\Forms\ElementInterface</em></a>  <strong>appendMessage</strong> (<a class="reference internal" href="Phalcon_Validation_Message.html"><em>Phalcon\Validation\Message</em></a> $message) inherited from Phalcon\Forms\Element</p>
+<p>public <a class="reference internal" href="Phalcon_Forms_ElementInterface.html"><span class="doc">Phalcon\Forms\ElementInterface</span></a>  <strong>appendMessage</strong> (<a class="reference internal" href="Phalcon_Validation_Message.html"><span class="doc">Phalcon\Validation\Message</span></a> $message) inherited from Phalcon\Forms\Element</p>
 <p>Appends a message to the internal message list</p>
-<p>public <a class="reference internal" href="Phalcon_Forms_Element.html"><em>Phalcon\Forms\Element</em></a>  <strong>clear</strong> () inherited from Phalcon\Forms\Element</p>
+<p>public <a class="reference internal" href="Phalcon_Forms_Element.html"><span class="doc">Phalcon\Forms\Element</span></a>  <strong>clear</strong> () inherited from Phalcon\Forms\Element</p>
 <p>Clears every element in the form to its default value</p>
 <p>public <em>array</em>  <strong>toArray</strong> () inherited from Phalcon\Forms\Element</p>
 <p>Returns a element all attributes</p>

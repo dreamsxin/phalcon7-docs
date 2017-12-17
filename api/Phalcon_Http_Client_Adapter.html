@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" /> 
 </head>
 <body>
@@ -90,7 +92,7 @@
 			  
   <div class="section" id="abstract-class-phalcon-http-client-adapter">
 <h1>Abstract class <strong>Phalcon\Http\Client\Adapter</strong><a class="headerlink" href="#abstract-class-phalcon-http-client-adapter" title="永久链接至标题">¶</a></h1>
-<p><em>implements</em> <a class="reference internal" href="Phalcon_Http_Client_AdapterInterface.html"><em>Phalcon\Http\Client\AdapterInterface</em></a></p>
+<p><em>implements</em> <a class="reference internal" href="Phalcon_Http_Client_AdapterInterface.html"><span class="doc">Phalcon\Http\Client\AdapterInterface</span></a></p>
 <p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/http/client/adapter.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
 <div class="section" id="constants">
 <h2>Constants<a class="headerlink" href="#constants" title="永久链接至标题">¶</a></h2>
@@ -101,43 +103,43 @@
 </div>
 <div class="section" id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
-<p>public <a class="reference internal" href=""><em>Phalcon\Http\Client\Adapter</em></a>  <strong>setUserAgent</strong> (<em>string</em> $useragent)</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Http\Client\Adapter</span></a>  <strong>setUserAgent</strong> (<em>string</em> $useragent)</p>
 <p>Sets the value of the userAgent property</p>
-<p>public <a class="reference internal" href=""><em>Phalcon\Http\Client\Adapter</em></a>  <strong>setAuth</strong> (<em>string</em> $username, <em>string</em> $password, [<em>string</em> $authtype], [<em>array</em> $digest], [<em>string</em> $entityBody])</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Http\Client\Adapter</span></a>  <strong>setAuth</strong> (<em>string</em> $username, <em>string</em> $password, [<em>string</em> $authtype], [<em>array</em> $digest], [<em>string</em> $entityBody])</p>
 <p>Set authentication credential</p>
-<p>public <a class="reference internal" href=""><em>Phalcon\Http\Client\Adapter</em></a>  <strong>setHeader</strong> (<em>string</em> $name, <em>string</em> $value)</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Http\Client\Adapter</span></a>  <strong>setHeader</strong> (<em>string</em> $name, <em>string</em> $value)</p>
 <p>Set header</p>
-<p>public <a class="reference internal" href=""><em>Phalcon\Http\Client\Adapter</em></a>  <strong>setHeaders</strong> (<em>array</em> $headers)</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Http\Client\Adapter</span></a>  <strong>setHeaders</strong> (<em>array</em> $headers)</p>
 <p>Set headers</p>
-<p>public <a class="reference internal" href=""><em>Phalcon\Http\Client\Adapter</em></a>  <strong>setData</strong> (<em>array|string</em> $data, [<em>unknown</em> $type])</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Http\Client\Adapter</span></a>  <strong>setData</strong> (<em>array|string</em> $data, [<em>unknown</em> $type])</p>
 <p>Set data</p>
-<p>public <a class="reference internal" href=""><em>Phalcon\Http\Client\Adapter</em></a>  <strong>setFile</strong> ()</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Http\Client\Adapter</span></a>  <strong>setFile</strong> ()</p>
 <p>Set send file</p>
-<p>public <a class="reference internal" href=""><em>Phalcon\Http\Client\Adapter</em></a>  <strong>setFiles</strong> (<em>array|string</em> $files)</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Http\Client\Adapter</span></a>  <strong>setFiles</strong> (<em>array|string</em> $files)</p>
 <p>Set send files</p>
 <p>public <em>string</em>  <strong>getPath</strong> ()</p>
 <p>Retrieve the URI path</p>
-<p>public <a class="reference internal" href="Phalcon_Http_Client_Response.html"><em>Phalcon\Http\Client\Response</em></a>  <strong>get</strong> ([<em>string</em> $uri], [<em>string</em> $data], [<em>unknown</em> $type])</p>
+<p>public <a class="reference internal" href="Phalcon_Http_Client_Response.html"><span class="doc">Phalcon\Http\Client\Response</span></a>  <strong>get</strong> ([<em>string</em> $uri], [<em>string</em> $data], [<em>unknown</em> $type])</p>
 <p>Send GET request</p>
-<p>public <a class="reference internal" href="Phalcon_Http_Client_Response.html"><em>Phalcon\Http\Client\Response</em></a>  <strong>head</strong> ([<em>string</em> $uri], [<em>string</em> $data], [<em>unknown</em> $type])</p>
+<p>public <a class="reference internal" href="Phalcon_Http_Client_Response.html"><span class="doc">Phalcon\Http\Client\Response</span></a>  <strong>head</strong> ([<em>string</em> $uri], [<em>string</em> $data], [<em>unknown</em> $type])</p>
 <p>Send HEAD request</p>
-<p>public <a class="reference internal" href="Phalcon_Http_Client_Response.html"><em>Phalcon\Http\Client\Response</em></a>  <strong>post</strong> ([<em>string</em> $uri], [<em>string</em> $data], [<em>unknown</em> $type])</p>
+<p>public <a class="reference internal" href="Phalcon_Http_Client_Response.html"><span class="doc">Phalcon\Http\Client\Response</span></a>  <strong>post</strong> ([<em>string</em> $uri], [<em>string</em> $data], [<em>unknown</em> $type])</p>
 <p>Send POST request</p>
-<p>public <a class="reference internal" href="Phalcon_Http_Client_Response.html"><em>Phalcon\Http\Client\Response</em></a>  <strong>put</strong> ([<em>string</em> $uri], [<em>string</em> $data], [<em>unknown</em> $type])</p>
+<p>public <a class="reference internal" href="Phalcon_Http_Client_Response.html"><span class="doc">Phalcon\Http\Client\Response</span></a>  <strong>put</strong> ([<em>string</em> $uri], [<em>string</em> $data], [<em>unknown</em> $type])</p>
 <p>Send PUT request</p>
-<p>public <a class="reference internal" href="Phalcon_Http_Client_Response.html"><em>Phalcon\Http\Client\Response</em></a>  <strong>delete</strong> ([<em>string</em> $uri], [<em>string</em> $data], [<em>unknown</em> $type])</p>
+<p>public <a class="reference internal" href="Phalcon_Http_Client_Response.html"><span class="doc">Phalcon\Http\Client\Response</span></a>  <strong>delete</strong> ([<em>string</em> $uri], [<em>string</em> $data], [<em>unknown</em> $type])</p>
 <p>Send DELETE request</p>
-<p>public <a class="reference internal" href=""><em>Phalcon\Http\Client\Adapter</em></a>  <strong>setUri</strong> (<em>string</em> $uri)</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Http\Client\Adapter</span></a>  <strong>setUri</strong> (<em>string</em> $uri)</p>
 <p>Set URI</p>
-<p>public <a class="reference internal" href="Phalcon_Http_Uri.html"><em>Phalcon\Http\Uri</em></a>  <strong>getUri</strong> ()</p>
+<p>public <a class="reference internal" href="Phalcon_Http_Uri.html"><span class="doc">Phalcon\Http\Uri</span></a>  <strong>getUri</strong> ()</p>
 <p>Get URI</p>
-<p>public <a class="reference internal" href=""><em>Phalcon\Http\Client\Adapter</em></a>  <strong>setBaseUri</strong> ([<em>string</em> $uri])</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Http\Client\Adapter</span></a>  <strong>setBaseUri</strong> ([<em>string</em> $uri])</p>
 <p>Set base URI</p>
-<p>public <a class="reference internal" href=""><em>Phalcon\Http\Client\Adapter</em></a>  <strong>setMethod</strong> (<em>unknown</em> $method)</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Http\Client\Adapter</span></a>  <strong>setMethod</strong> (<em>unknown</em> $method)</p>
 <p>Set method</p>
-<p>public <a class="reference internal" href=""><em>Phalcon\Http\Client\Adapter</em></a>  <strong>setTimeOut</strong> (<em>unknown</em> $time)</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Http\Client\Adapter</span></a>  <strong>setTimeOut</strong> (<em>unknown</em> $time)</p>
 <p>Set the request timeout</p>
-<p>public <a class="reference internal" href="Phalcon_Http_Client_Response.html"><em>Phalcon\Http\Client\Response</em></a>  <strong>send</strong> ([<em>unknown</em> $uri])</p>
+<p>public <a class="reference internal" href="Phalcon_Http_Client_Response.html"><span class="doc">Phalcon\Http\Client\Response</span></a>  <strong>send</strong> ([<em>unknown</em> $uri])</p>
 <p>Send request</p>
 <p>abstract protected  <strong>sendInternal</strong> ()</p>
 <p>...</p>

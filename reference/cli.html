@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
     <link rel="next" title="命令行设置文字颜色（Command Line Text Color）" href="cli-color.html" />
     <link rel="prev" title="注释解析器（Annotations Parser）" href="annotations.html" /> 
@@ -162,7 +164,7 @@
 </pre></div>
 </div>
 <p>上面的代码可以使用如下方式执行：</p>
-<div class="highlight-bash"><div class="highlight"><pre>$ php app/cli.php --task<span class="o">=</span>main --action<span class="o">=</span>main --params<span class="o">=</span><span class="m">1</span> --params<span class="o">=</span>2
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/cli.php --task<span class="o">=</span>main --action<span class="o">=</span>main --params<span class="o">=</span><span class="m">1</span> --params<span class="o">=</span>2
 
 这样程序就会执行任务main以及动作main，并传递参数 <span class="sb">`</span>array<span class="o">(</span>1, 2<span class="o">)</span><span class="sb">`</span>
 </pre></div>
@@ -231,7 +233,7 @@
 </pre></div>
 </div>
 <p>上面的代码可以使用如下方式执行：</p>
-<div class="highlight-bash"><div class="highlight"><pre>$ php app/cli.php
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/cli.php
 
 这样程序会直接执行默认的任务及默认动作.
 </pre></div>
@@ -367,7 +369,7 @@
 </pre></div>
 </div>
 <p>我们可以使用下面的命令行及参数执行程序：</p>
-<div class="highlight-bash"><div class="highlight"><pre>$ php app/cli.php main <span class="nb">test</span> world universe
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/cli.php main <span class="nb">test </span>world universe
 
 hello world
 best regards, universe
@@ -414,12 +416,12 @@ best regards, universe
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>当然， 通过扩展 <a class="reference internal" href="../api/Phalcon_Cli_Task.html"><em>Phalcon\Cli\Task</em></a> 来实现如上操作会是一个更好主意。</p>
+<p>当然， 通过扩展 <a class="reference internal" href="../api/Phalcon_Cli_Task.html"><span class="doc">Phalcon\Cli\Task</span></a> 来实现如上操作会是一个更好主意。</p>
 </div>
 <div class="section" id="mvc-running-mvc-application">
 <h2>运行 MVC 应用（Running MVC Application）<a class="headerlink" href="#mvc-running-mvc-application" title="永久链接至标题">¶</a></h2>
 <p>使用MVC架构来开发的程序，在命令行下运行命令如下：</p>
-<div class="highlight-bash"><div class="highlight"><pre>$ php app/index.php --url<span class="o">=</span><span class="s2">&quot;/auth/login&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/index.php --url<span class="o">=</span><span class="s2">&quot;/auth/login&quot;</span>
 </pre></div>
 </div>
 </div>

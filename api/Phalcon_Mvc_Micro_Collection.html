@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" /> 
 </head>
 <body>
@@ -89,7 +91,7 @@
 			  
   <div class="section" id="class-phalcon-mvc-micro-collection">
 <h1>Class <strong>Phalcon\Mvc\Micro\Collection</strong><a class="headerlink" href="#class-phalcon-mvc-micro-collection" title="永久链接至标题">¶</a></h1>
-<p><em>implements</em> <a class="reference internal" href="Phalcon_Mvc_Micro_CollectionInterface.html"><em>Phalcon\Mvc\Micro\CollectionInterface</em></a></p>
+<p><em>implements</em> <a class="reference internal" href="Phalcon_Mvc_Micro_CollectionInterface.html"><span class="doc">Phalcon\Mvc\Micro\CollectionInterface</span></a></p>
 <p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/micro/collection.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
 <p>Groups Micro-Mvc handlers as controllers</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
@@ -107,35 +109,35 @@
 </div>
 <div class="section" id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
-<p>public <a class="reference internal" href="Phalcon_Mvc_Micro_CollectionInterface.html"><em>Phalcon\Mvc\Micro\CollectionInterface</em></a>  <strong>setPrefix</strong> (<em>string</em> $prefix)</p>
+<p>public <a class="reference internal" href="Phalcon_Mvc_Micro_CollectionInterface.html"><span class="doc">Phalcon\Mvc\Micro\CollectionInterface</span></a>  <strong>setPrefix</strong> (<em>string</em> $prefix)</p>
 <p>Sets a prefix for all routes added to the collection</p>
 <p>public <em>string</em>  <strong>getPrefix</strong> ()</p>
 <p>Returns the collection prefix if any</p>
 <p>public <em>array</em>  <strong>getHandlers</strong> ()</p>
 <p>Returns the registered handlers</p>
-<p>public <a class="reference internal" href="Phalcon_Mvc_Micro_CollectionInterface.html"><em>Phalcon\Mvc\Micro\CollectionInterface</em></a>  <strong>setHandler</strong> (<em>mixed</em> $handler, [<em>boolean</em> $lazy])</p>
+<p>public <a class="reference internal" href="Phalcon_Mvc_Micro_CollectionInterface.html"><span class="doc">Phalcon\Mvc\Micro\CollectionInterface</span></a>  <strong>setHandler</strong> (<em>mixed</em> $handler, [<em>boolean</em> $lazy])</p>
 <p>Sets the main handler</p>
-<p>public <a class="reference internal" href="Phalcon_Mvc_Micro_CollectionInterface.html"><em>Phalcon\Mvc\Micro\CollectionInterface</em></a>  <strong>setLazy</strong> (<em>boolean</em> $lazy)</p>
+<p>public <a class="reference internal" href="Phalcon_Mvc_Micro_CollectionInterface.html"><span class="doc">Phalcon\Mvc\Micro\CollectionInterface</span></a>  <strong>setLazy</strong> (<em>boolean</em> $lazy)</p>
 <p>Sets if the main handler must be lazy loaded</p>
 <p>public <em>boolean</em>  <strong>isLazy</strong> ()</p>
 <p>Returns if the main handler must be lazy loaded</p>
 <p>public <em>mixed</em>  <strong>getHandler</strong> ()</p>
 <p>Returns the main handler</p>
-<p>public <a class="reference internal" href="Phalcon_Mvc_Micro_CollectionInterface.html"><em>Phalcon\Mvc\Micro\CollectionInterface</em></a>  <strong>map</strong> (<em>string</em> $routePattern, <em>callable</em> $handler)</p>
+<p>public <a class="reference internal" href="Phalcon_Mvc_Micro_CollectionInterface.html"><span class="doc">Phalcon\Mvc\Micro\CollectionInterface</span></a>  <strong>map</strong> (<em>string</em> $routePattern, <em>callable</em> $handler)</p>
 <p>Maps a route to a handler</p>
-<p>public <a class="reference internal" href="Phalcon_Mvc_Micro_CollectionInterface.html"><em>Phalcon\Mvc\Micro\CollectionInterface</em></a>  <strong>get</strong> (<em>string</em> $routePattern, <em>callable</em> $handler)</p>
+<p>public <a class="reference internal" href="Phalcon_Mvc_Micro_CollectionInterface.html"><span class="doc">Phalcon\Mvc\Micro\CollectionInterface</span></a>  <strong>get</strong> (<em>string</em> $routePattern, <em>callable</em> $handler)</p>
 <p>Maps a route to a handler that only matches if the HTTP method is GET</p>
-<p>public <a class="reference internal" href="Phalcon_Mvc_Micro_CollectionInterface.html"><em>Phalcon\Mvc\Micro\CollectionInterface</em></a>  <strong>post</strong> (<em>string</em> $routePattern, <em>callable</em> $handler)</p>
+<p>public <a class="reference internal" href="Phalcon_Mvc_Micro_CollectionInterface.html"><span class="doc">Phalcon\Mvc\Micro\CollectionInterface</span></a>  <strong>post</strong> (<em>string</em> $routePattern, <em>callable</em> $handler)</p>
 <p>Maps a route to a handler that only matches if the HTTP method is POST</p>
-<p>public <a class="reference internal" href="Phalcon_Mvc_Micro_CollectionInterface.html"><em>Phalcon\Mvc\Micro\CollectionInterface</em></a>  <strong>put</strong> (<em>string</em> $routePattern, <em>callable</em> $handler)</p>
+<p>public <a class="reference internal" href="Phalcon_Mvc_Micro_CollectionInterface.html"><span class="doc">Phalcon\Mvc\Micro\CollectionInterface</span></a>  <strong>put</strong> (<em>string</em> $routePattern, <em>callable</em> $handler)</p>
 <p>Maps a route to a handler that only matches if the HTTP method is PUT</p>
-<p>public <a class="reference internal" href="Phalcon_Mvc_Micro_CollectionInterface.html"><em>Phalcon\Mvc\Micro\CollectionInterface</em></a>  <strong>patch</strong> (<em>string</em> $routePattern, <em>callable</em> $handler)</p>
+<p>public <a class="reference internal" href="Phalcon_Mvc_Micro_CollectionInterface.html"><span class="doc">Phalcon\Mvc\Micro\CollectionInterface</span></a>  <strong>patch</strong> (<em>string</em> $routePattern, <em>callable</em> $handler)</p>
 <p>Maps a route to a handler that only matches if the HTTP method is PATCH</p>
-<p>public <a class="reference internal" href="Phalcon_Mvc_Micro_CollectionInterface.html"><em>Phalcon\Mvc\Micro\CollectionInterface</em></a>  <strong>head</strong> (<em>string</em> $routePattern, <em>callable</em> $handler)</p>
+<p>public <a class="reference internal" href="Phalcon_Mvc_Micro_CollectionInterface.html"><span class="doc">Phalcon\Mvc\Micro\CollectionInterface</span></a>  <strong>head</strong> (<em>string</em> $routePattern, <em>callable</em> $handler)</p>
 <p>Maps a route to a handler that only matches if the HTTP method is HEAD</p>
-<p>public <a class="reference internal" href="Phalcon_Mvc_Micro_CollectionInterface.html"><em>Phalcon\Mvc\Micro\CollectionInterface</em></a>  <strong>delete</strong> (<em>string</em> $routePattern, <em>callable</em> $handler)</p>
+<p>public <a class="reference internal" href="Phalcon_Mvc_Micro_CollectionInterface.html"><span class="doc">Phalcon\Mvc\Micro\CollectionInterface</span></a>  <strong>delete</strong> (<em>string</em> $routePattern, <em>callable</em> $handler)</p>
 <p>Maps a route to a handler that only matches if the HTTP method is DELETE</p>
-<p>public <a class="reference internal" href="Phalcon_Mvc_Micro_CollectionInterface.html"><em>Phalcon\Mvc\Micro\CollectionInterface</em></a>  <strong>options</strong> (<em>string</em> $routePattern, <em>callable</em> $handler)</p>
+<p>public <a class="reference internal" href="Phalcon_Mvc_Micro_CollectionInterface.html"><span class="doc">Phalcon\Mvc\Micro\CollectionInterface</span></a>  <strong>options</strong> (<em>string</em> $routePattern, <em>callable</em> $handler)</p>
 <p>Maps a route to a handler that only matches if the HTTP method is OPTIONS</p>
 </div>
 </div>

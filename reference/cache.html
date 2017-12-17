@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
     <link rel="next" title="安全（Security）" href="security.html" />
     <link rel="prev" title="分页（Pagination）" href="pagination.html" /> 
@@ -129,7 +131,7 @@
 			  
   <div class="section" id="improving-performance-with-cache">
 <h1>使用缓存提高性能（Improving Performance with Cache）<a class="headerlink" href="#improving-performance-with-cache" title="永久链接至标题">¶</a></h1>
-<p>Phalcon 提供的缓存组件由前端 <a class="reference internal" href="../api/Phalcon_Cache_FrontendInterface.html"><em>Phalcon\Cache\FrontendInterface</em></a> 和后端 <a class="reference internal" href="../api/Phalcon_Cache_BackendInterface.html"><em>Phalcon\Cache\BackendInterface</em></a> 组件组成，可以更快地接入获取使用频繁或者已经被处理的数据。</p>
+<p>Phalcon 提供的缓存组件由前端 <a class="reference internal" href="../api/Phalcon_Cache_FrontendInterface.html"><span class="doc">Phalcon\Cache\FrontendInterface</span></a> 和后端 <a class="reference internal" href="../api/Phalcon_Cache_BackendInterface.html"><span class="doc">Phalcon\Cache\BackendInterface</span></a> 组件组成，可以更快地接入获取使用频繁或者已经被处理的数据。</p>
 <p>前端组件如输入源或者接口，后端组件则为这个类提供了存储的选项。</p>
 <div class="section" id="when-to-implement-cache">
 <h2>什么情况下使用缓存？（When to implement cache?）<a class="headerlink" href="#when-to-implement-cache" title="永久链接至标题">¶</a></h2>
@@ -492,34 +494,34 @@
 <tbody valign="top">
 <tr class="row-even"><td>Output</td>
 <td>从标准PHP输出读取输入数据</td>
-<td><a class="reference internal" href="../api/Phalcon_Cache_Frontend_Output.html"><em>Phalcon\Cache\Frontend\Output</em></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Frontend_Output.html"><span class="doc">Phalcon\Cache\Frontend\Output</span></a></td>
 </tr>
 <tr class="row-odd"><td>Data</td>
 <td>可用于缓存任何类型的PHP数据（大数组，对象，文本等）。在存入后端前数据将会被序列化。</td>
-<td><a class="reference internal" href="../api/Phalcon_Cache_Frontend_Data.html"><em>Phalcon\Cache\Frontend\Data</em></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Frontend_Data.html"><span class="doc">Phalcon\Cache\Frontend\Data</span></a></td>
 </tr>
 <tr class="row-even"><td>Base64</td>
 <td>可用于缓存二进制数据。在存入后端前数据会以base64_encode编码进行序列化。</td>
-<td><a class="reference internal" href="../api/Phalcon_Cache_Frontend_Base64.html"><em>Phalcon\Cache\Frontend\Base64</em></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Frontend_Base64.html"><span class="doc">Phalcon\Cache\Frontend\Base64</span></a></td>
 </tr>
 <tr class="row-odd"><td>Json</td>
 <td>在存入后端前数据使用JSON编码。从缓存获取后进行JSON解码。此前端适配器可用于跨语言和跨框架共享数据。</td>
-<td><a class="reference internal" href="../api/Phalcon_Cache_Frontend_Json.html"><em>Phalcon\Cache\Frontend\Json</em></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Frontend_Json.html"><span class="doc">Phalcon\Cache\Frontend\Json</span></a></td>
 </tr>
 <tr class="row-even"><td>IgBinary</td>
 <td>用于缓存任何类型的PHP数据（大数组，对象，文本等）。在存入后端前数据会使用IgBinary进行序列化。</td>
-<td><a class="reference internal" href="../api/Phalcon_Cache_Frontend_Igbinary.html"><em>Phalcon\Cache\Frontend\Igbinary</em></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Frontend_Igbinary.html"><span class="doc">Phalcon\Cache\Frontend\Igbinary</span></a></td>
 </tr>
 <tr class="row-odd"><td>None</td>
 <td>用于缓存任何类型的PHP数据而不作任何序列化操作。</td>
-<td><a class="reference internal" href="../api/Phalcon_Cache_Frontend_None.html"><em>Phalcon\Cache\Frontend\None</em></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Frontend_None.html"><span class="doc">Phalcon\Cache\Frontend\None</span></a></td>
 </tr>
 </tbody>
 </table>
 <div class="section" id="implementing-your-own-frontend-adapters">
 <h3>自定义前端适配器（Implementing your own Frontend adapters）<a class="headerlink" href="#implementing-your-own-frontend-adapters" title="永久链接至标题">¶</a></h3>
 <p>为了创建你自己的前端适配器或者扩展已有的适配器，你必须
-实现 <a class="reference internal" href="../api/Phalcon_Cache_FrontendInterface.html"><em>Phalcon\Cache\FrontendInterface</em></a> 接口。</p>
+实现 <a class="reference internal" href="../api/Phalcon_Cache_FrontendInterface.html"><span class="doc">Phalcon\Cache\FrontendInterface</span></a> 接口。</p>
 </div>
 </div>
 <div class="section" id="backend-adapters">
@@ -545,62 +547,62 @@
 <td>在本地绝对路径的文件上存放数据</td>
 <td>无</td>
 <td>无</td>
-<td><a class="reference internal" href="../api/Phalcon_Cache_Backend_File.html"><em>Phalcon\Cache\Backend\File</em></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Backend_File.html"><span class="doc">Phalcon\Cache\Backend\File</span></a></td>
 </tr>
 <tr class="row-odd"><td>Lmdb</td>
 <td>使用内存映射文件技术加速速度的读取</td>
 <td>无</td>
 <td>无</td>
-<td><a class="reference internal" href="../api/Phalcon_Cache_Backend_Lmdb.html"><em>Phalcon\Cache\Backend\Lmdb</em></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Backend_Lmdb.html"><span class="doc">Phalcon\Cache\Backend\Lmdb</span></a></td>
 </tr>
 <tr class="row-even"><td>Memcached</td>
 <td>在memcached服务器存放数据</td>
 <td><a class="reference external" href="http://memcached.org/">Memcached</a></td>
 <td><a class="reference external" href="http://php.net/memcached">memcached extension</a></td>
-<td><a class="reference internal" href="../api/Phalcon_Cache_Backend_Memcached.html"><em>Phalcon\Cache\Backend\Memcached</em></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Backend_Memcached.html"><span class="doc">Phalcon\Cache\Backend\Memcached</span></a></td>
 </tr>
 <tr class="row-odd"><td>APC</td>
 <td>在opcode缓存           （APC）中存放数据</td>
 <td><a class="reference external" href="http://php.net/apc">APC</a></td>
 <td><a class="reference external" href="http://pecl.php.net/package/APC">APC extension</a></td>
-<td><a class="reference internal" href="../api/Phalcon_Cache_Backend_Apc.html"><em>Phalcon\Cache\Backend\Apc</em></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Backend_Apc.html"><span class="doc">Phalcon\Cache\Backend\Apc</span></a></td>
 </tr>
 <tr class="row-even"><td>Mongo</td>
 <td>在Mongo数据库中存放数据</td>
 <td><a class="reference external" href="http://mongodb.org/">MongoDb</a></td>
 <td><a class="reference external" href="http://pecl.php.net/package/mongo">Mongo</a></td>
-<td><a class="reference internal" href="../api/Phalcon_Cache_Backend_Mongo.html"><em>Phalcon\Cache\Backend\Mongo</em></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Backend_Mongo.html"><span class="doc">Phalcon\Cache\Backend\Mongo</span></a></td>
 </tr>
 <tr class="row-odd"><td>XCache</td>
 <td>在XCache中存放数据</td>
 <td><a class="reference external" href="http://xcache.lighttpd.net/">XCache</a></td>
 <td><a class="reference external" href="http://pecl.php.net/package/xcache">xcache extension</a></td>
-<td><a class="reference internal" href="../api/Phalcon_Cache_Backend_Xcache.html"><em>Phalcon\Cache\Backend\Xcache</em></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Backend_Xcache.html"><span class="doc">Phalcon\Cache\Backend\Xcache</span></a></td>
 </tr>
 <tr class="row-even"><td>Redis</td>
 <td>Stores data in Redis</td>
 <td><a class="reference external" href="http://redis.io/">Redis</a></td>
 <td><a class="reference external" href="http://pecl.php.net/package/redis">redis extension</a></td>
-<td><a class="reference internal" href="../api/Phalcon_Cache_Backend_Redis.html"><em>Phalcon\Cache\Backend\Redis</em></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Backend_Redis.html"><span class="doc">Phalcon\Cache\Backend\Redis</span></a></td>
 </tr>
 <tr class="row-odd"><td>Yac</td>
 <td>Stores data in Yac</td>
 <td><a class="reference external" href="http://redis.io/">Redis</a></td>
 <td><a href="#id1"><span class="problematic" id="id2">`yac extension`_</span></a></td>
-<td><a class="reference internal" href="../api/Phalcon_Cache_Backend_Yac.html"><em>Phalcon\Cache\Backend\Yac</em></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Backend_Yac.html"><span class="doc">Phalcon\Cache\Backend\Yac</span></a></td>
 </tr>
 <tr class="row-even"><td>Memeory</td>
 <td>存储数据在内存中，请求完成后释放</td>
 <td>无</td>
 <td>无</td>
-<td><a class="reference internal" href="../api/Phalcon_Cache_Backend_Memory.html"><em>Phalcon\Cache\Backend\Memory</em></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Cache_Backend_Memory.html"><span class="doc">Phalcon\Cache\Backend\Memory</span></a></td>
 </tr>
 </tbody>
 </table>
 <div class="section" id="implementing-your-own-backend-adapters">
 <h3>自定义后端适配器（Implementing your own Backend adapters）<a class="headerlink" href="#implementing-your-own-backend-adapters" title="永久链接至标题">¶</a></h3>
 <p>为了创建你自己的后端适配器或者扩展已有的后端适配器，你必须
-实现 <a class="reference internal" href="../api/Phalcon_Cache_BackendInterface.html"><em>Phalcon\Cache\BackendInterface</em></a> 接口。</p>
+实现 <a class="reference internal" href="../api/Phalcon_Cache_BackendInterface.html"><span class="doc">Phalcon\Cache\BackendInterface</span></a> 接口。</p>
 </div>
 <div class="section" id="file-backend-options">
 <h3>文件后端存储器选项（File Backend Options）<a class="headerlink" href="#file-backend-options" title="永久链接至标题">¶</a></h3>
@@ -784,7 +786,7 @@
 </div>
 <div class="section" id="shared-memory-cache">
 <h2>共享内存缓存（Shared Memory Cache）<a class="headerlink" href="#shared-memory-cache" title="永久链接至标题">¶</a></h2>
-<p>Phalcon 内部还内置了 <a class="reference internal" href="../api/Phalcon_Cache_Yac.html"><em>Phalcon\Cache\Yac</em></a> 类似 <cite>APC</cite> 的缓存服务。</p>
+<p>Phalcon 内部还内置了 <a class="reference internal" href="../api/Phalcon_Cache_Yac.html"><span class="doc">Phalcon\Cache\Yac</span></a> 类似 <cite>APC</cite> 的缓存服务。</p>
 </div>
 </div>
 

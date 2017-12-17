@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
     <link rel="next" title="教程：让我们通过例子来学习（Tutorial: Let’s learn by example）" href="tutorial.html" />
     <link rel="prev" title="使用 PHP 内置 web 服务器（Using PHP Built-in webserver）" href="built-in.html" /> 
@@ -132,18 +134,18 @@ chmod ugo+x /usr/bin/phalcon
 <div class="section" id="getting-available-commands">
 <h2>获取可用的命令（Getting Available Commands）<a class="headerlink" href="#getting-available-commands" title="永久链接至标题">¶</a></h2>
 <p>我们可以在虚拟控制台上输入如下命令： <code class="code docutils literal"><span class="pre">phalcon</span> <span class="pre">commands</span></code></p>
-<div class="highlight-sh"><div class="highlight"><pre>$ phalcon commands
+<div class="highlight-sh"><div class="highlight"><pre><span class="nv">$ </span>phalcon commands
 
 Phalcon7 DevTools <span class="o">(</span>1.1.1<span class="o">)</span>
 
 Available commands:
-  commands         <span class="o">(</span><span class="nb">alias</span> of: list, enumerate<span class="o">)</span>
-  controller       <span class="o">(</span><span class="nb">alias</span> of: create-controller<span class="o">)</span>
-  model            <span class="o">(</span><span class="nb">alias</span> of: create-model<span class="o">)</span>
-  all-models       <span class="o">(</span><span class="nb">alias</span> of: create-all-models<span class="o">)</span>
-  project          <span class="o">(</span><span class="nb">alias</span> of: create-project<span class="o">)</span>
-  scaffold         <span class="o">(</span><span class="nb">alias</span> of: create-scaffold<span class="o">)</span>
-  migration        <span class="o">(</span><span class="nb">alias</span> of: create-migration<span class="o">)</span>
+  commands         <span class="o">(</span><span class="nb">alias </span>of: list, enumerate<span class="o">)</span>
+  controller       <span class="o">(</span><span class="nb">alias </span>of: create-controller<span class="o">)</span>
+  model            <span class="o">(</span><span class="nb">alias </span>of: create-model<span class="o">)</span>
+  all-models       <span class="o">(</span><span class="nb">alias </span>of: create-all-models<span class="o">)</span>
+  project          <span class="o">(</span><span class="nb">alias </span>of: create-project<span class="o">)</span>
+  scaffold         <span class="o">(</span><span class="nb">alias </span>of: create-scaffold<span class="o">)</span>
+  migration        <span class="o">(</span><span class="nb">alias </span>of: create-migration<span class="o">)</span>
 </pre></div>
 </div>
 </div>
@@ -151,16 +153,16 @@ Available commands:
 <h2>生成项目框架（Generating a Project Skeleton）<a class="headerlink" href="#generating-a-project-skeleton" title="永久链接至标题">¶</a></h2>
 <p>我们可以使用Phalcon开发辅助工具生成预先定义的项目架构。 默认情况下，phalcon开发辅助工具会使用apache的mod_rewrite来生成程序的骨架. 要创建项目我们只需要在我们的
 web服务器根目录下输入如下命令：</p>
-<div class="highlight-sh"><div class="highlight"><pre>$ <span class="nb">pwd</span>
+<div class="highlight-sh"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">pwd</span>
 
 /Applications/MAMP/htdocs
 
-$ phalcon create-project store
+<span class="nv">$ </span>phalcon create-project store
 </pre></div>
 </div>
 <p>执行命令后会生成如下的文档结构的项目：</p>
 <img class="align-center" src="../static/img/tools-2.png"><p>我们可以在命令上加 <em>&#8211;help</em> 以显示帮助信息（下面的帮助中的中文是翻译时加上去的）：</p>
-<div class="highlight-sh"><div class="highlight"><pre>$ phalcon project --help
+<div class="highlight-sh"><div class="highlight"><pre><span class="nv">$ </span>phalcon project --help
 
 Phalcon DevTools <span class="o">(</span>2.0.8<span class="o">)</span>
 
@@ -168,10 +170,10 @@ Help:
   Creates a project 创建项目
 
 Usage:
-  project <span class="o">[</span>name<span class="o">]</span> <span class="o">[</span>type<span class="o">]</span> <span class="o">[</span>directory<span class="o">]</span> <span class="o">[</span>enable-webtools<span class="o">]</span>
+  project <span class="o">[</span>name<span class="o">]</span> <span class="o">[</span><span class="nb">type</span><span class="o">]</span> <span class="o">[</span>directory<span class="o">]</span> <span class="o">[</span><span class="nb">enable</span>-webtools<span class="o">]</span>
 
 Arguments: 参数
-  <span class="nb">help</span>    Shows this <span class="nb">help</span> text 显示此帮助信息
+  <span class="nb">help    </span>Shows this <span class="nb">help </span>text 显示此帮助信息
 
 Example 例子
   phalcon project store simple
@@ -197,7 +199,7 @@ Options: 选项
 <h2>生成控制器（Generating Controllers）<a class="headerlink" href="#generating-controllers" title="永久链接至标题">¶</a></h2>
 <p>我们可以使用`phalcon create-controller &#8211;name test`或`phalcon controller &#8211;name test`来生成名为`test`的控制器。
 当然要使用此命令当前的执行命令目录必须为已存在的phalcon项目内。</p>
-<div class="highlight-sh"><div class="highlight"><pre>$ phalcon create-controller --name <span class="nb">test</span>
+<div class="highlight-sh"><div class="highlight"><pre><span class="nv">$ </span>phalcon create-controller --name <span class="nb">test</span>
 </pre></div>
 </div>
 <p>上面的命令会生成如下代码：</p>
@@ -283,10 +285,10 @@ Options: 选项
 </dd>
 </dl>
 <p>最简单的生成模型的方式：</p>
-<div class="highlight-sh"><div class="highlight"><pre>$ phalcon model products
+<div class="highlight-sh"><div class="highlight"><pre><span class="nv">$ </span>phalcon model products
 </pre></div>
 </div>
-<div class="highlight-sh"><div class="highlight"><pre>$ phalcon model --name tablename
+<div class="highlight-sh"><div class="highlight"><pre><span class="nv">$ </span>phalcon model --name tablename
 </pre></div>
 </div>
 <p>所有的字段设置为公有：</p>
@@ -400,7 +402,7 @@ Options: 选项
 <p>使用phalcon开发辅助工具我们可以直接快速的生成一个模型的CRUD操作。 如果我们想快速的生成模型的CRUD操作只需要使用phalcon辅助开发工具的中scaffold命令即可。</p>
 <p>代码生成后，你可以根据自己的需要修改生成的代码。很多开发者可能不会去使用这个功能，其实这东西有时不是太好用，很多时候开发者往往会手动的书写相关代码。使用scaffold产生的代码可以
 帮助我们理解框架是如何工作的当然也可以帮助我们制作出快速原型来。 下面的截图展示了基于products表的scaffold:</p>
-<div class="highlight-sh"><div class="highlight"><pre>$ phalcon scaffold --table-name products
+<div class="highlight-sh"><div class="highlight"><pre><span class="nv">$ </span>phalcon scaffold --table-name products
 </pre></div>
 </div>
 <p>scaffold生成器会在相关的文件夹中生成若干个文档。 下面是所生成文件的概览：</p>

@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" /> 
 </head>
 <body>
@@ -94,7 +96,7 @@
 <h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
 <p>public static  <strong>factory</strong> ([<em>unknown</em> $backend])</p>
 <p>...</p>
-<p>private <a class="reference internal" href=""><em>Phalcon\Py\Matplot</em></a>  <strong>__construct</strong> ([<em>unknown</em> $backend])</p>
+<p>private <a class="reference internal" href="#"><span class="doc">Phalcon\Py\Matplot</span></a>  <strong>__construct</strong> ([<em>unknown</em> $backend])</p>
 <p>PHP_METHOD(Phalcon_Py_Matplot, factory) { zval <a href="#id1"><span class="problematic" id="id2">*</span></a>backend = NULL, instance = {}; phalcon_fetch_params(0, 0, 1, &amp;backend); if (!backend) { backend = &amp;PHALCON_GLOBAL(z_null); } phalcon_read_static_property_ce(&amp;instance, phalcon_py_matplot_ce, SL(&#8220;_instance&#8221;), PH_READONLY); if (Z_TYPE(instance) == IS_NULL) { object_init_ex(return_value, phalcon_py_matplot_ce); PHALCON_CALL_METHOD(NULL, return_value, &#8220;__construct&#8221;, backend); phalcon_update_static_property_ce(phalcon_py_matplot_ce, SL(&#8220;_instance&#8221;), return_value); } else { RETURN_CTOR(&amp;instance); } } Phalcon\Py\Matplot constructor</p>
 <p>public  <strong>annotate</strong> (<em>unknown</em> $annotation, <em>unknown</em> $x, <em>unknown</em> $y)</p>
 <p>...</p>

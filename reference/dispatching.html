@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
     <link rel="next" title="微应用（Micro Applications）" href="micro.html" />
     <link rel="prev" title="路由（Routing）" href="routing.html" /> 
@@ -117,14 +119,14 @@
 			  
   <div class="section" id="dispatching-controllers">
 <h1>调度控制器（Dispatching Controllers）<a class="headerlink" href="#dispatching-controllers" title="永久链接至标题">¶</a></h1>
-<p><a class="reference internal" href="../api/Phalcon_Mvc_Dispatcher.html"><em>Phalcon\Mvc\Dispatcher</em></a> 是MVC应用中负责实例化
+<p><a class="reference internal" href="../api/Phalcon_Mvc_Dispatcher.html"><span class="doc">Phalcon\Mvc\Dispatcher</span></a> 是MVC应用中负责实例化
 控制器和执行在这些控制器上必要动作的组件。理解它的操作和能力将能帮助我们获得更多Phalcon框架提供的服务。</p>
 <div class="section" id="the-dispatch-loop">
 <h2>循环调度（The Dispatch Loop）<a class="headerlink" href="#the-dispatch-loop" title="永久链接至标题">¶</a></h2>
 <p>在MVC流中，这是一个重要的处理环节，特别对于控制器这部分。这些处理
 发生在控制调度器中。控制器的文件将会被依次读取、加载和实例化。然后指定的action将会被执行。
 如果一个动作将这个流转发给了另一个控制器/动作，控制调度器将会再次启动。为了更好
-解释这一点，以下示例怡到好处地说明了在  <a class="reference internal" href="../api/Phalcon_Mvc_Dispatcher.html"><em>Phalcon\Mvc\Dispatcher</em></a> 中的处理过程：</p>
+解释这一点，以下示例怡到好处地说明了在  <a class="reference internal" href="../api/Phalcon_Mvc_Dispatcher.html"><span class="doc">Phalcon\Mvc\Dispatcher</span></a> 中的处理过程：</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="c1">// 循环调度</span>
@@ -151,7 +153,7 @@
 <div>执行 action 的过程中，可以通过 <cite>throw PhalconContinueException(&#8216;提前完成 action&#8217;)</cite> 终止 action 的运行，而不影响后续的程序运行。</div></blockquote>
 <div class="section" id="dispatch-loop-events">
 <h3>循环调度事件（Dispatch Loop Events）<a class="headerlink" href="#dispatch-loop-events" title="永久链接至标题">¶</a></h3>
-<p><a class="reference internal" href="../api/Phalcon_Mvc_Dispatcher.html"><em>Phalcon\Mvc\Dispatcher</em></a> 可以发送事件给当前的 <a class="reference internal" href="events.html"><em>EventsManager</em></a> 。
+<p><a class="reference internal" href="../api/Phalcon_Mvc_Dispatcher.html"><span class="doc">Phalcon\Mvc\Dispatcher</span></a> 可以发送事件给当前的 <a class="reference internal" href="events.html"><span class="doc">EventsManager</span></a> 。
 事件会以“dispatch”类型被所触发。当返回false时有些事件可以终止当前激活的操作。已支持的事件如下：</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -215,7 +217,7 @@
 </tr>
 </tbody>
 </table>
-<p><a class="reference internal" href="tutorial-invo.html"><em>INVO</em></a> 这篇导读说明了如何从通过结合  <a class="reference internal" href="acl.html"><em>Acl</em></a> 实现的一个安全过滤器中获得事件调度的好处。</p>
+<p><a class="reference internal" href="tutorial-invo.html"><span class="doc">INVO</span></a> 这篇导读说明了如何从通过结合  <a class="reference internal" href="acl.html"><span class="doc">Acl</span></a> 实现的一个安全过滤器中获得事件调度的好处。</p>
 <p>以下例子演示了如何将侦听者绑定到组件上：</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
@@ -346,7 +348,7 @@
 </div>
 <div class="section" id="preparing-parameters">
 <h2>准备参数（Preparing Parameters）<a class="headerlink" href="#preparing-parameters" title="永久链接至标题">¶</a></h2>
-<p>多得 <a class="reference internal" href="../api/Phalcon_Mvc_Dispatcher.html"><em>Phalcon\Mvc\Dispatcher</em></a> 提供的钩子函数， 你可以简单地
+<p>多得 <a class="reference internal" href="../api/Phalcon_Mvc_Dispatcher.html"><span class="doc">Phalcon\Mvc\Dispatcher</span></a> 提供的钩子函数， 你可以简单地
 调整你的应用来匹配URL格式：</p>
 <p>例如，你想把你的URL看起来像这样：<a class="reference external" href="http://example.com/controller/key1/value1/key2/value">http://example.com/controller/key1/value1/key2/value</a></p>
 <p>默认下，参数会按URL传递的顺序传给对应的动作，你可以按期望来转换他们：</p>
@@ -424,7 +426,7 @@
 <div class="section" id="getting-parameters">
 <h2>获取参数（Getting Parameters）<a class="headerlink" href="#getting-parameters" title="永久链接至标题">¶</a></h2>
 <p>当路由提供了命名的参数变量，你就可以在控制器、视图或者任何一个继承了
-<a class="reference internal" href="../api/Phalcon_Di_Injectable.html"><em>Phalcon\Di\Injectable</em></a> 的组件中获得这些参数。</p>
+<a class="reference internal" href="../api/Phalcon_Di_Injectable.html"><span class="doc">Phalcon\Di\Injectable</span></a> 的组件中获得这些参数。</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
@@ -601,7 +603,7 @@
 </div>
 <div class="section" id="not-found-handling-not-found-exceptions">
 <h2>处理 Not-Found 错误（Handling Not-Found Exceptions）<a class="headerlink" href="#not-found-handling-not-found-exceptions" title="永久链接至标题">¶</a></h2>
-<p>使用 <a class="reference internal" href="events.html"><em>EventsManager</em></a> ，可以在调度器找不到对应的控制器/动作组时而抛出异常前，插入一个钩子：</p>
+<p>使用 <a class="reference internal" href="events.html"><span class="doc">EventsManager</span></a> ，可以在调度器找不到对应的控制器/动作组时而抛出异常前，插入一个钩子：</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Dispatcher</span><span class="p">;</span>
@@ -711,7 +713,7 @@
 </div>
 <div class="section" id="implementing-your-own-dispatcher">
 <h2>自定义调度器（Implementing your own Dispatcher）<a class="headerlink" href="#implementing-your-own-dispatcher" title="永久链接至标题">¶</a></h2>
-<p>为了创建自定义调度器，必须实现  <a class="reference internal" href="../api/Phalcon_Mvc_DispatcherInterface.html"><em>Phalcon\Mvc\DispatcherInterface</em></a> 接口，
+<p>为了创建自定义调度器，必须实现  <a class="reference internal" href="../api/Phalcon_Mvc_DispatcherInterface.html"><span class="doc">Phalcon\Mvc\DispatcherInterface</span></a> 接口，
 从而替换Phalcon框架默认提供的调度器。</p>
 </div>
 </div>

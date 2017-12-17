@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
     <link rel="next" title="单元测试（Unit testing）" href="unit-testing.html" />
     <link rel="prev" title="内核类（Kernel Class）" href="kernel.html" /> 
@@ -111,19 +113,19 @@
 <h1>数据库迁移（Database Migrations）<a class="headerlink" href="#database-migrations" title="永久链接至标题">¶</a></h1>
 <p>Migrations are a convenient way for you to alter your database in a structured and organized manner.</p>
 <blockquote class="highlights">
-<div><strong>Important:</strong> Migrations are available in <a class="reference internal" href="tools.html"><em>Phalcon Developer Tools</em></a> You need at least Phalcon Framework version 0.5.0 to use developer tools. Also, it is recommended to have PHP 5.4 or greater installed.</div></blockquote>
+<div><strong>Important:</strong> Migrations are available in <a class="reference internal" href="tools.html"><span class="doc">Phalcon Developer Tools</span></a> You need at least Phalcon Framework version 0.5.0 to use developer tools. Also, it is recommended to have PHP 5.4 or greater installed.</div></blockquote>
 <p>Often in development we need to update changes in production environments. Some of these changes could be database modifications like new fields, new tables, removing indexes, etc.</p>
 <p>When a migration is generated a set of classes are created to describe how your database is structured at that particular moment. These classes can be used to synchronize the schema structure on remote databases setting your database ready to work with the new changes that your application implements. Migrations describe these transformations using plain PHP.</p>
 <div align="center">
             <video src="/static/video/migrations.mp4" controls="controls"></video>
 </div><div class="section" id="schema-dumping">
 <h2>模式输出（Schema Dumping）<a class="headerlink" href="#schema-dumping" title="永久链接至标题">¶</a></h2>
-<p>The <a class="reference internal" href="tools.html"><em>Phalcon Developer Tools</em></a> provides scripts to manage migrations (generation, running and rollback).</p>
+<p>The <a class="reference internal" href="tools.html"><span class="doc">Phalcon Developer Tools</span></a> provides scripts to manage migrations (generation, running and rollback).</p>
 <p>The available options for generating migrations are:</p>
 <img class="align-center" src="../static/img/migrations-1.png"><p>Running this script without any parameters will simply dump every object (tables and views) from your database into migration classes.</p>
 <p>Each migration has a version identifier associated with it. The version number allows us to identify if the migration is newer or older than the current &#8216;version&#8217; of our database. Versions will also inform Phalcon of the running order when executing a migration.</p>
 <img class="align-center" src="../static/img/migrations-2.png"><p>When a migration is generated, instructions are displayed on the console to describe the different steps of the migration and the execution time of those statements. At the end, a migration version is generated.</p>
-<p>By default <a class="reference internal" href="tools.html"><em>Phalcon Developer Tools</em></a> uses the <em>app/migrations</em> directory to dump the migration files. You can change the location by setting one of the parameters on the generation script. Each table in the database has its respective class generated in a separated file under a directory referring its version:</p>
+<p>By default <a class="reference internal" href="tools.html"><span class="doc">Phalcon Developer Tools</span></a> uses the <em>app/migrations</em> directory to dump the migration files. You can change the location by setting one of the parameters on the generation script. Each table in the database has its respective class generated in a separated file under a directory referring its version:</p>
 <img class="align-center" src="../static/img/migrations-3.png"></div>
 <div class="section" id="migration-class-anatomy">
 <h2>迁移类剖析（Migration Class Anatomy）<a class="headerlink" href="#migration-class-anatomy" title="永久链接至标题">¶</a></h2>
@@ -250,7 +252,7 @@
 </table>
 <div class="section" id="defining-columns">
 <h3>定义列（Defining Columns）<a class="headerlink" href="#defining-columns" title="永久链接至标题">¶</a></h3>
-<p><a class="reference internal" href="../api/Phalcon_Db_Column.html"><em>Phalcon\Db\Column</em></a> is used to define table columns. It encapsulates a wide variety of column related features. Its constructor receives as first parameter the column name and an array describing the column. The following options are available when describing columns:</p>
+<p><a class="reference internal" href="../api/Phalcon_Db_Column.html"><span class="doc">Phalcon\Db\Column</span></a> is used to define table columns. It encapsulates a wide variety of column related features. Its constructor receives as first parameter the column name and an array describing the column. The following options are available when describing columns:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="10%" />
@@ -265,7 +267,7 @@
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>&#8220;type&#8221;</td>
-<td>Column type. Must be a <a class="reference internal" href="../api/Phalcon_Db_Column.html"><em>Phalcon_Db_Column</em></a> constant (see below)</td>
+<td>Column type. Must be a <a class="reference internal" href="../api/Phalcon_Db_Column.html"><span class="doc">Phalcon_Db_Column</span></a> constant (see below)</td>
 <td>No</td>
 </tr>
 <tr class="row-odd"><td>&#8220;size&#8221;</td>
@@ -322,11 +324,11 @@
 </div>
 <div class="section" id="defining-indexes">
 <h3>定义索引（Defining Indexes）<a class="headerlink" href="#defining-indexes" title="永久链接至标题">¶</a></h3>
-<p><a class="reference internal" href="../api/Phalcon_Db_Index.html"><em>Phalcon\Db\Index</em></a> defines table indexes. An index only requires that you define a name for it and a list of its columns. Note that if any index has the name PRIMARY, Phalcon will create a primary key index for that table.</p>
+<p><a class="reference internal" href="../api/Phalcon_Db_Index.html"><span class="doc">Phalcon\Db\Index</span></a> defines table indexes. An index only requires that you define a name for it and a list of its columns. Note that if any index has the name PRIMARY, Phalcon will create a primary key index for that table.</p>
 </div>
 <div class="section" id="defining-references">
 <h3>定义关系（Defining References）<a class="headerlink" href="#defining-references" title="永久链接至标题">¶</a></h3>
-<p><a class="reference internal" href="../api/Phalcon_Db_Reference.html"><em>Phalcon\Db\Reference</em></a> defines table references (also called foreign keys). The following options can be used to define a reference:</p>
+<p><a class="reference internal" href="../api/Phalcon_Db_Reference.html"><span class="doc">Phalcon\Db\Reference</span></a> defines table references (also called foreign keys). The following options can be used to define a reference:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="14%" />
@@ -378,7 +380,7 @@
 </div>
 <div class="section" id="writing-migrations">
 <h2>创建迁移类（Writing Migrations）<a class="headerlink" href="#writing-migrations" title="永久链接至标题">¶</a></h2>
-<p>Migrations aren&#8217;t only designed to &#8220;morph&#8221; table. A migration is just a regular PHP class so you&#8217;re not limited to these functions. For example after adding a column you could write code to set the value of that column for existing records. For more details and examples of individual methods, check the <a class="reference internal" href="db.html"><em>database component</em></a>.</p>
+<p>Migrations aren&#8217;t only designed to &#8220;morph&#8221; table. A migration is just a regular PHP class so you&#8217;re not limited to these functions. For example after adding a column you could write code to set the value of that column for existing records. For more details and examples of individual methods, check the <a class="reference internal" href="db.html"><span class="doc">database component</span></a>.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">ProductsMigration_100</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Model\Migration</span>

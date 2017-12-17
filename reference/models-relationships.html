@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
     <link rel="next" title="模型元数据（Models Meta-Data）" href="models-metadata.html" />
     <link rel="prev" title="使用模型（Working with Models）" href="models.html" /> 
@@ -296,7 +298,7 @@ of the referenced model and the third the field name in the referenced model. Yo
 <span class="nv">$robotsParts</span> <span class="o">=</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">getRobotsParts</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;limit&#39;</span> <span class="o">=&gt;</span> <span class="mi">5</span><span class="p">));</span> <span class="c1">// Passing parameters</span>
 </pre></div>
 </div>
-<p>If the called method has a &#8220;get&#8221; prefix <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> will return a
+<p>If the called method has a &#8220;get&#8221; prefix <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> will return a
 <code class="code docutils literal"><span class="pre">findFirst()</span></code>/<code class="code docutils literal"><span class="pre">find()</span></code> result. The following example compares retrieving related results with using magic methods
 and without:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>

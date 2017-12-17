@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" /> 
 </head>
 <body>
@@ -89,8 +91,8 @@
 			  
   <div class="section" id="class-phalcon-paginator-adapter-nativearray">
 <h1>Class <strong>Phalcon\Paginator\Adapter\NativeArray</strong><a class="headerlink" href="#class-phalcon-paginator-adapter-nativearray" title="永久链接至标题">¶</a></h1>
-<p><em>extends</em> abstract class <a class="reference internal" href="Phalcon_Paginator_Adapter.html"><em>Phalcon\Paginator\Adapter</em></a></p>
-<p><em>implements</em> <a class="reference internal" href="Phalcon_Paginator_AdapterInterface.html"><em>Phalcon\Paginator\AdapterInterface</em></a>, <a class="reference internal" href="Phalcon_Di_InjectionAwareInterface.html"><em>Phalcon\Di\InjectionAwareInterface</em></a>, <a class="reference internal" href="Phalcon_Events_EventsAwareInterface.html"><em>Phalcon\Events\EventsAwareInterface</em></a></p>
+<p><em>extends</em> abstract class <a class="reference internal" href="Phalcon_Paginator_Adapter.html"><span class="doc">Phalcon\Paginator\Adapter</span></a></p>
+<p><em>implements</em> <a class="reference internal" href="Phalcon_Paginator_AdapterInterface.html"><span class="doc">Phalcon\Paginator\AdapterInterface</span></a>, <a class="reference internal" href="Phalcon_Di_InjectionAwareInterface.html"><span class="doc">Phalcon\Di\InjectionAwareInterface</span></a>, <a class="reference internal" href="Phalcon_Events_EventsAwareInterface.html"><span class="doc">Phalcon\Events\EventsAwareInterface</span></a></p>
 <p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/paginator/adapter/nativearray.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
 <p>Pagination using a PHP array as source of data</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
@@ -120,17 +122,17 @@
 <p>Set current page number</p>
 <p>public  <strong>getCurrentPage</strong> () inherited from Phalcon\Paginator\Adapter</p>
 <p>Get current page number</p>
-<p>public <a class="reference internal" href="Phalcon_Paginator_Adapter.html"><em>Phalcon\Paginator\Adapter</em></a>  <strong>setLimit</strong> (<em>int</em> $limit) inherited from Phalcon\Paginator\Adapter</p>
+<p>public <a class="reference internal" href="Phalcon_Paginator_Adapter.html"><span class="doc">Phalcon\Paginator\Adapter</span></a>  <strong>setLimit</strong> (<em>int</em> $limit) inherited from Phalcon\Paginator\Adapter</p>
 <p>Set current rows limit</p>
 <p>public <em>int $limit</em>  <strong>getLimit</strong> () inherited from Phalcon\Paginator\Adapter</p>
 <p>Get current rows limit</p>
-<p>public  <strong>setDI</strong> (<a class="reference internal" href="Phalcon_DiInterface.html"><em>Phalcon\DiInterface</em></a> $dependencyInjector) inherited from Phalcon\Di\Injectable</p>
+<p>public  <strong>setDI</strong> (<a class="reference internal" href="Phalcon_DiInterface.html"><span class="doc">Phalcon\DiInterface</span></a> $dependencyInjector) inherited from Phalcon\Di\Injectable</p>
 <p>Sets the dependency injector</p>
-<p>public <a class="reference internal" href="Phalcon_DiInterface.html"><em>Phalcon\DiInterface</em></a>  <strong>getDI</strong> ([<em>unknown</em> $error], [<em>unknown</em> $notUseDefault]) inherited from Phalcon\Di\Injectable</p>
+<p>public <a class="reference internal" href="Phalcon_DiInterface.html"><span class="doc">Phalcon\DiInterface</span></a>  <strong>getDI</strong> ([<em>unknown</em> $error], [<em>unknown</em> $notUseDefault]) inherited from Phalcon\Di\Injectable</p>
 <p>Returns the internal dependency injector</p>
-<p>public  <strong>setEventsManager</strong> (<a class="reference internal" href="Phalcon_Events_ManagerInterface.html"><em>Phalcon\Events\ManagerInterface</em></a> $eventsManager) inherited from Phalcon\Di\Injectable</p>
+<p>public  <strong>setEventsManager</strong> (<a class="reference internal" href="Phalcon_Events_ManagerInterface.html"><span class="doc">Phalcon\Events\ManagerInterface</span></a> $eventsManager) inherited from Phalcon\Di\Injectable</p>
 <p>Sets the event manager</p>
-<p>public <a class="reference internal" href="Phalcon_Events_ManagerInterface.html"><em>Phalcon\Events\ManagerInterface</em></a>  <strong>getEventsManager</strong> () inherited from Phalcon\Di\Injectable</p>
+<p>public <a class="reference internal" href="Phalcon_Events_ManagerInterface.html"><span class="doc">Phalcon\Events\ManagerInterface</span></a>  <strong>getEventsManager</strong> () inherited from Phalcon\Di\Injectable</p>
 <p>Returns the internal event manager</p>
 <p>public <em>boolean</em>  <strong>fireEvent</strong> (<em>string</em> $eventName, [<em>mixed</em> $data], [<em>unknown</em> $cancelable]) inherited from Phalcon\Di\Injectable</p>
 <p>Fires an event, implicitly calls behaviors and listeners in the events manager are notified</p>
@@ -138,11 +140,11 @@
 <p>Fires an event, can stop the event by returning to the false</p>
 <p>public <em>boolean</em>  <strong>hasService</strong> (<em>string</em> $name) inherited from Phalcon\Di\Injectable</p>
 <p>Check whether the DI contains a service by a name</p>
-<p>public <a class="reference internal" href="Phalcon_Di_ServiceInterface.html"><em>Phalcon\Di\ServiceInterface</em></a>  <strong>setService</strong> (<em>unknown</em> $name) inherited from Phalcon\Di\Injectable</p>
+<p>public <a class="reference internal" href="Phalcon_Di_ServiceInterface.html"><span class="doc">Phalcon\Di\ServiceInterface</span></a>  <strong>setService</strong> (<em>unknown</em> $name) inherited from Phalcon\Di\Injectable</p>
 <p>Sets a service from the DI</p>
 <p>public <em>object|null</em>  <strong>getService</strong> (<em>unknown</em> $name) inherited from Phalcon\Di\Injectable</p>
 <p>Obtains a service from the DI</p>
-<p>public <em>mixed</em>  <strong>getResolveService</strong> (<em>string</em> $name, [<em>unknown</em> $args], [<em>unknown</em> $noerror], [<em>unknown</em> $noshared]) inherited from Phalcon\Di\Injectable</p>
+<p>public <em>mixed</em>  <strong>getResolveService</strong> (<em>string</em> $name, [<em>array</em> $args], [<em>unknown</em> $noerror], [<em>unknown</em> $noshared]) inherited from Phalcon\Di\Injectable</p>
 <p>Resolves the service based on its configuration</p>
 <p>public  <strong>attachEvent</strong> (<em>string</em> $eventType, <em>Closure</em> $callback) inherited from Phalcon\Di\Injectable</p>
 <p>Attach a listener to the events</p>

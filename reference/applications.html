@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
     <link rel="next" title="路由（Routing）" href="routing.html" />
     <link rel="prev" title="资源文件管理（Assets Management）" href="assets.html" /> 
@@ -111,7 +113,7 @@
 			  
   <div class="section" id="mvc-mvc-applications">
 <h1>MVC 应用（MVC Applications）<a class="headerlink" href="#mvc-mvc-applications" title="永久链接至标题">¶</a></h1>
-<p>在Phalcon，策划MVC操作背后的全部困难工作通常都可以通过 <a class="reference internal" href="../api/Phalcon_Mvc_Application.html"><em>Phalcon\Mvc\Application</em></a> 做到。这个组件封装了全部后端所需要的复杂操作，实例化每一个需要用到的组件并与项目整合在一起，从而使得MVC模式可以如期地运行。</p>
+<p>在Phalcon，策划MVC操作背后的全部困难工作通常都可以通过 <a class="reference internal" href="../api/Phalcon_Mvc_Application.html"><span class="doc">Phalcon\Mvc\Application</span></a> 做到。这个组件封装了全部后端所需要的复杂操作，实例化每一个需要用到的组件并与项目整合在一起，从而使得MVC模式可以如期地运行。</p>
 <div class="section" id="single-or-multi-module-applications">
 <h2>单模块或多模块应用（Single or Multi Module Applications）<a class="headerlink" href="#single-or-multi-module-applications" title="永久链接至标题">¶</a></h2>
 <p>通过这个组件，你可以运行各式各样的MVC结构，多模块跟单模块的区别就是，多模块会在路由返回的模块名称，之后去设置自动加载器、视图、调度器等各类服务和组件。</p>
@@ -454,16 +456,16 @@
 <span class="p">);</span>
 </pre></div>
 </div>
-<p>当 <a class="reference internal" href="../api/Phalcon_Mvc_Application.html"><em>Phalcon\Mvc\Application</em></a> 有多个模块注册时，通常
+<p>当 <a class="reference internal" href="../api/Phalcon_Mvc_Application.html"><span class="doc">Phalcon\Mvc\Application</span></a> 有多个模块注册时，通常
 每个都是需要的，以便每一个被匹配到的路由都能返回一个有效的模块。每个已经注册的模块都有一个相关的类来提供建立和启动自身的函数。
 而每个模块定义的类都必须实现 registerAutoloaders() 和 registerServices() 这两个方法，这两个函数会在模块即被执行时被
-<a class="reference internal" href="../api/Phalcon_Mvc_Application.html"><em>Phalcon\Mvc\Application</em></a> 调用。</p>
+<a class="reference internal" href="../api/Phalcon_Mvc_Application.html"><span class="doc">Phalcon\Mvc\Application</span></a> 调用。</p>
 </div>
 </div>
 </div>
 <div class="section" id="application-events">
 <h2>应用事件（Application Events）<a class="headerlink" href="#application-events" title="永久链接至标题">¶</a></h2>
-<p><a class="reference internal" href="../api/Phalcon_Mvc_Application.html"><em>Phalcon\Mvc\Application</em></a> 可以把事件发送到 <a class="reference internal" href="events.html"><em>EventsManager</em></a> （如果它激活的话）。
+<p><a class="reference internal" href="../api/Phalcon_Mvc_Application.html"><span class="doc">Phalcon\Mvc\Application</span></a> 可以把事件发送到 <a class="reference internal" href="events.html"><span class="doc">EventsManager</span></a> （如果它激活的话）。
 事件将被当作&#8221;application&#8221;类型被消费掉。目前已支持的事件如下：</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -595,7 +597,7 @@
 </pre></div>
 </div>
 <blockquote class="highlights">
-<div>慎用 <cite>exit</cite> 可以使用抛出异常 <a class="reference internal" href="../api/Phalcon_ContinueException.html"><em>Phalcon\ContinueException</em></a> 退出 action，注入调度控制器、路由以及视图组件时不要使用 <cite>require_once</cite> 返回对象。</div></blockquote>
+<div>慎用 <cite>exit</cite> 可以使用抛出异常 <a class="reference internal" href="../api/Phalcon_ContinueException.html"><span class="doc">Phalcon\ContinueException</span></a> 退出 action，注入调度控制器、路由以及视图组件时不要使用 <cite>require_once</cite> 返回对象。</div></blockquote>
 </div>
 </div>
 

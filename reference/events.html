@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
     <link rel="next" title="事件管理器（Events Manager）" href="events-manager.html" />
     <link rel="prev" title="使用命名空间（Working with Namespaces）" href="namespaces.html" /> 
@@ -106,7 +108,7 @@
 			  
   <div class="section" id="events">
 <h1>事件（Events）<a class="headerlink" href="#events" title="永久链接至标题">¶</a></h1>
-<p>Phalcon7 中几乎所有的组件都继承自 <a class="reference internal" href="../api/Phalcon_Di_Injectable.html"><em>Phalcon\Di\Injectable</em></a>，它们都可以通过 <cite>attachEvent</cite> 来设置对应事件的回调函数。</p>
+<p>Phalcon7 中几乎所有的组件都继承自 <a class="reference internal" href="../api/Phalcon_Di_Injectable.html"><span class="doc">Phalcon\Di\Injectable</span></a>，它们都可以通过 <cite>attachEvent</cite> 来设置对应事件的回调函数。</p>
 <div class="section" id="usage-example">
 <h2>使用示例（Usage Example）<a class="headerlink" href="#usage-example" title="永久链接至标题">¶</a></h2>
 <p>以下面示例中，我们使用 <cite>attachEvent</cite> 设置MySQL连接中产生的事件的回调函数：</p>
@@ -142,7 +144,7 @@
 </div>
 <div class="section" id="events-manager">
 <h2>事件管理器（Events Manager）<a class="headerlink" href="#events-manager" title="永久链接至标题">¶</a></h2>
-<p>此组件的目的是为了通过创建“钩子”拦截框架中大部分的组件操作。<a class="reference internal" href="events-manager.html"><em>了解更多</em></a></p>
+<p>此组件的目的是为了通过创建“钩子”拦截框架中大部分的组件操作。<a class="reference internal" href="events-manager.html"><span class="doc">了解更多</span></a></p>
 </div>
 <div class="section" id="events-list">
 <h2>事件列表（Events List）<a class="headerlink" href="#events-list" title="永久链接至标题">¶</a></h2>
@@ -158,22 +160,28 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>dispatch:beforeDispatchLoop</td>
+<tr class="row-even"><td>acl:beforeCheckAccess</td>
 <td>NO</td>
 </tr>
-<tr class="row-odd"><td>dispatch:beforeDispatch</td>
+<tr class="row-odd"><td>dispatch:beforeDispatchLoop</td>
 <td>NO</td>
 </tr>
-<tr class="row-even"><td>dispatch:beforeNotFoundAction</td>
+<tr class="row-even"><td>dispatch:beforeDispatch</td>
 <td>NO</td>
 </tr>
-<tr class="row-odd"><td>dispatch:beforeExecuteRoute</td>
+<tr class="row-odd"><td>dispatch:beforeNotFoundAction</td>
 <td>NO</td>
 </tr>
-<tr class="row-even"><td>dispatch:beforeInitialize</td>
+<tr class="row-even"><td>dispatch:beforeExecuteRoute</td>
 <td>NO</td>
 </tr>
-<tr class="row-odd"><td>dispatch:afterInitialize</td>
+<tr class="row-odd"><td>dispatch:beforeInitialize</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>dispatch:afterInitialize</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>dispatch:beforeException</td>
 <td>NO</td>
 </tr>
 <tr class="row-even"><td>application:boot</td>
@@ -200,55 +208,79 @@
 <tr class="row-odd"><td>application:beforeRenderView</td>
 <td>NO</td>
 </tr>
-<tr class="row-even"><td>router:afterHandleRouter</td>
+<tr class="row-even"><td>console:beforeStartModule</td>
 <td>NO</td>
 </tr>
-<tr class="row-odd"><td>micro:beforeHandleRoute</td>
+<tr class="row-odd"><td>console:afterStartModule</td>
 <td>NO</td>
 </tr>
-<tr class="row-even"><td>micro:beforeExecuteRoute</td>
+<tr class="row-even"><td>console:beforeHandleTask</td>
 <td>NO</td>
 </tr>
-<tr class="row-odd"><td>micro:beforeNotFound</td>
+<tr class="row-odd"><td>router:afterHandleRouter</td>
 <td>NO</td>
 </tr>
-<tr class="row-even"><td>model:beforeValidation</td>
+<tr class="row-even"><td>micro:beforeHandleRoute</td>
 <td>NO</td>
 </tr>
-<tr class="row-odd"><td>model:beforeValidationOnCreate</td>
+<tr class="row-odd"><td>micro:beforeExecuteRoute</td>
 <td>NO</td>
 </tr>
-<tr class="row-even"><td>model:beforeValidationOnUpdate</td>
+<tr class="row-even"><td>micro:beforeNotFound</td>
 <td>NO</td>
 </tr>
-<tr class="row-odd"><td>model:validation</td>
+<tr class="row-odd"><td>model:beforeValidation</td>
 <td>NO</td>
 </tr>
-<tr class="row-even"><td>model:afterValidationOnCreate</td>
+<tr class="row-even"><td>model:beforeValidationOnCreate</td>
 <td>NO</td>
 </tr>
-<tr class="row-odd"><td>model:afterValidationOnUpdate</td>
+<tr class="row-odd"><td>model:beforeValidationOnUpdate</td>
 <td>NO</td>
 </tr>
-<tr class="row-even"><td>model:afterValidation</td>
+<tr class="row-even"><td>model:validation</td>
 <td>NO</td>
 </tr>
-<tr class="row-odd"><td>model:beforeSave</td>
+<tr class="row-odd"><td>model:afterValidationOnCreate</td>
 <td>NO</td>
 </tr>
-<tr class="row-even"><td>model:beforeUpdate</td>
+<tr class="row-even"><td>model:afterValidationOnUpdate</td>
 <td>NO</td>
 </tr>
-<tr class="row-odd"><td>model:beforeCreate</td>
+<tr class="row-odd"><td>model:afterValidation</td>
 <td>NO</td>
 </tr>
-<tr class="row-even"><td>model:beforeOperation</td>
+<tr class="row-even"><td>model:beforeSave</td>
 <td>NO</td>
 </tr>
-<tr class="row-odd"><td>model:beforeDelete</td>
+<tr class="row-odd"><td>model:beforeUpdate</td>
 <td>NO</td>
 </tr>
-<tr class="row-even"><td>view:beforeRender</td>
+<tr class="row-even"><td>model:beforeCreate</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>model:beforeOperation</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>model:beforeDelete</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>view:beforeRender</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>view:beforeRenderView</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>db:beforeExecutePrepared</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>db:afterExecutePrepared</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>db:beforeQuery</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>db:beforeExecute</td>
 <td>NO</td>
 </tr>
 </tbody>
@@ -265,6 +297,30 @@
 </tr>
 </thead>
 <tbody valign="top">
+<tr class="row-even"><td>acl:afterCheckAccess</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>loader:beforeCheckPath</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>loader:pathFound</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>loader:beforeCheckClass</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>loader:afterCheckClass</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>di:beforeServiceResolve</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>di:afterServiceResolve</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>di:afterServiceResolve</td>
+<td>NO</td>
+</tr>
 <tr class="row-even"><td>dispatch:afterExecuteRoute</td>
 <td>NO</td>
 </tr>
@@ -295,137 +351,191 @@
 <tr class="row-odd"><td>application:afterSendResponse</td>
 <td>NO</td>
 </tr>
-<tr class="row-even"><td>pagination:beforeGetPaginate</td>
+<tr class="row-even"><td>console:afterHandleTask</td>
 <td>NO</td>
 </tr>
-<tr class="row-odd"><td>pagination:afterGetPaginate</td>
+<tr class="row-odd"><td>view:afterRenderView</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>view:notFoundView</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>pagination:beforeGetPaginate</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>pagination:afterGetPaginate</td>
 <td>Yes</td>
 </tr>
-<tr class="row-even"><td>router:beforeCheckRoutes</td>
+<tr class="row-odd"><td>router:beforeCheckRoutes</td>
 <td>NO</td>
 </tr>
-<tr class="row-odd"><td>router:beforeCheckRoute</td>
+<tr class="row-even"><td>router:beforeCheckRoute</td>
 <td>NO</td>
 </tr>
-<tr class="row-even"><td>router:matchedRoute</td>
+<tr class="row-odd"><td>router:matchedRoute</td>
 <td>NO</td>
 </tr>
-<tr class="row-odd"><td>router:notMatchedRoute</td>
+<tr class="row-even"><td>router:notMatchedRoute</td>
 <td>NO</td>
 </tr>
-<tr class="row-even"><td>router:afterCheckRoutes</td>
+<tr class="row-odd"><td>router:afterCheckRoutes</td>
 <td>NO</td>
 </tr>
-<tr class="row-odd"><td>micro:afterExecuteRoute</td>
+<tr class="row-even"><td>micro:afterExecuteRoute</td>
 <td>NO</td>
 </tr>
-<tr class="row-even"><td>micro:afterHandleRoute</td>
+<tr class="row-odd"><td>micro:afterHandleRoute</td>
 <td>NO</td>
 </tr>
-<tr class="row-odd"><td>model:beforeQuery</td>
+<tr class="row-even"><td>model:beforeQuery</td>
 <td>YES</td>
 </tr>
-<tr class="row-even"><td>model:afterQuery</td>
+<tr class="row-odd"><td>model:afterQuery</td>
 <td>YES</td>
 </tr>
-<tr class="row-odd"><td>model:notDeleted</td>
+<tr class="row-even"><td>model:notDeleted</td>
 <td>NO</td>
 </tr>
-<tr class="row-even"><td>model:notSaved</td>
+<tr class="row-odd"><td>model:notSaved</td>
 <td>NO</td>
 </tr>
-<tr class="row-odd"><td>model:onValidationFails</td>
+<tr class="row-even"><td>model:onValidationFails</td>
 <td>NO</td>
 </tr>
-<tr class="row-even"><td>model:afterUpdate</td>
+<tr class="row-odd"><td>model:afterUpdate</td>
 <td>NO</td>
 </tr>
-<tr class="row-odd"><td>model:afterCreate</td>
+<tr class="row-even"><td>model:afterCreate</td>
 <td>NO</td>
 </tr>
-<tr class="row-even"><td>model:afterDelete</td>
+<tr class="row-odd"><td>model:afterDelete</td>
 <td>NO</td>
 </tr>
-<tr class="row-odd"><td>model:afterSave</td>
+<tr class="row-even"><td>model:afterSave</td>
 <td>NO</td>
 </tr>
-<tr class="row-even"><td>model:afterOperation</td>
+<tr class="row-odd"><td>model:afterOperation</td>
 <td>NO</td>
 </tr>
-<tr class="row-odd"><td>model:beforeToArray</td>
+<tr class="row-even"><td>model:beforeToArray</td>
 <td>NO</td>
 </tr>
-<tr class="row-even"><td>model:afterToArray</td>
+<tr class="row-odd"><td>model:afterToArray</td>
 <td>YES</td>
 </tr>
-<tr class="row-odd"><td>view:afterRender</td>
+<tr class="row-even"><td>modelsManager:beforeInitialize</td>
 <td>NO</td>
 </tr>
-<tr class="row-even"><td>query:beforePrepareSelect</td>
+<tr class="row-odd"><td>modelsManager:afterInitialize</td>
 <td>NO</td>
 </tr>
-<tr class="row-odd"><td>query:afterPrepareSelect</td>
+<tr class="row-even"><td>view:afterRender</td>
 <td>NO</td>
 </tr>
-<tr class="row-even"><td>query:beforePrepareInsert</td>
+<tr class="row-odd"><td>query:beforePrepareSelect</td>
 <td>NO</td>
 </tr>
-<tr class="row-odd"><td>query:afterPrepareInsert</td>
+<tr class="row-even"><td>query:afterPrepareSelect</td>
 <td>NO</td>
 </tr>
-<tr class="row-even"><td>query:beforePrepareUpdate</td>
+<tr class="row-odd"><td>query:beforePrepareInsert</td>
 <td>NO</td>
 </tr>
-<tr class="row-odd"><td>query:afterPrepareUpdate</td>
+<tr class="row-even"><td>query:afterPrepareInsert</td>
 <td>NO</td>
 </tr>
-<tr class="row-even"><td>query:beforePrepareDelete</td>
+<tr class="row-odd"><td>query:beforePrepareUpdate</td>
 <td>NO</td>
 </tr>
-<tr class="row-odd"><td>query:afterPrepareDelete</td>
+<tr class="row-even"><td>query:afterPrepareUpdate</td>
 <td>NO</td>
 </tr>
-<tr class="row-even"><td>query:beforeParse</td>
+<tr class="row-odd"><td>query:beforePrepareDelete</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>query:afterPrepareDelete</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>query:beforeParse</td>
 <td>YES</td>
 </tr>
-<tr class="row-odd"><td>query:afterParse</td>
+<tr class="row-even"><td>query:afterParse</td>
 <td>YES</td>
 </tr>
-<tr class="row-even"><td>query:beforeExecuteSelect</td>
+<tr class="row-odd"><td>query:beforeExecuteSelect</td>
 <td>NO</td>
 </tr>
-<tr class="row-odd"><td>query:beforeGenerateSQLStatement</td>
+<tr class="row-even"><td>query:beforeGenerateSQLStatement</td>
 <td>NO</td>
 </tr>
-<tr class="row-even"><td>query:afterGenerateSQLStatement</td>
+<tr class="row-odd"><td>query:afterGenerateSQLStatement</td>
 <td>YES</td>
 </tr>
-<tr class="row-odd"><td>query:afterExecuteSelect</td>
+<tr class="row-even"><td>query:afterExecuteSelect</td>
 <td>NO</td>
 </tr>
-<tr class="row-even"><td>query:beforeExecuteInsert</td>
+<tr class="row-odd"><td>query:beforeExecuteInsert</td>
 <td>NO</td>
 </tr>
-<tr class="row-odd"><td>query:afterExecuteInsert</td>
+<tr class="row-even"><td>query:afterExecuteInsert</td>
 <td>NO</td>
 </tr>
-<tr class="row-even"><td>query:beforeExecuteUpdate</td>
+<tr class="row-odd"><td>query:beforeExecuteUpdate</td>
 <td>NO</td>
 </tr>
-<tr class="row-odd"><td>query:afterExecuteUpdate</td>
+<tr class="row-even"><td>query:afterExecuteUpdate</td>
 <td>NO</td>
 </tr>
-<tr class="row-even"><td>query:beforeExecuteDelete</td>
+<tr class="row-odd"><td>query:beforeExecuteDelete</td>
 <td>NO</td>
 </tr>
-<tr class="row-odd"><td>query:afterExecuteDelete</td>
+<tr class="row-even"><td>query:afterExecuteDelete</td>
 <td>NO</td>
 </tr>
-<tr class="row-even"><td>query:beforeExecute</td>
+<tr class="row-odd"><td>query:beforeExecute</td>
 <td>YES</td>
 </tr>
-<tr class="row-odd"><td>query:afterExecute</td>
+<tr class="row-even"><td>query:afterExecute</td>
 <td>YES</td>
+</tr>
+<tr class="row-odd"><td>db:afterQuery</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>db:afterExecute</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>db:beginTransaction</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>db:beforeCreateSavepoint</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>db:afterCreateSavepoint</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>db:beforeRollbackTransaction</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>db:afterRollbackTransaction</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>db:BeforeRollbackSavepoint</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>db:afterRollbackSavepoint</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>db:beforeCommitTransaction</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>db:afterCommitTransaction</td>
+<td>NO</td>
+</tr>
+<tr class="row-even"><td>db:beforeReleaseSavepoint</td>
+<td>NO</td>
+</tr>
+<tr class="row-odd"><td>db:afterReleaseSavepoint</td>
+<td>NO</td>
 </tr>
 </tbody>
 </table>
@@ -480,7 +590,6 @@
 }
 </pre></div>
 </div>
-<p><a href="#id2"><span class="problematic" id="id3">``</span></a><a href="#id4"><span class="problematic" id="id5">`</span></a></p>
 </div>
 </div>
 

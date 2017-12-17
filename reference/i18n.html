@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
     <link rel="next" title="助手类（Helpers）" href="helpers.html" />
     <link rel="prev" title="HTTP 请求客户端（HTTP Request Client）" href="http.html" /> 
@@ -116,7 +118,7 @@
 <p>国际化是指在设计软件时，使它可以无需做大的改变就能够适应不同的语言和地区的需要。对于 Web 应用程序，这有着特别重要的意义，因为潜在的用户可能会在全球范围内。</p>
 <div class="section" id="locale-and-language">
 <h2>区域和语言（Locale And Language）<a class="headerlink" href="#locale-and-language" title="永久链接至标题">¶</a></h2>
-<p>Phalcon 通过 <a class="reference internal" href="../api/Phalcon_Translate_Adapter_NativeArray.html"><em>Phalcon\Translate\Adapter\NativeArray</em></a> 和 <a class="reference internal" href="../api/Phalcon_Translate_Adapter_Gettext.html"><em>Phalcon\Translate\Adapter\Gettext</em></a> 提供了一套轻量级的语言翻译功能。</p>
+<p>Phalcon 通过 <a class="reference internal" href="../api/Phalcon_Translate_Adapter_NativeArray.html"><span class="doc">Phalcon\Translate\Adapter\NativeArray</span></a> 和 <a class="reference internal" href="../api/Phalcon_Translate_Adapter_Gettext.html"><span class="doc">Phalcon\Translate\Adapter\Gettext</span></a> 提供了一套轻量级的语言翻译功能。</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="nv">$t</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Translate\Adapter\Gettext</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
@@ -131,11 +133,11 @@
 <div class="section" id="creating-messages">
 <h3>创建消息列表（Creating Messages）<a class="headerlink" href="#creating-messages" title="永久链接至标题">¶</a></h3>
 <p>通过以下命令我们可以提取代码中所有类似 <code class="code docutils literal"><span class="pre">_(&quot;translate</span> <span class="pre">this</span> <span class="pre">words&quot;)</span></code> 文本生成 <cite>zh_CN.po</cite> 文件。</p>
-<div class="highlight-sh"><div class="highlight"><pre>$ xgettext -f *.php -d zh_CN --keyword<span class="o">=</span>_ --from-code<span class="o">=</span>UTF-8
+<div class="highlight-sh"><div class="highlight"><pre><span class="nv">$ </span>xgettext -f *.php -d zh_CN --keyword<span class="o">=</span>_ --from-code<span class="o">=</span>UTF-8
 </pre></div>
 </div>
 <p>接着，我们可以使用工具（poedit、vim、gedit） 对生成的 <cite>po</cite> 文件进行翻译，翻译完成后生成 <cite>mo</cite> 文件：</p>
-<div class="highlight-sh"><div class="highlight"><pre>$ msgfmt -o zh_CN.mo zh_CN.po
+<div class="highlight-sh"><div class="highlight"><pre><span class="nv">$ </span>msgfmt -o zh_CN.mo zh_CN.po
 </pre></div>
 </div>
 <p>最后将 <cite>mo</cite> 文件拷贝到目录 <cite>locale/zh_CN.utf8/LC_MESSAGES</cite>。</p>
@@ -168,7 +170,7 @@
 <div class="section" id="trace-message-file">
 <h3>追踪消息文件（Trace Message File）<a class="headerlink" href="#trace-message-file" title="永久链接至标题">¶</a></h3>
 <p>如果出现无法翻译指定语言的情况，我们可以通过下面的方式追踪程序读取的语言文件：</p>
-<div class="highlight-sh"><div class="highlight"><pre>$ strace -e <span class="nv">trace</span><span class="o">=</span>open,read php test.php
+<div class="highlight-sh"><div class="highlight"><pre><span class="nv">$ </span>strace -e <span class="nv">trace</span><span class="o">=</span>open,read php test.php
 </pre></div>
 </div>
 </div>

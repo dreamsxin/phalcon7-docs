@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
     <link rel="next" title="事件（Events）" href="events.html" />
     <link rel="prev" title="微应用（Micro Applications）" href="micro.html" /> 
@@ -109,7 +111,7 @@
 <h2>设置框架（Setting up the framework）<a class="headerlink" href="#setting-up-the-framework" title="永久链接至标题">¶</a></h2>
 <p>Using namespaces has some implications when loading the appropriate controller. To adjust the framework behavior to namespaces is necessary
 to perform one or all of the following tasks:</p>
-<p>Use an autoload strategy that takes into account the namespaces, for example with <a class="reference internal" href="../api/Phalcon_Loader.html"><em>Phalcon\Loader</em></a>:</p>
+<p>Use an autoload strategy that takes into account the namespaces, for example with <a class="reference internal" href="../api/Phalcon_Loader.html"><span class="doc">Phalcon\Loader</span></a>:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">registerNamespaces</span><span class="p">(</span>

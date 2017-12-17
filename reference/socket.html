@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
     <link rel="next" title="WebSocket 组件" href="websocket.html" />
     <link rel="prev" title="本地存储（Storage）" href="storage.html" /> 
@@ -105,7 +107,7 @@
 <p>Socket 类为网络通信提供了一套常用的方法和属性。</p>
 <div class="section" id="socket-server-class">
 <h2>套接字服务端类（Socket Server Class）<a class="headerlink" href="#socket-server-class" title="永久链接至标题">¶</a></h2>
-<p><a class="reference internal" href="../api/Phalcon_Socket_Server.html"><em>Phalcon\Socket\Server</em></a> 可以等待客户端的连接请求以及接收客户端发送的数据。</p>
+<p><a class="reference internal" href="../api/Phalcon_Socket_Server.html"><span class="doc">Phalcon\Socket\Server</span></a> 可以等待客户端的连接请求以及接收客户端发送的数据。</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 <span class="nv">$server</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Socket\Server</span><span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">8989</span><span class="p">);</span>
 <span class="nv">$server</span><span class="o">-&gt;</span><span class="na">run</span><span class="p">(</span>
@@ -135,7 +137,7 @@
 </div>
 <div class="section" id="socket-client-class">
 <h2>套接字客户端类（Socket Client Class）<a class="headerlink" href="#socket-client-class" title="永久链接至标题">¶</a></h2>
-<p><a class="reference internal" href="../api/Phalcon_Socket_Client.html"><em>Phalcon\Socket\Client</em></a> 可以发送数据给服务端以及接收来自服务端的数据。</p>
+<p><a class="reference internal" href="../api/Phalcon_Socket_Client.html"><span class="doc">Phalcon\Socket\Client</span></a> 可以发送数据给服务端以及接收来自服务端的数据。</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Socket\Client</span><span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">8989</span><span class="p">);</span>
 <span class="k">if</span> <span class="p">(</span><span class="nv">$client</span><span class="o">-&gt;</span><span class="na">connect</span><span class="p">())</span> <span class="p">{</span>

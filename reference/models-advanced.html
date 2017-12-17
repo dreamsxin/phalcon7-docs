@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
     <link rel="next" title="模型行为（Model Behaviors）" href="models-behaviors.html" />
     <link rel="prev" title="模型验证（Validating Models）" href="models-validation.html" /> 
@@ -180,7 +182,7 @@
 </div>
 <div class="section" id="creating-updating-records">
 <h2>创建与更新记录（Creating Updating/Records）<a class="headerlink" href="#creating-updating-records" title="永久链接至标题">¶</a></h2>
-<p>Phalcon\Mvc\Model::save() 方法允许你创建/更新记录。save方法自动调用 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> 内部的create和update方法，
+<p>Phalcon\Mvc\Model::save() 方法允许你创建/更新记录。save方法自动调用 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> 内部的create和update方法，
 如果想达到预期般的工作效果，正确定义实体主键是非常必须的，以确保创建和更新记录成功。</p>
 <p>Also the method executes associated validators, virtual foreign keys and events that are defined in the model:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
@@ -200,7 +202,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>An array could be passed to &#8220;save&#8221; to avoid assign every column manually. <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> will check if there are setters implemented for
+<p>An array could be passed to &#8220;save&#8221; to avoid assign every column manually. <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> will check if there are setters implemented for
 the columns passed in the array giving priority to them instead of assign directly the values of the attributes:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
@@ -244,7 +246,7 @@ the mass assignment:</p>
 </div>
 <div class="section" id="auto-generated-identity-columns">
 <h3>自动生成标识列（Auto-generated identity columns）<a class="headerlink" href="#auto-generated-identity-columns" title="永久链接至标题">¶</a></h3>
-<p>Some models may have identity columns. These columns usually are the primary key of the mapped table. <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a>
+<p>Some models may have identity columns. These columns usually are the primary key of the mapped table. <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a>
 can recognize the identity column omitting it in the generated SQL INSERT, so the database system can generate an auto-generated value for it.
 Always after creating a record, the identity field will be registered with the value generated in the database system for it:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
@@ -254,7 +256,7 @@ Always after creating a record, the identity field will be registered with the v
 <span class="k">echo</span> <span class="s2">&quot;The generated id is: &quot;</span><span class="p">,</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">;</span>
 </pre></div>
 </div>
-<p><a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> is able to recognize the identity column. Depending on the database system, those columns may be
+<p><a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> is able to recognize the identity column. Depending on the database system, those columns may be
 serial columns like in PostgreSQL or auto_increment columns in the case of MySQL.</p>
 <p>PostgreSQL uses sequences to generate auto-numeric values, by default, Phalcon tries to obtain the generated value from the sequence &#8220;table_field_seq&#8221;,
 for example: robots_id_seq, if that sequence has a different name, the method &#8220;getSequenceName&#8221; needs to be implemented:</p>
@@ -275,7 +277,7 @@ for example: robots_id_seq, if that sequence has a different name, the method &#
 </div>
 <div class="section" id="skipping-columns">
 <h2>忽略指定列的数据（Skipping Columns）<a class="headerlink" href="#skipping-columns" title="永久链接至标题">¶</a></h2>
-<p>To tell <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> that always omits some fields in the creation and/or update of records in order
+<p>To tell <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> that always omits some fields in the creation and/or update of records in order
 to delegate the database system the assignation of the values by a trigger or a default:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
@@ -343,7 +345,7 @@ for replacement. Forcing a default value can be done in the following way:</p>
 </pre></div>
 </div>
 <blockquote class="highlights">
-<div>Never use a <a class="reference internal" href="../api/Phalcon_Db_RawValue.html"><em>Phalcon\Db\RawValue</em></a> to assign external data (such as user input)
+<div>Never use a <a class="reference internal" href="../api/Phalcon_Db_RawValue.html"><span class="doc">Phalcon\Db\RawValue</span></a> to assign external data (such as user input)
 or variable data. The value of these fields is ignored when binding parameters to the query.
 So it could be used to attack the application injecting SQL.</div></blockquote>
 <div class="section" id="dynamic-update">
@@ -511,9 +513,9 @@ In models that have this feature activated you can check what fields changed:</p
 <div class="section" id="setting-multiple-databases">
 <h2>设置多个数据库（Setting multiple databases）<a class="headerlink" href="#setting-multiple-databases" title="永久链接至标题">¶</a></h2>
 <p>In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when
-<a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> needs to connect to the database it requests the &#8220;db&#8221; service
+<a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> needs to connect to the database it requests the &#8220;db&#8221; service
 in the application&#8217;s services container. You can overwrite this service setting it in the initialize method:</p>
-<p>在Phalcon中，所有模型可以属于同一个数据库连接，也可以分属独立的数据库连接。实际上，当 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a>
+<p>在Phalcon中，所有模型可以属于同一个数据库连接，也可以分属独立的数据库连接。实际上，当 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a>
 需要连接数据库的时候，它在应用服务容器内请求&#8221;db&#8221;这个服务。 可以通过在 initialize 方法内重写这个服务的设置。</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
@@ -683,7 +685,7 @@ query executed:</p>
 </pre></div>
 </div>
 <blockquote class="highlights">
-<div>在 <a class="reference internal" href="phql.html"><em>Model查询器</em></a> 中可实现同样的功能。</div></blockquote>
+<div>在 <a class="reference internal" href="phql.html"><span class="doc">Model查询器</span></a> 中可实现同样的功能。</div></blockquote>
 </div>
 <div class="section" id="id1">
 <h3>实现分表<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h3>
@@ -799,7 +801,7 @@ obtaining the &#8220;flash&#8221; service from the DI container. By doing this, 
 </div>
 <div class="section" id="stand-alone-component">
 <h2>独立的组件（Stand-Alone component）<a class="headerlink" href="#stand-alone-component" title="永久链接至标题">¶</a></h2>
-<p>Using <a class="reference internal" href="models.html"><em>Phalcon\Mvc\Model</em></a> in a stand-alone mode can be demonstrated below:</p>
+<p>Using <a class="reference internal" href="models.html"><span class="doc">Phalcon\Mvc\Model</span></a> in a stand-alone mode can be demonstrated below:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Di</span><span class="p">;</span>

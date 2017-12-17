@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" /> 
 </head>
 <body>
@@ -89,7 +91,7 @@
 			  
   <div class="section" id="class-phalcon-mvc-model-query-status">
 <h1>Class <strong>Phalcon\Mvc\Model\Query\Status</strong><a class="headerlink" href="#class-phalcon-mvc-model-query-status" title="永久链接至标题">¶</a></h1>
-<p><em>implements</em> <a class="reference internal" href="Phalcon_Mvc_Model_Query_StatusInterface.html"><em>Phalcon\Mvc\Model\Query\StatusInterface</em></a></p>
+<p><em>implements</em> <a class="reference internal" href="Phalcon_Mvc_Model_Query_StatusInterface.html"><span class="doc">Phalcon\Mvc\Model\Query\StatusInterface</span></a></p>
 <p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/model/query/status.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
 <p>This class represents the status returned by a PHQL statement like INSERT, UPDATE or DELETE. It offers context information and the related messages produced by the model which finally executes the operations when it fails</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
@@ -110,8 +112,8 @@
 </div>
 <div class="section" id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
-<p>public  <strong>__construct</strong> (<em>boolean</em> $success, [<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><em>Phalcon\Mvc\ModelInterface</em></a> $model])</p>
-<p>public <a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><em>Phalcon\Mvc\ModelInterface</em></a>  <strong>getModel</strong> ()</p>
+<p>public  <strong>__construct</strong> (<em>boolean</em> $success, [<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><span class="doc">Phalcon\Mvc\ModelInterface</span></a> $model])</p>
+<p>public <a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><span class="doc">Phalcon\Mvc\ModelInterface</span></a>  <strong>getModel</strong> ()</p>
 <p>Returns the model that executed the action</p>
 <p>public <em>Phalcon\Mvc\Model\MessageInterface[]</em>  <strong>getMessages</strong> ()</p>
 <p>Returns the messages produced by a failed operation</p>

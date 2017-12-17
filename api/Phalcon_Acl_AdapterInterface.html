@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" /> 
 </head>
 <body>
@@ -97,7 +99,7 @@
 <p>Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)</p>
 <p>abstract public <em>int</em>  <strong>getDefaultAction</strong> ()</p>
 <p>Returns the default ACL access level</p>
-<p>abstract public <em>boolean</em>  <strong>addRole</strong> (<a class="reference internal" href="Phalcon_Acl_RoleInterface.html"><em>Phalcon\Acl\RoleInterface</em></a> $role, [<em>string</em> $accessInherits])</p>
+<p>abstract public <em>boolean</em>  <strong>addRole</strong> (<a class="reference internal" href="Phalcon_Acl_RoleInterface.html"><span class="doc">Phalcon\Acl\RoleInterface</span></a> $role, [<em>string</em> $accessInherits])</p>
 <p>Adds a role to the ACL list. Second parameter lets to inherit access data from other existing role</p>
 <p>abstract public  <strong>addInherit</strong> (<em>string</em> $roleName, <em>string</em> $roleToInherit)</p>
 <p>Do a role inherit from another existing role</p>
@@ -105,7 +107,7 @@
 <p>Check whether role exist in the roles list</p>
 <p>abstract public <em>boolean</em>  <strong>isResource</strong> (<em>string</em> $resourceName)</p>
 <p>Check whether resource exist in the resources list</p>
-<p>abstract public <em>boolean</em>  <strong>addResource</strong> (<a class="reference internal" href="Phalcon_Acl_ResourceInterface.html"><em>Phalcon\Acl\ResourceInterface</em></a> $resource, [<em>array</em> $accessList])</p>
+<p>abstract public <em>boolean</em>  <strong>addResource</strong> (<a class="reference internal" href="Phalcon_Acl_ResourceInterface.html"><span class="doc">Phalcon\Acl\ResourceInterface</span></a> $resource, [<em>array</em> $accessList])</p>
 <p>Adds a resource to the ACL list Access names can be a particular action, by example search, update, delete, etc or a list of them</p>
 <p>abstract public  <strong>addResourceAccess</strong> (<em>string</em> $resourceName, <em>mixed</em> $accessList)</p>
 <p>Adds access to resources</p>
@@ -123,9 +125,9 @@
 <p>Returns the resource which the list is checking if some role can access it</p>
 <p>abstract public <em>string</em>  <strong>getActiveAccess</strong> ()</p>
 <p>Returns the access which the list is checking if some role can access it</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Acl_RoleInterface.html"><em>Phalcon\Acl\RoleInterface</em></a> [] <strong>getRoles</strong> ()</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Acl_RoleInterface.html"><span class="doc">Phalcon\Acl\RoleInterface</span></a> [] <strong>getRoles</strong> ()</p>
 <p>Return an array with every role registered in the list</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Acl_ResourceInterface.html"><em>Phalcon\Acl\ResourceInterface</em></a> [] <strong>getResources</strong> ()</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Acl_ResourceInterface.html"><span class="doc">Phalcon\Acl\ResourceInterface</span></a> [] <strong>getResources</strong> ()</p>
 <p>Return an array with every resource registered in the list</p>
 </div>
 </div>

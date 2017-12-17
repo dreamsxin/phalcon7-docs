@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
     <link rel="next" title="使用模型（Working with Models）" href="models.html" />
     <link rel="prev" title="MVC 架构（The MVC Architecture）" href="mvc.html" /> 
@@ -136,7 +138,7 @@
 </tbody>
 </table>
 <p>这时，PostsController将会处理这个请求。在一个项目中，没有强制指定放置控制器的地方，这些控制器都可以
-通过使用 <a class="reference internal" href="loader.html"><em>autoloaders</em></a> 来加载，所以你可以根据需要自由组件你的控制器。</p>
+通过使用 <a class="reference internal" href="loader.html"><span class="doc">autoloaders</span></a> 来加载，所以你可以根据需要自由组件你的控制器。</p>
 <p>控制器类必须以“Controller”为后缀，action则须以“Action”为后缀。一个控制器类的例子如下：</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
@@ -157,7 +159,7 @@
 </pre></div>
 </div>
 <p>额外的URI参数定义为action的参数，以致这些参数可以简单地通过本地变量来获取。控制器
-可以选择继承 <a class="reference internal" href="../api/Phalcon_Mvc_Controller.html"><em>Phalcon\Mvc\Controller</em></a> 。如果继承此基类，你的控制器类则能
+可以选择继承 <a class="reference internal" href="../api/Phalcon_Mvc_Controller.html"><span class="doc">Phalcon\Mvc\Controller</span></a> 。如果继承此基类，你的控制器类则能
 轻松访问应用的各种服务。</p>
 <p>没有默认缺省值的参数视为必须参数处理。可以像PHP那样为参数设定一个默认值：</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
@@ -250,11 +252,11 @@
 </div>
 <p>对于“forwards”转发的次数没有限制，只要不会形成循环重定向即可，否则就意味着
 你的应用将会停止（译者注：如果浏览器发现一个请求循环重定向时，会终止请求）。
-如果在循环调度里面没有其他action可以分发，分发器将会自动调用由 <a class="reference internal" href="../api/Phalcon_Mvc_View.html"><em>Phalcon\Mvc\View</em></a> 管理的MVC的视图层。</p>
+如果在循环调度里面没有其他action可以分发，分发器将会自动调用由 <a class="reference internal" href="../api/Phalcon_Mvc_View.html"><span class="doc">Phalcon\Mvc\View</span></a> 管理的MVC的视图层。</p>
 </div>
 <div class="section" id="initializing-controllers">
 <h2>初始化控制器（Initializing Controllers）<a class="headerlink" href="#initializing-controllers" title="永久链接至标题">¶</a></h2>
-<p><a class="reference internal" href="../api/Phalcon_Mvc_Controller.html"><em>Phalcon\Mvc\Controller</em></a> 提供了初始化的函数，它会最先执行，并优于任何控制器
+<p><a class="reference internal" href="../api/Phalcon_Mvc_Controller.html"><span class="doc">Phalcon\Mvc\Controller</span></a> 提供了初始化的函数，它会最先执行，并优于任何控制器
 的其他action。不推荐使用“__construct&#8221;方法。</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
@@ -303,7 +305,7 @@
 </div>
 <div class="section" id="injecting-services">
 <h2>注入服务（Injecting Services）<a class="headerlink" href="#injecting-services" title="永久链接至标题">¶</a></h2>
-<p>如果控制器继承于 <a class="reference internal" href="../api/Phalcon_Mvc_Controller.html"><em>Phalcon\Mvc\Controller</em></a> ，那么它可以轻松访问
+<p>如果控制器继承于 <a class="reference internal" href="../api/Phalcon_Mvc_Controller.html"><span class="doc">Phalcon\Mvc\Controller</span></a> ，那么它可以轻松访问
 应用的服务容器。例如，如果我们类似这样注册了一个服务：</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
@@ -343,13 +345,13 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>如果你是把Phalcon作为全能(Full-Stack)框架来使用，你可以阅读框架中 <a class="reference internal" href="di.html"><em>by default</em></a> 提供的服务。</p>
+<p>如果你是把Phalcon作为全能(Full-Stack)框架来使用，你可以阅读框架中 <a class="reference internal" href="di.html"><span class="doc">by default</span></a> 提供的服务。</p>
 </div>
 <div class="section" id="request-and-response">
 <h2>请求与响应（Request and Response）<a class="headerlink" href="#request-and-response" title="永久链接至标题">¶</a></h2>
 <p>假设框架预先提供了一系列的注册的服务。我们这里将解释如何和HTTP环境进行关联和交互。
-“request”服务包含了一个 <a class="reference internal" href="../api/Phalcon_Http_Request.html"><em>Phalcon\Http\Request</em></a> 的实例，
-“response”服务则包含了一个 <a class="reference internal" href="../api/Phalcon_Http_Response.html"><em>Phalcon\Http\Response</em></a> 的实例，用来表示将要返回给客户端的内容。</p>
+“request”服务包含了一个 <a class="reference internal" href="../api/Phalcon_Http_Request.html"><span class="doc">Phalcon\Http\Request</span></a> 的实例，
+“response”服务则包含了一个 <a class="reference internal" href="../api/Phalcon_Http_Response.html"><span class="doc">Phalcon\Http\Response</span></a> 的实例，用来表示将要返回给客户端的内容。</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
@@ -394,11 +396,11 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>如需学习了解HTTP环境更多内容，请查看专题： <a class="reference internal" href="request.html"><em>request</em></a> 和 <a class="reference internal" href="response.html"><em>response</em></a> 。</p>
+<p>如需学习了解HTTP环境更多内容，请查看专题： <a class="reference internal" href="request.html"><span class="doc">request</span></a> 和 <a class="reference internal" href="response.html"><span class="doc">response</span></a> 。</p>
 </div>
 <div class="section" id="session-data">
 <h2>会话数据（Session Data）<a class="headerlink" href="#session-data" title="永久链接至标题">¶</a></h2>
-<p>会话可以帮助我们在多个请求中保持久化的数据。你可以从任何控制器中访问 <a class="reference internal" href="../api/Phalcon_Session_Bag.html"><em>Phalcon\Session\Bag</em></a>
+<p>会话可以帮助我们在多个请求中保持久化的数据。你可以从任何控制器中访问 <a class="reference internal" href="../api/Phalcon_Session_Bag.html"><span class="doc">Phalcon\Session\Bag</span></a>
 以便封装需要进行持久化的数据。</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
@@ -443,7 +445,7 @@
 <h2>创建基控制器（Creating a Base Controller）<a class="headerlink" href="#creating-a-base-controller" title="永久链接至标题">¶</a></h2>
 <p>对于某些应用特性如访问控制列表（ACL），翻译，缓存，和模板引擎一般对于
 控制器都是通用的。在这种情况下，我们鼓励创建一个 “基控制器”，从而确保你的代码遵循 <a class="reference external" href="http://en.wikipedia.org/wiki/Don't_repeat_yourself">DRY</a> 。
-基控制器可以是一个简单的类，然后继承于 <a class="reference internal" href="../api/Phalcon_Mvc_Controller.html"><em>Phalcon\Mvc\Controller</em></a> ，并封装
+基控制器可以是一个简单的类，然后继承于 <a class="reference internal" href="../api/Phalcon_Mvc_Controller.html"><span class="doc">Phalcon\Mvc\Controller</span></a> ，并封装
 全部控制器都有的通用功能操作。反过来，你的控制器则继承这个“基控制器”以便可以直接使用通用功能操作。</p>
 <p>这个基类可以放置在任何一个地方，但出于代码组织的便利我们推荐应该放置在控制器的目录下，
 如：apps/controllers/ControllerBase.php。我们可以在启动文件直接require这个文件，也可以使用自动加载：</p>
@@ -481,7 +483,7 @@
 </div>
 <div class="section" id="events-in-controllers">
 <h2>控制器中的事件（Events in Controllers）<a class="headerlink" href="#events-in-controllers" title="永久链接至标题">¶</a></h2>
-<p>控制器会自动作为 <a class="reference internal" href="dispatching.html"><em>dispatcher</em></a> 事件的侦听者，使用这些事件并实现实现这些方法后，
+<p>控制器会自动作为 <a class="reference internal" href="dispatching.html"><span class="doc">dispatcher</span></a> 事件的侦听者，使用这些事件并实现实现这些方法后，
 你便可以实现对应被执行的action的before/after钩子函数：</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 

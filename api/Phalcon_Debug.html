@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" /> 
 </head>
 <body>
@@ -93,25 +95,25 @@
 <p>Provides debug capabilities to Phalcon applications</p>
 <div class="section" id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
-<p>public <a class="reference internal" href=""><em>Phalcon\Debug</em></a>  <strong>setUri</strong> (<em>string</em> $uri)</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Debug</span></a>  <strong>setUri</strong> (<em>string</em> $uri)</p>
 <p>Change the base URI for static resources</p>
-<p>public <a class="reference internal" href=""><em>Phalcon\Debug</em></a>  <strong>setShowBackTrace</strong> (<em>boolean</em> $showBackTrace)</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Debug</span></a>  <strong>setShowBackTrace</strong> (<em>boolean</em> $showBackTrace)</p>
 <p>Sets if files the exception&#8217;s backtrace must be showed</p>
-<p>public <a class="reference internal" href=""><em>Phalcon\Debug</em></a>  <strong>setShowFiles</strong> (<em>boolean</em> $showFiles)</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Debug</span></a>  <strong>setShowFiles</strong> (<em>boolean</em> $showFiles)</p>
 <p>Set if files part of the backtrace must be shown in the output</p>
-<p>public <a class="reference internal" href=""><em>Phalcon\Debug</em></a>  <strong>setShowFileFragment</strong> (<em>boolean</em> $showFileFragment)</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Debug</span></a>  <strong>setShowFileFragment</strong> (<em>boolean</em> $showFileFragment)</p>
 <p>Sets if files must be completely opened and showed in the output or just the fragment related to the exception</p>
-<p>public <a class="reference internal" href=""><em>Phalcon\Debug</em></a>  <strong>listen</strong> ([<em>boolean</em> $exceptions], [<em>boolean</em> $lowSeverity])</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Debug</span></a>  <strong>listen</strong> ([<em>boolean</em> $exceptions], [<em>boolean</em> $lowSeverity])</p>
 <p>Listen for uncaught exceptions and unsilent notices or warnings</p>
-<p>public <a class="reference internal" href=""><em>Phalcon\Debug</em></a>  <strong>listenExceptions</strong> ()</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Debug</span></a>  <strong>listenExceptions</strong> ()</p>
 <p>Listen for uncaught exceptions</p>
-<p>public <a class="reference internal" href=""><em>Phalcon\Debug</em></a>  <strong>listenLowSeverity</strong> ()</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Debug</span></a>  <strong>listenLowSeverity</strong> ()</p>
 <p>Listen for unsilent notices or warnings or user-defined error</p>
 <p>public  <strong>halt</strong> ()</p>
 <p>Halts the request showing a backtrace</p>
-<p>public <a class="reference internal" href=""><em>Phalcon\Debug</em></a>  <strong>debugVar</strong> (<em>mixed</em> $var, [<em>string</em> $key])</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Debug</span></a>  <strong>debugVar</strong> (<em>mixed</em> $var, [<em>string</em> $key])</p>
 <p>Adds a variable to the debug output</p>
-<p>public <a class="reference internal" href=""><em>Phalcon\Debug</em></a>  <strong>clearVars</strong> ()</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Debug</span></a>  <strong>clearVars</strong> ()</p>
 <p>Clears are variables added previously</p>
 <p>protected <em>string</em>  <strong>_escapeString</strong> ()</p>
 <p>Escapes a string with htmlentities</p>
@@ -137,17 +139,17 @@
 <p>Handles user-defined error</p>
 <p>public <em>int</em>  <strong>getLinesBeforeContext</strong> ()</p>
 <p>Returns the number of lines deplayed before the error line</p>
-<p>public <a class="reference internal" href=""><em>Phalcon\Debug</em></a>  <strong>setLinesBeforeContext</strong> (<em>int</em> $lines)</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Debug</span></a>  <strong>setLinesBeforeContext</strong> (<em>int</em> $lines)</p>
 <p>Sets the number of lines deplayed before the error line</p>
 <p>public <em>int</em>  <strong>getLinesAfterContext</strong> ()</p>
 <p>Returns the number of lines deplayed after the error line</p>
-<p>public <a class="reference internal" href=""><em>Phalcon\Debug</em></a>  <strong>setLinesAfterContext</strong> (<em>int</em> $lines)</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Debug</span></a>  <strong>setLinesAfterContext</strong> (<em>int</em> $lines)</p>
 <p>Sets the number of lines deplayed after the error line</p>
 <p>protected  <strong>getFileLink</strong> (<em>unknown</em> $file, <em>unknown</em> $line, <em>unknown</em> $format)</p>
 <p>...</p>
-<p>public static  <strong>setLogger</strong> (<a class="reference internal" href="Phalcon_Logger_AdapterInterface.html"><em>Phalcon\Logger\AdapterInterface</em></a> $logger)</p>
+<p>public static  <strong>setLogger</strong> (<a class="reference internal" href="Phalcon_Logger_AdapterInterface.html"><span class="doc">Phalcon\Logger\AdapterInterface</span></a> $logger)</p>
 <p>Sets logger</p>
-<p>public static  <strong>enable</strong> ([<a class="reference internal" href="Phalcon_Logger_AdapterInterface.html"><em>Phalcon\Logger\AdapterInterface</em></a> $logger])</p>
+<p>public static  <strong>enable</strong> ([<a class="reference internal" href="Phalcon_Logger_AdapterInterface.html"><span class="doc">Phalcon\Logger\AdapterInterface</span></a> $logger])</p>
 <p>Enable simple debug mode</p>
 <p>public static  <strong>disable</strong> ()</p>
 <p>Disable simple debug mode</p>

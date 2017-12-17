@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" /> 
 </head>
 <body>
@@ -89,8 +91,8 @@
 			  
   <div class="section" id="class-phalcon-image-adapter-imagick">
 <h1>Class <strong>Phalcon\Image\Adapter\Imagick</strong><a class="headerlink" href="#class-phalcon-image-adapter-imagick" title="永久链接至标题">¶</a></h1>
-<p><em>extends</em> abstract class <a class="reference internal" href="Phalcon_Image_Adapter.html"><em>Phalcon\Image\Adapter</em></a></p>
-<p><em>implements</em> <a class="reference internal" href="Phalcon_Image_AdapterInterface.html"><em>Phalcon\Image\AdapterInterface</em></a></p>
+<p><em>extends</em> abstract class <a class="reference internal" href="Phalcon_Image_Adapter.html"><span class="doc">Phalcon\Image\Adapter</span></a></p>
+<p><em>implements</em> <a class="reference internal" href="Phalcon_Image_AdapterInterface.html"><span class="doc">Phalcon\Image\AdapterInterface</span></a></p>
 <p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/image/adapter/imagick.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
 <p>Image manipulation support. Allows images to be resized, cropped, etc.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
@@ -122,7 +124,7 @@
 <p>Execute a sharpen.</p>
 <p>protected  <strong>_reflection</strong> (<em>int</em> $height, <em>int</em> $opacity, <em>boolean</em> $fade_in)</p>
 <p>Execute a reflection.</p>
-<p>protected  <strong>_watermark</strong> (<a class="reference internal" href="Phalcon_Image_Adapter.html"><em>Phalcon\Image\Adapter</em></a> $watermark, <em>int</em> $offset_x, <em>int</em> $offset_y, <em>int</em> $opacity)</p>
+<p>protected  <strong>_watermark</strong> (<a class="reference internal" href="Phalcon_Image_Adapter.html"><span class="doc">Phalcon\Image\Adapter</span></a> $watermark, <em>int</em> $offset_x, <em>int</em> $offset_y, <em>int</em> $opacity)</p>
 <p>Execute a watermarking.</p>
 <p>protected  <strong>_text</strong> (<em>string</em> $text, <em>int</em> $offset_x, <em>int</em> $offset_y, <em>int</em> $opacity, <em>int</em> $r, <em>int</em> $g, <em>int</em> $b, <em>int</em> $size, <em>string</em> $fontfile)</p>
 <p>Execute a text</p>
@@ -140,9 +142,9 @@
 <p>Execute a render.</p>
 <p>public  <strong>__destruct</strong> ()</p>
 <p>Destroys the loaded image to free up resources.</p>
-<p>public <a class="reference internal" href=""><em>Phalcon\Image\Adapter\Imagick</em></a>  <strong>line</strong> (<em>int</em> $sx, <em>int</em> $sy, <em>int</em> $ex, <em>int</em> $ey, [<em>string</em> $color])</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Image\Adapter\Imagick</span></a>  <strong>line</strong> (<em>int</em> $sx, <em>int</em> $sy, <em>int</em> $ex, <em>int</em> $ey, [<em>string</em> $color])</p>
 <p>Draws a line</p>
-<p>public <a class="reference internal" href=""><em>Phalcon\Image\Adapter\Imagick</em></a>  <strong>polygon</strong> (<em>array</em> $coordinates, [<em>string</em> $color])</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Image\Adapter\Imagick</span></a>  <strong>polygon</strong> (<em>array</em> $coordinates, [<em>string</em> $color])</p>
 <p>Draws a polygon</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
@@ -156,23 +158,23 @@
 <p>...</p>
 <p>public static  <strong>setResourceLimit</strong> (<em>unknown</em> $resource, <em>unknown</em> $limit)</p>
 <p>...</p>
-<p>public <a class="reference internal" href=""><em>Phalcon\Image\Adapter\Imagick</em></a>  <strong>colorize</strong> (<em>unknown</em> $color, [<em>unknown</em> $composition])</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Image\Adapter\Imagick</span></a>  <strong>colorize</strong> (<em>unknown</em> $color, [<em>unknown</em> $composition])</p>
 <p>Replicate Colorize function</p>
-<p>public <a class="reference internal" href=""><em>Phalcon\Image\Adapter\Imagick</em></a>  <strong>gamma</strong> (<em>unknown</em> $gamma, [<em>unknown</em> $channel])</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Image\Adapter\Imagick</span></a>  <strong>gamma</strong> (<em>unknown</em> $gamma, [<em>unknown</em> $channel])</p>
 <p>Change the gamma of an image</p>
-<p>public <a class="reference internal" href=""><em>Phalcon\Image\Adapter\Imagick</em></a>  <strong>levels</strong> ([<em>float</em> $gamma], [<em>unknown</em> $input_min], [<em>unknown</em> $input_max], [<em>unknown</em> $output_min], [<em>unknown</em> $output_max], [<em>unknown</em> $channel])</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Image\Adapter\Imagick</span></a>  <strong>levels</strong> ([<em>float</em> $gamma], [<em>unknown</em> $input_min], [<em>unknown</em> $input_max], [<em>unknown</em> $output_min], [<em>unknown</em> $output_max], [<em>unknown</em> $channel])</p>
 <p>Replicate Photoshop&#8217;s levels function</p>
-<p>public <a class="reference internal" href=""><em>Phalcon\Image\Adapter\Imagick</em></a>  <strong>brightness_contrast</strong> (<em>unknown</em> $brightness, <em>unknown</em> $contrast)</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Image\Adapter\Imagick</span></a>  <strong>brightness_contrast</strong> (<em>unknown</em> $brightness, <em>unknown</em> $contrast)</p>
 <p>Replicate brightness/contrast photoshop function Now this one is a bit of a pain. PHP&#8217;s extension doesn&#8217;t provide us with this handle (yet?) So we have to save the image to disk at this point, perform the function using the command line, and reload the image. yay.</p>
-<p>public <a class="reference internal" href=""><em>Phalcon\Image\Adapter\Imagick</em></a>  <strong>hsl</strong> ([<em>unknown</em> $hue], [<em>unknown</em> $saturation], [<em>unknown</em> $lightness])</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Image\Adapter\Imagick</span></a>  <strong>hsl</strong> ([<em>unknown</em> $hue], [<em>unknown</em> $saturation], [<em>unknown</em> $lightness])</p>
 <p>Replicate HSL function Imagemagick calls this &#8216;modulate</p>
-<p>public <a class="reference internal" href=""><em>Phalcon\Image\Adapter\Imagick</em></a>  <strong>curves_graph</strong> (<em>unknown</em> $fx)</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Image\Adapter\Imagick</span></a>  <strong>curves_graph</strong> (<em>unknown</em> $fx)</p>
 <p>Perform an imagemagick-style function on each pixel</p>
-<p>public <a class="reference internal" href=""><em>Phalcon\Image\Adapter\Imagick</em></a>  <strong>vignette</strong> (<em>unknown</em> $color, [<em>unknown</em> $composition], [<em>unknown</em> $crop_factor])</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Image\Adapter\Imagick</span></a>  <strong>vignette</strong> (<em>unknown</em> $color, [<em>unknown</em> $composition], [<em>unknown</em> $crop_factor])</p>
 <p>Adds a vignette to the image</p>
-<p>public <a class="reference internal" href=""><em>Phalcon\Image\Adapter\Imagick</em></a>  <strong>earlybird</strong> ()</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Image\Adapter\Imagick</span></a>  <strong>earlybird</strong> ()</p>
 <p>A sort-of sepia filter</p>
-<p>public <a class="reference internal" href=""><em>Phalcon\Image\Adapter\Imagick</em></a>  <strong>inkwell</strong> ()</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Image\Adapter\Imagick</span></a>  <strong>inkwell</strong> ()</p>
 <p>A black and white filter</p>
 <p>public static  <strong>convert</strong> (<em>unknown</em> $command)</p>
 <p>...</p>
@@ -188,31 +190,31 @@
 <p>Returns the mime of images</p>
 <p>public <em>resource</em>  <strong>getImage</strong> () inherited from Phalcon\Image\Adapter</p>
 <p>Returns the image of images</p>
-<p>public <a class="reference internal" href="Phalcon_Image_Adapter.html"><em>Phalcon\Image\Adapter</em></a>  <strong>resize</strong> ([<em>unknown</em> $width], [<em>unknown</em> $height], [<em>unknown</em> $master]) inherited from Phalcon\Image\Adapter</p>
+<p>public <a class="reference internal" href="Phalcon_Image_Adapter.html"><span class="doc">Phalcon\Image\Adapter</span></a>  <strong>resize</strong> ([<em>unknown</em> $width], [<em>unknown</em> $height], [<em>unknown</em> $master]) inherited from Phalcon\Image\Adapter</p>
 <p>Resize the image to the given size. Either the width or the height can be omitted and the image will be resized proportionally.</p>
-<p>public <a class="reference internal" href="Phalcon_Image_Adapter.html"><em>Phalcon\Image\Adapter</em></a>  <strong>liquidRescale</strong> (<em>unknown</em> $width, <em>unknown</em> $height, [<em>unknown</em> $delta_x], [<em>unknown</em> $rigidity]) inherited from Phalcon\Image\Adapter</p>
+<p>public <a class="reference internal" href="Phalcon_Image_Adapter.html"><span class="doc">Phalcon\Image\Adapter</span></a>  <strong>liquidRescale</strong> (<em>unknown</em> $width, <em>unknown</em> $height, [<em>unknown</em> $delta_x], [<em>unknown</em> $rigidity]) inherited from Phalcon\Image\Adapter</p>
 <p>This method scales the images using liquid rescaling method. Only support Imagick</p>
-<p>public <a class="reference internal" href="Phalcon_Image_Adapter.html"><em>Phalcon\Image\Adapter</em></a>  <strong>crop</strong> (<em>unknown</em> $width, <em>unknown</em> $height, [<em>unknown</em> $offset_x], [<em>unknown</em> $offset_y]) inherited from Phalcon\Image\Adapter</p>
+<p>public <a class="reference internal" href="Phalcon_Image_Adapter.html"><span class="doc">Phalcon\Image\Adapter</span></a>  <strong>crop</strong> (<em>unknown</em> $width, <em>unknown</em> $height, [<em>unknown</em> $offset_x], [<em>unknown</em> $offset_y]) inherited from Phalcon\Image\Adapter</p>
 <p>Crop an image to the given size. Either the width or the height can be omitted and the current width or height will be used.</p>
-<p>public <a class="reference internal" href="Phalcon_Image_Adapter.html"><em>Phalcon\Image\Adapter</em></a>  <strong>rotate</strong> (<em>unknown</em> $degrees) inherited from Phalcon\Image\Adapter</p>
+<p>public <a class="reference internal" href="Phalcon_Image_Adapter.html"><span class="doc">Phalcon\Image\Adapter</span></a>  <strong>rotate</strong> (<em>unknown</em> $degrees) inherited from Phalcon\Image\Adapter</p>
 <p>Rotate the image by a given amount.</p>
-<p>public <a class="reference internal" href="Phalcon_Image_Adapter.html"><em>Phalcon\Image\Adapter</em></a>  <strong>flip</strong> (<em>unknown</em> $direction) inherited from Phalcon\Image\Adapter</p>
+<p>public <a class="reference internal" href="Phalcon_Image_Adapter.html"><span class="doc">Phalcon\Image\Adapter</span></a>  <strong>flip</strong> (<em>unknown</em> $direction) inherited from Phalcon\Image\Adapter</p>
 <p>Flip the image along the horizontal or vertical axis.</p>
-<p>public <a class="reference internal" href="Phalcon_Image_Adapter.html"><em>Phalcon\Image\Adapter</em></a>  <strong>sharpen</strong> (<em>unknown</em> $amount) inherited from Phalcon\Image\Adapter</p>
+<p>public <a class="reference internal" href="Phalcon_Image_Adapter.html"><span class="doc">Phalcon\Image\Adapter</span></a>  <strong>sharpen</strong> (<em>unknown</em> $amount) inherited from Phalcon\Image\Adapter</p>
 <p>Sharpen the image by a given amount.</p>
-<p>public <a class="reference internal" href="Phalcon_Image_Adapter.html"><em>Phalcon\Image\Adapter</em></a>  <strong>reflection</strong> ([<em>unknown</em> $height], [<em>unknown</em> $opacity], [<em>unknown</em> $fade_in]) inherited from Phalcon\Image\Adapter</p>
+<p>public <a class="reference internal" href="Phalcon_Image_Adapter.html"><span class="doc">Phalcon\Image\Adapter</span></a>  <strong>reflection</strong> ([<em>unknown</em> $height], [<em>unknown</em> $opacity], [<em>unknown</em> $fade_in]) inherited from Phalcon\Image\Adapter</p>
 <p>Add a reflection to an image. The most opaque part of the reflection will be equal to the opacity setting and fade out to full transparent. Alpha transparency is preserved.</p>
-<p>public <a class="reference internal" href="Phalcon_Image_AdapterInterface.html"><em>Phalcon\Image\AdapterInterface</em></a>  <strong>watermark</strong> (<em>unknown</em> $watermark, [<em>unknown</em> $offset_x], [<em>unknown</em> $offset_y], [<em>unknown</em> $opacity]) inherited from Phalcon\Image\Adapter</p>
+<p>public <a class="reference internal" href="Phalcon_Image_AdapterInterface.html"><span class="doc">Phalcon\Image\AdapterInterface</span></a>  <strong>watermark</strong> (<em>unknown</em> $watermark, [<em>unknown</em> $offset_x], [<em>unknown</em> $offset_y], [<em>unknown</em> $opacity]) inherited from Phalcon\Image\Adapter</p>
 <p>Add a watermark to an image with a specified opacity. Alpha transparency will be preserved.</p>
-<p>public <a class="reference internal" href="Phalcon_Image_Adapter.html"><em>Phalcon\Image\Adapter</em></a>  <strong>text</strong> (<em>string</em> $text, [<em>unknown</em> $offset_x], [<em>unknown</em> $offset_y], [<em>unknown</em> $opacity], [<em>unknown</em> $color], [<em>unknown</em> $size], [<em>unknown</em> $fontfile]) inherited from Phalcon\Image\Adapter</p>
+<p>public <a class="reference internal" href="Phalcon_Image_Adapter.html"><span class="doc">Phalcon\Image\Adapter</span></a>  <strong>text</strong> (<em>string</em> $text, [<em>unknown</em> $offset_x], [<em>unknown</em> $offset_y], [<em>unknown</em> $opacity], [<em>unknown</em> $color], [<em>unknown</em> $size], [<em>unknown</em> $fontfile]) inherited from Phalcon\Image\Adapter</p>
 <p>Add a text to an image with a specified opacity.</p>
-<p>public <a class="reference internal" href="Phalcon_Image_Adapter.html"><em>Phalcon\Image\Adapter</em></a>  <strong>mask</strong> (<em>unknown</em> $mask) inherited from Phalcon\Image\Adapter</p>
+<p>public <a class="reference internal" href="Phalcon_Image_Adapter.html"><span class="doc">Phalcon\Image\Adapter</span></a>  <strong>mask</strong> (<em>unknown</em> $mask) inherited from Phalcon\Image\Adapter</p>
 <p>Composite one image onto another</p>
-<p>public <a class="reference internal" href="Phalcon_Image_Adapter.html"><em>Phalcon\Image\Adapter</em></a>  <strong>background</strong> (<em>unknown</em> $color, [<em>unknown</em> $opacity]) inherited from Phalcon\Image\Adapter</p>
+<p>public <a class="reference internal" href="Phalcon_Image_Adapter.html"><span class="doc">Phalcon\Image\Adapter</span></a>  <strong>background</strong> (<em>unknown</em> $color, [<em>unknown</em> $opacity]) inherited from Phalcon\Image\Adapter</p>
 <p>Set the background color of an image. This is only useful for images with alpha transparency.</p>
-<p>public <a class="reference internal" href="Phalcon_Image_Adapter.html"><em>Phalcon\Image\Adapter</em></a>  <strong>blur</strong> ([<em>unknown</em> $radius]) inherited from Phalcon\Image\Adapter</p>
+<p>public <a class="reference internal" href="Phalcon_Image_Adapter.html"><span class="doc">Phalcon\Image\Adapter</span></a>  <strong>blur</strong> ([<em>unknown</em> $radius]) inherited from Phalcon\Image\Adapter</p>
 <p>Blur image</p>
-<p>public <a class="reference internal" href="Phalcon_Image_Adapter.html"><em>Phalcon\Image\Adapter</em></a>  <strong>pixelate</strong> ([<em>unknown</em> $amount]) inherited from Phalcon\Image\Adapter</p>
+<p>public <a class="reference internal" href="Phalcon_Image_Adapter.html"><span class="doc">Phalcon\Image\Adapter</span></a>  <strong>pixelate</strong> ([<em>unknown</em> $amount]) inherited from Phalcon\Image\Adapter</p>
 <p>Pixelate image</p>
 <p>public <em>boolean</em>  <strong>save</strong> ([<em>unknown</em> $file], [<em>unknown</em> $opacity], [<em>unknown</em> $interlacing]) inherited from Phalcon\Image\Adapter</p>
 <p>Save the image. If the filename is omitted, the original image will be overwritten.</p>

@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
     <link rel="next" title="性能分析器（Profiler）" href="profiler.html" />
     <link rel="prev" title="队列（Queueing）" href="queue.html" /> 
@@ -126,11 +128,11 @@
 			  
   <div class="section" id="database-abstraction-layer">
 <h1>数据库抽象层（Database Abstraction Layer）<a class="headerlink" href="#database-abstraction-layer" title="永久链接至标题">¶</a></h1>
-<p><a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a> 是 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> 背后的一个组件，它为框架提供了强大的model层。它是一个完全由C语言写的独立的高级抽象层的数据库系统。</p>
+<p><a class="reference internal" href="../api/Phalcon_Db.html"><span class="doc">Phalcon\Db</span></a> 是 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> 背后的一个组件，它为框架提供了强大的model层。它是一个完全由C语言写的独立的高级抽象层的数据库系统。</p>
 <p>这个组件提供了比传统模式的更容易上手的数据库操作。</p>
 <blockquote class="highlights">
 <div>这个指引不是一个完整的包含所有方法和它们的参数的文档。
-查看完整的文档参考，请访问 <a class="reference internal" href="../api/index.html"><em>API</em></a></div></blockquote>
+查看完整的文档参考，请访问 <a class="reference internal" href="../api/index.html"><span class="doc">API</span></a></div></blockquote>
 <div class="section" id="database-adapters">
 <h2>数据库适配器（Database Adapters）<a class="headerlink" href="#database-adapters" title="永久链接至标题">¶</a></h2>
 <p>这个组件利用了这些适配器去封装特定的数据库的详细操作。Phalcon使用 <a class="reference external" href="http://www.php.net/manual/en/book.pdo.php">PDO</a> 去连接这些数据库。下面这些是我们支持的数据库引擎：</p>
@@ -149,20 +151,20 @@
 <tbody valign="top">
 <tr class="row-even"><td>MySQL</td>
 <td>MySQL是这个世界上最多人使用的关系数据库，它作为服务器运行为多用户提供了访问多个数据库的功能。</td>
-<td><a class="reference internal" href="../api/Phalcon_Db_Adapter_Pdo_Mysql.html"><em>Phalcon\Db\Adapter\Pdo\Mysql</em></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Db_Adapter_Pdo_Mysql.html"><span class="doc">Phalcon\Db\Adapter\Pdo\Mysql</span></a></td>
 </tr>
 <tr class="row-odd"><td>PostgreSQL</td>
 <td>PostgreSQL是一个强大，开源的关系数据库。它拥有超过15年的积极发展和经过验证的架构，这些已经为它赢得了可靠性、数据完整性、正确性的良好的声誉</td>
-<td><a class="reference internal" href="../api/Phalcon_Db_Adapter_Pdo_Postgresql.html"><em>Phalcon\Db\Adapter\Pdo\Postgresql</em></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Db_Adapter_Pdo_Postgresql.html"><span class="doc">Phalcon\Db\Adapter\Pdo\Postgresql</span></a></td>
 </tr>
 </tbody>
 </table>
 <div class="line-block">
-<div class="line">PostgreSQL | PostgreSQL是一个强大，开源的关系数据库。它拥有超过15年的积极发展和经过验证的架构，这些已经为它赢得了可靠性、数据完整性、正确性的良好的声誉                                                                                           | <a class="reference internal" href="../api/Phalcon_Db_Adapter_Pdo_Postgresql.html"><em>Phalcon\Db\Adapter\Pdo\Postgresql</em></a> |</div>
+<div class="line">PostgreSQL | PostgreSQL是一个强大，开源的关系数据库。它拥有超过15年的积极发展和经过验证的架构，这些已经为它赢得了可靠性、数据完整性、正确性的良好的声誉                                                                                           | <a class="reference internal" href="../api/Phalcon_Db_Adapter_Pdo_Postgresql.html"><span class="doc">Phalcon\Db\Adapter\Pdo\Postgresql</span></a> |</div>
 </div>
 <div class="section" id="implementing-your-own-adapters">
 <h3>自定义适配器（Implementing your own adapters）<a class="headerlink" href="#implementing-your-own-adapters" title="永久链接至标题">¶</a></h3>
-<p>如果你想创建自己的适配器或者扩展现有的适配器，这个 <a class="reference internal" href="../api/Phalcon_Db_AdapterInterface.html"><em>Phalcon\Db\AdapterInterface</em></a> 接口必须被实现。</p>
+<p>如果你想创建自己的适配器或者扩展现有的适配器，这个 <a class="reference internal" href="../api/Phalcon_Db_AdapterInterface.html"><span class="doc">Phalcon\Db\AdapterInterface</span></a> 接口必须被实现。</p>
 </div>
 </div>
 <div class="section" id="id1">
@@ -184,21 +186,21 @@
 <tbody valign="top">
 <tr class="row-even"><td>MySQL</td>
 <td>MySQL的具体“方言”</td>
-<td><a class="reference internal" href="../api/Phalcon_Db_Dialect_Mysql.html"><em>Phalcon\Db\Dialect\Mysql</em></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Db_Dialect_Mysql.html"><span class="doc">Phalcon\Db\Dialect\Mysql</span></a></td>
 </tr>
 <tr class="row-odd"><td>PostgreSQL</td>
 <td>PostgreSQL的具体“方言”</td>
-<td><a class="reference internal" href="../api/Phalcon_Db_Dialect_Postgresql.html"><em>Phalcon\Db\Dialect\Postgresql</em></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Db_Dialect_Postgresql.html"><span class="doc">Phalcon\Db\Dialect\Postgresql</span></a></td>
 </tr>
 <tr class="row-even"><td>SQLite</td>
 <td>SQLite的具体“方言”</td>
-<td><a class="reference internal" href="../api/Phalcon_Db_Dialect_Sqlite.html"><em>Phalcon\Db\Dialect\Sqlite</em></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Db_Dialect_Sqlite.html"><span class="doc">Phalcon\Db\Dialect\Sqlite</span></a></td>
 </tr>
 </tbody>
 </table>
 <div class="section" id="implementing-your-own-dialects">
 <h3>自定义“方言”（Implementing your own dialects）<a class="headerlink" href="#implementing-your-own-dialects" title="永久链接至标题">¶</a></h3>
-<p>如果你想创建自己的“方言”或者扩展现有的“方言”，你需要实现这个接口： <a class="reference internal" href="../api/Phalcon_Db_DialectInterface.html"><em>Phalcon\Db\DialectInterface</em></a></p>
+<p>如果你想创建自己的“方言”或者扩展现有的“方言”，你需要实现这个接口： <a class="reference internal" href="../api/Phalcon_Db_DialectInterface.html"><span class="doc">Phalcon\Db\DialectInterface</span></a></p>
 </div>
 </div>
 <div class="section" id="connecting-to-databases">
@@ -295,7 +297,7 @@
 </div>
 <div class="section" id="finding-rows">
 <h2>查找行（Finding Rows）<a class="headerlink" href="#finding-rows" title="永久链接至标题">¶</a></h2>
-<p>文档 <a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a> 提供了几种方法去查询行。在这个例子中，SQL语句是必须符合数据库的SQL语法的：</p>
+<p>文档 <a class="reference internal" href="../api/Phalcon_Db.html"><span class="doc">Phalcon\Db</span></a> 提供了几种方法去查询行。在这个例子中，SQL语句是必须符合数据库的SQL语法的：</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;SELECT id, name FROM robots ORDER BY name&quot;</span><span class="p">;</span>
@@ -355,7 +357,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>这个 <code class="code docutils literal"><span class="pre">Phalcon\DB::query()</span></code> 方法返回一个 <a class="reference internal" href="../api/Phalcon_Db_Result_Pdo.html"><em>Phalcon\Db\Result\Pdo</em></a> 实例。这些对象封装了凡是涉及到返回的结果集的功能，例如遍历，寻找特定行，计算总行数等等</p>
+<p>这个 <code class="code docutils literal"><span class="pre">Phalcon\DB::query()</span></code> 方法返回一个 <a class="reference internal" href="../api/Phalcon_Db_Result_Pdo.html"><span class="doc">Phalcon\Db\Result\Pdo</span></a> 实例。这些对象封装了凡是涉及到返回的结果集的功能，例如遍历，寻找特定行，计算总行数等等</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;SELECT id, name FROM robots&quot;</span><span class="p">;</span>
@@ -377,7 +379,7 @@
 </div>
 <div class="section" id="binding-parameters">
 <h2>绑定参数（Binding Parameters）<a class="headerlink" href="#binding-parameters" title="永久链接至标题">¶</a></h2>
-<p>在 <a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a> 中支持绑定参数。虽然使用绑定参数会有很少性能的损失，但是我们鼓励你使用这个方法
+<p>在 <a class="reference internal" href="../api/Phalcon_Db.html"><span class="doc">Phalcon\Db</span></a> 中支持绑定参数。虽然使用绑定参数会有很少性能的损失，但是我们鼓励你使用这个方法
 去消除(译者注：是消除，不是减少，因为使用参数绑定可以彻底解决SQL注入问题)SQL注入攻击的可能性。
 字符串和占位符都支持，就像下面展示的那样，绑定参数可以简单地实现：</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
@@ -521,7 +523,7 @@ bound parameters are directly passed to PDO:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>除了标准的事务， <a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a> 提供了内置支持`嵌套事务`_(如果数据库系统支持的话)。
+<p>除了标准的事务， <a class="reference internal" href="../api/Phalcon_Db.html"><span class="doc">Phalcon\Db</span></a> 提供了内置支持`嵌套事务`_(如果数据库系统支持的话)。
 当你第二次调用begin()方法，一个嵌套的事务就被创建了：</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
@@ -565,7 +567,7 @@ bound parameters are directly passed to PDO:</p>
 </div>
 <div class="section" id="database-events">
 <h2>数据库事件（Database Events）<a class="headerlink" href="#database-events" title="永久链接至标题">¶</a></h2>
-<p><a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a> 可以发送事件到一个 <a class="reference internal" href="events.html"><em>EventsManager</em></a> 中，如果它存在的话。
+<p><a class="reference internal" href="../api/Phalcon_Db.html"><span class="doc">Phalcon\Db</span></a> 可以发送事件到一个 <a class="reference internal" href="events.html"><span class="doc">EventsManager</span></a> 中，如果它存在的话。
 一些事件当返回布尔值false可以停止操作。我们支持下面这些事件：</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -610,7 +612,7 @@ bound parameters are directly passed to PDO:</p>
 </tr>
 </tbody>
 </table>
-<p>绑定一个EventsManager给一个连接是很简单的， <a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a> 将触发这些类型为“db”的事件：</p>
+<p>绑定一个EventsManager给一个连接是很简单的， <a class="reference internal" href="../api/Phalcon_Db.html"><span class="doc">Phalcon\Db</span></a> 将触发这些类型为“db”的事件：</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">;</span>
@@ -654,7 +656,7 @@ bound parameters are directly passed to PDO:</p>
 </div>
 <div class="section" id="sql-logging-sql-statements">
 <h2>记录 SQL 语句（Logging SQL Statements）<a class="headerlink" href="#sql-logging-sql-statements" title="永久链接至标题">¶</a></h2>
-<p>使用例如 <a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a> 的高级抽象组件操作数据库，被发送到数据库中执行的原生SQL语句是难以获知的。使用 <a class="reference internal" href="../api/Phalcon_Logger.html"><em>Phalcon\Logger</em></a> 和 <a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a> 来配合使用，可以在数据库抽象层上提供记录的功能。</p>
+<p>使用例如 <a class="reference internal" href="../api/Phalcon_Db.html"><span class="doc">Phalcon\Db</span></a> 的高级抽象组件操作数据库，被发送到数据库中执行的原生SQL语句是难以获知的。使用 <a class="reference internal" href="../api/Phalcon_Logger.html"><span class="doc">Phalcon\Logger</span></a> 和 <a class="reference internal" href="../api/Phalcon_Db.html"><span class="doc">Phalcon\Db</span></a> 来配合使用，可以在数据库抽象层上提供记录的功能。</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Logger</span><span class="p">;</span>
@@ -697,7 +699,7 @@ bound parameters are directly passed to PDO:</p>
 </div>
 <div class="section" id="describing-tables-views">
 <h2>获取数据库表与视图信息（Describing Tables/Views）<a class="headerlink" href="#describing-tables-views" title="永久链接至标题">¶</a></h2>
-<p><a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a> 也提供了方法去检索详细的表和视图信息：</p>
+<p><a class="reference internal" href="../api/Phalcon_Db.html"><span class="doc">Phalcon\Db</span></a> 也提供了方法去检索详细的表和视图信息：</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="c1">// 获取test_db数据库的所有表</span>
@@ -766,7 +768,7 @@ bound parameters are directly passed to PDO:</p>
 <div class="section" id="id2">
 <h2>创建/修改/删除表<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>不同的数据库系统（MySQL,Postgresql等）通过了CREATE, ALTER 或 DROP命令提供了用于创建，修改或删除表的功能。但是不同的数据库语法不同。
-<a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a> 提供了统一的接口来改变表，而不需要区分基于目标存储系统上的SQL语法。</p>
+<a class="reference internal" href="../api/Phalcon_Db.html"><span class="doc">Phalcon\Db</span></a> 提供了统一的接口来改变表，而不需要区分基于目标存储系统上的SQL语法。</p>
 <div class="section" id="creating-tables">
 <h3>创建数据库表（Creating Tables）<a class="headerlink" href="#creating-tables" title="永久链接至标题">¶</a></h3>
 <p>下面这个例子展示了怎么建立一个表：</p>
@@ -810,7 +812,7 @@ bound parameters are directly passed to PDO:</p>
 <span class="p">);</span>
 </pre></div>
 </div>
-<p><code class="code docutils literal"><span class="pre">Phalcon\DB::createTable()</span></code> 接受一个描述数据库表相关的数组。字段被定义成class <a class="reference internal" href="../api/Phalcon_Db_Column.html"><em>Phalcon\Db\Column</em></a> 。
+<p><code class="code docutils literal"><span class="pre">Phalcon\DB::createTable()</span></code> 接受一个描述数据库表相关的数组。字段被定义成class <a class="reference internal" href="../api/Phalcon_Db_Column.html"><span class="doc">Phalcon\Db\Column</span></a> 。
 下表列出了可用于定义字段的选项：</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -826,7 +828,7 @@ bound parameters are directly passed to PDO:</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>&#8220;type&#8221;</td>
-<td>字段类型，传入的值必须是 <a class="reference internal" href="../api/Phalcon_Db_Column.html"><em>Phalcon\Db\Column</em></a> 的常量值（看下面的列表）</td>
+<td>字段类型，传入的值必须是 <a class="reference internal" href="../api/Phalcon_Db_Column.html"><span class="doc">Phalcon\Db\Column</span></a> 的常量值（看下面的列表）</td>
 <td>不</td>
 </tr>
 <tr class="row-odd"><td>&#8220;primary&#8221;</td>
@@ -871,7 +873,7 @@ bound parameters are directly passed to PDO:</p>
 </tr>
 </tbody>
 </table>
-<p><a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a> 支持下面的数据库字段类型:</p>
+<p><a class="reference internal" href="../api/Phalcon_Db.html"><span class="doc">Phalcon\Db</span></a> 支持下面的数据库字段类型:</p>
 <ul class="simple">
 <li><code class="code docutils literal"><span class="pre">Phalcon\DB\Column::TYPE_INTEGER</span></code></li>
 <li><code class="code docutils literal"><span class="pre">Phalcon\DB\Column::TYPE_DATE</span></code></li>
@@ -896,15 +898,15 @@ bound parameters are directly passed to PDO:</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>&#8220;columns&#8221;</td>
-<td>一个数组包含表的所有字段，字段要定义成 <a class="reference internal" href="../api/Phalcon_Db_Column.html"><em>Phalcon\Db\Column</em></a></td>
+<td>一个数组包含表的所有字段，字段要定义成 <a class="reference internal" href="../api/Phalcon_Db_Column.html"><span class="doc">Phalcon\Db\Column</span></a></td>
 <td>不</td>
 </tr>
 <tr class="row-odd"><td>&#8220;indexes&#8221;</td>
-<td>一个数组包含表的所有索引，索引要定义成 <a class="reference internal" href="../api/Phalcon_Db_Index.html"><em>Phalcon\Db\Index</em></a></td>
+<td>一个数组包含表的所有索引，索引要定义成 <a class="reference internal" href="../api/Phalcon_Db_Index.html"><span class="doc">Phalcon\Db\Index</span></a></td>
 <td>是</td>
 </tr>
 <tr class="row-even"><td>&#8220;references&#8221;</td>
-<td>一个数组包含表的所有外键，外键要定义成 <a class="reference internal" href="../api/Phalcon_Db_Reference.html"><em>Phalcon\Db\Reference</em></a></td>
+<td>一个数组包含表的所有外键，外键要定义成 <a class="reference internal" href="../api/Phalcon_Db_Reference.html"><span class="doc">Phalcon\Db\Reference</span></a></td>
 <td>是</td>
 </tr>
 <tr class="row-odd"><td>&#8220;options&#8221;</td>
@@ -917,7 +919,7 @@ bound parameters are directly passed to PDO:</p>
 <div class="section" id="altering-tables">
 <h3>修改数据库表（Altering Tables）<a class="headerlink" href="#altering-tables" title="永久链接至标题">¶</a></h3>
 <p>随着你的应用的增长，作为一个重构的一部分，或者增加新功能，你也许需要修改你的数据库。
-因为不是所有的数据库允许你修改已存在的字段或者添加字段在2个已存在的字段之间。所以 <a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a>
+因为不是所有的数据库允许你修改已存在的字段或者添加字段在2个已存在的字段之间。所以 <a class="reference internal" href="../api/Phalcon_Db.html"><span class="doc">Phalcon\Db</span></a>
 会受到数据库系统的这些限制。</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 

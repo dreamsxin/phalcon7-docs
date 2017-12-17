@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" /> 
 </head>
 <body>
@@ -93,27 +95,27 @@
 <p>Phalcon\Image\AdapterInterface initializer</p>
 <div class="section" id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
-<p>abstract public <a class="reference internal" href="Phalcon_Image_Adapter.html"><em>Phalcon\Image\Adapter</em></a>  <strong>resize</strong> ([<em>unknown</em> $width], [<em>unknown</em> $height], [<em>unknown</em> $master])</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Image_Adapter.html"><span class="doc">Phalcon\Image\Adapter</span></a>  <strong>resize</strong> ([<em>unknown</em> $width], [<em>unknown</em> $height], [<em>unknown</em> $master])</p>
 <p>Resize the image to the given size. Either the width or the height can be omitted and the image will be resized proportionally.</p>
 <p>abstract public  <strong>liquidRescale</strong> (<em>unknown</em> $width, <em>unknown</em> $height, [<em>unknown</em> $delta_x], [<em>unknown</em> $rigidity])</p>
 <p>...</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Image_Adapter.html"><em>Phalcon\Image\Adapter</em></a>  <strong>crop</strong> (<em>unknown</em> $width, <em>unknown</em> $height, [<em>unknown</em> $offset_x], [<em>unknown</em> $offset_y])</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Image_Adapter.html"><span class="doc">Phalcon\Image\Adapter</span></a>  <strong>crop</strong> (<em>unknown</em> $width, <em>unknown</em> $height, [<em>unknown</em> $offset_x], [<em>unknown</em> $offset_y])</p>
 <p>Crop an image to the given size. Either the width or the height can be omitted and the current width or height will be used.</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Image_Adapter.html"><em>Phalcon\Image\Adapter</em></a>  <strong>rotate</strong> (<em>unknown</em> $degrees)</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Image_Adapter.html"><span class="doc">Phalcon\Image\Adapter</span></a>  <strong>rotate</strong> (<em>unknown</em> $degrees)</p>
 <p>Rotate the image by a given amount.</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Image_Adapter.html"><em>Phalcon\Image\Adapter</em></a>  <strong>flip</strong> (<em>unknown</em> $direction)</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Image_Adapter.html"><span class="doc">Phalcon\Image\Adapter</span></a>  <strong>flip</strong> (<em>unknown</em> $direction)</p>
 <p>Flip the image along the horizontal or vertical axis.</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Image_Adapter.html"><em>Phalcon\Image\Adapter</em></a>  <strong>sharpen</strong> (<em>unknown</em> $amount)</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Image_Adapter.html"><span class="doc">Phalcon\Image\Adapter</span></a>  <strong>sharpen</strong> (<em>unknown</em> $amount)</p>
 <p>Sharpen the image by a given amount.</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Image_Adapter.html"><em>Phalcon\Image\Adapter</em></a>  <strong>reflection</strong> ([<em>unknown</em> $height], [<em>unknown</em> $opacity], [<em>unknown</em> $fade_in])</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Image_Adapter.html"><span class="doc">Phalcon\Image\Adapter</span></a>  <strong>reflection</strong> ([<em>unknown</em> $height], [<em>unknown</em> $opacity], [<em>unknown</em> $fade_in])</p>
 <p>Add a reflection to an image. The most opaque part of the reflection will be equal to the opacity setting and fade out to full transparent. Alpha transparency is preserved.</p>
-<p>abstract public <a class="reference internal" href=""><em>Phalcon\Image\AdapterInterface</em></a>  <strong>watermark</strong> (<em>unknown</em> $watermark, [<em>unknown</em> $offset_x], [<em>unknown</em> $offset_y], [<em>unknown</em> $opacity])</p>
+<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Image\AdapterInterface</span></a>  <strong>watermark</strong> (<em>unknown</em> $watermark, [<em>unknown</em> $offset_x], [<em>unknown</em> $offset_y], [<em>unknown</em> $opacity])</p>
 <p>Add a watermark to an image with a specified opacity. Alpha transparency will be preserved.</p>
-<p>abstract public <a class="reference internal" href=""><em>Phalcon\Image\AdapterInterface</em></a>  <strong>text</strong> (<em>string</em> $text, [<em>unknown</em> $offset_x], [<em>unknown</em> $offset_y], [<em>unknown</em> $opacity], [<em>unknown</em> $color], [<em>unknown</em> $size], [<em>unknown</em> $fontfile])</p>
+<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Image\AdapterInterface</span></a>  <strong>text</strong> (<em>string</em> $text, [<em>unknown</em> $offset_x], [<em>unknown</em> $offset_y], [<em>unknown</em> $opacity], [<em>unknown</em> $color], [<em>unknown</em> $size], [<em>unknown</em> $fontfile])</p>
 <p>Add a text to an image with a specified opacity.</p>
-<p>abstract public <a class="reference internal" href=""><em>Phalcon\Image\AdapterInterface</em></a>  <strong>line</strong> (<em>int</em> $sx, <em>int</em> $sy, <em>int</em> $ex, <em>int</em> $ey, [<em>string</em> $color])</p>
+<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Image\AdapterInterface</span></a>  <strong>line</strong> (<em>int</em> $sx, <em>int</em> $sy, <em>int</em> $ex, <em>int</em> $ey, [<em>string</em> $color])</p>
 <p>Draws a line</p>
-<p>abstract public <a class="reference internal" href=""><em>Phalcon\Image\AdapterInterface</em></a>  <strong>polygon</strong> (<em>array</em> $coordinates, [<em>string</em> $color])</p>
+<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Image\AdapterInterface</span></a>  <strong>polygon</strong> (<em>array</em> $coordinates, [<em>string</em> $color])</p>
 <p>Draws a polygon</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
@@ -123,15 +125,15 @@
 </div>
 <p>abstract public  <strong>mask</strong> (<em>unknown</em> $mask)</p>
 <p>...</p>
-<p>abstract public <a class="reference internal" href=""><em>Phalcon\Image\AdapterInterface</em></a>  <strong>background</strong> (<em>unknown</em> $color, [<em>unknown</em> $opacity])</p>
+<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Image\AdapterInterface</span></a>  <strong>background</strong> (<em>unknown</em> $color, [<em>unknown</em> $opacity])</p>
 <p>Set the background color of an image. This is only useful for images with alpha transparency.</p>
 <p>abstract public  <strong>blur</strong> ([<em>unknown</em> $radius])</p>
 <p>...</p>
 <p>abstract public  <strong>pixelate</strong> ([<em>unknown</em> $amount])</p>
 <p>...</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Image_Adapter.html"><em>Phalcon\Image\Adapter</em></a>  <strong>save</strong> ([<em>unknown</em> $file], [<em>unknown</em> $opacity], [<em>unknown</em> $interlacing])</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Image_Adapter.html"><span class="doc">Phalcon\Image\Adapter</span></a>  <strong>save</strong> ([<em>unknown</em> $file], [<em>unknown</em> $opacity], [<em>unknown</em> $interlacing])</p>
 <p>Save the image. If the filename is omitted, the original image will be overwritten.</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Image_Adapter.html"><em>Phalcon\Image\Adapter</em></a>  <strong>render</strong> ([<em>unknown</em> $type], [<em>unknown</em> $opacity], [<em>unknown</em> $interlacing])</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Image_Adapter.html"><span class="doc">Phalcon\Image\Adapter</span></a>  <strong>render</strong> ([<em>unknown</em> $type], [<em>unknown</em> $opacity], [<em>unknown</em> $interlacing])</p>
 <p>Render the image and return the binary string.</p>
 </div>
 </div>

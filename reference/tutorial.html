@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
     <link rel="next" title="教程：INVO 简介（Tutorial: Introducing INVO）" href="tutorial-invo.html" />
     <link rel="prev" title="Phalcon7 开发工具（Phalcon7 Developer Tools）" href="tools.html" /> 
@@ -118,7 +120,7 @@
 <h1>教程：让我们通过例子来学习（Tutorial: Let&#8217;s learn by example）<a class="headerlink" href="#tutorial-let-s-learn-by-example" title="永久链接至标题">¶</a></h1>
 <p>通过这第一个教程，我们将引导您从基础完成创建简单的带有注册表单的应用。
 我们也将解释框架行为的基本方面。如果您对Phalcon的自动代码生成工具有兴趣，
-您可以查看 <a class="reference internal" href="tools.html"><em>developer tools</em></a>。</p>
+您可以查看 <a class="reference internal" href="tools.html"><span class="doc">developer tools</span></a>。</p>
 <div class="section" id="checking-your-installation">
 <h2>确认安装（Checking your installation）<a class="headerlink" href="#checking-your-installation" title="永久链接至标题">¶</a></h2>
 <p>我们假设你已经安装了Phalcon。请检查你的phpinfo()输出了一个&#8221;Phalcon&#8221;部分引用或者执行以下代码片段:</p>
@@ -229,7 +231,7 @@
 </div>
 <div class="section" id="autoloaders">
 <h3>自动加载（Autoloaders）<a class="headerlink" href="#autoloaders" title="永久链接至标题">¶</a></h3>
-<p>我们可以看出，引导程序的第一部分是注册一个自动加载器。在这个应用程序里，它将用于加载控制器和模型类。例如，我们可以为控制器注册一个或多个目录来增加应用程序的灵活性的。在我们的例子中，我们使用了 <a class="reference internal" href="../api/Phalcon_Loader.html"><em>Phalcon\Loader</em></a> 组件。</p>
+<p>我们可以看出，引导程序的第一部分是注册一个自动加载器。在这个应用程序里，它将用于加载控制器和模型类。例如，我们可以为控制器注册一个或多个目录来增加应用程序的灵活性的。在我们的例子中，我们使用了 <a class="reference internal" href="../api/Phalcon_Loader.html"><span class="doc">Phalcon\Loader</span></a> 组件。</p>
 <p>有了它，我们可以加载使用各种策略类，但在这个例子中，我们选择了在预定义的目录中查找类：</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
@@ -247,8 +249,8 @@
 </div>
 <div class="section" id="dependency-management">
 <h3>依赖管理（Dependency Management）<a class="headerlink" href="#dependency-management" title="永久链接至标题">¶</a></h3>
-<p>在使用Phalcon时必须理解的一个非常重要的概念是 <a class="reference internal" href="di.html"><em>依赖注入容器(dependency injection container)</em></a>. 这听起来复杂,但实际上非常简单实用。</p>
-<p>服务容器是一个全局存储的将要被使用的应用程序功能包。每次框架需要的一个组件时，会请求这个使用协定好名称的服务容器。因为Phalcon是一个高度解耦的框架， <a class="reference internal" href="../api/Phalcon_Di.html"><em>Phalcon\Di</em></a> 作为黏合剂，促使不同组件的集成，以一个透明的方式实现他们一起进行工作。</p>
+<p>在使用Phalcon时必须理解的一个非常重要的概念是 <a class="reference internal" href="di.html"><span class="doc">依赖注入容器(dependency injection container)</span></a>. 这听起来复杂,但实际上非常简单实用。</p>
+<p>服务容器是一个全局存储的将要被使用的应用程序功能包。每次框架需要的一个组件时，会请求这个使用协定好名称的服务容器。因为Phalcon是一个高度解耦的框架， <a class="reference internal" href="../api/Phalcon_Di.html"><span class="doc">Phalcon\Di</span></a> 作为黏合剂，促使不同组件的集成，以一个透明的方式实现他们一起进行工作。</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="c1">// ...</span>
@@ -257,7 +259,7 @@
 <span class="nv">$di</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Db\Adapter\Pdo\Mysql</span><span class="p">();</span>
 </pre></div>
 </div>
-<p><a class="reference internal" href="../api/Phalcon_Di_FactoryDefault.html"><em>Phalcon\Di\FactoryDefault</em></a> 是 <a class="reference internal" href="../api/Phalcon_Di.html"><em>Phalcon\Di</em></a> 的一个变体。为了让事情变得更容易，它已注册了Phalcon的大多数组件。
+<p><a class="reference internal" href="../api/Phalcon_Di_FactoryDefault.html"><span class="doc">Phalcon\Di\FactoryDefault</span></a> 是 <a class="reference internal" href="../api/Phalcon_Di.html"><span class="doc">Phalcon\Di</span></a> 的一个变体。为了让事情变得更容易，它已注册了Phalcon的大多数组件。
 因此，我们不需要一个一个注册这些组件。在以后更换工厂服务的时候也不会有什么问题。</p>
 <p>在接下来的部分，我们注册了“视图(view)”服务，指示框架将去指定的目录寻找视图文件。由于视图并非PHP类，它们不能被自动加载器加载。</p>
 <p>服务可以通过多种方式进行登记，但在我们的教程中，我们将使用一个匿名函数 <a class="reference external" href="http://php.net/manual/zh/functions.anonymous.php">anonymous function</a>:</p>
@@ -274,7 +276,7 @@
 </pre></div>
 </div>
 <p>接下来，我们注册一个基础URI，这样通过Phalcon生成包括我们之前设置的“tutorial”文件夹在内的所有的URI。
-我们使用类  <a class="reference internal" href="../api/Phalcon_Tag.html"><em>Phalcon\Tag</em></a>  生成超链接，这将在本教程后续部分很重要。</p>
+我们使用类  <a class="reference internal" href="../api/Phalcon_Tag.html"><span class="doc">Phalcon\Tag</span></a>  生成超链接，这将在本教程后续部分很重要。</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="c1">// ...</span>
@@ -287,7 +289,7 @@
 <span class="p">});</span>
 </pre></div>
 </div>
-<p>在这个文件的最后部分，我们发现 <a class="reference internal" href="../api/Phalcon_Mvc_Application.html"><em>Phalcon\Mvc\Application</em></a>。其目的是初始化请求环境，并接收路由到来的请求，接着分发任何发现的动作；收集所有的响应，并在过程完成后返回它们。</p>
+<p>在这个文件的最后部分，我们发现 <a class="reference internal" href="../api/Phalcon_Mvc_Application.html"><span class="doc">Phalcon\Mvc\Application</span></a>。其目的是初始化请求环境，并接收路由到来的请求，接着分发任何发现的动作；收集所有的响应，并在过程完成后返回它们。</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="c1">// ...</span>
@@ -340,8 +342,8 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>浏览器输出应该保持不变。当这个动作已经执行结束 <a class="reference internal" href="../api/Phalcon_Mvc_View.html"><em>Phalcon\Mvc\View</em></a> 静态组件会自动创建。
-学习更多关于 <a class="reference internal" href="views.html"><em>视图使用教程</em></a> 。</p>
+<p>浏览器输出应该保持不变。当这个动作已经执行结束 <a class="reference internal" href="../api/Phalcon_Mvc_View.html"><span class="doc">Phalcon\Mvc\View</span></a> 静态组件会自动创建。
+学习更多关于 <a class="reference internal" href="views.html"><span class="doc">视图使用教程</span></a> 。</p>
 </div>
 <div class="section" id="designing-a-sign-up-form">
 <h3>设计注册表单（Designing a sign up form）<a class="headerlink" href="#designing-a-sign-up-form" title="永久链接至标题">¶</a></h3>
@@ -354,10 +356,10 @@
 </pre></div>
 </div>
 <p>生成的HTML代码显示一个锚 (&#8220;a&#8221;) HTML标签链接到一个新的控制器：</p>
-<div class="highlight-html"><div class="highlight"><pre><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hello!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/tutorial/signup&quot;</span><span class="p">&gt;</span>Sign Up Here!<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;h1&gt;</span>Hello!<span class="nt">&lt;/h1&gt;</span> <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;/tutorial/signup&quot;</span><span class="nt">&gt;</span>Sign Up Here!<span class="nt">&lt;/a&gt;</span>
 </pre></div>
 </div>
-<p>我们使用类 <a class="reference internal" href="../api/Phalcon_Tag.html"><em>Phalcon\Tag</em></a> 去生成标记。 这是一个让我们构建HTML标记的实用类。 关于生成HTML更详细的文章可以查看 <a class="reference internal" href="tags.html"><em>视图助手</em></a></p>
+<p>我们使用类 <a class="reference internal" href="../api/Phalcon_Tag.html"><span class="doc">Phalcon\Tag</span></a> 去生成标记。 这是一个让我们构建HTML标记的实用类。 关于生成HTML更详细的文章可以查看 <a class="reference internal" href="tags.html"><span class="doc">视图助手</span></a></p>
 <img class="align-center" src="../static/img/tutorial-2.png"><p>这是一个注册控制器（app/controllers/SignupController.php）：</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
@@ -374,29 +376,29 @@
 </pre></div>
 </div>
 <p>这个空index动作整洁的传递了表单定义给一个视图（app/views/signup/index.phtml）：</p>
-<div class="highlight-html+php"><div class="highlight"><pre><span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Sign up using this form<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="nt">&lt;h2&gt;</span>Sign up using this form<span class="nt">&lt;/h2&gt;</span>
 
 <span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">form</span><span class="p">(</span><span class="s2">&quot;signup/register&quot;</span><span class="p">);</span> <span class="cp">?&gt;</span>
 
- <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;name&quot;</span><span class="p">&gt;</span>Name<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+ <span class="nt">&lt;p&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>Name<span class="nt">&lt;/label&gt;</span>
     <span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">textField</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span> <span class="cp">?&gt;</span>
- <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+ <span class="nt">&lt;/p&gt;</span>
 
- <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;email&quot;</span><span class="p">&gt;</span>E-Mail<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+ <span class="nt">&lt;p&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;email&quot;</span><span class="nt">&gt;</span>E-Mail<span class="nt">&lt;/label&gt;</span>
     <span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">textField</span><span class="p">(</span><span class="s2">&quot;email&quot;</span><span class="p">)</span> <span class="cp">?&gt;</span>
- <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+ <span class="nt">&lt;/p&gt;</span>
 
- <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+ <span class="nt">&lt;p&gt;</span>
     <span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">submitButton</span><span class="p">(</span><span class="s2">&quot;Register&quot;</span><span class="p">)</span> <span class="cp">?&gt;</span>
- <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+ <span class="nt">&lt;/p&gt;</span>
 
-<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
 </pre></div>
 </div>
 <p>在浏览器中查看表单将显示类似的页面：</p>
-<img class="align-center" src="../static/img/tutorial-3.png"><p><a class="reference internal" href="../api/Phalcon_Tag.html"><em>Phalcon\Tag</em></a> 还提供了有用的方法来构建表单元素。</p>
+<img class="align-center" src="../static/img/tutorial-3.png"><p><a class="reference internal" href="../api/Phalcon_Tag.html"><span class="doc">Phalcon\Tag</span></a> 还提供了有用的方法来构建表单元素。</p>
 <p><code class="code docutils literal"><span class="pre">Phalcon\Tag::form()</span></code> 方法第一个参数，它是一个相对`uri`到这个应用的一个控制器/动作。</p>
 <p>通过单击“Send”按钮，您将注意到框架抛出了一个异常，这表明我们是错过了在控制器中注册“register”动作。我们的 <cite>public/index.php</cite> 文件抛出这个异常：</p>
 <blockquote>

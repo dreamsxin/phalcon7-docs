@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" /> 
 </head>
 <body>
@@ -93,13 +95,13 @@
 <p>Phalcon\Mvc\Model\TransactionInterface initializer</p>
 <div class="section" id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
-<p>abstract public  <strong>setTransactionManager</strong> (<a class="reference internal" href="Phalcon_Mvc_Model_Transaction_ManagerInterface.html"><em>Phalcon\Mvc\Model\Transaction\ManagerInterface</em></a> $manager)</p>
+<p>abstract public  <strong>setTransactionManager</strong> (<a class="reference internal" href="Phalcon_Mvc_Model_Transaction_ManagerInterface.html"><span class="doc">Phalcon\Mvc\Model\Transaction\ManagerInterface</span></a> $manager)</p>
 <p>Sets transaction manager related to the transaction</p>
 <p>abstract public <em>boolean</em>  <strong>begin</strong> ()</p>
 <p>Starts the transaction</p>
 <p>abstract public <em>boolean</em>  <strong>commit</strong> ()</p>
 <p>Commits the transaction</p>
-<p>abstract public <em>boolean</em>  <strong>rollback</strong> ([<em>string</em> $rollbackMessage], [<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><em>Phalcon\Mvc\ModelInterface</em></a> $rollbackRecord])</p>
+<p>abstract public <em>boolean</em>  <strong>rollback</strong> ([<em>string</em> $rollbackMessage], [<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><span class="doc">Phalcon\Mvc\ModelInterface</span></a> $rollbackRecord])</p>
 <p>Rollbacks the transaction</p>
 <p>abstract public <em>string</em>  <strong>getConnection</strong> ()</p>
 <p>Returns connection related to transaction</p>
@@ -113,7 +115,7 @@
 <p>Returns validations messages from last save try</p>
 <p>abstract public <em>boolean</em>  <strong>isValid</strong> ()</p>
 <p>Checks whether internal connection is under an active transaction</p>
-<p>abstract public  <strong>setRollbackedRecord</strong> (<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><em>Phalcon\Mvc\ModelInterface</em></a> $record)</p>
+<p>abstract public  <strong>setRollbackedRecord</strong> (<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><span class="doc">Phalcon\Mvc\ModelInterface</span></a> $record)</p>
 <p>Sets object which generates rollback action</p>
 </div>
 </div>

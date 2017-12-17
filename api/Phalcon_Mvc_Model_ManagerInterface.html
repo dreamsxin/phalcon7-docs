@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" /> 
 </head>
 <body>
@@ -93,19 +95,19 @@
 <p>Phalcon\Mvc\Model\ManagerInterface initializer</p>
 <div class="section" id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
-<p>abstract public  <strong>initialize</strong> (<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><em>Phalcon\Mvc\ModelInterface</em></a> $model)</p>
+<p>abstract public  <strong>initialize</strong> (<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><span class="doc">Phalcon\Mvc\ModelInterface</span></a> $model)</p>
 <p>Initializes a model in the model manager</p>
 <p>abstract public <em>boolean</em>  <strong>isInitialized</strong> (<em>string</em> $modelName)</p>
 <p>Check of a model is already initialized</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><em>Phalcon\Mvc\ModelInterface</em></a>  <strong>getLastInitialized</strong> ()</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><span class="doc">Phalcon\Mvc\ModelInterface</span></a>  <strong>getLastInitialized</strong> ()</p>
 <p>Get last initialized model</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><em>Phalcon\Mvc\ModelInterface</em></a>  <strong>load</strong> (<em>string</em> $modelName, <em>boolean</em> $newInstance)</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><span class="doc">Phalcon\Mvc\ModelInterface</span></a>  <strong>load</strong> (<em>string</em> $modelName, <em>boolean</em> $newInstance)</p>
 <p>Loads a model throwing an exception if it doesn&#8217;t exist</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Mvc_Model_RelationInterface.html"><em>Phalcon\Mvc\Model\RelationInterface</em></a>  <strong>addHasOne</strong> (<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><em>Phalcon\Mvc\ModelInterface</em></a> $model, <em>mixed</em> $fields, <em>string</em> $referencedModel, <em>mixed</em> $referencedFields, [<em>array</em> $options])</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Mvc_Model_RelationInterface.html"><span class="doc">Phalcon\Mvc\Model\RelationInterface</span></a>  <strong>addHasOne</strong> (<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><span class="doc">Phalcon\Mvc\ModelInterface</span></a> $model, <em>mixed</em> $fields, <em>string</em> $referencedModel, <em>mixed</em> $referencedFields, [<em>array</em> $options])</p>
 <p>Setup a 1-1 relation between two models</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Mvc_Model_RelationInterface.html"><em>Phalcon\Mvc\Model\RelationInterface</em></a>  <strong>addBelongsTo</strong> (<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><em>Phalcon\Mvc\ModelInterface</em></a> $model, <em>mixed</em> $fields, <em>string</em> $referencedModel, <em>mixed</em> $referencedFields, [<em>array</em> $options])</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Mvc_Model_RelationInterface.html"><span class="doc">Phalcon\Mvc\Model\RelationInterface</span></a>  <strong>addBelongsTo</strong> (<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><span class="doc">Phalcon\Mvc\ModelInterface</span></a> $model, <em>mixed</em> $fields, <em>string</em> $referencedModel, <em>mixed</em> $referencedFields, [<em>array</em> $options])</p>
 <p>Setup a relation reverse 1-1  between two models</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Mvc_Model_RelationInterface.html"><em>Phalcon\Mvc\Model\RelationInterface</em></a>  <strong>addHasMany</strong> (<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><em>Phalcon\Mvc\ModelInterface</em></a> $model, <em>mixed</em> $fields, <em>string</em> $referencedModel, <em>mixed</em> $referencedFields, [<em>array</em> $options])</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Mvc_Model_RelationInterface.html"><span class="doc">Phalcon\Mvc\Model\RelationInterface</span></a>  <strong>addHasMany</strong> (<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><span class="doc">Phalcon\Mvc\ModelInterface</span></a> $model, <em>mixed</em> $fields, <em>string</em> $referencedModel, <em>mixed</em> $referencedFields, [<em>array</em> $options])</p>
 <p>Setup a relation 1-n between two models</p>
 <p>abstract public <em>boolean</em>  <strong>existsBelongsTo</strong> (<em>string</em> $modelName, <em>string</em> $modelRelation)</p>
 <p>Checks whether a model has a belongsTo relation with another model</p>
@@ -113,37 +115,37 @@
 <p>Checks whether a model has a hasMany relation with another model</p>
 <p>abstract public <em>boolean</em>  <strong>existsHasOne</strong> (<em>string</em> $modelName, <em>string</em> $modelRelation)</p>
 <p>Checks whether a model has a hasOne relation with another model</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Mvc_Model_ResultsetInterface.html"><em>Phalcon\Mvc\Model\ResultsetInterface</em></a>  <strong>getBelongsToRecords</strong> (<em>string</em> $method, <em>string</em> $modelName, <em>string</em> $modelRelation, <a class="reference internal" href="Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> $record, [<em>array</em> $parameters])</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Mvc_Model_ResultsetInterface.html"><span class="doc">Phalcon\Mvc\Model\ResultsetInterface</span></a>  <strong>getBelongsToRecords</strong> (<em>string</em> $method, <em>string</em> $modelName, <em>string</em> $modelRelation, <a class="reference internal" href="Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> $record, [<em>array</em> $parameters])</p>
 <p>Gets belongsTo related records from a model</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Mvc_Model_ResultsetInterface.html"><em>Phalcon\Mvc\Model\ResultsetInterface</em></a>  <strong>getHasManyRecords</strong> (<em>string</em> $method, <em>string</em> $modelName, <em>string</em> $modelRelation, <a class="reference internal" href="Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> $record, [<em>array</em> $parameters])</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Mvc_Model_ResultsetInterface.html"><span class="doc">Phalcon\Mvc\Model\ResultsetInterface</span></a>  <strong>getHasManyRecords</strong> (<em>string</em> $method, <em>string</em> $modelName, <em>string</em> $modelRelation, <a class="reference internal" href="Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> $record, [<em>array</em> $parameters])</p>
 <p>Gets hasMany related records from a model</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Mvc_Model_ResultsetInterface.html"><em>Phalcon\Mvc\Model\ResultsetInterface</em></a>  <strong>getHasOneRecords</strong> (<em>string</em> $method, <em>string</em> $modelName, <em>string</em> $modelRelation, <a class="reference internal" href="Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> $record, [<em>array</em> $parameters])</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Mvc_Model_ResultsetInterface.html"><span class="doc">Phalcon\Mvc\Model\ResultsetInterface</span></a>  <strong>getHasOneRecords</strong> (<em>string</em> $method, <em>string</em> $modelName, <em>string</em> $modelRelation, <a class="reference internal" href="Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> $record, [<em>array</em> $parameters])</p>
 <p>Gets belongsTo related records from a model</p>
-<p>abstract public <em>array</em>  <strong>getBelongsTo</strong> (<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><em>Phalcon\Mvc\ModelInterface</em></a> $model)</p>
+<p>abstract public <em>array</em>  <strong>getBelongsTo</strong> (<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><span class="doc">Phalcon\Mvc\ModelInterface</span></a> $model)</p>
 <p>Gets belongsTo relations defined on a model</p>
-<p>abstract public <em>array</em>  <strong>getHasMany</strong> (<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><em>Phalcon\Mvc\ModelInterface</em></a> $model)</p>
+<p>abstract public <em>array</em>  <strong>getHasMany</strong> (<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><span class="doc">Phalcon\Mvc\ModelInterface</span></a> $model)</p>
 <p>Gets hasMany relations defined on a model</p>
-<p>abstract public <em>array</em>  <strong>getHasOne</strong> (<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><em>Phalcon\Mvc\ModelInterface</em></a> $model)</p>
+<p>abstract public <em>array</em>  <strong>getHasOne</strong> (<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><span class="doc">Phalcon\Mvc\ModelInterface</span></a> $model)</p>
 <p>Gets hasOne relations defined on a model</p>
-<p>abstract public <em>array</em>  <strong>getHasOneAndHasMany</strong> (<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><em>Phalcon\Mvc\ModelInterface</em></a> $model)</p>
+<p>abstract public <em>array</em>  <strong>getHasOneAndHasMany</strong> (<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><span class="doc">Phalcon\Mvc\ModelInterface</span></a> $model)</p>
 <p>Gets hasOne relations defined on a model</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Mvc_Model_RelationInterface.html"><em>Phalcon\Mvc\Model\RelationInterface</em></a> [] <strong>getRelations</strong> (<em>string</em> $modelName)</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Mvc_Model_RelationInterface.html"><span class="doc">Phalcon\Mvc\Model\RelationInterface</span></a> [] <strong>getRelations</strong> (<em>string</em> $modelName)</p>
 <p>Query all the relationships defined on a model</p>
 <p>abstract public <em>array</em>  <strong>getRelationsBetween</strong> (<em>string</em> $first, <em>string</em> $second)</p>
 <p>Query the relations between two models</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Mvc_Model_QueryInterface.html"><em>Phalcon\Mvc\Model\QueryInterface</em></a>  <strong>createQuery</strong> (<em>string</em> $phql)</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Mvc_Model_QueryInterface.html"><span class="doc">Phalcon\Mvc\Model\QueryInterface</span></a>  <strong>createQuery</strong> (<em>string</em> $phql)</p>
 <p>Creates a Phalcon\Mvc\Model\Query without execute it</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Mvc_Model_QueryInterface.html"><em>Phalcon\Mvc\Model\QueryInterface</em></a>  <strong>executeQuery</strong> (<em>string</em> $phql, [<em>array</em> $placeholders])</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Mvc_Model_QueryInterface.html"><span class="doc">Phalcon\Mvc\Model\QueryInterface</span></a>  <strong>executeQuery</strong> (<em>string</em> $phql, [<em>array</em> $placeholders])</p>
 <p>Creates a Phalcon\Mvc\Model\Query and execute it</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Mvc_Model_Query_BuilderInterface.html"><em>Phalcon\Mvc\Model\Query\BuilderInterface</em></a>  <strong>createBuilder</strong> ([<em>string</em> $params], [<em>unknown</em> $type])</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Mvc_Model_Query_BuilderInterface.html"><span class="doc">Phalcon\Mvc\Model\Query\BuilderInterface</span></a>  <strong>createBuilder</strong> ([<em>string</em> $params], [<em>unknown</em> $type])</p>
 <p>Creates a Phalcon\Mvc\Model\Query\Builder\Select</p>
-<p>abstract public  <strong>addBehavior</strong> (<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><em>Phalcon\Mvc\ModelInterface</em></a> $model, <a class="reference internal" href="Phalcon_Mvc_Model_BehaviorInterface.html"><em>Phalcon\Mvc\Model\BehaviorInterface</em></a> $behavior)</p>
+<p>abstract public  <strong>addBehavior</strong> (<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><span class="doc">Phalcon\Mvc\ModelInterface</span></a> $model, <a class="reference internal" href="Phalcon_Mvc_Model_BehaviorInterface.html"><span class="doc">Phalcon\Mvc\Model\BehaviorInterface</span></a> $behavior)</p>
 <p>Binds a behavior to a model</p>
-<p>abstract public  <strong>notifyEvent</strong> (<em>string</em> $eventName, <a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><em>Phalcon\Mvc\ModelInterface</em></a> $model)</p>
+<p>abstract public  <strong>notifyEvent</strong> (<em>string</em> $eventName, <a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><span class="doc">Phalcon\Mvc\ModelInterface</span></a> $model)</p>
 <p>Receives events generated in the models and dispatches them to a events-manager if available Notify the behaviors that are listening in the model</p>
-<p>abstract public <em>boolean</em>  <strong>missingMethod</strong> (<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><em>Phalcon\Mvc\ModelInterface</em></a> $model, <em>string</em> $eventName, <em>array</em> $data)</p>
+<p>abstract public <em>boolean</em>  <strong>missingMethod</strong> (<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><span class="doc">Phalcon\Mvc\ModelInterface</span></a> $model, <em>string</em> $eventName, <em>array</em> $data)</p>
 <p>Dispatch a event to the listeners and behaviors This method expects that the endpoint listeners/behaviors returns true meaning that a least one is implemented</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Mvc_Model_QueryInterface.html"><em>Phalcon\Mvc\Model\QueryInterface</em></a>  <strong>getLastQuery</strong> ()</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Mvc_Model_QueryInterface.html"><span class="doc">Phalcon\Mvc\Model\QueryInterface</span></a>  <strong>getLastQuery</strong> ()</p>
 <p>Returns the last query created or executed in the</p>
 </div>
 </div>

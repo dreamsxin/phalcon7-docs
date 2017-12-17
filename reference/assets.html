@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
     <link rel="next" title="MVC 应用（MVC Applications）" href="applications.html" />
     <link rel="prev" title="视图助手（View Helpers）" href="tags.html" /> 
@@ -111,7 +113,7 @@
   <div class="section" id="assets-management">
 <h1>资源文件管理（Assets Management）<a class="headerlink" href="#assets-management" title="永久链接至标题">¶</a></h1>
 <p><code class="code docutils literal"><span class="pre">Phalcon\Assets</span></code> 是一个让开发者管理静态资源的组件，如管理CSS，JavaScript等。</p>
-<p><a class="reference internal" href="../api/Phalcon_Assets_Manager.html"><em>Phalcon\Assets\Manager</em></a> 存在于DI容器中，所以我们可以在服务容器存在的
+<p><a class="reference internal" href="../api/Phalcon_Assets_Manager.html"><span class="doc">Phalcon\Assets\Manager</span></a> 存在于DI容器中，所以我们可以在服务容器存在的
 任何地方使用它来添加/管理资源。</p>
 <div class="section" id="adding-resources">
 <h2>添加资源（Adding Resources）<a class="headerlink" href="#adding-resources" title="永久链接至标题">¶</a></h2>
@@ -140,25 +142,25 @@ JavaScript另一为CSS.</p>
 </pre></div>
 </div>
 <p>然后我们可以在视图中输出资源：</p>
-<div class="highlight-html+php"><div class="highlight"><pre><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Some amazing website<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Some amazing website<span class="nt">&lt;/title&gt;</span>
         <span class="cp">&lt;?php</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assets</span><span class="o">-&gt;</span><span class="na">outputCss</span><span class="p">()</span> <span class="cp">?&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
 
         <span class="c">&lt;!-- ... --&gt;</span>
 
         <span class="cp">&lt;?php</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assets</span><span class="o">-&gt;</span><span class="na">outputJs</span><span class="p">()</span> <span class="cp">?&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;html&gt;</span>
 </pre></div>
 </div>
 <p>For better pageload performance, it is recommended to place JavaScript at the end of the HTML instead of in the <code class="code docutils literal"><span class="pre">&lt;head&gt;</span></code>.</p>
 </div>
 <div class="section" id="local-remote-resources">
 <h2>本地与远程资源（Local/Remote resources）<a class="headerlink" href="#local-remote-resources" title="永久链接至标题">¶</a></h2>
-<p>本地资源是同一应用中的资源，这些资源存在于应用的根目录中。 <a class="reference internal" href="../api/Phalcon_Mvc_Url.html"><em>Phalcon\Mvc\Url</em></a> 用来生成
+<p>本地资源是同一应用中的资源，这些资源存在于应用的根目录中。 <a class="reference internal" href="../api/Phalcon_Mvc_Url.html"><span class="doc">Phalcon\Mvc\Url</span></a> 用来生成
 本地的url.</p>
 <p>远程资源即是一种存在于CDN或其它远程服务器上的资源，比如常用的jQuery, Bootstrap等资源。</p>
 <p>The second parameter of <code class="code docutils literal"><span class="pre">addCss()</span></code> and <code class="code docutils literal"><span class="pre">addJs()</span></code> says whether the resource is local or not (<code class="code docutils literal"><span class="pre">true</span></code> is local, <code class="code docutils literal"><span class="pre">false</span></code> is remote). By default, the assets manager will assume the resource is local:</p>
@@ -195,33 +197,33 @@ JavaScript另一为CSS.</p>
 </pre></div>
 </div>
 <p>然后在视图中如下使用：</p>
-<div class="highlight-html+php"><div class="highlight"><pre><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Some amazing website<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<div class="highlight-html+php"><div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Some amazing website<span class="nt">&lt;/title&gt;</span>
         <span class="cp">&lt;?php</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assets</span><span class="o">-&gt;</span><span class="na">outputJs</span><span class="p">(</span><span class="s1">&#39;header&#39;</span><span class="p">)</span> <span class="cp">?&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
 
         <span class="c">&lt;!-- ... --&gt;</span>
 
         <span class="cp">&lt;?php</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assets</span><span class="o">-&gt;</span><span class="na">outputJs</span><span class="p">(</span><span class="s1">&#39;footer&#39;</span><span class="p">)</span> <span class="cp">?&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;html&gt;</span>
 </pre></div>
 </div>
 <p>Volt语法：</p>
-<div class="highlight-html+jinja"><div class="highlight"><pre><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Some amazing website<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Some amazing website<span class="nt">&lt;/title&gt;</span>
         <span class="cp">{{</span> <span class="nv">assets.outputCss</span><span class="o">(</span><span class="s1">&#39;header&#39;</span><span class="o">)</span> <span class="cp">}}</span>
-    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
 
         <span class="c">&lt;!-- ... --&gt;</span>
 
         <span class="cp">{{</span> <span class="nv">assets.outputJs</span><span class="o">(</span><span class="s1">&#39;footer&#39;</span><span class="o">)</span> <span class="cp">}}</span>
-    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;html&gt;</span>
 </pre></div>
 </div>
 </div>
@@ -349,10 +351,10 @@ and which URI will be used to show it. These settings are set up with <code clas
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><a class="reference internal" href="../api/Phalcon_Assets_Filters_Jsmin.html"><em>Phalcon\Assets\Filters\Jsmin</em></a></td>
+<tr class="row-even"><td><a class="reference internal" href="../api/Phalcon_Assets_Filters_Jsmin.html"><span class="doc">Phalcon\Assets\Filters\Jsmin</span></a></td>
 <td>压缩JavaScript文件即去除掉JavaScript解释器/编译器忽略的一些字符</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="../api/Phalcon_Assets_Filters_Cssmin.html"><em>Phalcon\Assets\Filters\Cssmin</em></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="../api/Phalcon_Assets_Filters_Cssmin.html"><span class="doc">Phalcon\Assets\Filters\Cssmin</span></a></td>
 <td>压缩CSS文件即去除掉浏览器在渲染CSS时不需要的一些字符</td>
 </tr>
 </tbody>

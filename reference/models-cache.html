@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
     <link rel="next" title="使用视图（Using Views）" href="views.html" />
     <link rel="prev" title="Phalcon 查询语言（Phalcon Query Language (PHQL)）" href="phql.html" /> 
@@ -116,8 +118,8 @@
 <div class="section" id="caching-resultsets">
 <h2>缓存结果集（Caching Resultsets）<a class="headerlink" href="#caching-resultsets" title="永久链接至标题">¶</a></h2>
 <p>一个非常可行的方案是我们可以为那些不经常改变且经常访问的数据库数据进行缓存，比如把他们放入内存，这样可以加快程序的执行速度。</p>
-<p>当 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> 需要使用缓存数据的服务时Model可以直接从DI中取得此缓存服务modelsCache(惯例名).</p>
-<p>Phalcon提供了一个组件（服务）可以用来 <a class="reference internal" href="cache.html"><em>缓存</em></a> 任何种类的数据，下面我们会解释如何在model使用它。第一步我们要在启动文件注册
+<p>当 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> 需要使用缓存数据的服务时Model可以直接从DI中取得此缓存服务modelsCache(惯例名).</p>
+<p>Phalcon提供了一个组件（服务）可以用来 <a class="reference internal" href="cache.html"><span class="doc">缓存</span></a> 任何种类的数据，下面我们会解释如何在model使用它。第一步我们要在启动文件注册
 这个服务:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
@@ -213,7 +215,7 @@
 </div>
 <div class="section" id="find-findfirst-overriding-find-findfirst">
 <h2>重写 find 与 findFirst 方法（Overriding find/findFirst）<a class="headerlink" href="#find-findfirst-overriding-find-findfirst" title="永久链接至标题">¶</a></h2>
-<p>从上面的我们可以看到这两个方法是从 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model继承而来</em></a>:</p>
+<p>从上面的我们可以看到这两个方法是从 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model继承而来</span></a>:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
@@ -360,7 +362,7 @@
 </div>
 <div class="section" id="forcing-cache">
 <h2>强制缓存（Forcing Cache）<a class="headerlink" href="#forcing-cache" title="永久链接至标题">¶</a></h2>
-<p>前面的例子中我们在 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> 中使用框架内建的缓存组件。为实现强制缓存我们传递了cache作为参数：</p>
+<p>前面的例子中我们在 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> 中使用框架内建的缓存组件。为实现强制缓存我们传递了cache作为参数：</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="c1">// 缓存查询结果5分钟</span>
@@ -825,7 +827,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>这里我们返回的是CustomQuery而不是不直接的返回 <a class="reference internal" href="../api/Phalcon_Mvc_Model_Query.html"><em>Phalcon\Mvc\Model\Query</em></a>， 类定义如下所示：</p>
+<p>这里我们返回的是CustomQuery而不是不直接的返回 <a class="reference internal" href="../api/Phalcon_Mvc_Model_Query.html"><span class="doc">Phalcon\Mvc\Model\Query</span></a>， 类定义如下所示：</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Query</span> <span class="k">as</span> <span class="nx">ModelQuery</span><span class="p">;</span>

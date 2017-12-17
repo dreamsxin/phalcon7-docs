@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
     <link rel="next" title="多语言支持（Multi-lingual Support）" href="translate.html" />
     <link rel="prev" title="Encryption/Decryption" href="crypt.html" /> 
@@ -110,12 +112,12 @@
 			  
   <div class="section" id="acl-access-control-lists-acl">
 <h1>访问控制列表 ACL（Access Control Lists ACL）<a class="headerlink" href="#acl-access-control-lists-acl" title="永久链接至标题">¶</a></h1>
-<p>Phalcon在权限方面通过 <a class="reference internal" href="../api/Phalcon_Acl.html"><em>Phalcon\Acl</em></a> 提供了一个轻量级的 ACL(访问控制列表)。<a class="reference external" href="http://en.wikipedia.org/wiki/Access_control_list">Access Control Lists</a> (ACL)
+<p>Phalcon在权限方面通过 <a class="reference internal" href="../api/Phalcon_Acl.html"><span class="doc">Phalcon\Acl</span></a> 提供了一个轻量级的 ACL(访问控制列表)。<a class="reference external" href="http://en.wikipedia.org/wiki/Access_control_list">Access Control Lists</a> (ACL)
 允许系统对用户的访问权限进行控制，比如允许访问某些资源而不允许访问其它资源等。这里我们建议开发者了解一些关于ACL的技术。</p>
 <p>ACL有两部分组成即角色和资源。资源即是ACL定义的权限所依附的对象。角色即是ACL所字义的请求者的身份，ACL决定了角色对资源的访问权限，允许访问或拒绝访问。</p>
 <div class="section" id="acl-creating-an-acl">
 <h2>创建 ACL（Creating An ACL）<a class="headerlink" href="#acl-creating-an-acl" title="永久链接至标题">¶</a></h2>
-<p>这个组件起先是设计工作在内存中的， 这样做提供了更高的访问速度。 <a class="reference internal" href="../api/Phalcon_Acl.html"><em>Phalcon\Acl</em></a> 构造器的第一个参数用于设置取得ACL的方式。 下面是使用内存适配器的例子：</p>
+<p>这个组件起先是设计工作在内存中的， 这样做提供了更高的访问速度。 <a class="reference internal" href="../api/Phalcon_Acl.html"><span class="doc">Phalcon\Acl</span></a> 构造器的第一个参数用于设置取得ACL的方式。 下面是使用内存适配器的例子：</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Acl\Adapter\Memory</span> <span class="k">as</span> <span class="nx">AclList</span><span class="p">;</span>
@@ -123,7 +125,7 @@
 <span class="nv">$acl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AclList</span><span class="p">();</span>
 </pre></div>
 </div>
-<p>默认情况下 <a class="reference internal" href="../api/Phalcon_Acl.html"><em>Phalcon\Acl</em></a> 允许我们访问未定义的资源中的action，为了提高安全性， 我们设置默认访问级别为‘拒绝’。</p>
+<p>默认情况下 <a class="reference internal" href="../api/Phalcon_Acl.html"><span class="doc">Phalcon\Acl</span></a> 允许我们访问未定义的资源中的action，为了提高安全性， 我们设置默认访问级别为‘拒绝’。</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="c1">// 设置默认访问级别为拒绝</span>
@@ -133,7 +135,7 @@
 </div>
 <div class="section" id="adding-roles-to-the-acl">
 <h2>添加角色（Adding Roles to the ACL）<a class="headerlink" href="#adding-roles-to-the-acl" title="永久链接至标题">¶</a></h2>
-<p>角色即是权限的集合体，其中定义了我们对资源的访问权限。 例如， 我们会把一个组织内的不同的人定义为不同的角色。 The <a class="reference internal" href="../api/Phalcon_Acl_Role.html"><em>Phalcon\Acl\Role</em></a>
+<p>角色即是权限的集合体，其中定义了我们对资源的访问权限。 例如， 我们会把一个组织内的不同的人定义为不同的角色。 The <a class="reference internal" href="../api/Phalcon_Acl_Role.html"><span class="doc">Phalcon\Acl\Role</span></a>
 类使用一种更有组织的方式来定义角色。 这里我们创建一些角色：</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
@@ -155,7 +157,7 @@
 </div>
 <div class="section" id="adding-resources">
 <h2>添加资源（Adding Resources）<a class="headerlink" href="#adding-resources" title="永久链接至标题">¶</a></h2>
-<p>资源即是访问控制要控制的对象之一。 正常情况下在mvc中资源一般是控制器。 Phalcon中我们使用 <a class="reference internal" href="../api/Phalcon_Acl_Resource.html"><em>Phalcon\Acl\Resource</em></a> 来定义资源。
+<p>资源即是访问控制要控制的对象之一。 正常情况下在mvc中资源一般是控制器。 Phalcon中我们使用 <a class="reference internal" href="../api/Phalcon_Acl_Resource.html"><span class="doc">Phalcon\Acl\Resource</span></a> 来定义资源。
 非常重要的一点即是我们把相关的action或操作添加到资源中这样ACL才知道控制什么资源。</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
@@ -209,7 +211,7 @@
 </div>
 <div class="section" id="objects-as-role-name-and-resource-name">
 <h2>使用角色感知对象与资源感知对象（Objects as role name and resource name）<a class="headerlink" href="#objects-as-role-name-and-resource-name" title="永久链接至标题">¶</a></h2>
-<p>角色感知类必须实现 <a class="reference internal" href="../api/Phalcon_Acl_RoleAware.html"><em>Phalcon\Acl\RoleAware</em></a> 接口，资源感知类必须实现 <a class="reference internal" href="../api/Phalcon_Acl_ResourceAware.html"><em>Phalcon\Acl\ResourceAware</em></a> 接口。</p>
+<p>角色感知类必须实现 <a class="reference internal" href="../api/Phalcon_Acl_RoleAware.html"><span class="doc">Phalcon\Acl\RoleAware</span></a> 接口，资源感知类必须实现 <a class="reference internal" href="../api/Phalcon_Acl_ResourceAware.html"><span class="doc">Phalcon\Acl\ResourceAware</span></a> 接口。</p>
 <p>角色感知类 <code class="code docutils literal"><span class="pre">UserRoles</span></code>：</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
@@ -294,7 +296,7 @@
 </div>
 <div class="section" id="roles-inheritance">
 <h2>角色继承（Roles Inheritance）<a class="headerlink" href="#roles-inheritance" title="永久链接至标题">¶</a></h2>
-<p>我们可以使用 <a class="reference internal" href="../api/Phalcon_Acl_Role.html"><em>Phalcon\Acl\Role</em></a> 提供的继承机制来构造更复杂的角色。 Phalcon中的角色可以继承来自其它角色的
+<p>我们可以使用 <a class="reference internal" href="../api/Phalcon_Acl_Role.html"><span class="doc">Phalcon\Acl\Role</span></a> 提供的继承机制来构造更复杂的角色。 Phalcon中的角色可以继承来自其它角色的
 权限, 这样就可以实现更巧妙的资源访问控制。 如果要继承权限用户， 我们需要在添加角色函数的第二个参数中写上要继承的那个角色实例。</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
@@ -316,7 +318,7 @@
 </div>
 <div class="section" id="acl-serializing-acl-lists">
 <h2>序列化 ACL 列表（Serializing ACL lists）<a class="headerlink" href="#acl-serializing-acl-lists" title="永久链接至标题">¶</a></h2>
-<p>为了提高性能， <a class="reference internal" href="../api/Phalcon_Acl.html"><em>Phalcon\Acl</em></a> 的实例可以被实例化到APC, session， 文本或数据库中， 这样开发者就不需要重复的
+<p>为了提高性能， <a class="reference internal" href="../api/Phalcon_Acl.html"><span class="doc">Phalcon\Acl</span></a> 的实例可以被实例化到APC, session， 文本或数据库中， 这样开发者就不需要重复的
 定义acl了。 下面展示了如何去做：</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
@@ -351,7 +353,7 @@
 </div>
 <div class="section" id="acl-acl-events">
 <h2>ACL 事件（ACL Events）<a class="headerlink" href="#acl-acl-events" title="永久链接至标题">¶</a></h2>
-<p>如果需要的话 <a class="reference internal" href="../api/Phalcon_Acl.html"><em>Phalcon\Acl</em></a> 可以发送事件到 <a class="reference internal" href="events.html"><em>EventsManager</em></a> 。 这里我们为acl绑定事件。
+<p>如果需要的话 <a class="reference internal" href="../api/Phalcon_Acl.html"><span class="doc">Phalcon\Acl</span></a> 可以发送事件到 <a class="reference internal" href="events.html"><span class="doc">EventsManager</span></a> 。 这里我们为acl绑定事件。
 其中一些事件的处理结果如果返回了false则表示正在处理的操作会被中止。
 支持如下的事件：</p>
 <table border="1" class="docutils">
@@ -409,7 +411,7 @@
 </div>
 <div class="section" id="implementing-your-own-adapters">
 <h2>自定义适配器（Implementing your own adapters）<a class="headerlink" href="#implementing-your-own-adapters" title="永久链接至标题">¶</a></h2>
-<p>开发者要创建自己的扩展或已存在适配器则需要实现此 <a class="reference internal" href="../api/Phalcon_Acl_AdapterInterface.html"><em>Phalcon\Acl\AdapterInterface</em></a> 接口。</p>
+<p>开发者要创建自己的扩展或已存在适配器则需要实现此 <a class="reference internal" href="../api/Phalcon_Acl_AdapterInterface.html"><span class="doc">Phalcon\Acl\AdapterInterface</span></a> 接口。</p>
 </div>
 </div>
 

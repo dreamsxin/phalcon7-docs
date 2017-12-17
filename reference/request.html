@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
     <link rel="next" title="返回响应（Returning Responses）" href="response.html" />
     <link rel="prev" title="事件管理器（Events Manager）" href="events-manager.html" /> 
@@ -110,7 +112,7 @@
   <div class="section" id="request-environment">
 <h1>请求环境（Request Environment）<a class="headerlink" href="#request-environment" title="永久链接至标题">¶</a></h1>
 <p>每个 HTTP 请求（通常由浏览器发起），包含了请求参数、HTTP 头信息（包括Cookies）、文件等。Web 应用程序需要解析这些信息，并根据这些信息返回正确的响应给请求者。
-请求对象 <a class="reference internal" href="../api/Phalcon_Http_Request.html"><em>Phalcon\Http\Request</em></a> 封装了这些信息，你可以以面向对象的方式访问它。</p>
+请求对象 <a class="reference internal" href="../api/Phalcon_Http_Request.html"><span class="doc">Phalcon\Http\Request</span></a> 封装了这些信息，你可以以面向对象的方式访问它。</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Http\Request</span><span class="p">;</span>
@@ -133,9 +135,9 @@
 contain the values present in forms submitted or the parameters sent via the URL. The variables in the arrays are
 never sanitized and can contain illegal characters or even malicious code, which can lead to <a class="reference external" href="http://en.wikipedia.org/wiki/SQL_injection">SQL injection</a> or
 <a class="reference external" href="http://en.wikipedia.org/wiki/Cross-site_scripting">Cross Site Scripting (XSS)</a> attacks.</p>
-<p><a class="reference internal" href="../api/Phalcon_Http_Request.html"><em>Phalcon\Http\Request</em></a> allows you to access the values stored in the <code class="code docutils literal"><span class="pre">$_REQUEST</span></code>,
+<p><a class="reference internal" href="../api/Phalcon_Http_Request.html"><span class="doc">Phalcon\Http\Request</span></a> allows you to access the values stored in the <code class="code docutils literal"><span class="pre">$_REQUEST</span></code>,
 <code class="code docutils literal"><span class="pre">$_GET</span></code> and <code class="code docutils literal"><span class="pre">$_POST</span></code> arrays and sanitize or filter them with the &#8216;filter&#8217; service, (by default
-<a class="reference internal" href="filter.html"><em>Phalcon\Filter</em></a>). The following examples offer the same behavior:</p>
+<a class="reference internal" href="filter.html"><span class="doc">Phalcon\Filter</span></a>). The following examples offer the same behavior:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="c1">// Gets a variable from the $_REQUEST superglobal</span>
@@ -202,7 +204,7 @@ never sanitized and can contain illegal characters or even malicious code, which
 <div class="section" id="accessing-the-request-from-controllers">
 <h2>控制器中访问请求（Accessing the Request from Controllers）<a class="headerlink" href="#accessing-the-request-from-controllers" title="永久链接至标题">¶</a></h2>
 <p>The most common place to access the request environment is in an action of a controller. To access the
-<a class="reference internal" href="../api/Phalcon_Http_Request.html"><em>Phalcon\Http\Request</em></a> object from a controller you will need to use
+<a class="reference internal" href="../api/Phalcon_Http_Request.html"><span class="doc">Phalcon\Http\Request</span></a> object from a controller you will need to use
 the <code class="code docutils literal"><span class="pre">$this-&gt;request</span></code> public property of the controller:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
@@ -232,7 +234,7 @@ the <code class="code docutils literal"><span class="pre">$this-&gt;request</spa
 </div>
 <div class="section" id="uploading-files">
 <h2>文件上传（Uploading Files）<a class="headerlink" href="#uploading-files" title="永久链接至标题">¶</a></h2>
-<p>Another common task is file uploading. <a class="reference internal" href="../api/Phalcon_Http_Request.html"><em>Phalcon\Http\Request</em></a> offers
+<p>Another common task is file uploading. <a class="reference internal" href="../api/Phalcon_Http_Request.html"><span class="doc">Phalcon\Http\Request</span></a> offers
 an object-oriented way to achieve this task:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
@@ -260,8 +262,8 @@ an object-oriented way to achieve this task:</p>
 </pre></div>
 </div>
 <p>Each object returned by <code class="code docutils literal"><span class="pre">Phalcon\Http\Request::getUploadedFiles()</span></code> is an instance of the
-<a class="reference internal" href="../api/Phalcon_Http_Request_File.html"><em>Phalcon\Http\Request\File</em></a> class. Using the <code class="code docutils literal"><span class="pre">$_FILES</span></code> superglobal
-array offers the same behavior. <a class="reference internal" href="../api/Phalcon_Http_Request_File.html"><em>Phalcon\Http\Request\File</em></a> encapsulates
+<a class="reference internal" href="../api/Phalcon_Http_Request_File.html"><span class="doc">Phalcon\Http\Request\File</span></a> class. Using the <code class="code docutils literal"><span class="pre">$_FILES</span></code> superglobal
+array offers the same behavior. <a class="reference internal" href="../api/Phalcon_Http_Request_File.html"><span class="doc">Phalcon\Http\Request\File</span></a> encapsulates
 only the information related to each file uploaded with the request.</p>
 </div>
 <div class="section" id="working-with-headers">

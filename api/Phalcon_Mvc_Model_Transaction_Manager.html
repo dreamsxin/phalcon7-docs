@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" /> 
 </head>
 <body>
@@ -89,8 +91,8 @@
 			  
   <div class="section" id="class-phalcon-mvc-model-transaction-manager">
 <h1>Class <strong>Phalcon\Mvc\Model\Transaction\Manager</strong><a class="headerlink" href="#class-phalcon-mvc-model-transaction-manager" title="永久链接至标题">¶</a></h1>
-<p><em>extends</em> abstract class <a class="reference internal" href="Phalcon_Di_Injectable.html"><em>Phalcon\Di\Injectable</em></a></p>
-<p><em>implements</em> <a class="reference internal" href="Phalcon_Events_EventsAwareInterface.html"><em>Phalcon\Events\EventsAwareInterface</em></a>, <a class="reference internal" href="Phalcon_Di_InjectionAwareInterface.html"><em>Phalcon\Di\InjectionAwareInterface</em></a>, <a class="reference internal" href="Phalcon_Mvc_Model_Transaction_ManagerInterface.html"><em>Phalcon\Mvc\Model\Transaction\ManagerInterface</em></a></p>
+<p><em>extends</em> abstract class <a class="reference internal" href="Phalcon_Di_Injectable.html"><span class="doc">Phalcon\Di\Injectable</span></a></p>
+<p><em>implements</em> <a class="reference internal" href="Phalcon_Events_EventsAwareInterface.html"><span class="doc">Phalcon\Events\EventsAwareInterface</span></a>, <a class="reference internal" href="Phalcon_Di_InjectionAwareInterface.html"><span class="doc">Phalcon\Di\InjectionAwareInterface</span></a>, <a class="reference internal" href="Phalcon_Mvc_Model_Transaction_ManagerInterface.html"><span class="doc">Phalcon\Mvc\Model\Transaction\ManagerInterface</span></a></p>
 <p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/model/transaction/manager.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
 <p>A transaction acts on a single database connection. If you have multiple class-specific databases, the transaction will not protect interaction among them.  This class manages the objects that compose a transaction. A trasaction produces a unique connection that is passed to every object part of the transaction.</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
@@ -128,21 +130,21 @@
 </div>
 <div class="section" id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
-<p>public  <strong>__construct</strong> ([<a class="reference internal" href="Phalcon_DiInterface.html"><em>Phalcon\DiInterface</em></a> $dependencyInjector])</p>
+<p>public  <strong>__construct</strong> ([<a class="reference internal" href="Phalcon_DiInterface.html"><span class="doc">Phalcon\DiInterface</span></a> $dependencyInjector])</p>
 <p>Phalcon\Mvc\Model\Transaction\Manager constructor</p>
-<p>public <a class="reference internal" href=""><em>Phalcon\Mvc\Model\Transaction\Manager</em></a>  <strong>setDbService</strong> (<em>string</em> $service)</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model\Transaction\Manager</span></a>  <strong>setDbService</strong> (<em>string</em> $service)</p>
 <p>Sets the database service used to run the isolated transactions</p>
 <p>public <em>string</em>  <strong>getDbService</strong> ()</p>
 <p>Returns the database service used to isolate the transaction</p>
-<p>public <a class="reference internal" href=""><em>Phalcon\Mvc\Model\Transaction\Manager</em></a>  <strong>setRollbackPendent</strong> (<em>boolean</em> $rollbackPendent)</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model\Transaction\Manager</span></a>  <strong>setRollbackPendent</strong> (<em>boolean</em> $rollbackPendent)</p>
 <p>Set if the transaction manager must register a shutdown function to clean up pendent transactions</p>
 <p>public <em>boolean</em>  <strong>getRollbackPendent</strong> ()</p>
 <p>Check if the transaction manager is registering a shutdown function to clean up pendent transactions</p>
 <p>public <em>boolean</em>  <strong>has</strong> ()</p>
 <p>Checks whether the manager has an active transaction</p>
-<p>public <a class="reference internal" href="Phalcon_Mvc_Model_TransactionInterface.html"><em>Phalcon\Mvc\Model\TransactionInterface</em></a>  <strong>get</strong> ([<em>boolean</em> $autoBegin])</p>
+<p>public <a class="reference internal" href="Phalcon_Mvc_Model_TransactionInterface.html"><span class="doc">Phalcon\Mvc\Model\TransactionInterface</span></a>  <strong>get</strong> ([<em>boolean</em> $autoBegin])</p>
 <p>Returns a new Phalcon\Mvc\Model\Transaction or an already created once This method registers a shutdown function to rollback active connections</p>
-<p>public <a class="reference internal" href="Phalcon_Mvc_Model_TransactionInterface.html"><em>Phalcon\Mvc\Model\TransactionInterface</em></a>  <strong>getOrCreateTransaction</strong> ([<em>boolean</em> $autoBegin])</p>
+<p>public <a class="reference internal" href="Phalcon_Mvc_Model_TransactionInterface.html"><span class="doc">Phalcon\Mvc\Model\TransactionInterface</span></a>  <strong>getOrCreateTransaction</strong> ([<em>boolean</em> $autoBegin])</p>
 <p>Create/Returns a new transaction or an existing one</p>
 <p>public  <strong>rollbackPendent</strong> ()</p>
 <p>Rollbacks active transactions within the manager</p>
@@ -150,21 +152,21 @@
 <p>Commmits active transactions within the manager</p>
 <p>public  <strong>rollback</strong> ([<em>boolean</em> $collect])</p>
 <p>Rollbacks active transactions within the manager Collect will remove transaction from the manager</p>
-<p>public  <strong>notifyRollback</strong> (<a class="reference internal" href="Phalcon_Mvc_Model_TransactionInterface.html"><em>Phalcon\Mvc\Model\TransactionInterface</em></a> $transaction)</p>
+<p>public  <strong>notifyRollback</strong> (<a class="reference internal" href="Phalcon_Mvc_Model_TransactionInterface.html"><span class="doc">Phalcon\Mvc\Model\TransactionInterface</span></a> $transaction)</p>
 <p>Notifies the manager about a rollbacked transaction</p>
-<p>public  <strong>notifyCommit</strong> (<a class="reference internal" href="Phalcon_Mvc_Model_TransactionInterface.html"><em>Phalcon\Mvc\Model\TransactionInterface</em></a> $transaction)</p>
+<p>public  <strong>notifyCommit</strong> (<a class="reference internal" href="Phalcon_Mvc_Model_TransactionInterface.html"><span class="doc">Phalcon\Mvc\Model\TransactionInterface</span></a> $transaction)</p>
 <p>Notifies the manager about a commited transaction</p>
 <p>protected  <strong>_collectTransaction</strong> ()</p>
 <p>Removes transactions from the TransactionManager</p>
 <p>public  <strong>collectTransactions</strong> ()</p>
 <p>Remove all the transactions from the manager</p>
-<p>public  <strong>setDI</strong> (<a class="reference internal" href="Phalcon_DiInterface.html"><em>Phalcon\DiInterface</em></a> $dependencyInjector) inherited from Phalcon\Di\Injectable</p>
+<p>public  <strong>setDI</strong> (<a class="reference internal" href="Phalcon_DiInterface.html"><span class="doc">Phalcon\DiInterface</span></a> $dependencyInjector) inherited from Phalcon\Di\Injectable</p>
 <p>Sets the dependency injector</p>
-<p>public <a class="reference internal" href="Phalcon_DiInterface.html"><em>Phalcon\DiInterface</em></a>  <strong>getDI</strong> ([<em>unknown</em> $error], [<em>unknown</em> $notUseDefault]) inherited from Phalcon\Di\Injectable</p>
+<p>public <a class="reference internal" href="Phalcon_DiInterface.html"><span class="doc">Phalcon\DiInterface</span></a>  <strong>getDI</strong> ([<em>unknown</em> $error], [<em>unknown</em> $notUseDefault]) inherited from Phalcon\Di\Injectable</p>
 <p>Returns the internal dependency injector</p>
-<p>public  <strong>setEventsManager</strong> (<a class="reference internal" href="Phalcon_Events_ManagerInterface.html"><em>Phalcon\Events\ManagerInterface</em></a> $eventsManager) inherited from Phalcon\Di\Injectable</p>
+<p>public  <strong>setEventsManager</strong> (<a class="reference internal" href="Phalcon_Events_ManagerInterface.html"><span class="doc">Phalcon\Events\ManagerInterface</span></a> $eventsManager) inherited from Phalcon\Di\Injectable</p>
 <p>Sets the event manager</p>
-<p>public <a class="reference internal" href="Phalcon_Events_ManagerInterface.html"><em>Phalcon\Events\ManagerInterface</em></a>  <strong>getEventsManager</strong> () inherited from Phalcon\Di\Injectable</p>
+<p>public <a class="reference internal" href="Phalcon_Events_ManagerInterface.html"><span class="doc">Phalcon\Events\ManagerInterface</span></a>  <strong>getEventsManager</strong> () inherited from Phalcon\Di\Injectable</p>
 <p>Returns the internal event manager</p>
 <p>public <em>boolean</em>  <strong>fireEvent</strong> (<em>string</em> $eventName, [<em>mixed</em> $data], [<em>unknown</em> $cancelable]) inherited from Phalcon\Di\Injectable</p>
 <p>Fires an event, implicitly calls behaviors and listeners in the events manager are notified</p>
@@ -172,11 +174,11 @@
 <p>Fires an event, can stop the event by returning to the false</p>
 <p>public <em>boolean</em>  <strong>hasService</strong> (<em>string</em> $name) inherited from Phalcon\Di\Injectable</p>
 <p>Check whether the DI contains a service by a name</p>
-<p>public <a class="reference internal" href="Phalcon_Di_ServiceInterface.html"><em>Phalcon\Di\ServiceInterface</em></a>  <strong>setService</strong> (<em>unknown</em> $name) inherited from Phalcon\Di\Injectable</p>
+<p>public <a class="reference internal" href="Phalcon_Di_ServiceInterface.html"><span class="doc">Phalcon\Di\ServiceInterface</span></a>  <strong>setService</strong> (<em>unknown</em> $name) inherited from Phalcon\Di\Injectable</p>
 <p>Sets a service from the DI</p>
 <p>public <em>object|null</em>  <strong>getService</strong> (<em>unknown</em> $name) inherited from Phalcon\Di\Injectable</p>
 <p>Obtains a service from the DI</p>
-<p>public <em>mixed</em>  <strong>getResolveService</strong> (<em>string</em> $name, [<em>unknown</em> $args], [<em>unknown</em> $noerror], [<em>unknown</em> $noshared]) inherited from Phalcon\Di\Injectable</p>
+<p>public <em>mixed</em>  <strong>getResolveService</strong> (<em>string</em> $name, [<em>array</em> $args], [<em>unknown</em> $noerror], [<em>unknown</em> $noshared]) inherited from Phalcon\Di\Injectable</p>
 <p>Resolves the service based on its configuration</p>
 <p>public  <strong>attachEvent</strong> (<em>string</em> $eventType, <em>Closure</em> $callback) inherited from Phalcon\Di\Injectable</p>
 <p>Attach a listener to the events</p>

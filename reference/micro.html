@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
     <link rel="next" title="使用命名空间（Working with Namespaces）" href="namespaces.html" />
     <link rel="prev" title="调度控制器（Dispatching Controllers）" href="dispatching.html" /> 
@@ -136,7 +138,7 @@
 </div>
 <div class="section" id="creating-a-micro-application">
 <h2>创建微应用（Creating a Micro Application）<a class="headerlink" href="#creating-a-micro-application" title="永久链接至标题">¶</a></h2>
-<p>Phalcon中 使用 <a class="reference internal" href="../api/Phalcon_Mvc_Micro.html"><em>Phalcon\Mvc\Micro</em></a> 来实现微应用。</p>
+<p>Phalcon中 使用 <a class="reference internal" href="../api/Phalcon_Mvc_Micro.html"><span class="doc">Phalcon\Mvc\Micro</span></a> 来实现微应用。</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Micro</span><span class="p">;</span>
@@ -147,7 +149,7 @@
 </div>
 <div class="section" id="defining-routes">
 <h2>定义路由（Defining routes）<a class="headerlink" href="#defining-routes" title="永久链接至标题">¶</a></h2>
-<p>实例化后， 开发者需要添加一些路由规则。 Phalcon内部使用 <a class="reference internal" href="../api/Phalcon_Mvc_Router.html"><em>Phalcon\Mvc\Router</em></a> 来管理路由。 路由必须以 / 开头。
+<p>实例化后， 开发者需要添加一些路由规则。 Phalcon内部使用 <a class="reference internal" href="../api/Phalcon_Mvc_Router.html"><span class="doc">Phalcon\Mvc\Router</span></a> 来管理路由。 路由必须以 / 开头。
 定义路由时通常会书写http方法约束， 这样路由规则只适用于那些和规则及htttp方法相匹配的路由。 下面的方法展示了如何定义了HTTP get方法路由：</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
@@ -180,7 +182,7 @@
 <span class="p">});</span>
 </pre></div>
 </div>
-<p><a class="reference internal" href="../api/Phalcon_Mvc_Micro.html"><em>Phalcon\Mvc\Micro</em></a> 提供了一系列的用于定义http方法的限定方法：</p>
+<p><a class="reference internal" href="../api/Phalcon_Mvc_Micro.html"><span class="doc">Phalcon\Mvc\Micro</span></a> 提供了一系列的用于定义http方法的限定方法：</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="c1">// 匹配HTTP GET 方法：</span>
@@ -278,7 +280,7 @@
 <span class="p">});</span>
 </pre></div>
 </div>
-<p>另外开发者还可以使用 <a class="reference internal" href="response.html"><em>&#8220;response&#8221;</em></a> ， 这样开发者可以更好的处理结果：</p>
+<p>另外开发者还可以使用 <a class="reference internal" href="response.html"><span class="doc">&#8220;response&#8221;</span></a> ， 这样开发者可以更好的处理结果：</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/show/data&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$app</span><span class="p">)</span> <span class="p">{</span>
@@ -329,7 +331,7 @@
 </div>
 <div class="section" id="url-generating-urls-for-routes">
 <h2>根据路由生成 URL（Generating URLs for Routes）<a class="headerlink" href="#url-generating-urls-for-routes" title="永久链接至标题">¶</a></h2>
-<p>Phalcon中使用 <a class="reference internal" href="url.html"><em>Phalcon\Mvc\Url</em></a> 来生成其它的基于路由的URL。 开发者可以为路由设置名字， 通过这种方式 &#8220;url&#8221; 服务可以产生相关的路由：</p>
+<p>Phalcon中使用 <a class="reference internal" href="url.html"><span class="doc">Phalcon\Mvc\Url</span></a> 来生成其它的基于路由的URL。 开发者可以为路由设置名字， 通过这种方式 &#8220;url&#8221; 服务可以产生相关的路由：</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="c1">// 设置名为 &quot;show-post&quot;的路由</span>
@@ -356,7 +358,7 @@
 </div>
 <div class="section" id="interacting-with-the-dependency-injector">
 <h2>与依赖注入的交互（Interacting with the Dependency Injector）<a class="headerlink" href="#interacting-with-the-dependency-injector" title="永久链接至标题">¶</a></h2>
-<p>微应用中， <a class="reference internal" href="di.html"><em>Phalcon\Di\FactoryDefault</em></a> 是隐含生成的， 不过开发者可以明确的生成此类的实例以用来管理相关的服务：</p>
+<p>微应用中， <a class="reference internal" href="di.html"><span class="doc">Phalcon\Di\FactoryDefault</span></a> 是隐含生成的， 不过开发者可以明确的生成此类的实例以用来管理相关的服务：</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Micro</span><span class="p">;</span>
@@ -426,7 +428,7 @@
 </div>
 <div class="section" id="models-in-micro-applications">
 <h2>微应用中的模型（Models in Micro Applications）<a class="headerlink" href="#models-in-micro-applications" title="永久链接至标题">¶</a></h2>
-<p>Phalcon中开发者可以直接使用 <a class="reference internal" href="models.html"><em>Models</em></a> ， 开发者只需要一个类自动加载器来加载模型：</p>
+<p>Phalcon中开发者可以直接使用 <a class="reference internal" href="models.html"><span class="doc">Models</span></a> ， 开发者只需要一个类自动加载器来加载模型：</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="nv">$loader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Loader</span><span class="p">();</span>
@@ -453,7 +455,7 @@
 </div>
 <div class="section" id="micro-application-events">
 <h2>微应用中的事件（Micro Application Events）<a class="headerlink" href="#micro-application-events" title="永久链接至标题">¶</a></h2>
-<p>当有事件发生时 <a class="reference internal" href="../api/Phalcon_Mvc_Micro.html"><em>Phalcon\Mvc\Micro</em></a> 会发送事件到 <a class="reference internal" href="events.html"><em>EventsManager</em></a> 。 这里使用 &#8220;micro&#8221; 来绑定处理事件。 支持如下事件：</p>
+<p>当有事件发生时 <a class="reference internal" href="../api/Phalcon_Mvc_Micro.html"><span class="doc">Phalcon\Mvc\Micro</span></a> 会发送事件到 <a class="reference internal" href="events.html"><span class="doc">EventsManager</span></a> 。 这里使用 &#8220;micro&#8221; 来绑定处理事件。 支持如下事件：</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="19%" />
@@ -638,7 +640,7 @@
 </div>
 <div class="section" id="using-controllers-as-handlers">
 <h2>使用控制器处理（Using Controllers as Handlers）<a class="headerlink" href="#using-controllers-as-handlers" title="永久链接至标题">¶</a></h2>
-<p>中型的应用可以使用 <code class="code docutils literal"><span class="pre">Mvc\Micro</span></code> 来组织控制器中的处理器。 开发者也可以使用 <a class="reference internal" href="../api/Phalcon_Mvc_Micro_Collection.html"><em>Phalcon\Mvc\Micro\Collection</em></a> 来对控制器中的处理器进行归组：</p>
+<p>中型的应用可以使用 <code class="code docutils literal"><span class="pre">Mvc\Micro</span></code> 来组织控制器中的处理器。 开发者也可以使用 <a class="reference internal" href="../api/Phalcon_Mvc_Micro_Collection.html"><span class="doc">Phalcon\Mvc\Micro\Collection</span></a> 来对控制器中的处理器进行归组：</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Micro\Collection</span> <span class="k">as</span> <span class="nx">MicroCollection</span><span class="p">;</span>
@@ -689,7 +691,7 @@
 </div>
 <div class="section" id="returning-responses">
 <h2>返回响应（Returning Responses）<a class="headerlink" href="#returning-responses" title="永久链接至标题">¶</a></h2>
-<p>处理器可能会返回原生的 <a class="reference internal" href="response.html"><em>Phalcon\Http\Response</em></a> 实例或实现了相关接口的组件。 当返回Response对象时， 应用会自动的把处理结果返回到客户端。</p>
+<p>处理器可能会返回原生的 <a class="reference internal" href="response.html"><span class="doc">Phalcon\Http\Response</span></a> 实例或实现了相关接口的组件。 当返回Response对象时， 应用会自动的把处理结果返回到客户端。</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Micro</span><span class="p">;</span>
@@ -713,7 +715,7 @@
 </div>
 <div class="section" id="rendering-views">
 <h2>渲染视图（Rendering Views）<a class="headerlink" href="#rendering-views" title="永久链接至标题">¶</a></h2>
-<p><a class="reference internal" href="views.html"><em>Phalcon\Mvc\View\Simple</em></a> 可用来渲染视图， 示例如下：</p>
+<p><a class="reference internal" href="views.html"><span class="doc">Phalcon\Mvc\View\Simple</span></a> 可用来渲染视图， 示例如下：</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\Micro</span><span class="p">();</span>
@@ -736,8 +738,8 @@
 <span class="p">});</span>
 </pre></div>
 </div>
-<p>Please note that this code block uses <a class="reference internal" href="../api/Phalcon_Mvc_View_Simple.html"><em>Phalcon\Mvc\View\Simple</em></a> which uses relative paths instead of controllers and actions.
-If you would like to use <a class="reference internal" href="../api/Phalcon_Mvc_View_Simple.html"><em>Phalcon\Mvc\View\Simple</em></a> instead, you will need to change the parameters of the <code class="code docutils literal"><span class="pre">render()</span></code> method:</p>
+<p>Please note that this code block uses <a class="reference internal" href="../api/Phalcon_Mvc_View_Simple.html"><span class="doc">Phalcon\Mvc\View\Simple</span></a> which uses relative paths instead of controllers and actions.
+If you would like to use <a class="reference internal" href="../api/Phalcon_Mvc_View_Simple.html"><span class="doc">Phalcon\Mvc\View\Simple</span></a> instead, you will need to change the parameters of the <code class="code docutils literal"><span class="pre">render()</span></code> method:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\Micro</span><span class="p">();</span>
@@ -784,7 +786,7 @@ If you would like to use <a class="reference internal" href="../api/Phalcon_Mvc_
 <div class="section" id="related-sources">
 <h2>相关资源（Related Sources）<a class="headerlink" href="#related-sources" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="tutorial-rest.html"><em>Creating a Simple REST API</em></a> 例子中讲解了如何使用微应用来创建Restfull服务：</li>
+<li><a class="reference internal" href="tutorial-rest.html"><span class="doc">Creating a Simple REST API</span></a> 例子中讲解了如何使用微应用来创建Restfull服务：</li>
 <li><a class="reference external" href="http://store.phalconphp.com">Stickers Store</a> 也是一个简单的使用微应用的例子 [<a class="reference external" href="https://github.com/phalcon/store">Github</a>].</li>
 </ul>
 </div>

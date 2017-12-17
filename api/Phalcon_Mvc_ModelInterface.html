@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" /> 
 </head>
 <body>
@@ -93,7 +95,7 @@
 <p>Phalcon\Mvc\ModelInterface initializer</p>
 <div class="section" id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
-<p>abstract public <a class="reference internal" href=""><em>Phalcon\Mvc\ModelInterface</em></a>  <strong>setTransaction</strong> (<a class="reference internal" href="Phalcon_Mvc_Model_TransactionInterface.html"><em>Phalcon\Mvc\Model\TransactionInterface</em></a> $transaction)</p>
+<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\ModelInterface</span></a>  <strong>setTransaction</strong> (<a class="reference internal" href="Phalcon_Mvc_Model_TransactionInterface.html"><span class="doc">Phalcon\Mvc\Model\TransactionInterface</span></a> $transaction)</p>
 <p>Sets a transaction related to the Model instance</p>
 <p>abstract public <em>string</em>  <strong>getSource</strong> ()</p>
 <p>Returns table name mapped in the model</p>
@@ -151,23 +153,23 @@
 <p>Returns DependencyInjection connection service used to read data</p>
 <p>abstract public <em>string</em>  <strong>getWriteConnectionService</strong> ()</p>
 <p>Returns DependencyInjection connection service used to write data</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Db_AdapterInterface.html"><em>Phalcon\Db\AdapterInterface</em></a>  <strong>getReadConnection</strong> ()</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Db_AdapterInterface.html"><span class="doc">Phalcon\Db\AdapterInterface</span></a>  <strong>getReadConnection</strong> ()</p>
 <p>Gets internal database connection</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Db_AdapterInterface.html"><em>Phalcon\Db\AdapterInterface</em></a>  <strong>getWriteConnection</strong> ()</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Db_AdapterInterface.html"><span class="doc">Phalcon\Db\AdapterInterface</span></a>  <strong>getWriteConnection</strong> ()</p>
 <p>Gets internal database connection</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a>  <strong>assign</strong> (<em>array</em> $data, [<em>array</em> $columnMap], [<em>array</em> $whiteList], [<em>unknown</em> $negate])</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a>  <strong>assign</strong> (<em>array</em> $data, [<em>array</em> $columnMap], [<em>array</em> $whiteList], [<em>unknown</em> $negate])</p>
 <p>Assigns values to a model from an array</p>
-<p>abstract public static <a class="reference internal" href="Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a>  $result <strong>cloneResultMap</strong> (<a class="reference internal" href="Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> $base, <em>array</em> $data, <em>array</em> $columnMap, <em>int</em> $dirtyState, [<em>boolean</em> $keepSnapshots], [<em>unknown</em> $sourceModel])</p>
+<p>abstract public static <a class="reference internal" href="Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a>  $result <strong>cloneResultMap</strong> (<a class="reference internal" href="Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> $base, <em>array</em> $data, <em>array</em> $columnMap, <em>int</em> $dirtyState, [<em>boolean</em> $keepSnapshots], [<em>unknown</em> $sourceModel])</p>
 <p>Assigns values to a model from an array returning a new model</p>
-<p>abstract public static <a class="reference internal" href="Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a>  <strong>cloneResult</strong> (<a class="reference internal" href="Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> $base, <em>array</em> $data, [<em>int</em> $dirtyState], [<em>unknown</em> $sourceModel])</p>
+<p>abstract public static <a class="reference internal" href="Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a>  <strong>cloneResult</strong> (<a class="reference internal" href="Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> $base, <em>array</em> $data, [<em>int</em> $dirtyState], [<em>unknown</em> $sourceModel])</p>
 <p>Assigns values to a model from an array returning a new model</p>
 <p>abstract public static  <strong>cloneResultMapHydrate</strong> (<em>array</em> $data, <em>array</em> $columnMap, <em>int</em> $hydrationMode, [<em>unknown</em> $sourceModel])</p>
 <p>Returns an hydrated result based on the data and the column map</p>
-<p>abstract public static <a class="reference internal" href="Phalcon_Mvc_Model_ResultsetInterface.html"><em>Phalcon\Mvc\Model\ResultsetInterface</em></a>  <strong>find</strong> ([<em>array</em> $parameters])</p>
+<p>abstract public static <a class="reference internal" href="Phalcon_Mvc_Model_ResultsetInterface.html"><span class="doc">Phalcon\Mvc\Model\ResultsetInterface</span></a>  <strong>find</strong> ([<em>array</em> $parameters])</p>
 <p>Allows to query a set of records that match the specified conditions</p>
-<p>abstract public static <a class="reference internal" href=""><em>Phalcon\Mvc\ModelInterface</em></a>  <strong>findFirst</strong> ([<em>array</em> $parameters], [<em>unknown</em> $autoCreate])</p>
+<p>abstract public static <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\ModelInterface</span></a>  <strong>findFirst</strong> ([<em>array</em> $parameters], [<em>unknown</em> $autoCreate])</p>
 <p>Allows to query the first record that match the specified conditions</p>
-<p>abstract public static <a class="reference internal" href="Phalcon_Mvc_Model_CriteriaInterface.html"><em>Phalcon\Mvc\Model\CriteriaInterface</em></a>  <strong>query</strong> ([<a class="reference internal" href="Phalcon_DiInterface.html"><em>Phalcon\DiInterface</em></a> $dependencyInjector])</p>
+<p>abstract public static <a class="reference internal" href="Phalcon_Mvc_Model_CriteriaInterface.html"><span class="doc">Phalcon\Mvc\Model\CriteriaInterface</span></a>  <strong>query</strong> ([<a class="reference internal" href="Phalcon_DiInterface.html"><span class="doc">Phalcon\DiInterface</span></a> $dependencyInjector])</p>
 <p>Create a criteria for a especific model</p>
 <p>abstract public static <em>int</em>  <strong>count</strong> ([<em>array</em> $parameters])</p>
 <p>Allows to count how many records match the specified conditions</p>
@@ -201,7 +203,7 @@
 <p>Reads an attribute value by its name</p>
 <p>abstract public  <strong>writeAttribute</strong> (<em>string</em> $attribute, <em>mixed</em> $value)</p>
 <p>Writes an attribute value by its name</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Mvc_Model_ResultsetInterface.html"><em>Phalcon\Mvc\Model\ResultsetInterface</em></a>  <strong>getRelated</strong> (<em>string</em> $alias, [<em>array</em> $arguments])</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Mvc_Model_ResultsetInterface.html"><span class="doc">Phalcon\Mvc\Model\ResultsetInterface</span></a>  <strong>getRelated</strong> (<em>string</em> $alias, [<em>array</em> $arguments])</p>
 <p>Returns related records based on defined relations</p>
 <p>abstract public static <em>boolean</em>  <strong>remove</strong> (<em>array</em> $parameters)</p>
 <p>Allows to delete a set of records that match the specified conditions</p>

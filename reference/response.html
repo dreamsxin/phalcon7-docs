@@ -21,6 +21,8 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="index" title="索引" href="../index.html" />
+    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.2.1 文档" href="../index.html" />
     <link rel="next" title="Cookie 管理（Cookies Management）" href="cookies.html" />
     <link rel="prev" title="请求环境（Request Environment）" href="request.html" /> 
@@ -108,7 +110,7 @@
 			  
   <div class="section" id="returning-responses">
 <h1>返回响应（Returning Responses）<a class="headerlink" href="#returning-responses" title="永久链接至标题">¶</a></h1>
-<p>Part of the HTTP cycle is returning responses to clients. <a class="reference internal" href="../api/Phalcon_Http_Response.html"><em>Phalcon\Http\Response</em></a> is the Phalcon
+<p>Part of the HTTP cycle is returning responses to clients. <a class="reference internal" href="../api/Phalcon_Http_Response.html"><span class="doc">Phalcon\Http\Response</span></a> is the Phalcon
 component designed to achieve this task. HTTP responses are usually composed by headers and body. The following is an example of basic usage:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
@@ -161,7 +163,7 @@ type of response and much more.</p>
 <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setRawHeader</span><span class="p">(</span><span class="s2">&quot;HTTP/1.1 200 OK&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>A <a class="reference internal" href="../api/Phalcon_Http_Response_Headers.html"><em>Phalcon\Http\Response\Headers</em></a> bag internally manages headers. This class
+<p>A <a class="reference internal" href="../api/Phalcon_Http_Response_Headers.html"><span class="doc">Phalcon\Http\Response\Headers</span></a> bag internally manages headers. This class
 retrieves the headers before sending it to client:</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
@@ -175,7 +177,7 @@ retrieves the headers before sending it to client:</p>
 </div>
 <div class="section" id="making-redirections">
 <h2>重定向（Making Redirections）<a class="headerlink" href="#making-redirections" title="永久链接至标题">¶</a></h2>
-<p>可以通过 <a class="reference internal" href="../api/Phalcon_Http_Response.html"><em>Phalcon\Http\Response</em></a> 来执行HTTP重定向：</p>
+<p>可以通过 <a class="reference internal" href="../api/Phalcon_Http_Response.html"><span class="doc">Phalcon\Http\Response</span></a> 来执行HTTP重定向：</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="c1">// Redirect to the default URI</span>
@@ -194,9 +196,9 @@ retrieves the headers before sending it to client:</p>
 <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
 </pre></div>
 </div>
-<p>All internal URIs are generated using the &#8216;url&#8217; service (by default <a class="reference internal" href="url.html"><em>Phalcon\Mvc\Url</em></a>). This example demonstrates
+<p>All internal URIs are generated using the &#8216;url&#8217; service (by default <a class="reference internal" href="url.html"><span class="doc">Phalcon\Mvc\Url</span></a>). This example demonstrates
 how you can redirect using a route you have defined in your application:</p>
-<p>所有内部 URIs 都是通过 &#8216;url&#8217; 来生成的（ 默认是 <a class="reference internal" href="url.html"><em>Phalcon\Mvc\Url</em></a> ）。下面的例子演示如何通过一个应用内预先定义好的路由来重定向。</p>
+<p>所有内部 URIs 都是通过 &#8216;url&#8217; 来生成的（ 默认是 <a class="reference internal" href="url.html"><span class="doc">Phalcon\Mvc\Url</span></a> ）。下面的例子演示如何通过一个应用内预先定义好的路由来重定向。</p>
 <div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
 
 <span class="c1">// Redirect based on a named route</span>
