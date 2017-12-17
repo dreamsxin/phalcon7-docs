@@ -60,8 +60,8 @@ API Indice
    Phalcon_Cache_Yac
    Phalcon_Chart_Captcha
    Phalcon_Chart_Captcha_Tiny
-   Phalcon_Chart_QRcode
    Phalcon_Chart_Exception
+   Phalcon_Chart_QRcode
    Phalcon_Cli_Color
    Phalcon_Cli_Console
    Phalcon_Cli_Console_Exception
