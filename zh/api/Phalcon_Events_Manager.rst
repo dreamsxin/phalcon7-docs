@@ -93,7 +93,7 @@ Check whether certain type of event has listeners
 
 
 
-public *array*  **getListeners** (*unknown* $eventType, [*unknown* $full])
+public *array*  **getListeners** (*unknown* $eventType, [*boolean* $full])
 
 Returns all the attached listeners of a certain type
 

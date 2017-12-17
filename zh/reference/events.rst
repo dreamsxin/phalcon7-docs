@@ -146,8 +146,6 @@ Phalcon7 中几乎所有的组件都继承自 :doc:`Phalcon\\Di\\Injectable <../
 +-----------------------------------------+-----------------------+
 | loader:beforeCheckClass                 | NO                    |
 +-----------------------------------------+-----------------------+
-| loader:pathFound                        | NO                    |
-+-----------------------------------------+-----------------------+
 | loader:afterCheckClass                  | NO                    |
 +-----------------------------------------+-----------------------+
 | di:beforeServiceResolve                 | NO                    |
@@ -280,17 +278,25 @@ Phalcon7 中几乎所有的组件都继承自 :doc:`Phalcon\\Di\\Injectable <../
 +-----------------------------------------+-----------------------+
 | db:beginTransaction                     | NO                    |
 +-----------------------------------------+-----------------------+
-| db:createSavepoint                      | NO                    |
+| db:beforeCreateSavepoint                | NO                    |
 +-----------------------------------------+-----------------------+
-| db:rollbackTransaction                  | NO                    |
+| db:afterCreateSavepoint                 | NO                    |
 +-----------------------------------------+-----------------------+
-| db:rollbackSavepoint                    | NO                    |
+| db:beforeRollbackTransaction            | NO                    |
 +-----------------------------------------+-----------------------+
-| db:commitTransaction                    | NO                    |
+| db:afterRollbackTransaction             | NO                    |
 +-----------------------------------------+-----------------------+
-| db:releaseSavepoint                     | NO                    |
+| db:BeforeRollbackSavepoint              | NO                    |
 +-----------------------------------------+-----------------------+
-| db:releaseSavepoint                     | NO                    |
+| db:afterRollbackSavepoint               | NO                    |
++-----------------------------------------+-----------------------+
+| db:beforeCommitTransaction              | NO                    |
++-----------------------------------------+-----------------------+
+| db:afterCommitTransaction               | NO                    |
++-----------------------------------------+-----------------------+
+| db:beforeReleaseSavepoint               | NO                    |
++-----------------------------------------+-----------------------+
+| db:afterReleaseSavepoint                | NO                    |
 +-----------------------------------------+-----------------------+
 
 示例：

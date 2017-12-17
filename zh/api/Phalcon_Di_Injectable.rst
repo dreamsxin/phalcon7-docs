@@ -68,7 +68,7 @@ Obtains a service from the DI
 
 
 
-public *mixed*  **getResolveService** (*string* $name, [*unknown* $args], [*unknown* $noerror], [*unknown* $noshared])
+public *mixed*  **getResolveService** (*string* $name, [*array* $args], [*unknown* $noerror], [*unknown* $noshared])
 
 Resolves the service based on its configuration
 
