@@ -12,7 +12,7 @@
 
     $fp = fopen('test.bin', 'rb');
 
-    $bin = new Phalcon\Binary\Reader($fp);
+    $bin = new Phalcon\Binary\Reader($fp, Phalcon\Binary::MACHINE);
     $flag = $bin->readUnsignedChar();
     $num = $bin->readUnsignedInt16();
     $name = $bin->readString();
@@ -28,7 +28,7 @@
 
     $fp = fopen('test.bin', 'wb');
 
-    $bin = new Phalcon\Binary\Writer($fp);
+    $bin = new Phalcon\Binary\Writer($fp, Phalcon\Binary::MACHINE);
     $bin->writeUnsignedChar(1);
     $bin->writeUnsignedInt16(240);
     $bin->writeString('Phalcon7');

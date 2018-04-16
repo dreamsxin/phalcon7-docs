@@ -513,9 +513,9 @@ Phalcon 的结果集模拟了可滚动的游标，你可以通过位置，或者
     $arr = $customers->toArray();
 
     $columns = array('id', 'name'); // 需要输出的字段
-    $rename = true; // 字段名是否是映射后的名称
+    $mustColumn = true; // 只输出模型字段数据
     $negate = false;
-    $arr = $customers->toArray($columns, $rename, $negate);
+    $arr = $customers->toArray($columns, $mustColumn, $negate);
 
 绑定参数（Binding Parameters）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

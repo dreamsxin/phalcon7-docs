@@ -70,7 +70,7 @@ Phalcon中提供了 :code:`Phalcon\Arr` 数组助手类，让你更高效地处�
     $properties = array('id', 'name'); // 需要输出的字段
     $recursive = true; // 是否递归获取，如果属性是对象或者数组
     $negate = false;
-    $arr = \Phalcon\Arr::toArray($object, $colums, $rename, $negate);
+    $arr = \Phalcon\Arr::toArray($object, $colums, $recursive, $negate);
 
 下面的例子中展示了基本的使用方法：
 
