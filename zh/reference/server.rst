@@ -1,9 +1,9 @@
 服务类（Server Class）
-=====================
+======================
 提供了一些常用的服务类。
 
 TCP 服务端类（TCP Server Class）
--------------------------------
+--------------------------------
 :doc:`Phalcon\\Server <../api/Phalcon_Server>` 可以等待客户端的连接请求以及接收客户端发送的数据。
 
 .. code-block:: php
@@ -24,7 +24,7 @@ TCP 服务端类（TCP Server Class）
 
 
 HTTP 服务端类（HTTP Server Class）
----------------------------------
+----------------------------------
 :doc:`Phalcon\\Server\\Http <../api/Phalcon_Server_Http>` 可以等待客户端的连接请求以及接收客户端发送的数据。
 
 .. code-block:: php

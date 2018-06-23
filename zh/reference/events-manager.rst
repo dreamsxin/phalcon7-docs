@@ -329,7 +329,7 @@
     $eventsManager->fire("my-component:afterSomeTask", $this, $extraData, false, true);
 
 侦听全部事件（Listen for Any Event）
------------------------------------
+------------------------------------
 通过通配符 `*`，你可以侦听所有事件消息：
 
 .. code-block:: php
