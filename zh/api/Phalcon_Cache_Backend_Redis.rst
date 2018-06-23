@@ -100,6 +100,12 @@ Immediately invalidates all existing items.
 
 
 
+public *boolean*  **flushDb** ()
+
+Remove all keys from the current database.
+
+
+
 public  **getTrackingKey** ()
 
 ...

@@ -103,15 +103,27 @@ Sends data to a connected socket
 
 
 
+public *boolean*  **keepAlive** ()
+
+Enable keepalive
+
+
+
+public *boolean*  **shutdown** ()
+
+Shutdown
+
+
+
+public  **close** ()
+
+Close
+
+
+
 public *resource*  **getSocket** () inherited from Phalcon\\Socket
 
 Gets the socket
-
-
-
-public *int*  **getSocketId** () inherited from Phalcon\\Socket
-
-Gets the socket id
 
 
 
@@ -136,12 +148,6 @@ Checks the socket blocking / non blocking
 public *boolean*  **setOption** (*int* $level, *int* $optname, *mixed* $optval) inherited from Phalcon\\Socket
 
 Set the socket to blocking / non blocking
-
-
-
-public  **close** () inherited from Phalcon\\Socket
-
-Close the socket
 
 
 

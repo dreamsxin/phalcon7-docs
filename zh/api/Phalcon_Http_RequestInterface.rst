@@ -12,24 +12,24 @@ Phalcon\\Http\\RequestInterface initializer
 Methods
 -------
 
-abstract public *mixed*  **get** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue], [*unknown* $notAllowEmpty], [*unknown* $noRecursive])
+abstract public *mixed*  **get** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue], [*unknown* $notAllowEmpty], [*unknown* $recursiveLevel])
 
 Gets a variable from the $_REQUEST superglobal applying filters if needed
 
 
 
-abstract public *mixed*  **getPost** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue], [*unknown* $notAllowEmpty], [*unknown* $noRecursive])
+abstract public *mixed*  **getPost** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue], [*unknown* $notAllowEmpty], [*unknown* $recursiveLevel])
 
 Gets a variable from the $_POST superglobal applying filters if needed
 
 
 
-abstract public  **getPut** ([*unknown* $name], [*unknown* $filters], [*unknown* $defaultValue], [*unknown* $notAllowEmpty], [*unknown* $noRecursive])
+abstract public  **getPut** ([*unknown* $name], [*unknown* $filters], [*unknown* $defaultValue], [*unknown* $notAllowEmpty], [*unknown* $recursiveLevel])
 
 ...
 
 
-abstract public *mixed*  **getQuery** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue], [*unknown* $notAllowEmpty], [*unknown* $noRecursive])
+abstract public *mixed*  **getQuery** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue], [*unknown* $notAllowEmpty], [*unknown* $recursiveLevel])
 
 Gets variable from $_GET superglobal applying filters if needed
 

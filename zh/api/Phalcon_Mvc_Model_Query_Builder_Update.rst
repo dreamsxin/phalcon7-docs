@@ -63,6 +63,12 @@ Return the values to update with an associative array
 
 
 
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder\\Update <Phalcon_Mvc_Model_Query_Builder_Update>`  **setConflict** (*array* $conflict)
+
+Sets conflict
+
+
+
 protected *string*  **_compile** ()
 
 Returns a PHQL statement built based on the builder parameters

@@ -151,3 +151,15 @@ Checks if a value is a valid date $ret = Phalcon\\Date::valid('2012-01-22'); $re
 
 
 
+public static *int*  **diff** (*string* $date1, *string* $date2, [*unknown* $diffFormat], [*string* $format])
+
+Gets two date difference. $ret = Phalcon\\Date::diff('2012-01-22', '2018-05-10');
+
+
+
+public static *string*  **add** (*string* $date1, [*string* $interval], [*string* $format])
+
+Gets two date difference. $ret = Phalcon\\Date::add('2012-01-22', '1 days');
+
+
+

@@ -175,6 +175,7 @@ API Indice
    Phalcon_Loader_Exception
    Phalcon_Logger
    Phalcon_Logger_Adapter
+   Phalcon_Logger_Adapter_Direct
    Phalcon_Logger_Adapter_File
    Phalcon_Logger_Adapter_Firephp
    Phalcon_Logger_Adapter_Stream
@@ -353,6 +354,7 @@ API Indice
    Phalcon_Validation_Validator_Uniqueness
    Phalcon_Validation_Validator_Url
    Phalcon_Version
+   Phalcon_Xhprof
    Phalcon_Websocket_Client
    Phalcon_Websocket_Connection
    Phalcon_Websocket_Server

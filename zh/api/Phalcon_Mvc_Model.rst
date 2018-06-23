@@ -770,7 +770,7 @@ Sends a pre-build INSERT SQL statement to the relational database system
 
 
 
-protected *boolean*  **_doLowUpdate** ()
+protected *boolean|int*  **_doLowUpdate** ()
 
 Sends a pre-build UPDATE SQL statement to the relational database system
 
@@ -1244,7 +1244,7 @@ Returns a simple representation of the object that can be used with var_dump
 
 
 
-public *array*  **toArray** ([*array* $columns], [*bool* $renameColumns], [*unknown* $negate])
+public *array*  **toArray** ([*array* $columns], [*bool* $mustColumn], [*bool* $negate])
 
 Returns the instance as an array representation 
 
@@ -1281,7 +1281,7 @@ public  **reset** ()
 ...
 
 
-protected :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **filter** (*string* $field, *string|array* $filters, [*mixed* $defaultValue], [*boolean* $notAllowEmpty], [*boolean* $noRecursive])
+protected :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **filter** (*string* $field, *string|array* $filters, [*mixed* $defaultValue], [*boolean* $notAllowEmpty], [*boolean* $recursive])
 
 Sanitizes a value with a specified single or set of filters 
 

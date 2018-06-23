@@ -13,7 +13,7 @@ Class **Phalcon\\Socket\\Server**
 
     <?php
 
-    $server = new Phalcon\Socket\Server('127.0.0.1', 8989);
+      $server = new Phalcon\Socket\Server('127.0.0.1', 8989);
       $server->run(
           function(Phalcon\Socket\Client $client){
               // Connect
@@ -36,6 +36,36 @@ Class **Phalcon\\Socket\\Server**
               // Timeout
           }
       );
+    
+     class HttpServer extends Phalcon\Socket\Server {
+     
+     	  public function onTimeout() {
+     	  }
+     
+     	  public function onError(Phalcon\Socket\Client $client) {
+     	  }
+     
+     	  public function onConnection(Phalcon\Socket\Client $client) {
+     	  }
+     
+     	  public function onRecv(Phalcon\Socket\Client $client) {
+     	  }
+     
+     	  public function onSend(Phalcon\Socket\Client $client) {
+     		  $client->write("HTTP/1.0 200 OK\r\nServer: webserver\r\nContent-Type: text/html\r\nConnection: close\r\n\r\nHello World");
+     		  return FALSE;
+     	  }
+     
+     	  public function onClose(Phalcon\Socket\Client $client) {
+     	  }
+     }
+     
+     $server = new HttpServer('localhost', 6000);
+     $server->setOption(Phalcon\Socket::SOL_SOCKET, SO_REUSEADDR, 1);
+     $server->setOption(Phalcon\Socket::SOL_SOCKET, SO_REUSEPORT, 1);
+     $server->setOption(Phalcon\Socket::SOL_TCP, Phalcon\Socket::TCP_NODELAY, 1);
+     $server->setOption(Phalcon\Socket::SOL_TCP, Phalcon\Socket::TCP_QUICKACK, 1);
+     $server->run();
 
 
 
@@ -78,16 +108,18 @@ Constants
 
 *integer* **TCP_QUICKACK**
 
-*integer* **USE_SELECT**
-
-*integer* **USE_EPOLL**
-
 Methods
 -------
 
 public  **__construct** (*string* $address, *int* $port, [*int* $domain], [*int* $type], [*int* $protocol])
 
 Phalcon\\Socket\\Server constructor
+
+
+
+public  **setTimeout** (*unknown* $sec, [*unknown* $usec])
+
+Sets the timeout
 
 
 
@@ -133,13 +165,19 @@ Gets all connections
 
 
 
-public :doc:`Phalcon\\Socket\\Client <Phalcon_Socket_Client>`  **getClient** (*unknown* $socketId)
+public :doc:`Phalcon\\Socket\\Client <Phalcon_Socket_Client>`  **getClient** (*resource* $socket)
 
 Gets a connection
 
 
 
-public :doc:`Phalcon\\Socket\\Server <Phalcon_Socket_Server>`  **disconnect** (*unknown* $socketId)
+public *boolean*  **removeClient** (*resource* $socket)
+
+Remove a connection
+
+
+
+public :doc:`Phalcon\\Socket\\Server <Phalcon_Socket_Server>`  **disconnect** (*resource* $socket)
 
 Close a client
 
@@ -154,12 +192,6 @@ Run the Server
 public *resource*  **getSocket** () inherited from Phalcon\\Socket
 
 Gets the socket
-
-
-
-public *int*  **getSocketId** () inherited from Phalcon\\Socket
-
-Gets the socket id
 
 
 

@@ -173,6 +173,12 @@ Gets a value from the internal related entity or from the default value
 
 
 
+public *mixed*  **setValue** (*string* $name, [*mixed* $value])
+
+Sets a value
+
+
+
 public *mixed*  **getValues** ([*string* $name], [*unknown* $flag])
 
 Gets a values
