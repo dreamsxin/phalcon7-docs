@@ -179,6 +179,17 @@ Generating select boxes (select box) is easy, especially if the related data is 
         )
     );
 
+    echo $this->tag->select(array(
+        'robotid',
+        Rbots::find(),
+        'using' => ['id', function($robot) {
+            return $item->name.'（'.$$robot->id.'）';
+        }],
+        'value' => $this->requset('robotid'),
+        'useEmpey' => true,
+        'class' => 'form-control',
+    ));
+
 The following HTML will generated:
 
 .. code-block:: html

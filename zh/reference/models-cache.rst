@@ -53,11 +53,21 @@ Phalcon提供了一个组件（服务）可以用来 :doc:`缓存 <cache>` 任�
     // 直接取Products模型里的数据（未缓存）
     $products = Products::find();
 
-    // 缓存查询结果.缓存时间为默认1天。
+    // 缓存查询结果缓存时间为默认1天。
     $products = Products::find(
         array(
             "cache" => array(
                 "key" => "my-cache"
+            )
+        )
+    );
+
+    // 只在数据存在时缓存。
+    $products = Products::find(
+        array(
+            "cache" => array(
+                "key" => "my-cache",
+                "allowEmpty" => false,
             )
         )
     );
@@ -72,10 +82,14 @@ Phalcon提供了一个组件（服务）可以用来 :doc:`缓存 <cache>` 任�
         )
     );
 
-    // 使用自定义缓存
+    // 使用自定义缓存服务
     $products = Products::find(
         array(
-            "cache" => $myCache
+            "cache" => array(
+                "key"      => "my-cache",
+                "service"  => "myModelsCache",
+                "lifetime" => 300
+            )
         )
     );
 
