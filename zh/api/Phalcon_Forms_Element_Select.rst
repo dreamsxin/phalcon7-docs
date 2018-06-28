@@ -196,6 +196,12 @@ Returns the element's value
 
 
 
+public  **setValue** ([*unknown* $value]) inherited from Phalcon\\Forms\\Element
+
+Sets the element's value
+
+
+
 public :doc:`Phalcon\\Validation\\Message\\Group <Phalcon_Validation_Message_Group>`  **getMessages** () inherited from Phalcon\\Forms\\Element
 
 Returns the messages that belongs to the element The element needs to be attached to a form

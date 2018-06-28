@@ -41,7 +41,7 @@ Check whether the internal resource has rows to fetch
 
 
 
-public *array*  **toArray** ([*unknown* $columns], [*boolean* $renameColumns])
+public *array*  **toArray** ([*array* $columns], [*boolean* $mustColumn])
 
 Returns a complete resultset as an array, if the resultset has a big number of rows it could consume more memory than it currently does. Exporting the resultset to an array couldn't be faster with a large number of records
 

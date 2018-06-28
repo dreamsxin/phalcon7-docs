@@ -34,13 +34,13 @@ Phalcon\\Http\\Request constructor
 
 
 
-protected *mixed*  **_get** (*array* $data, *string* $name, *string|array* $filters, *mixed* $defaultValue, *boolean* $notAllowEmpty, *boolean* $noRecursive)
+protected *mixed*  **_get** (*array* $data, *string* $name, *string|array* $filters, *mixed* $defaultValue, *boolean* $notAllowEmpty, *unknown* $recursive_level)
 
 Internal get wrapper to filter
 
 
 
-public *mixed*  **get** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue], [*boolean* $notAllowEmpty], [*boolean* $noRecursive])
+public *mixed*  **get** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue], [*boolean* $notAllowEmpty], [*int* $recursiveLevel])
 
 Gets a variable from the $_REQUEST superglobal applying filters if needed. If no parameters are given the $_REQUEST superglobal is returned 
 
@@ -57,7 +57,7 @@ Gets a variable from the $_REQUEST superglobal applying filters if needed. If no
 
 
 
-public *mixed*  **getPost** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue], [*boolean* $notAllowEmpty], [*boolean* $noRecursive])
+public *mixed*  **getPost** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue], [*boolean* $notAllowEmpty], [*int* $recursiveLevel])
 
 Gets a variable from the $_POST superglobal applying filters if needed If no parameters are given the $_POST superglobal is returned 
 
@@ -74,7 +74,7 @@ Gets a variable from the $_POST superglobal applying filters if needed If no par
 
 
 
-public *mixed*  **getPut** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue], [*boolean* $notAllowEmpty], [*boolean* $noRecursive])
+public *mixed*  **getPut** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue], [*boolean* $notAllowEmpty], [*int* $recursiveLevel])
 
 Gets a variable from put request 
 
@@ -89,7 +89,7 @@ Gets a variable from put request
 
 
 
-public *mixed*  **getQuery** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue], [*boolean* $notAllowEmpty], [*boolean* $noRecursive])
+public *mixed*  **getQuery** ([*string* $name], [*string|array* $filters], [*mixed* $defaultValue], [*boolean* $notAllowEmpty], [*int* $recursiveLevel])
 
 Gets variable from $_GET superglobal applying filters if needed If no parameters are given the $_GET superglobal is returned 
 

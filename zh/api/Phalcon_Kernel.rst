@@ -74,3 +74,13 @@ public static  **getAlias** ()
 ...
 
 
+public static  **evalFile** (*unknown* $filename, [*array* $vars], [*array* $object])
+
+...
+
+
+public static  **evalString** (*unknown* $filename, [*array* $vars], [*array* $object])
+
+...
+
+

@@ -431,6 +431,30 @@ MVC 应用默认开启视图组件，以下示例演示了如何禁用视图组�
 
     $application->useImplicitView(false);
 
+JSON 输出（JSON Response）
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+MVC 应用默认开启视图组件，以下示例演示了如何禁用视图组件：
+
+.. code-block:: php
+
+    class IndexController extends Phalcon\Mvc\Controller {
+        public function indexAction() {
+            return ['name' => 'Phalcon7'];
+        }
+    }
+
+    $di = new Phalcon\Di\FactoryDefault();
+    $di->response->setContentType('application/json');
+    $application = new Phalcon\Mvc\Application();
+    $application->attachEvent('beforeSendResponse', function($event, $res){
+        // Change data
+        $data = $this->dispatcher->getReturnedValue();
+        $res->setJsonContent(['data' => $data]);
+    });
+    $application->useImplicitView(false);
+
+    echo $application->handle('/index/index')->getContent();
+
 HMVC 请求（HMVC request system）
 --------------------------------
 在 HMVC 的父子 MVC 之间，调度控制器、路由以及视图组件是分离的，以下示例演示了如何完成 HMVC 请求：

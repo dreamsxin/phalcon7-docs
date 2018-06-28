@@ -1,5 +1,5 @@
-Class **Phalcon\\Logger\\Adapter\\File**
-========================================
+Class **Phalcon\\Logger\\Adapter\\Direct**
+==========================================
 
 *extends* abstract class :doc:`Phalcon\\Logger\\Adapter <Phalcon_Logger_Adapter>`
 
@@ -8,30 +8,22 @@ Class **Phalcon\\Logger\\Adapter\\File**
 .. role:: raw-html(raw)
    :format: html
 
-:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/logger/adapter/file.c" class="btn btn-default btn-sm">Source on GitHub</a>`
+:raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/logger/adapter/direct.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Adapter to store logs in plain text files  
 
 .. code-block:: php
 
     <?php
 
-    $logger = new \Phalcon\Logger\Adapter\File("app/logs/test.log");
+    $logger = new \Phalcon\Logger\Adapter\Direct;
     $logger->log(Phalcon\Logger::INFO, "This is a message");
     $logger->log(Phalcon\Logger::ERROR, "This is an error");
     $logger->error("This is another error");
-    $logger->close();
 
 
 
 Methods
 -------
-
-public  **__construct** (*string* $name, [*array* $options])
-
-Phalcon\\Logger\\Adapter\\File constructor
-
-
 
 public :doc:`Phalcon\\Logger\\Formatter\\Line <Phalcon_Logger_Formatter_Line>`  **getFormatter** ()
 
@@ -41,25 +33,13 @@ Returns the internal formatter
 
 protected  **logInternal** (*string* $message, *int* $type, *int* $time, *array* $context)
 
-Writes the log to the file itself
+Writes the log to the stream itself
 
 
 
 public *boolean*  **close** ()
 
 Closes the logger
-
-
-
-public  **getPath** ()
-
-Returns the file path
-
-
-
-public  **__wakeup** ()
-
-Opens the internal file handler after unserialization
 
 
 

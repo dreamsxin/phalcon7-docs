@@ -69,6 +69,12 @@ Gets the values to insert
 
 
 
+public :doc:`Phalcon\\Mvc\\Model\\Query\\Builder\\Insert <Phalcon_Mvc_Model_Query_Builder_Insert>`  **setConflict** (*array* $conflict)
+
+Sets conflict
+
+
+
 protected *string*  **_compile** ()
 
 Returns a PHQL statement built based on the builder parameters

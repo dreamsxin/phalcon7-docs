@@ -33,6 +33,8 @@ Phalcon\\Mvc\\View is a class for working with the "view" portion of the model-v
 Constants
 ---------
 
+*integer* **LEVEL_MAIN**
+
 *integer* **LEVEL_MAIN_LAYOUT**
 
 *integer* **LEVEL_AFTER_TEMPLATE**
@@ -44,6 +46,8 @@ Constants
 *integer* **LEVEL_LAYOUT**
 
 *integer* **LEVEL_BEFORE_TEMPLATE**
+
+*integer* **LEVEL_ACTION**
 
 *integer* **LEVEL_ACTION_VIEW**
 

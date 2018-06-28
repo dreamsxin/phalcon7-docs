@@ -57,12 +57,6 @@ Gets the socket
 
 
 
-public *int*  **getSocketId** ()
-
-Gets the socket id
-
-
-
 protected  **_throwSocketException** ()
 
 Throws an socket exception

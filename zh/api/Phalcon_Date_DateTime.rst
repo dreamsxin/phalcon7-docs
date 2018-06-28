@@ -38,6 +38,8 @@ Constants
 
 *string* **RFC1123**
 
+*string* **RFC7231**
+
 *string* **RFC2822**
 
 *string* **RFC3339**
