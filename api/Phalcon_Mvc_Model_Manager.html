@@ -95,7 +95,7 @@
 <p><em>implements</em> <a class="reference internal" href="Phalcon_Events_EventsAwareInterface.html"><span class="doc">Phalcon\Events\EventsAwareInterface</span></a>, <a class="reference internal" href="Phalcon_Di_InjectionAwareInterface.html"><span class="doc">Phalcon\Di\InjectionAwareInterface</span></a>, <a class="reference internal" href="Phalcon_Mvc_Model_ManagerInterface.html"><span class="doc">Phalcon\Mvc\Model\ManagerInterface</span></a></p>
 <p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/model/manager.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
 <p>This components controls the initialization of models, keeping record of relations between the different models of the application.  A ModelsManager is injected to a model via a Dependency Injector/Services Container such as Phalcon\Di.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nv">$di</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Di</span><span class="p">();</span>
 
@@ -190,7 +190,7 @@
 <p>Gets belongsTo related records from a model</p>
 <p>public <a class="reference internal" href="Phalcon_Mvc_Model_RelationInterface.html"><span class="doc">Phalcon\Mvc\Model\RelationInterface</span></a> [] <strong>getBelongsTo</strong> (<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><span class="doc">Phalcon\Mvc\ModelInterface</span></a> $model)</p>
 <p>Gets all the belongsTo relations defined in a model</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$relations</span> <span class="o">=</span> <span class="nv">$modelsManager</span><span class="o">-&gt;</span><span class="na">getBelongsTo</span><span class="p">(</span><span class="k">new</span> <span class="nx">Robots</span><span class="p">());</span>
 </pre></div>

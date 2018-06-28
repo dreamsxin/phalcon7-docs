@@ -99,7 +99,7 @@
 由于现在计数由数值自身存储，所以也就可以和非 zval 结构的数据共享，比如 zval 和 hashtable key 之间；
 间接访问需要的指针数减少了。</p>
 <p>For example:</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="n">PHP_METHOD</span><span class="p">(</span><span class="n">Phalcon_Some_Component</span><span class="p">,</span> <span class="n">sayHello</span><span class="p">){</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">PHP_METHOD</span><span class="p">(</span><span class="n">Phalcon_Some_Component</span><span class="p">,</span> <span class="n">sayHello</span><span class="p">){</span>
 
         <span class="n">zval</span> <span class="n">greeting</span> <span class="o">=</span> <span class="p">{};</span>
 

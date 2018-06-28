@@ -96,7 +96,7 @@
 <p><em>implements</em> <a class="reference internal" href="Phalcon_Mvc_RouterInterface.html"><span class="doc">Phalcon\Mvc\RouterInterface</span></a>, <a class="reference internal" href="Phalcon_Events_EventsAwareInterface.html"><span class="doc">Phalcon\Events\EventsAwareInterface</span></a>, <a class="reference internal" href="Phalcon_Di_InjectionAwareInterface.html"><span class="doc">Phalcon\Di\InjectionAwareInterface</span></a>, <a class="reference internal" href="Phalcon_RouterInterface.html"><span class="doc">Phalcon\RouterInterface</span></a></p>
 <p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/router/annotations.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
 <p>A router that reads routes annotations from classes/resources</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nv">$di</span><span class="p">[</span><span class="s1">&#39;router&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
 
@@ -142,7 +142,7 @@
 <p>Get rewrite info. This info is read from $_GET[&#8216;_url&#8217;]. This returns &#8216;/&#8217; if the rewrite information cannot be read</p>
 <p>public <a class="reference internal" href="Phalcon_Mvc_Router.html"><span class="doc">Phalcon\Mvc\Router</span></a>  <strong>setUriSource</strong> (<em>int</em> $uriSource) inherited from Phalcon\Mvc\Router</p>
 <p>Sets the URI source. One of the URI_SOURCE_* constants</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">setUriSource</span><span class="p">(</span><span class="nx">Router</span><span class="o">::</span><span class="na">URI_SOURCE_SERVER_REQUEST_URI</span><span class="p">);</span>
 </pre></div>
@@ -151,7 +151,7 @@
 <p>Set whether router must remove the extra slashes in the handled routes</p>
 <p>public <a class="reference internal" href="Phalcon_Mvc_Router.html"><span class="doc">Phalcon\Mvc\Router</span></a>  <strong>setDefaults</strong> (<em>array</em> $defaults) inherited from Phalcon\Mvc\Router</p>
 <p>Sets an array of default paths. If a route is missing a path the router will use the defined here This method must not be used to set a 404 route</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">setDefaults</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
     <span class="s1">&#39;module&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;common&#39;</span><span class="p">,</span>
@@ -163,7 +163,7 @@
 <p>Returns an array of default parameters</p>
 <p>public <a class="reference internal" href="Phalcon_Mvc_Router_Route.html"><span class="doc">Phalcon\Mvc\Router\Route</span></a>  <strong>add</strong> (<em>string</em> $pattern, [<em>string/array</em> $paths], [<em>array</em> $regex], [<em>string</em> $httpMethods]) inherited from Phalcon\Mvc\Router</p>
 <p>Adds a route to the router without any HTTP constraint</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;/about&#39;</span><span class="p">,</span> <span class="s1">&#39;About::index&#39;</span><span class="p">);</span>
 </pre></div>

@@ -96,7 +96,7 @@
 <p><em>implements</em> <a class="reference internal" href="Phalcon_DispatcherInterface.html"><span class="doc">Phalcon\DispatcherInterface</span></a>, <a class="reference internal" href="Phalcon_Di_InjectionAwareInterface.html"><span class="doc">Phalcon\Di\InjectionAwareInterface</span></a>, <a class="reference internal" href="Phalcon_Events_EventsAwareInterface.html"><span class="doc">Phalcon\Events\EventsAwareInterface</span></a>, <a class="reference internal" href="Phalcon_Mvc_DispatcherInterface.html"><span class="doc">Phalcon\Mvc\DispatcherInterface</span></a></p>
 <p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/dispatcher.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
 <p>Dispatching is the process of taking the request object, extracting the module name, controller name, action name, and optional parameters contained in it, and then instantiating a controller and calling an action of that controller.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$di</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Di</span><span class="p">();</span>
 
@@ -210,7 +210,7 @@
 <p>Dispatches a handle action taking into account the routing parameters</p>
 <p>public <em>bool</em>  <strong>forward</strong> (<em>string|array</em> $forward) inherited from Phalcon\Dispatcher</p>
 <p>Forwards the execution flow to another controller/action Dispatchers are unique per module. Forwarding between modules is not allowed</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
   <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">forward</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;controller&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;posts&#39;</span><span class="p">,</span> <span class="s1">&#39;action&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;index&#39;</span><span class="p">));</span>
 </pre></div>
@@ -221,14 +221,14 @@
 <p>Possible class name that will be located to dispatch the request</p>
 <p>public  <strong>camelizeNamespace</strong> (<em>bool</em> $camelize) inherited from Phalcon\Dispatcher</p>
 <p>Enables/Disables automatically camelize namespace</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
   <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">camelizeNamespace</span><span class="p">(</span><span class="k">FALSE</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>public  <strong>camelizeController</strong> (<em>bool</em> $camelize) inherited from Phalcon\Dispatcher</p>
 <p>Enables/Disables automatically camelize controller</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
   <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">camelizeController</span><span class="p">(</span><span class="k">FALSE</span><span class="p">);</span>
 </pre></div>

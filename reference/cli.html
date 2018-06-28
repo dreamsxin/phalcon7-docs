@@ -126,13 +126,13 @@
 <h2>创建引导（Creating a Bootstrap）<a class="headerlink" href="#creating-a-bootstrap" title="永久链接至标题">¶</a></h2>
 <p>普通的MVC程序中，启动文件用来启动整个应用。和web应用不同, 此处应用中我们使用`cli.php`来作为启动文件。</p>
 <p>下面是一个简单的启动文件示例：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// 使用CLI工厂类作为默认的服务容器</span>
 <span class="nv">$di</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Di\FactoryDefault\Cli</span><span class="p">();</span>
 
 <span class="c1">// 定义应用目录路径</span>
-<span class="nb">defined</span><span class="p">(</span><span class="s1">&#39;APPLICATION_PATH&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="nb">define</span><span class="p">(</span><span class="s1">&#39;APPLICATION_PATH&#39;</span><span class="p">,</span> <span class="nb">realpath</span><span class="p">(</span><span class="nb">dirname</span><span class="p">(</span><span class="k">__FILE__</span><span class="p">)));</span>
+<span class="nb">defined</span><span class="p">(</span><span class="s1">&#39;APPLICATION_PATH&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="nb">define</span><span class="p">(</span><span class="s1">&#39;APPLICATION_PATH&#39;</span><span class="p">,</span> <span class="nb">realpath</span><span class="p">(</span><span class="nb">dirname</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">)));</span>
 
 <span class="sd">/**</span>
 <span class="sd"> * 注册类自动加载器</span>
@@ -164,13 +164,13 @@
 </pre></div>
 </div>
 <p>上面的代码可以使用如下方式执行：</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/cli.php --task<span class="o">=</span>main --action<span class="o">=</span>main --params<span class="o">=</span><span class="m">1</span> --params<span class="o">=</span>2
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ php app/cli.php --task<span class="o">=</span>main --action<span class="o">=</span>main --params<span class="o">=</span><span class="m">1</span> --params<span class="o">=</span><span class="m">2</span>
 
-这样程序就会执行任务main以及动作main，并传递参数 <span class="sb">`</span>array<span class="o">(</span>1, 2<span class="o">)</span><span class="sb">`</span>
+这样程序就会执行任务main以及动作main，并传递参数 <span class="sb">`</span>array<span class="o">(</span><span class="m">1</span>, <span class="m">2</span><span class="o">)</span><span class="sb">`</span>
 </pre></div>
 </div>
 <p>通过 <cite>argv</cite> 解析应用参数：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Di\FactoryDefault\Cli</span> <span class="k">as</span> <span class="nx">CliDI</span><span class="p">,</span>
     <span class="nx">Phalcon\Cli\Console</span> <span class="k">as</span> <span class="nx">ConsoleApp</span><span class="p">;</span>
@@ -182,7 +182,7 @@
 
 <span class="c1">// 定义应用目录路径</span>
 <span class="nb">defined</span><span class="p">(</span><span class="s1">&#39;APPLICATION_PATH&#39;</span><span class="p">)</span>
-<span class="o">||</span> <span class="nb">define</span><span class="p">(</span><span class="s1">&#39;APPLICATION_PATH&#39;</span><span class="p">,</span> <span class="nb">realpath</span><span class="p">(</span><span class="nb">dirname</span><span class="p">(</span><span class="k">__FILE__</span><span class="p">)));</span>
+<span class="o">||</span> <span class="nb">define</span><span class="p">(</span><span class="s1">&#39;APPLICATION_PATH&#39;</span><span class="p">,</span> <span class="nb">realpath</span><span class="p">(</span><span class="nb">dirname</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">)));</span>
 
 <span class="sd">/**</span>
 <span class="sd"> * 注册类自动加载器</span>
@@ -233,14 +233,14 @@
 </pre></div>
 </div>
 <p>上面的代码可以使用如下方式执行：</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/cli.php
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ php app/cli.php
 
 这样程序会直接执行默认的任务及默认动作.
 </pre></div>
 </div>
 <div class="section" id="id1">
 <h3>从命令行参数列表中获取选项<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h3>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$shortopts</span>  <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
 <span class="nv">$shortopts</span> <span class="o">.=</span> <span class="s2">&quot;n:&quot;</span><span class="p">;</span>  <span class="c1">// -n=&quot;Phalcon&quot;</span>
@@ -281,7 +281,7 @@
 </div>
 <div class="section" id="cli-options">
 <h2>使用命令行选项类（Cli Options）<a class="headerlink" href="#cli-options" title="永久链接至标题">¶</a></h2>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$opts</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Cli\Options</span><span class="p">(</span><span class="s1">&#39;Phalcon Task CLI&#39;</span><span class="p">);</span>
 <span class="nv">$opts</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">([</span>
@@ -332,7 +332,7 @@
 <h2>任务（Tasks）<a class="headerlink" href="#tasks" title="永久链接至标题">¶</a></h2>
 <p>这里的任务同于web应用中的控制器。 任一 CLI 应用程序都至少包含一个mainTask 及一个 mainAction， 每个任务至少有一个mainAction, 这样在使用者未明确的 指定action时 此mainAction就会执行。</p>
 <p>下面即是一个mainTask的例子（ app/tasks/MainTask.php ）：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">MainTask</span> <span class="k">extends</span> <span class="nx">\Phalcon\Cli\Task</span>
 <span class="p">{</span>
@@ -348,7 +348,7 @@
 <h2>处理动作参数（Processing action parameters）<a class="headerlink" href="#processing-action-parameters" title="永久链接至标题">¶</a></h2>
 <p>CLI应用中， 开发者也可以在action中处理传递过来的参数， 下面的例子中已经对传递过来的参数进行了处理。</p>
 <p>如果你使用下面的参数和动作运行应用程序:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">MainTask</span> <span class="k">extends</span> <span class="nx">\Phalcon\Cli\Task</span>
 <span class="p">{</span>
@@ -369,7 +369,7 @@
 </pre></div>
 </div>
 <p>我们可以使用下面的命令行及参数执行程序：</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/cli.php main <span class="nb">test </span>world universe
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ php app/cli.php main <span class="nb">test</span> world universe
 
 hello world
 best regards, universe
@@ -379,7 +379,7 @@ best regards, universe
 <div class="section" id="running-tasks-in-a-chain">
 <h2>链中运行任务（Running tasks in a chain）<a class="headerlink" href="#running-tasks-in-a-chain" title="永久链接至标题">¶</a></h2>
 <p>CLI应用中可以在一个action中执行另一action. 要实现这个需要在 DI 中设置console.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">setShared</span><span class="p">(</span><span class="s1">&#39;console&#39;</span><span class="p">,</span> <span class="nv">$console</span><span class="p">);</span>
 
@@ -393,7 +393,7 @@ best regards, universe
 </pre></div>
 </div>
 <p>然后开发者即可在一个action中使用用其它的action了. 下面即是例子：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">MainTask</span> <span class="k">extends</span> <span class="nx">\Phalcon\Cli\Task</span>
 <span class="p">{</span>
@@ -421,7 +421,7 @@ best regards, universe
 <div class="section" id="mvc-running-mvc-application">
 <h2>运行 MVC 应用（Running MVC Application）<a class="headerlink" href="#mvc-running-mvc-application" title="永久链接至标题">¶</a></h2>
 <p>使用MVC架构来开发的程序，在命令行下运行命令如下：</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>php app/index.php --url<span class="o">=</span><span class="s2">&quot;/auth/login&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ php app/index.php --url<span class="o">=</span><span class="s2">&quot;/auth/login&quot;</span>
 </pre></div>
 </div>
 </div>

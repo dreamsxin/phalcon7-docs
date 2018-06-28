@@ -157,7 +157,7 @@
 </tbody>
 </table>
 <p>The following schema shows 3 tables whose relations will serve us as an example regarding relationships:</p>
-<div class="highlight-sql"><div class="highlight"><pre><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">`</span><span class="n">robots</span><span class="o">`</span> <span class="p">(</span>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">`</span><span class="n">robots</span><span class="o">`</span> <span class="p">(</span>
     <span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
     <span class="o">`</span><span class="n">name</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">70</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
     <span class="o">`</span><span class="k">type</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
@@ -190,7 +190,7 @@
 </ul>
 <p>Check the EER diagram to understand better the relations:</p>
 <img class="align-center" src="../static/img/eer-1.png"><p>The models with their relations could be implemented as follows:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
 
@@ -207,7 +207,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
 
@@ -224,7 +224,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
 
@@ -247,7 +247,7 @@
 <p>The first parameter indicates the field of the local model used in the relationship; the second indicates the name
 of the referenced model and the third the field name in the referenced model. You could also use arrays to define multiple fields in the relationship.</p>
 <p>Many to many relationships require 3 models and define the attributes involved in the relationship:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
 
@@ -274,7 +274,7 @@ of the referenced model and the third the field name in the referenced model. Yo
 <div class="section" id="taking-advantage-of-relationships">
 <h2>使用关系（Taking advantage of relationships）<a class="headerlink" href="#taking-advantage-of-relationships" title="永久链接至标题">¶</a></h2>
 <p>When explicitly defining the relationships between models, it is easy to find related records for a particular record.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 <span class="k">foreach</span> <span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">robotsParts</span> <span class="k">as</span> <span class="nv">$robotPart</span><span class="p">)</span> <span class="p">{</span>
@@ -284,14 +284,14 @@ of the referenced model and the third the field name in the referenced model. Yo
 </div>
 <p>Phalcon uses the magic methods <code class="code docutils literal"><span class="pre">__set</span></code>/<code class="code docutils literal"><span class="pre">__get</span></code>/<code class="code docutils literal"><span class="pre">__call</span></code> to store or retrieve related data using relationships.</p>
 <p>By accessing an attribute with the same name as the relationship will retrieve all its related record(s).</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$robot</span>       <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">();</span>
 <span class="nv">$robotsParts</span> <span class="o">=</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">robotsParts</span><span class="p">;</span> <span class="c1">// All the related records in RobotsParts</span>
 </pre></div>
 </div>
 <p>Also, you can use a magic getter:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$robot</span>       <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">();</span>
 <span class="nv">$robotsParts</span> <span class="o">=</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">getRobotsParts</span><span class="p">();</span> <span class="c1">// All the related records in RobotsParts</span>
@@ -301,7 +301,7 @@ of the referenced model and the third the field name in the referenced model. Yo
 <p>If the called method has a &#8220;get&#8221; prefix <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> will return a
 <code class="code docutils literal"><span class="pre">findFirst()</span></code>/<code class="code docutils literal"><span class="pre">find()</span></code> result. The following example compares retrieving related results with using magic methods
 and without:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$robot</span>       <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 
@@ -330,7 +330,7 @@ and without:</p>
 </pre></div>
 </div>
 <p>Getting related records manually:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$robot</span>       <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 
@@ -384,7 +384,7 @@ and without:</p>
 </tbody>
 </table>
 <p>You can also use &#8220;count&#8221; prefix to return an integer denoting the count of the related records:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 <span class="k">echo</span> <span class="s2">&quot;The robot has &quot;</span><span class="p">,</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">countRobotsParts</span><span class="p">(),</span> <span class="s2">&quot; parts</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
@@ -395,20 +395,20 @@ and without:</p>
 <h2>定义关系（Aliasing Relationships）<a class="headerlink" href="#aliasing-relationships" title="永久链接至标题">¶</a></h2>
 <p>To explain better how aliases work, let&#8217;s check the following example:</p>
 <p>The &#8220;robots_similar&#8221; table has the function to define what robots are similar to others:</p>
-<div class="highlight-bash"><div class="highlight"><pre>mysql&gt; desc robots_similar<span class="p">;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>mysql&gt; desc robots_similar<span class="p">;</span>
 +-------------------+------------------+------+-----+---------+----------------+
 <span class="p">|</span> Field             <span class="p">|</span> Type             <span class="p">|</span> Null <span class="p">|</span> Key <span class="p">|</span> Default <span class="p">|</span> Extra          <span class="p">|</span>
 +-------------------+------------------+------+-----+---------+----------------+
-<span class="p">|</span> id                <span class="p">|</span> int<span class="o">(</span>10<span class="o">)</span> unsigned <span class="p">|</span> NO   <span class="p">|</span> PRI <span class="p">|</span> NULL    <span class="p">|</span> auto_increment <span class="p">|</span>
-<span class="p">|</span> robots_id         <span class="p">|</span> int<span class="o">(</span>10<span class="o">)</span> unsigned <span class="p">|</span> NO   <span class="p">|</span> MUL <span class="p">|</span> NULL    <span class="p">|</span>                <span class="p">|</span>
-<span class="p">|</span> similar_robots_id <span class="p">|</span> int<span class="o">(</span>10<span class="o">)</span> unsigned <span class="p">|</span> NO   <span class="p">|</span>     <span class="p">|</span> NULL    <span class="p">|</span>                <span class="p">|</span>
+<span class="p">|</span> id                <span class="p">|</span> int<span class="o">(</span><span class="m">10</span><span class="o">)</span> unsigned <span class="p">|</span> NO   <span class="p">|</span> PRI <span class="p">|</span> NULL    <span class="p">|</span> auto_increment <span class="p">|</span>
+<span class="p">|</span> robots_id         <span class="p">|</span> int<span class="o">(</span><span class="m">10</span><span class="o">)</span> unsigned <span class="p">|</span> NO   <span class="p">|</span> MUL <span class="p">|</span> NULL    <span class="p">|</span>                <span class="p">|</span>
+<span class="p">|</span> similar_robots_id <span class="p">|</span> int<span class="o">(</span><span class="m">10</span><span class="o">)</span> unsigned <span class="p">|</span> NO   <span class="p">|</span>     <span class="p">|</span> NULL    <span class="p">|</span>                <span class="p">|</span>
 +-------------------+------------------+------+-----+---------+----------------+
-<span class="m">3</span> rows in <span class="nb">set</span> <span class="o">(</span>0.00 sec<span class="o">)</span>
+<span class="m">3</span> rows in <span class="nb">set</span> <span class="o">(</span><span class="m">0</span>.00 sec<span class="o">)</span>
 </pre></div>
 </div>
 <p>Both &#8220;robots_id&#8221; and &#8220;similar_robots_id&#8221; have a relation to the model Robots:</p>
 <img class="align-center" src="../static/img/eer-2.png"><p>A model that maps this table and its relationships is the following:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">RobotsSimilar</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\Model</span>
 <span class="p">{</span>
@@ -421,7 +421,7 @@ and without:</p>
 </pre></div>
 </div>
 <p>Since both relations point to the same model (Robots), obtain the records related to the relationship could not be clear:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$robotsSimilar</span> <span class="o">=</span> <span class="nx">RobotsSimilar</span><span class="o">::</span><span class="na">findFirst</span><span class="p">();</span>
 
@@ -435,7 +435,7 @@ and without:</p>
 </pre></div>
 </div>
 <p>The aliases allow us to rename both relationships to solve these problems:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
 
@@ -465,7 +465,7 @@ and without:</p>
 </pre></div>
 </div>
 <p>With the aliasing we can get the related records easily:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$robotsSimilar</span> <span class="o">=</span> <span class="nx">RobotsSimilar</span><span class="o">::</span><span class="na">findFirst</span><span class="p">();</span>
 
@@ -484,7 +484,7 @@ and without:</p>
 <p>Most IDEs and editors with auto-completion capabilities can not infer the correct types when using magic getters,
 instead of use the magic getters you can optionally define those methods explicitly with the corresponding
 docblocks helping the IDE to produce a better auto-completion:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
 
@@ -518,7 +518,7 @@ docblocks helping the IDE to produce a better auto-completion:</p>
 value in the referenced model, Phalcon will not produce a validation message. You can modify this behavior by adding a fourth parameter
 when defining a relationship.</p>
 <p>The RobotsPart model can be changed to demonstrate this feature:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
 
@@ -558,7 +558,7 @@ when defining a relationship.</p>
 <p>If you alter a <code class="code docutils literal"><span class="pre">belongsTo()</span></code> relationship to act as foreign key, it will validate that the values inserted/updated on those fields have a
 valid value on the referenced model. Similarly, if a <code class="code docutils literal"><span class="pre">hasMany()</span></code>/<code class="code docutils literal"><span class="pre">hasOne()</span></code> is altered it will validate that the records cannot be deleted
 if that record is used on a referenced model.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
 
@@ -581,7 +581,7 @@ if that record is used on a referenced model.</p>
 </pre></div>
 </div>
 <p>A virtual foreign key can be set up to allow null values as follows:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
 
@@ -615,7 +615,7 @@ if that record is used on a referenced model.</p>
 <h2>级联与限制动作（Cascade/Restrict actions）<a class="headerlink" href="#cascade-restrict-actions" title="永久链接至标题">¶</a></h2>
 <p>Relationships that act as virtual foreign keys by default restrict the creation/update/deletion of records
 to maintain the integrity of data:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">Store\Models</span><span class="p">;</span>
 
@@ -649,7 +649,7 @@ to maintain the integrity of data:</p>
 <div class="section" id="storing-related-records">
 <h2>存储关系记录（Storing related records）<a class="headerlink" href="#storing-related-records" title="永久链接至标题">¶</a></h2>
 <p>Magic properties can be used to store a records and its related properties:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Create an artist</span>
 <span class="nv">$artist</span>          <span class="o">=</span> <span class="k">new</span> <span class="nx">Artists</span><span class="p">();</span>
@@ -667,7 +667,7 @@ to maintain the integrity of data:</p>
 </pre></div>
 </div>
 <p>Saving a record and its related records in a has-many relation:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Get an existing artist</span>
 <span class="nv">$artist</span> <span class="o">=</span> <span class="nx">Artists</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span><span class="s1">&#39;name = &quot;Shinichi Osawa&quot;&#39;</span><span class="p">);</span>
@@ -716,7 +716,7 @@ passed back to the user for information regarding any errors.</p>
 <div class="section" id="updating-related-records">
 <h2>更新关联表记录（Updating related records）<a class="headerlink" href="#updating-related-records" title="永久链接至标题">¶</a></h2>
 <p>Instead of doing this:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">foreach</span> <span class="p">(</span><span class="nv">$robots</span><span class="o">-&gt;</span><span class="na">getParts</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$part</span><span class="p">)</span> <span class="p">{</span>
     <span class="nv">$part</span><span class="o">-&gt;</span><span class="na">stock</span>      <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
@@ -733,7 +733,7 @@ passed back to the user for information regarding any errors.</p>
 </pre></div>
 </div>
 <p>you can do this:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$robots</span><span class="o">-&gt;</span><span class="na">getParts</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span>
     <span class="k">array</span><span class="p">(</span>
@@ -744,7 +744,7 @@ passed back to the user for information regarding any errors.</p>
 </pre></div>
 </div>
 <p>&#8216;update&#8217; also accepts an anonymous function to filter what records must be updated:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$data</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">&#39;stock&#39;</span>      <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span>
@@ -765,7 +765,7 @@ passed back to the user for information regarding any errors.</p>
 <div class="section" id="deleting-related-records">
 <h2>删除关联表记录（Deleting related records）<a class="headerlink" href="#deleting-related-records" title="永久链接至标题">¶</a></h2>
 <p>Instead of doing this:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">foreach</span> <span class="p">(</span><span class="nv">$robots</span><span class="o">-&gt;</span><span class="na">getParts</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$part</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nv">$part</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">()</span> <span class="o">==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
@@ -779,13 +779,13 @@ passed back to the user for information regarding any errors.</p>
 </pre></div>
 </div>
 <p>you can do this:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$robots</span><span class="o">-&gt;</span><span class="na">getParts</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">();</span>
 </pre></div>
 </div>
 <p>&#8216;delete&#8217; also accepts an anonymous function to filter what records must be deleted:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Delete only whose stock is greater or equal than zero</span>
 <span class="nv">$robots</span><span class="o">-&gt;</span><span class="na">getParts</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nv">$part</span><span class="p">)</span> <span class="p">{</span>

@@ -95,14 +95,14 @@
 <p><em>implements</em> <a class="reference internal" href="Phalcon_Logger_AdapterInterface.html"><span class="doc">Phalcon\Logger\AdapterInterface</span></a></p>
 <p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/logger/adapter/syslog.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
 <p>Sends logs to the system logger</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$logger</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Logger\Adapter\Syslog</span><span class="p">(</span><span class="s2">&quot;ident&quot;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">&#39;option&#39;</span> <span class="o">=&gt;</span> <span class="nx">LOG_NDELAY</span><span class="p">,</span>
     <span class="s1">&#39;facility&#39;</span> <span class="o">=&gt;</span> <span class="nx">LOG_MAIL</span>
 <span class="p">));</span>
-<span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="s2">&quot;This is a message&quot;</span><span class="p">);</span>
-<span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="s2">&quot;This is an error&quot;</span><span class="p">,</span> <span class="nx">\Phalcon\Logger</span><span class="o">::</span><span class="na">ERROR</span><span class="p">);</span>
+<span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="nx">Phalcon\Logger</span><span class="o">::</span><span class="na">INFO</span><span class="p">,</span> <span class="s2">&quot;This is a message&quot;</span><span class="p">);</span>
+<span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="nx">Phalcon\Logger</span><span class="o">::</span><span class="na">ERROR</span><span class="p">,</span> <span class="s2">&quot;This is an error&quot;</span><span class="p">);</span>
 <span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s2">&quot;This is another error&quot;</span><span class="p">);</span>
 </pre></div>
 </div>

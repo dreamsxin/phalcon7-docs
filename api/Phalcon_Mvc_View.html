@@ -96,7 +96,7 @@
 <p><em>implements</em> <a class="reference internal" href="Phalcon_Events_EventsAwareInterface.html"><span class="doc">Phalcon\Events\EventsAwareInterface</span></a>, <a class="reference internal" href="Phalcon_Di_InjectionAwareInterface.html"><span class="doc">Phalcon\Di\InjectionAwareInterface</span></a>, <a class="reference internal" href="Phalcon_Mvc_ViewInterface.html"><span class="doc">Phalcon\Mvc\ViewInterface</span></a></p>
 <p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/view.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
 <p>Phalcon\Mvc\View is a class for working with the &#8220;view&#8221; portion of the model-view-controller pattern. That is, it exists to help keep the view script separate from the model and controller scripts. It provides a system of helpers, output filters, and variable escaping.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="c1">//Setting views directory</span>
  <span class="nv">$view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\View</span><span class="p">();</span>
@@ -113,12 +113,14 @@
 </div>
 <div class="section" id="constants">
 <h2>Constants<a class="headerlink" href="#constants" title="永久链接至标题">¶</a></h2>
+<p><em>integer</em> <strong>LEVEL_MAIN</strong></p>
 <p><em>integer</em> <strong>LEVEL_MAIN_LAYOUT</strong></p>
 <p><em>integer</em> <strong>LEVEL_AFTER_TEMPLATE</strong></p>
 <p><em>integer</em> <strong>LEVEL_NAMESPACE</strong></p>
 <p><em>integer</em> <strong>LEVEL_CONTROLLER</strong></p>
 <p><em>integer</em> <strong>LEVEL_LAYOUT</strong></p>
 <p><em>integer</em> <strong>LEVEL_BEFORE_TEMPLATE</strong></p>
+<p><em>integer</em> <strong>LEVEL_ACTION</strong></p>
 <p><em>integer</em> <strong>LEVEL_ACTION_VIEW</strong></p>
 <p><em>integer</em> <strong>LEVEL_NO_RENDER</strong></p>
 <p><em>boolean</em> <strong>CACHE_MODE_NONE</strong></p>
@@ -134,7 +136,7 @@
 <p>Gets views directory</p>
 <p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\View</span></a>  <strong>setLayoutsDir</strong> (<em>string</em> $layoutsDir)</p>
 <p>Sets the layouts sub-directory. Must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setLayoutsDir</span><span class="p">(</span><span class="s1">&#39;../common/layouts/&#39;</span><span class="p">);</span>
 </pre></div>
@@ -143,7 +145,7 @@
 <p>Gets the current layouts sub-directory</p>
 <p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\View</span></a>  <strong>setPartialsDir</strong> (<em>string</em> $partialsDir)</p>
 <p>Sets a partials sub-directory. Must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setPartialsDir</span><span class="p">(</span><span class="s1">&#39;../common/partials/&#39;</span><span class="p">);</span>
 </pre></div>
@@ -152,9 +154,9 @@
 <p>Gets the current partials sub-directory</p>
 <p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\View</span></a>  <strong>setBasePath</strong> (<em>string|array</em> $basePath)</p>
 <p>Sets base path. Depending of your platform, always add a trailing slash or backslash</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
-    <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setBasePath</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/&#39;</span><span class="p">);</span>
+    <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setBasePath</span><span class="p">(</span><span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>public <em>string</em>  <strong>getBasePath</strong> ()</p>
@@ -165,7 +167,7 @@
 <p>Returns the render level for the view</p>
 <p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\View</span></a>  <strong>setRenderLevel</strong> (<em>string</em> $level)</p>
 <p>Sets the render level for the view</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
     <span class="c1">//Render the view related to the controller only</span>
     <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setRenderLevel</span><span class="p">(</span><span class="nx">View</span><span class="o">::</span><span class="na">LEVEL_LAYOUT</span><span class="p">);</span>
@@ -173,7 +175,7 @@
 </div>
 <p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\View</span></a>  <strong>disableLevel</strong> (<em>int|array</em> $level)</p>
 <p>Disables a specific level of rendering</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="c1">//Render all levels except ACTION level</span>
  <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">disableLevel</span><span class="p">(</span><span class="nx">View</span><span class="o">::</span><span class="na">LEVEL_ACTION_VIEW</span><span class="p">);</span>
@@ -183,7 +185,7 @@
 <p>Returns an array with disabled render levels</p>
 <p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\View</span></a>  <strong>setMainView</strong> (<em>string</em> $viewPath)</p>
 <p>Sets default view name. Must be a file without extension in the views directory</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
     <span class="c1">//Renders as main view views-dir/base.phtml</span>
     <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setMainView</span><span class="p">(</span><span class="s1">&#39;base&#39;</span><span class="p">);</span>
@@ -193,7 +195,7 @@
 <p>Returns the name of the main view</p>
 <p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\View</span></a>  <strong>setLayout</strong> (<em>string</em> $layout)</p>
 <p>Change the layout to be used instead of using the name of the latest controller name</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
     <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setLayout</span><span class="p">(</span><span class="s1">&#39;main&#39;</span><span class="p">);</span>
 </pre></div>
@@ -210,7 +212,7 @@
 <p>Resets any template after layouts</p>
 <p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\View</span></a>  <strong>setParamToView</strong> (<em>string</em> $key, <em>mixed</em> $value)</p>
 <p>Adds parameters to views (alias of setVar)</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setParamToView</span><span class="p">(</span><span class="s1">&#39;products&#39;</span><span class="p">,</span> <span class="nv">$products</span><span class="p">);</span>
 </pre></div>
@@ -219,14 +221,14 @@
 <p>Returns parameters to views</p>
 <p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\View</span></a>  <strong>setVars</strong> (<em>array</em> $params, [<em>boolean</em> $merge])</p>
 <p>Set all the render params</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setVars</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;products&#39;</span> <span class="o">=&gt;</span> <span class="nv">$products</span><span class="p">));</span>
 </pre></div>
 </div>
 <p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\View</span></a>  <strong>setVar</strong> (<em>string</em> $key, <em>mixed</em> $value)</p>
 <p>Set a single view parameter</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setVar</span><span class="p">(</span><span class="s1">&#39;products&#39;</span><span class="p">,</span> <span class="nv">$products</span><span class="p">);</span>
 </pre></div>
@@ -257,7 +259,7 @@
 <p>Checks whether view exists on registered extensions and render it</p>
 <p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\View</span></a>  <strong>registerEngines</strong> (<em>array</em> $engines)</p>
 <p>Register templating engines</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">registerEngines</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
   <span class="s2">&quot;.phtml&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Phalcon\Mvc\View\Engine\Php&quot;</span><span class="p">,</span>
@@ -274,7 +276,7 @@
 <p>Checks whether a view file exists</p>
 <p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\View</span></a>  <strong>render</strong> (<em>string</em> $controllerName, <em>string</em> $actionName, [<em>array</em> $params], [<em>unknown</em> $namespace], [<a class="reference internal" href="Phalcon_Mvc_View_ModelInterface.html"><span class="doc">Phalcon\Mvc\View\ModelInterface</span></a> $viewModel])</p>
 <p>Executes render process from dispatching data</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="c1">//Shows recent posts view (app/views/posts/recent.phtml)</span>
  <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">start</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;posts&#39;</span><span class="p">,</span> <span class="s1">&#39;recent&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">finish</span><span class="p">();</span>
@@ -282,7 +284,7 @@
 </div>
 <p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\View</span></a>  <strong>pick</strong> (<em>string|array</em> $renderView)</p>
 <p>Choose a different view to render instead of last-controller/last-action</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="k">class</span> <span class="nc">ProductsController</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\Controller</span>
  <span class="p">{</span>
@@ -300,13 +302,13 @@
 </div>
 <p>public  <strong>partial</strong> (<em>string</em> $partialPath)</p>
 <p>Renders a partial view</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
     <span class="c1">//Show a partial inside another view</span>
     <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">partial</span><span class="p">(</span><span class="s1">&#39;shared/footer&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
     <span class="c1">//Show a partial inside another view with parameters</span>
     <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">partial</span><span class="p">(</span><span class="s1">&#39;shared/footer&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;content&#39;</span> <span class="o">=&gt;</span> <span class="nv">$html</span><span class="p">));</span>
@@ -314,7 +316,7 @@
 </div>
 <p>public <em>string</em>  <strong>getRender</strong> (<em>string</em> $controllerName, <em>string</em> $actionName, [<em>array</em> $params], [<em>mixed</em> $configCallback])</p>
 <p>Perform the automatic rendering returning the output as a string</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
     <span class="nv">$template</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">getRender</span><span class="p">(</span><span class="s1">&#39;products&#39;</span><span class="p">,</span> <span class="s1">&#39;show&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;products&#39;</span> <span class="o">=&gt;</span> <span class="nv">$products</span><span class="p">));</span>
 </pre></div>
@@ -329,14 +331,14 @@
 <p>Returns the cache instance used to cache</p>
 <p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\View</span></a>  <strong>cache</strong> ([<em>boolean|array</em> $options])</p>
 <p>Cache the actual view render to certain level</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
   <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">cache</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;my-key&#39;</span><span class="p">,</span> <span class="s1">&#39;lifetime&#39;</span> <span class="o">=&gt;</span> <span class="mi">86400</span><span class="p">));</span>
 </pre></div>
 </div>
 <p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\View</span></a>  <strong>setContent</strong> (<em>string</em> $content, [<em>unknown</em> $append])</p>
 <p>Externally sets the view content</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">setContent</span><span class="p">(</span><span class="s2">&quot;&lt;h1&gt;hello&lt;/h1&gt;&quot;</span><span class="p">);</span>
 </pre></div>
@@ -373,21 +375,21 @@
 <p>Resets the view component to its factory default values</p>
 <p>public  <strong>__set</strong> (<em>unknown</em> $property, <em>mixed</em> $value)</p>
 <p>Magic method to pass variables to the views</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">products</span> <span class="o">=</span> <span class="nv">$products</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>public <em>mixed</em>  <strong>__get</strong> (<em>unknown</em> $property)</p>
 <p>Magic method to retrieve a variable passed to the view</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">products</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>public <em>boolean</em>  <strong>__isset</strong> (<em>unknown</em> $property)</p>
 <p>Magic method to inaccessible a variable passed to the view</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nb">isset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">products</span><span class="p">)</span>
 </pre></div>

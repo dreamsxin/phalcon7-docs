@@ -5,7 +5,7 @@
     
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Class Phalcon\Mvc\Model\Query\Status &mdash; Phalcon7 1.2.1 文档</title>
+    <title>Class Phalcon\Xhprof &mdash; Phalcon7 1.2.1 文档</title>
     <meta name="keywords" content="php, phalcon, phalcon7, phalcon php, php framework, faster php framework">
     <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="../static/phalcon.css" />
@@ -75,7 +75,8 @@
 		<div class="panel panel-default">
 			<div class="panel-heading"><a href="../index.html">內容目录</a></div>
 			<div class="panel-body"><ul>
-<li><a class="reference internal" href="#">Class <strong>Phalcon\Mvc\Model\Query\Status</strong></a><ul>
+<li><a class="reference internal" href="#">Class <strong>Phalcon\Xhprof</strong></a><ul>
+<li><a class="reference internal" href="#constants">Constants</a></li>
 <li><a class="reference internal" href="#methods">Methods</a></li>
 </ul>
 </li>
@@ -89,36 +90,26 @@
 		  <div class="bodywrapper">
 			<div class="body" >
 			  
-  <div class="section" id="class-phalcon-mvc-model-query-status">
-<h1>Class <strong>Phalcon\Mvc\Model\Query\Status</strong><a class="headerlink" href="#class-phalcon-mvc-model-query-status" title="永久链接至标题">¶</a></h1>
-<p><em>implements</em> <a class="reference internal" href="Phalcon_Mvc_Model_Query_StatusInterface.html"><span class="doc">Phalcon\Mvc\Model\Query\StatusInterface</span></a></p>
-<p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/model/query/status.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
-<p>This class represents the status returned by a PHQL statement like INSERT, UPDATE or DELETE. It offers context information and the related messages produced by the model which finally executes the operations when it fails</p>
-<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-
-<span class="nv">$phql</span> <span class="o">=</span> <span class="s2">&quot;UPDATE Robots SET name = :name:, type = :type:, year = :year: WHERE id = :id:&quot;</span><span class="p">;</span>
-<span class="nv">$status</span> <span class="o">=</span> <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">modelsManager</span><span class="o">-&gt;</span><span class="na">executeQuery</span><span class="p">(</span><span class="nv">$phql</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
-   <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span>
-   <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Astroy Boy&#39;</span><span class="p">,</span>
-   <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mechanical&#39;</span><span class="p">,</span>
-   <span class="s1">&#39;year&#39;</span> <span class="o">=&gt;</span> <span class="mi">1959</span>
-<span class="p">));</span>
-
- <span class="c1">//Check if the update was successful</span>
- <span class="k">if</span> <span class="p">(</span><span class="nv">$status</span><span class="o">-&gt;</span><span class="na">success</span><span class="p">()</span> <span class="o">==</span> <span class="k">true</span><span class="p">)</span> <span class="p">{</span>
-   <span class="k">echo</span> <span class="s1">&#39;OK&#39;</span><span class="p">;</span>
- <span class="p">}</span>
-</pre></div>
+  <div class="section" id="class-phalcon-xhprof">
+<h1>Class <strong>Phalcon\Xhprof</strong><a class="headerlink" href="#class-phalcon-xhprof" title="永久链接至标题">¶</a></h1>
+<p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/xhprof.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
+<p>Provides xhprof capabilities to Phalcon applications</p>
+<div class="section" id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="永久链接至标题">¶</a></h2>
+<p><em>integer</em> <strong>FLAG_MEMORY</strong></p>
+<p><em>integer</em> <strong>FLAG_MEMORY_MU</strong></p>
+<p><em>integer</em> <strong>FLAG_MEMORY_PMU</strong></p>
+<p><em>integer</em> <strong>FLAG_CPU</strong></p>
+<p><em>integer</em> <strong>FLAG_NO_BUILTINS</strong></p>
+<p><em>integer</em> <strong>FLAG_MEMORY_ALLOC</strong></p>
+<p><em>integer</em> <strong>FLAG_MEMORY_ALLOC_AS_MU</strong></p>
 </div>
 <div class="section" id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
-<p>public  <strong>__construct</strong> (<em>boolean</em> $success, [<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><span class="doc">Phalcon\Mvc\ModelInterface</span></a> $model])</p>
-<p>public <a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><span class="doc">Phalcon\Mvc\ModelInterface</span></a>  <strong>getModel</strong> ()</p>
-<p>Returns the model that executed the action</p>
-<p>public <em>Phalcon\Mvc\Model\MessageInterface[]</em>  <strong>getMessages</strong> ()</p>
-<p>Returns the messages produced by a failed operation</p>
-<p>public <em>boolean</em>  <strong>success</strong> ()</p>
-<p>Allows to check if the executed operation was successful</p>
+<p>public static  <strong>enable</strong> (<em>unknown</em> $flags)</p>
+<p>Enable xhprof</p>
+<p>public static  <strong>disable</strong> ()</p>
+<p>Disable xhprof</p>
 </div>
 </div>
 

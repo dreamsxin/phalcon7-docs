@@ -121,7 +121,7 @@ Phalcon 主要使用这个异常类来包装这些功能，以方便开发者或
 <div class="section" id="debug-mode">
 <h2>调试模式（Debug Mode）<a class="headerlink" href="#debug-mode" title="永久链接至标题">¶</a></h2>
 <p>开启调试模式之后，将会输出更多的信息帮助我们解决问题。例如，当控制器或者视图加载失败之后，我们想要确认 Phalcon 内部查找的目录是否正确，开启方式如下：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nx">Phalcon\Debug</span><span class="o">::</span><span class="na">enable</span><span class="p">();</span>
 
@@ -134,7 +134,7 @@ Phalcon 主要使用这个异常类来包装这些功能，以方便开发者或
 <div class="section" id="debug-message">
 <h3>调试信息（Debug Message）<a class="headerlink" href="#debug-message" title="永久链接至标题">¶</a></h3>
 <p>我们可以在代码中添加调试信息，开启调试模式后才会输出：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nx">Phalcon\Debug</span><span class="o">::</span><span class="na">log</span><span class="p">(</span><span class="s2">&quot;DEBUG Message&quot;</span><span class="p">);</span>
 </pre></div>
@@ -144,7 +144,7 @@ Phalcon 主要使用这个异常类来包装这些功能，以方便开发者或
 <div class="section" id="catching-exceptions">
 <h2>捕获异常（Catching Exceptions）<a class="headerlink" href="#catching-exceptions" title="永久链接至标题">¶</a></h2>
 <p>纵观Phalcon的文档及其提供的例子程序， 有一个最直接的捕获异常的方法即是使用try/catch块：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">try</span> <span class="p">{</span>
 
@@ -157,7 +157,7 @@ Phalcon 主要使用这个异常类来包装这些功能，以方便开发者或
 </div>
 <p>try/catch块内发生的异常会被捕获然后放入 <code class="code docutils literal"><span class="pre">$e</span></code> 变量。 开发者可以使用 <a class="reference internal" href="../api/Phalcon_Exception.html"><span class="doc">Phalcon\Exception</span></a> （扩展自 <a class="reference external" href="http://www.php.net/manual/en/language.exceptions.php">Exception class</a> ）来确定异常信息是来自Phalcon还是PHP本身。
 PHP产生的所有异常都是基于 <a class="reference external" href="http://www.php.net/manual/en/language.exceptions.php">Exception class</a> ， 且至少含有如下元素：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">Exception</span>
 <span class="p">{</span>
@@ -183,7 +183,7 @@ PHP产生的所有异常都是基于 <a class="reference external" href="http://
 </pre></div>
 </div>
 <p>如从 <a class="reference external" href="http://www.php.net/manual/en/language.exceptions.php">Exception class</a> 中取得异常信息一样， 我也可以从 <a class="reference internal" href="../api/Phalcon_Exception.html"><span class="doc">Phalcon\Exception</span></a> 中取异常信息。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">try</span> <span class="p">{</span>
 
@@ -198,7 +198,7 @@ PHP产生的所有异常都是基于 <a class="reference external" href="http://
 </pre></div>
 </div>
 <p>因此， 开发者可以非常容易找出在哪个文件中哪一行产生的异常信息，也可以看到异常信息涉及到的模块：</p>
-<div class="highlight-html"><div class="highlight"><pre>PDOException: SQLSTATE[28000] [1045] Access denied for user &#39;root&#39;@&#39;localhost&#39;
+<div class="highlight-html"><div class="highlight"><pre><span></span>PDOException: SQLSTATE[28000] [1045] Access denied for user &#39;root&#39;@&#39;localhost&#39;
     (using password: NO)
  File=/Applications/MAMP/htdocs/invo/public/index.php
  Line=74
@@ -228,7 +228,7 @@ PHP产生的所有异常都是基于 <a class="reference external" href="http://
 <h2>调试组件（Debug component）<a class="headerlink" href="#debug-component" title="永久链接至标题">¶</a></h2>
 <p>Phalcon提供的调试组件可以使开发者更容易的定位代码中的错误，注意一定要去掉Try/Catch块才可以，否则异常信息不会正确的输出。</p>
 <img class="align-center img-responsive" src="../static/img/debug.png"><p>要打开调试功能只需要如下做：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$debug</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Debug</span><span class="p">();</span>
 <span class="nv">$debug</span><span class="o">-&gt;</span><span class="na">listen</span><span class="p">();</span>
@@ -240,7 +240,7 @@ PHP产生的所有异常都是基于 <a class="reference external" href="http://
 </div><div class="section" id="adds-a-variable-to-the-debug-output">
 <h3>在调试中输出变量（Adds a variable to the debug output）<a class="headerlink" href="#adds-a-variable-to-the-debug-output" title="永久链接至标题">¶</a></h3>
 <p>我们可以在代码中添加调试信息，开启调试模式后才会输出：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$var</span> <span class="o">=</span> <span class="s1">&#39;Hello world&#39;</span><span class="p">;</span>
 <span class="nv">$debug</span><span class="o">-&gt;</span><span class="na">debugVar</span><span class="p">(</span><span class="nv">$var</span><span class="p">,</span> <span class="s1">&#39;var&#39;</span><span class="p">);</span>
@@ -250,7 +250,7 @@ PHP产生的所有异常都是基于 <a class="reference external" href="http://
 <div class="section" id="clears-are-variables-added-previously">
 <h3>清除变量（Clears are variables added previously）<a class="headerlink" href="#clears-are-variables-added-previously" title="永久链接至标题">¶</a></h3>
 <p>清除之前在代码中添加调试信息：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$debug</span><span class="o">-&gt;</span><span class="na">clearVars</span><span class="p">();</span>
 </pre></div>
@@ -259,7 +259,7 @@ PHP产生的所有异常都是基于 <a class="reference external" href="http://
 <div class="section" id="halts-the-request-showing-a-backtrace">
 <h3>中断请求显示回溯信息（Halts the request showing a backtrace）<a class="headerlink" href="#halts-the-request-showing-a-backtrace" title="永久链接至标题">¶</a></h3>
 <p>方法如下：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$debug</span><span class="o">-&gt;</span><span class="na">halt</span><span class="p">();</span>
 </pre></div>
@@ -269,14 +269,14 @@ PHP产生的所有异常都是基于 <a class="reference external" href="http://
 <div class="section" id="reflection-and-introspection">
 <h2>反射与内省（Reflection and Introspection）<a class="headerlink" href="#reflection-and-introspection" title="永久链接至标题">¶</a></h2>
 <p>Phalcon的类的实例通常比一般的类实例更复杂。 这里我们可以使用 &#8216;Reflection API&#8217;_ (反射机制) 或 直接打印其内部状态来观其究竟：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">();</span>
 <span class="nb">print_r</span><span class="p">(</span><span class="nv">$router</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>开发者可以非常容易的观察到对象内部的状态。 上面的代码输出如下：</p>
-<div class="highlight-html"><div class="highlight"><pre>Phalcon\Mvc\Router Object
+<div class="highlight-html"><div class="highlight"><pre><span></span>Phalcon\Mvc\Router Object
 (
     [_dependencyInjector:protected] =&gt;
     [_module:protected] =&gt;
@@ -339,7 +339,7 @@ PHP产生的所有异常都是基于 <a class="reference external" href="http://
 <blockquote class="highlights">
 <div>我们强烈推荐至少使用XDebug 2.2.3 以提供与Phalcon最佳的兼容性。</div></blockquote>
 <p>下面的例子中调用了 <a class="reference external" href="http://xdebug.org/docs/stack_trace">xdebug_print_function_stack</a> 方法， 并返回了该方法产生的代码跟踪结果:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
 
@@ -370,7 +370,7 @@ PHP产生的所有异常都是基于 <a class="reference external" href="http://
 </pre></div>
 </div>
 <p>这个例子中， XDebug显示出了局部变量和代码的跟踪信息：</p>
-<div class="highlight-html"><div class="highlight"><pre>Xdebug: stop here! in /Applications/MAMP/htdocs/tutorial/app/controllers/SignupController.php
+<div class="highlight-html"><div class="highlight"><pre><span></span>Xdebug: stop here! in /Applications/MAMP/htdocs/tutorial/app/controllers/SignupController.php
     on line 19
 
 Call Stack:

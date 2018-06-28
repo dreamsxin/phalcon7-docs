@@ -144,7 +144,7 @@
 <div class="section" id="creation-instantiation">
 <h3>创建与实例化（Creation/Instantiation）<a class="headerlink" href="#creation-instantiation" title="永久链接至标题">¶</a></h3>
 <p>实例化框架中的类很容易：</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="c1">// Instantiate a object from the Phalcon\Mvc\Router\Route class entry</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="c1">// Instantiate a object from the Phalcon\Mvc\Router\Route class entry</span>
 <span class="n">object_init_ex</span><span class="p">(</span><span class="o">&amp;</span><span class="n">route</span><span class="p">,</span> <span class="n">phalcon_mvc_router_route_ce</span><span class="p">);</span>
 
 <span class="c1">// Calling the constructor and passing a pattern as parameter</span>
@@ -154,13 +154,13 @@
 </pre></div>
 </div>
 <p>The above code is the same as doing in PHP:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$route</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\Router\Route</span><span class="p">(</span><span class="s2">&quot;#^/([a-zA-Z0-9</span><span class="se">\\</span><span class="s2">_]+)[/]{0,1}$#&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Moreover, if is not a Phalcon class then objects must then initialized as follows:</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="n">zend_class_entry</span> <span class="o">*</span><span class="n">reflection_ce</span><span class="p">;</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">zend_class_entry</span> <span class="o">*</span><span class="n">reflection_ce</span><span class="p">;</span>
 
 <span class="c1">// Obtain the ReflectionClass class entry, this will also call autoloaders</span>
 <span class="n">reflection_ce</span> <span class="o">=</span> <span class="n">zend_fetch_class</span><span class="p">(</span><span class="n">SL</span><span class="p">(</span><span class="s">&quot;ReflectionClass&quot;</span><span class="p">),</span> <span class="n">ZEND_FETCH_CLASS_AUTO</span> <span class="n">TSRMLS_CC</span><span class="p">);</span>
@@ -176,7 +176,7 @@
 <div class="section" id="reading-writing-properties">
 <h3>读写属性（Reading/Writing Properties）<a class="headerlink" href="#reading-writing-properties" title="永久链接至标题">¶</a></h3>
 <p>Writing scalar values:</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="c1">// Create a stdClass object</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="c1">// Create a stdClass object</span>
 <span class="n">object_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">employee</span><span class="p">);</span>
 
 <span class="c1">// $employee-&gt;name = &quot;Sonny&quot;</span>
@@ -190,7 +190,7 @@
 </pre></div>
 </div>
 <p>Assigning other zvals to properties:</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="n">ZVAL_STRING</span><span class="p">(</span><span class="o">&amp;</span><span class="n">language</span><span class="p">,</span> <span class="s">&quot;English&quot;</span><span class="p">);</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">ZVAL_STRING</span><span class="p">(</span><span class="o">&amp;</span><span class="n">language</span><span class="p">,</span> <span class="s">&quot;English&quot;</span><span class="p">);</span>
 
 <span class="n">object_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">employee</span><span class="p">);</span>
 
@@ -199,7 +199,7 @@
 </pre></div>
 </div>
 <p>Reading/Writing dynamical properties:</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="n">ZVAL_STRING</span><span class="p">(</span><span class="o">&amp;</span><span class="n">language</span><span class="p">,</span> <span class="s">&quot;English&quot;</span><span class="p">);</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">ZVAL_STRING</span><span class="p">(</span><span class="o">&amp;</span><span class="n">language</span><span class="p">,</span> <span class="s">&quot;English&quot;</span><span class="p">);</span>
 
 <span class="n">ZVAL_STRING</span><span class="p">(</span><span class="o">&amp;</span><span class="n">property</span><span class="p">,</span> <span class="s">&quot;language&quot;</span><span class="p">);</span>
 
@@ -213,7 +213,7 @@
 </pre></div>
 </div>
 <p>Reading/Writing static properties:</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="c1">// Updating a static member with a string zval</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="c1">// Updating a static member with a string zval</span>
 <span class="n">ZVAL_STRING</span><span class="p">(</span><span class="o">&amp;</span><span class="n">greeting</span><span class="p">,</span> <span class="s">&quot;hello world&quot;</span><span class="p">);</span>
 <span class="n">phalcon_update_static_property</span><span class="p">(</span><span class="n">SL</span><span class="p">(</span><span class="s">&quot;phalcon</span><span class="se">\\</span><span class="s">some</span><span class="se">\\</span><span class="s">component&quot;</span><span class="p">),</span> <span class="n">SL</span><span class="p">(</span><span class="s">&quot;_someString&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">greeting</span><span class="p">);</span>
 

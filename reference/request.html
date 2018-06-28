@@ -113,7 +113,7 @@
 <h1>请求环境（Request Environment）<a class="headerlink" href="#request-environment" title="永久链接至标题">¶</a></h1>
 <p>每个 HTTP 请求（通常由浏览器发起），包含了请求参数、HTTP 头信息（包括Cookies）、文件等。Web 应用程序需要解析这些信息，并根据这些信息返回正确的响应给请求者。
 请求对象 <a class="reference internal" href="../api/Phalcon_Http_Request.html"><span class="doc">Phalcon\Http\Request</span></a> 封装了这些信息，你可以以面向对象的方式访问它。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Http\Request</span><span class="p">;</span>
 
@@ -138,7 +138,7 @@ never sanitized and can contain illegal characters or even malicious code, which
 <p><a class="reference internal" href="../api/Phalcon_Http_Request.html"><span class="doc">Phalcon\Http\Request</span></a> allows you to access the values stored in the <code class="code docutils literal"><span class="pre">$_REQUEST</span></code>,
 <code class="code docutils literal"><span class="pre">$_GET</span></code> and <code class="code docutils literal"><span class="pre">$_POST</span></code> arrays and sanitize or filter them with the &#8216;filter&#8217; service, (by default
 <a class="reference internal" href="filter.html"><span class="doc">Phalcon\Filter</span></a>). The following examples offer the same behavior:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Gets a variable from the $_REQUEST superglobal</span>
 <span class="nv">$id</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">);</span>
@@ -181,7 +181,7 @@ never sanitized and can contain illegal characters or even malicious code, which
 <h2>请求方法（Request Method）<a class="headerlink" href="#request-method" title="永久链接至标题">¶</a></h2>
 <div class="section" id="check-method">
 <h3>判断请求方法（Check Method）<a class="headerlink" href="#check-method" title="永久链接至标题">¶</a></h3>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Check if HTTP method match any of the passed methods</span>
 <span class="nv">$ret</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">isMethod</span><span class="p">(</span><span class="s1">&#39;POST&#39;</span><span class="p">);</span>
@@ -193,7 +193,7 @@ never sanitized and can contain illegal characters or even malicious code, which
 </div>
 <div class="section" id="getting-method">
 <h3>获取请求方法（Getting Method）<a class="headerlink" href="#getting-method" title="永久链接至标题">¶</a></h3>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Gets HTTP method which request has been made</span>
 <span class="nv">$id</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getMethod</span><span class="p">();</span>
@@ -206,7 +206,7 @@ never sanitized and can contain illegal characters or even malicious code, which
 <p>The most common place to access the request environment is in an action of a controller. To access the
 <a class="reference internal" href="../api/Phalcon_Http_Request.html"><span class="doc">Phalcon\Http\Request</span></a> object from a controller you will need to use
 the <code class="code docutils literal"><span class="pre">$this-&gt;request</span></code> public property of the controller:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
 
@@ -236,7 +236,7 @@ the <code class="code docutils literal"><span class="pre">$this-&gt;request</spa
 <h2>文件上传（Uploading Files）<a class="headerlink" href="#uploading-files" title="永久链接至标题">¶</a></h2>
 <p>Another common task is file uploading. <a class="reference internal" href="../api/Phalcon_Http_Request.html"><span class="doc">Phalcon\Http\Request</span></a> offers
 an object-oriented way to achieve this task:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
 
@@ -270,7 +270,7 @@ only the information related to each file uploaded with the request.</p>
 <h2>使用头信息（Working with Headers）<a class="headerlink" href="#working-with-headers" title="永久链接至标题">¶</a></h2>
 <p>As mentioned above, request headers contain useful information that allow us to send the proper response back to
 the user. The following examples show usages of that information:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Get the Http-X-Requested-With header</span>
 <span class="nv">$requestedWith</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getHeader</span><span class="p">(</span><span class="s2">&quot;HTTP_X_REQUESTED_WITH&quot;</span><span class="p">);</span>

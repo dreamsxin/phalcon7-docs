@@ -121,7 +121,7 @@
 <p>当 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> 需要使用缓存数据的服务时Model可以直接从DI中取得此缓存服务modelsCache(惯例名).</p>
 <p>Phalcon提供了一个组件（服务）可以用来 <a class="reference internal" href="cache.html"><span class="doc">缓存</span></a> 任何种类的数据，下面我们会解释如何在model使用它。第一步我们要在启动文件注册
 这个服务:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Cache\Frontend\Data</span> <span class="k">as</span> <span class="nx">FrontendData</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Cache\Backend\Memcache</span> <span class="k">as</span> <span class="nx">BackendMemcache</span><span class="p">;</span>
@@ -150,16 +150,26 @@
 </pre></div>
 </div>
 <p>在注册缓存服务时我们可以按照我们的所需进行配置。一旦完成正确的缓存设置之后，我们可以按如下的方式缓存查询的结果了:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// 直接取Products模型里的数据（未缓存）</span>
 <span class="nv">$products</span> <span class="o">=</span> <span class="nx">Products</span><span class="o">::</span><span class="na">find</span><span class="p">();</span>
 
-<span class="c1">// 缓存查询结果.缓存时间为默认1天。</span>
+<span class="c1">// 缓存查询结果缓存时间为默认1天。</span>
 <span class="nv">$products</span> <span class="o">=</span> <span class="nx">Products</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
     <span class="k">array</span><span class="p">(</span>
         <span class="s2">&quot;cache&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
             <span class="s2">&quot;key&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;my-cache&quot;</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">// 只在数据存在时缓存。</span>
+<span class="nv">$products</span> <span class="o">=</span> <span class="nx">Products</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;cache&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s2">&quot;key&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;my-cache&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;allowEmpty&quot;</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
         <span class="p">)</span>
     <span class="p">)</span>
 <span class="p">);</span>
@@ -174,17 +184,21 @@
     <span class="p">)</span>
 <span class="p">);</span>
 
-<span class="c1">// 使用自定义缓存</span>
+<span class="c1">// 使用自定义缓存服务</span>
 <span class="nv">$products</span> <span class="o">=</span> <span class="nx">Products</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
     <span class="k">array</span><span class="p">(</span>
-        <span class="s2">&quot;cache&quot;</span> <span class="o">=&gt;</span> <span class="nv">$myCache</span>
+        <span class="s2">&quot;cache&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s2">&quot;key&quot;</span>      <span class="o">=&gt;</span> <span class="s2">&quot;my-cache&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;service&quot;</span>  <span class="o">=&gt;</span> <span class="s2">&quot;myModelsCache&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;lifetime&quot;</span> <span class="o">=&gt;</span> <span class="mi">300</span>
+        <span class="p">)</span>
     <span class="p">)</span>
 <span class="p">);</span>
 
 <span class="nx">这里我们也可以缓存关联表的数据</span><span class="o">:</span>
 </pre></div>
 </div>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Query some post</span>
 <span class="nv">$post</span>     <span class="o">=</span> <span class="nx">Post</span><span class="o">::</span><span class="na">findFirst</span><span class="p">();</span>
@@ -216,7 +230,7 @@
 <div class="section" id="find-findfirst-overriding-find-findfirst">
 <h2>重写 find 与 findFirst 方法（Overriding find/findFirst）<a class="headerlink" href="#find-findfirst-overriding-find-findfirst" title="永久链接至标题">¶</a></h2>
 <p>从上面的我们可以看到这两个方法是从 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model继承而来</span></a>:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
 
@@ -237,7 +251,7 @@
 <p>这样做会影响到所有此类的对象对这两个函数的调用，我们可以在其中添加一个缓存层，如果未有其它缓存的
 话（比如modelsCache）。例如，一个基本的缓存实现是我们在此类中添加一个静态的变量以避免在同一请求中
 多次查询数据库：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
 
@@ -289,7 +303,7 @@
 </div>
 <p>访问数据要远比计算key值慢的多，我们在这里定义自己需要的key生成方式。注意好的键可以避免冲突，这样就可以依据不同的key值取得不同的缓存结果。</p>
 <p>上面的例子中我们把缓存放在了内存中，这做为第一级的缓存。当然我们也可以在第一层缓存的基本上实现第二层的缓存比如使用 APC/XCache 或是使用NoSQL数据库（如MongoDB等）：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nv">$parameters</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
 <span class="p">{</span>
@@ -327,7 +341,7 @@
 </pre></div>
 </div>
 <p>这样我们可以对可模型的缓存进行完全的控制，如果多个模型需要进行如此缓存可以建立一个基础类：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
 
@@ -351,7 +365,7 @@
 </pre></div>
 </div>
 <p>然后把这个类作为其它缓存类的基类：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">CacheableModel</span>
 <span class="p">{</span>
@@ -363,7 +377,7 @@
 <div class="section" id="forcing-cache">
 <h2>强制缓存（Forcing Cache）<a class="headerlink" href="#forcing-cache" title="永久链接至标题">¶</a></h2>
 <p>前面的例子中我们在 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> 中使用框架内建的缓存组件。为实现强制缓存我们传递了cache作为参数：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// 缓存查询结果5分钟</span>
 <span class="nv">$products</span> <span class="o">=</span> <span class="nx">Products</span><span class="o">::</span><span class="na">find</span><span class="p">(</span>
@@ -377,7 +391,7 @@
 </pre></div>
 </div>
 <p>为了自由的对特定的查询结果进行缓存我们，比如我们想对模型中的所有查询结果进行缓存我们可以重写find/findFirst方法：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
 
@@ -419,7 +433,7 @@
 <div class="section" id="phql-caching-phql-queries">
 <h2>缓存 PHQL 查询（Caching PHQL Queries）<a class="headerlink" href="#phql-caching-phql-queries" title="永久链接至标题">¶</a></h2>
 <p>ORM中的所有查询，不管多么高级的查询方法内部使用使用PHQL进行实现的。这个语言可以让我们非常自由的创建各种查询，当然这些查询也可以被缓存：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$phql</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM Cars WHERE name = :name:&quot;</span><span class="p">;</span>
 
@@ -440,7 +454,7 @@
 </pre></div>
 </div>
 <p>如果不想使用隐式的缓存尽管使用你想用的缓存方式：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$phql</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM Cars WHERE name = :name:&quot;</span><span class="p">;</span>
 
@@ -458,7 +472,7 @@
 <div class="section" id="reusable-related-records">
 <h2>可重用的相关记录（Reusable Related Records）<a class="headerlink" href="#reusable-related-records" title="永久链接至标题">¶</a></h2>
 <p>一些模型有关联的数据表我们直接使用关联的数据：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Get some invoice</span>
 <span class="nv">$invoice</span>  <span class="o">=</span> <span class="nx">Invoices</span><span class="o">::</span><span class="na">findFirst</span><span class="p">();</span>
@@ -472,7 +486,7 @@
 </div>
 <p>这个例子非常简单，依据查询到的订单信息取得用户信息之后再取得用户名。下面的情景也是如何：我们查询了一些订单的信息，然后取得这些订单相关联
 用户的信息，之后取得用户名：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Get a set of invoices</span>
 <span class="c1">// SELECT * FROM invoices;</span>
@@ -489,7 +503,7 @@
 </div>
 <p>每个客户可能会有一个或多个帐单，这就意味着客户对象没必须取多次。为了避免一次次的重复取客户信息，我们这里设置关系为reusable为true,
 这样ORM即知可以重复使用客户信息：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
 
@@ -510,7 +524,7 @@
 </pre></div>
 </div>
 <p>此Cache存在于内存中，这意味着当请示结束时缓存数据即被释放。我们也可以通过重写模型管理器的方式实现更加复杂的缓存：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Manager</span> <span class="k">as</span> <span class="nx">ModelManager</span><span class="p">;</span>
 
@@ -556,7 +570,7 @@
 </pre></div>
 </div>
 <p>别忘记注册模型管理器到DI中：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">setShared</span><span class="p">(</span><span class="s1">&#39;modelsManager&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="k">new</span> <span class="nx">CustomModelsManager</span><span class="p">();</span>
@@ -595,7 +609,7 @@
 </tbody>
 </table>
 <p>这意味着当我们取得关联记录时，我们需要解析如何如何取得数据的方法：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Get some invoice</span>
 <span class="nv">$invoice</span>  <span class="o">=</span> <span class="nx">Invoices</span><span class="o">::</span><span class="na">findFirst</span><span class="p">();</span>
@@ -608,7 +622,7 @@
 </pre></div>
 </div>
 <p>因此，我们可以替换掉Invoices模型中的findFirst方法然后实现我们使用适合的方法</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
 
@@ -625,7 +639,7 @@
 <div class="section" id="caching-related-records-recursively">
 <h2>递归缓存相关记录（Caching Related Records Recursively）<a class="headerlink" href="#caching-related-records-recursively" title="永久链接至标题">¶</a></h2>
 <p>在这种场景下我们假定我们每次取主记录时都会取模型的关联记录，如果我们此时保存这些记录可能会为为我们的系统带来一些性能上的提升：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
 
@@ -687,7 +701,7 @@
 </pre></div>
 </div>
 <p>从已经缓存的订单中取得用户信息，可以减少系统的负载。注意我们也可以使用PHQL来实现这个，下面使用了PHQL来实现：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
 
@@ -750,7 +764,7 @@
 </tbody>
 </table>
 <p>最简单的方式即是为模型类添加一个静态的方法，此方法中我们指定要使用的缓存：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
 
@@ -795,7 +809,7 @@
 </pre></div>
 </div>
 <p>这个方法是可以解决问题，不过如果我们需要添加其它的参数比如排序或条件等我们还要创建更复杂的方法。另外当我们使用find/findFirst来查询关联数据时此方法亦会失效：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="s1">&#39;id &lt; 1000&#39;</span><span class="p">);</span>
 <span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="s1">&#39;id &gt; 100 AND type = &quot;A&quot;&#39;</span><span class="p">);</span>
@@ -812,7 +826,7 @@
 </div>
 <p>为了实现这个我们需要拦截中间语言解析，然后书写相关的代码以定制缓存：
 首先我们需要创建自定义的创建器，然后我们可以使用它来创建守全自己定义的查询：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Query\Builder</span> <span class="k">as</span> <span class="nx">QueryBuilder</span><span class="p">;</span>
 
@@ -828,7 +842,7 @@
 </pre></div>
 </div>
 <p>这里我们返回的是CustomQuery而不是不直接的返回 <a class="reference internal" href="../api/Phalcon_Mvc_Model_Query.html"><span class="doc">Phalcon\Mvc\Model\Query</span></a>， 类定义如下所示：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Query</span> <span class="k">as</span> <span class="nx">ModelQuery</span><span class="p">;</span>
 
@@ -875,7 +889,7 @@
 </pre></div>
 </div>
 <p>这里我们实现了一个帮助类用以递归的的检查条件以查询字段用以识我们知了需要使用缓存的范围（即检查条件以确认实施查询缓存的范围）：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">CustomNodeVisitor</span>
 <span class="p">{</span>
@@ -941,7 +955,7 @@
 </pre></div>
 </div>
 <p>最后，我们替换Robots模型中的查询方法以使用我们创建的自定义类：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
 
@@ -970,7 +984,7 @@
 <h2>缓存 PHQL 查询计划（Caching of PHQL planning）<a class="headerlink" href="#phql-caching-of-phql-planning" title="永久链接至标题">¶</a></h2>
 <p>像大多数现代的操作系统一样PHQL内部会缓存执行计划，如果同样的语句多次执行，PHQL会使用之前生成的查询计划以提升系统的性能，
 对开发者来说只采用绑定参数的形式传递参数即可实现：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
 
@@ -982,7 +996,7 @@
 </pre></div>
 </div>
 <p>上面的例子中，Phalcon产生了10个查询计划，这导致了应用的内存使用量增加。重写以上代码，我们使用绑定参数的这个优点可以减少系统和数据库的过多操作：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$phql</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM Store</span><span class="se">\R</span><span class="s2">obots WHERE id = ?0&quot;</span><span class="p">;</span>
 
@@ -995,7 +1009,7 @@
 </pre></div>
 </div>
 <p>得用PHQL查询亦可以提供查询性能：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$phql</span>  <span class="o">=</span> <span class="s2">&quot;SELECT * FROM Store</span><span class="se">\R</span><span class="s2">obots WHERE id = ?0&quot;</span><span class="p">;</span>
 <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">modelsManager</span><span class="o">-&gt;</span><span class="na">createQuery</span><span class="p">(</span><span class="nv">$phql</span><span class="p">);</span>

@@ -121,7 +121,7 @@
 <p>当我们使用命名空间组织代码或者使用带有命名空间的外部库时，可以使用 <cite>registerNamespaces</cite> 提供的加载机制。
 它的值是一个关联数组，键对应命名空间前缀，值是对应的目录。
 当加载程序试图通过命名空间找到类时，命名空间的分隔符将被目录分隔符替换，然后作为查找的文件路径。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Loader</span><span class="p">;</span>
 
@@ -150,7 +150,7 @@
 <h2>注册前缀（Registering Prefixes）<a class="headerlink" href="#registering-prefixes" title="永久链接至标题">¶</a></h2>
 <p>这个策略类似于命名空间策略。它需要一个关联数组，其中键是前缀，它们的值是类所在的目录。
 当加载程序试图通过命名空间找到类时，命名空间的分隔符和下划线 “_” 将被目录分隔符替换。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Loader</span><span class="p">;</span>
 
@@ -178,7 +178,7 @@
 <div class="section" id="registering-directories">
 <h2>注册文件夹（Registering Directories）<a class="headerlink" href="#registering-directories" title="永久链接至标题">¶</a></h2>
 <p>在文件目录多时不推荐该方法，它按照目录在数组内的顺序从上到下，查找文件。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Loader</span><span class="p">;</span>
 
@@ -208,7 +208,7 @@
 <div class="section" id="registering-classes">
 <h2>注册类名（Registering Classes）<a class="headerlink" href="#registering-classes" title="永久链接至标题">¶</a></h2>
 <p>最后一个方式，是直接将类名和文件对应起来，这是性能最好的加载方式，但类的列表不太好维护，所以不推荐使用。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Loader</span><span class="p">;</span>
 
@@ -237,7 +237,7 @@
 <h2>额外的扩展名（Additional file extensions）<a class="headerlink" href="#additional-file-extensions" title="永久链接至标题">¶</a></h2>
 <p>Some autoloading strategies such as  &#8220;prefixes&#8221;, &#8220;namespaces&#8221; or &#8220;directories&#8221; automatically append the &#8220;php&#8221; extension at the end of the checked file. If you
 are using additional extensions you could set it with the method &#8220;setExtensions&#8221;. Files are checked in the order as it were defined:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Creates the autoloader</span>
 <span class="nv">$loader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Loader</span><span class="p">();</span>
@@ -250,7 +250,7 @@ are using additional extensions you could set it with the method &#8220;setExten
 <div class="section" id="modifying-current-strategies">
 <h2>修改当前策略（Modifying current strategies）<a class="headerlink" href="#modifying-current-strategies" title="永久链接至标题">¶</a></h2>
 <p>Additional auto-loading data can be added to existing values in the following way:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Adding more directories</span>
 <span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">registerDirs</span><span class="p">(</span>
@@ -268,7 +268,7 @@ are using additional extensions you could set it with the method &#8220;setExten
 <h2>安全层（Security Layer）<a class="headerlink" href="#security-layer" title="永久链接至标题">¶</a></h2>
 <p><a class="reference internal" href="../api/Phalcon_Loader.html"><span class="doc">Phalcon\Loader</span></a> offers a security layer sanitizing by default class names avoiding possible inclusion of unauthorized files.
 Consider the following example:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Basic autoloader</span>
 <span class="nb">spl_autoload_register</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nv">$className</span><span class="p">)</span> <span class="p">{</span>
@@ -280,7 +280,7 @@ Consider the following example:</p>
 </div>
 <p>The above auto-loader lacks of any security check, if by mistake in a function that launch the auto-loader,
 a malicious prepared string is used as parameter this would allow to execute any file accessible by the application:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// This variable is not filtered and comes from an insecure source</span>
 <span class="nv">$className</span> <span class="o">=</span> <span class="s1">&#39;../processes/important-process&#39;</span><span class="p">;</span>
@@ -299,7 +299,7 @@ reducing the possibility of being attacked.</p>
 <div class="section" id="autoloading-events">
 <h2>自动加载事件（Autoloading Events）<a class="headerlink" href="#autoloading-events" title="永久链接至标题">¶</a></h2>
 <p>In the following example, the EventsManager is working with the class loader, allowing us to obtain debugging information regarding the flow of operation:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Events\Manager</span><span class="p">();</span>
 

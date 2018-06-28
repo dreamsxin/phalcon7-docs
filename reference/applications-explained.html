@@ -105,7 +105,7 @@
 <h1>理解应用是如何工作的（Understanding How Phalcon Applications Work）<a class="headerlink" href="#understanding-how-phalcon-applications-work" title="永久链接至标题">¶</a></h1>
 <p>如果你已经看过了 <a class="reference internal" href="tutorial.html"><span class="doc">tutorial</span></a> 或者已经通过 <a class="reference internal" href="tools.html"><span class="doc">Phalcon Devtools</span></a> 生成了代码，
 你将很容易识别以下的启动文件：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Application</span><span class="p">;</span>
 
@@ -128,7 +128,7 @@
 </pre></div>
 </div>
 <p>控制器中全部核心的工作都会在handle()被回调时触发执行。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$application</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">();</span>
 </pre></div>
@@ -136,7 +136,7 @@
 <div class="section" id="manual-bootstrapping">
 <h2>手动启动（Manual bootstrapping）<a class="headerlink" href="#manual-bootstrapping" title="永久链接至标题">¶</a></h2>
 <p>如果你不想使用 <a class="reference internal" href="../api/Phalcon_Mvc_Application.html"><span class="doc">Phalcon\Mvc\Application</span></a> ，以上的代码可以改成这样：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// 获取 &#39;router&#39; 服务</span>
 <span class="nv">$router</span> <span class="o">=</span> <span class="nv">$di</span><span class="p">[</span><span class="s2">&quot;router&quot;</span><span class="p">];</span>
@@ -190,7 +190,7 @@
 </div>
 <p>以下代码替换了 <a class="reference internal" href="../api/Phalcon_Mvc_Application.html"><span class="doc">Phalcon\Mvc\Application</span></a> ，虽然缺少了视图组件，
 但却更适合Rest风格的API接口：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Http\ResponseInterface</span><span class="p">;</span>
 
@@ -229,7 +229,7 @@
 </pre></div>
 </div>
 <p>另外一个修改就是在分发器中对抛出异常的捕捉可以将请求转发到其他的操作：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Http\ResponseInterface</span><span class="p">;</span>
 

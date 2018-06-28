@@ -96,7 +96,7 @@
 <p><em>implements</em> <a class="reference internal" href="Phalcon_Events_EventsAwareInterface.html"><span class="doc">Phalcon\Events\EventsAwareInterface</span></a>, <a class="reference internal" href="Phalcon_Di_InjectionAwareInterface.html"><span class="doc">Phalcon\Di\InjectionAwareInterface</span></a></p>
 <p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/security/random.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
 <p>Secure random number generator class.  Provides secure random number generator which is suitable for generating session key in HTTP cookies, etc.  It supports following secure random number generators:  - libsodium - openssl - /dev/urandom  A <cite>Phalcon\Security\Random</cite> could be mainly useful for:  - Key generation (e.g. generation of complicated keys) - Creating random passwords for new user accounts - Encryption systems</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">  </span><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">  </span><span class="cp">&lt;?php</span>
 
     <span class="nv">$random</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Security\Random</span><span class="p">();</span>
 
@@ -152,7 +152,7 @@
 <h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
 <p>public  <strong>bytes</strong> ([<em>unknown</em> $len])</p>
 <p>Generates a random binary string If $len is not specified, 16 is assumed. It may be larger in future. The result may contain any byte: &#8220;x00&#8221; - &#8220;xFF&#8221;.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
   <span class="nv">$random</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Security\Random</span><span class="p">();</span>
 
@@ -161,7 +161,7 @@
 </div>
 <p>public  <strong>hex</strong> ([<em>unknown</em> $len])</p>
 <p>Generates a random hex string If $len is not specified, 16 is assumed. It may be larger in future. The length of the result string is usually greater of $len.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
   <span class="nv">$random</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Security\Random</span><span class="p">();</span>
 
@@ -170,7 +170,7 @@
 </div>
 <p>public  <strong>base58</strong> ([<em>unknown</em> $len])</p>
 <p>Generates a random base58 string If $len is not specified, 16 is assumed. It may be larger in future. The result may contain alphanumeric characters except 0, O, I and l. It is similar to Base64 but has been modified to avoid both non-alphanumeric characters and letters which might look ambiguous when printed.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
   <span class="nv">$random</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Security\Random</span><span class="p">();</span>
 
@@ -179,7 +179,7 @@
 </div>
 <p>public  <strong>base64</strong> ([<em>unknown</em> $len])</p>
 <p>Generates a random base64 string If $len is not specified, 16 is assumed. It may be larger in future. The length of the result string is usually greater of $len. Size formula: 4 <a href="#id1"><span class="problematic" id="id2">*</span></a>( $len / 3) and this need to be rounded up to a multiple of 4.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
   <span class="nv">$random</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Security\Random</span><span class="p">();</span>
 
@@ -188,7 +188,7 @@
 </div>
 <p>public  <strong>base64Safe</strong> ([<em>unknown</em> $len], [<em>unknown</em> $padding])</p>
 <p>Generates a random URL-safe base64 string If $len is not specified, 16 is assumed. It may be larger in future. The length of the result string is usually greater of $len. By default, padding is not generated because &#8220;=&#8221; may be used as a URL delimiter. The result may contain A-Z, a-z, 0-9, &#8220;-&#8221; and &#8220;_&#8221;. &#8220;=&#8221; is also used if $padding is true. See RFC 3548 for the definition of URL-safe base64.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
   <span class="nv">$random</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Security\Random</span><span class="p">();</span>
 
@@ -197,7 +197,7 @@
 </div>
 <p>public  <strong>uuid</strong> ()</p>
 <p>Generates a v4 random UUID (Universally Unique IDentifier) The version 4 UUID is purely random (except the version). It doesn&#8217;t contain meaningful information such as MAC address, time, etc. See RFC 4122 for details of UUID. This algorithm sets the version number (4 bits) as well as two reserved bits. All other bits (the remaining 122 bits) are set using a random or pseudorandom data source. Version 4 UUIDs have the form xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx where x is any hexadecimal digit and y is one of 8, 9, A, or B (e.g., f47ac10b-58cc-4372-a567-0e02b2c3d479).</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
   <span class="nv">$random</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Security\Random</span><span class="p">();</span>
 
@@ -206,7 +206,7 @@
 </div>
 <p>public  <strong>number</strong> (<em>unknown</em> $len)</p>
 <p>Generates a random number between 0 and $len Returns an integer: 0 &lt;= result &lt;= $len.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
   <span class="nv">$random</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Security\Random</span><span class="p">();</span>
 

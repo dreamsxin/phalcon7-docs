@@ -112,7 +112,7 @@
 <div class="section" id="usage-example">
 <h2>使用示例（Usage Example）<a class="headerlink" href="#usage-example" title="永久链接至标题">¶</a></h2>
 <p>以下面示例中，我们使用 <cite>attachEvent</cite> 设置MySQL连接中产生的事件的回调函数：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Db\Adapter\Pdo\Mysql</span> <span class="k">as</span> <span class="nx">DbAdapter</span><span class="p">;</span>
 
@@ -135,7 +135,7 @@
 <div class="section" id="id1">
 <h3>事件的执行<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h3>
 <p>几乎所有 Phalcon 对象都可以通过 <code class="code docutils literal"><span class="pre">fireEvent()</span></code> 或 <code class="code docutils literal"><span class="pre">fireEventCancel()</span></code> 方法来执行事件：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">fireEvent</span><span class="p">(</span><span class="s2">&quot;my-component:afterSomeTask&quot;</span><span class="p">,</span> <span class="nv">$extraData</span><span class="p">);</span>
 </pre></div>
@@ -540,7 +540,7 @@
 </tbody>
 </table>
 <p>示例：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Events\Manager</span><span class="p">();</span>
 
@@ -580,7 +580,7 @@
 </pre></div>
 </div>
 <p>输出：</p>
-<div class="highlight-html"><div class="highlight"><pre>array(2) {
+<div class="highlight-html"><div class="highlight"><pre><span></span>array(2) {
     [&quot;data&quot;]=&gt;
     int(1)
     [&quot;data2&quot;]=&gt;

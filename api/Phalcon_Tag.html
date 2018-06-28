@@ -124,7 +124,7 @@
 <p>Set autoescape mode in generated html</p>
 <p>public static  <strong>setDefault</strong> (<em>string</em> $id, <em>string</em> $value)</p>
 <p>Assigns default values to generated tags by helpers</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="c1">//Assigning &quot;peter&quot; to &quot;name&quot; component</span>
  <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">setDefault</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;peter&quot;</span><span class="p">);</span>
@@ -135,7 +135,7 @@
 </div>
 <p>public static  <strong>setDefaults</strong> (<em>array</em> $values)</p>
 <p>Assigns default values to generated tags by helpers</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="c1">//Assigning &quot;peter&quot; to &quot;name&quot; component</span>
  <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">setDefaults</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;peter&quot;</span><span class="p">));</span>
@@ -154,7 +154,7 @@
 <p>Resets the request and internal values to avoid those fields will have any default value</p>
 <p>public static <em>string</em>  <strong>linkTo</strong> (<em>array|string</em> $parameters, [<em>string</em> $text])</p>
 <p>Builds a HTML A tag using framework conventions</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">linkTo</span><span class="p">(</span><span class="s1">&#39;signup/register&#39;</span><span class="p">,</span> <span class="s1">&#39;Register Here!&#39;</span><span class="p">);</span>
 <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">linkTo</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;signup/register&#39;</span><span class="p">,</span> <span class="s1">&#39;Register Here!&#39;</span><span class="p">));</span>
@@ -172,14 +172,14 @@
 <p>Builds a HTML input[type=&#8221;color&#8221;] tag</p>
 <p>public static <em>string</em>  <strong>textField</strong> (<em>array</em> $parameters)</p>
 <p>Builds a HTML input[type=&#8221;text&#8221;] tag</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">textField</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">));</span>
 </pre></div>
 </div>
 <p>public static <em>string</em>  <strong>numericField</strong> (<em>array</em> $parameters)</p>
 <p>Builds a HTML input[type=&#8221;number&#8221;] tag</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">numericField</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;price&quot;</span><span class="p">,</span> <span class="s2">&quot;min&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;5&quot;</span><span class="p">));</span>
 </pre></div>
@@ -188,14 +188,14 @@
 <p>Builds a HTML input[type=&#8221;range&#8221;] tag</p>
 <p>public static <em>string</em>  <strong>emailField</strong> (<em>array</em> $parameters)</p>
 <p>Builds a HTML input[type=&#8221;email&#8221;] tag</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">emailField</span><span class="p">(</span><span class="s2">&quot;email&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>public static <em>string</em>  <strong>dateField</strong> (<em>array</em> $parameters)</p>
 <p>Builds a HTML input[type=&#8221;date&#8221;] tag</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">dateField</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;born&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;14-12-1980&quot;</span><span class="p">))</span>
 </pre></div>
@@ -212,14 +212,14 @@
 <p>Builds a HTML input[type=&#8221;week&#8221;] tag</p>
 <p>public static <em>string</em>  <strong>passwordField</strong> (<em>array</em> $parameters)</p>
 <p>Builds a HTML input[type=&#8221;password&#8221;] tag</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">passwordField</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">));</span>
 </pre></div>
 </div>
 <p>public static <em>string</em>  <strong>hiddenField</strong> (<em>array</em> $parameters)</p>
 <p>Builds a HTML input[type=&#8221;hidden&#8221;] tag</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">hiddenField</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;mike&quot;</span><span class="p">));</span>
 </pre></div>
@@ -232,41 +232,41 @@
 <p>Builds a HTML input[type=&#8221;url&#8221;] tag</p>
 <p>public static <em>string</em>  <strong>fileField</strong> (<em>array</em> $parameters)</p>
 <p>Builds a HTML input[type=&#8221;file&#8221;] tag</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">fileField</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>public static <em>string</em>  <strong>checkField</strong> (<em>array</em> $parameters)</p>
 <p>Builds a HTML input[type=&#8221;check&#8221;] tag</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">checkField</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;terms&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Y&quot;</span><span class="p">));</span>
 </pre></div>
 </div>
 <p>public static <em>string</em>  <strong>radioField</strong> (<em>array</em> $parameters)</p>
 <p>Builds a HTML input[type=&#8221;radio&#8221;] tag</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">radioField</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;wheather&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;hot&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>Volt syntax:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="p">{{</span> <span class="nx">radio_field</span><span class="p">(</span><span class="s1">&#39;Save&#39;</span><span class="p">)</span> <span class="p">}}</span>
 </pre></div>
 </div>
 <p>public static <em>string</em>  <strong>imageInput</strong> ([<em>array</em> $parameters], [<em>boolean</em> $local])</p>
 <p>Builds HTML IMG tags</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
     <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">image</span><span class="p">(</span><span class="s2">&quot;img/bg.png&quot;</span><span class="p">);</span>
     <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">image</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;img/photo.jpg&quot;</span><span class="p">,</span> <span class="s2">&quot;alt&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Some Photo&quot;</span><span class="p">));</span>
 </pre></div>
 </div>
 <p>Volt Syntax:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
     <span class="p">{{</span> <span class="nx">image</span><span class="p">(</span><span class="s2">&quot;img/bg.png&quot;</span><span class="p">)</span> <span class="p">}}</span>
     <span class="p">{{</span> <span class="nx">image</span><span class="p">(</span><span class="s2">&quot;img/photo.jpg&quot;</span><span class="p">,</span> <span class="s2">&quot;alt&quot;</span><span class="o">:</span> <span class="s2">&quot;Some Photo&quot;</span><span class="p">)</span> <span class="p">}}</span>
@@ -275,27 +275,27 @@
 </div>
 <p>public static <em>string</em>  <strong>submitButton</strong> (<em>array</em> $parameters)</p>
 <p>Builds a HTML input[type=&#8221;submit&#8221;] tag</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">submitButton</span><span class="p">(</span><span class="s2">&quot;Save&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Volt syntax:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="p">{{</span> <span class="nx">submit_button</span><span class="p">(</span><span class="s1">&#39;Save&#39;</span><span class="p">)</span> <span class="p">}}</span>
 </pre></div>
 </div>
 <p>public static <em>string</em>  <strong>selectStatic</strong> (<em>array</em> $parameters, [<em>array</em> $data])</p>
 <p>Builds a HTML SELECT tag using a PHP array for options</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">selectStatic</span><span class="p">(</span><span class="s2">&quot;status&quot;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;A&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Active&quot;</span><span class="p">,</span> <span class="s2">&quot;I&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Inactive&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>public static <em>string</em>  <strong>select</strong> (<em>array</em> $parameters, [<em>array</em> $data])</p>
 <p>Builds a HTML SELECT tag using a Phalcon\Mvc\Model resultset as options</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">select</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
     <span class="s2">&quot;robotId&quot;</span><span class="p">,</span>
@@ -305,34 +305,34 @@
 </pre></div>
 </div>
 <p>Volt syntax:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="p">{{</span> <span class="nx">select</span><span class="p">(</span><span class="s2">&quot;robotId&quot;</span><span class="p">,</span> <span class="nx">robots</span><span class="p">,</span> <span class="s2">&quot;using&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">])</span> <span class="p">}}</span>
 </pre></div>
 </div>
 <p>public static <em>string</em>  <strong>textArea</strong> (<em>array</em> $parameters)</p>
 <p>Builds a HTML TEXTAREA tag</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">textArea</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;comments&quot;</span><span class="p">,</span> <span class="s2">&quot;cols&quot;</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;rows&quot;</span> <span class="o">=&gt;</span> <span class="mi">4</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>Volt syntax:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="p">{{</span> <span class="nx">text_area</span><span class="p">(</span><span class="s2">&quot;comments&quot;</span><span class="p">,</span> <span class="s2">&quot;cols&quot;</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;rows&quot;</span><span class="o">:</span> <span class="mi">4</span><span class="p">)</span> <span class="p">}}</span>
 </pre></div>
 </div>
 <p>public static <em>string</em>  <strong>form</strong> ([<em>array</em> $parameters])</p>
 <p>Builds a HTML FORM tag</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">form</span><span class="p">(</span><span class="s2">&quot;posts/save&quot;</span><span class="p">);</span>
  <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">form</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;posts/save&quot;</span><span class="p">,</span> <span class="s2">&quot;method&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;post&quot;</span><span class="p">));</span>
 </pre></div>
 </div>
 <p>Volt syntax:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="p">{{</span> <span class="nx">form</span><span class="p">(</span><span class="s2">&quot;posts/save&quot;</span><span class="p">)</span> <span class="p">}}</span>
  <span class="p">{{</span> <span class="nx">form</span><span class="p">(</span><span class="s2">&quot;posts/save&quot;</span><span class="p">,</span> <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;post&quot;</span><span class="p">)</span> <span class="p">}}</span>
@@ -342,14 +342,14 @@
 <p>Builds a HTML close FORM tag</p>
 <p>public static  <strong>setTitle</strong> (<em>string</em> $title)</p>
 <p>Set the title of view content</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">setTitle</span><span class="p">(</span><span class="s1">&#39;Welcome to my Page&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>public static  <strong>setTitleSeparator</strong> (<em>unknown</em> $separator)</p>
 <p>Set the title separator of view content</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">setTitleSeparator</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">);</span>
 </pre></div>
@@ -360,38 +360,38 @@
 <p>Prepends a text to current document title</p>
 <p>public static <em>string</em>  <strong>getTitle</strong> ([<em>unknown</em> $tags])</p>
 <p>Gets the current document title</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
     <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">getTitle</span><span class="p">();</span>
 </pre></div>
 </div>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
     <span class="p">{{</span> <span class="nx">get_title</span><span class="p">()</span> <span class="p">}}</span>
 </pre></div>
 </div>
 <p>public static <em>string</em>  <strong>getTitleSeparator</strong> ()</p>
 <p>Gets the current document title separator</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
     <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">getTitleSeparator</span><span class="p">();</span>
 </pre></div>
 </div>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
     <span class="p">{{</span> <span class="nx">get_title_separator</span><span class="p">()</span> <span class="p">}}</span>
 </pre></div>
 </div>
 <p>public static <em>string</em>  <strong>stylesheetLink</strong> ([<em>array</em> $parameters], [<em>boolean</em> $local], [<em>array</em> $args])</p>
 <p>Builds a LINK[rel=&#8221;stylesheet&#8221;] tag</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
     <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">stylesheetLink</span><span class="p">(</span><span class="s2">&quot;http://fonts.googleapis.com/css?family=Rosario&quot;</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
     <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">stylesheetLink</span><span class="p">(</span><span class="s2">&quot;css/style.css&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Volt Syntax:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
     <span class="p">{{</span> <span class="nx">stylesheet_link</span><span class="p">(</span><span class="s2">&quot;http://fonts.googleapis.com/css?family=Rosario&quot;</span><span class="p">,</span> <span class="k">false</span><span class="p">)</span> <span class="p">}}</span>
     <span class="p">{{</span> <span class="nx">stylesheet_link</span><span class="p">(</span><span class="s2">&quot;css/style.css&quot;</span><span class="p">)</span> <span class="p">}}</span>
@@ -399,14 +399,14 @@
 </div>
 <p>public static <em>string</em>  <strong>javascriptInclude</strong> ([<em>array</em> $parameters], [<em>boolean</em> $local], [<em>array</em> $args])</p>
 <p>Builds a SCRIPT[type=&#8221;javascript&#8221;] tag</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
     <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">javascriptInclude</span><span class="p">(</span><span class="s2">&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js&quot;</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
     <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">javascriptInclude</span><span class="p">(</span><span class="s2">&quot;javascript/jquery.js&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Volt syntax:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="p">{{</span> <span class="nx">javascript_include</span><span class="p">(</span><span class="s2">&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js&quot;</span><span class="p">,</span> <span class="k">false</span><span class="p">)</span> <span class="p">}}</span>
  <span class="p">{{</span> <span class="nx">javascript_include</span><span class="p">(</span><span class="s2">&quot;javascript/jquery.js&quot;</span><span class="p">)</span> <span class="p">}}</span>
@@ -414,7 +414,7 @@
 </div>
 <p>public static <em>text</em>  <strong>friendlyTitle</strong> (<em>string</em> $text, [<em>string</em> $separator], [<em>boolean</em> $lowercase])</p>
 <p>Converts texts into URL-friendly titles</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">friendlyTitle</span><span class="p">(</span><span class="s1">&#39;These are big important news&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
 </pre></div>
@@ -425,14 +425,14 @@
 <p>Get the document type declaration of content</p>
 <p>public static <em>string</em>  <strong>tagHtml</strong> (<em>string</em> $tagName, [<em>array</em> $parameters], [<em>boolean</em> $selfClose], [<em>boolean</em> $onlyStart], [<em>boolean</em> $useEol])</p>
 <p>Builds a HTML tag</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">tagHtml</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">,</span> <span class="nv">$selfClose</span><span class="p">,</span> <span class="nv">$onlyStart</span><span class="p">,</span> <span class="nv">$eol</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>public static <em>string</em>  <strong>tagHtmlClose</strong> (<em>string</em> $tagName, [<em>boolean</em> $useEol])</p>
 <p>Builds a HTML tag closing tag</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">echo</span> <span class="nx">Phalcon\Tag</span><span class="o">::</span><span class="na">tagHtmlClose</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">)</span>
 </pre></div>

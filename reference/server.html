@@ -108,7 +108,7 @@
 <div class="section" id="tcp-tcp-server-class">
 <h2>TCP 服务端类（TCP Server Class）<a class="headerlink" href="#tcp-tcp-server-class" title="永久链接至标题">¶</a></h2>
 <p><a class="reference internal" href="../api/Phalcon_Server.html"><span class="doc">Phalcon\Server</span></a> 可以等待客户端的连接请求以及接收客户端发送的数据。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
     <span class="k">class</span> <span class="nc">Server</span> <span class="k">extends</span> <span class="nx">Phalcon\Server</span> <span class="p">{</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">onConnect</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$fd</span><span class="p">)</span> <span class="p">{</span>
     <span class="p">}</span>
@@ -127,7 +127,7 @@
 <div class="section" id="http-http-server-class">
 <h2>HTTP 服务端类（HTTP Server Class）<a class="headerlink" href="#http-http-server-class" title="永久链接至标题">¶</a></h2>
 <p><a class="reference internal" href="../api/Phalcon_Server_Http.html"><span class="doc">Phalcon\Server\Http</span></a> 可以等待客户端的连接请求以及接收客户端发送的数据。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
     <span class="k">class</span> <span class="nc">App</span> <span class="k">extends</span> <span class="nx">Phalcon\Application</span> <span class="p">{</span>
             <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nv">$uri</span> <span class="o">=</span> <span class="k">NULL</span><span class="p">)</span><span class="o">:</span><span class="nx">Phalcon\Http\ResponseInterface</span><span class="p">{</span>
                     <span class="k">return</span> <span class="k">new</span> <span class="nx">Phalcon\Http\Response</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">);</span>

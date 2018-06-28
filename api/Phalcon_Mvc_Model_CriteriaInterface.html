@@ -105,14 +105,14 @@
 <p>Sets the bind types in the criteria This method replaces all previously set bound parameters</p>
 <p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model\CriteriaInterface</span></a>  <strong>columns</strong> (<em>string|array</em> $columns)</p>
 <p>Sets the columns to be queried</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$criteria</span><span class="o">-&gt;</span><span class="na">columns</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">));</span>
 </pre></div>
 </div>
 <p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model\CriteriaInterface</span></a>  <strong>join</strong> (<em>string</em> $model, [<em>string</em> $conditions], [<em>string</em> $alias], [<em>string</em> $type])</p>
 <p>Adds a join to the query</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$criteria</span><span class="o">-&gt;</span><span class="na">join</span><span class="p">(</span><span class="s1">&#39;Robots&#39;</span><span class="p">);</span>
 <span class="nv">$criteria</span><span class="o">-&gt;</span><span class="na">join</span><span class="p">(</span><span class="s1">&#39;Robots&#39;</span><span class="p">,</span> <span class="s1">&#39;r.id = RobotsParts.robots_id&#39;</span><span class="p">);</span>
@@ -128,28 +128,28 @@
 <p>Appends a condition to the current conditions using an OR operator</p>
 <p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model\CriteriaInterface</span></a>  <strong>betweenWhere</strong> (<em>string</em> $expr, <em>mixed</em> $minimum, <em>mixed</em> $maximum, [<em>unknown</em> $useOrWhere])</p>
 <p>Appends a BETWEEN condition to the current conditions</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$criteria</span><span class="o">-&gt;</span><span class="na">betweenWhere</span><span class="p">(</span><span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="mf">100.25</span><span class="p">,</span> <span class="mf">200.50</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model\CriteriaInterface</span></a>  <strong>notBetweenWhere</strong> (<em>string</em> $expr, <em>mixed</em> $minimum, <em>mixed</em> $maximum, [<em>unknown</em> $useOrWhere])</p>
 <p>Appends a NOT BETWEEN condition to the current conditions</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$criteria</span><span class="o">-&gt;</span><span class="na">notBetweenWhere</span><span class="p">(</span><span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="mf">100.25</span><span class="p">,</span> <span class="mf">200.50</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model\CriteriaInterface</span></a>  <strong>inWhere</strong> (<em>string</em> $expr, <em>array</em> $values, [<em>unknown</em> $useOrWhere])</p>
 <p>Appends an IN condition to the current conditions</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$criteria</span><span class="o">-&gt;</span><span class="na">inWhere</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]);</span>
 </pre></div>
 </div>
 <p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model\CriteriaInterface</span></a>  <strong>notInWhere</strong> (<em>string</em> $expr, <em>array</em> $values, [<em>unknown</em> $useOrWhere])</p>
 <p>Appends a NOT IN condition to the current conditions</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$criteria</span><span class="o">-&gt;</span><span class="na">notInWhere</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]);</span>
 </pre></div>
@@ -186,14 +186,14 @@
 <p>Executes a find using the parameters built with the criteria</p>
 <p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model\CriteriaInterface</span></a>  <strong>insert</strong> ()</p>
 <p>Set columns for an insert</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$criteria</span><span class="o">-&gt;</span><span class="na">insert</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">),</span> <span class="k">array</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;phalcon&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;zephir&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)));</span>
 </pre></div>
 </div>
 <p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model\CriteriaInterface</span></a>  <strong>update</strong> ()</p>
 <p>Set columns for an update</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$criteria</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;phalcon&#39;</span><span class="p">));</span>
 </pre></div>

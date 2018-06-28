@@ -108,7 +108,7 @@
 <p>通过 <a class="reference internal" href="../api/Phalcon_Async.html"><span class="doc">Phalcon\Async</span></a> 我们可以异步调用方法。</p>
 <div class="section" id="called-asynchronous">
 <h2>异步调用（Called asynchronous）<a class="headerlink" href="#called-asynchronous" title="永久链接至标题">¶</a></h2>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$id1</span> <span class="o">=</span> <span class="nx">Phalcon\Async</span><span class="o">::</span><span class="na">call</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="s1">&#39;one1&#39;</span><span class="p">;</span>
@@ -121,7 +121,7 @@
 </div>
 <div class="section" id="gets-result-count">
 <h2>获取异步调用结果个数（Gets result count）<a class="headerlink" href="#gets-result-count" title="永久链接至标题">¶</a></h2>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$num</span> <span class="o">=</span> <span class="nx">Phalcon\Async</span><span class="o">::</span><span class="na">count</span><span class="p">();</span>
 </pre></div>
@@ -129,7 +129,7 @@
 </div>
 <div class="section" id="gets-asynchronous-result">
 <h2>获取异步调用结果（Gets asynchronous result）<a class="headerlink" href="#gets-asynchronous-result" title="永久链接至标题">¶</a></h2>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$ret</span> <span class="o">=</span> <span class="nx">Phalcon\Async</span><span class="o">::</span><span class="na">recv</span><span class="p">(</span><span class="nv">$id1</span><span class="p">);</span>
 <span class="nv">$rets</span> <span class="o">=</span> <span class="nx">Phalcon\Async</span><span class="o">::</span><span class="na">recvAll</span><span class="p">();</span>

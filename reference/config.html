@@ -141,7 +141,7 @@
 <div class="section" id="native-arrays">
 <h2>原生数组（Native Arrays）<a class="headerlink" href="#native-arrays" title="永久链接至标题">¶</a></h2>
 <p>下面的例子展示如何将本地数组导入 <a class="reference internal" href="../api/Phalcon_Config.html"><span class="doc">Phalcon\Config</span></a> 对象。此选项提供了最好的性能，因为在这个请求中没有读取文件。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Config</span><span class="p">;</span>
 
@@ -169,7 +169,7 @@
 </pre></div>
 </div>
 <p>如果你想更好的组织你的项目，你可以在另一个文件保存数组，然后读入它。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Config</span><span class="p">;</span>
 
@@ -181,7 +181,7 @@
 <div class="section" id="php-reading-php-files">
 <h2>读取 PHP 文件（Reading PHP Files）<a class="headerlink" href="#php-reading-php-files" title="永久链接至标题">¶</a></h2>
 <p>通过加载 PHP 文件获取配置信息，配置文件内容如下：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 <span class="k">return</span> <span class="k">array</span><span class="p">(</span>
     <span class="s2">&quot;database&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
         <span class="s2">&quot;adapter&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Mysql&quot;</span><span class="p">,</span>
@@ -199,7 +199,7 @@
 </pre></div>
 </div>
 <p>访问方式如下所示：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$config</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Config\Adapter\Php</span><span class="p">(</span><span class="s2">&quot;path/config.php&quot;</span><span class="p">);</span>
 
@@ -211,7 +211,7 @@
 <div class="section" id="ini-reading-ini-files">
 <h2>读取 INI 文件（Reading INI Files）<a class="headerlink" href="#ini-reading-ini-files" title="永久链接至标题">¶</a></h2>
 <p>INI文件是存储设置的常用方法。 <a class="reference internal" href="../api/Phalcon_Config_Adapter_Ini.html"><span class="doc">Phalcon\Config\Adapter\Ini</span></a> 采用优化的PHP函数parse_ini_file读取这些文件。为方便访问，文件部分解析成子设置。</p>
-<div class="highlight-ini"><div class="highlight"><pre><span class="k">[database]</span>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[database]</span>
 <span class="na">adapter</span>  <span class="o">=</span> <span class="s">Mysql</span>
 <span class="na">host</span>     <span class="o">=</span> <span class="s">localhost</span>
 <span class="na">username</span> <span class="o">=</span> <span class="s">scott</span>
@@ -228,7 +228,7 @@
 </pre></div>
 </div>
 <p>访问方式如下所示：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Config\Adapter\Ini</span> <span class="k">as</span> <span class="nx">ConfigIni</span><span class="p">;</span>
 
@@ -243,20 +243,20 @@
 <div class="section" id="yaml-reading-yaml-files">
 <h2>读取 YAML 文件（Reading Yaml Files）<a class="headerlink" href="#yaml-reading-yaml-files" title="永久链接至标题">¶</a></h2>
 <p>通过解析 YAML 文件获取配置信息，配置文件内容如下：</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">phalcon</span><span class="p-Indicator">:</span>
-  <span class="l-Scalar-Plain">baseuri</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/phalcon/</span>
-<span class="l-Scalar-Plain">models</span><span class="p-Indicator">:</span>
-  <span class="l-Scalar-Plain">metadata</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">memory</span>
-<span class="l-Scalar-Plain">database</span><span class="p-Indicator">:</span>
-  <span class="l-Scalar-Plain">adapter</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">mysql</span>
-  <span class="l-Scalar-Plain">host</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">localhost</span>
-  <span class="l-Scalar-Plain">username</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">user</span>
-  <span class="l-Scalar-Plain">password</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">passwd</span>
-  <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">demo</span>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">phalcon</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">baseuri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/phalcon/</span>
+<span class="l l-Scalar l-Scalar-Plain">models</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">metadata</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">memory</span>
+<span class="l l-Scalar l-Scalar-Plain">database</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">adapter</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">mysql</span>
+  <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">localhost</span>
+  <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">user</span>
+  <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">passwd</span>
+  <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">demo</span>
 </pre></div>
 </div>
 <p>访问方式如下所示：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$config</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Config\Adapter\Php</span><span class="p">(</span><span class="s2">&quot;path/config.php&quot;</span><span class="p">);</span>
 
@@ -268,7 +268,7 @@
 <div class="section" id="merging-configurations">
 <h2>合并配置（Merging Configurations）<a class="headerlink" href="#merging-configurations" title="永久链接至标题">¶</a></h2>
 <p><a class="reference internal" href="../api/Phalcon_Config.html"><span class="doc">Phalcon\Config</span></a> 允许合并配置对象到另一个:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Config</span><span class="p">;</span>
 
@@ -299,7 +299,7 @@
 </pre></div>
 </div>
 <p>上面的代码会产生以下内容:</p>
-<div class="highlight-html"><div class="highlight"><pre>Phalcon\Config Object
+<div class="highlight-html"><div class="highlight"><pre><span></span>Phalcon\Config Object
 (
     [database] =&gt; Phalcon\Config Object
         (

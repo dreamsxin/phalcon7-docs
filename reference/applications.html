@@ -93,7 +93,10 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#application-events">应用事件（Application Events）</a></li>
-<li><a class="reference internal" href="#disable-view-component">禁用视图组件（Disable View Component）</a></li>
+<li><a class="reference internal" href="#disable-view-component">禁用视图组件（Disable View Component）</a><ul>
+<li><a class="reference internal" href="#json-json-response">JSON 输出（JSON Response）</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#hmvc-hmvc-request-system">HMVC 请求（HMVC request system）</a></li>
 </ul>
 </li>
@@ -121,7 +124,7 @@
 <h3>单模块（Single Module）<a class="headerlink" href="#single-module" title="永久链接至标题">¶</a></h3>
 <p>单一的MVC应用仅仅包含了一个模块。可以使用命名空间，但不是必需的。
 这样类型的应用可能会有以下文件目录结构：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">single/</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">single/</span>
 <span class="x">    app/</span>
 <span class="x">        controllers/</span>
 <span class="x">        models/</span>
@@ -133,7 +136,7 @@
 </pre></div>
 </div>
 <p>如果未使用命名空间，以下的启动文件可用于编排MVC工作流：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Loader</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\View</span><span class="p">;</span>
@@ -170,7 +173,7 @@
 </pre></div>
 </div>
 <p>如果使用了命名空间，则可以使用以下启动文件（译者注：主要区别在于使用$loader的方式）：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Loader</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\View</span><span class="p">;</span>
@@ -219,7 +222,7 @@
 <div class="section" id="multi-module">
 <h3>多模块（Multi Module）<a class="headerlink" href="#multi-module" title="永久链接至标题">¶</a></h3>
 <p>多模块的应用使用了相同的文档根目录但拥有多个模块。在这种情况下，可以使用以下的文件目录结构：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">multiple/</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">multiple/</span>
 <span class="x">  apps/</span>
 <span class="x">    frontend/</span>
 <span class="x">       controllers/</span>
@@ -240,7 +243,7 @@
 <div class="section" id="module-define-class">
 <h4>模块定义类（Module Define Class）<a class="headerlink" href="#module-define-class" title="永久链接至标题">¶</a></h4>
 <p>在`apps/<cite>下的每一个目录都有自己的 MVC 结构。`Module.php</cite> 文件定义了各个模块不同的配置，如自动加载器、视图和自定义服务：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">Multiple\Frontend</span><span class="p">;</span>
 
@@ -286,7 +289,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">Multiple\Backend</span><span class="p">;</span>
 
@@ -338,7 +341,7 @@
 </pre></div>
 </div>
 <p>还需要一个指定的启动文件来加载多模块的MVC架构：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Application</span><span class="p">;</span>
@@ -412,7 +415,7 @@
 </pre></div>
 </div>
 <p>你也可以直接实例化模块定义类，类进行注册：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
     <span class="k">require</span><span class="p">(</span><span class="s1">&#39;../apps/backend/Module.php&#39;</span><span class="p">);</span>
     <span class="k">require</span><span class="p">(</span><span class="s1">&#39;../apps/frontend/Module.php&#39;</span><span class="p">);</span>
@@ -427,7 +430,7 @@
 </pre></div>
 </div>
 <p>如果你想在启动文件进行相关组件配置，你可以使用匿名函数来注册对应的模块：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\View</span><span class="p">;</span>
 
@@ -550,7 +553,7 @@
 </tbody>
 </table>
 <p>以下示例演示了如何将侦听器绑定到组件：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">;</span>
 
@@ -570,16 +573,39 @@
 <div class="section" id="disable-view-component">
 <h2>禁用视图组件（Disable View Component）<a class="headerlink" href="#disable-view-component" title="永久链接至标题">¶</a></h2>
 <p>MVC 应用默认开启视图组件，以下示例演示了如何禁用视图组件：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$application</span><span class="o">-&gt;</span><span class="na">useImplicitView</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
 </pre></div>
+</div>
+<div class="section" id="json-json-response">
+<h3>JSON 输出（JSON Response）<a class="headerlink" href="#json-json-response" title="永久链接至标题">¶</a></h3>
+<p>MVC 应用默认开启视图组件，以下示例演示了如何禁用视图组件：</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">class IndexController extends Phalcon\Mvc\Controller {</span>
+<span class="x">    public function indexAction() {</span>
+<span class="x">        return [&#39;name&#39; =&gt; &#39;Phalcon7&#39;];</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+
+<span class="x">$di = new Phalcon\Di\FactoryDefault();</span>
+<span class="x">$di-&gt;response-&gt;setContentType(&#39;application/json&#39;);</span>
+<span class="x">$application = new Phalcon\Mvc\Application();</span>
+<span class="x">$application-&gt;attachEvent(&#39;beforeSendResponse&#39;, function($event, $res){</span>
+<span class="x">    // Change data</span>
+<span class="x">    $data = $this-&gt;dispatcher-&gt;getReturnedValue();</span>
+<span class="x">    $res-&gt;setJsonContent([&#39;data&#39; =&gt; $data]);</span>
+<span class="x">});</span>
+<span class="x">$application-&gt;useImplicitView(false);</span>
+
+<span class="x">echo $application-&gt;handle(&#39;/index/index&#39;)-&gt;getContent();</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="hmvc-hmvc-request-system">
 <h2>HMVC 请求（HMVC request system）<a class="headerlink" href="#hmvc-hmvc-request-system" title="永久链接至标题">¶</a></h2>
 <p>在 HMVC 的父子 MVC 之间，调度控制器、路由以及视图组件是分离的，以下示例演示了如何完成 HMVC 请求：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">HmvcController</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\Controller</span>
 <span class="p">{</span>

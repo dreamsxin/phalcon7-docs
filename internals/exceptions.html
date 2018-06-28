@@ -86,11 +86,11 @@
 <p>When you throw an exception using the Phalcon API, the current flow of execution will be stopped, returning
 to the last PHP code block when a Phalcon method where called.</p>
 <p>There are two ways to throw exceptions, the first, when the exception object only receives a string as parameter:</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="n">PHALCON_THROW_EXCEPTION_STR</span><span class="p">(</span><span class="n">phalcon_exception_ce</span><span class="p">,</span> <span class="s">&quot;Hey this is an exception&quot;</span><span class="p">);</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">PHALCON_THROW_EXCEPTION_STR</span><span class="p">(</span><span class="n">phalcon_exception_ce</span><span class="p">,</span> <span class="s">&quot;Hey this is an exception&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Or building the exception manually and then throwing it:</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="n">PHALCON_CONCAT_SVS</span><span class="p">(</span><span class="o">&amp;</span><span class="n">exception_message</span><span class="p">,</span> <span class="s">&quot;Unable to insert into &quot;</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="s">&quot; without data&quot;</span><span class="p">);</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">PHALCON_CONCAT_SVS</span><span class="p">(</span><span class="o">&amp;</span><span class="n">exception_message</span><span class="p">,</span> <span class="s">&quot;Unable to insert into &quot;</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="s">&quot; without data&quot;</span><span class="p">);</span>
 
 <span class="n">object_init_ex</span><span class="p">(</span><span class="o">&amp;</span><span class="n">exception</span><span class="p">,</span> <span class="n">phalcon_db_exception_ce</span><span class="p">);</span>
 

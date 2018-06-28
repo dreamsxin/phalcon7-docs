@@ -149,7 +149,7 @@
 <div class="section" id="plugin-class">
 <h2>插件类（Plugin Class）<a class="headerlink" href="#plugin-class" title="永久链接至标题">¶</a></h2>
 <p>一般用于事件的拦截处理，例如权限检测插件 <cite>SecurityPlugin</cite>：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Acl</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Events\Event</span><span class="p">;</span>
@@ -191,7 +191,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;dispatcher&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
     <span class="nv">$eventsManager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventsManager</span><span class="p">();</span>
@@ -216,7 +216,7 @@
 <h2>逻辑类（Logic Class）<a class="headerlink" href="#logic-class" title="永久链接至标题">¶</a></h2>
 <p>一般用于处理业务逻辑，可以设置调度器绑定逻辑类，会根据控制器方法参数自动调用逻辑类静态方法 <cite>call</cite> 完成实例化，然后调用 <cite>start</cite> 完成初始化操作，
 当控制器方法执行结束后，将调用 <cite>finish</cite> 方法：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;dispatcher&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
     <span class="nv">$dispatcher</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Dispatcher</span><span class="p">();</span>
@@ -226,7 +226,7 @@
 </pre></div>
 </div>
 <p>控制器实现：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">LogicController</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\Controller</span>
 <span class="p">{</span>
@@ -238,7 +238,7 @@
 </pre></div>
 </div>
 <p>逻辑类实现：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">MyLogic</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\User\Logic</span>
 <span class="p">{</span>
@@ -269,7 +269,7 @@
 <div class="section" id="logic-model-class">
 <h2>逻辑模型类（Logic Model Class）<a class="headerlink" href="#logic-model-class" title="永久链接至标题">¶</a></h2>
 <p>使用方式与逻辑类相同，比逻辑类多了几个预设的抽象方法，示例如下：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">class Mylogic extends Phalcon\Mvc\User\Logic\Model {</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">class Mylogic extends Phalcon\Mvc\User\Logic\Model {</span>
 <span class="x">    public function get($arguments = NULL){}</span>
 <span class="x">    public function getAll($arguments = NULL){}</span>
 <span class="x">    public function save($arguments = NULL){}</span>

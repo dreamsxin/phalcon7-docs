@@ -97,10 +97,10 @@
 <div class="section" id="registering-classes">
 <h2>注册类（Registering Classes）<a class="headerlink" href="#registering-classes" title="永久链接至标题">¶</a></h2>
 <p>在 ext 目录增加 auth.h 文件，注册 Phalcon\Auth 类：</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="cp">#ifndef PHALCON_AUTH_H</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#ifndef PHALCON_AUTH_H</span>
 <span class="cp">#define PHALCON_AUTH_H</span>
 
-<span class="cp">#include &quot;php_phalcon.h&quot;</span>
+<span class="cp">#include</span> <span class="cpf">&quot;php_phalcon.h&quot;</span><span class="cp"></span>
 
 <span class="k">extern</span> <span class="n">zend_class_entry</span> <span class="o">*</span><span class="n">phalcon_auth_ce</span><span class="p">;</span>
 
@@ -113,20 +113,20 @@
 <div class="section" id="registering-methods-and-its-arguments">
 <h2>注册方法和它的参数（Registering methods and its arguments）<a class="headerlink" href="#registering-methods-and-its-arguments" title="永久链接至标题">¶</a></h2>
 <p>然后，我们创建 auth.c 文件，在里面添加方法的原型：</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="n">PHP_METHOD</span><span class="p">(</span><span class="n">Phalcon_Auth</span><span class="p">,</span> <span class="n">__construct</span><span class="p">);</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">PHP_METHOD</span><span class="p">(</span><span class="n">Phalcon_Auth</span><span class="p">,</span> <span class="n">__construct</span><span class="p">);</span>
 <span class="n">PHP_METHOD</span><span class="p">(</span><span class="n">Phalcon_Auth</span><span class="p">,</span> <span class="n">getIdentity</span><span class="p">);</span>
 <span class="n">PHP_METHOD</span><span class="p">(</span><span class="n">Phalcon_Auth</span><span class="p">,</span> <span class="n">auth</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>之后我们为每个方法添加参数信息，在这里我们为类的构造方法添加参数信息：</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="n">ZEND_BEGIN_ARG_INFO_EX</span><span class="p">(</span><span class="n">arginfo_phalcon_auth__construct</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">ZEND_BEGIN_ARG_INFO_EX</span><span class="p">(</span><span class="n">arginfo_phalcon_auth__construct</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
         <span class="n">ZEND_ARG_INFO</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">adapter</span><span class="p">)</span>
         <span class="n">ZEND_ARG_ARRAY_INFO</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">ZEND_END_ARG_INFO</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>现在，我们将所有方法赋予指定的类：</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="k">static</span> <span class="k">const</span> <span class="n">zend_function_entry</span> <span class="n">phalcon_auth_method_entry</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="k">const</span> <span class="n">zend_function_entry</span> <span class="n">phalcon_auth_method_entry</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
         <span class="n">PHP_ME</span><span class="p">(</span><span class="n">Phalcon_Auth</span><span class="p">,</span> <span class="n">__construct</span><span class="p">,</span> <span class="n">arginfo_phalcon_auth__construct</span><span class="p">,</span> <span class="n">ZEND_ACC_PUBLIC</span><span class="p">)</span>
         <span class="n">PHP_ME</span><span class="p">(</span><span class="n">Phalcon_Auth</span><span class="p">,</span> <span class="n">getIdentity</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">ZEND_ACC_PUBLIC</span><span class="p">)</span>
         <span class="n">PHP_ME</span><span class="p">(</span><span class="n">Phalcon_Auth</span><span class="p">,</span> <span class="n">auth</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">ZEND_ACC_PUBLIC</span><span class="p">)</span>
@@ -138,7 +138,7 @@
 <div class="section" id="implementing-a-method">
 <h2>定义方法（Implementing a method）<a class="headerlink" href="#implementing-a-method" title="永久链接至标题">¶</a></h2>
 <p>仍然在 auth.c 文件中，我们添加代码：</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="c1">// PHP_METHOD(class_name, method_name)</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="c1">// PHP_METHOD(class_name, method_name)</span>
 <span class="n">PHP_METHOD</span><span class="p">(</span><span class="n">Phalcon_Auth</span><span class="p">,</span> <span class="n">__construct</span><span class="p">){</span>
 
         <span class="n">zval</span> <span class="o">*</span><span class="n">adapter_name</span><span class="p">,</span> <span class="o">*</span><span class="n">options</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
@@ -153,11 +153,11 @@
 <p>With the above code we create the constructor of the class Phalcon\Auth, a method is defined with the macro
 PHP_METHOD, first we put the class name and then the name of the method, although Phalcon uses namespaces,
 class names have _ instead of \:</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="n">PHP_METHOD</span><span class="p">(</span><span class="n">Phalcon_Auth</span><span class="p">,</span> <span class="n">__construct</span><span class="p">){</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">PHP_METHOD</span><span class="p">(</span><span class="n">Phalcon_Auth</span><span class="p">,</span> <span class="n">__construct</span><span class="p">){</span>
 </pre></div>
 </div>
 <p>If the method has parameters we receive them using zend_parse_parameters:</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="n">zend_parse_parameters</span><span class="p">(</span><span class="n">ZEND_NUM_ARGS</span><span class="p">(),</span> <span class="s">&quot;zz&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">adapter_name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">options</span><span class="p">)</span> <span class="o">==</span> <span class="n">FAILURE</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">zend_parse_parameters</span><span class="p">(</span><span class="n">ZEND_NUM_ARGS</span><span class="p">(),</span> <span class="s">&quot;zz&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">adapter_name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">options</span><span class="p">)</span> <span class="o">==</span> <span class="n">FAILURE</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">RETURN_NULL</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>

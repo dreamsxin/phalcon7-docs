@@ -110,11 +110,11 @@
 <div class="section" id="phpunit-phalcon-integrating-phpunit-with-phalcon">
 <h2>整合 PHPunit 到 phalcon（Integrating PHPunit with phalcon）<a class="headerlink" href="#phpunit-phalcon-integrating-phpunit-with-phalcon" title="永久链接至标题">¶</a></h2>
 <p>If you don&#8217;t already have phpunit installed, you can do it by using the following composer command:</p>
-<div class="highlight-bash"><div class="highlight"><pre>composer require phpunit/phpunit
+<div class="highlight-bash"><div class="highlight"><pre><span></span>composer require phpunit/phpunit
 </pre></div>
 </div>
 <p>or by manually adding it to composer.json:</p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;require-dev&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;phpunit/phpunit&quot;</span><span class="p">:</span> <span class="s2">&quot;~4.5&quot;</span>
     <span class="p">}</span>
@@ -122,7 +122,7 @@
 </pre></div>
 </div>
 <p>Once phpunit is installed create a directory called &#8216;tests&#8217; in your root directory:</p>
-<div class="highlight-bash"><div class="highlight"><pre>app/
+<div class="highlight-bash"><div class="highlight"><pre><span></span>app/
 public/
 tests/
 </pre></div>
@@ -132,7 +132,7 @@ tests/
 <div class="section" id="phpunit-the-phpunit-helper-file">
 <h2>PHPunit 辅助文件（The PHPunit helper file）<a class="headerlink" href="#phpunit-the-phpunit-helper-file" title="永久链接至标题">¶</a></h2>
 <p>A helper file is required to bootstrap the application for running the tests. We have prepared a sample file. Put the file in your tests/ directory as TestHelper.php.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Di</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Di\FactoryDefault</span><span class="p">;</span>
@@ -140,17 +140,17 @@ tests/
 <span class="nb">ini_set</span><span class="p">(</span><span class="s1">&#39;display_errors&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
 <span class="nb">error_reporting</span><span class="p">(</span><span class="k">E_ALL</span><span class="p">);</span>
 
-<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;ROOT_PATH&#39;</span><span class="p">,</span> <span class="nx">__DIR__</span><span class="p">);</span>
-<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;PATH_LIBRARY&#39;</span><span class="p">,</span> <span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/../app/library/&#39;</span><span class="p">);</span>
-<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;PATH_SERVICES&#39;</span><span class="p">,</span> <span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/../app/services/&#39;</span><span class="p">);</span>
-<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;PATH_RESOURCES&#39;</span><span class="p">,</span> <span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/../app/resources/&#39;</span><span class="p">);</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;ROOT_PATH&#39;</span><span class="p">,</span> <span class="no">__DIR__</span><span class="p">);</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;PATH_LIBRARY&#39;</span><span class="p">,</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/../app/library/&#39;</span><span class="p">);</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;PATH_SERVICES&#39;</span><span class="p">,</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/../app/services/&#39;</span><span class="p">);</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;PATH_RESOURCES&#39;</span><span class="p">,</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/../app/resources/&#39;</span><span class="p">);</span>
 
 <span class="nb">set_include_path</span><span class="p">(</span>
     <span class="nx">ROOT_PATH</span> <span class="o">.</span> <span class="nx">PATH_SEPARATOR</span> <span class="o">.</span> <span class="nb">get_include_path</span><span class="p">()</span>
 <span class="p">);</span>
 
 <span class="c1">// Required for phalcon/incubator</span>
-<span class="k">include</span> <span class="nx">__DIR__</span> <span class="o">.</span> <span class="s2">&quot;/../vendor/autoload.php&quot;</span><span class="p">;</span>
+<span class="k">include</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s2">&quot;/../vendor/autoload.php&quot;</span><span class="p">;</span>
 
 <span class="c1">// Use the application autoloader to autoload the classes</span>
 <span class="c1">// Autoload the dependencies found in composer</span>
@@ -176,11 +176,11 @@ tests/
 <p>To help you build the unit tests, we made a few abstract classes you can use to bootstrap the unit tests themselves.
 These files exist in the Phalcon incubator &#64; <a class="reference external" href="https://github.com/phalcon/incubator">https://github.com/phalcon/incubator</a>.</p>
 <p>You can use the incubator library by adding it as a dependency:</p>
-<div class="highlight-bash"><div class="highlight"><pre>composer require phalcon/incubator
+<div class="highlight-bash"><div class="highlight"><pre><span></span>composer require phalcon/incubator
 </pre></div>
 </div>
 <p>or by manually adding it to composer.json:</p>
-<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;require&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;phalcon/incubator&quot;</span><span class="p">:</span> <span class="s2">&quot;dev-master&quot;</span>
     <span class="p">}</span>
@@ -192,7 +192,7 @@ These files exist in the Phalcon incubator &#64; <a class="reference external" h
 <div class="section" id="phpunit-xml-phpunit-xml-file">
 <h2>PHPunit.xml 文件（PHPunit.xml file）<a class="headerlink" href="#phpunit-xml-phpunit-xml-file" title="永久链接至标题">¶</a></h2>
 <p>Now, create a phpunit file:</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="nt">&lt;phpunit</span> <span class="na">bootstrap=</span><span class="s">&quot;./TestHelper.php&quot;</span>
          <span class="na">backupGlobals=</span><span class="s">&quot;false&quot;</span>
          <span class="na">backupStaticAttributes=</span><span class="s">&quot;false&quot;</span>
@@ -218,7 +218,7 @@ These files exist in the Phalcon incubator &#64; <a class="reference external" h
 <p>To run any unit tests you need to define them. The autoloader will make sure the proper files are loaded so all you need to do is create the files and phpunit will run the tests for you.</p>
 <p>This example does not contain a config file, most test cases however, do need one. You can add it to the DI to get the UnitTestCase file.</p>
 <p>First create a base unit test called UnitTestCase.php in your /tests directory:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Di</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Test\UnitTestCase</span> <span class="k">as</span> <span class="nx">PhalconTestCase</span><span class="p">;</span>
@@ -259,7 +259,7 @@ These files exist in the Phalcon incubator &#64; <a class="reference external" h
 <span class="sd">     *</span>
 <span class="sd">     * @throws \PHPUnit_Framework_IncompleteTestError;</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">__destruct</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__destruct</span><span class="p">()</span>
     <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_loaded</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">throw</span> <span class="k">new</span> <span class="nx">\PHPUnit_Framework_IncompleteTestError</span><span class="p">(</span><span class="s1">&#39;Please run parent::setUp().&#39;</span><span class="p">);</span>
@@ -269,7 +269,7 @@ These files exist in the Phalcon incubator &#64; <a class="reference external" h
 </pre></div>
 </div>
 <p>It&#8217;s always a good idea to separate your Unit tests in namespaces. For this test we will create the namespace &#8216;Test&#8217;. So create a file called testsTestUnitTest.php:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">Test</span><span class="p">;</span>
 
@@ -294,16 +294,16 @@ These files exist in the Phalcon incubator &#64; <a class="reference external" h
 </pre></div>
 </div>
 <p>Now when you execute &#8216;phpunit&#8217; in your command-line from the tests directory you will get the following output:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>phpunit
-PHPUnit 3.7.23 by Sebastian Bergmann.
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ phpunit
+PHPUnit <span class="m">3</span>.7.23 by Sebastian Bergmann.
 
-Configuration <span class="nb">read </span>from /private/var/www/tests/phpunit.xml
+Configuration <span class="nb">read</span> from /private/var/www/tests/phpunit.xml
 
-Time: <span class="m">3</span> ms, Memory: 3.25Mb
+Time: <span class="m">3</span> ms, Memory: <span class="m">3</span>.25Mb
 
 There was <span class="m">1</span> failure:
 
-1<span class="o">)</span> Test<span class="se">\U</span>nitTest::testTestCase
+<span class="m">1</span><span class="o">)</span> Test<span class="se">\U</span>nitTest::testTestCase
 This will fail
 Failed asserting that two strings are equal.
 --- Expected
@@ -315,7 +315,7 @@ Failed asserting that two strings are equal.
 /private/var/www/tests/Test/UnitTest.php:25
 
 FAILURES!
-Tests: 1, Assertions: 2, Failures: 1.
+Tests: <span class="m">1</span>, Assertions: <span class="m">2</span>, Failures: <span class="m">1</span>.
 </pre></div>
 </div>
 <p>Now you can start building your unit tests. You can view a good guide here (we also recommend reading the PHPunit documentation if you&#8217;re not familiar with PHPunit):</p>

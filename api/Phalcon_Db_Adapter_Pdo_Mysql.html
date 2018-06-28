@@ -95,7 +95,7 @@
 <p><em>implements</em> <a class="reference internal" href="Phalcon_Events_EventsAwareInterface.html"><span class="doc">Phalcon\Events\EventsAwareInterface</span></a>, <a class="reference internal" href="Phalcon_Di_InjectionAwareInterface.html"><span class="doc">Phalcon\Di\InjectionAwareInterface</span></a>, <a class="reference internal" href="Phalcon_Db_AdapterInterface.html"><span class="doc">Phalcon\Db\AdapterInterface</span></a></p>
 <p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/db/adapter/pdo/mysql.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
 <p>Specific functions for the Mysql database system</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$config</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
     <span class="s2">&quot;host&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;192.168.0.11&quot;</span><span class="p">,</span>
@@ -114,7 +114,7 @@
 <p>Escapes a column/table/schema name</p>
 <p>public <a class="reference internal" href="Phalcon_Db_Column.html"><span class="doc">Phalcon\Db\Column</span></a> [] <strong>describeColumns</strong> (<em>string</em> $table, [<em>string</em> $schema])</p>
 <p>Returns an array of Phalcon\Db\Column objects describing a table</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nb">print_r</span><span class="p">(</span><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">describeColumns</span><span class="p">(</span><span class="s2">&quot;posts&quot;</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x"></span>
 </pre></div>
@@ -131,7 +131,7 @@
 <p>Constructor for Phalcon\Db\Adapter\Pdo</p>
 <p>public <em>boolean</em>  <strong>connect</strong> ([<em>array</em> $descriptor]) inherited from Phalcon\Db\Adapter\Pdo</p>
 <p>This method is automatically called in Phalcon\Db\Adapter\Pdo constructor. Call it when you need to restore a database connection</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="c1">//Make a connection</span>
  <span class="nv">$connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Db\Adapter\Pdo\Mysql</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
@@ -147,7 +147,7 @@
 </div>
 <p>public <em>PDOStatement</em>  <strong>prepare</strong> (<em>string</em> $sqlStatement) inherited from Phalcon\Db\Adapter\Pdo</p>
 <p>Returns a PDO prepared statement to be executed with &#8216;executePrepared&#8217;</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nv">$statement</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM robots WHERE name = :name&#39;</span><span class="p">);</span>
  <span class="nv">$pdoResult</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">executePrepared</span><span class="p">(</span><span class="nv">$statement</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Voltron&#39;</span><span class="p">));</span>
@@ -155,7 +155,7 @@
 </div>
 <p>public <em>PDOStatement</em>  <strong>executePrepared</strong> (<em>PDOStatement</em> $statement, [<em>array</em> $placeholders], [<em>array</em> $dataTypes]) inherited from Phalcon\Db\Adapter\Pdo</p>
 <p>Executes a prepared statement binding. This function uses integer indexes starting from zero</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nv">$statement</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM robots WHERE name = :name&#39;</span><span class="p">);</span>
  <span class="nv">$pdoResult</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">executePrepared</span><span class="p">(</span><span class="nv">$statement</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Voltron&#39;</span><span class="p">));</span>
@@ -163,7 +163,7 @@
 </div>
 <p>public <a class="reference internal" href="Phalcon_Db_ResultInterface.html"><span class="doc">Phalcon\Db\ResultInterface</span></a>  <strong>query</strong> (<em>string</em> $sqlStatement, [<em>unknown</em> $placeholders], [<em>unknown</em> $dataTypes]) inherited from Phalcon\Db\Adapter\Pdo</p>
 <p>Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server is returning rows</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">//Querying data</span>
 <span class="nv">$resultset</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM robots WHERE type=&#39;mechanical&#39;&quot;</span><span class="p">);</span>
@@ -172,7 +172,7 @@
 </div>
 <p>public <em>boolean</em>  <strong>execute</strong> (<em>string</em> $sqlStatement, [<em>unknown</em> $placeholders], [<em>unknown</em> $dataTypes]) inherited from Phalcon\Db\Adapter\Pdo</p>
 <p>Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server doesn&#8217;t return any row</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">//Inserting data</span>
 <span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO robots VALUES (1, &#39;Astro Boy&#39;)&quot;</span><span class="p">);</span>
@@ -181,7 +181,7 @@
 </div>
 <p>public <em>int</em>  <strong>affectedRows</strong> () inherited from Phalcon\Db\Adapter\Pdo</p>
 <p>Returns the number of affected rows by the lastest INSERT/UPDATE/DELETE executed in the database system</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="s2">&quot;DELETE FROM robots&quot;</span><span class="p">);</span>
 <span class="k">echo</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">affectedRows</span><span class="p">(),</span> <span class="s1">&#39; were deleted&#39;</span><span class="p">;</span>
@@ -191,28 +191,28 @@
 <p>Closes the active connection returning success. Phalcon automatically closes and destroys active connections when the request ends</p>
 <p>public <em>string</em>  <strong>escapeValue</strong> (<em>mixed</em> $value) inherited from Phalcon\Db\Adapter\Pdo</p>
 <p>Escapes a value to avoid SQL injections according to the active charset in the connection</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$escapedValue</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">escapeValue</span><span class="p">(</span><span class="s1">&#39;some dangerous value&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>public <em>string</em>  <strong>escapeString</strong> (<em>string</em> $str) inherited from Phalcon\Db\Adapter\Pdo</p>
 <p>Escapes a value to avoid SQL injections according to the active charset in the connection</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$escapedStr</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">escapeString</span><span class="p">(</span><span class="s1">&#39;some dangerous value&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>public <em>array</em>  <strong>convertBoundParams</strong> (<em>unknown</em> $sqlStatement, <em>array</em> $params) inherited from Phalcon\Db\Adapter\Pdo</p>
 <p>Converts bound parameters such as :name: or ?1 into PDO bind params ?</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nb">print_r</span><span class="p">(</span><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">convertBoundParams</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM robots WHERE name = :name:&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Bender&#39;</span><span class="p">)));</span>
 </pre></div>
 </div>
 <p>public <em>int</em>  <strong>lastInsertId</strong> ([<em>string</em> $sequenceName]) inherited from Phalcon\Db\Adapter\Pdo</p>
 <p>Returns the insert id for the auto_increment/serial column inserted in the lastest executed SQL statement</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="c1">//Inserting a new robot</span>
  <span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">insert</span><span class="p">(</span>
@@ -235,7 +235,7 @@
 <p>Returns the current transaction nesting level</p>
 <p>public <em>boolean</em>  <strong>isUnderTransaction</strong> () inherited from Phalcon\Db\Adapter\Pdo</p>
 <p>Checks whether the connection is under a transaction</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">begin</span><span class="p">();</span>
 <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">isUnderTransaction</span><span class="p">());</span> <span class="c1">//true</span>
@@ -255,7 +255,7 @@
 <p>Returns internal dialect instance</p>
 <p>public <em>array</em>  <strong>fetchOne</strong> (<em>string</em> $sqlQuery, [<em>int</em> $fetchMode], [<em>unknown</em> $placeholders], [<em>mixed</em> $fetchArgument], [<em>array</em> $ctorArgs]) inherited from Phalcon\Db\Adapter</p>
 <p>Returns the first row in a SQL query result</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">//Getting first robot</span>
 <span class="nv">$robot</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">fetchOne</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM robots&quot;</span><span class="p">);</span>
@@ -268,7 +268,7 @@
 </div>
 <p>public <em>array</em>  <strong>fetchAll</strong> (<em>string</em> $sqlQuery, [<em>int</em> $fetchMode], [<em>unknown</em> $placeholders], [<em>mixed</em> $fetchArgument], [<em>array</em> $ctorArgs]) inherited from Phalcon\Db\Adapter</p>
 <p>Dumps the complete result of a query into an array</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">//Getting all robots with associative indexes only</span>
 <span class="nv">$robots</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">fetchAll</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM robots&quot;</span><span class="p">,</span> <span class="nx">Phalcon\Db</span><span class="o">::</span><span class="na">FETCH_ASSOC</span><span class="p">);</span>
@@ -288,7 +288,7 @@
 </div>
 <p>public <em>boolean</em>  <strong>insert</strong> (<em>string</em> $table, <em>array</em> $values, [<em>array</em> $fields], [<em>array</em> $dataTypes]) inherited from Phalcon\Db\Adapter</p>
 <p>Inserts data into a table using custom RBDM SQL syntax</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="c1">//Inserting a new robot</span>
  <span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">insert</span><span class="p">(</span>
@@ -303,7 +303,7 @@
 </div>
 <p>public <em>boolean</em>  <strong>insertAsDict</strong> (<em>string</em> $table, <em>array</em> $data, [<em>array</em> $dataTypes]) inherited from Phalcon\Db\Adapter</p>
 <p>Inserts data into a table using custom RBDM SQL syntax Another, more convenient syntax</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="c1">//Inserting a new robot</span>
  <span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">insertAsDict</span><span class="p">(</span>
@@ -320,7 +320,7 @@
 </div>
 <p>public <em>boolean</em>  <strong>update</strong> (<em>string</em> $table, <em>array</em> $fields, <em>array</em> $values, [<em>string</em> $whereCondition], [<em>array</em> $dataTypes]) inherited from Phalcon\Db\Adapter</p>
 <p>Updates data on a table using custom RBDM SQL syntax</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="c1">//Updating existing robot</span>
  <span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span>
@@ -336,7 +336,7 @@
 </div>
 <p>public <em>boolean</em>  <strong>delete</strong> (<em>string</em> $table, [<em>string</em> $whereCondition], [<em>array</em> $placeholders], [<em>array</em> $dataTypes]) inherited from Phalcon\Db\Adapter</p>
 <p>Deletes data from a table using custom RBDM SQL syntax</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="c1">//Deleting existing robot</span>
  <span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span>
@@ -352,21 +352,21 @@
 <p>Gets a list of columns</p>
 <p>public <em>string</em>  <strong>limit</strong> (<em>string</em> $sqlQuery, <em>int</em> $number) inherited from Phalcon\Db\Adapter</p>
 <p>Appends a LIMIT clause to $sqlQuery argument</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
     <span class="k">echo</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">limit</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM robots&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>public <em>string</em>  <strong>tableExists</strong> (<em>string</em> $tableName, [<em>string</em> $schemaName]) inherited from Phalcon\Db\Adapter</p>
 <p>Generates SQL checking for the existence of a schema.table</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
     <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">tableExists</span><span class="p">(</span><span class="s2">&quot;blog&quot;</span><span class="p">,</span> <span class="s2">&quot;posts&quot;</span><span class="p">));</span>
 </pre></div>
 </div>
 <p>public <em>string</em>  <strong>viewExists</strong> (<em>string</em> $viewName, [<em>string</em> $schemaName]) inherited from Phalcon\Db\Adapter</p>
 <p>Generates SQL checking for the existence of a schema.view</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">viewExists</span><span class="p">(</span><span class="s2">&quot;active_users&quot;</span><span class="p">,</span> <span class="s2">&quot;posts&quot;</span><span class="p">));</span>
 </pre></div>
@@ -405,35 +405,35 @@
 <p>Returns the SQL column definition from a column</p>
 <p>public <em>array</em>  <strong>listTables</strong> ([<em>string</em> $schemaName]) inherited from Phalcon\Db\Adapter</p>
 <p>List all tables on a database</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
     <span class="nb">print_r</span><span class="p">(</span><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">listTables</span><span class="p">(</span><span class="s2">&quot;blog&quot;</span><span class="p">));</span>
 </pre></div>
 </div>
 <p>public <em>array</em>  <strong>listViews</strong> ([<em>string</em> $schemaName]) inherited from Phalcon\Db\Adapter</p>
 <p>List all views on a database</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nb">print_r</span><span class="p">(</span><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">listViews</span><span class="p">(</span><span class="s2">&quot;blog&quot;</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x"></span>
 </pre></div>
 </div>
 <p>public <a class="reference internal" href="Phalcon_Db_Index.html"><span class="doc">Phalcon\Db\Index</span></a> [] <strong>describeIndexes</strong> (<em>string</em> $table, [<em>string</em> $schema]) inherited from Phalcon\Db\Adapter</p>
 <p>Lists table indexes</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nb">print_r</span><span class="p">(</span><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">describeIndexes</span><span class="p">(</span><span class="s1">&#39;robots_parts&#39;</span><span class="p">));</span>
 </pre></div>
 </div>
 <p>public <a class="reference internal" href="Phalcon_Db_Reference.html"><span class="doc">Phalcon\Db\Reference</span></a> [] <strong>describeReferences</strong> (<em>string</em> $table, [<em>string</em> $schema]) inherited from Phalcon\Db\Adapter</p>
 <p>Lists table references</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nb">print_r</span><span class="p">(</span><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">describeReferences</span><span class="p">(</span><span class="s1">&#39;robots_parts&#39;</span><span class="p">));</span>
 </pre></div>
 </div>
 <p>public <em>array</em>  <strong>tableOptions</strong> (<em>string</em> $tableName, [<em>string</em> $schemaName]) inherited from Phalcon\Db\Adapter</p>
 <p>Gets creation options from a table</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nb">print_r</span><span class="p">(</span><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">tableOptions</span><span class="p">(</span><span class="s1">&#39;robots&#39;</span><span class="p">));</span>
 </pre></div>
@@ -452,7 +452,7 @@
 <p>Returns the savepoint name to use for nested transactions</p>
 <p>public <a class="reference internal" href="Phalcon_Db_RawValue.html"><span class="doc">Phalcon\Db\RawValue</span></a>  <strong>getDefaultIdValue</strong> () inherited from Phalcon\Db\Adapter</p>
 <p>Returns the default identity value to be inserted in an identity column</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="c1">//Inserting a new robot with a valid default value for the column &#39;id&#39;</span>
  <span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">insert</span><span class="p">(</span>

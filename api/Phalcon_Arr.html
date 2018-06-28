@@ -113,7 +113,7 @@
 <h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
 <p>public static <em>boolean</em>  <strong>is_assoc</strong> (<em>array</em> $array)</p>
 <p>Tests if an array is associative or not.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Returns TRUE</span>
 <span class="nx">\Phalcon\Arr</span><span class="o">::</span><span class="na">is_assoc</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;username&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;john.doe&#39;</span><span class="p">))</span>
@@ -121,7 +121,7 @@
 </div>
 <p>public static <em>boolean</em>  <strong>is_array</strong> (<em>unknown</em> $array)</p>
 <p>Test if a value is an array with an additional check for array-like objects.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Returns TRUE</span>
 <span class="nx">\Phalcon\Arr</span><span class="o">::</span><span class="na">is_array</span><span class="p">(</span><span class="k">array</span><span class="p">());</span>
@@ -129,14 +129,14 @@
 </div>
 <p>public static <em>mixed</em>  <strong>path</strong> (<em>array</em> $array, <em>mixed</em> $path, [<em>unknown</em> $default_value], [<em>string</em> $delimiter])</p>
 <p>Gets a value from an array using a dot separated path.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Get the value of $array[&#39;foo&#39;][&#39;bar&#39;]</span>
 <span class="nv">$value</span> <span class="o">=</span> <span class="nx">\Phalcon\Arr</span><span class="o">::</span><span class="na">path</span><span class="p">(</span><span class="nv">$array</span><span class="p">,</span> <span class="s1">&#39;foo.bar&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Using a wildcard &#8220;*&#8221; will search intermediate arrays and return an array.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Get the values of &quot;color&quot; in theme</span>
 <span class="nv">$colors</span> <span class="o">=</span> <span class="nx">\Phalcon\Arr</span><span class="o">::</span><span class="na">path</span><span class="p">(</span><span class="nv">$array</span><span class="p">,</span> <span class="s1">&#39;theme.*.color&#39;</span><span class="p">);</span>
@@ -147,7 +147,7 @@
 </div>
 <p>public static  <strong>set_path</strong> (<em>array</em> $array, <em>string</em> $path, <em>mixed</em> $value, [<em>string</em> $delimiter], [<em>unknown</em> $flag])</p>
 <p>Set a value on an array by path. Using a wildcard &#8220;*&#8221; will search intermediate arrays and return an array.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Set the values of &quot;color&quot; in theme</span>
 <span class="nv">$array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;theme&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;one&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;color&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;green&#39;</span><span class="p">),</span> <span class="s1">&#39;two&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;size&#39;</span> <span class="o">=&gt;</span> <span class="mi">11</span><span class="p">));</span>
@@ -157,7 +157,7 @@
 </div>
 <p>public static <em>array</em>  <strong>range</strong> ([<em>integer</em> $step], [<em>integer</em> $max])</p>
 <p>Fill an array with a range of numbers.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Fill an array with values 5, 10, 15, 20</span>
 <span class="nv">$values</span> <span class="o">=</span> <span class="nx">\Phalcon\Arr</span><span class="o">::</span><span class="na">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
@@ -165,7 +165,7 @@
 </div>
 <p>public static <em>mixed</em>  <strong>get</strong> (<em>array|object</em> $array, <em>string|array|Closure</em> $key, [<em>mixed</em> $default_value])</p>
 <p>Retrieve a single key from an array. If the key does not exist in the array, the default value will be returned instead.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Get the value &quot;username&quot; from $_POST, if it exists</span>
 <span class="nv">$username</span> <span class="o">=</span> <span class="nx">\Phalcon\Arr</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">,</span> <span class="s1">&#39;username&#39;</span><span class="p">);</span>
@@ -201,7 +201,7 @@
 <p>Return the sum of all the values in the array using a dot separated path</p>
 <p>public static <em>array</em>  <strong>toArray</strong> (<em>object|array|string</em> $object, [<em>array</em> $properties], [<em>bool</em> $recursive], [<em>unknown</em> $negate])</p>
 <p>Converts an object or an array of objects into an array</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nb">print_r</span><span class="p">(</span><span class="nx">Phalcon\Arr</span><span class="o">::</span><span class="na">toArray</span><span class="p">(</span><span class="nv">$user</span><span class="p">);</span>
 </pre></div>

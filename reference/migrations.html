@@ -131,7 +131,7 @@
 <h2>迁移类剖析（Migration Class Anatomy）<a class="headerlink" href="#migration-class-anatomy" title="永久链接至标题">¶</a></h2>
 <p>Each file contains a unique class that extends the <code class="code docutils literal"><span class="pre">Phalcon\Mvc\Model\Migration</span></code> class. These classes normally have two methods: <code class="code docutils literal"><span class="pre">up()</span></code> and <code class="code docutils literal"><span class="pre">down()</span></code>. <code class="code docutils literal"><span class="pre">up()</span></code> performs the migration, while <code class="code docutils literal"><span class="pre">down()</span></code> rolls it back.</p>
 <p><code class="code docutils literal"><span class="pre">up()</span></code> also contains the <em>magic</em> method <code class="code docutils literal"><span class="pre">morphTable()</span></code>. The magic comes when it recognizes the changes needed to synchronize the actual table in the database to the description given.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Db\Column</span> <span class="k">as</span> <span class="nx">Column</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Db\Index</span> <span class="k">as</span> <span class="nx">Index</span><span class="p">;</span>
@@ -381,7 +381,7 @@
 <div class="section" id="writing-migrations">
 <h2>创建迁移类（Writing Migrations）<a class="headerlink" href="#writing-migrations" title="永久链接至标题">¶</a></h2>
 <p>Migrations aren&#8217;t only designed to &#8220;morph&#8221; table. A migration is just a regular PHP class so you&#8217;re not limited to these functions. For example after adding a column you could write code to set the value of that column for existing records. For more details and examples of individual methods, check the <a class="reference internal" href="db.html"><span class="doc">database component</span></a>.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">ProductsMigration_100</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Model\Migration</span>
 <span class="p">{</span>

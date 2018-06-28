@@ -129,7 +129,7 @@
 <div class="section" id="xdebug-profiling-with-xdebug">
 <h3>关于 XDebug（Profiling with XDebug）<a class="headerlink" href="#xdebug-profiling-with-xdebug" title="永久链接至标题">¶</a></h3>
 <p><a class="reference external" href="http://xdebug.org/docs">Xdebug</a> 提供了简易的性能测试的方式， 安装后可在php.ini中 进行如下配置：</p>
-<div class="highlight-ini"><div class="highlight"><pre><span class="na">xdebug.profiler_enable</span> <span class="o">=</span> <span class="s">On</span>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">xdebug.profiler_enable</span> <span class="o">=</span> <span class="s">On</span>
 </pre></div>
 </div>
 <p>使用 <a class="reference external" href="http://github.com/jokkedk/webgrind/">Webgrind</a> 可以分析出哪些函数或方法比其它的要慢：</p>
@@ -137,13 +137,13 @@
 <div class="section" id="xhprof-profiling-with-xhprof">
 <h3>关于 Xhprof（Profiling with Xhprof）<a class="headerlink" href="#xhprof-profiling-with-xhprof" title="永久链接至标题">¶</a></h3>
 <p><a class="reference external" href="https://github.com/facebook/xhprof">Xhprof</a> 也是一个非常有意思的扩展。 开发者可以添加如下的代码到启动文件中：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nb">xhprof_enable</span><span class="p">(</span><span class="nx">XHPROF_FLAGS_CPU</span> <span class="o">+</span> <span class="nx">XHPROF_FLAGS_MEMORY</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>然后在启动文件的结尾保存性能分析数据：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$xhprof_data</span> <span class="o">=</span> <span class="nb">xhprof_disable</span><span class="p">(</span><span class="s1">&#39;/tmp&#39;</span><span class="p">);</span>
 
@@ -163,7 +163,7 @@
 <h3>关于 SQL 语句（Profiling SQL Statements）<a class="headerlink" href="#sql-profiling-sql-statements" title="永久链接至标题">¶</a></h3>
 <p>几乎所有的数据库系统都提供了相关的工具以找出哪些执行缓慢的SQL语句。 检测及修复那些执行缓慢的查询对提高服务器端系统的性能来说是非常重要的。
 在Mysql数据库中， 开发者可以启用慢查询日志来记录执行缓慢的查询：</p>
-<div class="highlight-ini"><div class="highlight"><pre><span class="na">log-slow-queries</span> <span class="o">=</span> <span class="s">/var/log/slow-queries.log</span>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">log-slow-queries</span> <span class="o">=</span> <span class="s">/var/log/slow-queries.log</span>
 <span class="na">long_query_time</span> <span class="o">=</span> <span class="s">1.5</span>
 </pre></div>
 </div>
@@ -195,7 +195,7 @@
 <div class="section" id="php-use-a-php-bytecode-cache">
 <h2>使用 PHP 字节码缓存（Use a PHP Bytecode Cache）<a class="headerlink" href="#php-use-a-php-bytecode-cache" title="永久链接至标题">¶</a></h2>
 <p><a class="reference external" href="http://php.net/manual/en/book.apc.php">APC</a> 像其它的字节码缓存工具一样可以帮助web应用程序减少读取及解析php文件解析所花的时间。 安装完APC之后在php.ini中添加如何配置：</p>
-<div class="highlight-ini"><div class="highlight"><pre><span class="na">apc.enabled</span> <span class="o">=</span> <span class="s">On</span>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">apc.enabled</span> <span class="o">=</span> <span class="s">On</span>
 </pre></div>
 </div>
 <p>PHP5.5中包含了一个内置的字节码缓存器，即 ZendOptimizer+, 这个扩展在5.3及5.4版本的php中也存在，只不过不是内置的而是用扩展的形式存在的。</p>

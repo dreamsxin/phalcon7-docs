@@ -96,7 +96,7 @@
 <p><em>implements</em> <a class="reference internal" href="Phalcon_Events_EventsAwareInterface.html"><span class="doc">Phalcon\Events\EventsAwareInterface</span></a>, <a class="reference internal" href="Phalcon_Di_InjectionAwareInterface.html"><span class="doc">Phalcon\Di\InjectionAwareInterface</span></a>, <a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><span class="doc">Phalcon\Mvc\ModelInterface</span></a>, <a class="reference internal" href="Phalcon_Mvc_Model_ResultInterface.html"><span class="doc">Phalcon\Mvc\Model\ResultInterface</span></a>, Serializable, JsonSerializable</p>
 <p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/model.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
 <p>Phalcon\Mvc\Model connects business objects and database tables to create a persistable domain model where logic and data are presented in one wrapping. It‘s an implementation of the object-relational mapping (ORM).    A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application’s business logic will be concentrated in the models.    Phalcon\Mvc\Model is the first ORM written in C-language for PHP, giving to developers high performance when interacting with databases while is also easy to use.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nv">$robot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Robots</span><span class="p">();</span>
  <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">type</span> <span class="o">=</span> <span class="s1">&#39;mechanical&#39;</span><span class="p">;</span>
@@ -136,7 +136,7 @@
 <p>Returns the models manager related to the entity instance</p>
 <p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model</span></a>  <strong>setTransaction</strong> (<a class="reference internal" href="Phalcon_Mvc_Model_TransactionInterface.html"><span class="doc">Phalcon\Mvc\Model\TransactionInterface</span></a> $transaction)</p>
 <p>Sets a transaction related to the Model instance</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Transaction\Manager</span> <span class="k">as</span> <span class="nx">TxManager</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Transaction\Failed</span> <span class="k">as</span> <span class="nx">TxFailed</span><span class="p">;</span>
@@ -245,7 +245,7 @@
 <p>Gets the connection used to write data to the model</p>
 <p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model</span></a>  <strong>assign</strong> (<em>array</em> $data, [<em>array</em> $columnMap], [<em>array</em> $whiteList], [<em>unknown</em> $negate])</p>
 <p>Assigns values to a model from an array</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">assign</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
   <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mechanical&#39;</span><span class="p">,</span>
@@ -256,7 +256,7 @@
 </div>
 <p>public static <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model</span></a>  <strong>cloneResultMap</strong> (<a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model</span></a> $base, <em>array</em> $data, <em>array</em> $columnMap, <em>int</em> $dirtyState, [<em>boolean</em> $keepSnapshots], [<a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model</span></a> $sourceModel])</p>
 <p>Assigns values to a model from an array returning a new model.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$robot</span> <span class="o">=</span> <span class="nx">\Phalcon\Mvc\Model</span><span class="o">::</span><span class="na">cloneResultMap</span><span class="p">(</span><span class="k">new</span> <span class="nx">Robots</span><span class="p">(),</span> <span class="k">array</span><span class="p">(</span>
   <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mechanical&#39;</span><span class="p">,</span>
@@ -269,7 +269,7 @@
 <p>Returns an hydrated result based on the data and the column map</p>
 <p>public static <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model</span></a>  <strong>cloneResult</strong> (<a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model</span></a> $base, <em>array</em> $data, [<em>int</em> $dirtyState], [<em>unknown</em> $sourceModel])</p>
 <p>Assigns values to a model from an array returning a new model</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Phalcon\Mvc\Model</span><span class="o">::</span><span class="na">cloneResult</span><span class="p">(</span><span class="k">new</span> <span class="nx">Robots</span><span class="p">(),</span> <span class="k">array</span><span class="p">(</span>
   <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mechanical&#39;</span><span class="p">,</span>
@@ -280,7 +280,7 @@
 </div>
 <p>public static <a class="reference internal" href="Phalcon_Mvc_Model_ResultsetInterface.html"><span class="doc">Phalcon\Mvc\Model\ResultsetInterface</span></a>  <strong>find</strong> ([<em>array</em> $parameters])</p>
 <p>Allows to query a set of records that match the specified conditions</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="c1">//How many robots are there?</span>
  <span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">();</span>
@@ -305,7 +305,7 @@
 </div>
 <p>public static <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model</span></a>  <strong>findFirst</strong> ([<em>array</em> $parameters], [<em>bool</em> $autoCreate])</p>
 <p>Allows to query the first record that match the specified conditions</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="c1">//What&#39;s the first robot in robots table?</span>
  <span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">();</span>
@@ -338,14 +338,14 @@
 <p>Generate a PHQL SELECT statement for an aggregate</p>
 <p>public static <a class="reference internal" href="Phalcon_Mvc_Model_ResultsetInterface.html"><span class="doc">Phalcon\Mvc\Model\ResultsetInterface</span></a>  <strong>group</strong> (<em>array</em> $params)</p>
 <p>Generate a PHQL SELECT statement for an aggregate</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nx">Robots</span><span class="o">::</span><span class="na">group</span><span class="p">([</span><span class="s1">&#39;aggregators&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;column&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;aggregator&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;sum&#39;</span><span class="p">),</span> <span class="s1">&#39;sumatory&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;column&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="s1">&#39;aggregator&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;sum&#39;</span><span class="p">))]);</span>
 </pre></div>
 </div>
 <p>public static <em>int</em>  <strong>count</strong> ([<em>array</em> $parameters])</p>
 <p>Allows to count how many records match the specified conditions</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="c1">//How many robots are there?</span>
  <span class="nv">$number</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">count</span><span class="p">();</span>
@@ -358,7 +358,7 @@
 </div>
 <p>public static <em>double</em>  <strong>sum</strong> ([<em>array</em> $parameters])</p>
 <p>Allows to calculate a summatory on a column that match the specified conditions</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="c1">//How much are all robots?</span>
  <span class="nv">$sum</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">sum</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;column&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;price&#39;</span><span class="p">));</span>
@@ -371,7 +371,7 @@
 </div>
 <p>public static <em>mixed</em>  <strong>maximum</strong> ([<em>array</em> $parameters])</p>
 <p>Allows to get the maximum value of a column that match the specified conditions</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="c1">//What is the maximum robot id?</span>
  <span class="nv">$id</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">maximum</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;column&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;id&#39;</span><span class="p">));</span>
@@ -384,7 +384,7 @@
 </div>
 <p>public static <em>mixed</em>  <strong>minimum</strong> ([<em>array</em> $parameters])</p>
 <p>Allows to get the minimum value of a column that match the specified conditions</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="c1">//What is the minimum robot id?</span>
  <span class="nv">$id</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">minimum</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;column&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;id&#39;</span><span class="p">));</span>
@@ -397,7 +397,7 @@
 </div>
 <p>public static <em>double</em>  <strong>average</strong> ([<em>array</em> $parameters])</p>
 <p>Allows to calculate the average value on a column matching the specified conditions</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="c1">//What&#39;s the average price of robots?</span>
  <span class="nv">$average</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">average</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;column&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;price&#39;</span><span class="p">));</span>
@@ -416,7 +416,7 @@
 <p>Cancel the current operation</p>
 <p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model</span></a>  <strong>appendMessage</strong> (<a class="reference internal" href="Phalcon_Validation_MessageInterface.html"><span class="doc">Phalcon\Validation\MessageInterface</span></a> $message, [<em>unknown</em> $field], [<em>unknown</em> $type], [<em>unknown</em> $code])</p>
 <p>Appends a customized message on the validation process</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="k">use</span> <span class="nx">\Phalcon\Validation\Message</span> <span class="k">as</span> <span class="nx">Message</span><span class="p">;</span>
 
@@ -435,7 +435,7 @@
 </div>
 <p>protected <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model</span></a>  <strong>validate</strong> (<em>array|Phalcon\ValidationInterface</em> $validation)</p>
 <p>Executes validators on every validation call</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Validator\ExclusionIn</span> <span class="k">as</span> <span class="nx">ExclusionIn</span><span class="p">;</span>
 
@@ -456,7 +456,7 @@
 </div>
 <p>public <em>boolean</em>  <strong>validationHasFailed</strong> ()</p>
 <p>Check whether validation process has generated any messages</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Validator\ExclusionIn</span> <span class="k">as</span> <span class="nx">ExclusionIn</span><span class="p">;</span>
 
@@ -479,7 +479,7 @@
 </div>
 <p>public <em>Phalcon\Mvc\Model\MessageInterface[]</em>  <strong>getMessages</strong> ([<em>unknown</em> $filter])</p>
 <p>Returns all the validation messages</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$robot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Robots</span><span class="p">();</span>
 <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">type</span> <span class="o">=</span> <span class="s1">&#39;mechanical&#39;</span><span class="p">;</span>
@@ -507,7 +507,7 @@
 <p>Executes internal events after save a record</p>
 <p>protected <em>boolean</em>  <strong>_doLowInsert</strong> ()</p>
 <p>Sends a pre-build INSERT SQL statement to the relational database system</p>
-<p>protected <em>boolean</em>  <strong>_doLowUpdate</strong> ()</p>
+<p>protected <em>boolean|int</em>  <strong>_doLowUpdate</strong> ()</p>
 <p>Sends a pre-build UPDATE SQL statement to the relational database system</p>
 <p>protected <em>boolean</em>  <strong>_preSaveRelatedRecords</strong> ()</p>
 <p>Saves related records that must be stored prior to save the master record</p>
@@ -515,7 +515,7 @@
 <p>Save the related records assigned in the has-one/has-many relations</p>
 <p>public <em>boolean</em>  <strong>save</strong> ([<em>array</em> $data], [<em>array</em> $whiteList], [<em>array</em> $exists])</p>
 <p>Inserts or updates a model instance. Returning true on success or false otherwise.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">//Creating a new robot</span>
 <span class="nv">$robot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Robots</span><span class="p">();</span>
@@ -532,7 +532,7 @@
 </div>
 <p>public <em>boolean</em>  <strong>create</strong> ([<em>array</em> $data], [<em>array</em> $whiteList], [<em>boolean</em> $existsCheck])</p>
 <p>Inserts a model instance. If the instance already exists in the persistance it will throw an exception Returning true on success or false otherwise.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">//Creating a new robot</span>
 <span class="nv">$robot</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Robots</span><span class="p">();</span>
@@ -552,7 +552,7 @@
 </div>
 <p>public <em>boolean</em>  <strong>update</strong> ([<em>array</em> $data], [<em>array</em> $whiteList], [<em>boolean</em> $existsCheck])</p>
 <p>Updates a model instance. If the instance doesn&#8217;t exist in the persistance it will throw an exception Returning true on success or false otherwise.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">//Updating a robot name</span>
 <span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span><span class="s2">&quot;id=100&quot;</span><span class="p">);</span>
@@ -562,7 +562,7 @@
 </div>
 <p>public <em>boolean</em>  <strong>delete</strong> ()</p>
 <p>Deletes a model instance. Returning true on success or false otherwise.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span><span class="s2">&quot;id=100&quot;</span><span class="p">);</span>
 <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">();</span>
@@ -580,21 +580,21 @@
 <p>Skips the current operation forcing a success state</p>
 <p>public <em>mixed</em>  <strong>readAttribute</strong> (<em>string</em> $attribute)</p>
 <p>Reads an attribute value by its name</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="k">echo</span> <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">readAttribute</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>public  <strong>writeAttribute</strong> (<em>string</em> $attribute, <em>mixed</em> $value)</p>
 <p>Writes an attribute value by its name</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
     <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">writeAttribute</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;Rosey&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>protected  <strong>skipAttributes</strong> (<em>array</em> $attributes, [<em>boolean</em> $replace])</p>
 <p>Sets a list of attributes that must be skipped from the generated INSERT/UPDATE statement</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Model</span>
 <span class="p">{</span>
@@ -609,7 +609,7 @@
 </div>
 <p>protected  <strong>skipAttributesOnCreate</strong> (<em>array</em> $attributes, [<em>boolean</em> $replace])</p>
 <p>Sets a list of attributes that must be skipped from the generated INSERT statement</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Model</span>
 <span class="p">{</span>
@@ -624,7 +624,7 @@
 </div>
 <p>public <em>array</em>  <strong>getSkipAttributesOnCreate</strong> ()</p>
 <p>Returns attributes that must be ignored from the INSERT SQL generation</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">();</span>
  <span class="nb">print_r</span><span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">getSkipAttributesOnCreate</span><span class="p">());</span>
@@ -632,7 +632,7 @@
 </div>
 <p>protected  <strong>skipAttributesOnUpdate</strong> (<em>array</em> $attributes, [<em>boolean</em> $replace])</p>
 <p>Sets a list of attributes that must be skipped from the generated UPDATE statement</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Model</span>
 <span class="p">{</span>
@@ -647,7 +647,7 @@
 </div>
 <p>public <em>array</em>  <strong>getSkipAttributesOnUpdate</strong> ()</p>
 <p>Returns attributes that must be ignored from the UPDATE SQL generation</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">();</span>
  <span class="nb">print_r</span><span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">getSkipAttributesOnUpdate</span><span class="p">());</span>
@@ -655,7 +655,7 @@
 </div>
 <p>public <a class="reference internal" href="Phalcon_Mvc_Model_Relation.html"><span class="doc">Phalcon\Mvc\Model\Relation</span></a>  <strong>hasOne</strong> (<em>mixed</em> $fields, <em>string</em> $referenceModel, <em>mixed</em> $referencedFields, [<em>array</em> $options])</p>
 <p>Setup a 1-1 relation between two models</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Model</span>
 <span class="p">{</span>
@@ -670,7 +670,7 @@
 </div>
 <p>public <a class="reference internal" href="Phalcon_Mvc_Model_Relation.html"><span class="doc">Phalcon\Mvc\Model\Relation</span></a>  <strong>belongsTo</strong> (<em>mixed</em> $fields, <em>string</em> $referenceModel, <em>mixed</em> $referencedFields, [<em>array</em> $options])</p>
 <p>Setup a relation reverse 1-1  between two models</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">RobotsParts</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Model</span>
 <span class="p">{</span>
@@ -685,7 +685,7 @@
 </div>
 <p>public <a class="reference internal" href="Phalcon_Mvc_Model_Relation.html"><span class="doc">Phalcon\Mvc\Model\Relation</span></a>  <strong>hasMany</strong> (<em>mixed</em> $fields, <em>string</em> $referenceModel, <em>mixed</em> $referencedFields, [<em>array</em> $options])</p>
 <p>Setup a relation 1-n between two models</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Model</span>
 <span class="p">{</span>
@@ -700,7 +700,7 @@
 </div>
 <p>public <a class="reference internal" href="Phalcon_Mvc_Model_Relation.html"><span class="doc">Phalcon\Mvc\Model\Relation</span></a>  <strong>hasManyToMany</strong> (<em>string</em> $fields, <em>string</em> $intermediateModel, <em>string</em> $intermediateFields, <em>string</em> $intermediateReferencedFields, <em>unknown</em> $referenceModel, <em>string</em> $referencedFields, [<em>array</em> $options])</p>
 <p>Setup a relation n-n between two models through an intermediate relation</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Model</span>
 <span class="p">{</span>
@@ -723,7 +723,7 @@
 </div>
 <p>public  <strong>addBehavior</strong> (<a class="reference internal" href="Phalcon_Mvc_Model_BehaviorInterface.html"><span class="doc">Phalcon\Mvc\Model\BehaviorInterface</span></a> $behavior)</p>
 <p>Setups a behavior in a model</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Behavior\Timestampable</span><span class="p">;</span>
 
@@ -755,7 +755,7 @@
 <p>Returns a list of changed values</p>
 <p>protected  <strong>useDynamicUpdate</strong> (<em>boolean</em> $dynamicUpdate)</p>
 <p>Sets if a model must use dynamic update instead of the all-field update</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">\Phalcon\Mvc\Model</span>
 <span class="p">{</span>
@@ -788,14 +788,14 @@
 <p>Unserializes the object from a serialized string</p>
 <p>public <em>array</em>  <strong>dump</strong> ()</p>
 <p>Returns a simple representation of the object that can be used with var_dump</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">dump</span><span class="p">());</span>
 </pre></div>
 </div>
-<p>public <em>array</em>  <strong>toArray</strong> ([<em>array</em> $columns], [<em>bool</em> $renameColumns], [<em>unknown</em> $negate])</p>
+<p>public <em>array</em>  <strong>toArray</strong> ([<em>array</em> $columns], [<em>bool</em> $mustColumn], [<em>bool</em> $negate])</p>
 <p>Returns the instance as an array representation</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nb">print_r</span><span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">toArray</span><span class="p">());</span>
 </pre></div>
@@ -804,16 +804,16 @@
 <p>Enables/disables options in the ORM Available options: events                — Enables/Disables globally the internal events virtualForeignKeys    — Enables/Disables virtual foreign keys columnRenaming        — Enables/Disables column renaming notNullValidations    — Enables/Disables automatic not null validation exceptionOnFailedSave — Enables/Disables throws an exception if the saving process fails phqlLiterals          — Enables/Disables literals in PHQL this improves the security of applications propertyMethod        — Enables/Disables property method autoConvert           — Enables/Disables auto convert strict                — Enables/Disables strict mode</p>
 <p>public static <em>boolean</em>  <strong>remove</strong> (<em>array</em> $parameters)</p>
 <p>Allows to delete a set of records that match the specified conditions</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">remove</span><span class="p">(</span><span class="s2">&quot;id=100&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>public  <strong>reset</strong> ()</p>
 <p>...</p>
-<p>protected <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model</span></a>  <strong>filter</strong> (<em>string</em> $field, <em>string|array</em> $filters, [<em>mixed</em> $defaultValue], [<em>boolean</em> $notAllowEmpty], [<em>boolean</em> $noRecursive])</p>
+<p>protected <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model</span></a>  <strong>filter</strong> (<em>string</em> $field, <em>string|array</em> $filters, [<em>mixed</em> $defaultValue], [<em>boolean</em> $notAllowEmpty], [<em>boolean</em> $recursive])</p>
 <p>Sanitizes a value with a specified single or set of filters</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Validator\ExclusionIn</span> <span class="k">as</span> <span class="nx">ExclusionIn</span><span class="p">;</span>
 
@@ -842,7 +842,7 @@
 <p>...</p>
 <p>public <em>array</em>  <strong>jsonSerialize</strong> ()</p>
 <p>Returns serialised model as array for json_encode.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nv">$robot</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">findFirst</span><span class="p">();</span>
  <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$robot</span><span class="p">);</span>

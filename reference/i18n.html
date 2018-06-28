@@ -119,12 +119,12 @@
 <div class="section" id="locale-and-language">
 <h2>区域和语言（Locale And Language）<a class="headerlink" href="#locale-and-language" title="永久链接至标题">¶</a></h2>
 <p>Phalcon 通过 <a class="reference internal" href="../api/Phalcon_Translate_Adapter_NativeArray.html"><span class="doc">Phalcon\Translate\Adapter\NativeArray</span></a> 和 <a class="reference internal" href="../api/Phalcon_Translate_Adapter_Gettext.html"><span class="doc">Phalcon\Translate\Adapter\Gettext</span></a> 提供了一套轻量级的语言翻译功能。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$t</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Translate\Adapter\Gettext</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
     <span class="s1">&#39;locale&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;zh_CN.utf8&#39;</span><span class="p">,</span>
     <span class="s1">&#39;defaultDomain&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;messages&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;directory&#39;</span> <span class="o">=&gt;</span> <span class="nx">__DIR__</span> <span class="o">.</span> <span class="nx">DIRECTORY_SEPARATOR</span> <span class="o">.</span> <span class="s1">&#39;locale&#39;</span>
+    <span class="s1">&#39;directory&#39;</span> <span class="o">=&gt;</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="nx">DIRECTORY_SEPARATOR</span> <span class="o">.</span> <span class="s1">&#39;locale&#39;</span>
 <span class="p">));</span>
 
 <span class="k">echo</span> <span class="nv">$t</span><span class="o">-&gt;</span><span class="na">_</span><span class="p">(</span><span class="s1">&#39;Hello&#39;</span><span class="p">);</span>
@@ -133,11 +133,11 @@
 <div class="section" id="creating-messages">
 <h3>创建消息列表（Creating Messages）<a class="headerlink" href="#creating-messages" title="永久链接至标题">¶</a></h3>
 <p>通过以下命令我们可以提取代码中所有类似 <code class="code docutils literal"><span class="pre">_(&quot;translate</span> <span class="pre">this</span> <span class="pre">words&quot;)</span></code> 文本生成 <cite>zh_CN.po</cite> 文件。</p>
-<div class="highlight-sh"><div class="highlight"><pre><span class="nv">$ </span>xgettext -f *.php -d zh_CN --keyword<span class="o">=</span>_ --from-code<span class="o">=</span>UTF-8
+<div class="highlight-sh"><div class="highlight"><pre><span></span>$ xgettext -f *.php -d zh_CN --keyword<span class="o">=</span>_ --from-code<span class="o">=</span>UTF-8
 </pre></div>
 </div>
 <p>接着，我们可以使用工具（poedit、vim、gedit） 对生成的 <cite>po</cite> 文件进行翻译，翻译完成后生成 <cite>mo</cite> 文件：</p>
-<div class="highlight-sh"><div class="highlight"><pre><span class="nv">$ </span>msgfmt -o zh_CN.mo zh_CN.po
+<div class="highlight-sh"><div class="highlight"><pre><span></span>$ msgfmt -o zh_CN.mo zh_CN.po
 </pre></div>
 </div>
 <p>最后将 <cite>mo</cite> 文件拷贝到目录 <cite>locale/zh_CN.utf8/LC_MESSAGES</cite>。</p>
@@ -146,7 +146,7 @@
 <h3>消息格式化（Message Format）<a class="headerlink" href="#message-format" title="永久链接至标题">¶</a></h3>
 <p>在要翻译的消息里，你可以嵌入一些占位符，并让它们通过动态的参数值来代替。你甚至可以根据目标语言格式的参数值来使用特殊的占位符。
 在下面的例子中， 占位符 {username} 在 “Hello, {username}！” 中将分别被 &#8216;Alexander&#8217;和&#8217;Qiang&#8217; 所替换。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$username</span> <span class="o">=</span> <span class="s1">&#39;Phalcon&#39;</span><span class="p">;</span>
 <span class="c1">// 输出：“Hello, Phalcon”</span>
@@ -156,7 +156,7 @@
 </pre></div>
 </div>
 <p>占位符也可以是从零开始的整数序列，比如下面的例子中， <cite>%0%</cite>、<cite>%1%</cite> 和 <cite>%2%</cite> 将分别被 <cite>$price</cite>、<cite>$count</cite> 和 <cite>$total</cite> 所替换。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$price</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
 <span class="nv">$count</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
@@ -170,7 +170,7 @@
 <div class="section" id="trace-message-file">
 <h3>追踪消息文件（Trace Message File）<a class="headerlink" href="#trace-message-file" title="永久链接至标题">¶</a></h3>
 <p>如果出现无法翻译指定语言的情况，我们可以通过下面的方式追踪程序读取的语言文件：</p>
-<div class="highlight-sh"><div class="highlight"><pre><span class="nv">$ </span>strace -e <span class="nv">trace</span><span class="o">=</span>open,read php test.php
+<div class="highlight-sh"><div class="highlight"><pre><span></span>$ strace -e <span class="nv">trace</span><span class="o">=</span>open,read php test.php
 </pre></div>
 </div>
 </div>
@@ -181,7 +181,7 @@
 <div class="section" id="find-out-best-available-locale">
 <h3>匹配最佳的区域设置（Find out best available Locale）<a class="headerlink" href="#find-out-best-available-locale" title="永久链接至标题">¶</a></h3>
 <p>There are several ways to find out the best available locale using <a class="reference external" href="http://pecl.php.net/package/intl">intl</a>. One of them is to check the HTTP &#8220;Accept-Language&#8221; header:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$locale</span> <span class="o">=</span> <span class="nx">Locale</span><span class="o">::</span><span class="na">acceptFromHttp</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;HTTP_ACCEPT_LANGUAGE&quot;</span><span class="p">]);</span>
 
@@ -203,7 +203,7 @@
 <p>Part of creating a localized application is to produce concatenated, language-neutral messages. The <a class="reference external" href="http://www.php.net/manual/en/class.messageformatter.php">MessageFormatter</a> allows for the
 production of those messages.</p>
 <p>Printing numbers formatted based on some locale:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Prints € 4 560</span>
 <span class="nv">$formatter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MessageFormatter</span><span class="p">(</span><span class="s2">&quot;fr_FR&quot;</span><span class="p">,</span> <span class="s2">&quot;€ {0, number, integer}&quot;</span><span class="p">);</span>
@@ -219,7 +219,7 @@ production of those messages.</p>
 </pre></div>
 </div>
 <p>Message formatting using time and date patterns:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Setting parameters</span>
 <span class="nv">$time</span>   <span class="o">=</span> <span class="nb">time</span><span class="p">();</span>
@@ -241,7 +241,7 @@ production of those messages.</p>
 <h3>特定区域设置的字符串比较（Locale-Sensitive comparison）<a class="headerlink" href="#locale-sensitive-comparison" title="永久链接至标题">¶</a></h3>
 <p>The <a class="reference external" href="http://www.php.net/manual/en/class.collator.php">Collator</a> class provides string comparison capability with support for appropriate locale-sensitive sort orderings. Check the
 examples below on the usage of this class:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Create a collator using Spanish locale</span>
 <span class="nv">$collator</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Collator</span><span class="p">(</span><span class="s2">&quot;es&quot;</span><span class="p">);</span>
@@ -259,7 +259,7 @@ examples below on the usage of this class:</p>
 <div class="section" id="transliteration">
 <h3>音译（Transliteration）<a class="headerlink" href="#transliteration" title="永久链接至标题">¶</a></h3>
 <p><a class="reference external" href="http://www.php.net/manual/en/class.transliterator.php">Transliterator</a> provides transliteration of strings:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$id</span> <span class="o">=</span> <span class="s2">&quot;Any-Latin; NFD; [:Nonspacing Mark:] Remove; NFC; [:Punctuation:] Remove; Lower();&quot;</span><span class="p">;</span>
 <span class="nv">$transliterator</span> <span class="o">=</span> <span class="nx">Transliterator</span><span class="o">::</span><span class="na">create</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>

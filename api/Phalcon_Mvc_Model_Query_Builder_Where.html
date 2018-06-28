@@ -101,14 +101,14 @@
 <p>Gets the type of PHQL queries</p>
 <p>public <em>string</em>  <strong>getConditions</strong> ()</p>
 <p>Returns the conditions, If the conditions is a single numeric field. We internally create a condition using the related primary key</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">getConditions</span><span class="p">();</span>
 </pre></div>
 </div>
 <p>public <a class="reference internal" href="Phalcon_Mvc_Model_Query_Builder.html"><span class="doc">Phalcon\Mvc\Model\Query\Builder</span></a>  <strong>where</strong> (<em>string|array</em> $conditions, [<em>array</em> $bindParams], [<em>array</em> $bindTypes])</p>
 <p>Sets the query conditions</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;name = &quot;Peter&quot;&#39;</span><span class="p">);</span>
 <span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;name = :name: AND id &gt; :id:&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Peter&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">));</span>
@@ -116,7 +116,7 @@
 </div>
 <p>public <a class="reference internal" href="Phalcon_Mvc_Model_Query_Builder.html"><span class="doc">Phalcon\Mvc\Model\Query\Builder</span></a>  <strong>andWhere</strong> (<em>string|array</em> $conditions, [<em>array</em> $bindParams], [<em>array</em> $bindTypes])</p>
 <p>Appends a condition to the current conditions using a AND operator</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">andWhere</span><span class="p">(</span><span class="s1">&#39;name = &quot;Peter&quot;&#39;</span><span class="p">);</span>
 <span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">andWhere</span><span class="p">(</span><span class="s1">&#39;name = :name: AND id &gt; :id:&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Peter&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">));</span>
@@ -124,7 +124,7 @@
 </div>
 <p>public <a class="reference internal" href="Phalcon_Mvc_Model_Query_Builder.html"><span class="doc">Phalcon\Mvc\Model\Query\Builder</span></a>  <strong>orWhere</strong> (<em>string|array</em> $conditions, [<em>array</em> $bindParams], [<em>array</em> $bindTypes])</p>
 <p>Appends a condition to the current conditions using a OR operator</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">orWhere</span><span class="p">(</span><span class="s1">&#39;name = &quot;Peter&quot;&#39;</span><span class="p">);</span>
 <span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">orWhere</span><span class="p">(</span><span class="s1">&#39;name = :name: AND id &gt; :id:&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Peter&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">));</span>
@@ -132,28 +132,28 @@
 </div>
 <p>public <a class="reference internal" href="Phalcon_Mvc_Model_Query_Builder.html"><span class="doc">Phalcon\Mvc\Model\Query\Builder</span></a>  <strong>betweenWhere</strong> (<em>string</em> $expr, <em>mixed</em> $minimum, <em>mixed</em> $maximum, [<em>boolean</em> $useOrWhere])</p>
 <p>Appends a BETWEEN condition to the current conditions</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">betweenWhere</span><span class="p">(</span><span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="mf">100.25</span><span class="p">,</span> <span class="mf">200.50</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>public <a class="reference internal" href="Phalcon_Mvc_Model_Query_Builder.html"><span class="doc">Phalcon\Mvc\Model\Query\Builder</span></a>  <strong>notBetweenWhere</strong> (<em>string</em> $expr, <em>mixed</em> $minimum, <em>mixed</em> $maximum, [<em>boolean</em> $useOrWhere])</p>
 <p>Appends a NOT BETWEEN condition to the current conditions</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">notBetweenWhere</span><span class="p">(</span><span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="mf">100.25</span><span class="p">,</span> <span class="mf">200.50</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>public <a class="reference internal" href="Phalcon_Mvc_Model_Query_Builder.html"><span class="doc">Phalcon\Mvc\Model\Query\Builder</span></a>  <strong>inWhere</strong> (<em>string</em> $expr, <em>array</em> $values, [<em>boolean</em> $useOrWhere])</p>
 <p>Appends an IN condition to the current conditions</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">inWhere</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]);</span>
 </pre></div>
 </div>
 <p>public <a class="reference internal" href="Phalcon_Mvc_Model_Query_Builder.html"><span class="doc">Phalcon\Mvc\Model\Query\Builder</span></a>  <strong>notInWhere</strong> (<em>string</em> $expr, <em>array</em> $values, [<em>boolean</em> $useOrWhere])</p>
 <p>Appends a NOT IN condition to the current conditions</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">notInWhere</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]);</span>
 </pre></div>
@@ -162,7 +162,7 @@
 <p>Return the conditions for the query</p>
 <p>public static <a class="reference internal" href="Phalcon_Mvc_Model_Query_Builder.html"><span class="doc">Phalcon\Mvc\Model\Query\Builder</span></a>  <strong>create</strong> (<em>unknown</em> $type) inherited from Phalcon\Mvc\Model\Query\Builder</p>
 <p>Create a new Query Builder of the given type.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nx">Phalcon\Mvc\Model\Query\Builder</span><span class="o">::</span><span class="na">create</span><span class="p">(</span><span class="nx">Phalcon\Mvc\Model\Query</span><span class="o">::</span><span class="na">TYPE_SELECT</span><span class="p">);</span>
 </pre></div>

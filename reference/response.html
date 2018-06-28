@@ -112,7 +112,7 @@
 <h1>返回响应（Returning Responses）<a class="headerlink" href="#returning-responses" title="永久链接至标题">¶</a></h1>
 <p>Part of the HTTP cycle is returning responses to clients. <a class="reference internal" href="../api/Phalcon_Http_Response.html"><span class="doc">Phalcon\Http\Response</span></a> is the Phalcon
 component designed to achieve this task. HTTP responses are usually composed by headers and body. The following is an example of basic usage:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Getting a response instance</span>
 <span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Http\Response</span><span class="p">();</span>
@@ -128,7 +128,7 @@ component designed to achieve this task. HTTP responses are usually composed by 
 </pre></div>
 </div>
 <p>如果您使用的是完整的 MVC 应用，则不需要手动创建响应。但是，如果您需要直接从控制器的操作返回响应，请按照下面的示例：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">FeedController</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\Controller</span>
 <span class="p">{</span>
@@ -153,7 +153,7 @@ component designed to achieve this task. HTTP responses are usually composed by 
 <p>Headers are an important part of the HTTP response. It contains useful information about the response state like the HTTP status,
 type of response and much more.</p>
 <p>You can set headers in the following way:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Setting a header by its name</span>
 <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setHeader</span><span class="p">(</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">,</span> <span class="s2">&quot;application/pdf&quot;</span><span class="p">);</span>
@@ -165,7 +165,7 @@ type of response and much more.</p>
 </div>
 <p>A <a class="reference internal" href="../api/Phalcon_Http_Response_Headers.html"><span class="doc">Phalcon\Http\Response\Headers</span></a> bag internally manages headers. This class
 retrieves the headers before sending it to client:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Get the headers bag</span>
 <span class="nv">$headers</span> <span class="o">=</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getHeaders</span><span class="p">();</span>
@@ -178,7 +178,7 @@ retrieves the headers before sending it to client:</p>
 <div class="section" id="making-redirections">
 <h2>重定向（Making Redirections）<a class="headerlink" href="#making-redirections" title="永久链接至标题">¶</a></h2>
 <p>可以通过 <a class="reference internal" href="../api/Phalcon_Http_Response.html"><span class="doc">Phalcon\Http\Response</span></a> 来执行HTTP重定向：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Redirect to the default URI</span>
 <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">();</span>
@@ -199,7 +199,7 @@ retrieves the headers before sending it to client:</p>
 <p>All internal URIs are generated using the &#8216;url&#8217; service (by default <a class="reference internal" href="url.html"><span class="doc">Phalcon\Mvc\Url</span></a>). This example demonstrates
 how you can redirect using a route you have defined in your application:</p>
 <p>所有内部 URIs 都是通过 &#8216;url&#8217; 来生成的（ 默认是 <a class="reference internal" href="url.html"><span class="doc">Phalcon\Mvc\Url</span></a> ）。下面的例子演示如何通过一个应用内预先定义好的路由来重定向。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Redirect based on a named route</span>
 <span class="k">return</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span>
@@ -231,7 +231,7 @@ Most modern browsers support HTTP caching and is one of the reasons why many web
 <p>The expiration date is one of the easiest and most effective ways to cache a page in the client (browser).
 Starting from the current date we add the amount of time the page will be stored
 in the browser cache. Until this date expires no new content will be requested from the server:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$expireDate</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DateTime</span><span class="p">();</span>
 <span class="nv">$expireDate</span><span class="o">-&gt;</span><span class="na">modify</span><span class="p">(</span><span class="s1">&#39;+2 months&#39;</span><span class="p">);</span>
@@ -241,7 +241,7 @@ in the browser cache. Until this date expires no new content will be requested f
 </div>
 <p>The Response component automatically shows the date in GMT timezone as expected in an Expires header.</p>
 <p>If we set this value to a date in the past the browser will always refresh the requested page:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$expireDate</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DateTime</span><span class="p">();</span>
 <span class="nv">$expireDate</span><span class="o">-&gt;</span><span class="na">modify</span><span class="p">(</span><span class="s1">&#39;-10 minutes&#39;</span><span class="p">);</span>
@@ -256,14 +256,14 @@ make pages expire and this may represent a limitation for this cache mechanism.<
 <h3>Cache-Control<a class="headerlink" href="#cache-control" title="永久链接至标题">¶</a></h3>
 <p>This header provides a safer way to cache the pages served. We simply must specify a time in seconds telling the browser
 how long it must keep the page in its cache:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Starting from now, cache the page for one day</span>
 <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setHeader</span><span class="p">(</span><span class="s1">&#39;Cache-Control&#39;</span><span class="p">,</span> <span class="s1">&#39;max-age=86400&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>The opposite effect (avoid page caching) is achieved in this way:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Never cache the served page</span>
 <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setHeader</span><span class="p">(</span><span class="s1">&#39;Cache-Control&#39;</span><span class="p">,</span> <span class="s1">&#39;private, max-age=0, must-revalidate&#39;</span><span class="p">);</span>
@@ -274,7 +274,7 @@ how long it must keep the page in its cache:</p>
 <h3>E-Tag<a class="headerlink" href="#e-tag" title="永久链接至标题">¶</a></h3>
 <p>An &#8220;entity-tag&#8221; or &#8220;E-tag&#8221; is a unique identifier that helps the browser realize if the page has changed or not between two requests.
 The identifier must be calculated taking into account that this must change if the previously served content has changed:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Calculate the E-Tag based on the modification time of the latest news</span>
 <span class="nv">$recentDate</span> <span class="o">=</span> <span class="nx">News</span><span class="o">::</span><span class="na">maximum</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;column&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;created_at&#39;</span><span class="p">));</span>

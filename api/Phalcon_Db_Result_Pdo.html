@@ -93,7 +93,7 @@
 <h1>Class <strong>Phalcon\Db\Result\Pdo</strong><a class="headerlink" href="#class-phalcon-db-result-pdo" title="永久链接至标题">¶</a></h1>
 <p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/db/result/pdo.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
 <p>Encapsulates the resultset internals</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM robots ORDER BY name&quot;</span><span class="p">);</span>
 <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">setFetchMode</span><span class="p">(</span><span class="nx">Phalcon\Db</span><span class="o">::</span><span class="na">FETCH_NUM</span><span class="p">);</span>
@@ -110,7 +110,7 @@
 <p>Allows to executes the statement again. Some database systems don&#8217;t support scrollable cursors, So, as cursors are forward only, we need to execute the cursor again to fetch rows from the begining</p>
 <p>public <em>mixed</em>  <strong>fetch</strong> ([<em>unknown</em> $fetchMode], [<em>unknown</em> $fetchArgument], [<em>unknown</em> $ctorArgs])</p>
 <p>Fetches an array/object of strings that corresponds to the fetched row, or FALSE if there are no more rows. This method is affected by the active fetch flag set using Phalcon\Db\Result\Pdo::setFetchMode</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM robots ORDER BY name&quot;</span><span class="p">);</span>
 <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">setFetchMode</span><span class="p">(</span><span class="nx">Phalcon\Db</span><span class="o">::</span><span class="na">FETCH_OBJ</span><span class="p">);</span>
@@ -121,7 +121,7 @@
 </div>
 <p>public <em>mixed</em>  <strong>fetchArray</strong> ()</p>
 <p>Returns an array of strings that corresponds to the fetched row, or FALSE if there are no more rows. This method is affected by the active fetch flag set using Phalcon\Db\Result\Pdo::setFetchMode</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM robots ORDER BY name&quot;</span><span class="p">);</span>
 <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">setFetchMode</span><span class="p">(</span><span class="nx">Phalcon\Db</span><span class="o">::</span><span class="na">FETCH_NUM</span><span class="p">);</span>
@@ -132,7 +132,7 @@
 </div>
 <p>public <em>array</em>  <strong>fetchAll</strong> ()</p>
 <p>Returns an array of arrays containing all the records in the result This method is affected by the active fetch flag set using Phalcon\Db\Result\Pdo::setFetchMode</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM robots ORDER BY name&quot;</span><span class="p">);</span>
 <span class="nv">$robots</span> <span class="o">=</span> <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">fetchAll</span><span class="p">();</span>
@@ -140,7 +140,7 @@
 </div>
 <p>public <em>int</em>  <strong>numRows</strong> ()</p>
 <p>Gets number of rows returned by a resulset</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM robots ORDER BY name&quot;</span><span class="p">);</span>
 <span class="k">echo</span> <span class="s1">&#39;There are &#39;</span><span class="p">,</span> <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">numRows</span><span class="p">(),</span> <span class="s1">&#39; rows in the resulset&#39;</span><span class="p">;</span>
@@ -148,7 +148,7 @@
 </div>
 <p>public  <strong>dataSeek</strong> (<em>int</em> $number)</p>
 <p>Moves internal resulset cursor to another position letting us to fetch a certain row</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM robots ORDER BY name&quot;</span><span class="p">);</span>
 <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">dataSeek</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="c1">// Move to third row on result</span>
@@ -157,7 +157,7 @@
 </div>
 <p>public  <strong>setFetchMode</strong> (<em>int</em> $fetchMode, [<em>unknown</em> $fetchArg1], [<em>unknown</em> $fetchArg2])</p>
 <p>Changes the fetching mode affecting Phalcon\Db\Result\Pdo::fetch()</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">//Return array with integer indexes</span>
 <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">setFetchMode</span><span class="p">(</span><span class="nx">Phalcon\Db</span><span class="o">::</span><span class="na">FETCH_NUM</span><span class="p">);</span>

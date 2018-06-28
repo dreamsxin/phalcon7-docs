@@ -109,7 +109,7 @@
 <p>Returns internal dialect instance</p>
 <p>public <em>array</em>  <strong>fetchOne</strong> (<em>string</em> $sqlQuery, [<em>int</em> $fetchMode], [<em>unknown</em> $placeholders], [<em>mixed</em> $fetchArgument], [<em>array</em> $ctorArgs])</p>
 <p>Returns the first row in a SQL query result</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">//Getting first robot</span>
 <span class="nv">$robot</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">fetchOne</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM robots&quot;</span><span class="p">);</span>
@@ -122,7 +122,7 @@
 </div>
 <p>public <em>array</em>  <strong>fetchAll</strong> (<em>string</em> $sqlQuery, [<em>int</em> $fetchMode], [<em>unknown</em> $placeholders], [<em>mixed</em> $fetchArgument], [<em>array</em> $ctorArgs])</p>
 <p>Dumps the complete result of a query into an array</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">//Getting all robots with associative indexes only</span>
 <span class="nv">$robots</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">fetchAll</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM robots&quot;</span><span class="p">,</span> <span class="nx">Phalcon\Db</span><span class="o">::</span><span class="na">FETCH_ASSOC</span><span class="p">);</span>
@@ -142,7 +142,7 @@
 </div>
 <p>public <em>boolean</em>  <strong>insert</strong> (<em>string</em> $table, <em>array</em> $values, [<em>array</em> $fields], [<em>array</em> $dataTypes])</p>
 <p>Inserts data into a table using custom RBDM SQL syntax</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="c1">//Inserting a new robot</span>
  <span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">insert</span><span class="p">(</span>
@@ -157,7 +157,7 @@
 </div>
 <p>public <em>boolean</em>  <strong>insertAsDict</strong> (<em>string</em> $table, <em>array</em> $data, [<em>array</em> $dataTypes])</p>
 <p>Inserts data into a table using custom RBDM SQL syntax Another, more convenient syntax</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="c1">//Inserting a new robot</span>
  <span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">insertAsDict</span><span class="p">(</span>
@@ -174,7 +174,7 @@
 </div>
 <p>public <em>boolean</em>  <strong>update</strong> (<em>string</em> $table, <em>array</em> $fields, <em>array</em> $values, [<em>string</em> $whereCondition], [<em>array</em> $dataTypes])</p>
 <p>Updates data on a table using custom RBDM SQL syntax</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="c1">//Updating existing robot</span>
  <span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span>
@@ -190,7 +190,7 @@
 </div>
 <p>public <em>boolean</em>  <strong>delete</strong> (<em>string</em> $table, [<em>string</em> $whereCondition], [<em>array</em> $placeholders], [<em>array</em> $dataTypes])</p>
 <p>Deletes data from a table using custom RBDM SQL syntax</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="c1">//Deleting existing robot</span>
  <span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span>
@@ -206,21 +206,21 @@
 <p>Gets a list of columns</p>
 <p>public <em>string</em>  <strong>limit</strong> (<em>string</em> $sqlQuery, <em>int</em> $number)</p>
 <p>Appends a LIMIT clause to $sqlQuery argument</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
     <span class="k">echo</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">limit</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM robots&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>public <em>string</em>  <strong>tableExists</strong> (<em>string</em> $tableName, [<em>string</em> $schemaName])</p>
 <p>Generates SQL checking for the existence of a schema.table</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
     <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">tableExists</span><span class="p">(</span><span class="s2">&quot;blog&quot;</span><span class="p">,</span> <span class="s2">&quot;posts&quot;</span><span class="p">));</span>
 </pre></div>
 </div>
 <p>public <em>string</em>  <strong>viewExists</strong> (<em>string</em> $viewName, [<em>string</em> $schemaName])</p>
 <p>Generates SQL checking for the existence of a schema.view</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">viewExists</span><span class="p">(</span><span class="s2">&quot;active_users&quot;</span><span class="p">,</span> <span class="s2">&quot;posts&quot;</span><span class="p">));</span>
 </pre></div>
@@ -259,35 +259,35 @@
 <p>Returns the SQL column definition from a column</p>
 <p>public <em>array</em>  <strong>listTables</strong> ([<em>string</em> $schemaName])</p>
 <p>List all tables on a database</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
     <span class="nb">print_r</span><span class="p">(</span><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">listTables</span><span class="p">(</span><span class="s2">&quot;blog&quot;</span><span class="p">));</span>
 </pre></div>
 </div>
 <p>public <em>array</em>  <strong>listViews</strong> ([<em>string</em> $schemaName])</p>
 <p>List all views on a database</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nb">print_r</span><span class="p">(</span><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">listViews</span><span class="p">(</span><span class="s2">&quot;blog&quot;</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x"></span>
 </pre></div>
 </div>
 <p>public <a class="reference internal" href="Phalcon_Db_Index.html"><span class="doc">Phalcon\Db\Index</span></a> [] <strong>describeIndexes</strong> (<em>string</em> $table, [<em>string</em> $schema])</p>
 <p>Lists table indexes</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nb">print_r</span><span class="p">(</span><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">describeIndexes</span><span class="p">(</span><span class="s1">&#39;robots_parts&#39;</span><span class="p">));</span>
 </pre></div>
 </div>
 <p>public <a class="reference internal" href="Phalcon_Db_Reference.html"><span class="doc">Phalcon\Db\Reference</span></a> [] <strong>describeReferences</strong> (<em>string</em> $table, [<em>string</em> $schema])</p>
 <p>Lists table references</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nb">print_r</span><span class="p">(</span><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">describeReferences</span><span class="p">(</span><span class="s1">&#39;robots_parts&#39;</span><span class="p">));</span>
 </pre></div>
 </div>
 <p>public <em>array</em>  <strong>tableOptions</strong> (<em>string</em> $tableName, [<em>string</em> $schemaName])</p>
 <p>Gets creation options from a table</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nb">print_r</span><span class="p">(</span><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">tableOptions</span><span class="p">(</span><span class="s1">&#39;robots&#39;</span><span class="p">));</span>
 </pre></div>
@@ -306,7 +306,7 @@
 <p>Returns the savepoint name to use for nested transactions</p>
 <p>public <a class="reference internal" href="Phalcon_Db_RawValue.html"><span class="doc">Phalcon\Db\RawValue</span></a>  <strong>getDefaultIdValue</strong> ()</p>
 <p>Returns the default identity value to be inserted in an identity column</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="c1">//Inserting a new robot with a valid default value for the column &#39;id&#39;</span>
  <span class="nv">$success</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">insert</span><span class="p">(</span>

@@ -135,7 +135,7 @@
 <div class="section" id="defining-routes">
 <h2>定义路由（Defining Routes）<a class="headerlink" href="#defining-routes" title="永久链接至标题">¶</a></h2>
 <p>在 MVC 模式中 <a class="reference internal" href="../api/Phalcon_Mvc_Router.html"><span class="doc">Phalcon\Mvc\Router</span></a> 提供了一套简单方便的高级路由功能。你可以自定义路由规则，对应到你需要的 controllers/actions 上。路由的定义如下：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">;</span>
 
@@ -166,7 +166,7 @@
 <p>add() 方法接受一个匹配模式作为第一个参数，一组可选的路径作为第二个参数。如上，如果URI就是/admin/users/my-profile的话，
 那么 &#8220;users&#8221; 控制的 &#8220;profile&#8221; 方法将被调用。当然路由器并不马上就调用这个方法，它只是收集这些信息并且通知相应的组件（比如 <a class="reference internal" href="../api/Phalcon_Mvc_Dispatcher.html"><span class="doc">Phalcon\Mvc\Dispatcher</span></a> ）应该调用这个控制器的这个动作。</p>
 <p>一个应用程序可以由很多路径，一个一个定义是一个非常笨重的工作。这种情况下我们可以创建一个更加灵活的路由：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">;</span>
 
@@ -260,7 +260,7 @@ one that matches the given URI and processes it, while ignoring the rest.</p>
 </div>
 <div class="section" id="setting-placeholders-regular-expressions">
 <h3>设置占位符对应正则表达式（Setting Placeholders Regular Expressions）<a class="headerlink" href="#setting-placeholders-regular-expressions" title="永久链接至标题">¶</a></h3>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
     <span class="nv">$router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
 
@@ -286,7 +286,7 @@ one that matches the given URI and processes it, while ignoring the rest.</p>
 <div class="section" id="parameters-with-names">
 <h3>参数名称（Parameters with Names）<a class="headerlink" href="#parameters-with-names" title="永久链接至标题">¶</a></h3>
 <p>The example below demonstrates how to define names to route parameters:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
     <span class="s2">&quot;/news/([0-9]{4})/([0-9]{2})/([0-9]{2})/:params&quot;</span><span class="p">,</span>
@@ -304,7 +304,7 @@ one that matches the given URI and processes it, while ignoring the rest.</p>
 <p>In the above example, the route doesn&#8217;t define a &#8220;controller&#8221; or &#8220;action&#8221; part. These parts are replaced
 with fixed values (&#8220;posts&#8221; and &#8220;show&#8221;). The user will not know the controller that is really dispatched
 by the request. Inside the controller, those named parameters can be accessed as follows:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
 
@@ -340,7 +340,7 @@ by the request. Inside the controller, those named parameters can be accessed as
 <p>Note that the values of the parameters are obtained from the dispatcher. This happens because it is the
 component that finally interacts with the drivers of your application. Moreover, there is also another
 way to create named parameters as part of the pattern:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
     <span class="s2">&quot;/documentation/{chapter}/{name}.{type:[a-z]+}&quot;</span><span class="p">,</span>
@@ -352,7 +352,7 @@ way to create named parameters as part of the pattern:</p>
 </pre></div>
 </div>
 <p>You can access their values in the same way as before:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
 
@@ -376,7 +376,7 @@ way to create named parameters as part of the pattern:</p>
 <h3>短语法（Short Syntax）<a class="headerlink" href="#short-syntax" title="永久链接至标题">¶</a></h3>
 <p>If you don&#8217;t like using an array to define the route paths, an alternative syntax is also available.
 The following examples produce the same result:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Short form</span>
 <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s2">&quot;/posts/{year:[0-9]+}/{title:[a-z\-]+}&quot;</span><span class="p">,</span> <span class="s2">&quot;Posts::show&quot;</span><span class="p">);</span>
@@ -398,7 +398,7 @@ The following examples produce the same result:</p>
 <h3>混合使用数组和短语法（Mixing Array and Short Syntax）<a class="headerlink" href="#mixing-array-and-short-syntax" title="永久链接至标题">¶</a></h3>
 <p>Array and short syntax can be mixed to define a route, in this case note that named parameters automatically
 are added to the route paths according to the position on which they were defined:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// First position must be skipped because it is used for</span>
 <span class="c1">// the named parameter &#39;country&#39;</span>
@@ -415,7 +415,7 @@ are added to the route paths according to the position on which they were define
 <h3>路由到模块（Routing to Modules）<a class="headerlink" href="#routing-to-modules" title="永久链接至标题">¶</a></h3>
 <p>You can define routes whose paths include modules. This is specially suitable to multi-module applications.
 It&#8217;s possible define a default route that includes a module wildcard:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">;</span>
 
@@ -455,7 +455,7 @@ URL: /admin/users/edit/sonny, will be processed as:</p>
 </tbody>
 </table>
 <p>Or you can bind specific routes to specific modules:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
     <span class="s2">&quot;/login&quot;</span><span class="p">,</span>
@@ -477,7 +477,7 @@ URL: /admin/users/edit/sonny, will be processed as:</p>
 </pre></div>
 </div>
 <p>Or bind them to specific namespaces:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
     <span class="s2">&quot;/:namespace/login&quot;</span><span class="p">,</span>
@@ -490,7 +490,7 @@ URL: /admin/users/edit/sonny, will be processed as:</p>
 </pre></div>
 </div>
 <p>Namespaces/class names must be passed separated:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
     <span class="s2">&quot;/login&quot;</span><span class="p">,</span>
@@ -507,7 +507,7 @@ URL: /admin/users/edit/sonny, will be processed as:</p>
 <h3>限制 HTTP 请求传入方式（HTTP Method Restrictions）<a class="headerlink" href="#http-http-method-restrictions" title="永久链接至标题">¶</a></h3>
 <p>When you add a route using simply <code class="code docutils literal"><span class="pre">add()</span></code>, the route will be enabled for any HTTP method. Sometimes we can restrict a route to a specific method,
 this is especially useful when creating RESTful applications:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// This route only will be matched if the HTTP method is GET</span>
 <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">addGet</span><span class="p">(</span><span class="s2">&quot;/products/edit/{id}&quot;</span><span class="p">,</span> <span class="s2">&quot;Products::edit&quot;</span><span class="p">);</span>
@@ -524,7 +524,7 @@ this is especially useful when creating RESTful applications:</p>
 <h3>使用转换（Using conversors）<a class="headerlink" href="#using-conversors" title="永久链接至标题">¶</a></h3>
 <p>Conversors allow you to freely transform the route&#8217;s parameters before passing them to the dispatcher.
 The following examples show how to use them:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// The action name allows dashes, an action can be: /products/new-ipod-nano-4-generation</span>
 <span class="nv">$router</span>
@@ -542,7 +542,7 @@ The following examples show how to use them:</p>
 <div class="section" id="groups-of-routes">
 <h3>路由分组（Groups of Routes）<a class="headerlink" href="#groups-of-routes" title="永久链接至标题">¶</a></h3>
 <p>If a set of routes have common paths they can be grouped to easily maintain them:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Router\Group</span> <span class="k">as</span> <span class="nx">RouterGroup</span><span class="p">;</span>
@@ -590,7 +590,7 @@ The following examples show how to use them:</p>
 </pre></div>
 </div>
 <p>You can move groups of routes to separate files in order to improve the organization and code reusing in the application:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Router\Group</span> <span class="k">as</span> <span class="nx">RouterGroup</span><span class="p">;</span>
 
@@ -638,7 +638,7 @@ The following examples show how to use them:</p>
 </pre></div>
 </div>
 <p>Then mount the group in the router:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Add the group to the router</span>
 <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">mount</span><span class="p">(</span><span class="k">new</span> <span class="nx">BlogRoutes</span><span class="p">());</span>
@@ -651,7 +651,7 @@ The following examples show how to use them:</p>
 <p>A valid URI must be passed to the Router so that it can process it and find a matching route.
 By default, the routing URI is taken from the <code class="code docutils literal"><span class="pre">$_GET['_url']</span></code> variable that is created by the rewrite engine
 module. A couple of rewrite rules that work very well with Phalcon are:</p>
-<div class="highlight-apacheconf"><div class="highlight"><pre><span class="nb">RewriteEngine</span> <span class="k">On</span>
+<div class="highlight-apacheconf"><div class="highlight"><pre><span></span><span class="nb">RewriteEngine</span> <span class="k">On</span>
 <span class="nb">RewriteCond</span>   %{REQUEST_FILENAME} !-d
 <span class="nb">RewriteCond</span>   %{REQUEST_FILENAME} !-f
 <span class="nb">RewriteRule</span>   ^((?s).*)$ index.php?_url=/$1 [QSA,L]
@@ -659,7 +659,7 @@ module. A couple of rewrite rules that work very well with Phalcon are:</p>
 </div>
 <p>In this configuration, any requests to files or folders that don&#8217;t exist will be sent to index.php.</p>
 <p>The following example shows how to use this component in stand-alone mode:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">;</span>
 
@@ -691,7 +691,7 @@ module. A couple of rewrite rules that work very well with Phalcon are:</p>
 <p>Each route that is added to the router is stored internally as a <a class="reference internal" href="../api/Phalcon_Mvc_Router_Route.html"><span class="doc">Phalcon\Mvc\Router\Route</span></a> object.
 That class encapsulates all the details of each route. For instance, we can give a name to a path to identify it uniquely in our application.
 This is especially useful if you want to create URLs from it.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$route</span> <span class="o">=</span> <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s2">&quot;/posts/{year}/{title}&quot;</span><span class="p">,</span> <span class="s2">&quot;Posts::show&quot;</span><span class="p">);</span>
 
@@ -703,7 +703,7 @@ This is especially useful if you want to create URLs from it.</p>
 </pre></div>
 </div>
 <p>Then, using for example the component <a class="reference internal" href="../api/Phalcon_Mvc_Url.html"><span class="doc">Phalcon\Mvc\Url</span></a> we can build routes from its name:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Returns /posts/2012/phalcon-1-0-released</span>
 <span class="k">echo</span> <span class="nv">$url</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span>
@@ -719,7 +719,7 @@ This is especially useful if you want to create URLs from it.</p>
 <div class="section" id="usage-examples">
 <h2>范例（Usage Examples）<a class="headerlink" href="#usage-examples" title="永久链接至标题">¶</a></h2>
 <p>The following are examples of custom routes:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Matches &quot;/system/admin/a/edit/7001&quot;</span>
 <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
@@ -828,7 +828,7 @@ always expects a URI that matches the following pattern: /:controller/:action/:p
 </tbody>
 </table>
 <p>If you don&#8217;t want the router to have this behavior, you must create the router passing <code class="code docutils literal"><span class="pre">false</span></code> as the first parameter:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">;</span>
 
@@ -841,7 +841,7 @@ always expects a URI that matches the following pattern: /:controller/:action/:p
 <h2>设置默认路由（Setting the default route）<a class="headerlink" href="#setting-the-default-route" title="永久链接至标题">¶</a></h2>
 <p>When your application is accessed without any route, the &#8216;/&#8217; route is used to determine what paths must be used to show the initial page
 in your website/application:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
     <span class="s2">&quot;/&quot;</span><span class="p">,</span>
@@ -856,7 +856,7 @@ in your website/application:</p>
 <div class="section" id="not-found-paths">
 <h2>没有找到路径（Not Found Paths）<a class="headerlink" href="#not-found-paths" title="永久链接至标题">¶</a></h2>
 <p>If none of the routes specified in the router are matched, you can define a group of paths to be used in this scenario:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Set 404 paths</span>
 <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">notFound</span><span class="p">(</span>
@@ -874,7 +874,7 @@ in your website/application:</p>
 <p>It&#8217;s possible to define default values for the module, controller or action. When a route is missing any of
 those paths they can be automatically filled by the router:</p>
 <p>可以为通用路径中的 module, controller, action 定义默认值。当一个路由缺少其中任何一项时，路由器可以自动用默认值填充：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Setting a specific default</span>
 <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">setDefaultModule</span><span class="p">(</span><span class="s1">&#39;backend&#39;</span><span class="p">);</span>
@@ -897,7 +897,7 @@ those paths they can be automatically filled by the router:</p>
 <p>Sometimes a route could be accessed with extra/trailing slashes.
 Those extra slashes would lead to produce a not-found status in the dispatcher.
 You can set up the router to automatically remove the slashes from the end of handled route:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">;</span>
 
@@ -913,7 +913,7 @@ You can set up the router to automatically remove the slashes from the end of ha
 </pre></div>
 </div>
 <p>Or, you can modify specific routes to optionally accept trailing slashes:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// The [/]{0,1} allows this route to have optionally have a trailing slash</span>
 <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
@@ -926,7 +926,7 @@ You can set up the router to automatically remove the slashes from the end of ha
 </pre></div>
 </div>
 <p>设置处理结尾额外的斜杆，可以简化路由设置，设置前:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">;</span>
 
@@ -948,7 +948,7 @@ You can set up the router to automatically remove the slashes from the end of ha
 </pre></div>
 </div>
 <p>设置后:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">;</span>
 
@@ -966,7 +966,7 @@ You can set up the router to automatically remove the slashes from the end of ha
 <p>Sometimes, routes should only be matched if they meet specific conditions.
 You can add arbitrary conditions to routes using the <code class="code docutils literal"><span class="pre">beforeMatch()</span></code> callback.
 If this function return <code class="code docutils literal"><span class="pre">false</span></code>, the route will be treated as non-matched:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;/login&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">&#39;module&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;admin&#39;</span><span class="p">,</span>
@@ -982,7 +982,7 @@ If this function return <code class="code docutils literal"><span class="pre">fa
 </pre></div>
 </div>
 <p>You can re-use these extra conditions in classes:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">AjaxFilter</span>
 <span class="p">{</span>
@@ -994,7 +994,7 @@ If this function return <code class="code docutils literal"><span class="pre">fa
 </pre></div>
 </div>
 <p>And use this class instead of the anonymous function:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;/get/info/{id}&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">&#39;controller&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;products&#39;</span><span class="p">,</span>
@@ -1007,7 +1007,7 @@ If this function return <code class="code docutils literal"><span class="pre">fa
 <h2>限制主机名（Hostname Constraints）<a class="headerlink" href="#hostname-constraints" title="永久链接至标题">¶</a></h2>
 <p>The router allows you to set hostname constraints, this means that specific routes or a group of routes can be restricted
 to only match if the route also meets the hostname constraint:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;/login&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">&#39;module&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;admin&#39;</span><span class="p">,</span>
@@ -1017,7 +1017,7 @@ to only match if the route also meets the hostname constraint:</p>
 </pre></div>
 </div>
 <p>The hostname can also be passed as a regular expressions:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;/login&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">&#39;module&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;admin&#39;</span><span class="p">,</span>
@@ -1027,7 +1027,7 @@ to only match if the route also meets the hostname constraint:</p>
 </pre></div>
 </div>
 <p>In groups of routes you can set up a hostname constraint that apply for every route in the group:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Router\Group</span> <span class="k">as</span> <span class="nx">RouterGroup</span><span class="p">;</span>
 
@@ -1078,7 +1078,7 @@ to only match if the route also meets the hostname constraint:</p>
 <h2>URI 来源（URI Sources）<a class="headerlink" href="#uri-uri-sources" title="永久链接至标题">¶</a></h2>
 <p>By default the URI information is obtained from the <code class="code docutils literal"><span class="pre">$_GET['_url']</span></code> variable, this is passed by the Rewrite-Engine to
 Phalcon, you can also use <code class="code docutils literal"><span class="pre">$_SERVER['REQUEST_URI']</span></code> if required:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">;</span>
 
@@ -1089,7 +1089,7 @@ Phalcon, you can also use <code class="code docutils literal"><span class="pre">
 </pre></div>
 </div>
 <p>Or you can manually pass a URI to the <code class="code docutils literal"><span class="pre">handle()</span></code> method:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">(</span><span class="s1">&#39;/some/route/to/handle&#39;</span><span class="p">);</span>
 </pre></div>
@@ -1098,7 +1098,7 @@ Phalcon, you can also use <code class="code docutils literal"><span class="pre">
 <div class="section" id="testing-your-routes">
 <h2>测试路由（Testing your routes）<a class="headerlink" href="#testing-your-routes" title="永久链接至标题">¶</a></h2>
 <p>Since this component has no dependencies, you can create a file as shown below to test your routes:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">;</span>
 
@@ -1143,7 +1143,7 @@ Phalcon, you can also use <code class="code docutils literal"><span class="pre">
 <h2>注解路由（Annotations Router）<a class="headerlink" href="#annotations-router" title="永久链接至标题">¶</a></h2>
 <p>这个组件利用集成的注解服务 <a class="reference internal" href="annotations.html"><span class="doc">annotations</span></a> 提供了一个路由定义的变体。通过这个策略，你可以直接在书写控制器
 的时候编写路由，而不需要一个一个在服务注册的时候添加。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Router\Annotations</span> <span class="k">as</span> <span class="nx">RouterAnnotations</span><span class="p">;</span>
 
@@ -1160,7 +1160,7 @@ Phalcon, you can also use <code class="code docutils literal"><span class="pre">
 </pre></div>
 </div>
 <p>注解通过如下的方式定义：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="sd">/**</span>
 <span class="sd"> * @RoutePrefix(&quot;/api/products&quot;)</span>
@@ -1284,7 +1284,7 @@ Phalcon, you can also use <code class="code docutils literal"><span class="pre">
 </tbody>
 </table>
 <p>如果路由对应的控制器属于一个模块，使用 <code class="code docutils literal"><span class="pre">addModuleResource()</span></code> 效果更佳：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Router\Annotations</span> <span class="k">as</span> <span class="nx">RouterAnnotations</span><span class="p">;</span>
 
@@ -1304,7 +1304,7 @@ Phalcon, you can also use <code class="code docutils literal"><span class="pre">
 <div class="section" id="url-setting-url-generator">
 <h2>设置 URL 生成器（Setting URL Generator）<a class="headerlink" href="#url-setting-url-generator" title="永久链接至标题">¶</a></h2>
 <p>URL 生成器，帮助 URL 组件生成 URL，例子：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$route</span> <span class="o">=</span> <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s2">&quot;/posts/{year}/{title}&quot;</span><span class="p">,</span> <span class="s2">&quot;Posts::show&quot;</span><span class="p">);</span>
 <span class="nv">$route</span><span class="o">-&gt;</span><span class="na">setName</span><span class="p">(</span><span class="s2">&quot;blog-post&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">setUrlGenerator</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="nv">$base_uri</span><span class="p">,</span> <span class="nv">$paths</span><span class="p">,</span> <span class="nv">$uri</span><span class="p">){</span>
@@ -1318,7 +1318,7 @@ Phalcon, you can also use <code class="code docutils literal"><span class="pre">
 <h2>注册路由实例（Registering Router instance）<a class="headerlink" href="#registering-router-instance" title="永久链接至标题">¶</a></h2>
 <p>You can register router during service registration with Phalcon dependency injector to make it available inside the controllers.</p>
 <p>You need to add code below in your bootstrap file (for example index.php or app/config/services.php if you use <a class="reference external" href="http://phalconphp.com/en/download/tools">Phalcon Developer Tools</a>)</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="sd">/**</span>
 <span class="sd"> * Add routing capabilities</span>
@@ -1326,7 +1326,7 @@ Phalcon, you can also use <code class="code docutils literal"><span class="pre">
 <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
     <span class="s1">&#39;router&#39;</span><span class="p">,</span>
     <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="k">require</span> <span class="nx">__DIR__</span><span class="o">.</span><span class="s1">&#39;/../app/config/routes.php&#39;</span><span class="p">;</span>
+        <span class="k">require</span> <span class="no">__DIR__</span><span class="o">.</span><span class="s1">&#39;/../app/config/routes.php&#39;</span><span class="p">;</span>
 
         <span class="k">return</span> <span class="nv">$router</span><span class="p">;</span>
     <span class="p">}</span>
@@ -1334,7 +1334,7 @@ Phalcon, you can also use <code class="code docutils literal"><span class="pre">
 </pre></div>
 </div>
 <p>You need to create app/config/routes.php and add router initialization code, for example:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">;</span>
 
@@ -1363,7 +1363,7 @@ Phalcon, you can also use <code class="code docutils literal"><span class="pre">
 <div class="section" id="rest-rest-mode">
 <h2>REST 模式（REST Mode）<a class="headerlink" href="#rest-rest-mode" title="永久链接至标题">¶</a></h2>
 <p>当设置路由为 REST 模式时，会自动将 HTTP method 的值追加到 action 上：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">();</span>
 <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">setMode</span><span class="p">(</span><span class="nx">Phalcon\Router</span><span class="o">::</span><span class="na">MODE_REST</span><span class="p">);</span>

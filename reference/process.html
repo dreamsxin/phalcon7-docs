@@ -105,9 +105,9 @@
 <h1>进程管理（Process Manager）<a class="headerlink" href="#process-manager" title="永久链接至标题">¶</a></h1>
 <div class="section" id="start-process">
 <h2>启动进程（Start Process）<a class="headerlink" href="#start-process" title="永久链接至标题">¶</a></h2>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
-<span class="nv">$process</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Process\Proc</span><span class="p">(</span><span class="s1">&#39;ping localhost&#39;</span><span class="p">,</span> <span class="nx">__DIR__</span><span class="o">.</span><span class="s1">&#39;/run.pid&#39;</span><span class="p">);</span>
+<span class="nv">$process</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Process\Proc</span><span class="p">(</span><span class="s1">&#39;ping localhost&#39;</span><span class="p">,</span> <span class="no">__DIR__</span><span class="o">.</span><span class="s1">&#39;/run.pid&#39;</span><span class="p">);</span>
 <span class="nv">$process</span><span class="o">-&gt;</span><span class="na">reStart</span><span class="p">();</span>
 <span class="nv">$ret</span> <span class="o">=</span> <span class="nv">$process</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="nv">$pipe</span><span class="p">,</span> <span class="nv">$data</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// on read</span>

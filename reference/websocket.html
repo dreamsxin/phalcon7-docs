@@ -108,10 +108,50 @@
 <div class="section" id="id1">
 <h2>WebSocket 服务端类<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <p><a class="reference internal" href="../api/Phalcon_Websocket_Server.html"><span class="doc">Phalcon\Websocket\Server</span></a> 可以等待客户端的连接请求以及接收客户端发送的数据。</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="nv">$server</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Websocket\Server</span><span class="p">(</span><span class="mi">8080</span><span class="p">,</span> <span class="nx">Phalcon\Websocket\Server</span><span class="o">::</span><span class="na">WRITE_TEXT</span><span class="p">);</span>
+<span class="nv">$server</span><span class="o">-&gt;</span><span class="na">on</span><span class="p">(</span><span class="nx">Phalcon\Websocket\Server</span><span class="o">::</span><span class="na">ON_ACCEPT</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$server</span><span class="p">,</span> <span class="nv">$conn</span><span class="p">){</span>
+    <span class="k">echo</span> <span class="s1">&#39;Accept&#39;</span><span class="o">.</span><span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="nv">$conn</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">(</span><span class="s1">&#39;Hello world!&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="nv">$server</span><span class="o">-&gt;</span><span class="na">on</span><span class="p">(</span><span class="nx">Phalcon\Websocket\Server</span><span class="o">::</span><span class="na">ON_CLOSE</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$server</span><span class="p">){</span>
+    <span class="k">echo</span> <span class="s1">&#39;Close&#39;</span><span class="o">.</span><span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="p">});</span>
+<span class="nv">$server</span><span class="o">-&gt;</span><span class="na">on</span><span class="p">(</span><span class="nx">Phalcon\Websocket\Server</span><span class="o">::</span><span class="na">ON_DATA</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$server</span><span class="p">,</span> <span class="nv">$conn</span><span class="p">,</span> <span class="nv">$data</span><span class="p">){</span>
+    <span class="k">echo</span> <span class="s1">&#39;Data &#39;</span><span class="o">.</span><span class="nv">$data</span><span class="o">.</span><span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="nv">$server</span><span class="o">-&gt;</span><span class="na">broadcast</span><span class="p">(</span><span class="nv">$data</span><span class="p">,</span> <span class="p">[</span><span class="nv">$conn</span><span class="o">-&gt;</span><span class="na">getUid</span><span class="p">()]);</span>
+<span class="p">});</span>
+<span class="nv">$server</span><span class="o">-&gt;</span><span class="na">on</span><span class="p">(</span><span class="nx">Phalcon\Websocket\Server</span><span class="o">::</span><span class="na">ON_TICK</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$server</span><span class="p">){</span>
+    <span class="k">echo</span> <span class="s1">&#39;Tick&#39;</span><span class="o">.</span><span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="p">});</span>
+<span class="nv">$server</span><span class="o">-&gt;</span><span class="na">run</span><span class="p">();</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="id2">
 <h2>WebSocket 客户端类<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p><a class="reference internal" href="../api/Phalcon_Websocket_Client.html"><span class="doc">Phalcon\Websocket\Client</span></a> 可以发送数据给服务端以及接收来自服务端的数据。</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Websocket\Client</span><span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">8080</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="nx">Phalcon\Websocket\Server</span><span class="o">::</span><span class="na">WRITE_TEXT</span><span class="p">);</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">on</span><span class="p">(</span><span class="nx">Phalcon\Websocket\Client</span><span class="o">::</span><span class="na">ON_ACCEPT</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$client</span><span class="p">,</span> <span class="nv">$conn</span><span class="p">){</span>
+    <span class="k">echo</span> <span class="s1">&#39;Accept&#39;</span><span class="o">.</span><span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="nv">$conn</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">(</span><span class="s1">&#39;Hello Server!&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">on</span><span class="p">(</span><span class="nx">Phalcon\Websocket\Client</span><span class="o">::</span><span class="na">ON_CLOSE</span><span class="p">,</span> <span class="k">function</span><span class="p">(){</span>
+    <span class="k">echo</span> <span class="s1">&#39;Close&#39;</span><span class="o">.</span><span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="p">});</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">on</span><span class="p">(</span><span class="nx">Phalcon\Websocket\Client</span><span class="o">::</span><span class="na">ON_DATA</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$client</span><span class="p">,</span> <span class="nv">$conn</span><span class="p">,</span> <span class="nv">$data</span><span class="p">){</span>
+    <span class="k">echo</span> <span class="s1">&#39;Data &#39;</span><span class="o">.</span><span class="nv">$data</span><span class="o">.</span><span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="p">});</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">on</span><span class="p">(</span><span class="nx">Phalcon\Websocket\Client</span><span class="o">::</span><span class="na">ON_TICK</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$client</span><span class="p">){</span>
+    <span class="nv">$data</span> <span class="o">=</span> <span class="s1">&#39;Hello Tick!&#39;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nv">$data</span><span class="o">.</span><span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="p">});</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">connect</span><span class="p">();</span>
+</pre></div>
+</div>
 </div>
 </div>
 

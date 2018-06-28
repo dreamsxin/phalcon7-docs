@@ -131,7 +131,7 @@ Applications using this component, display content in different languages, based
 <h2>组件的使用（Component Usage）<a class="headerlink" href="#component-usage" title="永久链接至标题">¶</a></h2>
 <p>Translation strings are stored in files. The structure of these files could vary depending of the adapter used. Phalcon gives you the freedom
 to organize your translation strings. A simple structure could be:</p>
-<div class="highlight-bash"><div class="highlight"><pre>app/messages/en.php
+<div class="highlight-bash"><div class="highlight"><pre><span></span>app/messages/en.php
 app/messages/es.php
 app/messages/fr.php
 app/messages/zh.php
@@ -139,7 +139,7 @@ app/messages/zh.php
 </div>
 <p>Each file contains an array of the translations in a key/value manner. For each translation file, keys are unique. The same array is used in
 different files, where keys remain the same and values contain the translated strings depending on each language.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// app/messages/es.php</span>
 <span class="nv">$messages</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
@@ -150,7 +150,7 @@ different files, where keys remain the same and values contain the translated st
 <span class="p">);</span>
 </pre></div>
 </div>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// app/messages/fr.php</span>
 <span class="nv">$messages</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
@@ -165,7 +165,7 @@ different files, where keys remain the same and values contain the translated st
 automatic detection of the language from the user&#8217;s browser or you can provide a settings page where the user can select their language.</p>
 <p>A simple way of detecting the user&#8217;s language is to parse the <code class="code docutils literal"><span class="pre">$_SERVER['HTTP_ACCEPT_LANGUAGE']</span></code> contents, or if you wish, access it
 directly by calling <code class="code docutils literal"><span class="pre">$this-&gt;request-&gt;getBestLanguage()</span></code> from an action/controller:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Translate\Adapter\NativeArray</span><span class="p">;</span>
@@ -203,17 +203,17 @@ directly by calling <code class="code docutils literal"><span class="pre">$this-
 </div>
 <p>The <code class="code docutils literal"><span class="pre">_getTranslation()</span></code> method is available for all actions that require translations. The <code class="code docutils literal"><span class="pre">$t</span></code> variable is passed to the views, and with it,
 we can translate strings in that layer:</p>
-<div class="highlight-html+php"><div class="highlight"><pre><span class="c">&lt;!-- welcome --&gt;</span>
+<div class="highlight-html+php"><div class="highlight"><pre><span></span><span class="c">&lt;!-- welcome --&gt;</span>
 <span class="c">&lt;!-- String: hi =&gt; &#39;Hello&#39; --&gt;</span>
-<span class="nt">&lt;p&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$t</span><span class="o">-&gt;</span><span class="na">_</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">),</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="nv">$name</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="nt">&lt;/p&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$t</span><span class="o">-&gt;</span><span class="na">_</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">),</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="nv">$name</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <p>The <code class="code docutils literal"><span class="pre">_()</span></code> method is returning the translated string based on the index passed. Some strings need to incorporate placeholders for
 calculated data i.e. Hello %name%. These placeholders can be replaced with passed parameters in the <code class="code docutils literal"><span class="pre">_()</span></code> method. The passed parameters
 are in the form of a key/value array, where the key matches the placeholder name and the value is the actual data to be replaced:</p>
-<div class="highlight-html+php"><div class="highlight"><pre><span class="c">&lt;!-- welcome --&gt;</span>
+<div class="highlight-html+php"><div class="highlight"><pre><span></span><span class="c">&lt;!-- welcome --&gt;</span>
 <span class="c">&lt;!-- String: hi-name =&gt; &#39;Hello %name%&#39; --&gt;</span>
-<span class="nt">&lt;p&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$t</span><span class="o">-&gt;</span><span class="na">_</span><span class="p">(</span><span class="s2">&quot;hi-name&quot;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="nv">$name</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="nt">&lt;/p&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$t</span><span class="o">-&gt;</span><span class="na">_</span><span class="p">(</span><span class="s2">&quot;hi-name&quot;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="nv">$name</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <p>Some applications implement multilingual on the URL such as <a class="reference external" href="http://www.mozilla.org/">http://www.mozilla.org/</a><strong>es-ES</strong>/firefox/. Phalcon can implement
@@ -223,7 +223,7 @@ this by using a <a class="reference internal" href="routing.html"><span class="d
 <h2>自定义适配器（Implementing your own adapters）<a class="headerlink" href="#implementing-your-own-adapters" title="永久链接至标题">¶</a></h2>
 <p>The <a class="reference internal" href="../api/Phalcon_Translate_AdapterInterface.html"><span class="doc">Phalcon\Translate\AdapterInterface</span></a> interface must be implemented
 in order to create your own translate adapters or extend the existing ones:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Translate\AdapterInterface</span><span class="p">;</span>
 
@@ -234,7 +234,7 @@ in order to create your own translate adapters or extend the existing ones:</p>
 <span class="sd">     *</span>
 <span class="sd">     * @param array $data</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$options</span><span class="p">);</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$options</span><span class="p">);</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Returns the translation string of the given key</span>

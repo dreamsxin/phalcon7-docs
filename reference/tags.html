@@ -185,7 +185,7 @@ For example, if you set XHTML document type family, helpers that return or outpu
 </tbody>
 </table>
 <p>Setting document type.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Tag</span><span class="p">;</span>
 
@@ -195,18 +195,18 @@ For example, if you set XHTML document type family, helpers that return or outpu
 </pre></div>
 </div>
 <p>Getting document type.</p>
-<div class="highlight-html+php"><div class="highlight"><pre><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">getDoctype</span><span class="p">()</span> <span class="cp">?&gt;</span>
-<span class="nt">&lt;html&gt;</span>
+<div class="highlight-html+php"><div class="highlight"><pre><span></span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">getDoctype</span><span class="p">()</span> <span class="cp">?&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
 <span class="c">&lt;!-- your HTML code --&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <p>The following HTML will be produced.</p>
-<div class="highlight-html"><div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot;</span>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot;</span>
 <span class="cp">        &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;</span>
-<span class="nt">&lt;html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
 <span class="c">&lt;!-- your HTML code --&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 </div>
@@ -214,7 +214,7 @@ For example, if you set XHTML document type family, helpers that return or outpu
 <h2>生成链接（Generating Links）<a class="headerlink" href="#generating-links" title="永久链接至标题">¶</a></h2>
 <p>A real common task in any web application or website is to produce links that allow us to navigate from one page to another.
 When they are internal URLs we can create them in the following manner:</p>
-<div class="highlight-html+php"><div class="highlight"><pre><span class="c">&lt;!-- for the default route --&gt;</span>
+<div class="highlight-html+php"><div class="highlight"><pre><span></span><span class="c">&lt;!-- for the default route --&gt;</span>
 <span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">linkTo</span><span class="p">(</span><span class="s2">&quot;products/search&quot;</span><span class="p">,</span> <span class="s2">&quot;Search&quot;</span><span class="p">)</span> <span class="cp">?&gt;</span>
 
 <span class="c">&lt;!-- with CSS attributes --&gt;</span>
@@ -229,27 +229,27 @@ When they are internal URLs we can create them in the following manner:</p>
 <div class="section" id="creating-forms">
 <h2>创建表单（Creating Forms）<a class="headerlink" href="#creating-forms" title="永久链接至标题">¶</a></h2>
 <p>Forms in web applications play an essential part in retrieving user input. The following example shows how to implement a simple search form using view helpers:</p>
-<div class="highlight-html+php"><div class="highlight"><pre><span class="c">&lt;!-- Sending the form by method POST --&gt;</span>
+<div class="highlight-html+php"><div class="highlight"><pre><span></span><span class="c">&lt;!-- Sending the form by method POST --&gt;</span>
 <span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">form</span><span class="p">(</span><span class="s2">&quot;products/search&quot;</span><span class="p">)</span> <span class="cp">?&gt;</span>
-    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;q&quot;</span><span class="nt">&gt;</span>Search:<span class="nt">&lt;/label&gt;</span>
+    <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;q&quot;</span><span class="p">&gt;</span>Search:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
     <span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">textField</span><span class="p">(</span><span class="s2">&quot;q&quot;</span><span class="p">)</span> <span class="cp">?&gt;</span>
     <span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">submitButton</span><span class="p">(</span><span class="s2">&quot;Search&quot;</span><span class="p">)</span> <span class="cp">?&gt;</span>
 <span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">endForm</span><span class="p">()</span> <span class="cp">?&gt;</span>
 
 <span class="c">&lt;!-- Specifying another method or attributes for the FORM tag --&gt;</span>
 <span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">form</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;products/search&quot;</span><span class="p">,</span> <span class="s2">&quot;method&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;get&quot;</span><span class="p">));</span> <span class="cp">?&gt;</span>
-    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;q&quot;</span><span class="nt">&gt;</span>Search:<span class="nt">&lt;/label&gt;</span>
+    <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;q&quot;</span><span class="p">&gt;</span>Search:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
     <span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">textField</span><span class="p">(</span><span class="s2">&quot;q&quot;</span><span class="p">);</span> <span class="cp">?&gt;</span>
     <span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">submitButton</span><span class="p">(</span><span class="s2">&quot;Search&quot;</span><span class="p">);</span> <span class="cp">?&gt;</span>
 <span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">endForm</span><span class="p">()</span> <span class="cp">?&gt;</span>
 </pre></div>
 </div>
 <p>This last code will generate the following HTML:</p>
-<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;/store/products/search/&quot;</span> <span class="na">method=</span><span class="s">&quot;get&quot;</span><span class="nt">&gt;</span>
-     <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;q&quot;</span><span class="nt">&gt;</span>Search:<span class="nt">&lt;/label&gt;</span>
-     <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;q&quot;</span> <span class="na">value=</span><span class="s">&quot;&quot;</span> <span class="na">name=</span><span class="s">&quot;q&quot;</span> <span class="nt">/&gt;</span>
-     <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;Search&quot;</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;/form&gt;</span>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;/store/products/search/&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;get&quot;</span><span class="p">&gt;</span>
+     <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;q&quot;</span><span class="p">&gt;</span>Search:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+     <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;q&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;q&quot;</span> <span class="p">/&gt;</span>
+     <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Search&quot;</span> <span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <p>Phalcon also provides a <a class="reference internal" href="forms.html"><span class="doc">form builder</span></a> to create forms in an object-oriented manner.</p>
@@ -257,7 +257,7 @@ When they are internal URLs we can create them in the following manner:</p>
 <div class="section" id="helpers-to-generate-form-elements">
 <h2>使用助手生成表单控件（Helpers to Generate Form Elements）<a class="headerlink" href="#helpers-to-generate-form-elements" title="永久链接至标题">¶</a></h2>
 <p>Phalcon provides a series of helpers to generate form elements such as text fields, buttons and more. The first parameter of each helper is always the name of the element to be generated. When the form is submitted, the name will be passed along with the form data. In a controller you can get these values using the same name by using the <code class="code docutils literal"><span class="pre">getPost()</span></code> and <code class="code docutils literal"><span class="pre">getQuery()</span></code> methods on the request object (<code class="code docutils literal"><span class="pre">$this-&gt;request</span></code>).</p>
-<div class="highlight-html+php"><div class="highlight"><pre><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">textField</span><span class="p">(</span><span class="s2">&quot;username&quot;</span><span class="p">)</span> <span class="cp">?&gt;</span>
+<div class="highlight-html+php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">textField</span><span class="p">(</span><span class="s2">&quot;username&quot;</span><span class="p">)</span> <span class="cp">?&gt;</span>
 
 <span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">textArea</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
     <span class="s2">&quot;comment&quot;</span><span class="p">,</span>
@@ -282,7 +282,7 @@ When they are internal URLs we can create them in the following manner:</p>
 <h2>使用选择框（Making Select Boxes）<a class="headerlink" href="#making-select-boxes" title="永久链接至标题">¶</a></h2>
 <p>Generating select boxes (select box) is easy, especially if the related data is stored in PHP associative arrays. The helpers for select elements are <code class="code docutils literal"><span class="pre">Phalcon\Tag::select()</span></code> and <code class="code docutils literal"><span class="pre">Phalcon\Tag::selectStatic()</span></code>.
 <code class="code docutils literal"><span class="pre">Phalcon\Tag::select()</span></code> has been was specifically designed to work with <a class="reference internal" href="models.html"><span class="doc">Phalcon\Mvc\Model</span></a>, while <code class="code docutils literal"><span class="pre">Phalcon\Tag::selectStatic()</span></code> can with PHP arrays.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Using data from a resultset</span>
 <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span>
@@ -303,23 +303,34 @@ When they are internal URLs we can create them in the following manner:</p>
         <span class="p">)</span>
     <span class="p">)</span>
 <span class="p">);</span>
+
+<span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;robotid&#39;</span><span class="p">,</span>
+    <span class="nx">Rbots</span><span class="o">::</span><span class="na">find</span><span class="p">(),</span>
+    <span class="s1">&#39;using&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$robot</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">name</span><span class="o">.</span><span class="s1">&#39;（&#39;</span><span class="o">.</span><span class="nv">$$robot</span><span class="o">-&gt;</span><span class="na">id</span><span class="o">.</span><span class="s1">&#39;）&#39;</span><span class="p">;</span>
+    <span class="p">}],</span>
+    <span class="s1">&#39;value&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">requset</span><span class="p">(</span><span class="s1">&#39;robotid&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;useEmpey&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+    <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;form-control&#39;</span><span class="p">,</span>
+<span class="p">));</span>
 </pre></div>
 </div>
 <p>The following HTML will generated:</p>
-<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&quot;productId&quot;</span> <span class="na">name=</span><span class="s">&quot;productId&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;101&quot;</span><span class="nt">&gt;</span>Tomato<span class="nt">&lt;/option&gt;</span>
-    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;102&quot;</span><span class="nt">&gt;</span>Lettuce<span class="nt">&lt;/option&gt;</span>
-    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;103&quot;</span><span class="nt">&gt;</span>Beans<span class="nt">&lt;/option&gt;</span>
-<span class="nt">&lt;/select&gt;</span>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">select</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;productId&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;productId&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;101&quot;</span><span class="p">&gt;</span>Tomato<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;102&quot;</span><span class="p">&gt;</span>Lettuce<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;103&quot;</span><span class="p">&gt;</span>Beans<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">select</span><span class="p">&gt;</span>
 
-<span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&quot;status&quot;</span> <span class="na">name=</span><span class="s">&quot;status&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;A&quot;</span><span class="nt">&gt;</span>Active<span class="nt">&lt;/option&gt;</span>
-    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;I&quot;</span><span class="nt">&gt;</span>Inactive<span class="nt">&lt;/option&gt;</span>
-<span class="nt">&lt;/select&gt;</span>
+<span class="p">&lt;</span><span class="nt">select</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;status&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;status&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;A&quot;</span><span class="p">&gt;</span>Active<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;I&quot;</span><span class="p">&gt;</span>Inactive<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">select</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <p>You can add an &#8220;empty&#8221; option to the generated HTML:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Creating a Select Tag with an empty option</span>
 <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span>
@@ -333,15 +344,15 @@ When they are internal URLs we can create them in the following manner:</p>
 </pre></div>
 </div>
 <p>Produces this HTML:</p>
-<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&quot;productId&quot;</span> <span class="na">name=</span><span class="s">&quot;productId&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>Choose..<span class="nt">&lt;/option&gt;</span>
-    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;101&quot;</span><span class="nt">&gt;</span>Tomato<span class="nt">&lt;/option&gt;</span>
-    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;102&quot;</span><span class="nt">&gt;</span>Lettuce<span class="nt">&lt;/option&gt;</span>
-    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;103&quot;</span><span class="nt">&gt;</span>Beans<span class="nt">&lt;/option&gt;</span>
-<span class="nt">&lt;/select&gt;</span>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">select</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;productId&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;productId&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">&gt;</span>Choose..<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;101&quot;</span><span class="p">&gt;</span>Tomato<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;102&quot;</span><span class="p">&gt;</span>Lettuce<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;103&quot;</span><span class="p">&gt;</span>Beans<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">select</span><span class="p">&gt;</span>
 </pre></div>
 </div>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Creating a Select Tag with an empty option with default text</span>
 <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span>
@@ -356,19 +367,19 @@ When they are internal URLs we can create them in the following manner:</p>
 <span class="p">);</span>
 </pre></div>
 </div>
-<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&quot;productId&quot;</span> <span class="na">name=</span><span class="s">&quot;productId&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;@&quot;</span><span class="nt">&gt;</span>Please, choose one..<span class="nt">&lt;/option&gt;</span>
-    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;101&quot;</span><span class="nt">&gt;</span>Tomato<span class="nt">&lt;/option&gt;</span>
-    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;102&quot;</span><span class="nt">&gt;</span>Lettuce<span class="nt">&lt;/option&gt;</span>
-    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;103&quot;</span><span class="nt">&gt;</span>Beans<span class="nt">&lt;/option&gt;</span>
-<span class="nt">&lt;/select&gt;</span>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">select</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;productId&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;productId&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;@&quot;</span><span class="p">&gt;</span>Please, choose one..<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;101&quot;</span><span class="p">&gt;</span>Tomato<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;102&quot;</span><span class="p">&gt;</span>Lettuce<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;103&quot;</span><span class="p">&gt;</span>Beans<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">select</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="html-assigning-html-attributes">
 <h2>设置 HTML 属性（Assigning HTML attributes）<a class="headerlink" href="#html-assigning-html-attributes" title="永久链接至标题">¶</a></h2>
 <p>All the helpers accept an array as their first parameter which can contain additional HTML attributes for the element generated.</p>
-<div class="highlight-html+php"><div class="highlight"><pre><span class="cp">&lt;?php</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">textField</span><span class="p">(</span>
+<div class="highlight-html+php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">textField</span><span class="p">(</span>
     <span class="k">array</span><span class="p">(</span>
         <span class="s2">&quot;price&quot;</span><span class="p">,</span>
         <span class="s2">&quot;size&quot;</span>        <span class="o">=&gt;</span> <span class="mi">20</span><span class="p">,</span>
@@ -379,8 +390,8 @@ When they are internal URLs we can create them in the following manner:</p>
 </pre></div>
 </div>
 <p>The following HTML is generated:</p>
-<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;price&quot;</span> <span class="na">id=</span><span class="s">&quot;price&quot;</span> <span class="na">size=</span><span class="s">&quot;20&quot;</span> <span class="na">maxlength=</span><span class="s">&quot;30&quot;</span>
-    <span class="na">placeholder=</span><span class="s">&quot;Enter a price&quot;</span> <span class="nt">/&gt;</span>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;price&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;price&quot;</span> <span class="na">size</span><span class="o">=</span><span class="s">&quot;20&quot;</span> <span class="na">maxlength</span><span class="o">=</span><span class="s">&quot;30&quot;</span>
+    <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;Enter a price&quot;</span> <span class="p">/&gt;</span>
 </pre></div>
 </div>
 </div>
@@ -392,7 +403,7 @@ When they are internal URLs we can create them in the following manner:</p>
 You can set those values directly from the controller using <code class="code docutils literal"><span class="pre">Phalcon\Tag::setDefault()</span></code>.
 This helper preloads a value for any helpers present in the view. If any helper in the view has
 a name that matches the preloaded value, it will use it, unless a value is directly assigned on the helper in the view.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
 
@@ -406,7 +417,7 @@ a name that matches the preloaded value, it will use it, unless a value is direc
 </pre></div>
 </div>
 <p>At the view, a selectStatic helper matches the same index used to preset the value. In this case &#8220;color&#8221;:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">selectStatic</span><span class="p">(</span>
     <span class="k">array</span><span class="p">(</span>
@@ -421,11 +432,11 @@ a name that matches the preloaded value, it will use it, unless a value is direc
 </pre></div>
 </div>
 <p>This will generate the following select tag with the value &#8220;Blue&#8221; selected:</p>
-<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&quot;color&quot;</span> <span class="na">name=</span><span class="s">&quot;color&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;Yellow&quot;</span><span class="nt">&gt;</span>Yellow<span class="nt">&lt;/option&gt;</span>
-    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;Blue&quot;</span> <span class="na">selected=</span><span class="s">&quot;selected&quot;</span><span class="nt">&gt;</span>Blue<span class="nt">&lt;/option&gt;</span>
-    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;Red&quot;</span><span class="nt">&gt;</span>Red<span class="nt">&lt;/option&gt;</span>
-<span class="nt">&lt;/select&gt;</span>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">select</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;color&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;color&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Yellow&quot;</span><span class="p">&gt;</span>Yellow<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Blue&quot;</span> <span class="na">selected</span><span class="o">=</span><span class="s">&quot;selected&quot;</span><span class="p">&gt;</span>Blue<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Red&quot;</span><span class="p">&gt;</span>Red<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">select</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 </div>
@@ -445,7 +456,7 @@ When this parameter is present, any preset value using setDefault() or via reque
 <h2>动态设置文档标题（Changing dynamically the Document Title）<a class="headerlink" href="#changing-dynamically-the-document-title" title="永久链接至标题">¶</a></h2>
 <p><a class="reference internal" href="../api/Phalcon_Tag.html"><span class="doc">Phalcon\Tag</span></a> offers helpers to change dynamically the document title from the controller.
 The following example demonstrates just that:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
 
@@ -463,32 +474,32 @@ The following example demonstrates just that:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-html+php"><div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
-    <span class="nt">&lt;head&gt;</span>
+<div class="highlight-html+php"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
         <span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">getTitle</span><span class="p">();</span> <span class="cp">?&gt;</span>
-    <span class="nt">&lt;/head&gt;</span>
-    <span class="nt">&lt;body&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
 
-    <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <p>The following HTML will generated:</p>
-<div class="highlight-html+php"><div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
-    <span class="nt">&lt;head&gt;</span>
-        <span class="nt">&lt;title&gt;</span>Index of Posts - Your Website<span class="nt">&lt;/title&gt;</span>
-    <span class="nt">&lt;/head&gt;</span>
+<div class="highlight-html+php"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Index of Posts - Your Website<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
 
-    <span class="nt">&lt;body&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
 
-    <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <div class="section" id="set-the-title-separator">
 <h3>设置标题分隔符（Set The Title Separator）<a class="headerlink" href="#set-the-title-separator" title="永久链接至标题">¶</a></h3>
 <p>设置标题分隔符，用以连接追加或前置的标题内容:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
 
@@ -508,26 +519,26 @@ The following example demonstrates just that:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-html+php"><div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
-    <span class="nt">&lt;head&gt;</span>
+<div class="highlight-html+php"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
         <span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">getTitle</span><span class="p">();</span> <span class="cp">?&gt;</span>
-    <span class="nt">&lt;/head&gt;</span>
-    <span class="nt">&lt;body&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
 
-    <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <p>将生成如下的 HTML 内容:</p>
-<div class="highlight-html+php"><div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
-    <span class="nt">&lt;head&gt;</span>
-        <span class="nt">&lt;title&gt;</span>Index of Posts - Your - Website<span class="nt">&lt;/title&gt;</span>
-    <span class="nt">&lt;/head&gt;</span>
+<div class="highlight-html+php"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Index of Posts - Your - Website<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
 
-    <span class="nt">&lt;body&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
 
-    <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 </div>
@@ -537,7 +548,7 @@ The following example demonstrates just that:</p>
 <p><a class="reference internal" href="../api/Phalcon_Tag.html"><span class="doc">Phalcon\Tag</span></a> also provide helpers to generate tags such as script, link or img. They aid in quick and easy generation of the static resources of your application</p>
 <div class="section" id="images">
 <h3>图片（Images）<a class="headerlink" href="#images" title="永久链接至标题">¶</a></h3>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Generate &lt;img src=&quot;/your-app/img/hello.gif&quot;&gt;</span>
 <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">image</span><span class="p">(</span><span class="s2">&quot;img/hello.gif&quot;</span><span class="p">);</span>
@@ -554,7 +565,7 @@ The following example demonstrates just that:</p>
 </div>
 <div class="section" id="stylesheets">
 <h3>样式表（Stylesheets）<a class="headerlink" href="#stylesheets" title="永久链接至标题">¶</a></h3>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Generate &lt;link rel=&quot;stylesheet&quot; href=&quot;http://fonts.googleapis.com/css?family=Rosario&quot; type=&quot;text/css&quot;&gt;</span>
 <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">stylesheetLink</span><span class="p">(</span><span class="s2">&quot;http://fonts.googleapis.com/css?family=Rosario&quot;</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
@@ -566,7 +577,7 @@ The following example demonstrates just that:</p>
 </div>
 <div class="section" id="javascript">
 <h3>脚本（Javascript）<a class="headerlink" href="#javascript" title="永久链接至标题">¶</a></h3>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Generate &lt;script src=&quot;http://localhost/javascript/jquery.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</span>
 <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">javascriptInclude</span><span class="p">(</span><span class="s2">&quot;http://localhost/javascript/jquery.min.js&quot;</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
@@ -579,7 +590,7 @@ The following example demonstrates just that:</p>
 <div class="section" id="html5-html5-elements-generic-html-helper">
 <h3>HTML5 对象（HTML5 elements - generic HTML helper）<a class="headerlink" href="#html5-html5-elements-generic-html-helper" title="永久链接至标题">¶</a></h3>
 <p>Phalcon offers a generic HTML helper that allows the generation of any kind of HTML element. It is up to the developer to produce a valid HTML element name to the helper.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Generate</span>
 <span class="c1">// &lt;canvas id=&quot;canvas1&quot; width=&quot;300&quot; class=&quot;cnvclass&quot;&gt;</span>
@@ -596,11 +607,11 @@ The following example demonstrates just that:</p>
 <h2>标签服务（Tag Service）<a class="headerlink" href="#tag-service" title="永久链接至标题">¶</a></h2>
 <p><a class="reference internal" href="../api/Phalcon_Tag.html"><span class="doc">Phalcon\Tag</span></a> is available via the &#8216;tag&#8217; service, this means you can access it from any part
 of the application where the services container is located:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">linkTo</span><span class="p">(</span><span class="s1">&#39;pages/about&#39;</span><span class="p">,</span> <span class="s1">&#39;About&#39;</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x"></span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tag</span><span class="o">-&gt;</span><span class="na">linkTo</span><span class="p">(</span><span class="s1">&#39;pages/about&#39;</span><span class="p">,</span> <span class="s1">&#39;About&#39;</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x"></span>
 </pre></div>
 </div>
 <p>You can easily add new helpers to a custom component replacing the service &#8216;tag&#8217; in the services container:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Tag</span><span class="p">;</span>
 
@@ -623,7 +634,7 @@ of the application where the services container is located:</p>
 </pre></div>
 </div>
 <p>Then change the definition of the service &#8216;tag&#8217;:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$di</span><span class="p">[</span><span class="s1">&#39;tag&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="k">new</span> <span class="nx">MyTags</span><span class="p">();</span>
@@ -634,7 +645,7 @@ of the application where the services container is located:</p>
 <div class="section" id="creating-your-own-helpers">
 <h2>创建助手（Creating your own helpers）<a class="headerlink" href="#creating-your-own-helpers" title="永久链接至标题">¶</a></h2>
 <p>You can easily create your own helpers. First, start by creating a new folder within the same directory as your controllers and models. Give it a title that is relative to what you are creating. For our example here, we can call it &#8220;customhelpers&#8221;. Next we will create a new file titled <code class="docutils literal"><span class="pre">MyTags.php</span></code> within this new directory. At this point, we have a structure that looks similar to : <code class="docutils literal"><span class="pre">/app/customhelpers/MyTags.php</span></code>. In <code class="docutils literal"><span class="pre">MyTags.php</span></code>, we will extend the <a class="reference internal" href="../api/Phalcon_Tag.html"><span class="doc">Phalcon\Tag</span></a> and implement your own helper. Below is a simple example of a custom helper:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Tag</span><span class="p">;</span>
 
@@ -691,7 +702,7 @@ of the application where the services container is located:</p>
 </pre></div>
 </div>
 <p>After creating our custom helper, we will autoload the new directory that contains our helper class from our &#8220;index.php&#8221; located in the public directory.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Loader</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Application</span><span class="p">;</span>
@@ -723,7 +734,7 @@ of the application where the services container is located:</p>
 </pre></div>
 </div>
 <p>Now you are ready to use your new helper within your views:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">&lt;body&gt;</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">&lt;body&gt;</span>
 
 <span class="x">    </span><span class="cp">&lt;?php</span>
 

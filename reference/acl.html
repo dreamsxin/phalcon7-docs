@@ -118,7 +118,7 @@
 <div class="section" id="acl-creating-an-acl">
 <h2>创建 ACL（Creating An ACL）<a class="headerlink" href="#acl-creating-an-acl" title="永久链接至标题">¶</a></h2>
 <p>这个组件起先是设计工作在内存中的， 这样做提供了更高的访问速度。 <a class="reference internal" href="../api/Phalcon_Acl.html"><span class="doc">Phalcon\Acl</span></a> 构造器的第一个参数用于设置取得ACL的方式。 下面是使用内存适配器的例子：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Acl\Adapter\Memory</span> <span class="k">as</span> <span class="nx">AclList</span><span class="p">;</span>
 
@@ -126,7 +126,7 @@
 </pre></div>
 </div>
 <p>默认情况下 <a class="reference internal" href="../api/Phalcon_Acl.html"><span class="doc">Phalcon\Acl</span></a> 允许我们访问未定义的资源中的action，为了提高安全性， 我们设置默认访问级别为‘拒绝’。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// 设置默认访问级别为拒绝</span>
 <span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">setDefaultAction</span><span class="p">(</span><span class="nx">Phalcon\Acl</span><span class="o">::</span><span class="na">DENY</span><span class="p">);</span>
@@ -137,7 +137,7 @@
 <h2>添加角色（Adding Roles to the ACL）<a class="headerlink" href="#adding-roles-to-the-acl" title="永久链接至标题">¶</a></h2>
 <p>角色即是权限的集合体，其中定义了我们对资源的访问权限。 例如， 我们会把一个组织内的不同的人定义为不同的角色。 The <a class="reference internal" href="../api/Phalcon_Acl_Role.html"><span class="doc">Phalcon\Acl\Role</span></a>
 类使用一种更有组织的方式来定义角色。 这里我们创建一些角色：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Acl\Role</span><span class="p">;</span>
 
@@ -159,7 +159,7 @@
 <h2>添加资源（Adding Resources）<a class="headerlink" href="#adding-resources" title="永久链接至标题">¶</a></h2>
 <p>资源即是访问控制要控制的对象之一。 正常情况下在mvc中资源一般是控制器。 Phalcon中我们使用 <a class="reference internal" href="../api/Phalcon_Acl_Resource.html"><span class="doc">Phalcon\Acl\Resource</span></a> 来定义资源。
 非常重要的一点即是我们把相关的action或操作添加到资源中这样ACL才知道控制什么资源。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Acl\Resource</span><span class="p">;</span>
 
@@ -175,7 +175,7 @@
 <div class="section" id="defining-access-controls">
 <h2>定义访问控制（Defining Access Controls）<a class="headerlink" href="#defining-access-controls" title="永久链接至标题">¶</a></h2>
 <p>至此我们定义了角色及资源， 现在是定义ACL的时候了，即是定义角色对资源的访问。 这个部分是极其重要的，特别是在我们设定了默认的访问级别后。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// 设置角色对资源的访问级别</span>
 <span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="s2">&quot;Guests&quot;</span><span class="p">,</span> <span class="s2">&quot;Customers&quot;</span><span class="p">,</span> <span class="s2">&quot;search&quot;</span><span class="p">);</span>
@@ -185,7 +185,7 @@
 </div>
 <p>allow()方法指定了允许角色对资源的访问， deny()方法则反之。</p>
 <p>我们还可以指定第四个参数，设置回调函数，来处理来自 <code class="code docutils literal"><span class="pre">isAllowed()</span></code> 方法的数据：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// 设置角色对资源的访问级别</span>
 <span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="s2">&quot;Guests&quot;</span><span class="p">,</span> <span class="s2">&quot;Customers&quot;</span><span class="p">,</span> <span class="s2">&quot;search&quot;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$role</span><span class="p">,</span> <span class="nv">$resource</span><span class="p">,</span> <span class="nv">$access</span><span class="p">,</span> <span class="nv">$data</span><span class="p">,</span> <span class="nv">$allow</span><span class="p">)</span> <span class="p">{</span>
@@ -200,7 +200,7 @@
 <div class="section" id="acl-querying-an-acl">
 <h2>查询 ACL（Querying an ACL）<a class="headerlink" href="#acl-querying-an-acl" title="永久链接至标题">¶</a></h2>
 <p>一旦访问控制表定义之后， 我们就可以通过它来检查角色是否有访问权限了。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// 查询角色是否有访问权限</span>
 <span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="s2">&quot;Guests&quot;</span><span class="p">,</span> <span class="s2">&quot;Customers&quot;</span><span class="p">,</span> <span class="s2">&quot;edit&quot;</span><span class="p">);</span>   <span class="c1">// Returns 0</span>
@@ -213,7 +213,7 @@
 <h2>使用角色感知对象与资源感知对象（Objects as role name and resource name）<a class="headerlink" href="#objects-as-role-name-and-resource-name" title="永久链接至标题">¶</a></h2>
 <p>角色感知类必须实现 <a class="reference internal" href="../api/Phalcon_Acl_RoleAware.html"><span class="doc">Phalcon\Acl\RoleAware</span></a> 接口，资源感知类必须实现 <a class="reference internal" href="../api/Phalcon_Acl_ResourceAware.html"><span class="doc">Phalcon\Acl\ResourceAware</span></a> 接口。</p>
 <p>角色感知类 <code class="code docutils literal"><span class="pre">UserRoles</span></code>：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">UserRoles</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\Model</span> <span class="k">implements</span> <span class="nx">Phalcon\Acl\RoleAware</span>
 <span class="p">{</span>
@@ -231,7 +231,7 @@
 </pre></div>
 </div>
 <p>资源感知类 <code class="code docutils literal"><span class="pre">AclResources</span></code>：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">AclResources</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\Model</span> <span class="k">implements</span> <span class="nx">Phalcon\Acl\ResourceAware</span>
 <span class="p">{</span>
@@ -254,7 +254,7 @@
 </pre></div>
 </div>
 <p>我们可以在 <code class="code docutils literal"><span class="pre">isAllowed()</span></code> 方法中使用它们：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$acl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Acl\Adapter\Memory</span><span class="p">;</span>
 <span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="s2">&quot;Guests&quot;</span><span class="p">,</span> <span class="s2">&quot;Customers&quot;</span><span class="p">,</span> <span class="s2">&quot;search&quot;</span><span class="p">);</span>
@@ -282,7 +282,7 @@
 </pre></div>
 </div>
 <p>我们还可以在 <code class="code docutils literal"><span class="pre">allow()</span></code> 或 <code class="code docutils literal"><span class="pre">deny()</span></code> 方法自定义回调函数，来处理角色和资源：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$acl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Acl\Adapter\Memory</span><span class="p">;</span>
 <span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="s2">&quot;Guests&quot;</span><span class="p">,</span> <span class="s2">&quot;Customers&quot;</span><span class="p">,</span> <span class="s2">&quot;search&quot;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">UserRoles</span> <span class="nv">$user</span><span class="p">,</span> <span class="nx">AclResources</span> <span class="nv">$resource</span><span class="p">)</span> <span class="p">{</span>
@@ -298,7 +298,7 @@
 <h2>角色继承（Roles Inheritance）<a class="headerlink" href="#roles-inheritance" title="永久链接至标题">¶</a></h2>
 <p>我们可以使用 <a class="reference internal" href="../api/Phalcon_Acl_Role.html"><span class="doc">Phalcon\Acl\Role</span></a> 提供的继承机制来构造更复杂的角色。 Phalcon中的角色可以继承来自其它角色的
 权限, 这样就可以实现更巧妙的资源访问控制。 如果要继承权限用户， 我们需要在添加角色函数的第二个参数中写上要继承的那个角色实例。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Acl\Role</span><span class="p">;</span>
 
@@ -320,7 +320,7 @@
 <h2>序列化 ACL 列表（Serializing ACL lists）<a class="headerlink" href="#acl-serializing-acl-lists" title="永久链接至标题">¶</a></h2>
 <p>为了提高性能， <a class="reference internal" href="../api/Phalcon_Acl.html"><span class="doc">Phalcon\Acl</span></a> 的实例可以被实例化到APC, session， 文本或数据库中， 这样开发者就不需要重复的
 定义acl了。 下面展示了如何去做：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Acl\Adapter\Memory</span> <span class="k">as</span> <span class="nx">AclList</span><span class="p">;</span>
 
@@ -380,7 +380,7 @@
 </tbody>
 </table>
 <p>下面的例子中展示了如何绑定事件到此组件：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Acl\Adapter\Memory</span> <span class="k">as</span> <span class="nx">AclList</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">;</span>

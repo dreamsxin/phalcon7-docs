@@ -96,7 +96,7 @@
 <div class="section" id="creation">
 <h2>创建（Creation）<a class="headerlink" href="#creation" title="永久链接至标题">¶</a></h2>
 <p>与 PHP 不同，C 中的每个变量必须在我们函数的开头声明，在使用前必须初始化。甚至，当我们改变它的时候，它应该再次被重新初始化，例如：</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="c1">// Declare the variable and initialize the variable</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="c1">// Declare the variable and initialize the variable</span>
 <span class="n">zval</span> <span class="n">some_number</span> <span class="o">=</span> <span class="p">{};</span>
 
 <span class="c1">// Assign it a string value</span>
@@ -113,7 +113,7 @@ By doing this, PHALCON_INIT_NVAR will know if the variable needs memory or it al
 <div class="section" id="id1">
 <h2>变量的复制<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <p>PHP7 中 提供 <cite>ZVAL_COPY_VALUE</cite>、<a href="#id2"><span class="problematic" id="id3">`</span></a>ZVAL_COPY`与 <a href="#id4"><span class="problematic" id="id5">`</span></a>ZVAL_DUP`等宏定义来实现变量的复制。</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="n">zval</span> <span class="n">a</span> <span class="o">=</span> <span class="p">{},</span> <span class="n">b</span> <span class="o">=</span> <span class="p">{},</span> <span class="n">c</span> <span class="o">=</span> <span class="p">{};</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">zval</span> <span class="n">a</span> <span class="o">=</span> <span class="p">{},</span> <span class="n">b</span> <span class="o">=</span> <span class="p">{},</span> <span class="n">c</span> <span class="o">=</span> <span class="p">{};</span>
 
 <span class="n">ZVAL_LONG</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="mi">1500</span><span class="p">);</span>
 
@@ -130,7 +130,7 @@ By doing this, PHALCON_INIT_NVAR will know if the variable needs memory or it al
 </pre></div>
 </div>
 <p><cite>zval_copy_ctor_func</cite> 实现：</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="n">ZEND_API</span> <span class="kt">void</span> <span class="n">ZEND_FASTCALL</span> <span class="nf">_zval_copy_ctor_func</span><span class="p">(</span><span class="n">zval</span> <span class="o">*</span><span class="n">zvalue</span> <span class="n">ZEND_FILE_LINE_DC</span><span class="p">)</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">ZEND_API</span> <span class="kt">void</span> <span class="n">ZEND_FASTCALL</span> <span class="nf">_zval_copy_ctor_func</span><span class="p">(</span><span class="n">zval</span> <span class="o">*</span><span class="n">zvalue</span> <span class="n">ZEND_FILE_LINE_DC</span><span class="p">)</span>
 <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">EXPECTED</span><span class="p">(</span><span class="n">Z_TYPE_P</span><span class="p">(</span><span class="n">zvalue</span><span class="p">)</span> <span class="o">==</span> <span class="n">IS_ARRAY</span><span class="p">))</span> <span class="p">{</span>
                 <span class="n">ZVAL_ARR</span><span class="p">(</span><span class="n">zvalue</span><span class="p">,</span> <span class="n">zend_array_dup</span><span class="p">(</span><span class="n">Z_ARRVAL_P</span><span class="p">(</span><span class="n">zvalue</span><span class="p">)));</span>

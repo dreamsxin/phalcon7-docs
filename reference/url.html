@@ -113,7 +113,7 @@
 <h2>设置站点基地址（Setting a base URI）<a class="headerlink" href="#setting-a-base-uri" title="永久链接至标题">¶</a></h2>
 <p>根据你的应用程序安装到主机文档目录的位置，你的应用程序URI可能会出现一个基础的URI。</p>
 <p>例如，如果你的主机文档目录是 /var/www/htdocs，而你的应用程序安装到 /var/www/htdocs/invo，那么基础URI即为 /invo/.如果你使用虚拟主机的形式安装此应用，那么baseUri即为 /. 执行以下代码，你可以检测你的应用程序的baseUri.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Url</span><span class="p">;</span>
 
@@ -122,7 +122,7 @@
 </pre></div>
 </div>
 <p>默认情况下，Phalcon 会自动检测应用程序的baseUri.但如果你想提高应用程序性能的话，推荐手工设置：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Url</span><span class="p">;</span>
 
@@ -139,7 +139,7 @@
 </pre></div>
 </div>
 <p>通常情况下，此组件必须被注册到服务容器中，因此你可以直接这样设置它：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Url</span><span class="p">;</span>
 
@@ -154,11 +154,11 @@
 <div class="section" id="uri-generating-uris">
 <h2>生成 URI（Generating URIs）<a class="headerlink" href="#uri-generating-uris" title="永久链接至标题">¶</a></h2>
 <p>如果你使用的是 <a class="reference internal" href="routing.html"><span class="doc">Router</span></a> 的默认行为。你的应用程序会匹配路由模式 : /:controller/:action/:params. 因此，很容易通过&#8221;get&#8221;方法得到：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$url</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;products/save&quot;</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x"></span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$url</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;products/save&quot;</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x"></span>
 </pre></div>
 </div>
 <p>请注意，预先设置baseUri并不是必须的。如果你已经通过设置路由命名，你可以很容易改变它。例如，你有以下途径：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$route</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span>
     <span class="s2">&quot;/blog/{year}/{month}/{title}&quot;</span><span class="p">,</span>
@@ -170,7 +170,7 @@
 </pre></div>
 </div>
 <p>生成URL还可以通过以下方式：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// This produces: /blog/2015/01/some-blog-post</span>
 <span class="nv">$url</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span>
@@ -188,7 +188,7 @@
 <div class="section" id="url-producing-urls-without-mod-rewrite">
 <h2>没有伪静态状态下的生成 URL（Producing URLs without mod_rewrite）<a class="headerlink" href="#url-producing-urls-without-mod-rewrite" title="永久链接至标题">¶</a></h2>
 <p>你还可以使用此组件在不使用重写规则的情况下创建URL：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Url</span><span class="p">;</span>
 
@@ -202,7 +202,7 @@
 </pre></div>
 </div>
 <p>你也可以使用 <code class="code docutils literal"><span class="pre">$_SERVER[&quot;REQUEST_URI&quot;]</span></code>:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Url</span><span class="p">;</span>
 
@@ -216,7 +216,7 @@
 </pre></div>
 </div>
 <p>在这种情况下，你必须手工处理路由中的URI：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">;</span>
 
@@ -229,7 +229,7 @@
 </pre></div>
 </div>
 <p>产生的路由看起来像这样：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// This produce: /invo/index.php/products/save</span>
 <span class="k">echo</span> <span class="nv">$url</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;products/save&quot;</span><span class="p">);</span>
@@ -239,18 +239,18 @@
 <div class="section" id="volt-url-volt-producing-urls-from-volt">
 <h2>Volt 中生成 URL（Volt Producing URLs from Volt）<a class="headerlink" href="#volt-url-volt-producing-urls-from-volt" title="永久链接至标题">¶</a></h2>
 <p>The function &#8220;url&#8221; is available in volt to generate URLs using this component:</p>
-<div class="highlight-html+jinja"><div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">url</span><span class="o">(</span><span class="s2">&quot;posts/edit/1002&quot;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span>Edit<span class="nt">&lt;/a&gt;</span>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">url</span><span class="o">(</span><span class="s2">&quot;posts/edit/1002&quot;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="p">&gt;</span>Edit<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <p>Generate static routes:</p>
-<div class="highlight-html+jinja"><div class="highlight"><pre><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">static_url</span><span class="o">(</span><span class="s2">&quot;css/style.css&quot;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="nt">/&gt;</span>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">static_url</span><span class="o">(</span><span class="s2">&quot;css/style.css&quot;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span> <span class="p">/&gt;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="uri-uri-static-vs-dynamic-uris">
 <h2>静态 URI 与 动态 URI（Static vs. Dynamic URIs）<a class="headerlink" href="#uri-uri-static-vs-dynamic-uris" title="永久链接至标题">¶</a></h2>
 <p>This component allow you to set up a different base URI for static resources in the application:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Url</span><span class="p">;</span>
 

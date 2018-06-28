@@ -94,9 +94,9 @@
 <h1>Class <strong>Phalcon\Socket\Server</strong><a class="headerlink" href="#class-phalcon-socket-server" title="永久链接至标题">¶</a></h1>
 <p><em>extends</em> abstract class <a class="reference internal" href="Phalcon_Socket.html"><span class="doc">Phalcon\Socket</span></a></p>
 <p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/socket/server.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
-<span class="nv">$server</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Socket\Server</span><span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">8989</span><span class="p">);</span>
+  <span class="nv">$server</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Socket\Server</span><span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">8989</span><span class="p">);</span>
   <span class="nv">$server</span><span class="o">-&gt;</span><span class="na">run</span><span class="p">(</span>
       <span class="k">function</span><span class="p">(</span><span class="nx">Phalcon\Socket\Client</span> <span class="nv">$client</span><span class="p">){</span>
           <span class="c1">// Connect</span>
@@ -119,6 +119,36 @@
           <span class="c1">// Timeout</span>
       <span class="p">}</span>
   <span class="p">);</span>
+
+ <span class="k">class</span> <span class="nc">HttpServer</span> <span class="k">extends</span> <span class="nx">Phalcon\Socket\Server</span> <span class="p">{</span>
+
+      <span class="k">public</span> <span class="k">function</span> <span class="nf">onTimeout</span><span class="p">()</span> <span class="p">{</span>
+      <span class="p">}</span>
+
+      <span class="k">public</span> <span class="k">function</span> <span class="nf">onError</span><span class="p">(</span><span class="nx">Phalcon\Socket\Client</span> <span class="nv">$client</span><span class="p">)</span> <span class="p">{</span>
+      <span class="p">}</span>
+
+      <span class="k">public</span> <span class="k">function</span> <span class="nf">onConnection</span><span class="p">(</span><span class="nx">Phalcon\Socket\Client</span> <span class="nv">$client</span><span class="p">)</span> <span class="p">{</span>
+      <span class="p">}</span>
+
+      <span class="k">public</span> <span class="k">function</span> <span class="nf">onRecv</span><span class="p">(</span><span class="nx">Phalcon\Socket\Client</span> <span class="nv">$client</span><span class="p">)</span> <span class="p">{</span>
+      <span class="p">}</span>
+
+      <span class="k">public</span> <span class="k">function</span> <span class="nf">onSend</span><span class="p">(</span><span class="nx">Phalcon\Socket\Client</span> <span class="nv">$client</span><span class="p">)</span> <span class="p">{</span>
+              <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">write</span><span class="p">(</span><span class="s2">&quot;HTTP/1.0 200 OK</span><span class="se">\r\n</span><span class="s2">Server: webserver</span><span class="se">\r\n</span><span class="s2">Content-Type: text/html</span><span class="se">\r\n</span><span class="s2">Connection: close</span><span class="se">\r\n\r\n</span><span class="s2">Hello World&quot;</span><span class="p">);</span>
+              <span class="k">return</span> <span class="k">FALSE</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="k">public</span> <span class="k">function</span> <span class="nf">onClose</span><span class="p">(</span><span class="nx">Phalcon\Socket\Client</span> <span class="nv">$client</span><span class="p">)</span> <span class="p">{</span>
+      <span class="p">}</span>
+ <span class="p">}</span>
+
+ <span class="nv">$server</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HttpServer</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">6000</span><span class="p">);</span>
+ <span class="nv">$server</span><span class="o">-&gt;</span><span class="na">setOption</span><span class="p">(</span><span class="nx">Phalcon\Socket</span><span class="o">::</span><span class="na">SOL_SOCKET</span><span class="p">,</span> <span class="nx">SO_REUSEADDR</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+ <span class="nv">$server</span><span class="o">-&gt;</span><span class="na">setOption</span><span class="p">(</span><span class="nx">Phalcon\Socket</span><span class="o">::</span><span class="na">SOL_SOCKET</span><span class="p">,</span> <span class="nx">SO_REUSEPORT</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+ <span class="nv">$server</span><span class="o">-&gt;</span><span class="na">setOption</span><span class="p">(</span><span class="nx">Phalcon\Socket</span><span class="o">::</span><span class="na">SOL_TCP</span><span class="p">,</span> <span class="nx">Phalcon\Socket</span><span class="o">::</span><span class="na">TCP_NODELAY</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+ <span class="nv">$server</span><span class="o">-&gt;</span><span class="na">setOption</span><span class="p">(</span><span class="nx">Phalcon\Socket</span><span class="o">::</span><span class="na">SOL_TCP</span><span class="p">,</span> <span class="nx">Phalcon\Socket</span><span class="o">::</span><span class="na">TCP_QUICKACK</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+ <span class="nv">$server</span><span class="o">-&gt;</span><span class="na">run</span><span class="p">();</span>
 </pre></div>
 </div>
 <div class="section" id="constants">
@@ -141,13 +171,13 @@
 <p><em>integer</em> <strong>SO_REUSEPORT</strong></p>
 <p><em>integer</em> <strong>TCP_NODELAY</strong></p>
 <p><em>integer</em> <strong>TCP_QUICKACK</strong></p>
-<p><em>integer</em> <strong>USE_SELECT</strong></p>
-<p><em>integer</em> <strong>USE_EPOLL</strong></p>
 </div>
 <div class="section" id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
 <p>public  <strong>__construct</strong> (<em>string</em> $address, <em>int</em> $port, [<em>int</em> $domain], [<em>int</em> $type], [<em>int</em> $protocol])</p>
 <p>Phalcon\Socket\Server constructor</p>
+<p>public  <strong>setTimeout</strong> (<em>unknown</em> $sec, [<em>unknown</em> $usec])</p>
+<p>Sets the timeout</p>
 <p>public  <strong>setDaemon</strong> (<em>unknown</em> $daemon)</p>
 <p>Sets the run mode</p>
 <p>public  <strong>setMaxChildren</strong> (<em>unknown</em> $maxChildren)</p>
@@ -162,16 +192,16 @@
 <p>Accept a connection</p>
 <p>public <a class="reference internal" href="Phalcon_Socket_Client.html"><span class="doc">Phalcon\Socket\Client</span></a>  <strong>getClients</strong> ()</p>
 <p>Gets all connections</p>
-<p>public <a class="reference internal" href="Phalcon_Socket_Client.html"><span class="doc">Phalcon\Socket\Client</span></a>  <strong>getClient</strong> (<em>unknown</em> $socketId)</p>
+<p>public <a class="reference internal" href="Phalcon_Socket_Client.html"><span class="doc">Phalcon\Socket\Client</span></a>  <strong>getClient</strong> (<em>resource</em> $socket)</p>
 <p>Gets a connection</p>
-<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Socket\Server</span></a>  <strong>disconnect</strong> (<em>unknown</em> $socketId)</p>
+<p>public <em>boolean</em>  <strong>removeClient</strong> (<em>resource</em> $socket)</p>
+<p>Remove a connection</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Socket\Server</span></a>  <strong>disconnect</strong> (<em>resource</em> $socket)</p>
 <p>Close a client</p>
 <p>public  <strong>run</strong> ()</p>
 <p>Run the Server</p>
 <p>public <em>resource</em>  <strong>getSocket</strong> () inherited from Phalcon\Socket</p>
 <p>Gets the socket</p>
-<p>public <em>int</em>  <strong>getSocketId</strong> () inherited from Phalcon\Socket</p>
-<p>Gets the socket id</p>
 <p>protected  <strong>_throwSocketException</strong> () inherited from Phalcon\Socket</p>
 <p>Throws an socket exception</p>
 <p>public <em>boolean</em>  <strong>setBlocking</strong> (<em>int</em> $flag) inherited from Phalcon\Socket</p>

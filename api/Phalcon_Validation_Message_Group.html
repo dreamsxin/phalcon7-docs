@@ -100,42 +100,42 @@
 <p>Phalcon\Validation\Message\Group constructor</p>
 <p>public <a class="reference internal" href="Phalcon_Validation_Message.html"><span class="doc">Phalcon\Validation\Message</span></a>  <strong>offsetGet</strong> (<em>string</em> $index)</p>
 <p>Gets an attribute a message using the array syntax</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nb">print_r</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
 </pre></div>
 </div>
 <p>public  <strong>offsetSet</strong> (<em>string</em> $index, <a class="reference internal" href="Phalcon_Validation_Message.html"><span class="doc">Phalcon\Validation\Message</span></a> $message)</p>
 <p>Sets an attribute using the array-syntax</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nv">$messages</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Validation\Message</span><span class="p">(</span><span class="s1">&#39;This is a message&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>public <em>boolean</em>  <strong>offsetExists</strong> (<em>string</em> $index)</p>
 <p>Checks if an index exists</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nb">var_dump</span><span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$message</span><span class="p">[</span><span class="s1">&#39;database&#39;</span><span class="p">]));</span>
 </pre></div>
 </div>
 <p>public  <strong>offsetUnset</strong> (<em>string</em> $index)</p>
 <p>Removes a message from the list</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nb">unset</span><span class="p">(</span><span class="nv">$message</span><span class="p">[</span><span class="s1">&#39;database&#39;</span><span class="p">]);</span>
 </pre></div>
 </div>
 <p>public  <strong>appendMessage</strong> (<a class="reference internal" href="Phalcon_Validation_Message.html"><span class="doc">Phalcon\Validation\Message</span></a> $message)</p>
 <p>Appends a message to the group</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nv">$messages</span><span class="o">-&gt;</span><span class="na">appendMessage</span><span class="p">(</span><span class="k">new</span> <span class="nx">Phalcon\Validation\Message</span><span class="p">(</span><span class="s1">&#39;This is a message&#39;</span><span class="p">));</span>
 </pre></div>
 </div>
 <p>public  <strong>appendMessages</strong> (<em>Phalcon\Validation\MessageInterface[]</em> $messages)</p>
 <p>Appends an array of messages to the group</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nv">$messages</span><span class="o">-&gt;</span><span class="na">appendMessages</span><span class="p">(</span><span class="nv">$messagesArray</span><span class="p">);</span>
 </pre></div>

@@ -115,7 +115,7 @@ It’s simple, lightweight, and completely specialized for job queueing.</p>
 <h2>将任务加入队列（Putting Jobs into the Queue）<a class="headerlink" href="#putting-jobs-into-the-queue" title="永久链接至标题">¶</a></h2>
 <p>After connecting to Beanstalk you can insert as many jobs as required. You can define the message
 structure according to the needs of the application:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Connect to the queue</span>
 <span class="nv">$queue</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Queue\Beanstalk</span><span class="p">(</span>
@@ -160,7 +160,7 @@ structure according to the needs of the application:</p>
 <p>In the above example we stored a message which will allow a background job to process a video.
 The message is stored in the queue immediately and does not have a certain time to live.</p>
 <p>Additional options as time to run, priority and delay can be passed as second parameter:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Insert the job in the queue with options</span>
 <span class="nv">$queue</span><span class="o">-&gt;</span><span class="na">put</span><span class="p">(</span>
@@ -199,7 +199,7 @@ The message is stored in the queue immediately and does not have a certain time 
 </tbody>
 </table>
 <p>Every job put into the queue returns a &#8220;job id&#8221; which you can use to track the status of the job:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$jobId</span> <span class="o">=</span> <span class="nv">$queue</span><span class="o">-&gt;</span><span class="na">put</span><span class="p">(</span>
     <span class="k">array</span><span class="p">(</span>
@@ -213,7 +213,7 @@ The message is stored in the queue immediately and does not have a certain time 
 <h2>检索信息（Retrieving Messages）<a class="headerlink" href="#retrieving-messages" title="永久链接至标题">¶</a></h2>
 <p>Once a job is placed into the queue, those messages can be consumed by a background worker which will have enough time to complete
 the task:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">while</span> <span class="p">((</span><span class="nv">$job</span> <span class="o">=</span> <span class="nv">$queue</span><span class="o">-&gt;</span><span class="na">peekReady</span><span class="p">())</span> <span class="o">!==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
 
@@ -227,7 +227,7 @@ the task:</p>
 </div>
 <p>Jobs must be removed from the queue to avoid double processing. If multiple background jobs workers are implemented,
 jobs must be &#8220;reserved&#8221; so other workers don&#8217;t re-process them while other workers have them reserved:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">while</span> <span class="p">((</span><span class="nv">$job</span> <span class="o">=</span> <span class="nv">$queue</span><span class="o">-&gt;</span><span class="na">reserve</span><span class="p">()))</span> <span class="p">{</span>
 

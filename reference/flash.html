@@ -140,7 +140,7 @@
 <p>通常闪存消息都是来自服务容器的请求，
 如果你正在使用 <a class="reference internal" href="../api/Phalcon_Di_FactoryDefault.html"><span class="doc">Phalcon\Di\FactoryDefault</span></a> ，
 那么 <a class="reference internal" href="../api/Phalcon_Flash_Direct.html"><span class="doc">Phalcon\Flash\Direct</span></a> 将会作为 &#8220;flash&#8221; 服务自动注册：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Flash\Direct</span> <span class="k">as</span> <span class="nx">FlashDirect</span><span class="p">;</span>
 
@@ -151,7 +151,7 @@
 </pre></div>
 </div>
 <p>这样的话，你便可以在控制器或者视图中通过在必要的片段中注入此服务来使用它：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
 
@@ -170,7 +170,7 @@
 </pre></div>
 </div>
 <p>目前已支持的有四种内置消息类型：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">flash</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s2">&quot;too bad! the form had errors&quot;</span><span class="p">);</span>
 <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">flash</span><span class="o">-&gt;</span><span class="na">success</span><span class="p">(</span><span class="s2">&quot;yes!, everything went very smoothly&quot;</span><span class="p">);</span>
@@ -179,7 +179,7 @@
 </pre></div>
 </div>
 <p>你可以用你自己的类型来添加消息：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">flash</span><span class="o">-&gt;</span><span class="na">message</span><span class="p">(</span><span class="s2">&quot;debug&quot;</span><span class="p">,</span> <span class="s2">&quot;this is debug message, you don&#39;t say&quot;</span><span class="p">);</span>
 </pre></div>
@@ -188,15 +188,15 @@
 <div class="section" id="printing-messages">
 <h2>输出信息（Printing Messages）<a class="headerlink" href="#printing-messages" title="永久链接至标题">¶</a></h2>
 <p>发送给flash服务的消息将会自动格式成html：</p>
-<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;errorMessage&quot;</span><span class="nt">&gt;</span>too bad! the form had errors<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;successMessage&quot;</span><span class="nt">&gt;</span>yes!, everything went very smoothly<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;noticeMessage&quot;</span><span class="nt">&gt;</span>this a very important information<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;warningMessage&quot;</span><span class="nt">&gt;</span>best check yo self, you&#39;re not looking too good.<span class="nt">&lt;/div&gt;</span>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;errorMessage&quot;</span><span class="p">&gt;</span>too bad! the form had errors<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;successMessage&quot;</span><span class="p">&gt;</span>yes!, everything went very smoothly<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;noticeMessage&quot;</span><span class="p">&gt;</span>this a very important information<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;warningMessage&quot;</span><span class="p">&gt;</span>best check yo self, you&#39;re not looking too good.<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <p>正如你看到的，CSS的类将会自动添加到div中。这些类允许你定义消息在浏览器上的图形表现。
 此CSS类可以被重写，例如，如果你正在使用Twitter的bootstrap，对应的类可以这样配置：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Flash\Direct</span> <span class="k">as</span> <span class="nx">FlashDirect</span><span class="p">;</span>
 
@@ -216,10 +216,10 @@
 </pre></div>
 </div>
 <p>然后消息会是这样输出：</p>
-<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-danger&quot;</span><span class="nt">&gt;</span>too bad! the form had errors<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-success&quot;</span><span class="nt">&gt;</span>yes!, everything went very smoothly<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-info&quot;</span><span class="nt">&gt;</span>this a very important information<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert alert-warning&quot;</span><span class="nt">&gt;</span>best check yo self, you&#39;re not looking too good.<span class="nt">&lt;/div&gt;</span>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;alert alert-danger&quot;</span><span class="p">&gt;</span>too bad! the form had errors<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;alert alert-success&quot;</span><span class="p">&gt;</span>yes!, everything went very smoothly<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;alert alert-info&quot;</span><span class="p">&gt;</span>this a very important information<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;alert alert-warning&quot;</span><span class="p">&gt;</span>best check yo self, you&#39;re not looking too good.<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 </div>
@@ -228,7 +228,7 @@
 <p>依赖于发送消息的适配器，它可以立即产生输出，也可以先临时将消息存放于会话中随后再显示。
 你何时应该使用哪个？这通常依赖于你在发送消息后重定向的类型。例如，
 如果你用了“转发”则不需要将消息存放于会话中，但如果你用的是一个HTTP重定向，那么则需要存放于会话中：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
 
@@ -257,7 +257,7 @@
 </pre></div>
 </div>
 <p>或者使用一个HTTP重定向：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
 
@@ -282,9 +282,9 @@
 </pre></div>
 </div>
 <p>在这种情况下，你需要手动在交互的视图上打印消息：</p>
-<div class="highlight-html+php"><div class="highlight"><pre><span class="c">&lt;!-- app/views/contact/index.phtml --&gt;</span>
+<div class="highlight-html+php"><div class="highlight"><pre><span></span><span class="c">&lt;!-- app/views/contact/index.phtml --&gt;</span>
 
-<span class="nt">&lt;p&gt;</span><span class="cp">&lt;?php</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">flashSession</span><span class="o">-&gt;</span><span class="na">output</span><span class="p">()</span> <span class="cp">?&gt;</span><span class="nt">&lt;/p&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="cp">&lt;?php</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">flashSession</span><span class="o">-&gt;</span><span class="na">output</span><span class="p">()</span> <span class="cp">?&gt;</span><span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <p>&#8220;flashSession&#8221;属性是先前在依赖注入容器中设置的闪存。

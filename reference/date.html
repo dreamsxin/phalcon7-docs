@@ -108,7 +108,7 @@
 <p>Phalcon中提供了 <code class="code docutils literal"><span class="pre">Phalcon\Date</span></code> 日期助手类，让你更方便的处理日期数据。</p>
 <div class="section" id="verify-date">
 <h2>日期验证（Verify Date）<a class="headerlink" href="#verify-date" title="永久链接至标题">¶</a></h2>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$ret</span> <span class="o">=</span> <span class="nx">Phalcon\Date</span><span class="o">::</span><span class="na">valid</span><span class="p">(</span><span class="s1">&#39;2012-01-22 11:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;Y-m-d H:i:s&#39;</span><span class="p">);</span>
 </pre></div>
@@ -117,7 +117,7 @@
 <div class="section" id="date-format">
 <h2>日期格式化（Date Format）<a class="headerlink" href="#date-format" title="永久链接至标题">¶</a></h2>
 <p>根据需要的单位返回日期：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$span</span> <span class="o">=</span> <span class="nx">Phalcon\Date</span><span class="o">::</span><span class="na">span</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">182</span><span class="p">,</span> <span class="s1">&#39;minutes,seconds&#39;</span><span class="p">);</span>             <span class="c1">// array(&#39;minutes&#39; =&gt; 2, &#39;seconds&#39; =&gt; 2)</span>
 <span class="nv">$span</span> <span class="o">=</span> <span class="nx">Phalcon\Date</span><span class="o">::</span><span class="na">span</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">182</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;minutes&#39;</span><span class="p">,</span> <span class="s1">&#39;seconds&#39;</span><span class="p">));</span>   <span class="c1">// array(&#39;minutes&#39; =&gt; 2, &#39;seconds&#39; =&gt; 2)</span>
@@ -130,7 +130,7 @@
 <div class="section" id="fuzzy-date">
 <h2>模糊日期（Fuzzy Date）<a class="headerlink" href="#fuzzy-date" title="永久链接至标题">¶</a></h2>
 <p>显示更容易理解的时间值：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$span</span> <span class="o">=</span> <span class="nx">Phalcon\Date</span><span class="o">::</span><span class="na">fuzzy_span</span><span class="p">(</span><span class="nb">time</span><span class="p">()</span> <span class="o">-</span> <span class="mi">10</span><span class="p">);</span> <span class="c1">// &quot;moments ago&quot;</span>
 <span class="nv">$span</span> <span class="o">=</span> <span class="nx">Phalcon\Date</span><span class="o">::</span><span class="na">fuzzy_span</span><span class="p">(</span><span class="nb">time</span><span class="p">()</span> <span class="o">-</span> <span class="mi">120</span><span class="p">,</span> <span class="nb">time</span><span class="p">());</span> <span class="c1">// &quot;a few minutes&quot;</span>

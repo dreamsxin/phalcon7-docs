@@ -94,7 +94,7 @@
 <p><em>implements</em> <a class="reference internal" href="Phalcon_FilterInterface.html"><span class="doc">Phalcon\FilterInterface</span></a></p>
 <p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/filter.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
 <p>The Phalcon\Filter component provides a set of commonly needed data filters. It provides object oriented wrappers to the php filter extension. Also allows the developer to define his/her own filters</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$filter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Filter</span><span class="p">();</span>
 <span class="nv">$filter</span><span class="o">-&gt;</span><span class="na">sanitize</span><span class="p">(</span><span class="s2">&quot;some(one)@exa</span><span class="se">\\</span><span class="s2">mple.com&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">);</span> <span class="c1">// returns &quot;someone@example.com&quot;</span>
@@ -109,7 +109,7 @@
 <p>Phalcon\Filter constructor</p>
 <p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Filter</span></a>  <strong>add</strong> (<em>string</em> $name, <em>callable</em> $handler)</p>
 <p>Adds a user-defined filter</p>
-<p>public <em>mixed</em>  <strong>sanitize</strong> (<em>mixed</em> $value, <em>mixed</em> $filters, [<em>unknown</em> $noRecursive], [<em>array</em> $options])</p>
+<p>public <em>mixed</em>  <strong>sanitize</strong> (<em>mixed</em> $value, <em>mixed</em> $filters, [<em>boolean</em> $recursive], [<em>array</em> $options], [<em>int</em> $recursiveLevel])</p>
 <p>Sanitizes a value with a specified single or set of filters</p>
 <p>protected <em>mixed</em>  <strong>_sanitize</strong> ()</p>
 <p>Internal sanitize wrapper to filter_var</p>

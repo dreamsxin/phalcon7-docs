@@ -106,21 +106,21 @@
 <h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
 <p>public static <em>string</em>  <strong>camelize</strong> (<em>string</em> $str)</p>
 <p>Converts strings to camelize style</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">echo</span> <span class="nx">Phalcon\Text</span><span class="o">::</span><span class="na">camelize</span><span class="p">(</span><span class="s1">&#39;coco_bongo&#39;</span><span class="p">);</span> <span class="c1">//CocoBongo</span>
 </pre></div>
 </div>
 <p>public static <em>string</em>  <strong>uncamelize</strong> (<em>string</em> $str)</p>
 <p>Uncamelize strings which are camelized</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">echo</span> <span class="nx">Phalcon\Text</span><span class="o">::</span><span class="na">uncamelize</span><span class="p">(</span><span class="s1">&#39;CocoBongo&#39;</span><span class="p">);</span> <span class="c1">//coco_bongo</span>
 </pre></div>
 </div>
 <p>public static <em>string</em>  <strong>increment</strong> (<em>string</em> $str, [<em>string|int</em> $separator])</p>
 <p>Adds a number to a string or increment that number if it already is defined</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">echo</span> <span class="nx">Phalcon\Text</span><span class="o">::</span><span class="na">increment</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">);</span> <span class="c1">// &quot;a_1&quot;</span>
 <span class="k">echo</span> <span class="nx">Phalcon\Text</span><span class="o">::</span><span class="na">increment</span><span class="p">(</span><span class="s2">&quot;a_1&quot;</span><span class="p">);</span> <span class="c1">// &quot;a_2&quot;</span>
@@ -128,7 +128,7 @@
 </div>
 <p>public static <em>string</em>  <strong>decrement</strong> (<em>string</em> $str, [<em>string|int</em> $separator])</p>
 <p>Adds a number to a string or decrement that number if it already is defined</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">echo</span> <span class="nx">Phalcon\Text</span><span class="o">::</span><span class="na">decrement</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">);</span> <span class="c1">// &quot;a_1&quot;</span>
 <span class="k">echo</span> <span class="nx">Phalcon\Text</span><span class="o">::</span><span class="na">decrement</span><span class="p">(</span><span class="s2">&quot;a_1&quot;</span><span class="p">);</span> <span class="c1">// &quot;a_0&quot;</span>
@@ -136,14 +136,14 @@
 </div>
 <p>public static <em>string</em>  <strong>random</strong> (<em>int</em> $type, [<em>int</em> $length])</p>
 <p>Generates a random string based on the given type. Type is one of the RANDOM_* constants</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">echo</span> <span class="nx">Phalcon\Text</span><span class="o">::</span><span class="na">random</span><span class="p">(</span><span class="nx">Phalcon\Text</span><span class="o">::</span><span class="na">RANDOM_ALNUM</span><span class="p">);</span> <span class="c1">//&quot;aloiwkqz&quot;</span>
 </pre></div>
 </div>
 <p>public static <em>boolean</em>  <strong>startsWith</strong> (<em>string</em> $str, <em>string</em> $start, [<em>boolean</em> $ignoreCase])</p>
 <p>Check if a string starts with a given string</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">echo</span> <span class="nx">Phalcon\Text</span><span class="o">::</span><span class="na">startsWith</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">,</span> <span class="s2">&quot;He&quot;</span><span class="p">);</span> <span class="c1">// true</span>
 <span class="k">echo</span> <span class="nx">Phalcon\Text</span><span class="o">::</span><span class="na">startsWith</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">,</span> <span class="s2">&quot;he&quot;</span><span class="p">);</span> <span class="c1">// false</span>
@@ -152,7 +152,7 @@
 </div>
 <p>public static <em>boolean</em>  <strong>endsWith</strong> (<em>string</em> $str, <em>string</em> $end, [<em>boolean</em> $ignoreCase])</p>
 <p>Check if a string ends with a given string</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">echo</span> <span class="nx">Phalcon\Text</span><span class="o">::</span><span class="na">endsWith</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">,</span> <span class="s2">&quot;llo&quot;</span><span class="p">);</span> <span class="c1">// true</span>
 <span class="k">echo</span> <span class="nx">Phalcon\Text</span><span class="o">::</span><span class="na">endsWith</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">,</span> <span class="s2">&quot;LLO&quot;</span><span class="p">);</span> <span class="c1">// false</span>
@@ -167,7 +167,7 @@
 <p>Returns human readable sizes</p>
 <p>public static  <strong>reduceSlashes</strong> (<em>unknown</em> $str)</p>
 <p>Reduces multiple slashes in a string to single slashes</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
     <span class="k">echo</span> <span class="nx">Phalcon\Text</span><span class="o">::</span><span class="na">reduceSlashes</span><span class="p">(</span><span class="s2">&quot;foo//bar/baz&quot;</span><span class="p">);</span> <span class="c1">// foo/bar/baz</span>
     <span class="k">echo</span> <span class="nx">Phalcon\Text</span><span class="o">::</span><span class="na">reduceSlashes</span><span class="p">(</span><span class="s2">&quot;http://foo.bar///baz/buz&quot;</span><span class="p">);</span> <span class="c1">// http://foo.bar/baz/buz</span>
@@ -175,7 +175,7 @@
 </div>
 <p>public static  <strong>concat</strong> (<em>string</em> $separator, <em>unknown</em> $strA, <em>unknown</em> $strB)</p>
 <p>Concatenates strings using the separator only once without duplication in places concatenation</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
     <span class="nv">$str</span> <span class="o">=</span> <span class="nx">Phalcon\Text</span><span class="o">::</span><span class="na">concat</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="s2">&quot;/tmp/&quot;</span><span class="p">,</span> <span class="s2">&quot;/folder_1/&quot;</span><span class="p">,</span> <span class="s2">&quot;/folder_2&quot;</span><span class="p">,</span> <span class="s2">&quot;folder_3/&quot;</span><span class="p">);</span>
     <span class="k">echo</span> <span class="nv">$str</span><span class="p">;</span> <span class="c1">// /tmp/folder_1/folder_2/folder_3/</span>
@@ -183,7 +183,7 @@
 </div>
 <p>public static  <strong>underscore</strong> (<em>unknown</em> $str)</p>
 <p>Makes a phrase underscored instead of spaced</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
    <span class="k">echo</span> <span class="nx">Phalcon\Text</span><span class="o">::</span><span class="na">underscore</span><span class="p">(</span><span class="s1">&#39;look behind&#39;</span><span class="p">);</span> <span class="c1">// &#39;look_behind&#39;</span>
    <span class="k">echo</span> <span class="nx">Phalcon\Text</span><span class="o">::</span><span class="na">underscore</span><span class="p">(</span><span class="s1">&#39;Awesome Phalcon&#39;</span><span class="p">);</span> <span class="c1">// &#39;Awesome_Phalcon&#39;</span>
@@ -191,7 +191,7 @@
 </div>
 <p>public static  <strong>humanize</strong> (<em>unknown</em> $str)</p>
 <p>Makes an underscored or dashed phrase human-readable</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
    <span class="k">echo</span> <span class="nx">Phalcon\Text</span><span class="o">::</span><span class="na">humanize</span><span class="p">(</span><span class="s1">&#39;start-a-horse&#39;</span><span class="p">);</span> <span class="c1">// &#39;start a horse&#39;</span>
    <span class="k">echo</span> <span class="nx">Phalcon\Text</span><span class="o">::</span><span class="na">humanize</span><span class="p">(</span><span class="s1">&#39;five_cats&#39;</span><span class="p">);</span> <span class="c1">// &#39;five cats&#39;</span>

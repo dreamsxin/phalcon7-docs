@@ -120,7 +120,7 @@
 <p>Assets支持两个内置的资源管理器：css和javascripts.我们可以根据需要创建其它的资源。资源管理器内部保存了两类资源集合一为
 JavaScript另一为CSS.</p>
 <p>我们可以非常简单的向这两个集合里添加资源，如下：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
 
@@ -142,18 +142,18 @@ JavaScript另一为CSS.</p>
 </pre></div>
 </div>
 <p>然后我们可以在视图中输出资源：</p>
-<div class="highlight-html+php"><div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
-    <span class="nt">&lt;head&gt;</span>
-        <span class="nt">&lt;title&gt;</span>Some amazing website<span class="nt">&lt;/title&gt;</span>
+<div class="highlight-html+php"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Some amazing website<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
         <span class="cp">&lt;?php</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assets</span><span class="o">-&gt;</span><span class="na">outputCss</span><span class="p">()</span> <span class="cp">?&gt;</span>
-    <span class="nt">&lt;/head&gt;</span>
-    <span class="nt">&lt;body&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
 
         <span class="c">&lt;!-- ... --&gt;</span>
 
         <span class="cp">&lt;?php</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assets</span><span class="o">-&gt;</span><span class="na">outputJs</span><span class="p">()</span> <span class="cp">?&gt;</span>
-    <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;html&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <p>For better pageload performance, it is recommended to place JavaScript at the end of the HTML instead of in the <code class="code docutils literal"><span class="pre">&lt;head&gt;</span></code>.</p>
@@ -164,7 +164,7 @@ JavaScript另一为CSS.</p>
 本地的url.</p>
 <p>远程资源即是一种存在于CDN或其它远程服务器上的资源，比如常用的jQuery, Bootstrap等资源。</p>
 <p>The second parameter of <code class="code docutils literal"><span class="pre">addCss()</span></code> and <code class="code docutils literal"><span class="pre">addJs()</span></code> says whether the resource is local or not (<code class="code docutils literal"><span class="pre">true</span></code> is local, <code class="code docutils literal"><span class="pre">false</span></code> is remote). By default, the assets manager will assume the resource is local:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span>
 <span class="p">{</span>
@@ -181,7 +181,7 @@ JavaScript另一为CSS.</p>
 <h2>集合（Collections）<a class="headerlink" href="#collections" title="永久链接至标题">¶</a></h2>
 <p>集合即是把一同类的资源放在一些，资源管理器隐含的创建了两个集合：css和js. 当然我们可以创建其它的集合以归类其它的资源， 这样我们可以很容易的
 在视图里显示：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// HTML 头部的js资源</span>
 <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assets</span>
@@ -197,40 +197,40 @@ JavaScript另一为CSS.</p>
 </pre></div>
 </div>
 <p>然后在视图中如下使用：</p>
-<div class="highlight-html+php"><div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
-    <span class="nt">&lt;head&gt;</span>
-        <span class="nt">&lt;title&gt;</span>Some amazing website<span class="nt">&lt;/title&gt;</span>
+<div class="highlight-html+php"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Some amazing website<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
         <span class="cp">&lt;?php</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assets</span><span class="o">-&gt;</span><span class="na">outputJs</span><span class="p">(</span><span class="s1">&#39;header&#39;</span><span class="p">)</span> <span class="cp">?&gt;</span>
-    <span class="nt">&lt;/head&gt;</span>
-    <span class="nt">&lt;body&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
 
         <span class="c">&lt;!-- ... --&gt;</span>
 
         <span class="cp">&lt;?php</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assets</span><span class="o">-&gt;</span><span class="na">outputJs</span><span class="p">(</span><span class="s1">&#39;footer&#39;</span><span class="p">)</span> <span class="cp">?&gt;</span>
-    <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;html&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <p>Volt语法：</p>
-<div class="highlight-html+jinja"><div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
-    <span class="nt">&lt;head&gt;</span>
-        <span class="nt">&lt;title&gt;</span>Some amazing website<span class="nt">&lt;/title&gt;</span>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Some amazing website<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
         <span class="cp">{{</span> <span class="nv">assets.outputCss</span><span class="o">(</span><span class="s1">&#39;header&#39;</span><span class="o">)</span> <span class="cp">}}</span>
-    <span class="nt">&lt;/head&gt;</span>
-    <span class="nt">&lt;body&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
 
         <span class="c">&lt;!-- ... --&gt;</span>
 
         <span class="cp">{{</span> <span class="nv">assets.outputJs</span><span class="o">(</span><span class="s1">&#39;footer&#39;</span><span class="o">)</span> <span class="cp">}}</span>
-    <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;html&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="url-prefixes">
 <h2>前缀（URL Prefixes）<a class="headerlink" href="#url-prefixes" title="永久链接至标题">¶</a></h2>
 <p>集合可以添加前缀，这可以实现非常简单的更换服务器：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$scripts</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assets</span><span class="o">-&gt;</span><span class="na">collection</span><span class="p">(</span><span class="s1">&#39;footer&#39;</span><span class="p">);</span>
 
@@ -245,7 +245,7 @@ JavaScript另一为CSS.</p>
 </pre></div>
 </div>
 <p>我们也可以使用链式语法，如下：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$scripts</span> <span class="o">=</span> <span class="nv">$assets</span>
     <span class="o">-&gt;</span><span class="na">collection</span><span class="p">(</span><span class="s1">&#39;header&#39;</span><span class="p">)</span>
@@ -261,7 +261,7 @@ JavaScript另一为CSS.</p>
 <p><code class="code docutils literal"><span class="pre">Phalcon\Assets</span></code> 提供了内置的js及css压缩工具。 开发者可以设定资源管理器以确定对哪些资源进行压缩啊些资源不进行压缩。除了上面这些之外
 我们还可以使用Douglas Crockford书写的Jsmin压缩工具，及Ryan Day提供的CSSMin来对js及css文件进行压缩.
 下面的例子中展示了如何使用集合对资源文件进行压缩：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$manager</span>
 
@@ -296,7 +296,7 @@ JavaScript另一为CSS.</p>
 <p>As seen above, the <code class="code docutils literal"><span class="pre">addJs()</span></code> method is used to add resources to the collection, the second parameter indicates
 whether the resource is external or not and the third parameter indicates whether the resource should
 be filtered or left as is:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// 这些Javscript文件放在页面的底端</span>
 <span class="nv">$js</span> <span class="o">=</span> <span class="nv">$manager</span><span class="o">-&gt;</span><span class="na">collection</span><span class="p">(</span><span class="s1">&#39;jsFooter&#39;</span><span class="p">);</span>
@@ -311,7 +311,7 @@ be filtered or left as is:</p>
 </pre></div>
 </div>
 <p>过滤器被注册到集合内，我们可以注册我个过滤器，资源内容被过滤的顺序和过滤器注册的顺序是一样的。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// 使用内置的Jsmin过滤器</span>
 <span class="nv">$js</span><span class="o">-&gt;</span><span class="na">addFilter</span><span class="p">(</span><span class="k">new</span> <span class="nx">Phalcon\Assets\Filters\Jsmin</span><span class="p">());</span>
@@ -324,7 +324,7 @@ be filtered or left as is:</p>
 一个文件只需要使用join函数.</p>
 <p>If resources are going to be joined, we need also to define which file will be used to store the resources
 and which URI will be used to show it. These settings are set up with <code class="code docutils literal"><span class="pre">setTargetPath()</span></code> and <code class="code docutils literal"><span class="pre">setTargetUri()</span></code>:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$js</span><span class="o">-&gt;</span><span class="na">join</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
 
@@ -363,7 +363,7 @@ and which URI will be used to show it. These settings are set up with <code clas
 <div class="section" id="custom-filters">
 <h3>自定义过滤器（Custom Filters）<a class="headerlink" href="#custom-filters" title="永久链接至标题">¶</a></h3>
 <p>除了使用Phalcon内置的过滤器外，开发者还可以创建自己的过滤器。这样我们就可以使用 <a class="reference external" href="http://yui.github.io/yuicompressor/">YUI</a>, <a class="reference external" href="http://sass-lang.com/">Sass</a>, <a class="reference external" href="https://developers.google.com/closure/compiler/?hl=fr">Closure</a>, 等。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Assets\FilterInterface</span><span class="p">;</span>
 
@@ -382,7 +382,7 @@ and which URI will be used to show it. These settings are set up with <code clas
 <span class="sd">     *</span>
 <span class="sd">     * @param array $options</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$options</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$options</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_options</span> <span class="o">=</span> <span class="nv">$options</span><span class="p">;</span>
     <span class="p">}</span>
@@ -415,7 +415,7 @@ and which URI will be used to show it. These settings are set up with <code clas
 </pre></div>
 </div>
 <p>用法:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// 取CSS集合</span>
 <span class="nv">$css</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assets</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">);</span>
@@ -433,7 +433,7 @@ and which URI will be used to show it. These settings are set up with <code clas
 </pre></div>
 </div>
 <p>In a previous example, we used a custom filter called <code class="code docutils literal"><span class="pre">LicenseStamper</span></code>:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Assets\FilterInterface</span><span class="p">;</span>
 
@@ -465,7 +465,7 @@ and which URI will be used to show it. These settings are set up with <code clas
 <div class="section" id="custom-output">
 <h2>自定义输出（Custom Output）<a class="headerlink" href="#custom-output" title="永久链接至标题">¶</a></h2>
 <p><code class="code docutils literal"><span class="pre">outputJs()</span></code> 及 <code class="code docutils literal"><span class="pre">outputCss()</span></code> 方法可以依据不同的资源类来创建需要的HTML代码。我们可以重写这个方法或是手动的输出这些资源方法如下：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Tag</span><span class="p">;</span>
 

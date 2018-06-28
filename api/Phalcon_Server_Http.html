@@ -92,7 +92,18 @@
   <div class="section" id="class-phalcon-server-http">
 <h1>Class <strong>Phalcon\Server\Http</strong><a class="headerlink" href="#class-phalcon-server-http" title="永久链接至标题">¶</a></h1>
 <p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/server/http.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">App</span> <span class="k">extends</span> <span class="nx">Phalcon\Application</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nv">$data</span> <span class="o">=</span> <span class="k">NULL</span><span class="p">)</span><span class="o">:</span><span class="nx">Phalcon\Http\ResponseInterface</span><span class="p">{</span>
+            <span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Http\Response</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">);</span>
+            <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setHeader</span><span class="p">(</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">,</span> <span class="s2">&quot;text/html&quot;</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$data</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setContent</span><span class="p">(</span><span class="nb">json_encode</span><span class="p">(</span><span class="nv">$data</span><span class="p">));</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="nv">$response</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
 <span class="nv">$server</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Server\Http</span><span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">8989</span><span class="p">);</span>
   <span class="nv">$server</span><span class="o">-&gt;</span><span class="na">start</span><span class="p">(</span><span class="nv">$application</span><span class="p">);</span>

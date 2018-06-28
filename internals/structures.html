@@ -108,7 +108,7 @@
 <p>框架中最常用的变量是 zval。一个PHP应用程序中的每个值是一个变量。zval 是一个多态性结构，即一个 zval 变量可以是任何值（bool、string、long、double、array等）。
 浏览 Phalcon7 内部的一些代码，你会看到，大多数变量的声明 zval。PHP具有标量数据类型和非标量数据类型（array 和 object）。</p>
 <p>PHP7中的zval的类型做了比较大的调整, 总体来说有如下17种类型:</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="cm">/* regular data types */</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cm">/* regular data types */</span>
 <span class="cp">#define IS_UNDEF                    0</span>
 <span class="cp">#define IS_NULL                     1</span>
 <span class="cp">#define IS_FALSE                    2</span>
@@ -137,7 +137,7 @@
 <div class="section" id="id1">
 <h3>标志位<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h3>
 <p>作用于zval的有：</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="cp">#define IS_TYPE_CONSTANT            </span><span class="c1">//是常量类型</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define IS_TYPE_CONSTANT            </span><span class="c1">//是常量类型</span>
 <span class="cp">#define IS_TYPE_IMMUTABLE           </span><span class="c1">//不可变的类型， 比如存在共享内存的数组</span>
 <span class="cp">#define IS_TYPE_REFCOUNTED          </span><span class="c1">//需要引用计数的类型</span>
 <span class="cp">#define IS_TYPE_COLLECTABLE         </span><span class="c1">//可能包含循环引用的类型(IS_ARRAY, IS_OBJECT)</span>
@@ -146,7 +146,7 @@
 </pre></div>
 </div>
 <p>作用于字符串的有:</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="cp">#define IS_STR_PERSISTENT               </span><span class="c1">//是malloc分配内存的字符串</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define IS_STR_PERSISTENT               </span><span class="c1">//是malloc分配内存的字符串</span>
 <span class="cp">#define IS_STR_INTERNED             </span><span class="c1">//INTERNED STRING</span>
 <span class="cp">#define IS_STR_PERMANENT            </span><span class="c1">//不可变的字符串， 用作哨兵作用</span>
 <span class="cp">#define IS_STR_CONSTANT             </span><span class="c1">//代表常量的字符串</span>
@@ -154,11 +154,11 @@
 </pre></div>
 </div>
 <p>作用于数组的有:</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="cp">#define IS_ARRAY_IMMUTABLE  </span><span class="c1">//同IS_TYPE_IMMUTABLE</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define IS_ARRAY_IMMUTABLE  </span><span class="c1">//同IS_TYPE_IMMUTABLE</span>
 </pre></div>
 </div>
 <p>作用于对象的有：</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="cp">#define IS_OBJ_APPLY_COUNT          </span><span class="c1">//递归保护</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define IS_OBJ_APPLY_COUNT          </span><span class="c1">//递归保护</span>
 <span class="cp">#define IS_OBJ_DESTRUCTOR_CALLED    </span><span class="c1">//析构函数已经调用</span>
 <span class="cp">#define IS_OBJ_FREE_CALLED          </span><span class="c1">//清理函数已经调用</span>
 <span class="cp">#define IS_OBJ_USE_GUARDS           </span><span class="c1">//魔术方法递归保护</span>
@@ -166,7 +166,7 @@
 </pre></div>
 </div>
 <p>下面演示如何给 zval 赋予不同类型的值：</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="n">zval</span> <span class="n">name</span><span class="p">,</span> <span class="n">numner</span><span class="p">,</span> <span class="n">price</span><span class="p">,</span> <span class="n">nothing</span><span class="p">,</span> <span class="n">is_alive</span><span class="p">,</span> <span class="n">imagick</span><span class="p">;</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">zval</span> <span class="n">name</span><span class="p">,</span> <span class="n">numner</span><span class="p">,</span> <span class="n">price</span><span class="p">,</span> <span class="n">nothing</span><span class="p">,</span> <span class="n">is_alive</span><span class="p">,</span> <span class="n">imagick</span><span class="p">;</span>
 
 <span class="n">ZVAL_STRING</span><span class="p">(</span><span class="o">&amp;</span><span class="n">name</span><span class="p">,</span> <span class="s">&quot;Sonny&quot;</span><span class="p">);</span>
 <span class="n">ZVAL_LONG</span><span class="p">(</span><span class="o">&amp;</span><span class="n">number</span><span class="p">,</span> <span class="mi">12000</span><span class="p">);</span>
@@ -179,13 +179,13 @@
 </div>
 <p>通常情况下，我们不会直接去改变 zval 内部变量，而是使用 Zend API 提供的方法进行管理。</p>
 <p>让我看下如何获取 zval 变量的值：</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="kt">char</span> <span class="o">*</span><span class="n">str</span> <span class="o">=</span> <span class="n">Z_STRVAL</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">char</span> <span class="o">*</span><span class="n">str</span> <span class="o">=</span> <span class="n">Z_STRVAL</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
 <span class="kt">long</span> <span class="n">number</span> <span class="o">=</span> <span class="n">Z_LVAL</span><span class="p">(</span><span class="n">numner</span><span class="p">);</span>
 <span class="kt">int</span> <span class="n">bool_value</span> <span class="o">=</span> <span class="n">Z_BVA</span><span class="p">(</span><span class="n">is_alive</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>如果您想知道 zval 值的类型：</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="kt">int</span> <span class="n">type</span> <span class="o">=</span> <span class="n">Z_TYPE</span><span class="p">(</span><span class="n">some_variable</span><span class="p">);</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">type</span> <span class="o">=</span> <span class="n">Z_TYPE</span><span class="p">(</span><span class="n">some_variable</span><span class="p">);</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">type</span> <span class="o">==</span> <span class="n">IS_STRING</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// Is string!</span>
 <span class="p">}</span>
@@ -196,7 +196,7 @@
 <div class="section" id="hashtable">
 <h2>哈希表（HashTable）<a class="headerlink" href="#hashtable" title="永久链接至标题">¶</a></h2>
 <p>哈希表是 PHP 内部非常重要的数据结构，除了最常见的数组，内核也随处用到，比如 function、class 的索引、符号表等等都用到了哈希表。</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="k">typedef</span> <span class="k">struct</span> <span class="n">_Bucket</span> <span class="p">{</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">struct</span> <span class="n">_Bucket</span> <span class="p">{</span>
     <span class="n">zval</span>              <span class="n">val</span><span class="p">;</span>
     <span class="n">zend_ulong</span>        <span class="n">h</span><span class="p">;</span>                <span class="cm">/* hash value (or numeric index)   */</span>
     <span class="n">zend_string</span>      <span class="o">*</span><span class="n">key</span><span class="p">;</span>              <span class="cm">/* string key or NULL for numerics */</span>
@@ -223,7 +223,7 @@
     <span class="kt">uint32_t</span>          <span class="n">nTableSize</span><span class="p">;</span>               <span class="c1">// 哈希表总大小，为2的n次方</span>
     <span class="kt">uint32_t</span>          <span class="n">nInternalPointer</span><span class="p">;</span>
     <span class="n">zend_long</span>         <span class="n">nNextFreeElement</span><span class="p">;</span> <span class="c1">// 下一个可用的数值索引,如:arr[] = 1;arr[&quot;a&quot;] = 2;arr[] = 3;  则nNextFreeElement = 2;</span>
-    <span class="kt">dtor_func_t</span>       <span class="n">pDestructor</span><span class="p">;</span>
+    <span class="n">dtor_func_t</span>       <span class="n">pDestructor</span><span class="p">;</span>
 <span class="p">};</span>
 </pre></div>
 </div>
@@ -231,7 +231,7 @@
 <h3>哈希碰撞<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
 <p>哈希碰撞是指不同的key可能计算得到相同的哈希值(数值索引的哈希值直接就是数值本身)，但是这些值又需要插入同一个哈希表。一般解决方法是将Bucket串成链表，查找时遍历链表比较key。</p>
 <p>PHP的实现也是类似，只是指向冲突元素的指针并没有直接存在Bucket中，而是存在嵌入的zval中，zval的结构：</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="k">struct</span> <span class="n">_zval_struct</span> <span class="p">{</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">_zval_struct</span> <span class="p">{</span>
     <span class="n">zend_value</span>        <span class="n">value</span><span class="p">;</span>            <span class="cm">/* value */</span>
     <span class="k">union</span> <span class="p">{</span>
         <span class="k">struct</span> <span class="p">{</span>
@@ -258,7 +258,7 @@
 <p>HashTable 中有两个非常相近的值：nNumUsed、nNumOfElements，nNumOfElements表示哈希表已有元素数，那这个值不跟nNumUsed一样吗？为什么要定义两个呢？实际上它们有不同的含义，当将一个元素从哈希表删除时并不会将对应的Bucket移除，而是将Bucket存储的zval标示为IS_UNDEF，只有扩容时发现nNumOfElements与nNumUsed相差达到一定数量(这个数量是:ht-&gt;nNumUsed - ht-&gt;nNumOfElements &gt; (ht-&gt;nNumOfElements &gt;&gt; 5))时才会将已删除的元素全部移除，重新构建哈希表。所以nNumUsed&gt;=nNumOfElements。</p>
 <p>HashTable 中另外一个非常重要的值 arData，这个值指向存储元素数组的第一个Bucket，插入元素时按顺序依次插入数组，比如第一个元素在arData[0]、第二个在arData[1]…arData[nNumUsed]。PHP数组的有序性正是通过arData保证的。</p>
 <p>zval.u2.next 存的就是冲突元素在Bucket数组中的位置，所以查找过程类似：</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="n">zend_ulong</span> <span class="n">h</span> <span class="o">=</span> <span class="n">zend_string_hash_val</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">zend_ulong</span> <span class="n">h</span> <span class="o">=</span> <span class="n">zend_string_hash_val</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
 <span class="kt">uint32_t</span> <span class="n">idx</span> <span class="o">=</span> <span class="n">ht</span><span class="o">-&gt;</span><span class="n">arHash</span><span class="p">[</span><span class="n">h</span> <span class="o">&amp;</span> <span class="n">ht</span><span class="o">-&gt;</span><span class="n">nTableMask</span><span class="p">];</span>
 <span class="k">while</span> <span class="p">(</span><span class="n">idx</span> <span class="o">!=</span> <span class="n">INVALID_IDX</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">Bucket</span> <span class="o">*</span><span class="n">b</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">ht</span><span class="o">-&gt;</span><span class="n">arData</span><span class="p">[</span><span class="n">idx</span><span class="p">];</span>
@@ -275,7 +275,7 @@
 <div class="section" id="zend-class-entries">
 <h2>类的原型（Zend Class Entries）<a class="headerlink" href="#zend-class-entries" title="永久链接至标题">¶</a></h2>
 <p>该结构体帮助我们定义类，包括它的名字、方法、属性等等。</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="c1">//Get the class entry</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="c1">//Get the class entry</span>
 <span class="n">class_entry</span> <span class="o">=</span> <span class="n">Z_OBJCE_P</span><span class="p">(</span><span class="n">this_ptr</span><span class="p">);</span>
 
 <span class="c1">//Print the class name</span>
@@ -284,7 +284,7 @@
 </div>
 <div class="section" id="handlers">
 <h3>类的标准操作集合（handlers）<a class="headerlink" href="#handlers" title="永久链接至标题">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span class="k">struct</span> <span class="n">_zend_object</span> <span class="p">{</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">_zend_object</span> <span class="p">{</span>
         <span class="n">zend_refcounted_h</span> <span class="n">gc</span><span class="p">;</span>
         <span class="kt">uint32_t</span>          <span class="n">handle</span><span class="p">;</span> <span class="c1">// TODO: may be removed ???</span>
         <span class="n">zend_class_entry</span> <span class="o">*</span><span class="n">ce</span><span class="p">;</span>
@@ -297,68 +297,68 @@
 <span class="cm">/* args on stack! */</span>
 <span class="cm">/* Andi - EX(fbc) (function being called) needs to be initialized already in the INIT fcall opcode so that the parameters can be parsed the right way. We need to add another callback for this.</span>
 <span class="cm"> */</span>
-<span class="k">typedef</span> <span class="nf">int</span> <span class="p">(</span><span class="o">*</span><span class="kt">zend_object_call_method_t</span><span class="p">)(</span><span class="n">zend_string</span> <span class="o">*</span><span class="n">method</span><span class="p">,</span> <span class="n">zend_object</span> <span class="o">*</span><span class="n">object</span><span class="p">,</span> <span class="n">INTERNAL_FUNCTION_PARAMETERS</span><span class="p">);</span>
-<span class="k">typedef</span> <span class="k">union</span> <span class="n">_zend_function</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="kt">zend_object_get_method_t</span><span class="p">)(</span><span class="n">zend_object</span> <span class="o">**</span><span class="n">object</span><span class="p">,</span> <span class="n">zend_string</span> <span class="o">*</span><span class="n">method</span><span class="p">,</span> <span class="k">const</span> <span class="n">zval</span> <span class="o">*</span><span class="n">key</span><span class="p">);</span>
-<span class="k">typedef</span> <span class="k">union</span> <span class="n">_zend_function</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="kt">zend_object_get_constructor_t</span><span class="p">)(</span><span class="n">zend_object</span> <span class="o">*</span><span class="n">object</span><span class="p">);</span>
+<span class="k">typedef</span> <span class="nf">int</span> <span class="p">(</span><span class="o">*</span><span class="n">zend_object_call_method_t</span><span class="p">)(</span><span class="n">zend_string</span> <span class="o">*</span><span class="n">method</span><span class="p">,</span> <span class="n">zend_object</span> <span class="o">*</span><span class="n">object</span><span class="p">,</span> <span class="n">INTERNAL_FUNCTION_PARAMETERS</span><span class="p">);</span>
+<span class="k">typedef</span> <span class="k">union</span> <span class="n">_zend_function</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">zend_object_get_method_t</span><span class="p">)(</span><span class="n">zend_object</span> <span class="o">**</span><span class="n">object</span><span class="p">,</span> <span class="n">zend_string</span> <span class="o">*</span><span class="n">method</span><span class="p">,</span> <span class="k">const</span> <span class="n">zval</span> <span class="o">*</span><span class="n">key</span><span class="p">);</span>
+<span class="k">typedef</span> <span class="k">union</span> <span class="n">_zend_function</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">zend_object_get_constructor_t</span><span class="p">)(</span><span class="n">zend_object</span> <span class="o">*</span><span class="n">object</span><span class="p">);</span>
 
 <span class="cm">/* Object maintenance/destruction */</span>
-<span class="k">typedef</span> <span class="nf">void</span> <span class="p">(</span><span class="o">*</span><span class="kt">zend_object_dtor_obj_t</span><span class="p">)(</span><span class="n">zend_object</span> <span class="o">*</span><span class="n">object</span><span class="p">);</span>
-<span class="k">typedef</span> <span class="nf">void</span> <span class="p">(</span><span class="o">*</span><span class="kt">zend_object_free_obj_t</span><span class="p">)(</span><span class="n">zend_object</span> <span class="o">*</span><span class="n">object</span><span class="p">);</span>
-<span class="k">typedef</span> <span class="n">zend_object</span><span class="o">*</span> <span class="p">(</span><span class="o">*</span><span class="kt">zend_object_clone_obj_t</span><span class="p">)(</span><span class="n">zval</span> <span class="o">*</span><span class="n">object</span><span class="p">);</span>
+<span class="k">typedef</span> <span class="nf">void</span> <span class="p">(</span><span class="o">*</span><span class="n">zend_object_dtor_obj_t</span><span class="p">)(</span><span class="n">zend_object</span> <span class="o">*</span><span class="n">object</span><span class="p">);</span>
+<span class="k">typedef</span> <span class="nf">void</span> <span class="p">(</span><span class="o">*</span><span class="n">zend_object_free_obj_t</span><span class="p">)(</span><span class="n">zend_object</span> <span class="o">*</span><span class="n">object</span><span class="p">);</span>
+<span class="k">typedef</span> <span class="n">zend_object</span><span class="o">*</span> <span class="p">(</span><span class="o">*</span><span class="n">zend_object_clone_obj_t</span><span class="p">)(</span><span class="n">zval</span> <span class="o">*</span><span class="n">object</span><span class="p">);</span>
 
 <span class="cm">/* Get class name for display in var_dump and other debugging functions.</span>
 <span class="cm"> * Must be defined and must return a non-NULL value. */</span>
-<span class="k">typedef</span> <span class="n">zend_string</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="kt">zend_object_get_class_name_t</span><span class="p">)(</span><span class="k">const</span> <span class="n">zend_object</span> <span class="o">*</span><span class="n">object</span><span class="p">);</span>
+<span class="k">typedef</span> <span class="n">zend_string</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">zend_object_get_class_name_t</span><span class="p">)(</span><span class="k">const</span> <span class="n">zend_object</span> <span class="o">*</span><span class="n">object</span><span class="p">);</span>
 
-<span class="k">typedef</span> <span class="nf">int</span> <span class="p">(</span><span class="o">*</span><span class="kt">zend_object_compare_t</span><span class="p">)(</span><span class="n">zval</span> <span class="o">*</span><span class="n">object1</span><span class="p">,</span> <span class="n">zval</span> <span class="o">*</span><span class="n">object2</span><span class="p">);</span>
-<span class="k">typedef</span> <span class="nf">int</span> <span class="p">(</span><span class="o">*</span><span class="kt">zend_object_compare_zvals_t</span><span class="p">)(</span><span class="n">zval</span> <span class="o">*</span><span class="n">resul</span><span class="p">,</span> <span class="n">zval</span> <span class="o">*</span><span class="n">op1</span><span class="p">,</span> <span class="n">zval</span> <span class="o">*</span><span class="n">op2</span><span class="p">);</span>
+<span class="k">typedef</span> <span class="nf">int</span> <span class="p">(</span><span class="o">*</span><span class="n">zend_object_compare_t</span><span class="p">)(</span><span class="n">zval</span> <span class="o">*</span><span class="n">object1</span><span class="p">,</span> <span class="n">zval</span> <span class="o">*</span><span class="n">object2</span><span class="p">);</span>
+<span class="k">typedef</span> <span class="nf">int</span> <span class="p">(</span><span class="o">*</span><span class="n">zend_object_compare_zvals_t</span><span class="p">)(</span><span class="n">zval</span> <span class="o">*</span><span class="n">resul</span><span class="p">,</span> <span class="n">zval</span> <span class="o">*</span><span class="n">op1</span><span class="p">,</span> <span class="n">zval</span> <span class="o">*</span><span class="n">op2</span><span class="p">);</span>
 
 <span class="cm">/* Cast an object to some other type</span>
 <span class="cm"> */</span>
-<span class="k">typedef</span> <span class="nf">int</span> <span class="p">(</span><span class="o">*</span><span class="kt">zend_object_cast_t</span><span class="p">)(</span><span class="n">zval</span> <span class="o">*</span><span class="n">readobj</span><span class="p">,</span> <span class="n">zval</span> <span class="o">*</span><span class="n">retval</span><span class="p">,</span> <span class="kt">int</span> <span class="n">type</span><span class="p">);</span>
+<span class="k">typedef</span> <span class="nf">int</span> <span class="p">(</span><span class="o">*</span><span class="n">zend_object_cast_t</span><span class="p">)(</span><span class="n">zval</span> <span class="o">*</span><span class="n">readobj</span><span class="p">,</span> <span class="n">zval</span> <span class="o">*</span><span class="n">retval</span><span class="p">,</span> <span class="kt">int</span> <span class="n">type</span><span class="p">);</span>
 
 <span class="cm">/* updates *count to hold the number of elements present and returns SUCCESS.</span>
 <span class="cm"> * Returns FAILURE if the object does not have any sense of overloaded dimensions */</span>
-<span class="k">typedef</span> <span class="nf">int</span> <span class="p">(</span><span class="o">*</span><span class="kt">zend_object_count_elements_t</span><span class="p">)(</span><span class="n">zval</span> <span class="o">*</span><span class="n">object</span><span class="p">,</span> <span class="n">zend_long</span> <span class="o">*</span><span class="n">count</span><span class="p">);</span>
+<span class="k">typedef</span> <span class="nf">int</span> <span class="p">(</span><span class="o">*</span><span class="n">zend_object_count_elements_t</span><span class="p">)(</span><span class="n">zval</span> <span class="o">*</span><span class="n">object</span><span class="p">,</span> <span class="n">zend_long</span> <span class="o">*</span><span class="n">count</span><span class="p">);</span>
 
-<span class="k">typedef</span> <span class="nf">int</span> <span class="p">(</span><span class="o">*</span><span class="kt">zend_object_get_closure_t</span><span class="p">)(</span><span class="n">zval</span> <span class="o">*</span><span class="n">obj</span><span class="p">,</span> <span class="n">zend_class_entry</span> <span class="o">**</span><span class="n">ce_ptr</span><span class="p">,</span> <span class="k">union</span> <span class="n">_zend_function</span> <span class="o">**</span><span class="n">fptr_ptr</span><span class="p">,</span> <span class="n">zend_object</span> <span class="o">**</span><span class="n">obj_ptr</span><span class="p">);</span>
+<span class="k">typedef</span> <span class="nf">int</span> <span class="p">(</span><span class="o">*</span><span class="n">zend_object_get_closure_t</span><span class="p">)(</span><span class="n">zval</span> <span class="o">*</span><span class="n">obj</span><span class="p">,</span> <span class="n">zend_class_entry</span> <span class="o">**</span><span class="n">ce_ptr</span><span class="p">,</span> <span class="k">union</span> <span class="n">_zend_function</span> <span class="o">**</span><span class="n">fptr_ptr</span><span class="p">,</span> <span class="n">zend_object</span> <span class="o">**</span><span class="n">obj_ptr</span><span class="p">);</span>
 
-<span class="k">typedef</span> <span class="n">HashTable</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="kt">zend_object_get_gc_t</span><span class="p">)(</span><span class="n">zval</span> <span class="o">*</span><span class="n">object</span><span class="p">,</span> <span class="n">zval</span> <span class="o">**</span><span class="n">table</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">n</span><span class="p">);</span>
+<span class="k">typedef</span> <span class="n">HashTable</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">zend_object_get_gc_t</span><span class="p">)(</span><span class="n">zval</span> <span class="o">*</span><span class="n">object</span><span class="p">,</span> <span class="n">zval</span> <span class="o">**</span><span class="n">table</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">n</span><span class="p">);</span>
 
-<span class="k">typedef</span> <span class="nf">int</span> <span class="p">(</span><span class="o">*</span><span class="kt">zend_object_do_operation_t</span><span class="p">)(</span><span class="n">zend_uchar</span> <span class="n">opcode</span><span class="p">,</span> <span class="n">zval</span> <span class="o">*</span><span class="n">result</span><span class="p">,</span> <span class="n">zval</span> <span class="o">*</span><span class="n">op1</span><span class="p">,</span> <span class="n">zval</span> <span class="o">*</span><span class="n">op2</span><span class="p">);</span>
+<span class="k">typedef</span> <span class="nf">int</span> <span class="p">(</span><span class="o">*</span><span class="n">zend_object_do_operation_t</span><span class="p">)(</span><span class="n">zend_uchar</span> <span class="n">opcode</span><span class="p">,</span> <span class="n">zval</span> <span class="o">*</span><span class="n">result</span><span class="p">,</span> <span class="n">zval</span> <span class="o">*</span><span class="n">op1</span><span class="p">,</span> <span class="n">zval</span> <span class="o">*</span><span class="n">op2</span><span class="p">);</span>
 
 <span class="k">struct</span> <span class="n">_zend_object_handlers</span> <span class="p">{</span>
         <span class="cm">/* offset of real object header (usually zero) */</span>
         <span class="kt">int</span>                                                                             <span class="n">offset</span><span class="p">;</span>
         <span class="cm">/* general object functions */</span>
-        <span class="kt">zend_object_free_obj_t</span>                                  <span class="n">free_obj</span><span class="p">;</span>
-        <span class="kt">zend_object_dtor_obj_t</span>                                  <span class="n">dtor_obj</span><span class="p">;</span>
-        <span class="kt">zend_object_clone_obj_t</span>                                 <span class="n">clone_obj</span><span class="p">;</span>
+        <span class="n">zend_object_free_obj_t</span>                                  <span class="n">free_obj</span><span class="p">;</span>
+        <span class="n">zend_object_dtor_obj_t</span>                                  <span class="n">dtor_obj</span><span class="p">;</span>
+        <span class="n">zend_object_clone_obj_t</span>                                 <span class="n">clone_obj</span><span class="p">;</span>
         <span class="cm">/* individual object functions */</span>
-        <span class="kt">zend_object_read_property_t</span>                             <span class="n">read_property</span><span class="p">;</span>
-        <span class="kt">zend_object_write_property_t</span>                    <span class="n">write_property</span><span class="p">;</span>
-        <span class="kt">zend_object_read_dimension_t</span>                    <span class="n">read_dimension</span><span class="p">;</span>
-        <span class="kt">zend_object_write_dimension_t</span>                   <span class="n">write_dimension</span><span class="p">;</span>
-        <span class="kt">zend_object_get_property_ptr_ptr_t</span>              <span class="n">get_property_ptr_ptr</span><span class="p">;</span>
-        <span class="kt">zend_object_get_t</span>                                               <span class="n">get</span><span class="p">;</span>
-        <span class="kt">zend_object_set_t</span>                                               <span class="n">set</span><span class="p">;</span>
-        <span class="kt">zend_object_has_property_t</span>                              <span class="n">has_property</span><span class="p">;</span>
-        <span class="kt">zend_object_unset_property_t</span>                    <span class="n">unset_property</span><span class="p">;</span>
-        <span class="kt">zend_object_has_dimension_t</span>                             <span class="n">has_dimension</span><span class="p">;</span>
-        <span class="kt">zend_object_unset_dimension_t</span>                   <span class="n">unset_dimension</span><span class="p">;</span>
-        <span class="kt">zend_object_get_properties_t</span>                    <span class="n">get_properties</span><span class="p">;</span>
-        <span class="kt">zend_object_get_method_t</span>                                <span class="n">get_method</span><span class="p">;</span>
-        <span class="kt">zend_object_call_method_t</span>                               <span class="n">call_method</span><span class="p">;</span>
-        <span class="kt">zend_object_get_constructor_t</span>                   <span class="n">get_constructor</span><span class="p">;</span>
-        <span class="kt">zend_object_get_class_name_t</span>                    <span class="n">get_class_name</span><span class="p">;</span>
-        <span class="kt">zend_object_compare_t</span>                                   <span class="n">compare_objects</span><span class="p">;</span>
-        <span class="kt">zend_object_cast_t</span>                                              <span class="n">cast_object</span><span class="p">;</span>
-        <span class="kt">zend_object_count_elements_t</span>                    <span class="n">count_elements</span><span class="p">;</span>
-        <span class="kt">zend_object_get_debug_info_t</span>                    <span class="n">get_debug_info</span><span class="p">;</span>
-        <span class="kt">zend_object_get_closure_t</span>                               <span class="n">get_closure</span><span class="p">;</span>
-        <span class="kt">zend_object_get_gc_t</span>                                    <span class="n">get_gc</span><span class="p">;</span>
-        <span class="kt">zend_object_do_operation_t</span>                              <span class="n">do_operation</span><span class="p">;</span>
-        <span class="kt">zend_object_compare_zvals_t</span>                             <span class="n">compare</span><span class="p">;</span>
+        <span class="n">zend_object_read_property_t</span>                             <span class="n">read_property</span><span class="p">;</span>
+        <span class="n">zend_object_write_property_t</span>                    <span class="n">write_property</span><span class="p">;</span>
+        <span class="n">zend_object_read_dimension_t</span>                    <span class="n">read_dimension</span><span class="p">;</span>
+        <span class="n">zend_object_write_dimension_t</span>                   <span class="n">write_dimension</span><span class="p">;</span>
+        <span class="n">zend_object_get_property_ptr_ptr_t</span>              <span class="n">get_property_ptr_ptr</span><span class="p">;</span>
+        <span class="n">zend_object_get_t</span>                                               <span class="n">get</span><span class="p">;</span>
+        <span class="n">zend_object_set_t</span>                                               <span class="n">set</span><span class="p">;</span>
+        <span class="n">zend_object_has_property_t</span>                              <span class="n">has_property</span><span class="p">;</span>
+        <span class="n">zend_object_unset_property_t</span>                    <span class="n">unset_property</span><span class="p">;</span>
+        <span class="n">zend_object_has_dimension_t</span>                             <span class="n">has_dimension</span><span class="p">;</span>
+        <span class="n">zend_object_unset_dimension_t</span>                   <span class="n">unset_dimension</span><span class="p">;</span>
+        <span class="n">zend_object_get_properties_t</span>                    <span class="n">get_properties</span><span class="p">;</span>
+        <span class="n">zend_object_get_method_t</span>                                <span class="n">get_method</span><span class="p">;</span>
+        <span class="n">zend_object_call_method_t</span>                               <span class="n">call_method</span><span class="p">;</span>
+        <span class="n">zend_object_get_constructor_t</span>                   <span class="n">get_constructor</span><span class="p">;</span>
+        <span class="n">zend_object_get_class_name_t</span>                    <span class="n">get_class_name</span><span class="p">;</span>
+        <span class="n">zend_object_compare_t</span>                                   <span class="n">compare_objects</span><span class="p">;</span>
+        <span class="n">zend_object_cast_t</span>                                              <span class="n">cast_object</span><span class="p">;</span>
+        <span class="n">zend_object_count_elements_t</span>                    <span class="n">count_elements</span><span class="p">;</span>
+        <span class="n">zend_object_get_debug_info_t</span>                    <span class="n">get_debug_info</span><span class="p">;</span>
+        <span class="n">zend_object_get_closure_t</span>                               <span class="n">get_closure</span><span class="p">;</span>
+        <span class="n">zend_object_get_gc_t</span>                                    <span class="n">get_gc</span><span class="p">;</span>
+        <span class="n">zend_object_do_operation_t</span>                              <span class="n">do_operation</span><span class="p">;</span>
+        <span class="n">zend_object_compare_zvals_t</span>                             <span class="n">compare</span><span class="p">;</span>
 <span class="p">};</span>
 </pre></div>
 </div>

@@ -118,7 +118,7 @@
 <h2>清理数据（Sanitizing data）<a class="headerlink" href="#sanitizing-data" title="永久链接至标题">¶</a></h2>
 <p>清理是指从一个值中移除特定字符的过程，此过程对用户和应用不是必须，也不是他们想得到的。
 通过清理输入，我们确保了应用的完整性和正确性。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Filter</span><span class="p">;</span>
 
@@ -142,7 +142,7 @@
 <h2>在控制器中使用清理（Sanitizing from Controllers）<a class="headerlink" href="#sanitizing-from-controllers" title="永久链接至标题">¶</a></h2>
 <p>当接收到GET或POST的数据时（通过请求对象），你可以在控制器中访问一个 <a class="reference internal" href="../api/Phalcon_Filter.html"><span class="doc">Phalcon\Filter</span></a> 对象。
 第一个参数是等待获得变量的名字，第二个参数是将应用在此变量的过滤器。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
 
@@ -168,7 +168,7 @@
 <div class="section" id="filtering-action-parameters">
 <h2>过滤动作参数（Filtering Action Parameters）<a class="headerlink" href="#filtering-action-parameters" title="永久链接至标题">¶</a></h2>
 <p>接下来的示例演示了在一个控制器的动作中如何清理动作的参数：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
 
@@ -191,7 +191,7 @@
 <h2>过滤数据（Filtering data）<a class="headerlink" href="#filtering-data" title="永久链接至标题">¶</a></h2>
 <p>此外， <a class="reference internal" href="../api/Phalcon_Filter.html"><span class="doc">Phalcon\Filter</span></a> 也提供了可以进行删除或者修改输入数据以满足我们需要的格式的过滤器。
 函数 <cite>sanitize</cite> 的第一个参数是用户输入的数据，第二个参数是过滤器名称，第三个参数是是否递归执行，第四个参数是选项值。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Filter</span><span class="p">;</span>
 
@@ -293,7 +293,7 @@
 <div class="section" id="creating-your-own-filters">
 <h2>创建过滤器（Creating your own Filters）<a class="headerlink" href="#creating-your-own-filters" title="永久链接至标题">¶</a></h2>
 <p>你可以将你自己的过滤器添加到 <a class="reference internal" href="../api/Phalcon_Filter.html"><span class="doc">Phalcon\Filter</span></a> 。过滤器的方法可以是匿名函数：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Filter</span><span class="p">;</span>
 
@@ -309,7 +309,7 @@
 </pre></div>
 </div>
 <p>或者，如果你愿意，你可以在类中实现过滤器：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Filter</span><span class="p">;</span>
 

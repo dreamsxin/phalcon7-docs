@@ -115,7 +115,7 @@
 <p>为了解决这个问题我们可以使用哈希算法 <a class="reference external" href="http://en.wikipedia.org/wiki/Bcrypt">bcrypt</a>。为什么 bcrypt？ 由于其&#8221;<a class="reference external" href="http://en.wikipedia.org/wiki/Bcrypt#Algorithm">Eksblowfish</a>&#8220;键设置算法，我们可以使密码加密如同我们想要的&#8221;慢&#8221;。慢的算法使计算
 Hash背后的真实密码的过程非常困难甚至不可能。这可以在一个很长一段时间内免遭可能的彩虹表攻击。</p>
 <p>这个组件使您能够以一个简单的方法使用该算法：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
 
@@ -139,7 +139,7 @@ Hash背后的真实密码的过程非常困难甚至不可能。这可以在一�
 </pre></div>
 </div>
 <p>我们保存一个用默认因子散列的密码。更高的因子可以使密码更加可靠。我们可以用如下的方法检查密码是否正确:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
 
@@ -172,18 +172,18 @@ Hash背后的真实密码的过程非常困难甚至不可能。这可以在一�
 <p>这是另一个常见的web站点和应用程序攻击。如用户注册或添加注释的这类表单就很容易受到这种攻击。</p>
 <p>可以想到的方式防止表单值发送自外部应用程序。为了解决这个问题，我们为每个表单生成一个一次性随机令牌（<a class="reference external" href="http://en.wikipedia.org/wiki/Cryptographic_nonce">random nonce</a>），在会话中添加令牌，然后一旦表单数据提交到
 程序之后，将提交的数据中的的令牌和存储在会中的令牌进行比较，来验证是否合法。</p>
-<div class="highlight-html+php"><div class="highlight"><pre><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nx">Tag</span><span class="o">::</span><span class="na">form</span><span class="p">(</span><span class="s1">&#39;session/login&#39;</span><span class="p">)</span> <span class="cp">?&gt;</span>
+<div class="highlight-html+php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nx">Tag</span><span class="o">::</span><span class="na">form</span><span class="p">(</span><span class="s1">&#39;session/login&#39;</span><span class="p">)</span> <span class="cp">?&gt;</span>
 
     <span class="c">&lt;!-- Login and password inputs ... --&gt;</span>
 
-    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;hidden&quot;</span> <span class="na">name=</span><span class="s">&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">security</span><span class="o">-&gt;</span><span class="na">getTokenKey</span><span class="p">()</span> <span class="cp">?&gt;</span><span class="s">&quot;</span>
-        <span class="na">value=</span><span class="s">&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">security</span><span class="o">-&gt;</span><span class="na">getToken</span><span class="p">()</span> <span class="cp">?&gt;</span><span class="s">&quot;</span><span class="nt">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">security</span><span class="o">-&gt;</span><span class="na">getTokenKey</span><span class="p">()</span> <span class="cp">?&gt;</span><span class="s">&quot;</span>
+        <span class="na">value</span><span class="o">=</span><span class="s">&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">security</span><span class="o">-&gt;</span><span class="na">getToken</span><span class="p">()</span> <span class="cp">?&gt;</span><span class="s">&quot;</span><span class="p">/&gt;</span>
 
-<span class="nt">&lt;/form&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <p>在控制器的动作中可以检查CSRF令牌是否有效:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
 
@@ -201,7 +201,7 @@ Hash背后的真实密码的过程非常困难甚至不可能。这可以在一�
 </pre></div>
 </div>
 <p>记得添加一个会话适配器到依赖注入器中，否则令牌检查是行不通的:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">setShared</span><span class="p">(</span><span class="s1">&#39;session&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
     <span class="nv">$session</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Session\Adapter\Files</span><span class="p">();</span>
@@ -215,7 +215,7 @@ Hash背后的真实密码的过程非常困难甚至不可能。这可以在一�
 <div class="section" id="setting-up-the-component">
 <h2>设置组件（Setting up the component）<a class="headerlink" href="#setting-up-the-component" title="永久链接至标题">¶</a></h2>
 <p>该组件自动在服务容器中注册为“security”,你亦可以重新注册它并为它设置参数:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Security</span><span class="p">;</span>
 
@@ -234,7 +234,7 @@ Hash背后的真实密码的过程非常困难甚至不可能。这可以在一�
 <div class="section" id="random">
 <h2>随机数（Random）<a class="headerlink" href="#random" title="永久链接至标题">¶</a></h2>
 <p>The <a class="reference internal" href="../api/Phalcon_Security_Random.html"><span class="doc">Phalcon\Security\Random</span></a> class makes it really easy to generate lots of types of random data.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$random</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Security\Random</span><span class="p">();</span>
 

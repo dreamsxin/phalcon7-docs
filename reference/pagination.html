@@ -140,7 +140,7 @@
 <div class="section" id="examples">
 <h2>示例（Examples）<a class="headerlink" href="#examples" title="永久链接至标题">¶</a></h2>
 <p>In the example below, the paginator will use the result of a query from a model as its source data, and limit the displayed data to 10 records per page:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Paginator\Adapter\Model</span> <span class="k">as</span> <span class="nx">PaginatorModel</span><span class="p">;</span>
 
@@ -168,27 +168,27 @@
 </div>
 <p>The <code class="code docutils literal"><span class="pre">$currentPage</span></code> variable controls the page to be displayed. The <code class="code docutils literal"><span class="pre">$paginator-&gt;getPaginate()</span></code> returns a <code class="code docutils literal"><span class="pre">$page</span></code>
 object that contains the paginated data. It can be used for generating the pagination:</p>
-<div class="highlight-html+php"><div class="highlight"><pre><span class="nt">&lt;table&gt;</span>
-    <span class="nt">&lt;tr&gt;</span>
-        <span class="nt">&lt;th&gt;</span>Id<span class="nt">&lt;/th&gt;</span>
-        <span class="nt">&lt;th&gt;</span>Name<span class="nt">&lt;/th&gt;</span>
-        <span class="nt">&lt;th&gt;</span>Type<span class="nt">&lt;/th&gt;</span>
-    <span class="nt">&lt;/tr&gt;</span>
+<div class="highlight-html+php"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Id<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Name<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Type<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
     <span class="cp">&lt;?php</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$page</span><span class="o">-&gt;</span><span class="na">items</span> <span class="k">as</span> <span class="nv">$item</span><span class="p">)</span> <span class="p">{</span> <span class="cp">?&gt;</span>
-    <span class="nt">&lt;tr&gt;</span>
-        <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="nt">&lt;/td&gt;</span>
-        <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="nt">&lt;/td&gt;</span>
-        <span class="nt">&lt;td&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">type</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="nt">&lt;/td&gt;</span>
-    <span class="nt">&lt;/tr&gt;</span>
+    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">type</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
     <span class="cp">&lt;?php</span> <span class="p">}</span> <span class="cp">?&gt;</span>
-<span class="nt">&lt;/table&gt;</span>
+<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <p>The <code class="code docutils literal"><span class="pre">$page</span></code> object also contains navigation data:</p>
-<div class="highlight-html+php"><div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;/robots/search&quot;</span><span class="nt">&gt;</span>First<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;/robots/search?page=</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$page</span><span class="o">-&gt;</span><span class="na">before</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="s">&quot;</span><span class="nt">&gt;</span>Previous<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;/robots/search?page=</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$page</span><span class="o">-&gt;</span><span class="na">next</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="s">&quot;</span><span class="nt">&gt;</span>Next<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;/robots/search?page=</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$page</span><span class="o">-&gt;</span><span class="na">last</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="s">&quot;</span><span class="nt">&gt;</span>Last<span class="nt">&lt;/a&gt;</span>
+<div class="highlight-html+php"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/robots/search&quot;</span><span class="p">&gt;</span>First<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/robots/search?page=</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$page</span><span class="o">-&gt;</span><span class="na">before</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="s">&quot;</span><span class="p">&gt;</span>Previous<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/robots/search?page=</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$page</span><span class="o">-&gt;</span><span class="na">next</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="s">&quot;</span><span class="p">&gt;</span>Next<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/robots/search?page=</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$page</span><span class="o">-&gt;</span><span class="na">last</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="s">&quot;</span><span class="p">&gt;</span>Last<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 
 <span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="s2">&quot;You are in page &quot;</span><span class="p">,</span> <span class="nv">$page</span><span class="o">-&gt;</span><span class="na">current</span><span class="p">,</span> <span class="s2">&quot; of &quot;</span><span class="p">,</span> <span class="nv">$page</span><span class="o">-&gt;</span><span class="na">total_pages</span><span class="p">;</span> <span class="cp">?&gt;</span>
 </pre></div>
@@ -197,7 +197,7 @@ object that contains the paginated data. It can be used for generating the pagin
 <div class="section" id="adapters-usage">
 <h2>适配器使用（Adapters Usage）<a class="headerlink" href="#adapters-usage" title="永久链接至标题">¶</a></h2>
 <p>An example of the source data that must be used for each adapter:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Paginator\Adapter\Model</span> <span class="k">as</span> <span class="nx">PaginatorModel</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Paginator\Adapter\NativeArray</span> <span class="k">as</span> <span class="nx">PaginatorArray</span><span class="p">;</span>
@@ -296,7 +296,7 @@ object that contains the paginated data. It can be used for generating the pagin
 <div class="section" id="implementing-your-own-adapters">
 <h2>自定义适配器（Implementing your own adapters）<a class="headerlink" href="#implementing-your-own-adapters" title="永久链接至标题">¶</a></h2>
 <p>The <a class="reference internal" href="../api/Phalcon_Paginator_AdapterInterface.html"><span class="doc">Phalcon\Paginator\AdapterInterface</span></a> interface must be implemented in order to create your own paginator adapters or extend the existing ones:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Paginator\AdapterInterface</span> <span class="k">as</span> <span class="nx">PaginatorInterface</span><span class="p">;</span>
 
@@ -307,7 +307,7 @@ object that contains the paginated data. It can be used for generating the pagin
 <span class="sd">     *</span>
 <span class="sd">     * @param array $config</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$config</span><span class="p">);</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$config</span><span class="p">);</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Set the current page number</span>

@@ -94,7 +94,7 @@
 <p><em>extends</em> abstract class <a class="reference internal" href="Phalcon_Mvc_Model_Query_Builder.html"><span class="doc">Phalcon\Mvc\Model\Query\Builder</span></a></p>
 <p><em>implements</em> <a class="reference internal" href="Phalcon_Mvc_Model_Query_BuilderInterface.html"><span class="doc">Phalcon\Mvc\Model\Query\BuilderInterface</span></a>, <a class="reference internal" href="Phalcon_Di_InjectionAwareInterface.html"><span class="doc">Phalcon\Di\InjectionAwareInterface</span></a>, <a class="reference internal" href="Phalcon_Events_EventsAwareInterface.html"><span class="doc">Phalcon\Events\EventsAwareInterface</span></a></p>
 <p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/model/query/builder/insert.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$resultset</span> <span class="o">=</span> <span class="nx">Phalcon\Mvc\Model\Query\Builder</span><span class="o">::</span><span class="na">createInsertBuilder</span><span class="p">()</span>
    <span class="o">-&gt;</span><span class="na">table</span><span class="p">(</span><span class="s1">&#39;Robots&#39;</span><span class="p">)</span>
@@ -120,11 +120,13 @@
 <p>Sets the values to insert</p>
 <p>public <em>array</em>  <strong>getValues</strong> ()</p>
 <p>Gets the values to insert</p>
+<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model\Query\Builder\Insert</span></a>  <strong>setConflict</strong> (<em>array</em> $conflict)</p>
+<p>Sets conflict</p>
 <p>protected <em>string</em>  <strong>_compile</strong> ()</p>
 <p>Returns a PHQL statement built based on the builder parameters</p>
 <p>public static <a class="reference internal" href="Phalcon_Mvc_Model_Query_Builder.html"><span class="doc">Phalcon\Mvc\Model\Query\Builder</span></a>  <strong>create</strong> (<em>unknown</em> $type) inherited from Phalcon\Mvc\Model\Query\Builder</p>
 <p>Create a new Query Builder of the given type.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nx">Phalcon\Mvc\Model\Query\Builder</span><span class="o">::</span><span class="na">create</span><span class="p">(</span><span class="nx">Phalcon\Mvc\Model\Query</span><span class="o">::</span><span class="na">TYPE_SELECT</span><span class="p">);</span>
 </pre></div>

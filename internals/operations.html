@@ -95,7 +95,7 @@
   <div class="section" id="operations-between-variables">
 <h1>变量之间的操作（Operations between Variables）<a class="headerlink" href="#operations-between-variables" title="永久链接至标题">¶</a></h1>
 <p>我们几乎可以做任何类型的两个变量之间的进行操作，当我们不知道确切的数据类型时，我们也可以使用 Zend API 操作它们。</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="c1">// First variable is string but it&#39;s a numeric string</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="c1">// First variable is string but it&#39;s a numeric string</span>
 <span class="n">ZVAL_STRING</span><span class="p">(</span><span class="o">&amp;</span><span class="n">first_var</span><span class="p">,</span> <span class="s">&quot;100.10&quot;</span><span class="p">);</span>
 
 <span class="c1">// Second variable is long</span>
@@ -108,7 +108,7 @@
 <div class="section" id="concatenation">
 <h2>连接（Concatenation）<a class="headerlink" href="#concatenation" title="永久链接至标题">¶</a></h2>
 <p>在 PHP 中连接操作是最频繁的操作之一，我一样可以使用 Zend API 简单实现多个值的拼接：</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="c1">// The following concatention using just Zend API:</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="c1">// The following concatention using just Zend API:</span>
 <span class="c1">//</span>
 <span class="c1">// $month = &quot;July&quot;; $day = 1;</span>
 <span class="c1">// $today = &quot;Today is &quot;.$month.&quot; &quot;.$day;</span>
@@ -129,7 +129,7 @@
 </pre></div>
 </div>
 <p>Another way to do that is use sprintf, in this case, you need to be completely sure that the variables have all string types:</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="kt">char</span> <span class="o">*</span><span class="n">final_string</span><span class="p">;</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">char</span> <span class="o">*</span><span class="n">final_string</span><span class="p">;</span>
 <span class="n">zval</span> <span class="n">final</span><span class="p">;</span>
 
 <span class="n">ZVAL_STRING</span><span class="p">(</span><span class="o">&amp;</span><span class="n">month</span><span class="p">,</span> <span class="s">&quot;2012&quot;</span><span class="p">);</span>
@@ -170,7 +170,7 @@
 </table>
 <p>It&#8217;s short, but if some of your variables aren&#8217;t string you will get a segmentation fault or an unexpected behavior.</p>
 <p>To help to solve this problem, we have created a set of macros to concatenate zvals and strings:</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="n">ZVAL_STRING</span><span class="p">(</span><span class="o">&amp;</span><span class="n">month</span><span class="p">,</span> <span class="s">&quot;2012&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">ZVAL_STRING</span><span class="p">(</span><span class="o">&amp;</span><span class="n">month</span><span class="p">,</span> <span class="s">&quot;2012&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
 
 <span class="n">ZVAL_STRING</span><span class="p">(</span><span class="o">&amp;</span><span class="n">day</span><span class="p">,</span> <span class="s">&quot;1&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
 
@@ -178,7 +178,7 @@
 </pre></div>
 </div>
 <p>Other examples:</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="n">PHALCON_CONCAT_VV</span><span class="p">(</span><span class="o">&amp;</span><span class="n">result</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">month</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">day</span><span class="p">);</span> <span class="c1">//July1</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">PHALCON_CONCAT_VV</span><span class="p">(</span><span class="o">&amp;</span><span class="n">result</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">month</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">day</span><span class="p">);</span> <span class="c1">//July1</span>
 <span class="n">PHALCON_CONCAT_VSV</span><span class="p">(</span><span class="o">&amp;</span><span class="n">result</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">month</span><span class="p">,</span> <span class="s">&quot;, &quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">day</span><span class="p">);</span> <span class="c1">//July, 1</span>
 <span class="n">PHALCON_CONCAT_SVSV</span><span class="p">(</span><span class="o">&amp;</span><span class="n">result</span><span class="p">,</span> <span class="s">&quot;Today is&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">month</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">day</span><span class="p">);</span> <span class="c1">//July 1</span>
 <span class="n">PHALCON_CONCAT_SVSVSV</span><span class="p">(</span><span class="o">&amp;</span><span class="n">result</span><span class="p">,</span> <span class="s">&quot;Today is&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">month</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">day</span><span class="p">,</span> <span class="s">&quot;, &quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">year</span><span class="p">);</span> <span class="c1">//July 1, 2012</span>

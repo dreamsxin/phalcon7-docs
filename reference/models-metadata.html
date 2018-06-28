@@ -115,7 +115,7 @@
 <p>为了加快开发速度 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> 将帮助你从数据库中查询与模型有关字段和约束。
 为了实现这一点将会用 <a class="reference internal" href="../api/Phalcon_Mvc_Model_MetaData.html"><span class="doc">Phalcon\Mvc\Model\MetaData</span></a> 管理和缓存表元数据。</p>
 <p>有时在使用模型时需要获取和字段相关的属性。获得元数据的方法，如下所示:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$robot</span>      <span class="o">=</span> <span class="k">new</span> <span class="nx">Robots</span><span class="p">();</span>
 
@@ -174,7 +174,7 @@ time you use the table. This could be done caching the meta-data using any of th
 </tbody>
 </table>
 <p>As other ORM&#8217;s dependencies, the metadata manager is requested from the services container:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\MetaData\Apc</span> <span class="k">as</span> <span class="nx">ApcMetaData</span><span class="p">;</span>
 
@@ -194,7 +194,7 @@ time you use the table. This could be done caching the meta-data using any of th
 </div>
 <div class="section" id="key">
 <h3>自定义元数据缓存 KEY<a class="headerlink" href="#key" title="永久链接至标题">¶</a></h3>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">Robots</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\Model</span> <span class="p">{</span>
 
@@ -211,7 +211,7 @@ time you use the table. This could be done caching the meta-data using any of th
 <p>As mentioned above the default strategy to obtain the model&#8217;s meta-data is database introspection. In this strategy, the information
 schema is used to know the fields in a table, its primary key, nullable fields, data types, etc.</p>
 <p>You can change the default meta-data introspection in the following way:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\MetaData\Apc</span> <span class="k">as</span> <span class="nx">ApcMetaData</span><span class="p">;</span>
 
@@ -239,7 +239,7 @@ schema is used to know the fields in a table, its primary key, nullable fields, 
 <div class="section" id="annotations-strategy">
 <h3>注释策略（Annotations Strategy）<a class="headerlink" href="#annotations-strategy" title="永久链接至标题">¶</a></h3>
 <p>This strategy makes use of <a class="reference internal" href="annotations.html"><span class="doc">annotations</span></a> to describe the columns in a model:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
 
@@ -318,7 +318,7 @@ are handled as simple class attributes.</p>
 </tbody>
 </table>
 <p>The annotations strategy could be set up this way:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\MetaData\Apc</span> <span class="k">as</span> <span class="nx">ApcMetaData</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\MetaData\Strategy\Annotations</span> <span class="k">as</span> <span class="nx">StrategyAnnotations</span><span class="p">;</span>
@@ -350,7 +350,7 @@ using any of the introspection strategies presented above.</p>
 any strategy set in the  meta-data manager. New columns added/modified/removed to/from the mapped
 table must be added/modified/removed also for everything to work properly.</p>
 <p>The following example shows how to define the meta-data manually:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Db\Column</span><span class="p">;</span>

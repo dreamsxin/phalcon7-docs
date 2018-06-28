@@ -95,7 +95,7 @@
 <p><em>implements</em> <a class="reference internal" href="Phalcon_Events_EventsAwareInterface.html"><span class="doc">Phalcon\Events\EventsAwareInterface</span></a>, <a class="reference internal" href="Phalcon_Di_InjectionAwareInterface.html"><span class="doc">Phalcon\Di\InjectionAwareInterface</span></a>, <a class="reference internal" href="Phalcon_Http_ResponseInterface.html"><span class="doc">Phalcon\Http\ResponseInterface</span></a></p>
 <p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/http/response.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
 <p>Part of the HTTP cycle is return responses to the clients. Phalcon\HTTP\Response is the Phalcon component responsible to achieve this task. HTTP responses are usually composed by headers and body.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Http\Response</span><span class="p">();</span>
 <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setStatusCode</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="s2">&quot;OK&quot;</span><span class="p">);</span>
@@ -109,7 +109,7 @@
 <p>Phalcon\Http\Response constructor</p>
 <p>public <a class="reference internal" href="Phalcon_Http_ResponseInterface.html"><span class="doc">Phalcon\Http\ResponseInterface</span></a>  <strong>setStatusCode</strong> (<em>int</em> $code, <em>string</em> $message)</p>
 <p>Sets the HTTP response code</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setStatusCode</span><span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="s2">&quot;Not Found&quot;</span><span class="p">);</span>
 </pre></div>
@@ -124,14 +124,14 @@
 <p>Returns coookies set by the user</p>
 <p>public <a class="reference internal" href="Phalcon_Http_ResponseInterface.html"><span class="doc">Phalcon\Http\ResponseInterface</span></a>  <strong>setHeader</strong> (<em>string</em> $name, <em>string</em> $value)</p>
 <p>Overwrites a header in the response</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setHeader</span><span class="p">(</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">,</span> <span class="s2">&quot;text/plain&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>public <a class="reference internal" href="Phalcon_Http_ResponseInterface.html"><span class="doc">Phalcon\Http\ResponseInterface</span></a>  <strong>setRawHeader</strong> (<em>string</em> $header)</p>
 <p>Send a raw header to the response</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setRawHeader</span><span class="p">(</span><span class="s2">&quot;HTTP/1.1 404 Not Found&quot;</span><span class="p">);</span>
 </pre></div>
@@ -140,7 +140,7 @@
 <p>Resets all the stablished headers</p>
 <p>public <a class="reference internal" href="Phalcon_Http_ResponseInterface.html"><span class="doc">Phalcon\Http\ResponseInterface</span></a>  <strong>setExpires</strong> (<em>DateTime</em> $datetime)</p>
 <p>Sets a Expires header to use HTTP cache</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">response</span><span class="o">-&gt;</span><span class="na">setExpires</span><span class="p">(</span><span class="k">new</span> <span class="nx">DateTime</span><span class="p">());</span>
 </pre></div>
@@ -149,7 +149,7 @@
 <p>Sends a Not-Modified response</p>
 <p>public <a class="reference internal" href="Phalcon_Http_ResponseInterface.html"><span class="doc">Phalcon\Http\ResponseInterface</span></a>  <strong>setContentType</strong> (<em>string</em> $contentType, [<em>string</em> $charset])</p>
 <p>Sets the response content-type mime, optionally the charset</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setContentType</span><span class="p">(</span><span class="s1">&#39;application/pdf&#39;</span><span class="p">);</span>
 <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setContentType</span><span class="p">(</span><span class="s1">&#39;text/plain&#39;</span><span class="p">,</span> <span class="s1">&#39;UTF-8&#39;</span><span class="p">);</span>
@@ -157,14 +157,14 @@
 </div>
 <p>public  <strong>setEtag</strong> (<em>string</em> $etag)</p>
 <p>Set a custom ETag</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setEtag</span><span class="p">(</span><span class="nb">md5</span><span class="p">(</span><span class="nb">time</span><span class="p">()));</span>
 </pre></div>
 </div>
 <p>public <a class="reference internal" href="Phalcon_Http_ResponseInterface.html"><span class="doc">Phalcon\Http\ResponseInterface</span></a>  <strong>redirect</strong> ([<em>string|array</em> $location], [<em>boolean</em> $externalRedirect], [<em>int</em> $statusCode])</p>
 <p>Redirect by HTTP to another action or URL</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
   <span class="c1">//Using a string redirect (internal/external)</span>
 <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">redirect</span><span class="p">(</span><span class="s2">&quot;posts/index&quot;</span><span class="p">);</span>
@@ -181,14 +181,14 @@
 </div>
 <p>public <a class="reference internal" href="Phalcon_Http_ResponseInterface.html"><span class="doc">Phalcon\Http\ResponseInterface</span></a>  <strong>setContent</strong> (<em>string</em> $content)</p>
 <p>Sets HTTP response body</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setContent</span><span class="p">(</span><span class="s2">&quot;&lt;h1&gt;Hello!&lt;/h1&gt;&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>public <a class="reference internal" href="Phalcon_Http_ResponseInterface.html"><span class="doc">Phalcon\Http\ResponseInterface</span></a>  <strong>setJsonContent</strong> (<em>string</em> $content)</p>
 <p>Sets HTTP response body. The parameter is automatically converted to JSON</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setJsonContent</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;status&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;OK&quot;</span><span class="p">));</span>
 <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setJsonContent</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;status&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;OK&quot;</span><span class="p">),</span> <span class="nx">JSON_NUMERIC_CHECK</span><span class="p">);</span>
@@ -199,7 +199,7 @@
 </ul>
 <p>public <a class="reference internal" href="Phalcon_Http_ResponseInterface.html"><span class="doc">Phalcon\Http\ResponseInterface</span></a>  <strong>setBsonContent</strong> (<em>mixed</em> $content)</p>
 <p>Sets HTTP response body. The parameter is automatically converted to BSON</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setBsonContent</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;status&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span> <span class="s2">&quot;pic&quot;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">MongoBinData</span><span class="p">(</span><span class="nb">file_get_contents</span><span class="p">(</span><span class="s2">&quot;/var/www/phalconphp.jpg&quot;</span><span class="p">)));</span>
 </pre></div>

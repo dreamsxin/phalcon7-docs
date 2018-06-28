@@ -207,7 +207,7 @@
 <h2>连接数据库（Connecting to Databases）<a class="headerlink" href="#connecting-to-databases" title="永久链接至标题">¶</a></h2>
 <p>为了建立连接，实例化适配器类是必须的。它只接收一个包含连接参数的数组。
 下面的例子展示了，传递必要参数和可选项的参数去连接数据库：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// 必要参数</span>
 <span class="nv">$config</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
@@ -224,7 +224,7 @@
 <span class="nv">$connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\DB\Adapter\Pdo\Mysql</span><span class="p">(</span><span class="nv">$config</span><span class="p">);</span>
 </pre></div>
 </div>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// 必要参数</span>
 <span class="nv">$config</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
@@ -241,7 +241,7 @@
 <span class="nv">$connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\DB\Adapter\Pdo\Postgresql</span><span class="p">(</span><span class="nv">$config</span><span class="p">);</span>
 </pre></div>
 </div>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// 必要参数</span>
 <span class="nv">$config</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
@@ -252,7 +252,7 @@
 <span class="nv">$connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\DB\Adapter\Pdo\Sqlite</span><span class="p">(</span><span class="nv">$config</span><span class="p">);</span>
 </pre></div>
 </div>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// 基本配置信息</span>
 <span class="nv">$config</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
@@ -277,7 +277,7 @@
 <div class="section" id="pdo-setting-up-additional-pdo-options">
 <h2>设置额外的 PDO 选项（Setting up additional PDO options）<a class="headerlink" href="#pdo-setting-up-additional-pdo-options" title="永久链接至标题">¶</a></h2>
 <p>你可以在连接的时候，通过传递&#8217;options&#8217;参数，设置PDO选项：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// 带PDO options参数的创建连接</span>
 <span class="nv">$connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\DB\Adapter\Pdo\Mysql</span><span class="p">(</span>
@@ -298,7 +298,7 @@
 <div class="section" id="finding-rows">
 <h2>查找行（Finding Rows）<a class="headerlink" href="#finding-rows" title="永久链接至标题">¶</a></h2>
 <p>文档 <a class="reference internal" href="../api/Phalcon_Db.html"><span class="doc">Phalcon\Db</span></a> 提供了几种方法去查询行。在这个例子中，SQL语句是必须符合数据库的SQL语法的：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;SELECT id, name FROM robots ORDER BY name&quot;</span><span class="p">;</span>
 
@@ -346,7 +346,7 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;SELECT id, name FROM robots ORDER BY name&quot;</span><span class="p">;</span>
 <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
@@ -358,7 +358,7 @@
 </pre></div>
 </div>
 <p>这个 <code class="code docutils literal"><span class="pre">Phalcon\DB::query()</span></code> 方法返回一个 <a class="reference internal" href="../api/Phalcon_Db_Result_Pdo.html"><span class="doc">Phalcon\Db\Result\Pdo</span></a> 实例。这些对象封装了凡是涉及到返回的结果集的功能，例如遍历，寻找特定行，计算总行数等等</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;SELECT id, name FROM robots&quot;</span><span class="p">;</span>
 <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
@@ -382,7 +382,7 @@
 <p>在 <a class="reference internal" href="../api/Phalcon_Db.html"><span class="doc">Phalcon\Db</span></a> 中支持绑定参数。虽然使用绑定参数会有很少性能的损失，但是我们鼓励你使用这个方法
 去消除(译者注：是消除，不是减少，因为使用参数绑定可以彻底解决SQL注入问题)SQL注入攻击的可能性。
 字符串和占位符都支持，就像下面展示的那样，绑定参数可以简单地实现：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// 用数字占位符绑定参数</span>
 <span class="nv">$sql</span>    <span class="o">=</span> <span class="s2">&quot;SELECT * FROM robots WHERE name = ? ORDER BY name&quot;</span><span class="p">;</span>
@@ -401,7 +401,7 @@ in the connection parameters or in your database server configuration, as a wron
 charset will produce undesired effects when storing or retrieving data.</p>
 <p>Also, you can pass your parameters directly to the execute/query methods. In this case
 bound parameters are directly passed to PDO:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Binding with PDO placeholders</span>
 <span class="nv">$sql</span>    <span class="o">=</span> <span class="s2">&quot;SELECT * FROM robots WHERE name = ? ORDER BY name&quot;</span><span class="p">;</span>
@@ -412,7 +412,7 @@ bound parameters are directly passed to PDO:</p>
 <div class="section" id="inserting-updating-deleting-rows">
 <h2>插入、更新、删除行（Inserting/Updating/Deleting Rows）<a class="headerlink" href="#inserting-updating-deleting-rows" title="永久链接至标题">¶</a></h2>
 <p>去插入，更新或者删除行，你可以使用原生SQL操作，或者使用类中预设的方法</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// 使用原生SQL插入行</span>
 <span class="nv">$sql</span>     <span class="o">=</span> <span class="s2">&quot;INSERT INTO `robots`(`name`, `year`) VALUES (&#39;Astro Boy&#39;, 1952)&quot;</span><span class="p">;</span>
@@ -502,7 +502,7 @@ bound parameters are directly passed to PDO:</p>
 <div class="section" id="transactions-and-nested-transactions">
 <h2>事务与嵌套事务（Transactions and Nested Transactions）<a class="headerlink" href="#transactions-and-nested-transactions" title="永久链接至标题">¶</a></h2>
 <p>PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库系统上, 往往可以提高数据库的性能：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">try</span> <span class="p">{</span>
 
@@ -525,7 +525,7 @@ bound parameters are directly passed to PDO:</p>
 </div>
 <p>除了标准的事务， <a class="reference internal" href="../api/Phalcon_Db.html"><span class="doc">Phalcon\Db</span></a> 提供了内置支持`嵌套事务`_(如果数据库系统支持的话)。
 当你第二次调用begin()方法，一个嵌套的事务就被创建了：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">try</span> <span class="p">{</span>
 
@@ -613,7 +613,7 @@ bound parameters are directly passed to PDO:</p>
 </tbody>
 </table>
 <p>绑定一个EventsManager给一个连接是很简单的， <a class="reference internal" href="../api/Phalcon_Db.html"><span class="doc">Phalcon\Db</span></a> 将触发这些类型为“db”的事件：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\DB\Adapter\Pdo\Mysql</span> <span class="k">as</span> <span class="nx">Connection</span><span class="p">;</span>
@@ -637,7 +637,7 @@ bound parameters are directly passed to PDO:</p>
 </pre></div>
 </div>
 <p>数据库事件中，停止操作是非常有用的，例如：如果你想要实现一个注入检查器，在发送SQL到数据库前触发：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span><span class="s1">&#39;db:beforeQuery&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$connection</span><span class="p">)</span> <span class="p">{</span>
 
@@ -657,7 +657,7 @@ bound parameters are directly passed to PDO:</p>
 <div class="section" id="sql-logging-sql-statements">
 <h2>记录 SQL 语句（Logging SQL Statements）<a class="headerlink" href="#sql-logging-sql-statements" title="永久链接至标题">¶</a></h2>
 <p>使用例如 <a class="reference internal" href="../api/Phalcon_Db.html"><span class="doc">Phalcon\Db</span></a> 的高级抽象组件操作数据库，被发送到数据库中执行的原生SQL语句是难以获知的。使用 <a class="reference internal" href="../api/Phalcon_Logger.html"><span class="doc">Phalcon\Logger</span></a> 和 <a class="reference internal" href="../api/Phalcon_Db.html"><span class="doc">Phalcon\Db</span></a> 来配合使用，可以在数据库抽象层上提供记录的功能。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Logger</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">;</span>
@@ -686,7 +686,7 @@ bound parameters are directly passed to PDO:</p>
 </pre></div>
 </div>
 <p>如上操作，文件 <em>app/logs/db.log</em> 将包含像下面这样的信息：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">[Sun, 29 Apr 12 22:35:26 -0500][DEBUG][Resource Id #77] INSERT INTO products</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">[Sun, 29 Apr 12 22:35:26 -0500][DEBUG][Resource Id #77] INSERT INTO products</span>
 <span class="x">(name, price) VALUES (&#39;Hot pepper&#39;, 3.50)</span>
 </pre></div>
 </div>
@@ -700,7 +700,7 @@ bound parameters are directly passed to PDO:</p>
 <div class="section" id="describing-tables-views">
 <h2>获取数据库表与视图信息（Describing Tables/Views）<a class="headerlink" href="#describing-tables-views" title="永久链接至标题">¶</a></h2>
 <p><a class="reference internal" href="../api/Phalcon_Db.html"><span class="doc">Phalcon\Db</span></a> 也提供了方法去检索详细的表和视图信息：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// 获取test_db数据库的所有表</span>
 <span class="nv">$tables</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">listTables</span><span class="p">(</span><span class="s2">&quot;test_db&quot;</span><span class="p">);</span>
@@ -755,7 +755,7 @@ bound parameters are directly passed to PDO:</p>
 </tbody>
 </table>
 <p>对于被支持的数据库系统，获取视图的信息的方法也被实现了：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// 获取test_db数据库的视图</span>
 <span class="nv">$tables</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">listViews</span><span class="p">(</span><span class="s2">&quot;test_db&quot;</span><span class="p">);</span>
@@ -772,7 +772,7 @@ bound parameters are directly passed to PDO:</p>
 <div class="section" id="creating-tables">
 <h3>创建数据库表（Creating Tables）<a class="headerlink" href="#creating-tables" title="永久链接至标题">¶</a></h3>
 <p>下面这个例子展示了怎么建立一个表：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">\Phalcon\DB\Column</span> <span class="k">as</span> <span class="nx">Column</span><span class="p">;</span>
 
@@ -921,7 +921,7 @@ bound parameters are directly passed to PDO:</p>
 <p>随着你的应用的增长，作为一个重构的一部分，或者增加新功能，你也许需要修改你的数据库。
 因为不是所有的数据库允许你修改已存在的字段或者添加字段在2个已存在的字段之间。所以 <a class="reference internal" href="../api/Phalcon_Db.html"><span class="doc">Phalcon\Db</span></a>
 会受到数据库系统的这些限制。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\DB\Column</span> <span class="k">as</span> <span class="nx">Column</span><span class="p">;</span>
 
@@ -966,7 +966,7 @@ bound parameters are directly passed to PDO:</p>
 <div class="section" id="dropping-tables">
 <h3>删除数据库表（Dropping Tables）<a class="headerlink" href="#dropping-tables" title="永久链接至标题">¶</a></h3>
 <p>删除数据库表的例子:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// 删除&#39;robots&#39;表</span>
 <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">dropTable</span><span class="p">(</span><span class="s2">&quot;robots&quot;</span><span class="p">);</span>

@@ -93,7 +93,7 @@
   <div class="section" id="class-phalcon-chart-captcha">
 <h1>Class <strong>Phalcon\Chart\Captcha</strong><a class="headerlink" href="#class-phalcon-chart-captcha" title="永久链接至标题">¶</a></h1>
 <p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/chart/captcha.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nb">header</span><span class="p">(</span><span class="s1">&#39;Content-Type: image/png&#39;</span><span class="p">);</span>
  <span class="nv">$captcha</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Chart\Captcha</span><span class="p">(</span><span class="nx">Phalcon\Text</span><span class="o">::</span><span class="na">random</span><span class="p">(</span><span class="nx">Phalcon\Text</span><span class="o">::</span><span class="na">RANDOM_ALNUM</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="k">NULL</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">50</span><span class="p">);</span>
@@ -116,7 +116,7 @@
 <p>Sets a font size</p>
 <p>public <em>String</em>  <strong>render</strong> ([<em>unknown</em> $filename], [<em>string</em> $word], [<em>unknown</em> $offset_x], [<em>unknown</em> $offset_y], [<em>unknown</em> $foreground], [<em>unknown</em> $background], [<em>unknown</em> $width], [<em>unknown</em> $height])</p>
 <p>Generate Captcha data</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
      <span class="nv">$captcha</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Chart\Captcha</span><span class="p">;</span>
      <span class="nv">$captcha</span><span class="o">-&gt;</span><span class="na">reander</span><span class="p">(</span><span class="s1">&#39;Phalcon is a web framework&#39;</span><span class="p">);</span>
@@ -124,7 +124,7 @@
 </div>
 <p>public <em>boolean</em>  <strong>save</strong> ([<em>filename</em> $filename])</p>
 <p>Save the image</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
      <span class="nv">$captcha</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Chart\Captcha</span><span class="p">;</span>
      <span class="nv">$captcha</span><span class="o">-&gt;</span><span class="na">reander</span><span class="p">(</span><span class="s1">&#39;Phalcon is a web framework&#39;</span><span class="p">);</span>

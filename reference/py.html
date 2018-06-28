@@ -96,32 +96,32 @@
   <div class="section" id="python-embedded-python">
 <h1>Python执行器（Embedded Python）<a class="headerlink" href="#python-embedded-python" title="永久链接至标题">¶</a></h1>
 <p>执行 Python 代码：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">function</span> <span class="nf">test</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="s1">&#39;Test&#39;</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="nv">$py</span> <span class="o">=</span> <span class="s">&lt;&lt;&lt;EOT</span>
+<span class="nv">$py</span> <span class="o">=</span> <span class="s">&lt;&lt;&lt;</span><span class="dl">EOT</span><span class="s"></span>
 <span class="s">import phalcon</span>
 
 <span class="s">print phalcon.call(&#39;test&#39;)</span>
 <span class="s">print phalcon.call(&#39;sha1&#39;, (&#39;tuple&#39;,))</span>
 <span class="s">print phalcon.call(&#39;sha1&#39;, [&#39;list&#39;])</span>
-<span class="s">EOT;</span>
+<span class="dl">EOT</span><span class="p">;</span>
 
 <span class="nx">Phalcon\Py</span><span class="o">::</span><span class="na">exec</span><span class="p">(</span><span class="nv">$py</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>导入模块：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$phalcon</span> <span class="o">=</span> <span class="nx">Phalcon\Py</span><span class="o">::</span><span class="na">import</span><span class="p">(</span><span class="s1">&#39;phalcon&#39;</span><span class="p">);</span>
 <span class="nx">Phalcon\Py</span><span class="o">::</span><span class="na">callFunction</span><span class="p">(</span><span class="nv">$phalcon</span><span class="p">,</span> <span class="s1">&#39;call&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>调用对象方法：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$list</span> <span class="o">=</span> <span class="nx">Phalcon\Py</span><span class="o">::</span><span class="na">list</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]);</span>
 <span class="nx">Phalcon\Py</span><span class="o">::</span><span class="na">callMethod</span><span class="p">(</span><span class="nv">$list</span><span class="p">,</span> <span class="s1">&#39;sort&#39;</span><span class="p">);</span>

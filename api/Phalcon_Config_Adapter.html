@@ -113,42 +113,42 @@
 <p>Sets values</p>
 <p>public <em>boolean</em>  <strong>offsetExists</strong> (<em>unknown</em> $property) inherited from Phalcon\Config</p>
 <p>Allows to check whether an attribute is defined using the array-syntax</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nb">var_dump</span><span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;database&#39;</span><span class="p">]));</span>
 </pre></div>
 </div>
 <p>public <em>mixed</em>  <strong>get</strong> (<em>string</em> $index, [<em>mixed</em> $defaultValue]) inherited from Phalcon\Config</p>
 <p>Gets an attribute from the configuration, if the attribute isn&#8217;t defined returns null If the value is exactly null or is not defined the default value will be used instead</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="k">echo</span> <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;controllersDir&#39;</span><span class="p">,</span> <span class="s1">&#39;../app/controllers/&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>public <em>string</em>  <strong>offsetGet</strong> (<em>unknown</em> $property) inherited from Phalcon\Config</p>
 <p>Gets an attribute using the array-syntax</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nb">print_r</span><span class="p">(</span><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;database&#39;</span><span class="p">]);</span>
 </pre></div>
 </div>
 <p>public  <strong>offsetSet</strong> (<em>unknown</em> $property, <em>mixed</em> $value) inherited from Phalcon\Config</p>
 <p>Sets an attribute using the array-syntax</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;database&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Sqlite&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>public  <strong>offsetUnset</strong> (<em>unknown</em> $property) inherited from Phalcon\Config</p>
 <p>Unsets an attribute using the array-syntax</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nb">unset</span><span class="p">(</span><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;database&#39;</span><span class="p">]);</span>
 </pre></div>
 </div>
 <p>public <a class="reference internal" href="Phalcon_Config.html"><span class="doc">Phalcon\Config</span></a>  <strong>merge</strong> (<a class="reference internal" href="Phalcon_Config.html"><span class="doc">Phalcon\Config</span></a> $config) inherited from Phalcon\Config</p>
 <p>Merges a configuration into the current one</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$appConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Config</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;database&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;localhost&#39;</span><span class="p">)));</span>
 <span class="nv">$globalConfig</span><span class="o">-&gt;</span><span class="na">merge</span><span class="p">(</span><span class="nv">$config2</span><span class="p">);</span>
@@ -156,7 +156,7 @@
 </div>
 <p>public <em>array</em>  <strong>toArray</strong> () inherited from Phalcon\Config</p>
 <p>Converts recursively the object to an array</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nb">print_r</span><span class="p">(</span><span class="nv">$config</span><span class="o">-&gt;</span><span class="na">toArray</span><span class="p">());</span>
 </pre></div>

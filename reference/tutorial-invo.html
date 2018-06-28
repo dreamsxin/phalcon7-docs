@@ -115,7 +115,7 @@ INVO是我们创建的一个程序样本。INVO是一个简单的用来允许用
 <div class="section" id="project-structure">
 <h2>项目结构（Project Structure）<a class="headerlink" href="#project-structure" title="永久链接至标题">¶</a></h2>
 <p>一旦你从你的文档根目录复制了这个项目，你将会看到以下结构：</p>
-<div class="highlight-bash"><div class="highlight"><pre>invo/
+<div class="highlight-bash"><div class="highlight"><pre><span></span>invo/
     app/
         config/
         controllers/
@@ -146,7 +146,7 @@ INVO是我们创建的一个程序样本。INVO是一个简单的用来允许用
 <div class="section" id="configuration">
 <h2>配置（Configuration）<a class="headerlink" href="#configuration" title="永久链接至标题">¶</a></h2>
 <p>INVO有一个设置应用常规参数的配置文件。这个文件位于 <cite>app/config/config.ini</cite>，并且他在应用引导文件的最开始就开始加载 (<cite>public/index.php</cite>)：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Config\Adapter\Ini</span> <span class="k">as</span> <span class="nx">ConfigIni</span><span class="p">;</span>
 
@@ -157,7 +157,7 @@ INVO是我们创建的一个程序样本。INVO是一个简单的用来允许用
 </pre></div>
 </div>
 <p><a class="reference internal" href="config.html"><span class="doc">Phalcon\Config</span></a> 允许我们使用面向对象的方式来操作文件。在这个例子中，我们使用ini文件作为配置文件，然而，它对于配置文件有更多的适配支持。这个配置文件包含以下配置：</p>
-<div class="highlight-ini"><div class="highlight"><pre><span class="k">[database]</span>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[database]</span>
 <span class="na">host</span>     <span class="o">=</span> <span class="s">localhost</span>
 <span class="na">username</span> <span class="o">=</span> <span class="s">root</span>
 <span class="na">password</span> <span class="o">=</span> <span class="s">secret</span>
@@ -178,7 +178,7 @@ INVO是我们创建的一个程序样本。INVO是一个简单的用来允许用
 <div class="section" id="autoloaders">
 <h2>自动加载器（Autoloaders）<a class="headerlink" href="#autoloaders" title="永久链接至标题">¶</a></h2>
 <p>在引导文件 (public/index.php) 的第二部分是自动加载器:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="sd">/**</span>
 <span class="sd"> * Auto-loader configuration</span>
@@ -187,7 +187,7 @@ INVO是我们创建的一个程序样本。INVO是一个简单的用来允许用
 </pre></div>
 </div>
 <p>自动加载器注册一组目录列表，应用程序将根据需要从这组目录里查找需要的类文件。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$loader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Loader</span><span class="p">();</span>
 
@@ -205,7 +205,7 @@ INVO是我们创建的一个程序样本。INVO是一个简单的用来允许用
 </div>
 <p>注意, 以上代码注册的目录是在配置文件中定义的. 唯一没有注册的目录是 <cite>viewsDir</cite>, 因为它包含 <cite>HTML</cite> + <cite>PHP</cite> 文件但不是类.
 同时, 也要注意我们使用了常量 <cite>APP_PATH</cite>, 这个常量在引导文件 (public/index.php) 中被定义, 允许我们对我们项目的根路径有一个参考:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// ...</span>
 
@@ -216,7 +216,7 @@ INVO是我们创建的一个程序样本。INVO是一个简单的用来允许用
 <div class="section" id="registering-services">
 <h2>注册服务（Registering services）<a class="headerlink" href="#registering-services" title="永久链接至标题">¶</a></h2>
 <p>服务注册已经在前面的教程中实现了, 利用一个闭包来实现惰性加载组件：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Url</span> <span class="k">as</span> <span class="nx">UrlProvider</span><span class="p">;</span>
 
@@ -239,7 +239,7 @@ INVO是我们创建的一个程序样本。INVO是一个简单的用来允许用
 <div class="section" id="handling-the-request">
 <h2>处理请求（Handling the Request）<a class="headerlink" href="#handling-the-request" title="永久链接至标题">¶</a></h2>
 <p>如果我们忽略文件 (public/index.php) 的结束, 请求最终会被 <a class="reference internal" href="../api/Phalcon_Mvc_Application.html"><span class="doc">Phalcon\Mvc\Application</span></a> 处理, 它会初始化并执行所有必要条件，使应用程序运行：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Application</span><span class="p">;</span>
 
@@ -256,7 +256,7 @@ INVO是我们创建的一个程序样本。INVO是一个简单的用来允许用
 <p>Phalcon 是一个高度解耦的框架，所以我们一个组件来充当胶水来让每个组件都能正常工作。这个组件就是 <a class="reference internal" href="../api/Phalcon_Di.html"><span class="doc">Phalcon\Di</span></a>。这是一个服务容器，可以执行依赖注入和服务定位，实例化应用所需要的所有组件。</p>
 <p>在容器中有多种注册服务的方法。在INVO里, 大部分服务使用匿名函数或者闭包来进行注册的, 对象以惰性的方式被实例化，减少了应用程序所需要的资源。</p>
 <p>例如，下面摘录了 Session 服务的注册。当应用程序需要访问 Session 数据的时候，匿名函数才会被调用：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Session\Adapter\Files</span> <span class="k">as</span> <span class="nx">Session</span><span class="p">;</span>
 
@@ -274,7 +274,7 @@ INVO是我们创建的一个程序样本。INVO是一个简单的用来允许用
 </div>
 <p>这里，我们可以自由的更改适配器，执行额外的初始化或者其他操作。注意，这个服务器是使用 <cite>session</cite> 名字进行注册的。这是一个惯例，来允许框架在服务容器中识别正在活动的服务.</p>
 <p>一个请求可以使用多个服务，单独注册每个服务可以说是一个繁重的任务。因此，框架提供了 <a class="reference internal" href="../api/Phalcon_Di.html"><span class="doc">Phalcon\Di</span></a> 的一个变种，称作  <a class="reference internal" href="../api/Phalcon_Di_FactoryDefault.html"><span class="doc">Phalcon\Di\FactoryDefault</span></a>，其任务是注册所有 MVC 所需要的服务来提供一个全栈框架。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Di\FactoryDefault</span><span class="p">;</span>
 

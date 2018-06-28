@@ -94,7 +94,7 @@
 <p><em>implements</em> <a class="reference internal" href="Phalcon_DiInterface.html"><span class="doc">Phalcon\DiInterface</span></a></p>
 <p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/di.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
 <p>Phalcon\Di is a component that implements Dependency Injection/Service Location of services and it&#8217;s itself a container for them.  Since Phalcon is highly decoupled, Phalcon\Di is essential to integrate the different components of the framework. The developer can also use this component to inject dependencies and manage global instances of the different classes used in the application.  Basically, this component implements the <cite>Inversion of Control</cite> pattern. Applying this, the objects do not receive their dependencies using setters or constructors, but requesting a service dependency injector. This reduces the overall complexity, since there is only one way to get the required dependencies within a component.  Additionally, this pattern increases testability in the code, thus making it less prone to errors.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nv">$di</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Di</span><span class="p">();</span>
 
@@ -155,14 +155,14 @@
 <p>Check if a service is registered using the array syntax. Alias for Phalcon\Di::has()</p>
 <p>public  <strong>offsetSet</strong> (<em>unknown</em> $property, <em>unknown</em> $value)</p>
 <p>Allows to register a shared service using the array syntax. Alias for Phalcon\Di::setShared()</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$di</span><span class="p">[</span><span class="s1">&#39;request&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Http\Request</span><span class="p">();</span>
 </pre></div>
 </div>
 <p>public <em>mixed</em>  <strong>offsetGet</strong> (<em>unknown</em> $property)</p>
 <p>Allows to obtain a shared service using the array syntax. Alias for Phalcon\Di::getShared()</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$di</span><span class="p">[</span><span class="s1">&#39;request&#39;</span><span class="p">]);</span>
 </pre></div>

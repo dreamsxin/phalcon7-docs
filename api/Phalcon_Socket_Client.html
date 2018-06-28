@@ -94,7 +94,7 @@
 <h1>Class <strong>Phalcon\Socket\Client</strong><a class="headerlink" href="#class-phalcon-socket-client" title="永久链接至标题">¶</a></h1>
 <p><em>extends</em> abstract class <a class="reference internal" href="Phalcon_Socket.html"><span class="doc">Phalcon\Socket</span></a></p>
 <p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/socket/client.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Socket\Client</span><span class="p">(</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span> <span class="mi">8989</span><span class="p">);</span>
 <span class="k">if</span> <span class="p">(</span><span class="nv">$client</span><span class="o">-&gt;</span><span class="na">connect</span><span class="p">())</span> <span class="p">{</span>
@@ -142,10 +142,14 @@
 <p>Receives data from a connected socket</p>
 <p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Socket\Client</span></a>  <strong>send</strong> (<em>string</em> $buffer, <em>int</em> $length, <em>int</em> $flag)</p>
 <p>Sends data to a connected socket</p>
+<p>public <em>boolean</em>  <strong>keepAlive</strong> ()</p>
+<p>Enable keepalive</p>
+<p>public <em>boolean</em>  <strong>shutdown</strong> ()</p>
+<p>Shutdown</p>
+<p>public  <strong>close</strong> ()</p>
+<p>Close</p>
 <p>public <em>resource</em>  <strong>getSocket</strong> () inherited from Phalcon\Socket</p>
 <p>Gets the socket</p>
-<p>public <em>int</em>  <strong>getSocketId</strong> () inherited from Phalcon\Socket</p>
-<p>Gets the socket id</p>
 <p>protected  <strong>_throwSocketException</strong> () inherited from Phalcon\Socket</p>
 <p>Throws an socket exception</p>
 <p>public <em>boolean</em>  <strong>setBlocking</strong> (<em>int</em> $flag) inherited from Phalcon\Socket</p>
@@ -154,8 +158,6 @@
 <p>Checks the socket blocking / non blocking</p>
 <p>public <em>boolean</em>  <strong>setOption</strong> (<em>int</em> $level, <em>int</em> $optname, <em>mixed</em> $optval) inherited from Phalcon\Socket</p>
 <p>Set the socket to blocking / non blocking</p>
-<p>public  <strong>close</strong> () inherited from Phalcon\Socket</p>
-<p>Close the socket</p>
 <p>public  <strong>isClose</strong> () inherited from Phalcon\Socket</p>
 <p>Check if the socket close</p>
 <p>public  <strong>__destruct</strong> () inherited from Phalcon\Socket</p>

@@ -153,6 +153,8 @@
 <p>Returns a label for an element</p>
 <p>public <em>mixed</em>  <strong>getValue</strong> (<em>string</em> $name, [<em>unknown</em> $flag])</p>
 <p>Gets a value from the internal related entity or from the default value</p>
+<p>public <em>mixed</em>  <strong>setValue</strong> (<em>string</em> $name, [<em>mixed</em> $value])</p>
+<p>Sets a value</p>
 <p>public <em>mixed</em>  <strong>getValues</strong> ([<em>string</em> $name], [<em>unknown</em> $flag])</p>
 <p>Gets a values</p>
 <p>public <em>boolean</em>  <strong>has</strong> (<em>string</em> $name)</p>
@@ -175,14 +177,14 @@
 <p>Check if the current element in the iterator is valid</p>
 <p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Forms\Form</span></a>  <strong>appendMessage</strong> (<em>string</em> $field, <a class="reference internal" href="Phalcon_Validation_Message.html"><span class="doc">Phalcon\Validation\Message</span></a> $message)</p>
 <p>Appends a message to the form</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nv">$form</span><span class="o">-&gt;</span><span class="na">appendMessage</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Phalcon\Validation\Message</span><span class="p">(</span><span class="s1">&#39;Must be not empty &#39;</span><span class="p">));</span>
 </pre></div>
 </div>
 <p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Forms\Form</span></a>  <strong>appendMessages</strong> (<em>string</em> $field, <em>Phalcon\Validation\MessageInterface[]</em> $messages)</p>
 <p>Appends a messages to the form</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nv">$form</span><span class="o">-&gt;</span><span class="na">appendMessages</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="k">new</span> <span class="nx">Phalcon\Validation\Message</span><span class="p">(</span><span class="s1">&#39;Must be not empty &#39;</span><span class="p">),</span> <span class="k">new</span> <span class="nx">Phalcon\Validation\Message</span><span class="p">(</span><span class="s1">&#39;Must be an email address&#39;</span><span class="p">)));</span>
 </pre></div>

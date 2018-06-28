@@ -116,7 +116,7 @@
 <h2>使用示例（Usage Example）<a class="headerlink" href="#usage-example" title="永久链接至标题">¶</a></h2>
 <p>以下面示例中，我们使用EventsManager来侦听在 <a class="reference internal" href="../api/Phalcon_Db.html"><span class="doc">Phalcon\Db</span></a> 管理下的MySQL连接中产生的事件。
 首先，我们需要一个侦听者对象来完成这部分的工作。我们创建了一个类，这个类有我们需要侦听事件所对应的方法：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">MyDbListener</span>
 <span class="p">{</span>
@@ -139,7 +139,7 @@
 </div>
 <p>这个新的类可能有点啰嗦，但我们需要这样做。
 事件管理器在组件和我们的侦听类之间充当着接口角色，并提供了基于在我们侦听类中所定义方法的钩子：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Db\Adapter\Pdo\Mysql</span> <span class="k">as</span> <span class="nx">DbAdapter</span><span class="p">;</span>
@@ -170,7 +170,7 @@
 </div>
 <p>为了纪录我们应用中全部执行的SQL语句，我们需要使用“afterQuery”事件。
 第一个传递给事件侦听者的参数包含了关于正在运行事件的上下文信息，第二个则是连接本身。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Logger\Adapter\File</span> <span class="k">as</span> <span class="nx">Logger</span><span class="p">;</span>
 
@@ -178,7 +178,7 @@
 <span class="p">{</span>
     <span class="k">protected</span> <span class="nv">$_logger</span><span class="p">;</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_logger</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span><span class="s2">&quot;../apps/logs/db.log&quot;</span><span class="p">);</span>
     <span class="p">}</span>
@@ -191,7 +191,7 @@
 </pre></div>
 </div>
 <p>作为些示例的一部分，我们同样实现了 <a class="reference internal" href="../api/Phalcon_Db_Profiler.html"><span class="doc">Phalcon\Db\Profiler</span></a> 来检测SQL语句是否超出了期望的执行时间：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Db\Profiler</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Logger</span><span class="p">;</span>
@@ -206,7 +206,7 @@
     <span class="sd">/**</span>
 <span class="sd">     *创建分析器并开始纪录</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_profiler</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Profiler</span><span class="p">();</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_logger</span>   <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span><span class="s2">&quot;../apps/logs/db.log&quot;</span><span class="p">);</span>
@@ -237,7 +237,7 @@
 </pre></div>
 </div>
 <p>可以从侦听者中获取结果分析数据：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// 发送一个SQL命令到数据库服务器</span>
 <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM products p WHERE p.status = 1&quot;</span><span class="p">);</span>
@@ -251,7 +251,7 @@
 </pre></div>
 </div>
 <p>类似地，我们可以注册一个匿名函数来执行这些任务，而不是再分离出一个侦听类（如上面看到的）：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// 侦听全部数据加事件</span>
 <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span><span class="s1">&#39;db&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$connection</span><span class="p">)</span> <span class="p">{</span>
@@ -267,7 +267,7 @@
 <p>你可以在你的应用中为事件管理器的触发事件创建组件。这样的结果是，可以有很多存在的侦听者为这些产生的事件作出响应。
 在以下的示例中，我们将会创建一个叫做“MyComponent”组件。这是个意识事件管理器组件；
 当它的方法:code:someTask()`被执行时它将触发事件管理器中全部侦听者的两个事件：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Events\EventsAwareInterface</span><span class="p">;</span>
 
@@ -299,7 +299,7 @@
 </div>
 <p>注意到这个组件产生的事件都以“my-component”为前缀。这是一个唯一的关键词，可以帮助我们区分各个组件产生的事件。
 你甚至可以在组件的外面生成相同名字的事件。现在让我们来为这个组件创建一个侦听者：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">SomeListener</span>
 <span class="p">{</span>
@@ -316,7 +316,7 @@
 </pre></div>
 </div>
 <p>侦听者可以是简单的一个实现了全部组件触发事件的类。现在让我们把全部的东西整合起来：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">;</span>
 
@@ -337,19 +337,19 @@
 </pre></div>
 </div>
 <p>当:code:someTask()`被执行时，在侦听者里面的两个方法将会被执行，并产生以下输出：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">这里, beforeSomeTask</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">这里, beforeSomeTask</span>
 <span class="x">这里, someTask</span>
 <span class="x">这里, afterSomeTask</span>
 </pre></div>
 </div>
 <p>当触发一个事件时也可以使用:code:fire()`中的第三个参数来传递额外的数据：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">fire</span><span class="p">(</span><span class="s2">&quot;my-component:afterSomeTask&quot;</span><span class="p">,</span> <span class="nv">$this</span><span class="p">,</span> <span class="nv">$extraData</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>在一个侦听者里，第三个参数可用于接收此参数：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// 从第三个参数接收数据</span>
 <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$component</span><span class="p">,</span> <span class="nv">$data</span><span class="p">)</span> <span class="p">{</span>
@@ -363,7 +363,7 @@
 </pre></div>
 </div>
 <p>如果一个侦听者仅是对某个特定类型的事件感兴趣，你要吧直接附上一个侦听者：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// 这个处理器只会在“beforeSomeTask”事件触发时才被执行</span>
 <span class="nv">$eventManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span><span class="s1">&#39;my-component:beforeSomeTask&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$component</span><span class="p">)</span> <span class="p">{</span>
@@ -376,7 +376,7 @@
 <h2>事件传播与取消（Event Propagation/Cancellation）<a class="headerlink" href="#event-propagation-cancellation" title="永久链接至标题">¶</a></h2>
 <p>可能会有多个侦听者添加到同一个事件管理器，这意味着对于相同的事件会通知多个侦听者。
 这些侦听者会以它们在事件管理器注册的顺序来通知。有些事件是可以被取消的，暗示着这些事件可以被终止以防其他侦听都再收到事件的通知：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span><span class="s1">&#39;db&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$connection</span><span class="p">)</span> <span class="p">{</span>
 
@@ -393,13 +393,13 @@
 </div>
 <p>默认情况下全部的事件都是可以取消的，甚至框架提供的事件也是可以取消的。
 你可以通过在 <code class="code docutils literal"><span class="pre">fire()</span></code> 中的第四个参数中传递 <code class="code docutils literal"><span class="pre">false</span></code> 来指明这是一个不可取消的事件：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">fire</span><span class="p">(</span><span class="s2">&quot;my-component:afterSomeTask&quot;</span><span class="p">,</span> <span class="nv">$this</span><span class="p">,</span> <span class="nv">$extraData</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>你可以通过在 <code class="code docutils literal"><span class="pre">fire()</span></code> 中的第五个参数中传递 <code class="code docutils literal"><span class="pre">true</span></code> 来指明这是一个可以通过返回 <code class="code docutils literal"><span class="pre">false</span></code> 而强制取消的事件优先级高于第四个参数：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">fire</span><span class="p">(</span><span class="s2">&quot;my-component:afterSomeTask&quot;</span><span class="p">,</span> <span class="nv">$this</span><span class="p">,</span> <span class="nv">$extraData</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
 </pre></div>
@@ -408,7 +408,7 @@
 <div class="section" id="listen-for-any-event">
 <h2>侦听全部事件（Listen for Any Event）<a class="headerlink" href="#listen-for-any-event" title="永久链接至标题">¶</a></h2>
 <p>通过通配符 <cite>*</cite>，你可以侦听所有事件消息：</p>
-<div class="highlight-php"><div class="highlight"><pre>
+<div class="highlight-php"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 <p>&lt;?php</p>
@@ -417,7 +417,7 @@
 <div class="section" id="listener-priorities">
 <h2>侦听器优先级（Listener Priorities）<a class="headerlink" href="#listener-priorities" title="永久链接至标题">¶</a></h2>
 <p>当附上侦听者时，你可以设置一个优先级。使用此特性，你可以指定这些侦听者被调用的固定顺序：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$evManager</span><span class="o">-&gt;</span><span class="na">enablePriorities</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
 
@@ -430,7 +430,7 @@
 <div class="section" id="collecting-responses">
 <h2>收集响应（Collecting Responses）<a class="headerlink" href="#collecting-responses" title="永久链接至标题">¶</a></h2>
 <p>事件管理器可以收集每一个被通知的侦听者返回的响应，以下这个示例解释了它是如何工作的：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Events\Manager</span> <span class="k">as</span> <span class="nx">EventsManager</span><span class="p">;</span>
 
@@ -457,7 +457,7 @@
 </pre></div>
 </div>
 <p>上面示例将输出：</p>
-<div class="highlight-html"><div class="highlight"><pre>Array ( [0] =&gt; first response [1] =&gt; second response )
+<div class="highlight-html"><div class="highlight"><pre><span></span>Array ( [0] =&gt; first response [1] =&gt; second response )
 </pre></div>
 </div>
 </div>

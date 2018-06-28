@@ -110,7 +110,7 @@
 <p>Phalcon\Mvc\Model\Resultset\Simple constructor</p>
 <p>public <em>boolean</em>  <strong>valid</strong> ()</p>
 <p>Check whether the internal resource has rows to fetch</p>
-<p>public <em>array</em>  <strong>toArray</strong> ([<em>unknown</em> $columns], [<em>boolean</em> $renameColumns])</p>
+<p>public <em>array</em>  <strong>toArray</strong> ([<em>array</em> $columns], [<em>boolean</em> $mustColumn])</p>
 <p>Returns a complete resultset as an array, if the resultset has a big number of rows it could consume more memory than it currently does. Exporting the resultset to an array couldn&#8217;t be faster with a large number of records</p>
 <p>public <em>string</em>  <strong>serialize</strong> ()</p>
 <p>Serializing a resultset will dump all related rows into a big array</p>
@@ -158,7 +158,7 @@
 <p>Deletes every record in the resultset</p>
 <p>public <a class="reference internal" href="Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> [] <strong>filter</strong> (<em>callback</em> $filter) inherited from Phalcon\Mvc\Model\Resultset</p>
 <p>Filters a resultset returning only those the developer requires</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nv">$filtered</span> <span class="o">=</span> <span class="nv">$robots</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="nv">$robot</span><span class="p">){</span>
     <span class="k">if</span> <span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">id</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
@@ -171,7 +171,7 @@
 <p>Updates every record in the resultset</p>
 <p>public <em>array</em>  <strong>jsonSerialize</strong> () inherited from Phalcon\Mvc\Model\Resultset</p>
 <p>Returns serialised model objects as array for json_encode. Calls jsonSerialize on each object if present</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">find</span><span class="p">();</span>
  <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$robots</span><span class="p">);</span>

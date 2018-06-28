@@ -160,7 +160,7 @@
 <div class="section" id="creating-a-log">
 <h2>创建日志（Creating a Log）<a class="headerlink" href="#creating-a-log" title="永久链接至标题">¶</a></h2>
 <p>下面的例子展示了如何创建日志对象及如何添加日志信息：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Logger</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Logger\Adapter\File</span> <span class="k">as</span> <span class="nx">FileAdapter</span><span class="p">;</span>
@@ -185,7 +185,7 @@
 </pre></div>
 </div>
 <p>产生的日志信息如下：</p>
-<div class="highlight-none"><div class="highlight"><pre>[Tue, 28 Jul 15 22:09:02 -0500][CRITICAL] This is a critical message
+<div class="highlight-none"><div class="highlight"><pre><span></span>[Tue, 28 Jul 15 22:09:02 -0500][CRITICAL] This is a critical message
 [Tue, 28 Jul 15 22:09:02 -0500][EMERGENCY] This is an emergency message
 [Tue, 28 Jul 15 22:09:02 -0500][DEBUG] This is a debug message
 [Tue, 28 Jul 15 22:09:02 -0500][ERROR] This is an error message
@@ -198,7 +198,7 @@
 </pre></div>
 </div>
 <p>You can also set a log level using the <code class="code docutils literal"><span class="pre">setLogLevel()</span></code> method. This method takes a Logger constant and will only save log messages that are as important or more important than the constant:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">use Phalcon\Logger;</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">use Phalcon\Logger;</span>
 <span class="x">use Phalcon\Logger\Adapter\File as FileAdapter;</span>
 
 <span class="x">$logger = new FileAdapter(&quot;app/logs/test.log&quot;);</span>
@@ -212,7 +212,7 @@
 <h2>事务（Transactions）<a class="headerlink" href="#transactions" title="永久链接至标题">¶</a></h2>
 <p>保存日志到适配器如文件(文件系统)是非常消耗系统资源的。 为了减少应用性能上的开销，我们可以使用日志事务。 事务会把日志记录临时的保存到内存中然后再
 写入到适配中（此例子中为文件），（这个操作是个原子操作）</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Logger\Adapter\File</span> <span class="k">as</span> <span class="nx">FileAdapter</span><span class="p">;</span>
 
@@ -234,7 +234,7 @@
 <div class="section" id="logging-to-multiple-handlers">
 <h2>使用多个处理程序进行日志记录（Logging to Multiple Handlers）<a class="headerlink" href="#logging-to-multiple-handlers" title="永久链接至标题">¶</a></h2>
 <p><a class="reference internal" href="../api/Phalcon_Logger.html"><span class="doc">Phalcon\Logger</span></a> 也可以同时保存日志信息到多个适配器中：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Logger</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Logger\Multiple</span> <span class="k">as</span> <span class="nx">MultipleStream</span><span class="p">;</span>
@@ -290,7 +290,7 @@
 <div class="section" id="line-formatter">
 <h3>行格式化处理（Line Formatter）<a class="headerlink" href="#line-formatter" title="永久链接至标题">¶</a></h3>
 <p>使用单行格式格式化信息。 默认的格式如下：</p>
-<div class="highlight-none"><div class="highlight"><pre>[%date%][%type%] %message%
+<div class="highlight-none"><div class="highlight"><pre><span></span>[%date%][%type%] %message%
 </pre></div>
 </div>
 <p>我们可以使用 <code class="code docutils literal"><span class="pre">setFormat()</span></code> 来设置自定义格式。 下面是格式变量：</p>
@@ -317,7 +317,7 @@
 </tbody>
 </table>
 <p>下面的例子中展示了如何修改日志格式：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Logger\Formatter\Line</span> <span class="k">as</span> <span class="nx">LineFormatter</span><span class="p">;</span>
 
@@ -339,7 +339,7 @@
 <div class="section" id="stream-logger">
 <h3>数据流日志记录器（Stream Logger）<a class="headerlink" href="#stream-logger" title="永久链接至标题">¶</a></h3>
 <p>系统日志保存消息到一个已注册的有效的PHP流中。 这里列出了可用的流： here &lt;<a class="reference external" href="http://php.net/manual/en/wrappers.php">http://php.net/manual/en/wrappers.php</a>&gt;`_:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Logger\Adapter\Stream</span> <span class="k">as</span> <span class="nx">StreamAdapter</span><span class="p">;</span>
 
@@ -355,7 +355,7 @@
 <h3>文件日志记录器（File Logger）<a class="headerlink" href="#file-logger" title="永久链接至标题">¶</a></h3>
 <p>文件适配器保存所有的日志信息到普通的文件中。 默认情况下日志文件使用添加模式打开，打开文件后文件的指针会指向文件的尾端。
 如果文件不存在，则会尝试创建。 我们可以通过传递附加参数的形式来修改打开的模式：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Logger\Adapter\File</span> <span class="k">as</span> <span class="nx">FileAdapter</span><span class="p">;</span>
 
@@ -372,7 +372,7 @@
 <div class="section" id="syslog-syslog-logger">
 <h3>Syslog 日志记录器（Syslog Logger）<a class="headerlink" href="#syslog-syslog-logger" title="永久链接至标题">¶</a></h3>
 <p>使用系统日志适配器。 由于操作系统的不同得到的日志也不尽相同：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Logger\Adapter\Syslog</span> <span class="k">as</span> <span class="nx">SyslogAdapter</span><span class="p">;</span>
 
@@ -394,7 +394,7 @@
 <h3>FirePHP 日志记录器（FirePHP Logger）<a class="headerlink" href="#firephp-firephp-logger" title="永久链接至标题">¶</a></h3>
 <p>This logger sends messages in HTTP response headers that are displayed by <a class="reference external" href="http://www.firephp.org/">FirePHP</a>,
 a <a class="reference external" href="http://getfirebug.com/">Firebug</a> extension for Firefox.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Logger</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Logger\Adapter\Firephp</span> <span class="k">as</span> <span class="nx">Firephp</span><span class="p">;</span>

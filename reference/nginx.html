@@ -118,7 +118,7 @@
 <div class="section" id="basic-configuration">
 <h3>基础配置（Basic configuration）<a class="headerlink" href="#basic-configuration" title="永久链接至标题">¶</a></h3>
 <p>使用 <cite>$_GET[&#8216;_url&#8217;]</cite> 作为 URLs的源：</p>
-<div class="highlight-nginx"><div class="highlight"><pre><span class="k">server</span> <span class="p">{</span>
+<div class="highlight-nginx"><div class="highlight"><pre><span></span><span class="k">server</span> <span class="p">{</span>
     <span class="kn">listen</span>      <span class="mi">80</span><span class="p">;</span>
     <span class="kn">server_name</span> <span class="s">localhost.dev</span><span class="p">;</span>
     <span class="kn">root</span>        <span class="s">/var/www/phalcon/public</span><span class="p">;</span>
@@ -147,7 +147,7 @@
 </pre></div>
 </div>
 <p>使用 <cite>$_SERVER[&#8216;REQUEST_URI&#8217;]</cite> 作为 URLs的源：</p>
-<div class="highlight-nginx"><div class="highlight"><pre><span class="k">server</span> <span class="p">{</span>
+<div class="highlight-nginx"><div class="highlight"><pre><span></span><span class="k">server</span> <span class="p">{</span>
     <span class="kn">listen</span>      <span class="mi">80</span><span class="p">;</span>
     <span class="kn">server_name</span> <span class="s">localhost.dev</span><span class="p">;</span>
     <span class="kn">root</span>        <span class="s">/var/www/phalcon/public</span><span class="p">;</span>
@@ -180,7 +180,7 @@
 </div>
 <div class="section" id="dedicated-instance">
 <h3>专属实例（Dedicated Instance）<a class="headerlink" href="#dedicated-instance" title="永久链接至标题">¶</a></h3>
-<div class="highlight-nginx"><div class="highlight"><pre><span class="k">server</span> <span class="p">{</span>
+<div class="highlight-nginx"><div class="highlight"><pre><span></span><span class="k">server</span> <span class="p">{</span>
     <span class="kn">listen</span>       <span class="mi">80</span><span class="p">;</span>
     <span class="kn">server_name</span>  <span class="s">localhost</span><span class="p">;</span>
 
@@ -227,7 +227,7 @@
 <div class="section" id="host-configuration-by-host">
 <h3>使用 Host 配置（Configuration by Host）<a class="headerlink" href="#host-configuration-by-host" title="永久链接至标题">¶</a></h3>
 <p>And this second configuration allow you to have different configurations by host:</p>
-<div class="highlight-nginx"><div class="highlight"><pre><span class="k">server</span> <span class="p">{</span>
+<div class="highlight-nginx"><div class="highlight"><pre><span></span><span class="k">server</span> <span class="p">{</span>
     <span class="kn">listen</span>      <span class="mi">80</span><span class="p">;</span>
 
     <span class="kn">server_name</span> <span class="s">localhost</span><span class="p">;</span>

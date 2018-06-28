@@ -107,7 +107,7 @@
 <div class="section" id="message">
 <h2>Message<a class="headerlink" href="#message" title="永久链接至标题">¶</a></h2>
 <p>存在文件 messages/validation.php`，内容如下：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">return</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">&#39;Alnum&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;字段 :field 只能包含字母和数字&#39;</span><span class="p">,</span>
@@ -116,7 +116,7 @@
 </pre></div>
 </div>
 <p>使用示例：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nx">Phalcon\Kernel</span><span class="o">::</span><span class="na">setBasePath</span><span class="p">(</span><span class="s2">&quot;unit-tests/&quot;</span><span class="p">);</span>
 <span class="k">echo</span> <span class="nx">Phalcon\Kernel</span><span class="o">::</span><span class="na">message</span><span class="p">(</span><span class="s1">&#39;validation&#39;</span><span class="p">,</span> <span class="s1">&#39;Alnum&#39;</span><span class="p">);</span> <span class="c1">// &quot;字段 :field 只能包含字母和数字&quot;</span>
@@ -126,7 +126,7 @@
 <div class="section" id="alias">
 <h2>Alias<a class="headerlink" href="#alias" title="永久链接至标题">¶</a></h2>
 <p>存在文件 <cite>alias/files.php</cite>，内容如下：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">return</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">&#39;@app&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/var/www/html/app&#39;</span><span class="p">,</span>
@@ -136,7 +136,7 @@
 </pre></div>
 </div>
 <p>使用示例：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nx">Phalcon\Kernel</span><span class="o">::</span><span class="na">setBasePath</span><span class="p">(</span><span class="s2">&quot;unit-tests/&quot;</span><span class="p">);</span>
 <span class="k">echo</span> <span class="nx">Phalcon\Kernel</span><span class="o">::</span><span class="na">alias</span><span class="p">(</span><span class="s1">&#39;files&#39;</span><span class="p">,</span> <span class="s1">&#39;@app/config&#39;</span><span class="p">);</span> <span class="c1">// &quot;/var/www/html/app/config&quot;</span>

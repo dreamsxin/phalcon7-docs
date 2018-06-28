@@ -107,7 +107,7 @@
 <p>行为是几个模型可以使用的共享行为，以便重新使用代码，ORM提供了一个API来实现模型中的行为。
 此外，您可以使用的事件和回调作为实现行为的更方便的替代方法。</p>
 <p>行为必须在模型初始化器中添加，一个模型中可以有零个或多个行为：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Behavior\Timestampable</span><span class="p">;</span>
@@ -160,7 +160,7 @@
 <div class="section" id="timestampable">
 <h1>生成时间戳（Timestampable）<a class="headerlink" href="#timestampable" title="永久链接至标题">¶</a></h1>
 <p>This behavior receives an array of options, the first level key must be an event name indicating when the column must be assigned:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Behavior\Timestampable</span><span class="p">;</span>
 
@@ -181,7 +181,7 @@
 </div>
 <p>Each event can have its own options, &#8216;field&#8217; is the name of the column that must be updated, if &#8216;format&#8217; is a string it will be used
 as format of the PHP&#8217;s function <a href="#id1"><span class="problematic" id="id2">date_</span></a>, format can also be an anonymous function providing you the free to generate any kind timestamp:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Behavior\Timestampable</span><span class="p">;</span>
 
@@ -208,7 +208,7 @@ as format of the PHP&#8217;s function <a href="#id1"><span class="problematic" i
 <div class="section" id="softdelete">
 <h1>软删除（SoftDelete）<a class="headerlink" href="#softdelete" title="永久链接至标题">¶</a></h1>
 <p>This behavior can be used in the following way:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Behavior\SoftDelete</span><span class="p">;</span>
@@ -241,31 +241,31 @@ as format of the PHP&#8217;s function <a href="#id1"><span class="problematic" i
 </div>
 <p>This behavior accepts two options: &#8216;field&#8217; and &#8216;value&#8217;, &#8216;field&#8217; determines what field must be updated and &#8216;value&#8217; the value to be deleted.
 Let&#8217;s pretend the table &#8216;users&#8217; has the following data:</p>
-<div class="highlight-bash"><div class="highlight"><pre>mysql&gt; <span class="k">select</span> * from users<span class="p">;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>mysql&gt; <span class="k">select</span> * from users<span class="p">;</span>
 +----+---------+--------+
 <span class="p">|</span> id <span class="p">|</span> name    <span class="p">|</span> status <span class="p">|</span>
 +----+---------+--------+
 <span class="p">|</span>  <span class="m">1</span> <span class="p">|</span> Lana    <span class="p">|</span> N      <span class="p">|</span>
 <span class="p">|</span>  <span class="m">2</span> <span class="p">|</span> Brandon <span class="p">|</span> N      <span class="p">|</span>
 +----+---------+--------+
-<span class="m">2</span> rows in <span class="nb">set</span> <span class="o">(</span>0.00 sec<span class="o">)</span>
+<span class="m">2</span> rows in <span class="nb">set</span> <span class="o">(</span><span class="m">0</span>.00 sec<span class="o">)</span>
 </pre></div>
 </div>
 <p>If we delete any of the two records the status will be updated instead of delete the record:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nx">Users</span><span class="o">::</span><span class="na">findFirst</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">();</span>
 </pre></div>
 </div>
 <p>The operation will result in the following data in the table:</p>
-<div class="highlight-bash"><div class="highlight"><pre>mysql&gt; <span class="k">select</span> * from users<span class="p">;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>mysql&gt; <span class="k">select</span> * from users<span class="p">;</span>
 +----+---------+--------+
 <span class="p">|</span> id <span class="p">|</span> name    <span class="p">|</span> status <span class="p">|</span>
 +----+---------+--------+
 <span class="p">|</span>  <span class="m">1</span> <span class="p">|</span> Lana    <span class="p">|</span> N      <span class="p">|</span>
 <span class="p">|</span>  <span class="m">2</span> <span class="p">|</span> Brandon <span class="p">|</span> D      <span class="p">|</span>
 +----+---------+--------+
-<span class="m">2</span> rows in <span class="nb">set</span> <span class="o">(</span>0.01 sec<span class="o">)</span>
+<span class="m">2</span> rows in <span class="nb">set</span> <span class="o">(</span><span class="m">0</span>.01 sec<span class="o">)</span>
 </pre></div>
 </div>
 <p>Note that you need to specify the deleted condition in your queries to effectively ignore them as deleted records, this behavior doesn&#8217;t support that.</p>
@@ -276,7 +276,7 @@ Let&#8217;s pretend the table &#8216;users&#8217; has the following data:</p>
 Also, <a class="reference internal" href="../api/Phalcon_Mvc_Model_Behavior.html"><span class="doc">Phalcon\Mvc\Model\Behavior</span></a> provides most of the methods needed to ease the implementation of behaviors.</p>
 <p>The following behavior is an example, it implements the Blameable behavior which helps identify the user
 that is performed operations over a model:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Behavior</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\BehaviorInterface</span><span class="p">;</span>
@@ -309,7 +309,7 @@ that is performed operations over a model:</p>
 </pre></div>
 </div>
 <p>The former is a very simple behavior, but it illustrates how to create a behavior, now let&#8217;s add this behavior to a model:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
 
@@ -323,7 +323,7 @@ that is performed operations over a model:</p>
 </pre></div>
 </div>
 <p>A behavior is also capable of intercepting missing methods on your models:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Tag</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Behavior</span><span class="p">;</span>
@@ -342,7 +342,7 @@ that is performed operations over a model:</p>
 </pre></div>
 </div>
 <p>Call that method on a model that implements Sluggable returns a SEO friendly title:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$title</span> <span class="o">=</span> <span class="nv">$post</span><span class="o">-&gt;</span><span class="na">getSlug</span><span class="p">();</span>
 </pre></div>
@@ -352,7 +352,7 @@ that is performed operations over a model:</p>
 <h1>使用 Traits 实现行为(Using Traits as behaviors)<a class="headerlink" href="#traits-using-traits-as-behaviors" title="永久链接至标题">¶</a></h1>
 <p>Starting from PHP 5.4 you can use <a href="#id5"><span class="problematic" id="id6">Traits_</span></a> to re-use code in your classes, this is another way to implement
 custom behaviors. The following trait implements a simple version of the Timestampable behavior:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">trait</span> <span class="nx">MyTimestampable</span>
 <span class="p">{</span>
@@ -369,7 +369,7 @@ custom behaviors. The following trait implements a simple version of the Timesta
 </pre></div>
 </div>
 <p>Then you can use it in your model as follows:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
 

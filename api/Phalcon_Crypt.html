@@ -95,7 +95,7 @@
 <p><em>implements</em> <a class="reference internal" href="Phalcon_CryptInterface.html"><span class="doc">Phalcon\CryptInterface</span></a></p>
 <p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/crypt.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
 <p>Provides encryption facilities to phalcon applications</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$crypt</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Crypt</span><span class="p">();</span>
 
@@ -137,14 +137,14 @@
 <p>Returns the padding</p>
 <p>public <em>string</em>  <strong>encrypt</strong> (<em>string</em> $text, [<em>string</em> $key], [<em>unknown</em> $options])</p>
 <p>Encrypts a text</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$encrypted</span> <span class="o">=</span> <span class="nv">$crypt</span><span class="o">-&gt;</span><span class="na">encrypt</span><span class="p">(</span><span class="s2">&quot;Ultra-secret text&quot;</span><span class="p">,</span> <span class="s2">&quot;encrypt password&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>public <em>string</em>  <strong>decrypt</strong> (<em>string</em> $text, [<em>string</em> $key], [<em>int</em> $options])</p>
 <p>Decrypts an encrypted text</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">echo</span> <span class="nv">$crypt</span><span class="o">-&gt;</span><span class="na">decrypt</span><span class="p">(</span><span class="nv">$encrypted</span><span class="p">,</span> <span class="s2">&quot;decrypt password&quot;</span><span class="p">);</span>
 </pre></div>

@@ -160,7 +160,7 @@
 被 ob_* 函数捕获或者直接是PHP输出，这样才能缓存起来。以下实例演示了这样的使用。
 它接收PHP生成的页面输出并保存在一个文件里面。缓存文件的内容每隔172800秒（2天）刷新一次。</p>
 <p>使用这个缓存机制，无论何时调用这块代码，我们都可以通过避免重复执行辅助插件 <code class="code docutils literal"><span class="pre">Phalcon\Tag::linkTo()</span></code> 从而获得更高的性能。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Tag</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Cache\Backend\File</span> <span class="k">as</span> <span class="nx">BackFile</span><span class="p">;</span>
@@ -222,7 +222,7 @@
 <h3>文件后端存储器例子（File Backend Example）<a class="headerlink" href="#file-backend-example" title="永久链接至标题">¶</a></h3>
 <p>其中一个缓存适配器是文件&#8217;File&#8217;。文件适配器的配置中只需要一个key：指明缓存文件存放的目录位置。
 这个配置通过cacheDir选项控制，必须，且要以反斜杠结尾。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Cache\Backend\File</span> <span class="k">as</span> <span class="nx">BackFile</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Cache\Frontend\Data</span> <span class="k">as</span> <span class="nx">FrontData</span><span class="p">;</span>
@@ -271,7 +271,7 @@
 <div class="section" id="memcached-memcached-backend-example">
 <h3>Memcached 后端存储器例子（Memcached Backend Example）<a class="headerlink" href="#memcached-memcached-backend-example" title="永久链接至标题">¶</a></h3>
 <p>当我们改用Memcached作为后端存储器时，上面的实例改动很轻微（特别就配置而言）。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Cache\Frontend\Data</span> <span class="k">as</span> <span class="nx">FrontData</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Cache\Backend\Memcached</span> <span class="k">as</span> <span class="nx">BackMemCached</span><span class="p">;</span>
@@ -327,14 +327,14 @@
 <h2>查询缓存（Querying the cache）<a class="headerlink" href="#querying-the-cache" title="永久链接至标题">¶</a></h2>
 <p>添加到缓存的元素根据唯一的key进行识别区分。这使用文件缓存作为后端时，key就是实际的文件名。
 为了从缓存中获得数据，我们仅仅需要通过唯一的key调用即可。如果key不存在，get方法将会返回null。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Retrieve products by key &quot;myProducts&quot;</span>
 <span class="nv">$products</span> <span class="o">=</span> <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;myProducts&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>如果你想知道在缓存中存放了哪些key，你可以调用queryKeys方法：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Query all keys used in the cache</span>
 <span class="nv">$keys</span> <span class="o">=</span> <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">queryKeys</span><span class="p">();</span>
@@ -352,7 +352,7 @@
 <h2>删除缓存数据（Deleting data from the cache）<a class="headerlink" href="#deleting-data-from-the-cache" title="永久链接至标题">¶</a></h2>
 <p>有些时机你需要强制废除一个缓存的实体（如对被缓存的数据进行了更新）。
 而仅仅需要做的只是知道对应缓存的数据存放于哪个key即可。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Delete an item with a specific key</span>
 <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="s2">&quot;someKey&quot;</span><span class="p">);</span>
@@ -368,7 +368,7 @@
 <div class="section" id="checking-cache-existence">
 <h2>检查缓存是否存在（Checking cache existence）<a class="headerlink" href="#checking-cache-existence" title="永久链接至标题">¶</a></h2>
 <p>也有可能需要根据一个给定的key来判断缓存是否存在：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">if</span> <span class="p">(</span><span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">exists</span><span class="p">(</span><span class="s2">&quot;someKey&quot;</span><span class="p">))</span> <span class="p">{</span>
     <span class="k">echo</span> <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;someKey&quot;</span><span class="p">);</span>
@@ -383,7 +383,7 @@
 <p>“有效期”是指缓存可以多久时间（在以秒为单位）内有效。默认情况下，全部被创建的缓存都使用前端构建中设定的有效期。
 你可以在创建时指定一个有效期或者在从缓存中获取数据时：</p>
 <p>Setting the lifetime when retrieving:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$cacheKey</span> <span class="o">=</span> <span class="s1">&#39;my.cache&#39;</span><span class="p">;</span>
 
@@ -399,7 +399,7 @@
 </pre></div>
 </div>
 <p>在保存时设置有效期：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$cacheKey</span> <span class="o">=</span> <span class="s1">&#39;my.cache&#39;</span><span class="p">;</span>
 
@@ -418,7 +418,7 @@
 <h2>多级缓存（Multi-Level Cache）<a class="headerlink" href="#multi-level-cache" title="永久链接至标题">¶</a></h2>
 <p>缓存组件的特点，就是允许开发人员使用多级缓存。这个新特性非常有用，
 因为你可以在多个缓存媒介结合不同的有效期中保存相同的数据，并在有效期内从首个最快的缓存适配器开始读取，直至到最慢的适配器。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Cache\Multiple</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Cache\Backend\Apc</span> <span class="k">as</span> <span class="nx">ApcCache</span><span class="p">;</span>

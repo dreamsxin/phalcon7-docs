@@ -135,7 +135,7 @@
 <p>Generates a SQL describing a table &lt;code&gt;print_r($dialect-&gt;describeColumns(&#8220;posts&#8221;) ?&gt;</p>
 <p>public <em>string</em>  <strong>listTables</strong> ([<em>string</em> $schemaName])</p>
 <p>Generates SQL list all tables on database</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nb">print_r</span><span class="p">(</span><span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">listTables</span><span class="p">(</span><span class="s2">&quot;blog&quot;</span><span class="p">))</span> <span class="cp">?&gt;</span><span class="x"></span>
 </pre></div>
@@ -152,7 +152,7 @@
 <p>Return the default value</p>
 <p>public <em>string</em>  <strong>limit</strong> (<em>string</em> $sqlQuery, <em>int</em> $number) inherited from Phalcon\Db\Dialect</p>
 <p>Generates the SQL for LIMIT clause</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nv">$sql</span> <span class="o">=</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">limit</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM robots&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
  <span class="k">echo</span> <span class="nv">$sql</span><span class="p">;</span> <span class="c1">// SELECT * FROM robots LIMIT 10</span>
@@ -160,7 +160,7 @@
 </div>
 <p>public <em>string</em>  <strong>forUpdate</strong> (<em>string</em> $sqlQuery) inherited from Phalcon\Db\Dialect</p>
 <p>Returns a SQL modified with a FOR UPDATE clause</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nv">$sql</span> <span class="o">=</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">forUpdate</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM robots&#39;</span><span class="p">);</span>
  <span class="k">echo</span> <span class="nv">$sql</span><span class="p">;</span> <span class="c1">// SELECT * FROM robots FOR UPDATE</span>
@@ -168,7 +168,7 @@
 </div>
 <p>public <em>string</em>  <strong>sharedLock</strong> (<em>string</em> $sqlQuery) inherited from Phalcon\Db\Dialect</p>
 <p>Returns a SQL modified with a LOCK IN SHARE MODE clause</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nv">$sql</span> <span class="o">=</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">sharedLock</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM robots&#39;</span><span class="p">);</span>
  <span class="k">echo</span> <span class="nv">$sql</span><span class="p">;</span> <span class="c1">// SELECT * FROM robots LOCK IN SHARE MODE</span>
@@ -176,7 +176,7 @@
 </div>
 <p>public <em>string</em>  <strong>getColumnList</strong> (<em>array</em> $columnList) inherited from Phalcon\Db\Dialect</p>
 <p>Gets a list of columns with escaped identifiers</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="k">echo</span> <span class="nv">$dialect</span><span class="o">-&gt;</span><span class="na">getColumnList</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;column1&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">));</span>
 </pre></div>

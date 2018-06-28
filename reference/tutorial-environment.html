@@ -108,7 +108,7 @@
 <div class="section" id="project-structure">
 <h2>项目结构（Project Structure）<a class="headerlink" href="#project-structure" title="永久链接至标题">¶</a></h2>
 <p>下面是我们的项目结构：</p>
-<div class="highlight-bash"><div class="highlight"><pre>evn/
+<div class="highlight-bash"><div class="highlight"><pre><span></span>evn/
 app/
     config/
     config.php
@@ -128,9 +128,9 @@ app/
 <div class="section" id="bootstrap">
 <h2>引导文件（Bootstrap）<a class="headerlink" href="#bootstrap" title="永久链接至标题">¶</a></h2>
 <p>下面是引导文件 <cite>public/index.php</cite> 的实现，在这里我们是通过域名的不同来区别开发或生产环境，你们也可以通过配置来设定环境变量：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
-<span class="nv">$config_basedir</span> <span class="o">=</span> <span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/../apps/config/&#39;</span><span class="p">;</span>
+<span class="nv">$config_basedir</span> <span class="o">=</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/../apps/config/&#39;</span><span class="p">;</span>
 <span class="nx">Phalcon\Config\Adapter\Php</span><span class="o">::</span><span class="na">setBasePath</span><span class="p">(</span><span class="nv">$config_basedir</span><span class="p">);</span>
 
 <span class="nv">$config</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Config\Adapter\Php</span><span class="p">(</span><span class="s1">&#39;config.php&#39;</span><span class="p">);</span>
@@ -199,7 +199,7 @@ app/
 <span class="k">if</span> <span class="p">(</span><span class="nv">$environment</span> <span class="o">==</span> <span class="s1">&#39;prod&#39;</span><span class="p">)</span> <span class="p">{</span>
     <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;modelsMetadata&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
         <span class="nv">$metaData</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Mvc\Model\Metadata\Files</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
-            <span class="s1">&#39;metaDataDir&#39;</span> <span class="o">=&gt;</span> <span class="nx">__DIR__</span> <span class="o">.</span> <span class="nx">DIRECTORY_SEPARATOR</span> <span class="o">.</span> <span class="s1">&#39;../apps/cache/metadata/&#39;</span>
+            <span class="s1">&#39;metaDataDir&#39;</span> <span class="o">=&gt;</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="nx">DIRECTORY_SEPARATOR</span> <span class="o">.</span> <span class="s1">&#39;../apps/cache/metadata/&#39;</span>
          <span class="p">));</span>
          <span class="k">return</span> <span class="nv">$metaData</span><span class="p">;</span>
     <span class="p">},</span> <span class="k">true</span><span class="p">);</span>

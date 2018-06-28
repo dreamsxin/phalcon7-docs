@@ -110,7 +110,7 @@
 <div class="section" id="basic-usage">
 <h2>基本使用（Basic Usage）<a class="headerlink" href="#basic-usage" title="永久链接至标题">¶</a></h2>
 <p>你可以在应用中任何可以访问服务的部分，通用使用“cookies”服务来设置/获取cookie 。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Controller</span><span class="p">;</span>
 
@@ -149,7 +149,7 @@
 在保护机制下，即使未验证的用户在客户端（浏览器）查看了cookie的内容，也无妨。
 即使这样，敏感的数据还是不应该存放到cookie。</p>
 <p>你可以通过以下方式禁用加密：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Http\Response\Cookies</span><span class="p">;</span>
 
@@ -163,7 +163,7 @@
 </pre></div>
 </div>
 <p>使用加密的话，必须在“crypt”服务中设置一个全局的key：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Crypt</span><span class="p">;</span>
 

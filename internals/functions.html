@@ -92,7 +92,7 @@
   <div class="section" id="calling-functions">
 <h1>调用函数（Calling Functions）<a class="headerlink" href="#calling-functions" title="永久链接至标题">¶</a></h1>
 <p>Phalcon API 在 Zend API 的基础上实现了 <cite>phalcon_call_method_with_params</cite> 函数，并以此为基础定义了宏 <cite>PHALCON_CALL_FUNCTION</cite>，利用这些 API 可以很轻松的调用内核及自定义函数。</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="c1">// $length = strlen(some_variable);</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="c1">// $length = strlen(some_variable);</span>
 <span class="n">PHALCON_CALL_FUNCTION</span><span class="p">(</span><span class="o">&amp;</span><span class="n">length</span><span class="p">,</span> <span class="s">&quot;strlen&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">some_variable</span><span class="p">);</span>
 
 <span class="c1">// Calling substr() with its 3 arguments returning the substring into &quot;part&quot;</span>
@@ -108,7 +108,7 @@
 <p>如上所述，PHP 已经有帮我们做了很多事情，C 的扩展并不意味着我们要重新发明轮子。我们也要尽量避免使用 C 非常底层的特性。使用 PHP 函数帮助我们实现和 PHP 编程中类似的行为，这样我们就可以避免可能出现的错误。</p>
 <p>下面是 Zend API 的相关定义：</p>
 <blockquote>
-<div><div class="highlight-c"><div class="highlight"><pre><span class="cp">#define call_user_function_ex(function_table, object, function_name, retval_ptr, param_count, params, no_separation, symbol_table) \</span>
+<div><div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define call_user_function_ex(function_table, object, function_name, retval_ptr, param_count, params, no_separation, symbol_table) \</span>
 <span class="cp">        _call_user_function_ex(object, function_name, retval_ptr, param_count, params, no_separation)</span>
 </pre></div>
 </div>
@@ -118,7 +118,7 @@
 <h2>文件读写<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <p>The following code opens a file in C and write something on it. Its functionality is limited because it only works on
 local files:</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="kt">FILE</span> <span class="o">*</span> <span class="n">pFile</span><span class="p">;</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">FILE</span> <span class="o">*</span> <span class="n">pFile</span><span class="p">;</span>
 <span class="n">pFile</span> <span class="o">=</span> <span class="n">fopen</span> <span class="p">(</span><span class="s">&quot;myfile.txt&quot;</span><span class="p">,</span><span class="s">&quot;w&quot;</span><span class="p">);</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">pFile</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">fputs</span> <span class="p">(</span><span class="s">&quot;fopen example&quot;</span><span class="p">,</span><span class="n">pFile</span><span class="p">);</span>
@@ -127,7 +127,7 @@ local files:</p>
 </pre></div>
 </div>
 <p>Now write the same code using the PHP userland:</p>
-<div class="highlight-c"><div class="highlight"><pre><span class="n">ZVAL_STRING</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mode</span><span class="p">,</span> <span class="s">&quot;w&quot;</span><span class="p">);</span>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">ZVAL_STRING</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mode</span><span class="p">,</span> <span class="s">&quot;w&quot;</span><span class="p">);</span>
 
 <span class="n">PHALCON_CALL_FUNCTION</span><span class="p">(</span><span class="o">&amp;</span><span class="n">file_handler</span><span class="p">,</span> <span class="s">&quot;fopen&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">file_path</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">mode</span><span class="p">);</span>
 
@@ -146,7 +146,7 @@ local files:</p>
 above code is more familiar if we are primarily PHP developers.</dd>
 </dl>
 <p>The same code in PHP:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$fp</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="nv">$file_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">);</span>
 <span class="k">if</span><span class="p">(</span><span class="nv">$fp</span><span class="p">){</span>

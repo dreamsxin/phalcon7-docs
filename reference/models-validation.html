@@ -110,7 +110,7 @@
 <h2>验证模型数据完整性（Validating Data Integrity）<a class="headerlink" href="#validating-data-integrity" title="永久链接至标题">¶</a></h2>
 <p>在模型 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> 中提供了几个事件（<cite>beforeSave</cite>、<cite>beforeCreate</cite>、<cite>beforeUpdate</cite>）用以数据的验证和过滤。
 我们推荐使用专用的事件 <cite>validation</cite>，它允许我们调用内置的验证类进行验证数据：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Validation\Validator\Uniqueness</span><span class="p">;</span>
@@ -141,7 +141,7 @@
 </div>
 <p>上面的例子使用了内置验证器`InclusionIn` 和 <cite>Uniqueness</cite>，更多的内置验证器请查看 <a class="reference internal" href="validation.html"><span class="doc">验证</span></a> 章节。</p>
 <p>除了内置的验证程序，我们可以创建自定义验证器：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Validation\Validator</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Validation\ValidatorInterface</span><span class="p">;</span>
@@ -168,7 +168,7 @@
 </pre></div>
 </div>
 <p>Adding the validator to a model:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
 
@@ -191,7 +191,7 @@
 </pre></div>
 </div>
 <p>The idea of creating validators is make them reusable between several models. A validator can also be as simple as:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Validation\Message</span><span class="p">;</span>
@@ -218,7 +218,7 @@
 </pre></div>
 </div>
 <p>可以通过覆盖 <code class="code docutils literal"><span class="pre">Phalcon\Mvc\Model::getMessages()</span></code> 方法对默认验证信息就行转换：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>
 

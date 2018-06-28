@@ -95,7 +95,7 @@
 <p><em>implements</em> <a class="reference internal" href="Phalcon_Acl_AdapterInterface.html"><span class="doc">Phalcon\Acl\AdapterInterface</span></a>, <a class="reference internal" href="Phalcon_Di_InjectionAwareInterface.html"><span class="doc">Phalcon\Di\InjectionAwareInterface</span></a>, <a class="reference internal" href="Phalcon_Events_EventsAwareInterface.html"><span class="doc">Phalcon\Events\EventsAwareInterface</span></a></p>
 <p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/acl/adapter/memory.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
 <p>Manages ACL lists in memory</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$acl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Acl\Adapter\Memory</span><span class="p">();</span>
 
@@ -152,7 +152,7 @@
 <p>Phalcon\Acl\Adapter\Memory constructor</p>
 <p>public <em>boolean</em>  <strong>addRole</strong> (<em>Phalcon\Acl\RoleInterface|string</em> $role, [<em>array|string</em> $accessInherits])</p>
 <p>Adds a role to the ACL list. Second parameter allows inheriting access data from other existing role Example:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
     <span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span><span class="k">new</span> <span class="nx">Phalcon\Acl\Role</span><span class="p">(</span><span class="s1">&#39;administrator&#39;</span><span class="p">),</span> <span class="s1">&#39;consultant&#39;</span><span class="p">);</span>
     <span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addRole</span><span class="p">(</span><span class="s1">&#39;administrator&#39;</span><span class="p">,</span> <span class="s1">&#39;consultant&#39;</span><span class="p">);</span>
@@ -166,7 +166,7 @@
 <p>Check whether resource exist in the resources list</p>
 <p>public <em>boolean</em>  <strong>addResource</strong> (<em>Phalcon\Acl\Resource|string</em> $resource, [<em>array</em> $accessList])</p>
 <p>Adds a resource to the ACL list Access names can be a particular action, by example search, update, delete, etc or a list of them Example:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="c1">//Add a resource to the the list allowing access to an action</span>
  <span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">addResource</span><span class="p">(</span><span class="k">new</span> <span class="nx">Phalcon\Acl\Resource</span><span class="p">(</span><span class="s1">&#39;customers&#39;</span><span class="p">),</span> <span class="s1">&#39;search&#39;</span><span class="p">);</span>
@@ -185,7 +185,7 @@
 <p>Checks if a role has access to a resource</p>
 <p>public  <strong>allow</strong> (<em>string</em> $roleName, <em>string</em> $resourceName, <em>mixed</em> $access, [<em>callable</em> $callback])</p>
 <p>Allow access to a role on a resource You can use &#8216;*&#8217; as wildcard Example:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="c1">//Allow access to guests to search on customers</span>
  <span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">allow</span><span class="p">(</span><span class="s1">&#39;guests&#39;</span><span class="p">,</span> <span class="s1">&#39;customers&#39;</span><span class="p">,</span> <span class="s1">&#39;search&#39;</span><span class="p">);</span>
@@ -202,7 +202,7 @@
 </div>
 <p>public <em>boolean</em>  <strong>deny</strong> (<em>string</em> $roleName, <em>string</em> $resourceName, <em>mixed</em> $access, [<em>callable</em> $callback])</p>
 <p>Deny access to a role on a resource You can use &#8216;*&#8217; as wildcard Example:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="c1">//Deny access to guests to search on customers</span>
  <span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">deny</span><span class="p">(</span><span class="s1">&#39;guests&#39;</span><span class="p">,</span> <span class="s1">&#39;customers&#39;</span><span class="p">,</span> <span class="s1">&#39;search&#39;</span><span class="p">);</span>
@@ -219,7 +219,7 @@
 </div>
 <p>public <em>boolean</em>  <strong>isAllowed</strong> (<em>mixed</em> $role, <em>mixed</em> $resource, <em>string</em> $access, [<em>mixed</em> $data])</p>
 <p>Check whether a role is allowed to access an action from a resource</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="c1">//Does andres have access to the customers resource to create?</span>
  <span class="nv">$acl</span><span class="o">-&gt;</span><span class="na">isAllowed</span><span class="p">(</span><span class="s1">&#39;andres&#39;</span><span class="p">,</span> <span class="s1">&#39;Products&#39;</span><span class="p">,</span> <span class="s1">&#39;create&#39;</span><span class="p">);</span>

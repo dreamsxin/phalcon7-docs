@@ -152,7 +152,7 @@
 <li>我们可以在一个结构化的和统一组件内获取全局实例。</li>
 </ul>
 <p>服务可以使用不同方式去定义：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Http\Request</span><span class="p">;</span>
 
@@ -180,7 +180,7 @@
 </pre></div>
 </div>
 <p>使用数组的方式去注册服务也是可以的：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Http\Request</span><span class="p">;</span>
 
@@ -215,7 +215,7 @@
 <div class="section" id="string">
 <h4>字符串(String)<a class="headerlink" href="#string" title="永久链接至标题">¶</a></h4>
 <p>使用字符串注册服务需要一个有效的类名称，它将返回指定的类对象，如果类还没有加载的话，将使用自动加载器实例化对象。这种类型不允许向构造函数指定参数：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// 返回 new Phalcon\Http\Request(); 对象</span>
 <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">,</span> <span class="s1">&#39;Phalcon\Http\Request&#39;</span><span class="p">);</span>
@@ -225,7 +225,7 @@
 <div class="section" id="object">
 <h4>对象（Object）<a class="headerlink" href="#object" title="永久链接至标题">¶</a></h4>
 <p>这种类型注册服务需要一个对象。实际上，这个服务不再需要初始化，因为它已经是一个对象，可以说，这是不是一个真正的依赖注入，但是如果你想强制总是返回相同的对象/值，使用这种方式还是有用的:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Http\Request</span><span class="p">;</span>
 
@@ -237,7 +237,7 @@
 <div class="section" id="closures-anonymous-functions">
 <h4>闭包与匿名函数（Closures/Anonymous functions）<a class="headerlink" href="#closures-anonymous-functions" title="永久链接至标题">¶</a></h4>
 <p>这个方法提供了更加自由的方式去注册依赖，但是如果你想从外部改变实例化的参数而不用改变注册服务的代码，这是很困难的：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Db\Adapter\Pdo\Mysql</span> <span class="k">as</span> <span class="nx">PdoMysql</span><span class="p">;</span>
 
@@ -254,7 +254,7 @@
 </pre></div>
 </div>
 <p>这些限制是可以克服的，通过传递额外的变量到闭包函数里面：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Db\Adapter\Pdo\Mysql</span> <span class="k">as</span> <span class="nx">PdoMysql</span><span class="p">;</span>
 
@@ -276,7 +276,7 @@
 <div class="section" id="complex-registration">
 <h3>复杂的注册（Complex Registration）<a class="headerlink" href="#complex-registration" title="永久链接至标题">¶</a></h3>
 <p>如果要求不用实例化/解析服务，就可以改变定义服务的话，我们需要使用数组的方式去定义服务。使用数组去定义服务可以更加详细：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Logger\Adapter\File</span> <span class="k">as</span> <span class="nx">LoggerFile</span><span class="p">;</span>
 
@@ -298,7 +298,7 @@
 </pre></div>
 </div>
 <p>上面两种注册服务的方式的结果是一样的。然而，使用数组定义的话，在需要的时候可以变更注册服务的参数：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// 改变logger服务的类名</span>
 <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">getService</span><span class="p">(</span><span class="s1">&#39;logger&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">setClassName</span><span class="p">(</span><span class="s1">&#39;MyCustomLogger&#39;</span><span class="p">);</span>
@@ -314,7 +314,7 @@
 <div class="section" id="constructor-injection">
 <h4>构造函数注入（Constructor Injection）<a class="headerlink" href="#constructor-injection" title="永久链接至标题">¶</a></h4>
 <p>这个注入方式是通过传递依赖/参数到类的构造函数。让我们假设我们有下面的组件：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">SomeApp</span><span class="p">;</span>
 
@@ -326,7 +326,7 @@
 
     <span class="k">protected</span> <span class="nv">$_someFlag</span><span class="p">;</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nx">Response</span> <span class="nv">$response</span><span class="p">,</span> <span class="nv">$someFlag</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">Response</span> <span class="nv">$response</span><span class="p">,</span> <span class="nv">$someFlag</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_response</span> <span class="o">=</span> <span class="nv">$response</span><span class="p">;</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_someFlag</span> <span class="o">=</span> <span class="nv">$someFlag</span><span class="p">;</span>
@@ -335,7 +335,7 @@
 </pre></div>
 </div>
 <p>这个服务可以这样被注入：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;response&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">&#39;className&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Phalcon\Http\Response&#39;</span>
@@ -355,7 +355,7 @@
 <div class="section" id="setter-injection">
 <h4>设值注入（Setter Injection）<a class="headerlink" href="#setter-injection" title="永久链接至标题">¶</a></h4>
 <p>类中可能有setter去注入可选的依赖，前面那个class可以修改成通过setter来注入依赖的方式：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">SomeApp</span><span class="p">;</span>
 
@@ -380,7 +380,7 @@
 </pre></div>
 </div>
 <p>用setter方式来注入的服务可以通过下面的方式来注册：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;response&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">&#39;className&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Phalcon\Http\Response&#39;</span>
@@ -418,7 +418,7 @@
 <div class="section" id="properties-injection">
 <h4>属性注入（Properties Injection）<a class="headerlink" href="#properties-injection" title="永久链接至标题">¶</a></h4>
 <p>这是一个不太常用的方式，这种方式的注入是通过类的public属性来注入：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">SomeApp</span><span class="p">;</span>
 
@@ -433,7 +433,7 @@
 </pre></div>
 </div>
 <p>通过属性注入的服务，可以像下面这样注册：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span>
     <span class="s1">&#39;response&#39;</span><span class="p">,</span>
@@ -502,23 +502,23 @@
 <div class="section" id="resolving-services">
 <h2>服务解析（Resolving Services）<a class="headerlink" href="#resolving-services" title="永久链接至标题">¶</a></h2>
 <p>从容器中获取一个服务是一件简单的事情，只要通过“get”方法就可以。这将返回一个服务的新实例：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span> <span class="nv">$request</span> <span class="o">=</span> <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;request&quot;</span><span class="p">);</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span> <span class="nv">$request</span> <span class="o">=</span> <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;request&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>或者通过魔术方法的方式获取：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$request</span> <span class="o">=</span> <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">getRequest</span><span class="p">();</span>
 </pre></div>
 </div>
 <p>或者通过访问数组的方式获取：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$request</span> <span class="o">=</span> <span class="nv">$di</span><span class="p">[</span><span class="s1">&#39;request&#39;</span><span class="p">];</span>
 </pre></div>
 </div>
 <p>参数可以传递到构造函数中，通过添加一个数组的参数到get方法中：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// 将返回：new MyComponent(&quot;some-parameter&quot;, &quot;other&quot;)</span>
 <span class="nv">$component</span> <span class="o">=</span> <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;MyComponent&quot;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;some-parameter&quot;</span><span class="p">,</span> <span class="s2">&quot;other&quot;</span><span class="p">));</span>
@@ -562,7 +562,7 @@ The following events are supported:</p>
 <h2>共享服务（Shared services）<a class="headerlink" href="#shared-services" title="永久链接至标题">¶</a></h2>
 <p>服务可以注册成“shared”类型的服务，这意味着这个服务将使用 [单例模式](<a class="reference external" href="http://zh.wikipedia.org/wiki/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F">http://zh.wikipedia.org/wiki/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F</a>) 运行，
 一旦服务被首次解析后，这个实例将被保存在容器中，之后的每次请求都在容器中查找并返回这个实例</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Session\Adapter\Files</span> <span class="k">as</span> <span class="nx">SessionFiles</span><span class="p">;</span>
 
@@ -578,7 +578,7 @@ The following events are supported:</p>
 </pre></div>
 </div>
 <p>另一种方式去注册一个“shared”类型的服务是，传递“set”服务的时候，把true作为第三个参数传递过去：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// 把session服务注册成“shared”类型</span>
 <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;session&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
@@ -587,7 +587,7 @@ The following events are supported:</p>
 </pre></div>
 </div>
 <p>如果一个服务不是注册成“shared”类型，而你又想从DI中获取服务的“shared”实例，你可以使用getShared方法：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$request</span> <span class="o">=</span> <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">getShared</span><span class="p">(</span><span class="s2">&quot;request&quot;</span><span class="p">);</span>
 </pre></div>
@@ -596,7 +596,7 @@ The following events are supported:</p>
 <div class="section" id="manipulating-services-individually">
 <h2>单独操作服务（Manipulating services individually）<a class="headerlink" href="#manipulating-services-individually" title="永久链接至标题">¶</a></h2>
 <p>一旦服务被注册到服务容器中，你可以单独操作它：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Http\Request</span><span class="p">;</span>
 
@@ -623,7 +623,7 @@ The following events are supported:</p>
 <h2>通过服务容器实例化类（Instantiating classes via the Service Container）<a class="headerlink" href="#instantiating-classes-via-the-service-container" title="永久链接至标题">¶</a></h2>
 <p>当你从服务容器中请求一个服务，如果找不到具有相同名称的服务，它将尝试去加载以这个服务为名称的类。利用这个的行为，
 我们可以代替任意一个类，通过简单的利用服务的名称来注册：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// 把一个控制器注册为服务</span>
 <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;IndexController&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
@@ -649,7 +649,7 @@ DI会回退到一个有效的自动加载类中，去加载这个类。通过这
 <h2>自动注入 DI（Automatic Injecting of the DI itself）<a class="headerlink" href="#di-automatic-injecting-of-the-di-itself" title="永久链接至标题">¶</a></h2>
 <p>如果一个类或者组件需要用到DI服务，你需要在你的类中实现 <a class="reference internal" href="../api/Phalcon_Di_InjectionAwareInterface.html"><span class="doc">Phalcon\Di\InjectionAwareInterface</span></a> 接口，
 这样就可以在实例化这个类的对象时自动注入DI的服务:</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Di\InjectionAwareInterface</span><span class="p">;</span>
 
@@ -670,7 +670,7 @@ DI会回退到一个有效的自动加载类中，去加载这个类。通过这
 </pre></div>
 </div>
 <p>按照上面这样，一旦服务被解析，<code class="code docutils literal"><span class="pre">$di</span></code> 对象将自动传递到 <code class="code docutils literal"><span class="pre">setDi()</span></code> 方法：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// 注册服务</span>
 <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;myClass&#39;</span><span class="p">,</span> <span class="s1">&#39;MyClass&#39;</span><span class="p">);</span>
@@ -683,7 +683,7 @@ DI会回退到一个有效的自动加载类中，去加载这个类。通过这
 <div class="section" id="avoiding-service-resolution">
 <h2>避免服务解析（Avoiding service resolution）<a class="headerlink" href="#avoiding-service-resolution" title="永久链接至标题">¶</a></h2>
 <p>一些服务是用于应用的每个请求中，通过消除解析服务的过程的方式，可以使得服务解析在性能上会有小小的提升：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// 外部解析服务对象而不是使用定义服务的方式</span>
 <span class="nv">$router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyRouter</span><span class="p">();</span>
@@ -696,7 +696,7 @@ DI会回退到一个有效的自动加载类中，去加载这个类。通过这
 <div class="section" id="organizing-services-in-files">
 <h2>使用文件组织服务（Organizing services in files）<a class="headerlink" href="#organizing-services-in-files" title="永久链接至标题">¶</a></h2>
 <p>你可以更好的组织你的应用，通过移动注册的服务到独立的文件里面，而不是全部写在应用的引导文件中：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;router&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="k">include</span> <span class="s2">&quot;../app/config/routes.php&quot;</span><span class="p">;</span>
@@ -704,7 +704,7 @@ DI会回退到一个有效的自动加载类中，去加载这个类。通过这
 </pre></div>
 </div>
 <p>这样，在文件(&#8221;../app/config/routes.php&#8221;)中，返回已解析的对象：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyRouter</span><span class="p">();</span>
 
@@ -717,7 +717,7 @@ DI会回退到一个有效的自动加载类中，去加载这个类。通过这
 <div class="section" id="accessing-the-di-in-a-static-way">
 <h2>使用静态的方式访问注入器（Accessing the DI in a static way）<a class="headerlink" href="#accessing-the-di-in-a-static-way" title="永久链接至标题">¶</a></h2>
 <p>如果需要的话，你可以访问最新创建的DI对象，通过下面这种静态方法的方式：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Di</span><span class="p">;</span>
 
@@ -736,7 +736,7 @@ DI会回退到一个有效的自动加载类中，去加载这个类。通过这
 <h2>注入器默认工厂（Factory Default DI）<a class="headerlink" href="#factory-default-di" title="永久链接至标题">¶</a></h2>
 <p>尽管Phalcon的解耦性质为我们提供了很大的自由度和灵活性，也许我们只是单纯的想使用它作为一个全栈框架。
 为了达到这点，框架提供了变种的 <a class="reference internal" href="../api/Phalcon_Di.html"><span class="doc">Phalcon\Di</span></a> 叫 <a class="reference internal" href="../api/Phalcon_Di_FactoryDefault.html"><span class="doc">Phalcon\Di\FactoryDefault</span></a> 。这个类会自动注册相应的服务，并捆绑在一起作为一个全栈框架。</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Di\FactoryDefault</span><span class="p">;</span>
 
@@ -918,7 +918,7 @@ DI会回退到一个有效的自动加载类中，去加载这个类。通过这
 <div class="section" id="replace-the-built-in-service">
 <h2>替换内置服务（Replace The Built-in Service ）<a class="headerlink" href="#replace-the-built-in-service" title="永久链接至标题">¶</a></h2>
 <p>如果你想对已有的服务类进行扩展，只需要继承对应服务类或者实现对应接口，然后注入替换即可，示范：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">MyQuery</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\Model\Query</span> <span class="p">{</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">beforeExecute</span><span class="p">(){</span>

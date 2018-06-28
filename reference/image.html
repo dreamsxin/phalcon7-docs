@@ -140,7 +140,7 @@
 <div class="section" id="image-save">
 <h2>图像另存（Image Save）<a class="headerlink" href="#image-save" title="永久链接至标题">¶</a></h2>
 <p>示例：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$image</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Image\Adapter\GD</span><span class="p">(</span><span class="s1">&#39;unit-tests/assets/phalconphp.jpg&#39;</span><span class="p">);</span>
 <span class="c1">// 另存</span>
@@ -152,7 +152,7 @@
 <div class="section" id="image-render">
 <h2>图像渲染（Image Render）<a class="headerlink" href="#image-render" title="永久链接至标题">¶</a></h2>
 <p>示例：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$image</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Image\Adapter\GD</span><span class="p">(</span><span class="s1">&#39;unit-tests/assets/phalconphp.jpg&#39;</span><span class="p">);</span>
 <span class="c1">// 获取二进制字符串</span>
@@ -166,7 +166,7 @@
 <div class="section" id="image-resize">
 <h2>图像缩放（Image Resize）<a class="headerlink" href="#image-resize" title="永久链接至标题">¶</a></h2>
 <p>示例：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$image</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Image\Adapter\GD</span><span class="p">(</span><span class="s1">&#39;unit-tests/assets/phalconphp.jpg&#39;</span><span class="p">);</span>
 <span class="c1">// 缩放</span>
@@ -188,7 +188,7 @@
 <div class="section" id="add-watermark-to-image">
 <h2>图像添加水印（Add Watermark To Image）<a class="headerlink" href="#add-watermark-to-image" title="永久链接至标题">¶</a></h2>
 <p>可以添加水印到指定位置，示例：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$mask</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Image\Adapter\GD</span><span class="p">(</span><span class="s1">&#39;watermark.jpg&#39;</span><span class="p">);</span>
 <span class="nv">$image</span><span class="o">-&gt;</span><span class="na">watermark</span><span class="p">(</span><span class="nv">$watermark</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">90</span><span class="p">);</span>
@@ -198,7 +198,7 @@
 <div class="section" id="add-text-to-image">
 <h2>图像添加文本（Add Text To Image）<a class="headerlink" href="#add-text-to-image" title="永久链接至标题">¶</a></h2>
 <p>可以添加文本到指定位置，下面的示例将会添加文本到图像正中间位置：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$image</span><span class="o">-&gt;</span><span class="na">text</span><span class="p">(</span><span class="s1">&#39;Hello world&#39;</span><span class="p">);</span>
 </pre></div>
@@ -207,7 +207,7 @@
 <div class="section" id="add-reflection-to-image">
 <h2>图像添加倒影（Add Reflection To Image）<a class="headerlink" href="#add-reflection-to-image" title="永久链接至标题">¶</a></h2>
 <p>可以添加指定高度的倒影，示例：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$image</span><span class="o">-&gt;</span><span class="na">reflection</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">90</span><span class="p">);</span>
 </pre></div>
@@ -216,7 +216,7 @@
 <div class="section" id="image-mask">
 <h2>图像遮罩（Image Mask）<a class="headerlink" href="#image-mask" title="永久链接至标题">¶</a></h2>
 <p>示例：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$mask</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Image\Adapter\GD</span><span class="p">(</span><span class="s1">&#39;mask.jpg&#39;</span><span class="p">);</span>
 <span class="nv">$image</span><span class="o">-&gt;</span><span class="na">mask</span><span class="p">(</span><span class="nv">$mask</span><span class="p">);</span>
@@ -227,7 +227,7 @@
 <div class="section" id="image-background">
 <h2>图像设置背景色（Image Background）<a class="headerlink" href="#image-background" title="永久链接至标题">¶</a></h2>
 <p>示例：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$image</span><span class="o">-&gt;</span><span class="na">background</span><span class="p">(</span><span class="s1">&#39;#000000&#39;</span><span class="p">,</span> <span class="mi">90</span><span class="p">);</span>
 </pre></div>
@@ -237,7 +237,7 @@
 <div class="section" id="blur-image">
 <h2>图像高斯模糊（Blur Image）<a class="headerlink" href="#blur-image" title="永久链接至标题">¶</a></h2>
 <p>示例：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$image</span><span class="o">-&gt;</span><span class="na">blur</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
 </pre></div>
@@ -247,7 +247,7 @@
 <div class="section" id="pixelate-image">
 <h2>图像像素化（Pixelate Image）<a class="headerlink" href="#pixelate-image" title="永久链接至标题">¶</a></h2>
 <p>示例：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$image</span><span class="o">-&gt;</span><span class="na">pixelate</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
 </pre></div>

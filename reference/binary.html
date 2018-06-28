@@ -108,11 +108,11 @@
 <div class="section" id="binary-data-read">
 <h2>二进制数据读取（Binary Data Read）<a class="headerlink" href="#binary-data-read" title="永久链接至标题">¶</a></h2>
 <p>二进制读取相关方法请查看 <a class="reference internal" href="../api/Phalcon_Binary_Reader.html"><span class="doc">Phalcon\Binary\Reader</span></a> 示例：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$fp</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s1">&#39;test.bin&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">);</span>
 
-<span class="nv">$bin</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Binary\Reader</span><span class="p">(</span><span class="nv">$fp</span><span class="p">);</span>
+<span class="nv">$bin</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Binary\Reader</span><span class="p">(</span><span class="nv">$fp</span><span class="p">,</span> <span class="nx">Phalcon\Binary</span><span class="o">::</span><span class="na">MACHINE</span><span class="p">);</span>
 <span class="nv">$flag</span> <span class="o">=</span> <span class="nv">$bin</span><span class="o">-&gt;</span><span class="na">readUnsignedChar</span><span class="p">();</span>
 <span class="nv">$num</span> <span class="o">=</span> <span class="nv">$bin</span><span class="o">-&gt;</span><span class="na">readUnsignedInt16</span><span class="p">();</span>
 <span class="nv">$name</span> <span class="o">=</span> <span class="nv">$bin</span><span class="o">-&gt;</span><span class="na">readString</span><span class="p">();</span>
@@ -122,11 +122,11 @@
 <div class="section" id="binary-data-write">
 <h2>二进制数据写入（Binary Data Write）<a class="headerlink" href="#binary-data-write" title="永久链接至标题">¶</a></h2>
 <p>二进制写入相关方法请查看 <a class="reference internal" href="../api/Phalcon_Binary_Writer.html"><span class="doc">Phalcon\Binary\Writer</span></a> 示例：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$fp</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s1">&#39;test.bin&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">);</span>
 
-<span class="nv">$bin</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Binary\Writer</span><span class="p">(</span><span class="nv">$fp</span><span class="p">);</span>
+<span class="nv">$bin</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Binary\Writer</span><span class="p">(</span><span class="nv">$fp</span><span class="p">,</span> <span class="nx">Phalcon\Binary</span><span class="o">::</span><span class="na">MACHINE</span><span class="p">);</span>
 <span class="nv">$bin</span><span class="o">-&gt;</span><span class="na">writeUnsignedChar</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 <span class="nv">$bin</span><span class="o">-&gt;</span><span class="na">writeUnsignedInt16</span><span class="p">(</span><span class="mi">240</span><span class="p">);</span>
 <span class="nv">$bin</span><span class="o">-&gt;</span><span class="na">writeString</span><span class="p">(</span><span class="s1">&#39;Phalcon7&#39;</span><span class="p">);</span>

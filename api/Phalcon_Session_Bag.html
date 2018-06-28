@@ -95,7 +95,7 @@
 <p><em>implements</em> <a class="reference internal" href="Phalcon_Events_EventsAwareInterface.html"><span class="doc">Phalcon\Events\EventsAwareInterface</span></a>, <a class="reference internal" href="Phalcon_Di_InjectionAwareInterface.html"><span class="doc">Phalcon\Di\InjectionAwareInterface</span></a>, <a class="reference internal" href="Phalcon_Session_BagInterface.html"><span class="doc">Phalcon\Session\BagInterface</span></a>, IteratorAggregate, Traversable, ArrayAccess, Countable</p>
 <p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/session/bag.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
 <p>This component helps to separate session data into &#8220;namespaces&#8221;. Working by this way you can easily create groups of session variables into the application</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Session\Bag</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">);</span>
 <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s2">&quot;Kimbra Johnson&quot;</span><span class="p">;</span>
@@ -110,35 +110,35 @@
 <p>Initializes the session bag. This method must not be called directly, the class calls it when its internal data is accesed</p>
 <p>public  <strong>destroy</strong> ()</p>
 <p>Destroys the session bag</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">destroy</span><span class="p">();</span>
 </pre></div>
 </div>
 <p>public  <strong>set</strong> (<em>string</em> $property, <em>string</em> $value)</p>
 <p>Sets a value in the session bag</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;Kimbra&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>public <em>mixed</em>  <strong>get</strong> (<em>string</em> $property, [<em>string</em> $defaultValue])</p>
 <p>Obtains a value from the session bag optionally setting a default value</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="k">echo</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;Kimbra&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>public <em>boolean</em>  <strong>has</strong> (<em>string</em> $property)</p>
 <p>Check whether a property is defined in the internal bag</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$user</span><span class="o">-&gt;</span><span class="na">has</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">));</span>
 </pre></div>
 </div>
 <p>public <em>boolean</em>  <strong>remove</strong> (<em>string</em> $property)</p>
 <p>Removes a property from the internal bag</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">remove</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">);</span>
 </pre></div>
@@ -147,28 +147,28 @@
 <p>...</p>
 <p>public <em>string</em>  <strong>__get</strong> (<em>string</em> $property)</p>
 <p>Magic getter to obtain values from the session bag.</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="k">echo</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>public  <strong>__set</strong> (<em>string</em> $property, <em>string</em> $value)</p>
 <p>Magic setter to assign values to the session bag. Alias for Phalcon\Session\Bag::set()</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s2">&quot;Kimbra&quot;</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>public <em>boolean</em>  <strong>__isset</strong> (<em>string</em> $property)</p>
 <p>Magic isset to check whether a property is defined in the bag. Alias for Phalcon\Session\Bag::has()</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nb">var_dump</span><span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$user</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]));</span>
 </pre></div>
 </div>
 <p>public <em>boolean</em>  <strong>__unset</strong> (<em>string</em> $property)</p>
 <p>Magic unset to remove items using the property syntax. Alias for Phalcon\Session\Bag::remove()</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
  <span class="nb">unset</span><span class="p">(</span><span class="nv">$user</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]);</span>
 </pre></div>

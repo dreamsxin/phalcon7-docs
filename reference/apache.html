@@ -113,7 +113,7 @@
 <div class="section" id="apache-phalcon-configuring-apache-for-phalcon">
 <h2>Apache 下配置 Phalcon（Configuring Apache for Phalcon）<a class="headerlink" href="#apache-phalcon-configuring-apache-for-phalcon" title="永久链接至标题">¶</a></h2>
 <p>以下内容是你可能在使用Apache下搭建Phalcon时可能会用到的配置。这些内容重点关注于mod_rewrite模块的配置，以便可以使用友好的链接和路由组件 <a class="reference internal" href="routing.html"><span class="doc">router component</span></a> 。通常一个应用会有以下目录结构：</p>
-<div class="highlight-php"><div class="highlight"><pre><span class="x">test/</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">test/</span>
 <span class="x">  app/</span>
 <span class="x">    controllers/</span>
 <span class="x">    models/</span>
@@ -128,7 +128,7 @@
 <div class="section" id="directory-under-the-main-document-root">
 <h3>在主文档根目录下（Directory under the main Document Root）<a class="headerlink" href="#directory-under-the-main-document-root" title="永久链接至标题">¶</a></h3>
 <p>这是一种最为常用的情况，应用安装在根目录下的任意一个目录。对于这种情况，我们使用两个.htaccess文件，第一个用于隐藏应用转发全部请求到对应文档根目录（public/）的相关代码。</p>
-<div class="highlight-apacheconf"><div class="highlight"><pre><span class="c"># test/.htaccess</span>
+<div class="highlight-apacheconf"><div class="highlight"><pre><span></span><span class="c"># test/.htaccess</span>
 
 <span class="nt">&lt;IfModule</span> <span class="s">mod_rewrite.c</span><span class="nt">&gt;</span>
     <span class="nb">RewriteEngine</span> <span class="k">on</span>
@@ -138,7 +138,7 @@
 </pre></div>
 </div>
 <p>然后第二个.htaccess位于public/下，并将全部的URI重定向到public/index.php文件。</p>
-<div class="highlight-apacheconf"><div class="highlight"><pre><span class="c"># test/public/.htaccess</span>
+<div class="highlight-apacheconf"><div class="highlight"><pre><span></span><span class="c"># test/public/.htaccess</span>
 
 <span class="nt">&lt;IfModule</span> <span class="s">mod_rewrite.c</span><span class="nt">&gt;</span>
     <span class="nb">RewriteEngine</span> <span class="k">On</span>
@@ -149,7 +149,7 @@
 </pre></div>
 </div>
 <p>如果你不想使用这些.htaccess文件，你可以将这些配置移到apache的主配置文件中：</p>
-<div class="highlight-apacheconf"><div class="highlight"><pre><span class="nt">&lt;IfModule</span> <span class="s">mod_rewrite.c</span><span class="nt">&gt;</span>
+<div class="highlight-apacheconf"><div class="highlight"><pre><span></span><span class="nt">&lt;IfModule</span> <span class="s">mod_rewrite.c</span><span class="nt">&gt;</span>
 
     <span class="nt">&lt;Directory</span> <span class="s">&quot;/var/www/test&quot;</span><span class="nt">&gt;</span>
         <span class="nb">RewriteEngine</span> <span class="k">on</span>
@@ -171,7 +171,7 @@
 <div class="section" id="virtual-hosts">
 <h3>虚拟主机（Virtual Hosts）<a class="headerlink" href="#virtual-hosts" title="永久链接至标题">¶</a></h3>
 <p>第二份配置则允许你可以将一个Phalcon应用安装在虚拟主机：</p>
-<div class="highlight-apacheconf"><div class="highlight"><pre><span class="nt">&lt;VirtualHost</span> <span class="s">*:80</span><span class="nt">&gt;</span>
+<div class="highlight-apacheconf"><div class="highlight"><pre><span></span><span class="nt">&lt;VirtualHost</span> <span class="s">*:80</span><span class="nt">&gt;</span>
 
     <span class="nb">ServerAdmin</span> admin@example.host
     <span class="nb">DocumentRoot</span> <span class="s2">&quot;/var/vhosts/test/public&quot;</span>
