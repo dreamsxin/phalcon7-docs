@@ -581,23 +581,25 @@
 <div class="section" id="json-json-response">
 <h3>JSON 输出（JSON Response）<a class="headerlink" href="#json-json-response" title="永久链接至标题">¶</a></h3>
 <p>MVC 应用默认开启视图组件，以下示例演示了如何禁用视图组件：</p>
-<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">class IndexController extends Phalcon\Mvc\Controller {</span>
-<span class="x">    public function indexAction() {</span>
-<span class="x">        return [&#39;name&#39; =&gt; &#39;Phalcon7&#39;];</span>
-<span class="x">    }</span>
-<span class="x">}</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
-<span class="x">$di = new Phalcon\Di\FactoryDefault();</span>
-<span class="x">$di-&gt;response-&gt;setContentType(&#39;application/json&#39;);</span>
-<span class="x">$application = new Phalcon\Mvc\Application();</span>
-<span class="x">$application-&gt;attachEvent(&#39;beforeSendResponse&#39;, function($event, $res){</span>
-<span class="x">    // Change data</span>
-<span class="x">    $data = $this-&gt;dispatcher-&gt;getReturnedValue();</span>
-<span class="x">    $res-&gt;setJsonContent([&#39;data&#39; =&gt; $data]);</span>
-<span class="x">});</span>
-<span class="x">$application-&gt;useImplicitView(false);</span>
+<span class="k">class</span> <span class="nc">IndexController</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\Controller</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">indexAction</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Phalcon7&#39;</span><span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-<span class="x">echo $application-&gt;handle(&#39;/index/index&#39;)-&gt;getContent();</span>
+<span class="nv">$di</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Di\FactoryDefault</span><span class="p">();</span>
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">response</span><span class="o">-&gt;</span><span class="na">setContentType</span><span class="p">(</span><span class="s1">&#39;application/json&#39;</span><span class="p">);</span>
+<span class="nv">$application</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\Application</span><span class="p">();</span>
+<span class="nv">$application</span><span class="o">-&gt;</span><span class="na">attachEvent</span><span class="p">(</span><span class="s1">&#39;beforeSendResponse&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$res</span><span class="p">){</span>
+    <span class="c1">// Change data</span>
+    <span class="nv">$data</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatcher</span><span class="o">-&gt;</span><span class="na">getReturnedValue</span><span class="p">();</span>
+    <span class="nv">$res</span><span class="o">-&gt;</span><span class="na">setJsonContent</span><span class="p">([</span><span class="s1">&#39;data&#39;</span> <span class="o">=&gt;</span> <span class="nv">$data</span><span class="p">]);</span>
+<span class="p">});</span>
+<span class="nv">$application</span><span class="o">-&gt;</span><span class="na">useImplicitView</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="nv">$application</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">(</span><span class="s1">&#39;/index/index&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
