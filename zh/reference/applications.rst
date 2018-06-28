@@ -437,6 +437,8 @@ MVC 应用默认开启视图组件，以下示例演示了如何禁用视图组�
 
 .. code-block:: php
 
+    <?php
+
     class IndexController extends Phalcon\Mvc\Controller {
         public function indexAction() {
             return ['name' => 'Phalcon7'];
