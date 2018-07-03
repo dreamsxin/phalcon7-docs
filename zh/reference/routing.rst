@@ -251,6 +251,14 @@ The following examples produce the same result:
         )
     );
 
+    $router = new Phalcon\Mvc\Router;
+    $router->add('/{namespace:[a-z\-]+}/{controller:[a-z\-]+}{action:[/a-z\-]*}', NULL)
+        ->convert('namespace', function ($namespace) {
+            return ucfirst($namespace);
+        })->convert('controller', function ($controller) {
+            return ucfirst($controller);
+        });
+
 混合使用数组和短语法（Mixing Array and Short Syntax）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Array and short syntax can be mixed to define a route, in this case note that named parameters automatically
