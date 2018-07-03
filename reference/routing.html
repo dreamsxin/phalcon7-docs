@@ -391,6 +391,14 @@ The following examples produce the same result:</p>
        <span class="s2">&quot;title&quot;</span>      <span class="o">=&gt;</span> <span class="mi">2</span>
     <span class="p">)</span>
 <span class="p">);</span>
+
+<span class="nv">$router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">;</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s1">&#39;/{namespace:[a-z\-]+}/{controller:[a-z\-]+}{action:[/a-z\-]*}&#39;</span><span class="p">,</span> <span class="k">NULL</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">convert</span><span class="p">(</span><span class="s1">&#39;namespace&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$namespace</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">ucfirst</span><span class="p">(</span><span class="nv">$namespace</span><span class="p">);</span>
+    <span class="p">})</span><span class="o">-&gt;</span><span class="na">convert</span><span class="p">(</span><span class="s1">&#39;controller&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$controller</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">ucfirst</span><span class="p">(</span><span class="nv">$controller</span><span class="p">);</span>
+    <span class="p">});</span>
 </pre></div>
 </div>
 </div>
