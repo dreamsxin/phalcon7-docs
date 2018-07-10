@@ -177,6 +177,23 @@ setVar允许我们创建视图变量，这样可以在视图模板中使用它�
 | Main Layout       | app/views/index.phtml                   | 这是主布局。                                                   |
 +-------------------+-----------------------------------------+----------------------------------------------------------------+
 
+多级命名空间，会从底层逐级向上层渲染视图，可以关闭多级渲染：
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\View;
+
+    $di->set('view', function () {
+
+        $view = new View();
+
+        $view->disableMultiNamespaceView();
+
+        return $view;
+    }, true);
+
 使用模版（Using Templates）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 模板视图可以用来分享共同的视图代码。他们作为控制器的布局，所以你需要放在布局目录。
