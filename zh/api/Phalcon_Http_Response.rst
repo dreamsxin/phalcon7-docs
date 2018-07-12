@@ -224,6 +224,18 @@ Gets the HTTP response body
 
 
 
+public *string*  **getJsonContent** ()
+
+Gets the HTTP response json body
+
+
+
+public *string*  **getBsonContent** ()
+
+Gets the HTTP response bson body
+
+
+
 public *boolean*  **isSent** ()
 
 Check if the response is already sent

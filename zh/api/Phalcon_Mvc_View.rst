@@ -576,6 +576,18 @@ Disables namespace view render
 
 
 
+public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **enableMultiNamespaceView** ()
+
+Enables multi namespace view render
+
+
+
+public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **disableMultiNamespaceView** ()
+
+Disables multi namespace view render
+
+
+
 public :doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`  **enableLowerCase** ()
 
 Enables to lower case view path

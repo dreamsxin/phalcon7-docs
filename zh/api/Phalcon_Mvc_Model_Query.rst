@@ -222,6 +222,12 @@ Returns the current cache backend instance
 
 
 
+public :doc:`Phalcon\\Mvc\\Model\\Query <Phalcon_Mvc_Model_Query>`  **ignoreLastInsertId** ()
+
+Ignore last insert id
+
+
+
 protected :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **_executeSelect** ()
 
 Executes the SELECT intermediate representation producing a Phalcon\\Mvc\\Model\\Resultset

@@ -107,6 +107,18 @@ Sets read connection service for a model
 
 
 
+public  **setDefaultConnectionService** (*string* $connectionService)
+
+Sets default connection service for a model
+
+
+
+public *string*  **getDefaultConnectionService** ()
+
+Gets default connection service for a model
+
+
+
 public  **setDefaultWriteConnectionService** (*string* $connectionService)
 
 Sets default write connection service for a model
