@@ -79,6 +79,18 @@ Return current prefixes registered in the autoloader
 
 
 
+public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **registerSufixes** (*array* $sufixes, [*boolean* $merge])
+
+Register directories on which "not found" classes could be found
+
+
+
+public  **getSufixes** ()
+
+Return current prefixes registered in the autoloader
+
+
+
 public :doc:`Phalcon\\Loader <Phalcon_Loader>`  **registerDirs** (*array* $directories, [*boolean* $merge])
 
 Register directories on which "not found" classes could be found

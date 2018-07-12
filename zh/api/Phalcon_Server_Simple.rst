@@ -29,13 +29,13 @@ Class **Phalcon\\Server\\Simple**
 Methods
 -------
 
-public  **__construct** ([*string* $host], [*int* $port])
+public  **__construct** ([*string* $host], [*int* $port], [*unknown* $numWorker])
 
 Phalcon\\Server\\Simple constructor
 
 
 
-public  **start** ([:doc:`Phalcon\\Application <Phalcon_Application>` $application])
+public  **start** (:doc:`Phalcon\\Application <Phalcon_Application>` $application)
 
 Run the Server
 

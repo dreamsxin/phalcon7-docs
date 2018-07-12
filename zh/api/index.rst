@@ -291,6 +291,7 @@ API Indice
    Phalcon_Session_Adapter_Memcached
    Phalcon_Session_Bag
    Phalcon_Session_Exception
+   Phalcon_Snowflake
    Phalcon_Socket
    Phalcon_Socket_Exception
    Phalcon_Socket_Client

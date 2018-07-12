@@ -246,3 +246,9 @@ Aggregating
 
 
 
+public static *array*  **flip** (*array* $array, *string* $key, [*string* $value])
+
+Exchanges all keys with their associated values in an array
+
+
+
