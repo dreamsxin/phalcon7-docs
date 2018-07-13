@@ -1,4 +1,4 @@
-注释解析器（Annotations Parser）
+注解解析器（Annotations Parser）
 ================================
 
 这是第一个为PHP用C语言写的注释解析器。
