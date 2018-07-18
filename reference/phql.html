@@ -108,8 +108,12 @@
 <li><a class="reference internal" href="#escaping-reserved-words">转义保留字（Escaping Reserved Words）</a></li>
 <li><a class="reference internal" href="#phql-phql-lifecycle">PHQL 生命周期（PHQL Lifecycle）</a></li>
 <li><a class="reference internal" href="#sql-using-raw-sql">使用原生 SQL（Using Raw SQL）</a></li>
-<li><a class="reference internal" href="#reading-and-writing-separation">实现读写分离（Reading and Writing Separation）</a></li>
+<li><a class="reference internal" href="#reading-and-writing-separation">实现读写分离（Reading and Writing Separation）</a><ul>
+<li><a class="reference internal" href="#split-database">分库（Split Database）</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#phql-phql-events">PHQL 事件（PHQL Events）</a></li>
+<li><a class="reference internal" href="#id1">PHQL 事件（PHQL Events）</a></li>
 <li><a class="reference internal" href="#troubleshooting">注意事项（Troubleshooting）</a></li>
 </ul>
 </li>
@@ -1056,12 +1060,13 @@ The following is the life cycle of each PHQL statement executed:</p>
     <span class="sd">/**</span>
 <span class="sd">     * 动态选择读数据库连接</span>
 <span class="sd">     *</span>
-<span class="sd">     * @param array $intermediate</span>
-<span class="sd">     * @param array $bindParams</span>
-<span class="sd">     * @param array $bindTypes</span>
+<span class="sd">     * @param array $data</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">selectReadConnection</span><span class="p">(</span><span class="nv">$intermediate</span><span class="p">,</span> <span class="nv">$bindParams</span><span class="p">,</span> <span class="nv">$bindTypes</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">selectReadConnection</span><span class="p">(</span><span class="nv">$data</span><span class="p">)</span>
     <span class="p">{</span>
+        <span class="nv">$intermediate</span> <span class="o">=</span> <span class="nv">$data</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+        <span class="nv">$bindParams</span> <span class="o">=</span> <span class="nv">$data</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+        <span class="nv">$bindTypes</span> <span class="o">=</span> <span class="nv">$data</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
         <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDI</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;readDB&#39;</span><span class="p">);</span>
     <span class="p">}</span>
 
@@ -1072,8 +1077,11 @@ The following is the life cycle of each PHQL statement executed:</p>
 <span class="sd">     * @param array $bindParams</span>
 <span class="sd">     * @param array $bindTypes</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">selectWriteConnection</span><span class="p">(</span><span class="nv">$intermediate</span><span class="p">,</span> <span class="nv">$bindParams</span><span class="p">,</span> <span class="nv">$bindTypes</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">selectWriteConnection</span><span class="p">(</span><span class="nv">$data</span><span class="p">)</span>
     <span class="p">{</span>
+        <span class="nv">$intermediate</span> <span class="o">=</span> <span class="nv">$data</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+        <span class="nv">$bindParams</span> <span class="o">=</span> <span class="nv">$data</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+        <span class="nv">$bindTypes</span> <span class="o">=</span> <span class="nv">$data</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
         <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDI</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;writeDB&#39;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -1081,9 +1089,40 @@ The following is the life cycle of each PHQL statement executed:</p>
 <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;modelsQuery&#39;</span><span class="p">,</span> <span class="s1">&#39;MyQuery&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+<div class="section" id="split-database">
+<h3>分库（Split Database）<a class="headerlink" href="#split-database" title="永久链接至标题">¶</a></h3>
 <p>根据当前查询条件来实现，实现水平切分的功能：</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
+<span class="nv">$di</span><span class="o">-&gt;</span><span class="na">modelsQuery</span><span class="o">-&gt;</span><span class="na">attachEvent</span><span class="p">(</span><span class="s1">&#39;selectReadConnection&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$intermediate</span> <span class="o">=</span> <span class="nv">$data</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="nv">$bindParams</span> <span class="o">=</span> <span class="nv">$data</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="nv">$bindTypes</span> <span class="o">=</span> <span class="nv">$data</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+
+    <span class="c1">// Check if there is a &#39;where&#39; clause in the select</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$intermediate</span><span class="p">[</span><span class="s1">&#39;where&#39;</span><span class="p">]))</span> <span class="p">{</span>
+
+        <span class="nv">$conditions</span> <span class="o">=</span> <span class="nv">$intermediate</span><span class="p">[</span><span class="s1">&#39;where&#39;</span><span class="p">];</span>
+
+        <span class="c1">// Choose the possible shard according to the conditions</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$conditions</span><span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;id&#39;</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$id</span> <span class="o">=</span> <span class="nv">$conditions</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">][</span><span class="s1">&#39;value&#39;</span><span class="p">];</span>
+
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$id</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nv">$id</span> <span class="o">&lt;</span> <span class="mi">10000</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDI</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;dbShard1&#39;</span><span class="p">);</span>
+                <span class="p">}</span>
+
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$id</span> <span class="o">&gt;</span> <span class="mi">10000</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDI</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;dbShard2&#39;</span><span class="p">);</span>
+                <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Use a default shard</span>
+    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDI</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;dbShard0&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// Or</span>
 <span class="k">class</span> <span class="nc">MyQuery</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\Model\Query</span>
 <span class="p">{</span>
     <span class="sd">/**</span>
@@ -1093,8 +1132,12 @@ The following is the life cycle of each PHQL statement executed:</p>
 <span class="sd">     * @param array $bindParams</span>
 <span class="sd">     * @param array $bindTypes</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">selectReadConnection</span><span class="p">(</span><span class="nv">$intermediate</span><span class="p">,</span> <span class="nv">$bindParams</span><span class="p">,</span> <span class="nv">$bindTypes</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">selectReadConnection</span><span class="p">(</span><span class="nv">$data</span><span class="p">)</span>
     <span class="p">{</span>
+        <span class="nv">$intermediate</span> <span class="o">=</span> <span class="nv">$data</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+        <span class="nv">$bindParams</span> <span class="o">=</span> <span class="nv">$data</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+        <span class="nv">$bindTypes</span> <span class="o">=</span> <span class="nv">$data</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+
         <span class="c1">// Check if there is a &#39;where&#39; clause in the select</span>
         <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$intermediate</span><span class="p">[</span><span class="s1">&#39;where&#39;</span><span class="p">]))</span> <span class="p">{</span>
 
@@ -1121,6 +1164,7 @@ The following is the life cycle of each PHQL statement executed:</p>
 
 <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;modelsQuery&#39;</span><span class="p">,</span> <span class="s1">&#39;MyQuery&#39;</span><span class="p">);</span>
 </pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="phql-phql-events">
@@ -1254,6 +1298,9 @@ The following is the life cycle of each PHQL statement executed:</p>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="section" id="id1">
+<h2>PHQL 事件（PHQL Events）<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 </div>
 <div class="section" id="troubleshooting">
 <h2>注意事项（Troubleshooting）<a class="headerlink" href="#troubleshooting" title="永久链接至标题">¶</a></h2>

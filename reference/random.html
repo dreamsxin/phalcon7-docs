@@ -24,7 +24,7 @@
     <link rel="index" title="索引" href="../index.html" />
     <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.3.2 文档" href="../index.html" />
-    <link rel="next" title="图像处理（Image manipulation）" href="image.html" />
+    <link rel="next" title="分布式自增 ID（Snowflake）" href="snowflake.html" />
     <link rel="prev" title="性能分析器（Profiler）" href="profiler.html" /> 
 </head>
 <body>
@@ -67,7 +67,7 @@
           <a href="../genindex.html" title="总目录"
              accesskey="I">索引</a></li>
         <li class="right" >
-          <a href="image.html" title="图像处理（Image manipulation）"
+          <a href="snowflake.html" title="分布式自增 ID（Snowflake）"
              accesskey="N">下一页</a> |</li>
         <li class="right" >
           <a href="profiler.html" title="性能分析器（Profiler）"
@@ -84,7 +84,7 @@
 			<div class="panel-heading">上一个主题</div>
             <div class="panel-body"><p class="topless"><a href="profiler.html" title="上一章">&lt; 性能分析器（Profiler）</a></p></div>
 			<div class="panel-heading">下一个主题</div>
-            <div class="panel-body"><p class="topless"><a href="image.html" title="下一章">图像处理（Image manipulation） &gt;</a></p></div>
+            <div class="panel-body"><p class="topless"><a href="snowflake.html" title="下一章">分布式自增 ID（Snowflake） &gt;</a></p></div>
 		</div>
 	</div>
   <div class="col-md-9 second-box" valign="top">
@@ -96,6 +96,12 @@
   <div class="section" id="random">
 <h1>随机数（Random）<a class="headerlink" href="#random" title="永久链接至标题">¶</a></h1>
 <p>Phalcon 提供了 <a class="reference internal" href="../api/Phalcon_Random.html"><span class="doc">Phalcon\Random</span></a> 与 <a class="reference internal" href="../api/Phalcon_Security_Random.html"><span class="doc">Phalcon\Security\Random</span></a> 类来生成随机数。</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="nv">$random</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Random</span><span class="p">();</span>
+<span class="nv">$alnum</span> <span class="o">=</span> <span class="nv">$random</span><span class="o">-&gt;</span><span class="na">alnum</span><span class="p">();</span>
+</pre></div>
+</div>
 </div>
 
 
@@ -111,7 +117,7 @@
           <a href="../genindex.html" title="总目录"
              >索引</a></li>
         <li class="right" >
-          <a href="image.html" title="图像处理（Image manipulation）"
+          <a href="snowflake.html" title="分布式自增 ID（Snowflake）"
              >下一页</a> |</li>
         <li class="right" >
           <a href="profiler.html" title="性能分析器（Profiler）"

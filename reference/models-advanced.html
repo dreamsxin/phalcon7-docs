@@ -98,6 +98,7 @@
 <li><a class="reference internal" href="#pointing-to-a-different-schema">设置模式（Pointing to a different schema）</a></li>
 <li><a class="reference internal" href="#setting-multiple-databases">设置多个数据库（Setting multiple databases）</a><ul>
 <li><a class="reference internal" href="#reading-and-writing-separation">实现读写分离（Reading and Writing Separation）</a></li>
+<li><a class="reference internal" href="#split-database">分库（Split Database）</a></li>
 <li><a class="reference internal" href="#id1">实现分表</a></li>
 </ul>
 </li>
@@ -581,7 +582,9 @@ to balance the load to your databases implementing a master-slave architecture:<
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>也可以用如下方法实现：</p>
+</div>
+<div class="section" id="split-database">
+<h3>分库（Split Database）<a class="headerlink" href="#split-database" title="永久链接至标题">¶</a></h3>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model</span><span class="p">;</span>

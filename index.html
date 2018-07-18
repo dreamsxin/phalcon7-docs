@@ -353,7 +353,7 @@ Phalcon7 源自 Phalcon 所以具备了 Phalcon 所有与生俱来的特性，�
 </li>
 <li class="toctree-l2"><a class="reference internal" href="reference/models-metadata.html#meta-data-strategies">元数据策略（Meta-Data Strategies）</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="reference/models-metadata.html#database-introspection-strategy">数据库内部策略（Database Introspection Strategy）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/models-metadata.html#annotations-strategy">注释策略（Annotations Strategy）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/models-metadata.html#annotations-strategy">注解策略（Annotations Strategy）</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="reference/models-metadata.html#manual-meta-data">自定义元数据（Manual Meta-Data）</a></li>
@@ -387,6 +387,7 @@ Phalcon7 源自 Phalcon 所以具备了 Phalcon 所有与生俱来的特性，�
 <li class="toctree-l2"><a class="reference internal" href="reference/models-advanced.html#pointing-to-a-different-schema">设置模式（Pointing to a different schema）</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/models-advanced.html#setting-multiple-databases">设置多个数据库（Setting multiple databases）</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="reference/models-advanced.html#reading-and-writing-separation">实现读写分离（Reading and Writing Separation）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/models-advanced.html#split-database">分库（Split Database）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="reference/models-advanced.html#id1">实现分表</a></li>
 </ul>
 </li>
@@ -425,8 +426,12 @@ Phalcon7 源自 Phalcon 所以具备了 Phalcon 所有与生俱来的特性，�
 <li class="toctree-l2"><a class="reference internal" href="reference/phql.html#escaping-reserved-words">转义保留字（Escaping Reserved Words）</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/phql.html#phql-phql-lifecycle">PHQL 生命周期（PHQL Lifecycle）</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/phql.html#sql-using-raw-sql">使用原生 SQL（Using Raw SQL）</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/phql.html#reading-and-writing-separation">实现读写分离（Reading and Writing Separation）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/phql.html#reading-and-writing-separation">实现读写分离（Reading and Writing Separation）</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/phql.html#split-database">分库（Split Database）</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="reference/phql.html#phql-phql-events">PHQL 事件（PHQL Events）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/phql.html#id1">PHQL 事件（PHQL Events）</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/phql.html#troubleshooting">注意事项（Troubleshooting）</a></li>
 </ul>
 </li>
@@ -862,7 +867,7 @@ Phalcon7 源自 Phalcon 所以具备了 Phalcon 所有与生俱来的特性，�
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="reference/annotations.html">注释解析器（Annotations Parser）</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="reference/annotations.html">注解解析器（Annotations Parser）</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="reference/annotations.html#reading-annotations">读取注释（Reading Annotations）</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/annotations.html#types-of-annotations">注释类型（Types of Annotations）</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/annotations.html#practical-usage">实际使用（Practical Usage）</a><ul>
@@ -931,6 +936,7 @@ Phalcon7 源自 Phalcon 所以具备了 Phalcon 所有与生俱来的特性，�
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="reference/random.html">随机数（Random）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/snowflake.html">分布式自增 ID（Snowflake）</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference/image.html">图像处理（Image manipulation）</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="reference/image.html#image-driver-adapters">图像驱动适配器（Image Driver Adapters）</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/image.html#image-save">图像另存（Image Save）</a></li>
