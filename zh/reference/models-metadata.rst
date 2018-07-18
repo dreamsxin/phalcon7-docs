@@ -112,7 +112,7 @@ You can change the default meta-data introspection in the following way:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This strategy doesn't require any customization and is implicitly used by all the meta-data adapters.
 
-注释策略（Annotations Strategy）
+注解策略（Annotations Strategy）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This strategy makes use of :doc:`annotations <annotations>` to describe the columns in a model:
 
