@@ -90,13 +90,13 @@
         }
     }
 
-作为些示例的一部分，我们同样实现了 :doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>` 来检测SQL语句是否超出了期望的执行时间：
+作为些示例的一部分，我们同样实现了 :doc:`Phalcon\\Profiler <../api/Phalcon_Profiler>` 来检测SQL语句是否超出了期望的执行时间：
 
 .. code-block:: php
 
     <?php
 
-    use Phalcon\Db\Profiler;
+    use Phalcon\Profiler;
     use Phalcon\Logger;
     use Phalcon\Logger\Adapter\File;
 
