@@ -1132,7 +1132,7 @@ The following is the life cycle of each PHQL statement executed:</p>
 <span class="sd">     * @param array $bindParams</span>
 <span class="sd">     * @param array $bindTypes</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">selectReadConnection</span><span class="p">(</span><span class="nv">$data</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">selectReadConnection</span><span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$data</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="nv">$intermediate</span> <span class="o">=</span> <span class="nv">$data</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
         <span class="nv">$bindParams</span> <span class="o">=</span> <span class="nv">$data</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
