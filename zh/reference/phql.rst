@@ -1007,12 +1007,13 @@ The above findByRawSql could be used as follows:
         /**
          * 动态选择读数据库连接
          *
-         * @param array $intermediate
-         * @param array $bindParams
-         * @param array $bindTypes
+         * @param array $data
          */
-        public function selectReadConnection($intermediate, $bindParams, $bindTypes)
+        public function selectReadConnection($data)
         {
+            $intermediate = $data[0];
+            $bindParams = $data[1];
+            $bindTypes = $data[2];
             return $this->getDI()->get('readDB');
         }
 
@@ -1023,13 +1024,19 @@ The above findByRawSql could be used as follows:
          * @param array $bindParams
          * @param array $bindTypes
          */
-        public function selectWriteConnection($intermediate, $bindParams, $bindTypes)
+        public function selectWriteConnection($data)
         {
+            $intermediate = $data[0];
+            $bindParams = $data[1];
+            $bindTypes = $data[2];
             return $this->getDI()->get('writeDB');
         }
     }
 
     $di->set('modelsQuery', 'MyQuery');
+
+分库（Split Database）
+^^^^^^^^^^^^^^^^^^^^^^
 
 根据当前查询条件来实现，实现水平切分的功能：
 
@@ -1037,6 +1044,35 @@ The above findByRawSql could be used as follows:
 
     <?php
 
+    $di->modelsQuery->attachEvent('selectReadConnection', function($event, $data) {
+        $intermediate = $data[0];
+        $bindParams = $data[1];
+        $bindTypes = $data[2];
+
+        // Check if there is a 'where' clause in the select
+        if (isset($intermediate['where'])) {
+
+            $conditions = $intermediate['where'];
+
+            // Choose the possible shard according to the conditions
+            if ($conditions['left']['name'] == 'id') {
+                    $id = $conditions['right']['value'];
+
+                    if ($id > 0 && $id < 10000) {
+                        return $this->getDI()->get('dbShard1');
+                    }
+
+                    if ($id > 10000) {
+                        return $this->getDI()->get('dbShard2');
+                    }
+            }
+        }
+
+        // Use a default shard
+        return $this->getDI()->get('dbShard0');
+    });
+
+    // Or
     class MyQuery extends Phalcon\Mvc\Model\Query
     {
         /**
@@ -1046,8 +1082,12 @@ The above findByRawSql could be used as follows:
          * @param array $bindParams
          * @param array $bindTypes
          */
-        public function selectReadConnection($intermediate, $bindParams, $bindTypes)
+        public function selectReadConnection($data)
         {
+            $intermediate = $data[0];
+            $bindParams = $data[1];
+            $bindTypes = $data[2];
+
             // Check if there is a 'where' clause in the select
             if (isset($intermediate['where'])) {
 

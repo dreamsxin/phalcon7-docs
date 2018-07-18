@@ -504,7 +504,8 @@ to balance the load to your databases implementing a master-slave architecture:
         }
     }
 
-也可以用如下方法实现：
+分库（Split Database）
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: php
 
