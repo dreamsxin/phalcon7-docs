@@ -1082,7 +1082,7 @@ The above findByRawSql could be used as follows:
          * @param array $bindParams
          * @param array $bindTypes
          */
-        public function selectReadConnection($data)
+        public function selectReadConnection($event, $data)
         {
             $intermediate = $data[0];
             $bindParams = $data[1];
