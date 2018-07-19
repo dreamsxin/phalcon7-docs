@@ -180,7 +180,7 @@
 </pre></div>
 </div>
 <p>Each event can have its own options, &#8216;field&#8217; is the name of the column that must be updated, if &#8216;format&#8217; is a string it will be used
-as format of the PHP&#8217;s function <a href="#id1"><span class="problematic" id="id2">date_</span></a>, format can also be an anonymous function providing you the free to generate any kind timestamp:</p>
+as format of the PHP&#8217;s function <a class="reference external" href="http://php.net/manual/zh/function.date.php">date</a>, format can also be an anonymous function providing you the free to generate any kind timestamp:</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Behavior\Timestampable</span><span class="p">;</span>
@@ -203,7 +203,7 @@ as format of the PHP&#8217;s function <a href="#id1"><span class="problematic" i
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>If the option &#8216;format&#8217; is omitted a timestamp using the PHP&#8217;s function <a href="#id3"><span class="problematic" id="id4">time_</span></a>, will be used.</p>
+<p>If the option &#8216;format&#8217; is omitted a timestamp using the PHP&#8217;s function <a class="reference external" href="http://php.net/manual/zh/function.time.php">time</a>, will be used.</p>
 </div>
 <div class="section" id="softdelete">
 <h1>软删除（SoftDelete）<a class="headerlink" href="#softdelete" title="永久链接至标题">¶</a></h1>
@@ -350,7 +350,7 @@ that is performed operations over a model:</p>
 </div>
 <div class="section" id="traits-using-traits-as-behaviors">
 <h1>使用 Traits 实现行为(Using Traits as behaviors)<a class="headerlink" href="#traits-using-traits-as-behaviors" title="永久链接至标题">¶</a></h1>
-<p>Starting from PHP 5.4 you can use <a href="#id5"><span class="problematic" id="id6">Traits_</span></a> to re-use code in your classes, this is another way to implement
+<p>Starting from PHP 5.4 you can use <a class="reference external" href="http://php.net/manual/zh/language.oop5.traits.php">Traits</a> to re-use code in your classes, this is another way to implement
 custom behaviors. The following trait implements a simple version of the Timestampable behavior:</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 

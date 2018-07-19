@@ -157,11 +157,11 @@
 <td>PostgreSQL是一个强大，开源的关系数据库。它拥有超过15年的积极发展和经过验证的架构，这些已经为它赢得了可靠性、数据完整性、正确性的良好的声誉</td>
 <td><a class="reference internal" href="../api/Phalcon_Db_Adapter_Pdo_Postgresql.html"><span class="doc">Phalcon\Db\Adapter\Pdo\Postgresql</span></a></td>
 </tr>
+<tr class="row-even"><td>SQLite</td>
+<td colspan="2">SQLite是一个实现一个自包含的，无服务器，零配置，支持事务的SQL数据库引擎的软件库                                                                                                                                                      | <a class="reference internal" href="../api/Phalcon_Db_Adapter_Pdo_Sqlite.html"><span class="doc">Phalcon\Db\Adapter\Pdo\Sqlite</span></a></td>
+</tr>
 </tbody>
 </table>
-<div class="line-block">
-<div class="line">PostgreSQL | PostgreSQL是一个强大，开源的关系数据库。它拥有超过15年的积极发展和经过验证的架构，这些已经为它赢得了可靠性、数据完整性、正确性的良好的声誉                                                                                           | <a class="reference internal" href="../api/Phalcon_Db_Adapter_Pdo_Postgresql.html"><span class="doc">Phalcon\Db\Adapter\Pdo\Postgresql</span></a> |</div>
-</div>
 <div class="section" id="implementing-your-own-adapters">
 <h3>自定义适配器（Implementing your own adapters）<a class="headerlink" href="#implementing-your-own-adapters" title="永久链接至标题">¶</a></h3>
 <p>如果你想创建自己的适配器或者扩展现有的适配器，这个 <a class="reference internal" href="../api/Phalcon_Db_AdapterInterface.html"><span class="doc">Phalcon\Db\AdapterInterface</span></a> 接口必须被实现。</p>
@@ -670,7 +670,7 @@ bound parameters are directly passed to PDO:</p>
 <span class="c1">// 监听所有数据库事件</span>
 <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span><span class="s1">&#39;db&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$connection</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$logger</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;beforeQuery&#39;</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">getSQLStatement</span><span class="p">(),</span> <span class="nx">Logger</span><span class="o">::</span><span class="na">INFO</span><span class="p">);</span>
+        <span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="nx">\Phalcon\Logger</span><span class="o">::</span><span class="na">INFO</span><span class="p">,</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">getSQLStatement</span><span class="p">());</span>
     <span class="p">}</span>
 <span class="p">});</span>
 

@@ -24,7 +24,7 @@
     <link rel="index" title="索引" href="../index.html" />
     <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.3.2 文档" href="../index.html" />
-    <link rel="next" title="注释解析器（Annotations Parser）" href="annotations.html" />
+    <link rel="next" title="注解解析器（Annotations Parser）" href="annotations.html" />
     <link rel="prev" title="自动加载器（Universal Class Loader）" href="loader.html" /> 
 </head>
 <body>
@@ -67,7 +67,7 @@
           <a href="../genindex.html" title="总目录"
              accesskey="I">索引</a></li>
         <li class="right" >
-          <a href="annotations.html" title="注释解析器（Annotations Parser）"
+          <a href="annotations.html" title="注解解析器（Annotations Parser）"
              accesskey="N">下一页</a> |</li>
         <li class="right" >
           <a href="loader.html" title="自动加载器（Universal Class Loader）"
@@ -108,7 +108,7 @@
 			<div class="panel-heading">上一个主题</div>
             <div class="panel-body"><p class="topless"><a href="loader.html" title="上一章">&lt; 自动加载器（Universal Class Loader）</a></p></div>
 			<div class="panel-heading">下一个主题</div>
-            <div class="panel-body"><p class="topless"><a href="annotations.html" title="下一章">注释解析器（Annotations Parser） &gt;</a></p></div>
+            <div class="panel-body"><p class="topless"><a href="annotations.html" title="下一章">注解解析器（Annotations Parser） &gt;</a></p></div>
 		</div>
 	</div>
   <div class="col-md-9 second-box" valign="top">
@@ -178,10 +178,7 @@
 <span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">alert</span><span class="p">(</span><span class="s2">&quot;This is an alert message&quot;</span><span class="p">);</span>
 
 <span class="c1">// You can also use the log() method with a Logger constant:</span>
-<span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="s2">&quot;This is another error message&quot;</span><span class="p">,</span> <span class="nx">Logger</span><span class="o">::</span><span class="na">ERROR</span><span class="p">);</span>
-
-<span class="c1">// If no constant is given, DEBUG is assumed.</span>
-<span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="s2">&quot;This is a message&quot;</span><span class="p">);</span>
+<span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="nx">Logger</span><span class="o">::</span><span class="na">ERROR</span><span class="p">,</span> <span class="s2">&quot;This is another error message&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>产生的日志信息如下：</p>
@@ -246,8 +243,8 @@
 <span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">push</span><span class="p">(</span><span class="k">new</span> <span class="nx">FileAdapter</span><span class="p">(</span><span class="s1">&#39;test.log&#39;</span><span class="p">));</span>
 <span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">push</span><span class="p">(</span><span class="k">new</span> <span class="nx">StreamAdapter</span><span class="p">(</span><span class="s1">&#39;php://stdout&#39;</span><span class="p">));</span>
 
-<span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="s2">&quot;This is a message&quot;</span><span class="p">);</span>
-<span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="s2">&quot;This is an error&quot;</span><span class="p">,</span> <span class="nx">Logger</span><span class="o">::</span><span class="na">ERROR</span><span class="p">);</span>
+<span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="nx">Logger</span><span class="o">::</span><span class="na">DEBUG</span><span class="p">,</span> <span class="s2">&quot;This is a message&quot;</span><span class="p">);</span>
+<span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="nx">Logger</span><span class="o">::</span><span class="na">DEBUG</span><span class="p">,</span> <span class="s2">&quot;This is an error&quot;</span><span class="p">,</span> <span class="nx">Logger</span><span class="o">::</span><span class="na">ERROR</span><span class="p">);</span>
 <span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s2">&quot;This is another error&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -400,8 +397,8 @@ a <a class="reference external" href="http://getfirebug.com/">Firebug</a> extens
 <span class="k">use</span> <span class="nx">Phalcon\Logger\Adapter\Firephp</span> <span class="k">as</span> <span class="nx">Firephp</span><span class="p">;</span>
 
 <span class="nv">$logger</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Firephp</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
-<span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="s2">&quot;This is a message&quot;</span><span class="p">);</span>
-<span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="s2">&quot;This is an error&quot;</span><span class="p">,</span> <span class="nx">Logger</span><span class="o">::</span><span class="na">ERROR</span><span class="p">);</span>
+<span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="nx">Logger</span><span class="o">::</span><span class="na">DEBUG</span><span class="p">,</span> <span class="s2">&quot;This is a message&quot;</span><span class="p">);</span>
+<span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="nx">Logger</span><span class="o">::</span><span class="na">DEBUG</span><span class="p">,</span> <span class="s2">&quot;This is an error&quot;</span><span class="p">,</span> <span class="nx">Logger</span><span class="o">::</span><span class="na">ERROR</span><span class="p">);</span>
 <span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s2">&quot;This is another error&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -426,7 +423,7 @@ a <a class="reference external" href="http://getfirebug.com/">Firebug</a> extens
           <a href="../genindex.html" title="总目录"
              >索引</a></li>
         <li class="right" >
-          <a href="annotations.html" title="注释解析器（Annotations Parser）"
+          <a href="annotations.html" title="注解解析器（Annotations Parser）"
              >下一页</a> |</li>
         <li class="right" >
           <a href="loader.html" title="自动加载器（Universal Class Loader）"

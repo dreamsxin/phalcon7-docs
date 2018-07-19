@@ -1488,7 +1488,7 @@ statements as they happen.</p>
     <span class="c1">// Listen all the database events</span>
     <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span><span class="s1">&#39;db&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$connection</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$logger</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;beforeQuery&#39;</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">getSQLStatement</span><span class="p">(),</span> <span class="nx">Logger</span><span class="o">::</span><span class="na">INFO</span><span class="p">);</span>
+            <span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="nx">\Phalcon\Logger</span><span class="o">::</span><span class="na">INFO</span><span class="p">,</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">getSQLStatement</span><span class="p">());</span>
         <span class="p">}</span>
     <span class="p">});</span>
 
@@ -1548,17 +1548,6 @@ this you can diagnose performance problems and to discover bottlenecks.</p>
     <span class="c1">// Get a shared instance of the DbProfiler</span>
     <span class="nv">$profiler</span>      <span class="o">=</span> <span class="nv">$di</span><span class="o">-&gt;</span><span class="na">getProfiler</span><span class="p">();</span>
 
-    <span class="c1">// Listen all the database events</span>
-    <span class="nv">$eventsManager</span><span class="o">-&gt;</span><span class="na">attach</span><span class="p">(</span><span class="s1">&#39;db&#39;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$connection</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$profiler</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;beforeQuery&#39;</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$profiler</span><span class="o">-&gt;</span><span class="na">startProfile</span><span class="p">(</span><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">getSQLStatement</span><span class="p">());</span>
-        <span class="p">}</span>
-
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;afterQuery&#39;</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nv">$profiler</span><span class="o">-&gt;</span><span class="na">stopProfile</span><span class="p">();</span>
-        <span class="p">}</span>
-    <span class="p">});</span>
-
     <span class="nv">$connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MysqlPdo</span><span class="p">(</span>
         <span class="k">array</span><span class="p">(</span>
             <span class="s2">&quot;host&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
@@ -1568,8 +1557,7 @@ this you can diagnose performance problems and to discover bottlenecks.</p>
         <span class="p">)</span>
     <span class="p">);</span>
 
-    <span class="c1">// Assign the eventsManager to the db adapter instance</span>
-    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">setEventsManager</span><span class="p">(</span><span class="nv">$eventsManager</span><span class="p">);</span>
+    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">setProfile</span><span class="p">(</span><span class="nv">$profiler</span><span class="p">);</span>
 
     <span class="k">return</span> <span class="nv">$connection</span><span class="p">;</span>
 <span class="p">});</span>

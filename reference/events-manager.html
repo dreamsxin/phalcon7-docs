@@ -185,15 +185,15 @@
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">afterQuery</span><span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$connection</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">getSQLStatement</span><span class="p">(),</span> <span class="nx">\Phalcon\Logger</span><span class="o">::</span><span class="na">INFO</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="nx">\Phalcon\Logger</span><span class="o">::</span><span class="na">INFO</span><span class="p">,</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">getSQLStatement</span><span class="p">());</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>作为些示例的一部分，我们同样实现了 <a class="reference internal" href="../api/Phalcon_Db_Profiler.html"><span class="doc">Phalcon\Db\Profiler</span></a> 来检测SQL语句是否超出了期望的执行时间：</p>
+<p>作为些示例的一部分，我们同样实现了 <a class="reference internal" href="../api/Phalcon_Profiler.html"><span class="doc">Phalcon\Profiler</span></a> 来检测SQL语句是否超出了期望的执行时间：</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
-<span class="k">use</span> <span class="nx">Phalcon\Db\Profiler</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Profiler</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Logger</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">Phalcon\Logger\Adapter\File</span><span class="p">;</span>
 
@@ -225,7 +225,7 @@
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">afterQuery</span><span class="p">(</span><span class="nv">$event</span><span class="p">,</span> <span class="nv">$connection</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">getSQLStatement</span><span class="p">(),</span> <span class="nx">Logger</span><span class="o">::</span><span class="na">INFO</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="nx">\Phalcon\Logger</span><span class="o">::</span><span class="na">INFO</span><span class="p">,</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="na">getSQLStatement</span><span class="p">());</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">_profiler</span><span class="o">-&gt;</span><span class="na">stopProfile</span><span class="p">();</span>
     <span class="p">}</span>
 
