@@ -410,7 +410,7 @@ Setting the lifetime when retrieving:
 +-----------+------------------------------------------------+------------+-------------------------+-------------------------------------------------------------------------------------+
 | Redis     | Stores data in Redis                           | Redis_     | `redis extension`_      | :doc:`Phalcon\\Cache\\Backend\\Redis <../api/Phalcon_Cache_Backend_Redis>`          |
 +-----------+------------------------------------------------+------------+-------------------------+-------------------------------------------------------------------------------------+
-| Yac       | Stores data in Yac                             | Redis_     | `yac extension`_        | :doc:`Phalcon\\Cache\\Backend\\Yac <../api/Phalcon_Cache_Backend_Yac>`              |
+| Yac       | Stores data in Yac                             | Yac_       | `yac extension`_          | :doc:`Phalcon\\Cache\\Backend\\Yac <../api/Phalcon_Cache_Backend_Yac>`            |
 +-----------+------------------------------------------------+------------+-------------------------+-------------------------------------------------------------------------------------+
 | Memeory   | 存储数据在内存中，请求完成后释放               | 无         | 无                      | :doc:`Phalcon\\Cache\\Backend\\Memory <../api/Phalcon_Cache_Backend_Memory>`        |
 +-----------+------------------------------------------------+------------+-------------------------+-------------------------------------------------------------------------------------+
@@ -530,3 +530,5 @@ Phalcon 内部还内置了 :doc:`Phalcon\\Cache\\Yac <../api/Phalcon_Cache_Yac>`
 .. _XCache extension: http://pecl.php.net/package/xcache
 .. _Redis: http://redis.io/
 .. _redis extension: http://pecl.php.net/package/redis
+.. _Yac: https://github.com/laruence/yac
+.. _Yac extension: http://pecl.php.net/package/yac

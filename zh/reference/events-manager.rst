@@ -86,7 +86,7 @@
 
         public function afterQuery($event, $connection)
         {
-            $this->_logger->log($connection->getSQLStatement(), \Phalcon\Logger::INFO);
+            $this->_logger->log(\Phalcon\Logger::INFO, $connection->getSQLStatement());
         }
     }
 
@@ -128,7 +128,7 @@
          */
         public function afterQuery($event, $connection)
         {
-            $this->_logger->log($connection->getSQLStatement(), Logger::INFO);
+            $this->_logger->log(\Phalcon\Logger::INFO, $connection->getSQLStatement());
             $this->_profiler->stopProfile();
         }
 

@@ -1338,7 +1338,7 @@ statements as they happen.
         // Listen all the database events
         $eventsManager->attach('db', function ($event, $connection) use ($logger) {
             if ($event->getType() == 'beforeQuery') {
-                $logger->log($connection->getSQLStatement(), Logger::INFO);
+                $logger->log(\Phalcon\Logger::INFO, $connection->getSQLStatement());
             }
         });
 

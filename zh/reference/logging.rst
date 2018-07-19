@@ -45,10 +45,7 @@ Phalcon提供了一个日志记录组件即 :doc:`Phalcon\\Logger <../api/Phalco
     $logger->alert("This is an alert message");
 
     // You can also use the log() method with a Logger constant:
-    $logger->log("This is another error message", Logger::ERROR);
-
-    // If no constant is given, DEBUG is assumed.
-    $logger->log("This is a message");
+    $logger->log(Logger::ERROR, "This is another error message");
 
 产生的日志信息如下：
 
@@ -120,8 +117,8 @@ In the example above, only critical and emergency messages will get saved to the
     $logger->push(new FileAdapter('test.log'));
     $logger->push(new StreamAdapter('php://stdout'));
 
-    $logger->log("This is a message");
-    $logger->log("This is an error", Logger::ERROR);
+    $logger->log(Logger::DEBUG, "This is a message");
+    $logger->log(Logger::DEBUG, "This is an error", Logger::ERROR);
     $logger->error("This is another error");
 
 信息发送的顺序和处理器（适配器）注册的顺序相同。
@@ -253,8 +250,8 @@ a `Firebug <http://getfirebug.com/>`_ extension for Firefox.
     use Phalcon\Logger\Adapter\Firephp as Firephp;
 
     $logger = new Firephp("");
-    $logger->log("This is a message");
-    $logger->log("This is an error", Logger::ERROR);
+    $logger->log(Logger::DEBUG, "This is a message");
+    $logger->log(Logger::DEBUG, "This is an error", Logger::ERROR);
     $logger->error("This is another error");
 
 自定义适配器（Implementing your own adapters）
