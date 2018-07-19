@@ -86,17 +86,17 @@
 
         public function afterQuery($event, $connection)
         {
-            $this->_logger->log($connection->getSQLStatement(), \Phalcon\Logger::INFO);
+            $this->_logger->log(\Phalcon\Logger::INFO, $connection->getSQLStatement());
         }
     }
 
-作为些示例的一部分，我们同样实现了 :doc:`Phalcon\\Db\\Profiler <../api/Phalcon_Db_Profiler>` 来检测SQL语句是否超出了期望的执行时间：
+作为些示例的一部分，我们同样实现了 :doc:`Phalcon\\Profiler <../api/Phalcon_Profiler>` 来检测SQL语句是否超出了期望的执行时间：
 
 .. code-block:: php
 
     <?php
 
-    use Phalcon\Db\Profiler;
+    use Phalcon\Profiler;
     use Phalcon\Logger;
     use Phalcon\Logger\Adapter\File;
 
@@ -128,7 +128,7 @@
          */
         public function afterQuery($event, $connection)
         {
-            $this->_logger->log($connection->getSQLStatement(), Logger::INFO);
+            $this->_logger->log(\Phalcon\Logger::INFO, $connection->getSQLStatement());
             $this->_profiler->stopProfile();
         }
 

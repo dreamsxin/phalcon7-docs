@@ -290,3 +290,7 @@ Then you can use it in your model as follows:
     {
         use MyTimestampable;
     }
+
+.. _date: http://php.net/manual/zh/function.date.php
+.. _time: http://php.net/manual/zh/function.time.php
+.. _traits: http://php.net/manual/zh/language.oop5.traits.php
