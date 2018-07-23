@@ -18,15 +18,39 @@ Phalcon\\Assets\\Manager constructor
 
 
 
-public :doc:`Phalcon\\Assets\\Manager <Phalcon_Assets_Manager>`  **setOptions** (*array* $options)
+public :doc:`Phalcon\\Assets\\Manager <Phalcon_Assets_Manager>`  **setSourceBasePath** (*string* $basePath)
 
-Sets the manager's options
+Sets the source base path
 
 
 
-public *array*  **getOptions** ()
+public *string*  **getSourceBasePath** ()
 
-Returns the manager's options
+Returns the source base path
+
+
+
+public :doc:`Phalcon\\Assets\\Manager <Phalcon_Assets_Manager>`  **setTargetBasePath** (*string* $basePath)
+
+Sets the target base path
+
+
+
+public *string*  **getTargetBasePath** ()
+
+Returns the target base path
+
+
+
+public :doc:`Phalcon\\Assets\\Manager <Phalcon_Assets_Manager>`  **setTargetBaseUri** (*string* $baseUri)
+
+Sets the target base uri
+
+
+
+public *string*  **getTargetBaseUri** ()
+
+Returns the target base uri
 
 
 

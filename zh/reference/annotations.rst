@@ -1,8 +1,7 @@
 注解解析器（Annotations Parser）
 ================================
 
-这是第一个为PHP用C语言写的注释解析器。
-:code:`Phalcon\Annotations` 是一个通用组件，为应用中的PHP类提供易于解析和缓存注释的功能。
+:doc:`Phalcon\\Annotations` <../api/Phalcon_Annotations`>` 是一个通用组件，这是第一个为PHP用C语言写的注释解析器，为应用中的PHP类提供易于解析和缓存注释的功能。
 
 注释内容是读自类，方法和属性的注释区域。一个注释单元可以放在注释区域的任何位置。
 
