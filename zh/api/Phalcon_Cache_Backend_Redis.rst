@@ -158,6 +158,18 @@ Gets the last lifetime set
 
 
 
+public :doc:`Phalcon\\Cache\\Backend <Phalcon_Cache_Backend>`  **setPrefix** (*string* $prefix) inherited from Phalcon\\Cache\\Backend
+
+Sets prefix
+
+
+
+public *string*  **getPrefix** () inherited from Phalcon\\Cache\\Backend
+
+Gets prefix
+
+
+
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Di\\Injectable
 
 Sets the dependency injector

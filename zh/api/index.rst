@@ -21,6 +21,9 @@ API Indice
    Phalcon_Annotations_Exception
    Phalcon_Annotations_Reader
    Phalcon_Annotations_Reflection
+   Phalcon_Aop
+   Phalcon_Aop_Exception
+   Phalcon_Aop_Joinpoint
    Phalcon_Application
    Phalcon_Application_Exception
    Phalcon_Arr

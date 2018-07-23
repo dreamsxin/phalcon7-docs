@@ -14,6 +14,24 @@ This is a base class for logger formatters
 Methods
 -------
 
+public :doc:`Phalcon\\Logger\\Formatter <Phalcon_Logger_Formatter>`  **setTypeStrings** (*array* $types)
+
+Sets the string meaning of a logger constant
+
+
+
+public *array*  **getTypeStrings** ()
+
+Returns the type strings
+
+
+
+public :doc:`Phalcon\\Logger\\Formatter <Phalcon_Logger_Formatter>`  **setTypeString** (*string* $type, *string* $name)
+
+Sets the type strings
+
+
+
 public *string*  **getTypeString** (*integer* $type)
 
 Returns the string meaning of a logger constant

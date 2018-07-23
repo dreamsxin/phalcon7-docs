@@ -48,6 +48,24 @@ Applies a format to a message before sending it to the log
 
 
 
+public :doc:`Phalcon\\Logger\\Formatter <Phalcon_Logger_Formatter>`  **setTypeStrings** (*array* $types) inherited from Phalcon\\Logger\\Formatter
+
+Sets the string meaning of a logger constant
+
+
+
+public *array*  **getTypeStrings** () inherited from Phalcon\\Logger\\Formatter
+
+Returns the type strings
+
+
+
+public :doc:`Phalcon\\Logger\\Formatter <Phalcon_Logger_Formatter>`  **setTypeString** (*string* $type, *string* $name) inherited from Phalcon\\Logger\\Formatter
+
+Sets the type strings
+
+
+
 protected  **interpolate** (*string* $message, *array* $context) inherited from Phalcon\\Logger\\Formatter
 
 Interpolates context values into the message placeholders
