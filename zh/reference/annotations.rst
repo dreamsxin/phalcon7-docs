@@ -292,8 +292,8 @@ CacheEnablerPlugin 这个插件拦截每一个被dispatcher执行的action，检
         }
     }
 
-Private/Public areas with Annotations
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+使用注解区分访问权限（Private/Public areas with Annotations）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 You can use annotations to tell the ACL which controllers belong to the administrative areas:
 
 .. code-block:: php
@@ -357,7 +357,41 @@ You can use annotations to tell the ACL which controllers belong to the administ
 
 选择渲染模版（Choose the template to render）
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-在这个例子中，当方法被执行的时候，我们将使用注释单元去告诉:doc:`Phalcon\\Mvc\\View\\Simple <views>`，哪一个模板文件需要渲染：
+在这个例子中，当方法被执行的时候，我们将使用注释单元去告诉:doc:`Phalcon\\Mvc\\View <Phalcon_Mvc_View>`，哪一个模板文件需要渲染：
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Events\Event;
+    use Phalcon\Mvc\User\Plugin;
+    use Phalcon\Mvc\Dispatcher;
+
+    class ViewAnnotationsPlugin extends Plugin
+    {
+        /**
+         * This action is executed before execute any action in the application
+         *
+         * @param Event $event
+         * @param Dispatcher $dispatcher
+         */
+        public function beforeDispatch(Event $event, Dispatcher $dispatcher)
+        {
+            $controllerName = $dispatcher->getControllerClass();
+            $actionName = $dispatcher->getActiveMethod();
+            $annotations = $this->annotations->get($controllerName);
+
+            if ($annotations->getClassAnnotations()->has('View')) {
+                $annotation = $annotations->get('View');
+                $pick = $annotation->getNamedParameter('pick');
+                if ($pick) {
+                    $this->view->pick($pick);
+                }
+            }
+
+            return true;
+        }
+    }
 
 注释适配器（Annotations Adapters）
 ----------------------------------
