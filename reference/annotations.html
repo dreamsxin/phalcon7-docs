@@ -88,7 +88,7 @@
 <li><a class="reference internal" href="#types-of-annotations">注释类型（Types of Annotations）</a></li>
 <li><a class="reference internal" href="#practical-usage">实际使用（Practical Usage）</a><ul>
 <li><a class="reference internal" href="#cache-enabler-with-annotations">注释开启缓存（Cache Enabler with Annotations）</a></li>
-<li><a class="reference internal" href="#private-public-areas-with-annotations">Private/Public areas with Annotations</a></li>
+<li><a class="reference internal" href="#private-public-areas-with-annotations">使用注解区分访问权限（Private/Public areas with Annotations）</a></li>
 <li><a class="reference internal" href="#choose-the-template-to-render">选择渲染模版（Choose the template to render）</a></li>
 </ul>
 </li>
@@ -386,7 +386,7 @@
 </div>
 </div>
 <div class="section" id="private-public-areas-with-annotations">
-<h3>Private/Public areas with Annotations<a class="headerlink" href="#private-public-areas-with-annotations" title="永久链接至标题">¶</a></h3>
+<h3>使用注解区分访问权限（Private/Public areas with Annotations）<a class="headerlink" href="#private-public-areas-with-annotations" title="永久链接至标题">¶</a></h3>
 <p>You can use annotations to tell the ACL which controllers belong to the administrative areas:</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
@@ -449,7 +449,40 @@
 </div>
 <div class="section" id="choose-the-template-to-render">
 <h3>选择渲染模版（Choose the template to render）<a class="headerlink" href="#choose-the-template-to-render" title="永久链接至标题">¶</a></h3>
-<p>在这个例子中，当方法被执行的时候，我们将使用注释单元去告诉:doc:<cite>Phalcon\Mvc\View\Simple &lt;views&gt;</cite>，哪一个模板文件需要渲染：</p>
+<p>在这个例子中，当方法被执行的时候，我们将使用注释单元去告诉:doc:<cite>Phalcon\Mvc\View &lt;Phalcon_Mvc_View&gt;</cite>，哪一个模板文件需要渲染：</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Phalcon\Events\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\User\Plugin</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Phalcon\Mvc\Dispatcher</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">ViewAnnotationsPlugin</span> <span class="k">extends</span> <span class="nx">Plugin</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * This action is executed before execute any action in the application</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param Event $event</span>
+<span class="sd">     * @param Dispatcher $dispatcher</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">beforeDispatch</span><span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">,</span> <span class="nx">Dispatcher</span> <span class="nv">$dispatcher</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$controllerName</span> <span class="o">=</span> <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">getControllerClass</span><span class="p">();</span>
+        <span class="nv">$actionName</span> <span class="o">=</span> <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">getActiveMethod</span><span class="p">();</span>
+        <span class="nv">$annotations</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">annotations</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$controllerName</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$annotations</span><span class="o">-&gt;</span><span class="na">getClassAnnotations</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">has</span><span class="p">(</span><span class="s1">&#39;View&#39;</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nv">$annotation</span> <span class="o">=</span> <span class="nv">$annotations</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;View&#39;</span><span class="p">);</span>
+            <span class="nv">$pick</span> <span class="o">=</span> <span class="nv">$annotation</span><span class="o">-&gt;</span><span class="na">getNamedParameter</span><span class="p">(</span><span class="s1">&#39;pick&#39;</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$pick</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">view</span><span class="o">-&gt;</span><span class="na">pick</span><span class="p">(</span><span class="nv">$pick</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="annotations-adapters">
