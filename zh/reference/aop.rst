@@ -1,5 +1,5 @@
-面向切面编程（Aspect Oriented Programming）
-===========================================
+AOP面向切面编程（Aspect Oriented Programming）
+==============================================
 
 :doc:`Phalcon\\Aop <../api/Phalcon_Aop>` 是一个通用组件，以非侵入的方式将系统级的功能代码切入到目标类的指定方法、成员变量上。
 
@@ -56,3 +56,25 @@
 
     $services = new MyServices();
     $services->doVal();
+
+使用 AOP 实现业务层读写分离
+---------------------------
+该功能通过将对方法 :code:`Phalcon\Mvc\Model\Query::getConnection()` 的访问作为连接点来实现：
+
+.. code-block:: php
+
+    <?php
+
+    $pointcut = 'Phalcon\Mvc\Model\Query::getConnection()';
+    $advice = function($joinpoint){
+        // 通过参数来选择
+        $args = $joinpoint->getArguments();
+        // 通过 SQL 类型来选择
+        $query = $joinpoint->getObject();
+        $query->getType(); // Phalcon\Mvc\Model\Query::TYPE_SELECT
+        // ...
+	return $db;
+    };
+    Phalcon\Aop::addAfter($pointcut, $advice);
+
+或者通过将对方法 :code:`Phalcon\Mvc\Model\Query::getReadConnection()` 和 :code:`Phalcon\Mvc\Model\Query::getWriteConnection()` 的访问作为连接点来实现。
