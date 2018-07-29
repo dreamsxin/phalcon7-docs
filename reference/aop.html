@@ -5,7 +5,7 @@
     
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>面向切面编程（Aspect Oriented Programming） &mdash; Phalcon7 1.3.2 文档</title>
+    <title>AOP面向切面编程（Aspect Oriented Programming） &mdash; Phalcon7 1.3.2 文档</title>
     <meta name="keywords" content="php, phalcon, phalcon7, phalcon php, php framework, faster php framework">
     <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="../static/phalcon.css" />
@@ -81,6 +81,14 @@
 <div class="container-fluid">
 	<div class="col-md-3 primary-box">
 		<div class="panel panel-default">
+			<div class="panel-heading"><a href="../index.html">內容目录</a></div>
+			<div class="panel-body"><ul>
+<li><a class="reference internal" href="#">AOP面向切面编程（Aspect Oriented Programming）</a><ul>
+<li><a class="reference internal" href="#aop">使用 AOP 实现业务层读写分离</a></li>
+</ul>
+</li>
+</ul>
+</div>
 			<div class="panel-heading">上一个主题</div>
             <div class="panel-body"><p class="topless"><a href="py.html" title="上一章">&lt; Python执行器（Embedded Python）</a></p></div>
 			<div class="panel-heading">下一个主题</div>
@@ -93,8 +101,8 @@
 		  <div class="bodywrapper">
 			<div class="body" >
 			  
-  <div class="section" id="aspect-oriented-programming">
-<h1>面向切面编程（Aspect Oriented Programming）<a class="headerlink" href="#aspect-oriented-programming" title="永久链接至标题">¶</a></h1>
+  <div class="section" id="aop-aspect-oriented-programming">
+<h1>AOP面向切面编程（Aspect Oriented Programming）<a class="headerlink" href="#aop-aspect-oriented-programming" title="永久链接至标题">¶</a></h1>
 <p><a class="reference internal" href="../api/Phalcon_Aop.html"><span class="doc">Phalcon\Aop</span></a> 是一个通用组件，以非侵入的方式将系统级的功能代码切入到目标类的指定方法、成员变量上。</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
@@ -145,6 +153,26 @@
 <span class="nv">$services</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyServices</span><span class="p">();</span>
 <span class="nv">$services</span><span class="o">-&gt;</span><span class="na">doVal</span><span class="p">();</span>
 </pre></div>
+</div>
+<div class="section" id="aop">
+<h2>使用 AOP 实现业务层读写分离<a class="headerlink" href="#aop" title="永久链接至标题">¶</a></h2>
+<p>该功能通过将对方法 <code class="code docutils literal"><span class="pre">Phalcon\Mvc\Model\Query::getConnection()</span></code> 的访问作为连接点来实现：</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="nv">$pointcut</span> <span class="o">=</span> <span class="s1">&#39;Phalcon\Mvc\Model\Query::getConnection()&#39;</span><span class="p">;</span>
+<span class="nv">$advice</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="nv">$joinpoint</span><span class="p">){</span>
+    <span class="c1">// 通过参数来选择</span>
+    <span class="nv">$args</span> <span class="o">=</span> <span class="nv">$joinpoint</span><span class="o">-&gt;</span><span class="na">getArguments</span><span class="p">();</span>
+    <span class="c1">// 通过 SQL 类型来选择</span>
+    <span class="nv">$query</span> <span class="o">=</span> <span class="nv">$joinpoint</span><span class="o">-&gt;</span><span class="na">getObject</span><span class="p">();</span>
+    <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">();</span> <span class="c1">// Phalcon\Mvc\Model\Query::TYPE_SELECT</span>
+    <span class="c1">// ...</span>
+    <span class="k">return</span> <span class="nv">$db</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="nx">Phalcon\Aop</span><span class="o">::</span><span class="na">addAfter</span><span class="p">(</span><span class="nv">$pointcut</span><span class="p">,</span> <span class="nv">$advice</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>或者通过将对方法 <code class="code docutils literal"><span class="pre">Phalcon\Mvc\Model\Query::getReadConnection()</span></code> 和 <code class="code docutils literal"><span class="pre">Phalcon\Mvc\Model\Query::getWriteConnection()</span></code> 的访问作为连接点来实现。</p>
 </div>
 </div>
 
