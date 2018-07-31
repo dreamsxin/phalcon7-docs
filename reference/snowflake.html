@@ -131,7 +131,8 @@
 </div>
 <p>按照生成的分布式 ID 进行分库，每个分库下再根据 分布式 ID 进行分表
 按照项目的粒度进行分库，本例假设 8 台数据库服务器，每个分库下又分为了8张表，编号统一从 0 开始。</p>
-<p>&gt;&gt; 注意：如果直接对 ID % 8的话，以后在进行扩容的时候（增加至 16 台），分库路由将会无法正确地工作。为了解决此问题，我们需要对分库精度进行冗余，也就是说一开始就使用最大支持的分库数量来进行取模。</p>
+<blockquote class="highlights">
+<div>如果直接对 ID % 8 的话，以后在进行扩容的时候（增加至 16 台），分库路由将会无法正确地工作。为了解决此问题，我们需要对分库精度进行冗余，也就是说一开始就使用最大支持的分库数量来进行取模。</div></blockquote>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$dbName</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$id</span> <span class="o">%</span> <span class="mi">64</span><span class="p">)</span> <span class="o">%</span> <span class="mi">8</span><span class="p">;</span>
