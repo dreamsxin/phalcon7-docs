@@ -378,6 +378,18 @@ Gets the connection
 
 
 
+public *mixed*  **getReadConnection** ([*array* $intermediate], [*array* $bindParams], [*array* $bindTypes])
+
+Gets the read connection
+
+
+
+public *mixed*  **getWriteConnection** ([*array* $intermediate], [*array* $bindParams], [*array* $bindTypes])
+
+Gets the write connection
+
+
+
 public :doc:`Phalcon\\Mvc\\Model\\Query <Phalcon_Mvc_Model_Query>`  **setConflict** (*array* $conflict)
 
 Sets conflict

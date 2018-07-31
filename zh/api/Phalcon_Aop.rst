@@ -6,7 +6,7 @@ Class **Phalcon\\Aop**
 
 :raw-html:`<a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/aop.c" class="btn btn-default btn-sm">Source on GitHub</a>`
 
-Phalcon\\Arr  Provides utilities to work with arrs
+AOP aims to allow separation of cross-cutting concerns (cache, log, security, transactions, ...)
 
 
 Constants
