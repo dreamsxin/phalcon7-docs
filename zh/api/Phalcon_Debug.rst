@@ -12,12 +12,6 @@ Provides debug capabilities to Phalcon applications
 Methods
 -------
 
-public :doc:`Phalcon\\Debug <Phalcon_Debug>`  **setUri** (*string* $uri)
-
-Change the base URI for static resources
-
-
-
 public :doc:`Phalcon\\Debug <Phalcon_Debug>`  **setShowBackTrace** (*boolean* $showBackTrace)
 
 Sets if files the exception's backtrace must be showed
