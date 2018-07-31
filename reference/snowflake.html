@@ -81,6 +81,17 @@
 <div class="container-fluid">
 	<div class="col-md-3 primary-box">
 		<div class="panel panel-default">
+			<div class="panel-heading"><a href="../index.html">內容目录</a></div>
+			<div class="panel-body"><ul>
+<li><a class="reference internal" href="#">分布式自增 ID（Snowflake）</a><ul>
+<li><a class="reference internal" href="#id">利用分布式 ID 实现分库分表</a><ul>
+<li><a class="reference internal" href="#id1">二叉树分库分表</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
 			<div class="panel-heading">上一个主题</div>
             <div class="panel-body"><p class="topless"><a href="random.html" title="上一章">&lt; 随机数（Random）</a></p></div>
 			<div class="panel-heading">下一个主题</div>
@@ -102,6 +113,32 @@
 <span class="nv">$id</span> <span class="o">=</span> <span class="nv">$snowflake</span><span class="o">-&gt;</span><span class="na">nextId</span><span class="p">();</span>
 <span class="nv">$desc</span> <span class="o">=</span> <span class="nv">$snowflake</span><span class="o">-&gt;</span><span class="na">parse</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span>
 </pre></div>
+</div>
+<div class="section" id="id">
+<h2>利用分布式 ID 实现分库分表<a class="headerlink" href="#id" title="永久链接至标题">¶</a></h2>
+<p>Twitter-Snowflake 算法产生的背景相当简单，为了满足 Twitter 每秒上万条消息的请求，每条消息都必须分配一条唯一的id。
+这些 ID 还需要一些大致的顺序（方便客户端排序），并且在分布式系统中不同机器产生的 ID 必须不同。</p>
+<div class="section" id="id1">
+<h3>二叉树分库分表<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h3>
+<p>所谓 “二叉树分库分表” 指的是：
+在进行数据库扩容时，都是以2的倍数进行扩容，这种分库方式的好处是，在进行扩容时，只需进行表级的数据同步。</p>
+<p>生成分布式 ID：</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="nv">$snowflake</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Snowflake</span><span class="p">;</span>
+<span class="nv">$id</span> <span class="o">=</span> <span class="nv">$snowflake</span><span class="o">-&gt;</span><span class="na">nextId</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>按照生成的分布式 ID 进行分库，每个分库下再根据 分布式 ID 进行分表
+按照项目的粒度进行分库，本例假设 8 台数据库服务器，每个分库下又分为了8张表，编号统一从 0 开始。</p>
+<p>&gt;&gt; 注意：如果直接对 ID % 8的话，以后在进行扩容的时候（增加至 16 台），分库路由将会无法正确地工作。为了解决此问题，我们需要对分库精度进行冗余，也就是说一开始就使用最大支持的分库数量来进行取模。</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="nv">$dbName</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$id</span> <span class="o">%</span> <span class="mi">64</span><span class="p">)</span> <span class="o">%</span> <span class="mi">8</span><span class="p">;</span>
+<span class="nv">$tableName</span> <span class="o">=</span> <span class="nv">$id</span> <span class="o">%</span> <span class="mi">8</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 
