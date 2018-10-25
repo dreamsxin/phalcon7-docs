@@ -98,7 +98,12 @@ public  **extend** (*unknown* $uri)
 ...
 
 
-public  **extendQuery** (*unknown* $param)
+public  **extendQuery** (*array* $param)
+
+...
+
+
+public  **extendPath** (*unknown* $param)
 
 ...
 
