@@ -221,13 +221,13 @@ Returns an hydrated result based on the data and the column map
 
 
 
-abstract public static :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **find** ([*array* $parameters])
+abstract public static :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **find** ([*unknown* $conditions], [*array* $bindParams], [*array* $options])
 
 Allows to query a set of records that match the specified conditions
 
 
 
-abstract public static :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **findFirst** ([*array* $parameters], [*unknown* $autoCreate])
+abstract public static :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **findFirst** ([*unknown* $conditions], [*array* $bindParams], [*array* $options], [*unknown* $autoCreate])
 
 Allows to query the first record that match the specified conditions
 

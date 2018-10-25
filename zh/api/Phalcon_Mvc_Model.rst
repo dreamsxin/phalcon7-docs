@@ -401,7 +401,7 @@ Assigns values to a model from an array returning a new model
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **find** ([*array* $parameters])
+public static :doc:`Phalcon\\Mvc\\Model\\ResultsetInterface <Phalcon_Mvc_Model_ResultsetInterface>`  **find** ([*string|array* $conditions], [*array* $bindParams], [*array* $options])
 
 Allows to query a set of records that match the specified conditions 
 
@@ -423,6 +423,11 @@ Allows to query a set of records that match the specified conditions
        echo $robot->name, "\n";
      }
     
+     $robots = Robots::find("type=:type:", array("type" => "virtual"), array("order" => "name"));
+     foreach ($robots as $robot) {
+       echo $robot->name, "\n";
+     }
+    
      //Get first 100 virtual robots ordered by name
      $robots = Robots::find(array("type='virtual'", "order" => "name", "limit" => 100));
      foreach ($robots as $robot) {
@@ -432,7 +437,7 @@ Allows to query a set of records that match the specified conditions
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **findFirst** ([*array* $parameters], [*bool* $autoCreate])
+public static :doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>`  **findFirst** ([*string|array* $conditions], [*array* $bindParams], [*array* $options], [*bool* $autoCreate])
 
 Allows to query the first record that match the specified conditions 
 
