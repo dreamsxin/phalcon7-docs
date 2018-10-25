@@ -18,10 +18,16 @@
     $name = $bin->readString();
 
     // 大端，高位在前
-    $bin = new Phalcon\Binary\Reader(NULL, Phalcon\Binary::ENDIAN_BIG);
-    $flag = $bin->readUnsignedChar();
-    $num = $bin->readUnsignedInt16();
-    $name = $bin->readString();
+    $bin = new Phalcon\Binary\Writer(NULL, Phalcon\Binary::ENDIAN_BIG);
+    $bin->writeUnsignedChar(1);
+    $bin->writeUnsignedInt16(240);
+    $bin->writeString('Phalcon7');
+    $data = $bin->getContent();
+
+    $bin = new Phalcon\Binary\Reader($data, Phalcon\Binary::ENDIAN_BIG);
+    echo $bin->readUnsignedChar().PHP_EOL;
+    echo $bin->readUnsignedInt16().PHP_EOL;
+    echo $bin->readString().PHP_EOL;
 
 
 二进制数据写入（Binary Data Write）
@@ -39,8 +45,3 @@
     $bin->writeUnsignedInt16(240);
     $bin->writeString('Phalcon7');
 
-    // 大端，高位在前
-    $bin = new Phalcon\Binary\Writer(NULL, Phalcon\Binary::ENDIAN_BIG);
-    $bin->writeUnsignedChar(1);
-    $bin->writeUnsignedInt16(240);
-    $bin->writeString('Phalcon7');
