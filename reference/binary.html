@@ -118,10 +118,16 @@
 <span class="nv">$name</span> <span class="o">=</span> <span class="nv">$bin</span><span class="o">-&gt;</span><span class="na">readString</span><span class="p">();</span>
 
 <span class="c1">// 大端，高位在前</span>
-<span class="nv">$bin</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Binary\Reader</span><span class="p">(</span><span class="k">NULL</span><span class="p">,</span> <span class="nx">Phalcon\Binary</span><span class="o">::</span><span class="na">ENDIAN_BIG</span><span class="p">);</span>
-<span class="nv">$flag</span> <span class="o">=</span> <span class="nv">$bin</span><span class="o">-&gt;</span><span class="na">readUnsignedChar</span><span class="p">();</span>
-<span class="nv">$num</span> <span class="o">=</span> <span class="nv">$bin</span><span class="o">-&gt;</span><span class="na">readUnsignedInt16</span><span class="p">();</span>
-<span class="nv">$name</span> <span class="o">=</span> <span class="nv">$bin</span><span class="o">-&gt;</span><span class="na">readString</span><span class="p">();</span>
+<span class="nv">$bin</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Binary\Writer</span><span class="p">(</span><span class="k">NULL</span><span class="p">,</span> <span class="nx">Phalcon\Binary</span><span class="o">::</span><span class="na">ENDIAN_BIG</span><span class="p">);</span>
+<span class="nv">$bin</span><span class="o">-&gt;</span><span class="na">writeUnsignedChar</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="nv">$bin</span><span class="o">-&gt;</span><span class="na">writeUnsignedInt16</span><span class="p">(</span><span class="mi">240</span><span class="p">);</span>
+<span class="nv">$bin</span><span class="o">-&gt;</span><span class="na">writeString</span><span class="p">(</span><span class="s1">&#39;Phalcon7&#39;</span><span class="p">);</span>
+<span class="nv">$data</span> <span class="o">=</span> <span class="nv">$bin</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">();</span>
+
+<span class="nv">$bin</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Binary\Reader</span><span class="p">(</span><span class="nv">$data</span><span class="p">,</span> <span class="nx">Phalcon\Binary</span><span class="o">::</span><span class="na">ENDIAN_BIG</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$bin</span><span class="o">-&gt;</span><span class="na">readUnsignedChar</span><span class="p">()</span><span class="o">.</span><span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$bin</span><span class="o">-&gt;</span><span class="na">readUnsignedInt16</span><span class="p">()</span><span class="o">.</span><span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$bin</span><span class="o">-&gt;</span><span class="na">readString</span><span class="p">()</span><span class="o">.</span><span class="nx">PHP_EOL</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
@@ -133,12 +139,6 @@
 <span class="nv">$fp</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s1">&#39;test.bin&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">);</span>
 
 <span class="nv">$bin</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Binary\Writer</span><span class="p">(</span><span class="nv">$fp</span><span class="p">,</span> <span class="nx">Phalcon\Binary</span><span class="o">::</span><span class="na">MACHINE</span><span class="p">);</span>
-<span class="nv">$bin</span><span class="o">-&gt;</span><span class="na">writeUnsignedChar</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="nv">$bin</span><span class="o">-&gt;</span><span class="na">writeUnsignedInt16</span><span class="p">(</span><span class="mi">240</span><span class="p">);</span>
-<span class="nv">$bin</span><span class="o">-&gt;</span><span class="na">writeString</span><span class="p">(</span><span class="s1">&#39;Phalcon7&#39;</span><span class="p">);</span>
-
-<span class="c1">// 大端，高位在前</span>
-<span class="nv">$bin</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Binary\Writer</span><span class="p">(</span><span class="k">NULL</span><span class="p">,</span> <span class="nx">Phalcon\Binary</span><span class="o">::</span><span class="na">ENDIAN_BIG</span><span class="p">);</span>
 <span class="nv">$bin</span><span class="o">-&gt;</span><span class="na">writeUnsignedChar</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 <span class="nv">$bin</span><span class="o">-&gt;</span><span class="na">writeUnsignedInt16</span><span class="p">(</span><span class="mi">240</span><span class="p">);</span>
 <span class="nv">$bin</span><span class="o">-&gt;</span><span class="na">writeString</span><span class="p">(</span><span class="s1">&#39;Phalcon7&#39;</span><span class="p">);</span>
