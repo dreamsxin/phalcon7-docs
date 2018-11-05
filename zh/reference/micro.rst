@@ -311,7 +311,7 @@ Phalcon中使用 :doc:`Phalcon\\Mvc\\Url <url>` 来生成其它的基于路由�
 
     $app->get('/blog', function () use ($app) {
         $news = $app['db']->query('SELECT * FROM news');
-        foreach ($news as $new) {
+        while ($new = $news->fetch()) {
             echo $new->title;
         }
     });
