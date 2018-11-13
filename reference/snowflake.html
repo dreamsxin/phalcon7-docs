@@ -88,6 +88,7 @@
 <li><a class="reference internal" href="#id1">二叉树分库分表</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#troubleshooting">注意事项（Troubleshooting）</a></li>
 </ul>
 </li>
 </ul>
@@ -140,6 +141,13 @@
 </pre></div>
 </div>
 </div>
+</div>
+<div class="section" id="troubleshooting">
+<h2>注意事项（Troubleshooting）<a class="headerlink" href="#troubleshooting" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li>Failed to create shared memory (3)</li>
+</ul>
+<p>如果出现此类错误，先查看目录`/dev/shm/` 是否存在文件 <cite>phalcon_snowflake</cite> 和 <cite>sem.phalcon_snowflake</cite>，如果存在删除即可。</p>
 </div>
 </div>
 
