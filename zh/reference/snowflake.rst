@@ -44,3 +44,10 @@ Twitter-Snowflake 算法产生的背景相当简单，为了满足 Twitter 每�
 
     $dbName = ($id % 64) % 8;
     $tableName = $id % 8;
+
+注意事项（Troubleshooting）
+---------------------------
+
+* Failed to create shared memory (3)
+如果出现此类错误，先查看目录`/dev/shm/` 是否存在文件 `phalcon_snowflake` 和 `sem.phalcon_snowflake`，如果存在删除即可。
+
