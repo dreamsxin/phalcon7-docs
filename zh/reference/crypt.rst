@@ -75,7 +75,7 @@ Phalcon通过 :doc:`Phalcon\\Crypt <../api/Phalcon_Crypt>` 组件提供了加密
     $crypt = new Crypt();
 
     // 使用 blowfish
-    $crypt->setCipher("bf-cbc");
+    $crypt->setMethod("bf-cbc");
 
     $key  = "le password";
     $text = "This is a secret text";
