@@ -43,6 +43,7 @@ Phalcon API 基于 Zend API，但是我们增加了更多的功能，方便我�
    classes
    exceptions
    requires
+   notifications
 
 声明
 ^^^^
