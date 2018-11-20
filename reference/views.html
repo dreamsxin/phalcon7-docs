@@ -122,7 +122,11 @@
 <li><a class="reference internal" href="#id2">简单渲染（Simple Rendering）</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#multiple-views-directory">多视图目录设置（Multiple Views Directory）</a></li>
+<li><a class="reference internal" href="#multiple-views-directory">多视图目录设置（Multiple Views Directory）</a><ul>
+<li><a class="reference internal" href="#using-conversors">使用转换（Using conversors）</a></li>
+<li><a class="reference internal" href="#id3">关闭大小写转换</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#view-events">视图事件（View Events）</a></li>
 </ul>
 </li>
@@ -1272,6 +1276,38 @@
 <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setBasePath</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;../app/views/&quot;</span><span class="p">));</span>
 <span class="nv">$view</span><span class="o">-&gt;</span><span class="na">setViewsDir</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;./view1/&quot;</span><span class="p">,</span> <span class="s2">&quot;./view2/&quot;</span><span class="p">));</span>
 </pre></div>
+</div>
+<div class="section" id="using-conversors">
+<h3>使用转换（Using conversors）<a class="headerlink" href="#using-conversors" title="永久链接至标题">¶</a></h3>
+<p>转换器允许您在渲染视图之前将 <cite>controller</cite> 和 <cite>action</cite> 名自由变换：</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span>&lt;?php
+
+$view = new Phalcon\Mvc\View();
+
+$view-&gt;setConverter(&#39;namespace&#39;, function ($namespace) {
+    return str_replase(&#39;\&#39;, &#39;_&#39;, $namespace);
+});
+
+$view-&gt;setConverter(&#39;controller&#39;, function ($controller) {
+    return lcfirst($controller); // 得关闭大小写转换
+});
+
+$view-&gt;setConverter(&#39;action&#39;, function ($action) {
+    return lcfirst($action); // 得关闭大小写转换
+});
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>关闭大小写转换<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<p>Phalcon 会自动将 <cite>controller</cite> 和 <cite>action</cite> 名转为小写作为视图文件的路径，通过以下设置可以关闭此项操作：</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="nv">$view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\View</span><span class="p">();</span>
+
+<span class="nv">$view</span><span class="o">-&gt;</span><span class="na">disableLowerCase</span><span class="p">();</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="view-events">

@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>异常（Throwing Exceptions） &mdash; Phalcon7 1.3.2 文档</title>
+    <title>注意事项（Notifications） &mdash; Phalcon7 1.3.2 文档</title>
     <meta name="keywords" content="php, phalcon, phalcon7, phalcon php, php framework, faster php framework">
     <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="../static/phalcon.css" />
@@ -82,23 +82,21 @@
 		  <div class="bodywrapper">
 			<div class="body" >
 			  
-  <div class="section" id="throwing-exceptions">
-<h1>异常（Throwing Exceptions）<a class="headerlink" href="#throwing-exceptions" title="永久链接至标题">¶</a></h1>
-<p>When you throw an exception using the Phalcon API, the current flow of execution will be stopped, returning
-to the last PHP code block when a Phalcon method where called.</p>
-<p>There are two ways to throw exceptions, the first, when the exception object only receives a string as parameter:</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">PHALCON_THROW_EXCEPTION_STR</span><span class="p">(</span><span class="n">phalcon_exception_ce</span><span class="p">,</span> <span class="s">&quot;Hey this is an exception&quot;</span><span class="p">);</span>
-</pre></div>
-</div>
-<p>Or building the exception manually and then throwing it:</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">PHALCON_CONCAT_SVS</span><span class="p">(</span><span class="o">&amp;</span><span class="n">exception_message</span><span class="p">,</span> <span class="s">&quot;Unable to insert into &quot;</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="s">&quot; without data&quot;</span><span class="p">);</span>
-
-<span class="n">object_init_ex</span><span class="p">(</span><span class="o">&amp;</span><span class="n">exception</span><span class="p">,</span> <span class="n">phalcon_db_exception_ce</span><span class="p">);</span>
-
-<span class="c1">// The exception constructor must be manually called</span>
-<span class="n">PHALCON_CALL_METHOD</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">exception</span><span class="p">,</span> <span class="s">&quot;__construct&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">exception_message</span><span class="p">);</span>
-<span class="n">phalcon_throw_exception</span><span class="p">(</span><span class="o">&amp;</span><span class="n">exception</span><span class="p">);</span>
-<span class="k">return</span><span class="p">;</span>
+  <div class="section" id="notifications">
+<h1>注意事项（Notifications）<a class="headerlink" href="#notifications" title="永久链接至标题">¶</a></h1>
+<p>开发中容易犯的错误。</p>
+<ul class="simple">
+<li>忘记释放变量</li>
+</ul>
+<p>尽量使用 <cite>PHALCON_MM</cite> 系列宏定义。</p>
+<ul class="simple">
+<li>对 PHP 传递进来的参数再次赋值</li>
+</ul>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">PHP_METHOD</span><span class="p">(</span><span class="n">Phalcon_Mvc_Application</span><span class="p">,</span> <span class="n">handle</span><span class="p">){</span>
+        <span class="n">phalcon_fetch_params</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">uri</span><span class="p">);</span>
+        <span class="c1">// ...</span>
+        <span class="n">ZVAL_COPY_VALUE</span><span class="p">(</span><span class="o">&amp;</span><span class="n">uri</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">tmp</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
