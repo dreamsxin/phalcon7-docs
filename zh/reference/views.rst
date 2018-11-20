@@ -1146,6 +1146,40 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
     $view->setBasePath(array("../app/views/"));
     $view->setViewsDir(array("./view1/", "./view2/"));
 
+使用转换（Using conversors）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+转换器允许您在渲染视图之前将 `controller` 和 `action` 名自由变换：
+
+.. code-block:: php
+
+    <?php
+
+    $view = new Phalcon\Mvc\View();
+
+    $view->setConverter('namespace', function ($namespace) {
+        return str_replase('\', '_', $namespace);
+    });
+
+    $view->setConverter('controller', function ($controller) {
+        return lcfirst($controller); // 得关闭大小写转换
+    });
+
+    $view->setConverter('action', function ($action) {
+        return lcfirst($action); // 得关闭大小写转换
+    });
+
+关闭大小写转换
+^^^^^^^^^^^^^^
+Phalcon 会自动将 `controller` 和 `action` 名转为小写作为视图文件的路径，通过以下设置可以关闭此项操作：
+
+.. code-block:: php
+
+    <?php
+
+    $view = new Phalcon\Mvc\View();
+
+    $view->disableLowerCase();
+
 视图事件（View Events）
 -----------------------
 如果事件管理器（EventsManager）存在，:doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` 和 :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View_Simple>` 能够发送事件到 :doc:`EventsManager <events>`。事件触发使用的“view”类型。当返回布尔值false，一些事件可以停止运行。以下是被支持的事件：
