@@ -100,27 +100,20 @@ Phalcon 把每个数据库引擎的具体操作封装成“方言”，这些“
     // 创建连接
     $connection = new \Phalcon\DB\Adapter\Pdo\Sqlite($config);
 
+使用 DSN 连接数据库
+^^^^^^^^^^^^^^^^^^^
+
 .. code-block:: php
 
     <?php
 
     // 基本配置信息
     $config = array(
-        'username' => 'scott',
-        'password' => 'tiger',
-        'dbname'   => '192.168.10.145/orcl'
-    );
-
-    // 高级配置信息
-    $config = array(
-        'dbname'   => '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=xe)(FAILOVER_MODE=(TYPE=SELECT)(METHOD=BASIC)(RETRIES=20)(DELAY=5))))',
-        'username' => 'scott',
-        'password' => 'tiger',
-        'charset'  => 'AL32UTF8'
+        'dsn' => 'mysql:dbname=testdb;host=127.0.0.1'
     );
 
     // 创建连接
-    $connection = new \Phalcon\DB\Adapter\Pdo\Oracle($config);
+    $connection = new \Phalcon\DB\Adapter\Pdo\Mysql($config);
 
 设置额外的 PDO 选项（Setting up additional PDO options）
 --------------------------------------------------------

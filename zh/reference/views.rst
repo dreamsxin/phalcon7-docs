@@ -1157,7 +1157,7 @@ This is different to :doc:`Phalcon\\Mvc\\View <../api/Phalcon_Mvc_View>` who's :
     $view = new Phalcon\Mvc\View();
 
     $view->setConverter('namespace', function ($namespace) {
-        return str_replase('\', '_', $namespace);
+        return str_replase("\\", "_", $namespace);
     });
 
     $view->setConverter('controller', function ($controller) {
