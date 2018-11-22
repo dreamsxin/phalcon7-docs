@@ -22,8 +22,6 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
-    <link rel="index" title="索引" href="../index.html" />
-    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.3.2 文档" href="../index.html" />
     <link rel="next" title="使用缓存提高性能（Improving Performance with Cache）" href="cache.html" />
     <link rel="prev" title="读取配置（Reading Configurations）" href="config.html" /> 
@@ -123,16 +121,16 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><a class="reference internal" href="../api/Phalcon_Paginator_Adapter_NativeArray.html"><span class="doc">NativeArray</span></a></td>
+<tr class="row-even"><td><a class="reference internal" href="../api/Phalcon_Paginator_Adapter_NativeArray.html"><em>NativeArray</em></a></td>
 <td>使用数组当数据源。</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="../api/Phalcon_Paginator_Adapter_Model.html"><span class="doc">Model</span></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="../api/Phalcon_Paginator_Adapter_Model.html"><em>Model</em></a></td>
 <td>使用模型结果集 <cite>Phalcon\Mvc\Model\Resultset &lt;../api/Phalcon_Mvc_Model_Resultset&gt;</cite> 当数据源。因为 PDO 不支持游标，所以不适合大数据量的翻页。</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="../api/Phalcon_Paginator_Adapter_QueryBuilder.html"><span class="doc">QueryBuilder</span></a></td>
-<td>Use a <a class="reference internal" href="../api/Phalcon_Mvc_Model_Query_Builder.html"><span class="doc">Phalcon\Mvc\Model\Query\Builder</span></a> object as source data</td>
+<tr class="row-even"><td><a class="reference internal" href="../api/Phalcon_Paginator_Adapter_QueryBuilder.html"><em>QueryBuilder</em></a></td>
+<td>Use a <a class="reference internal" href="../api/Phalcon_Mvc_Model_Query_Builder.html"><em>Phalcon\Mvc\Model\Query\Builder</em></a> object as source data</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="../api/Phalcon_Paginator_Adapter_Sql.html"><span class="doc">Sql</span></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="../api/Phalcon_Paginator_Adapter_Sql.html"><em>Sql</em></a></td>
 <td>通过设置原生 SQL 获取数据源。</td>
 </tr>
 </tbody>
@@ -296,7 +294,7 @@ object that contains the paginated data. It can be used for generating the pagin
 </div>
 <div class="section" id="implementing-your-own-adapters">
 <h2>自定义适配器（Implementing your own adapters）<a class="headerlink" href="#implementing-your-own-adapters" title="永久链接至标题">¶</a></h2>
-<p>The <a class="reference internal" href="../api/Phalcon_Paginator_AdapterInterface.html"><span class="doc">Phalcon\Paginator\AdapterInterface</span></a> interface must be implemented in order to create your own paginator adapters or extend the existing ones:</p>
+<p>The <a class="reference internal" href="../api/Phalcon_Paginator_AdapterInterface.html"><em>Phalcon\Paginator\AdapterInterface</em></a> interface must be implemented in order to create your own paginator adapters or extend the existing ones:</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Paginator\AdapterInterface</span> <span class="k">as</span> <span class="nx">PaginatorInterface</span><span class="p">;</span>

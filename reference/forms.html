@@ -22,8 +22,6 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
-    <link rel="index" title="索引" href="../index.html" />
-    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.3.2 文档" href="../index.html" />
     <link rel="next" title="读取配置（Reading Configurations）" href="config.html" />
     <link rel="prev" title="验证（Validation）" href="validation.html" /> 
@@ -171,7 +169,7 @@
 <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
 </pre></div>
 </div>
-<p>开发者可根据需要渲染HTML组件。 当使用render()函数时， phalcon内部会使用 <a class="reference internal" href="../api/Phalcon_Tag.html"><span class="doc">Phalcon\Tag</span></a> 生成相应的html项，
+<p>开发者可根据需要渲染HTML组件。 当使用render()函数时， phalcon内部会使用 <a class="reference internal" href="../api/Phalcon_Tag.html"><em>Phalcon\Tag</em></a> 生成相应的html项，
 第二个参数中可以对一些属性进行设置。</p>
 <div class="highlight-html+php"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Name<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
@@ -195,8 +193,8 @@
 </div>
 <div class="section" id="forms-elements">
 <h2>表单元素（Forms Elements）<a class="headerlink" href="#forms-elements" title="永久链接至标题">¶</a></h2>
-<p>所有 <a class="reference internal" href="../api/Phalcon_Tag.html"><span class="doc">Phalcon\Tag</span></a> 支持的 HTML 元素，都可以作为表单元素来使用。
-例如，Phalcon 内置不存在 <cite>PhalconFormsElementTel</cite> 元素类，但 <a class="reference internal" href="../api/Phalcon_Tag.html"><span class="doc">Phalcon\Tag</span></a> 中存在 <code class="code docutils literal"><span class="pre">tel</span></code> 方法，我们仍然可以用下面的方式创建表单元素：</p>
+<p>所有 <a class="reference internal" href="../api/Phalcon_Tag.html"><em>Phalcon\Tag</em></a> 支持的 HTML 元素，都可以作为表单元素来使用。
+例如，Phalcon 内置不存在 <cite>PhalconFormsElementTel</cite> 元素类，但 <a class="reference internal" href="../api/Phalcon_Tag.html"><em>Phalcon\Tag</em></a> 中存在 <code class="code docutils literal"><span class="pre">tel</span></code> 方法，我们仍然可以用下面的方式创建表单元素：</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$element</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Forms\Element</span><span class="p">(</span><span class="s1">&#39;mytel&#39;</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="s1">&#39;tel&#39;</span><span class="p">);</span>
@@ -245,7 +243,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>由于 <a class="reference internal" href="../api/Phalcon_Forms_Form.html"><span class="doc">Phalcon\Forms\Form</span></a> 实现了 <a class="reference internal" href="../api/Phalcon_Di_Injectable.html"><span class="doc">Phalcon\Di\Injectable</span></a> 接口，
+<p>由于 <a class="reference internal" href="../api/Phalcon_Forms_Form.html"><em>Phalcon\Forms\Form</em></a> 实现了 <a class="reference internal" href="../api/Phalcon_Di_Injectable.html"><em>Phalcon\Di\Injectable</em></a> 接口，
 所以开发者可以根据自己的需要访问应用中的服务。</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
@@ -319,7 +317,7 @@
 </div>
 <div class="section" id="validation">
 <h2>验证（Validation）<a class="headerlink" href="#validation" title="永久链接至标题">¶</a></h2>
-<p>Phalcon表单组件可以和 <a class="reference internal" href="validation.html"><span class="doc">validation</span></a> 集成，以提供验证。 开发者要单独为每个html元素提供内置或自定义的验证器。</p>
+<p>Phalcon表单组件可以和 <a class="reference internal" href="validation.html"><em>validation</em></a> 集成，以提供验证。 开发者要单独为每个html元素提供内置或自定义的验证器。</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Forms\Element\Text</span><span class="p">;</span>
@@ -481,7 +479,7 @@
 </div>
 <div class="section" id="form-elements">
 <h2>表单控件（Form Elements）<a class="headerlink" href="#form-elements" title="永久链接至标题">¶</a></h2>
-<p>Phalcon提供了一些内置的html元素类， 所有这些元素类仅位于 <a class="reference internal" href="../api/Phalcon_Forms_Element.html"><span class="doc">Phalcon\Forms\Element</span></a> 命名空间下：</p>
+<p>Phalcon提供了一些内置的html元素类， 所有这些元素类仅位于 <a class="reference internal" href="../api/Phalcon_Forms_Element.html"><em>Phalcon\Forms\Element</em></a> 命名空间下：</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="8%" />
@@ -497,43 +495,43 @@
 <tbody valign="top">
 <tr class="row-even"><td>Text</td>
 <td>产生 INPUT[type=text] 项</td>
-<td><a class="reference internal" href="../api/Phalcon_Forms_Element_Text.html"><span class="doc">Example</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Forms_Element_Text.html"><em>Example</em></a></td>
 </tr>
 <tr class="row-odd"><td>Password</td>
 <td>产生 INPUT[type=password] 项</td>
-<td><a class="reference internal" href="../api/Phalcon_Forms_Element_Password.html"><span class="doc">Example</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Forms_Element_Password.html"><em>Example</em></a></td>
 </tr>
 <tr class="row-even"><td>Select</td>
 <td>产生 SELECT tag (combo lists) 项</td>
-<td><a class="reference internal" href="../api/Phalcon_Forms_Element_Select.html"><span class="doc">Example</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Forms_Element_Select.html"><em>Example</em></a></td>
 </tr>
 <tr class="row-odd"><td>Check</td>
 <td>产生 INPUT[type=check] 项</td>
-<td><a class="reference internal" href="../api/Phalcon_Forms_Element_Check.html"><span class="doc">Example</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Forms_Element_Check.html"><em>Example</em></a></td>
 </tr>
 <tr class="row-even"><td>Textarea</td>
 <td>产生 TEXTAREA 项</td>
-<td><a class="reference internal" href="../api/Phalcon_Forms_Element_TextArea.html"><span class="doc">Example</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Forms_Element_TextArea.html"><em>Example</em></a></td>
 </tr>
 <tr class="row-odd"><td>Hidden</td>
 <td>产生 INPUT[type=hidden] 项</td>
-<td><a class="reference internal" href="../api/Phalcon_Forms_Element_Hidden.html"><span class="doc">Example</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Forms_Element_Hidden.html"><em>Example</em></a></td>
 </tr>
 <tr class="row-even"><td>File</td>
 <td>产生 INPUT[type=file] 项</td>
-<td><a class="reference internal" href="../api/Phalcon_Forms_Element_File.html"><span class="doc">Example</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Forms_Element_File.html"><em>Example</em></a></td>
 </tr>
 <tr class="row-odd"><td>Date</td>
 <td>产生 INPUT[type=date] 项</td>
-<td><a class="reference internal" href="../api/Phalcon_Forms_Element_Date.html"><span class="doc">Example</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Forms_Element_Date.html"><em>Example</em></a></td>
 </tr>
 <tr class="row-even"><td>Numeric</td>
 <td>产生 INPUT[type=number] 项</td>
-<td><a class="reference internal" href="../api/Phalcon_Forms_Element_Numeric.html"><span class="doc">Example</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Forms_Element_Numeric.html"><em>Example</em></a></td>
 </tr>
 <tr class="row-odd"><td>Submit</td>
 <td>产生 INPUT[type=submit] 项</td>
-<td><a class="reference internal" href="../api/Phalcon_Forms_Element_Submit.html"><span class="doc">Example</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Forms_Element_Submit.html"><em>Example</em></a></td>
 </tr>
 </tbody>
 </table>

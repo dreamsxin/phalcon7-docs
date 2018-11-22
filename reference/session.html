@@ -22,8 +22,6 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
-    <link rel="index" title="索引" href="../index.html" />
-    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.3.2 文档" href="../index.html" />
     <link rel="next" title="过滤与清理（Filtering and Sanitizing）" href="filter.html" />
     <link rel="prev" title="闪存消息（Flashing Messages）" href="flash.html" /> 
@@ -111,7 +109,7 @@
 			  
   <div class="section" id="session-storing-data-in-session">
 <h1>使用 Session 存储数据（Storing data in Session）<a class="headerlink" href="#session-storing-data-in-session" title="永久链接至标题">¶</a></h1>
-<p>The <span class="xref doc">Phalcon\Session</span> provides object-oriented wrappers to access session data.</p>
+<p>The <code class="xref doc docutils literal"><span class="pre">Phalcon\Session</span></code> provides object-oriented wrappers to access session data.</p>
 <p>Reasons to use this component instead of raw-sessions:</p>
 <ul class="simple">
 <li>You can easily isolate session data across applications on the same domain</li>
@@ -137,7 +135,7 @@ Thanks to the service container, we can ensure that the session is accessed only
 </div>
 <div class="section" id="storing-retrieving-data-in-session">
 <h2>会话数据的存储与读取（Storing/Retrieving data in Session）<a class="headerlink" href="#storing-retrieving-data-in-session" title="永久链接至标题">¶</a></h2>
-<p>From a controller, a view or any other component that extends <a class="reference internal" href="../api/Phalcon_Di_Injectable.html"><span class="doc">Phalcon\Di\Injectable</span></a> you can access the session service
+<p>From a controller, a view or any other component that extends <a class="reference internal" href="../api/Phalcon_Di_Injectable.html"><em>Phalcon\Di\Injectable</em></a> you can access the session service
 and store items and retrieve them in the following way:</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
@@ -218,7 +216,7 @@ prefix for every session variable created in a certain application:</p>
 </div>
 <div class="section" id="session-bags">
 <h2>会话袋（Session Bags）<a class="headerlink" href="#session-bags" title="永久链接至标题">¶</a></h2>
-<p><a class="reference internal" href="../api/Phalcon_Session_Bag.html"><span class="doc">Phalcon\Session\Bag</span></a> is a component that helps separating session data into &#8220;namespaces&#8221;.
+<p><a class="reference internal" href="../api/Phalcon_Session_Bag.html"><em>Phalcon\Session\Bag</em></a> is a component that helps separating session data into &#8220;namespaces&#8221;.
 Working by this way you can easily create groups of session variables into the application. By only setting the variables in the &#8220;bag&#8221;,
 it&#8217;s automatically stored in session:</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
@@ -234,8 +232,8 @@ it&#8217;s automatically stored in session:</p>
 </div>
 <div class="section" id="persistent-data-in-components">
 <h2>组件的持久数据（Persistent Data in Components）<a class="headerlink" href="#persistent-data-in-components" title="永久链接至标题">¶</a></h2>
-<p>Controller, components and classes that extends <a class="reference internal" href="../api/Phalcon_Di_Injectable.html"><span class="doc">Phalcon\Di\Injectable</span></a> may inject
-a <a class="reference internal" href="../api/Phalcon_Session_Bag.html"><span class="doc">Phalcon\Session\Bag</span></a>. This class isolates variables for every class.
+<p>Controller, components and classes that extends <a class="reference internal" href="../api/Phalcon_Di_Injectable.html"><em>Phalcon\Di\Injectable</em></a> may inject
+a <a class="reference internal" href="../api/Phalcon_Session_Bag.html"><em>Phalcon\Session\Bag</em></a>. This class isolates variables for every class.
 Thanks to this you can persist data between requests in every class in an independent way.</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
@@ -299,22 +297,22 @@ can only be accessed in the scope of the current class.</p>
 <tbody valign="top">
 <tr class="row-even"><td>Files</td>
 <td>将会话数据存储在文本文件</td>
-<td><a class="reference internal" href="../api/Phalcon_Session_Adapter_Files.html"><span class="doc">Phalcon\Session\Adapter\Files</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Session_Adapter_Files.html"><em>Phalcon\Session\Adapter\Files</em></a></td>
 </tr>
 <tr class="row-odd"><td>Memcached</td>
 <td>利用 Memcached 扩展，将会话数据存储在 Memcached</td>
-<td><a class="reference internal" href="../api/Phalcon_Session_Adapter_Memcached.html"><span class="doc">Phalcon\Session\Adapter\Memcached</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Session_Adapter_Memcached.html"><em>Phalcon\Session\Adapter\Memcached</em></a></td>
 </tr>
 <tr class="row-even"><td>Memcached</td>
 <td>使用缓存组件，将会话数据存储在缓存组件对应的存储服务器中</td>
-<td><a class="reference internal" href="../api/Phalcon_Session_Adapter_Cache.html"><span class="doc">Phalcon\Session\Adapter\Memcached</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Session_Adapter_Cache.html"><em>Phalcon\Session\Adapter\Memcached</em></a></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="implementing-your-own-adapters">
 <h2>自定义适配器（Implementing your own adapters）<a class="headerlink" href="#implementing-your-own-adapters" title="永久链接至标题">¶</a></h2>
-<p>The <a class="reference internal" href="../api/Phalcon_Session_AdapterInterface.html"><span class="doc">Phalcon\Session\AdapterInterface</span></a> interface must be implemented in order to create your own session adapters or extend the existing ones.</p>
+<p>The <a class="reference internal" href="../api/Phalcon_Session_AdapterInterface.html"><em>Phalcon\Session\AdapterInterface</em></a> interface must be implemented in order to create your own session adapters or extend the existing ones.</p>
 </div>
 </div>
 

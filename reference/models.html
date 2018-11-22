@@ -22,8 +22,6 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
-    <link rel="index" title="索引" href="../index.html" />
-    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.3.2 文档" href="../index.html" />
     <link rel="next" title="模型关系（Relationships between Models）" href="models-relationships.html" />
     <link rel="prev" title="使用控制器（Using Controllers）" href="controllers.html" /> 
@@ -148,15 +146,15 @@
 <p>模型代表了应用程序中的信息（数据）和处理数据的规则。模型主要用于管理与相应数据库表进行交互的规则。
 大多数情况中，在应用程序中，数据库中每个表将对应一个模型。
 应用程序中的大部分业务逻辑都将集中在模型里。</p>
-<p><a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> 是 Phalcon 应用程序中所有模型的基类。它保证了数据库的独立性，基本的 CURD 操作，
+<p><a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> 是 Phalcon 应用程序中所有模型的基类。它保证了数据库的独立性，基本的 CURD 操作，
 高级的查询功能，多表关联等功能。
-<a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> 不需要直接使用 SQL 语句，因为它的转换方法，会动态的调用相应的数据库引擎进行处理。</p>
+<a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> 不需要直接使用 SQL 语句，因为它的转换方法，会动态的调用相应的数据库引擎进行处理。</p>
 <blockquote class="highlights">
 <div>模型是数据库的高级抽象层。如果您想进行低层次的数据库操作，您可以查看
-<a class="reference internal" href="../api/Phalcon_Db.html"><span class="doc">Phalcon\Db</span></a> 组件文档。</div></blockquote>
+<a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a> 组件文档。</div></blockquote>
 <div class="section" id="creating-models">
 <h2>创建模型（Creating Models）<a class="headerlink" href="#creating-models" title="永久链接至标题">¶</a></h2>
-<p>模型是一个继承自 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> 的一个类。 它必须放到 models 文件夹。一个模型文件必须包含一个类，
+<p>模型是一个继承自 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> 的一个类。 它必须放到 models 文件夹。一个模型文件必须包含一个类，
 同时它的类名必须符合驼峰命名法：</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
@@ -168,7 +166,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>上面的例子显示了 &#8220;Robots&#8221; 模型的实现。 需要注意的是 Robots 继承自 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> 。
+<p>上面的例子显示了 &#8220;Robots&#8221; 模型的实现。 需要注意的是 Robots 继承自 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> 。
 因此，Robots 模型拥有了大量继承自该组件功能，包括基本的数据库 CRUD (Create, Read, Update, Delete) 操作，数据验证以及复杂的搜索支持，并且可以同时关联多个模型。</p>
 <p>默认情况下，模型 &#8220;Robots&#8221; 对应的是数据库表 &#8220;robots&#8221;， 如果想映射到其他数据库表，可以使用 <code class="code docutils literal"><span class="pre">getSource()</span></code> 方法：</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
@@ -353,11 +351,11 @@
 <span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
 </pre></div>
 </div>
-<p>如上所示，不需要写任何SQL语句。<a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> 为web应用提供了高层数据库抽象。</p>
+<p>如上所示，不需要写任何SQL语句。<a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> 为web应用提供了高层数据库抽象。</p>
 </div>
 <div class="section" id="finding-records">
 <h2>查找记录（Finding Records）<a class="headerlink" href="#finding-records" title="永久链接至标题">¶</a></h2>
-<p><a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> 为数据查询提供了多种方法。下面的例子将演示如何从一个模型中查找一条或者多条记录：</p>
+<p><a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> 为数据查询提供了多种方法。下面的例子将演示如何从一个模型中查找一条或者多条记录：</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// How many robots are there?</span>
@@ -452,7 +450,7 @@
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>conditions</td>
-<td>查询操作的搜索条件。用于提取只有那些满足指定条件的记录。默认情况下 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> 假定第一个参数就是查询条件。</td>
+<td>查询操作的搜索条件。用于提取只有那些满足指定条件的记录。默认情况下 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> 假定第一个参数就是查询条件。</td>
 <td><code class="code docutils literal"><span class="pre">&quot;conditions&quot;</span> <span class="pre">=&gt;</span> <span class="pre">&quot;name</span> <span class="pre">LIKE</span> <span class="pre">'steve%'&quot;</span></code></td>
 </tr>
 <tr class="row-odd"><td>columns</td>
@@ -484,11 +482,11 @@
 <td><code class="code docutils literal"><span class="pre">&quot;group&quot;</span> <span class="pre">=&gt;</span> <span class="pre">&quot;name,</span> <span class="pre">status&quot;</span></code></td>
 </tr>
 <tr class="row-even"><td>forUpdate</td>
-<td>通过这个选项， <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a>  读取最新的可用数据，并且为读到的每条记录设置独占锁。</td>
+<td>通过这个选项， <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a>  读取最新的可用数据，并且为读到的每条记录设置独占锁。</td>
 <td><code class="code docutils literal"><span class="pre">&quot;for_update&quot;</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></td>
 </tr>
 <tr class="row-odd"><td>sharedLock</td>
-<td>通过这个选项， <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a>  读取最新的可用数据，并且为读到的每条记录设置共享锁。</td>
+<td>通过这个选项， <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a>  读取最新的可用数据，并且为读到的每条记录设置共享锁。</td>
 <td><code class="code docutils literal"><span class="pre">&quot;shared_lock&quot;</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code></td>
 </tr>
 <tr class="row-even"><td>cache</td>
@@ -512,8 +510,8 @@
     <span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
 </pre></div>
 </div>
-<p>静态方法 <code class="code docutils literal"><span class="pre">query()</span></code> 返回一个对IDE自动完成友好的 <a class="reference internal" href="../api/Phalcon_Mvc_Model_Criteria.html"><span class="doc">Phalcon\Mvc\Model\Criteria</span></a>  对象。</p>
-<p>所有查询在内部都以 <a class="reference internal" href="phql.html"><span class="doc">PHQL</span></a> 查询的方式处理。PHQL是一个高层的、面向对象的类SQL语言。通过PHQL语言你可以使用更多的比如join其他模型、定义分组、添加聚集等特性。</p>
+<p>静态方法 <code class="code docutils literal"><span class="pre">query()</span></code> 返回一个对IDE自动完成友好的 <a class="reference internal" href="../api/Phalcon_Mvc_Model_Criteria.html"><em>Phalcon\Mvc\Model\Criteria</em></a>  对象。</p>
+<p>所有查询在内部都以 <a class="reference internal" href="phql.html"><em>PHQL</em></a> 查询的方式处理。PHQL是一个高层的、面向对象的类SQL语言。通过PHQL语言你可以使用更多的比如join其他模型、定义分组、添加聚集等特性。</p>
 <p>最后，还有一个 <code class="code docutils literal"><span class="pre">findFirstBy&lt;property-name&gt;()</span></code> 方法。这个方法扩展了前面提及的 <code class="code docutils literal"><span class="pre">findFirst()</span></code> 方法。它允许您利用方法名中的属性名称，通过将要搜索的该字段的内容作为参数传给它，来快速从一个表执行检索操作。</p>
 <p>还是用上面用过的 Robots 模型来举例说明：</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
@@ -546,8 +544,8 @@
 <p>请注意我们在方法调用中用的是 &#8216;Name&#8217;，并向它传递了变量 <code class="code docutils literal"><span class="pre">$name</span></code>， <code class="code docutils literal"><span class="pre">$name</span></code> 的值就是我们想要找的记录的名称。另外注意，当我们的查询找到了符合的记录后，这个记录的其他属性也都是可用的。</p>
 <div class="section" id="model-resultsets">
 <h3>模型结果集（Model Resultsets）<a class="headerlink" href="#model-resultsets" title="永久链接至标题">¶</a></h3>
-<p><code class="code docutils literal"><span class="pre">findFirst()</span></code> 方法直接返回一个被调用对象的实例（如果有结果返回的话），而 <code class="code docutils literal"><span class="pre">find()</span></code> 方法返回一个 <a class="reference internal" href="../api/Phalcon_Mvc_Model_Resultset_Simple.html"><span class="doc">Phalcon\Mvc\Model\Resultset\Simple</span></a> 对象。这个对象也封装进了所有结果集的功能，比如遍历、查找特定的记录、统计等等。</p>
-<p>这些对象比一般数组功能更强大。最大的特点是 <a class="reference internal" href="../api/Phalcon_Mvc_Model_Resultset.html"><span class="doc">Phalcon\Mvc\Model\Resultset</span></a> 每时每刻只有一个结果在内存中。这对操作大数据量时的内存管理相当有帮助。</p>
+<p><code class="code docutils literal"><span class="pre">findFirst()</span></code> 方法直接返回一个被调用对象的实例（如果有结果返回的话），而 <code class="code docutils literal"><span class="pre">find()</span></code> 方法返回一个 <a class="reference internal" href="../api/Phalcon_Mvc_Model_Resultset_Simple.html"><em>Phalcon\Mvc\Model\Resultset\Simple</em></a> 对象。这个对象也封装进了所有结果集的功能，比如遍历、查找特定的记录、统计等等。</p>
+<p>这些对象比一般数组功能更强大。最大的特点是 <a class="reference internal" href="../api/Phalcon_Mvc_Model_Resultset.html"><em>Phalcon\Mvc\Model\Resultset</em></a> 每时每刻只有一个结果在内存中。这对操作大数据量时的内存管理相当有帮助。</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Get all robots</span>
@@ -594,7 +592,7 @@
 <p>Phalcon 的结果集模拟了可滚动的游标，你可以通过位置，或者内部指针去访问任何一条特定的记录。注意有一些数据库系统不支持滚动游标，这就使得查询会被重复执行，
 以便回放光标到最开始的位置，然后获得相应的记录。类似地，如果多次遍历结果集，那么必须执行相同的查询次数。</p>
 <p>将大数据量的查询结果存储在内存会消耗很多资源，正因为如此，分成每32行一块从数据库中获得结果集，以减少重复执行查询请求的次数，在一些情况下也节省内存。</p>
-<p>注意结果集可以序列化后保存在一个后端缓存里面。 <a class="reference internal" href="cache.html"><span class="doc">Phalcon\Cache</span></a> 可以用来实现这个。但是，序列化数据会导致 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a>
+<p>注意结果集可以序列化后保存在一个后端缓存里面。 <a class="reference internal" href="cache.html"><em>Phalcon\Cache</em></a> 可以用来实现这个。但是，序列化数据会导致 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a>
 将从数据库检索到的所有数据以一个数组的方式保存，因此在这样执行的地方会消耗更多的内存。</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
@@ -647,7 +645,7 @@
 </div>
 <div class="section" id="binding-parameters">
 <h3>绑定参数（Binding Parameters）<a class="headerlink" href="#binding-parameters" title="永久链接至标题">¶</a></h3>
-<p>在 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> 中也支持绑定参数。即使使用绑定参数对性能有一点很小的影响，还是强烈建议您使用这种方法，以消除代码受SQL注入攻击的可能性。
+<p>在 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> 中也支持绑定参数。即使使用绑定参数对性能有一点很小的影响，还是强烈建议您使用这种方法，以消除代码受SQL注入攻击的可能性。
 绑定参数支持字符串和整数占位符。实现方法如下：</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
@@ -829,7 +827,7 @@ accessed:</p>
 </div>
 <div class="section" id="generating-calculations">
 <h2>聚合运算（Generating Calculations）<a class="headerlink" href="#generating-calculations" title="永久链接至标题">¶</a></h2>
-<p>模型类 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> 提供的聚合运算方法，使用的是数据库内置函数计算结果，例如：COUNT, SUM, MAX, MIN or AVG。</p>
+<p>模型类 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> 提供的聚合运算方法，使用的是数据库内置函数计算结果，例如：COUNT, SUM, MAX, MIN or AVG。</p>
 <div class="section" id="count">
 <h3>累计（Count）<a class="headerlink" href="#count" title="永久链接至标题">¶</a></h3>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
@@ -1010,8 +1008,8 @@ accessed:</p>
 <p>可以通过向方法 <code class="code docutils literal"><span class="pre">Phalcon\Mvc\Model::create()</span></code>、<code class="code docutils literal"><span class="pre">Phalcon\Mvc\Model::update()</span></code> 以及  and <code class="code docutils literal"><span class="pre">Phalcon\Mvc\Model::save()</span></code> 传递数组来进行复制，我们也可以通过方法 <code class="code docutils literal"><span class="pre">Phalcon\Mvc\Model::assign()</span></code> 进行赋值。</p>
 <div class="section" id="validation-messages">
 <h3>验证信息（Validation Messages）<a class="headerlink" href="#validation-messages" title="永久链接至标题">¶</a></h3>
-<p>模型 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> 拥有有一个灵活的消息子系统，当插入或者更新数据发生错误时，会生成验证消息，通过 <code class="code docutils literal"><span class="pre">getMessages()</span></code> 方法返回。
-每条验证信息都是类 <a class="reference internal" href="../api/Phalcon_Validation_Message.html"><span class="doc">Phalcon\Validation\Message</span></a> 的实例，包含了字段名、验证消息、类型等信息：</p>
+<p>模型 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> 拥有有一个灵活的消息子系统，当插入或者更新数据发生错误时，会生成验证消息，通过 <code class="code docutils literal"><span class="pre">getMessages()</span></code> 方法返回。
+每条验证信息都是类 <a class="reference internal" href="../api/Phalcon_Validation_Message.html"><em>Phalcon\Validation\Message</em></a> 的实例，包含了字段名、验证消息、类型等信息：</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">if</span> <span class="p">(</span><span class="nv">$robot</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">()</span> <span class="o">==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
@@ -1023,7 +1021,7 @@ accessed:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p><a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> 默认情况下会根据字段类型以及数据库操作结果生成下列验证信息：</p>
+<p><a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> 默认情况下会根据字段类型以及数据库操作结果生成下列验证信息：</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="14%" />
@@ -1052,11 +1050,11 @@ accessed:</p>
 </tr>
 </tbody>
 </table>
-<p>更多的模型验证相关的内容查看 <a class="reference internal" href="models-validation.html"><span class="doc">模型验证</span></a> 章节。</p>
+<p>更多的模型验证相关的内容查看 <a class="reference internal" href="models-validation.html"><em>模型验证</em></a> 章节。</p>
 </div>
 <div class="section" id="events-and-events-manager">
 <h3>模型事件与事件管理器（Events and Events Manager）<a class="headerlink" href="#events-and-events-manager" title="永久链接至标题">¶</a></h3>
-<p>模型允许我们定义事件的回调方法，通过它们帮助我们实现自己的业务逻辑。以下是模型 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> 支持的事件和它们的执行顺序：</p>
+<p>模型允许我们定义事件的回调方法，通过它们帮助我们实现自己的业务逻辑。以下是模型 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> 支持的事件和它们的执行顺序：</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="10%" />
@@ -1180,7 +1178,7 @@ accessed:</p>
 </div>
 <div class="section" id="using-a-custom-events-manager">
 <h3>使用自定义事件管理器（Using a custom Events Manager）<a class="headerlink" href="#using-a-custom-events-manager" title="永久链接至标题">¶</a></h3>
-<p>Additionally, this component is integrated with <a class="reference internal" href="../api/Phalcon_Events_Manager.html"><span class="doc">Phalcon\Events\Manager</span></a>,
+<p>Additionally, this component is integrated with <a class="reference internal" href="../api/Phalcon_Events_Manager.html"><em>Phalcon\Events\Manager</em></a>,
 this means we can create listeners that run when an event is triggered.</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
@@ -1280,7 +1278,7 @@ from being exposed publicly.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Some events return false as an indication to stop the current operation. If an event doesn&#8217;t return anything, <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a>
+<p>Some events return false as an indication to stop the current operation. If an event doesn&#8217;t return anything, <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a>
 will assume a true value.</p>
 </div>
 <div class="section" id="sql-avoiding-sql-injections">
@@ -1471,10 +1469,10 @@ performed:</p>
 </div>
 <div class="section" id="sql-logging-low-level-sql-statements">
 <h2>记录底层 SQL 语句（Logging Low-Level SQL Statements）<a class="headerlink" href="#sql-logging-low-level-sql-statements" title="永久链接至标题">¶</a></h2>
-<p>When using high-level abstraction components such as <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> to access a database, it is
-difficult to understand which statements are finally sent to the database system. <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a>
-is supported internally by <a class="reference internal" href="../api/Phalcon_Db.html"><span class="doc">Phalcon\Db</span></a>. <a class="reference internal" href="../api/Phalcon_Logger.html"><span class="doc">Phalcon\Logger</span></a> interacts
-with <a class="reference internal" href="../api/Phalcon_Db.html"><span class="doc">Phalcon\Db</span></a>, providing logging capabilities on the database abstraction layer, thus allowing us to log SQL
+<p>When using high-level abstraction components such as <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> to access a database, it is
+difficult to understand which statements are finally sent to the database system. <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a>
+is supported internally by <a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a>. <a class="reference internal" href="../api/Phalcon_Logger.html"><em>Phalcon\Logger</em></a> interacts
+with <a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a>, providing logging capabilities on the database abstraction layer, thus allowing us to log SQL
 statements as they happen.</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
@@ -1532,7 +1530,7 @@ statements as they happen.</p>
 </div>
 <div class="section" id="sql-profiling-sql-statements">
 <h2>分析 SQL 语句（Profiling SQL Statements）<a class="headerlink" href="#sql-profiling-sql-statements" title="永久链接至标题">¶</a></h2>
-<p>Thanks to <a class="reference internal" href="../api/Phalcon_Db.html"><span class="doc">Phalcon\Db</span></a>, the underlying component of <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a>,
+<p>Thanks to <a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a>, the underlying component of <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a>,
 it&#8217;s possible to profile the SQL statements generated by the ORM in order to analyze the performance of database operations. With
 this you can diagnose performance problems and to discover bottlenecks.</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
@@ -1601,7 +1599,7 @@ this you can diagnose performance problems and to discover bottlenecks.</p>
 <p>在这里将介绍如何获取模型在数据库中对应表的元数据。</p>
 <div class="section" id="manual-meta-data">
 <h3>自定义元数据（Manual Meta-Data）<a class="headerlink" href="#manual-meta-data" title="永久链接至标题">¶</a></h3>
-<p>在模型中添加 <code class="code docutils literal"><span class="pre">metaData</span></code> 方法即可。 <a class="reference internal" href="models-metadata.html"><span class="doc">了解更多</span></a></p>
+<p>在模型中添加 <code class="code docutils literal"><span class="pre">metaData</span></code> 方法即可。 <a class="reference internal" href="models-metadata.html"><em>了解更多</em></a></p>
 </div>
 <div class="section" id="manual-fields">
 <h3>自定义字段（Manual Fields）<a class="headerlink" href="#manual-fields" title="永久链接至标题">¶</a></h3>

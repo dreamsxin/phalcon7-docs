@@ -22,8 +22,6 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
-    <link rel="index" title="索引" href="../index.html" />
-    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.3.2 文档" href="../index.html" />
     <link rel="next" title="分页（Pagination）" href="pagination.html" />
     <link rel="prev" title="表单（Forms）" href="forms.html" /> 
@@ -109,7 +107,7 @@
 			  
   <div class="section" id="reading-configurations">
 <h1>读取配置（Reading Configurations）<a class="headerlink" href="#reading-configurations" title="永久链接至标题">¶</a></h1>
-<p><a class="reference internal" href="../api/Phalcon_Config.html"><span class="doc">Phalcon\Config</span></a> 是一个用于将各种格式的配置文件读取到PHP对象的组件（使用适配器）。</p>
+<p><a class="reference internal" href="../api/Phalcon_Config.html"><em>Phalcon\Config</em></a> 是一个用于将各种格式的配置文件读取到PHP对象的组件（使用适配器）。</p>
 <div class="section" id="file-adapters">
 <h2>文件适配器（File Adapters）<a class="headerlink" href="#file-adapters" title="永久链接至标题">¶</a></h2>
 <p>可用的适配器有:</p>
@@ -141,7 +139,7 @@
 </div>
 <div class="section" id="native-arrays">
 <h2>原生数组（Native Arrays）<a class="headerlink" href="#native-arrays" title="永久链接至标题">¶</a></h2>
-<p>下面的例子展示如何将本地数组导入 <a class="reference internal" href="../api/Phalcon_Config.html"><span class="doc">Phalcon\Config</span></a> 对象。此选项提供了最好的性能，因为在这个请求中没有读取文件。</p>
+<p>下面的例子展示如何将本地数组导入 <a class="reference internal" href="../api/Phalcon_Config.html"><em>Phalcon\Config</em></a> 对象。此选项提供了最好的性能，因为在这个请求中没有读取文件。</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Config</span><span class="p">;</span>
@@ -211,7 +209,7 @@
 </div>
 <div class="section" id="ini-reading-ini-files">
 <h2>读取 INI 文件（Reading INI Files）<a class="headerlink" href="#ini-reading-ini-files" title="永久链接至标题">¶</a></h2>
-<p>INI文件是存储设置的常用方法。 <a class="reference internal" href="../api/Phalcon_Config_Adapter_Ini.html"><span class="doc">Phalcon\Config\Adapter\Ini</span></a> 采用优化的PHP函数parse_ini_file读取这些文件。为方便访问，文件部分解析成子设置。</p>
+<p>INI文件是存储设置的常用方法。 <a class="reference internal" href="../api/Phalcon_Config_Adapter_Ini.html"><em>Phalcon\Config\Adapter\Ini</em></a> 采用优化的PHP函数parse_ini_file读取这些文件。为方便访问，文件部分解析成子设置。</p>
 <div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[database]</span>
 <span class="na">adapter</span>  <span class="o">=</span> <span class="s">Mysql</span>
 <span class="na">host</span>     <span class="o">=</span> <span class="s">localhost</span>
@@ -268,7 +266,7 @@
 </div>
 <div class="section" id="merging-configurations">
 <h2>合并配置（Merging Configurations）<a class="headerlink" href="#merging-configurations" title="永久链接至标题">¶</a></h2>
-<p><a class="reference internal" href="../api/Phalcon_Config.html"><span class="doc">Phalcon\Config</span></a> 允许合并配置对象到另一个:</p>
+<p><a class="reference internal" href="../api/Phalcon_Config.html"><em>Phalcon\Config</em></a> 允许合并配置对象到另一个:</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Config</span><span class="p">;</span>

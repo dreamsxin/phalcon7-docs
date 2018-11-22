@@ -22,8 +22,6 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
-    <link rel="index" title="索引" href="../index.html" />
-    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.3.2 文档" href="../index.html" />
     <link rel="next" title="验证（Validation）" href="validation.html" />
     <link rel="prev" title="过滤与清理（Filtering and Sanitizing）" href="filter.html" /> 
@@ -108,7 +106,7 @@
 			  
   <div class="section" id="contextual-escaping">
 <h1>上下文编码（Contextual Escaping）<a class="headerlink" href="#contextual-escaping" title="永久链接至标题">¶</a></h1>
-<p>网站及其它B/S应用极易受到 <a class="reference external" href="https://www.owasp.org/index.php/XSS">XSS</a> 攻击，尽管PHP提供了转义功能，在某些情况下依然不够安全。在Phalcon中 <a class="reference internal" href="../api/Phalcon_Escaper.html"><span class="doc">Phalcon\Escaper</span></a> 提供了上下文转义功能，这个模块是由C语言实现的，
+<p>网站及其它B/S应用极易受到 <a class="reference external" href="https://www.owasp.org/index.php/XSS">XSS</a> 攻击，尽管PHP提供了转义功能，在某些情况下依然不够安全。在Phalcon中 <a class="reference internal" href="../api/Phalcon_Escaper.html"><em>Phalcon\Escaper</em></a> 提供了上下文转义功能，这个模块是由C语言实现的，
 这在进行转义时可以有更好的性能。</p>
 <p>Phalcon的上下文转义组件基于 <a class="reference external" href="https://www.owasp.org">OWASP</a> 提供的`XSS (Cross Site Scripting) 预防作弊表`_</p>
 <p>另外，这个组件依赖于 <a class="reference external" href="http://php.net/manual/en/book.mbstring.php">mbstring</a> 扩展，以支持几乎所有的字符集。</p>

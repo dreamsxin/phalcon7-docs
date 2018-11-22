@@ -22,8 +22,6 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
-    <link rel="index" title="索引" href="../index.html" />
-    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.3.2 文档" href="../index.html" />
     <link rel="next" title="请求环境（Request Environment）" href="request.html" />
     <link rel="prev" title="事件（Events）" href="events.html" /> 
@@ -112,10 +110,10 @@
 <h1>事件管理器（Events Manager）<a class="headerlink" href="#events-manager" title="永久链接至标题">¶</a></h1>
 <p>此组件的目的是为了通过创建“钩子”拦截框架中大部分的组件操作。
 这些钩子允许开发者获得状态信息，操纵数据或者改变某个组件进程中的执行流向。</p>
-<p><cite>PhalconDIFactoryDefault</cite> 默认设置了 <cite>eventsManager</cite>，因此大多数组件不需要单独设置 <cite>eventsManager</cite>，但是 <a class="reference internal" href="loader.html"><span class="doc">自动加载器</span></a> 例外，需要单独调用方法 <cite>setEventsManager</cite> 设置。</p>
+<p><cite>PhalconDIFactoryDefault</cite> 默认设置了 <cite>eventsManager</cite>，因此大多数组件不需要单独设置 <cite>eventsManager</cite>，但是 <a class="reference internal" href="loader.html"><em>自动加载器</em></a> 例外，需要单独调用方法 <cite>setEventsManager</cite> 设置。</p>
 <div class="section" id="usage-example">
 <h2>使用示例（Usage Example）<a class="headerlink" href="#usage-example" title="永久链接至标题">¶</a></h2>
-<p>以下面示例中，我们使用EventsManager来侦听在 <a class="reference internal" href="../api/Phalcon_Db.html"><span class="doc">Phalcon\Db</span></a> 管理下的MySQL连接中产生的事件。
+<p>以下面示例中，我们使用EventsManager来侦听在 <a class="reference internal" href="../api/Phalcon_Db.html"><em>Phalcon\Db</em></a> 管理下的MySQL连接中产生的事件。
 首先，我们需要一个侦听者对象来完成这部分的工作。我们创建了一个类，这个类有我们需要侦听事件所对应的方法：</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
@@ -191,7 +189,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>作为些示例的一部分，我们同样实现了 <a class="reference internal" href="../api/Phalcon_Profiler.html"><span class="doc">Phalcon\Profiler</span></a> 来检测SQL语句是否超出了期望的执行时间：</p>
+<p>作为些示例的一部分，我们同样实现了 <a class="reference internal" href="../api/Phalcon_Profiler.html"><em>Phalcon\Profiler</em></a> 来检测SQL语句是否超出了期望的执行时间：</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Profiler</span><span class="p">;</span>
@@ -464,7 +462,7 @@
 </div>
 <div class="section" id="implementing-your-own-eventsmanager">
 <h2>自定义事件管理器（Implementing your own EventsManager）<a class="headerlink" href="#implementing-your-own-eventsmanager" title="永久链接至标题">¶</a></h2>
-<p>如果想要替换Phalcon提供的事件管理器，必须实现 <a class="reference internal" href="../api/Phalcon_Events_ManagerInterface.html"><span class="doc">Phalcon\Events\ManagerInterface</span></a> 中的接口。</p>
+<p>如果想要替换Phalcon提供的事件管理器，必须实现 <a class="reference internal" href="../api/Phalcon_Events_ManagerInterface.html"><em>Phalcon\Events\ManagerInterface</em></a> 中的接口。</p>
 </div>
 </div>
 

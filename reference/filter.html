@@ -22,8 +22,6 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
-    <link rel="index" title="索引" href="../index.html" />
-    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.3.2 文档" href="../index.html" />
     <link rel="next" title="上下文编码（Contextual Escaping）" href="escaper.html" />
     <link rel="prev" title="使用 Session 存储数据（Storing data in Session）" href="session.html" /> 
@@ -114,7 +112,7 @@
 <p>清理用户输入是软件开发中很重要的一个环节。信任或者忽略对用户输入数据作清理可能会导致
 对应用内容（主要是用户数据），甚至你应用所处在的服务器的非法访问。</p>
 <img class="align-center" src="../static/img/sql.png"><p><a class="reference external" href="http://xkcd.com/327/">Full image (from xkcd)</a></p>
-<p>此 <a class="reference internal" href="../api/Phalcon_Filter.html"><span class="doc">Phalcon\Filter</span></a> 组件提供了一系列通用可用的过滤器和数据清理助手。它提供了围绕于PHP过滤扩展的面向对象包装。</p>
+<p>此 <a class="reference internal" href="../api/Phalcon_Filter.html"><em>Phalcon\Filter</em></a> 组件提供了一系列通用可用的过滤器和数据清理助手。它提供了围绕于PHP过滤扩展的面向对象包装。</p>
 <div class="section" id="sanitizing-data">
 <h2>清理数据（Sanitizing data）<a class="headerlink" href="#sanitizing-data" title="永久链接至标题">¶</a></h2>
 <p>清理是指从一个值中移除特定字符的过程，此过程对用户和应用不是必须，也不是他们想得到的。
@@ -141,7 +139,7 @@
 </div>
 <div class="section" id="sanitizing-from-controllers">
 <h2>在控制器中使用清理（Sanitizing from Controllers）<a class="headerlink" href="#sanitizing-from-controllers" title="永久链接至标题">¶</a></h2>
-<p>当接收到GET或POST的数据时（通过请求对象），你可以在控制器中访问一个 <a class="reference internal" href="../api/Phalcon_Filter.html"><span class="doc">Phalcon\Filter</span></a> 对象。
+<p>当接收到GET或POST的数据时（通过请求对象），你可以在控制器中访问一个 <a class="reference internal" href="../api/Phalcon_Filter.html"><em>Phalcon\Filter</em></a> 对象。
 第一个参数是等待获得变量的名字，第二个参数是将应用在此变量的过滤器。</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
@@ -190,7 +188,7 @@
 </div>
 <div class="section" id="filtering-data">
 <h2>过滤数据（Filtering data）<a class="headerlink" href="#filtering-data" title="永久链接至标题">¶</a></h2>
-<p>此外， <a class="reference internal" href="../api/Phalcon_Filter.html"><span class="doc">Phalcon\Filter</span></a> 也提供了可以进行删除或者修改输入数据以满足我们需要的格式的过滤器。
+<p>此外， <a class="reference internal" href="../api/Phalcon_Filter.html"><em>Phalcon\Filter</em></a> 也提供了可以进行删除或者修改输入数据以满足我们需要的格式的过滤器。
 函数 <cite>sanitize</cite> 的第一个参数是用户输入的数据，第二个参数是过滤器名称，第三个参数是是否递归执行，第四个参数是选项值。</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
@@ -293,7 +291,7 @@
 </div>
 <div class="section" id="creating-your-own-filters">
 <h2>创建过滤器（Creating your own Filters）<a class="headerlink" href="#creating-your-own-filters" title="永久链接至标题">¶</a></h2>
-<p>你可以将你自己的过滤器添加到 <a class="reference internal" href="../api/Phalcon_Filter.html"><span class="doc">Phalcon\Filter</span></a> 。过滤器的方法可以是匿名函数：</p>
+<p>你可以将你自己的过滤器添加到 <a class="reference internal" href="../api/Phalcon_Filter.html"><em>Phalcon\Filter</em></a> 。过滤器的方法可以是匿名函数：</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Filter</span><span class="p">;</span>
@@ -338,7 +336,7 @@
 </div>
 <div class="section" id="implementing-your-own-filter">
 <h2>自定义过滤器（Implementing your own Filter）<a class="headerlink" href="#implementing-your-own-filter" title="永久链接至标题">¶</a></h2>
-<p>如需创建你自己的过滤器并代替Phalcon提供的过滤器，你需要实现 <a class="reference internal" href="../api/Phalcon_FilterInterface.html"><span class="doc">Phalcon\FilterInterface</span></a> 接口。</p>
+<p>如需创建你自己的过滤器并代替Phalcon提供的过滤器，你需要实现 <a class="reference internal" href="../api/Phalcon_FilterInterface.html"><em>Phalcon\FilterInterface</em></a> 接口。</p>
 </div>
 </div>
 

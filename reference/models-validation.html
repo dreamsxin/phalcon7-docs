@@ -22,8 +22,6 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
-    <link rel="index" title="索引" href="../index.html" />
-    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.3.2 文档" href="../index.html" />
     <link rel="next" title="模型的高级用法（Working with Models (Advanced)）" href="models-advanced.html" />
     <link rel="prev" title="模型事务（Model Transactions）" href="models-transactions.html" /> 
@@ -109,7 +107,7 @@
 <h1>模型验证（Validating Models）<a class="headerlink" href="#validating-models" title="永久链接至标题">¶</a></h1>
 <div class="section" id="validating-data-integrity">
 <h2>验证模型数据完整性（Validating Data Integrity）<a class="headerlink" href="#validating-data-integrity" title="永久链接至标题">¶</a></h2>
-<p>在模型 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><span class="doc">Phalcon\Mvc\Model</span></a> 中提供了几个事件（<cite>beforeSave</cite>、<cite>beforeCreate</cite>、<cite>beforeUpdate</cite>）用以数据的验证和过滤。
+<p>在模型 <a class="reference internal" href="../api/Phalcon_Mvc_Model.html"><em>Phalcon\Mvc\Model</em></a> 中提供了几个事件（<cite>beforeSave</cite>、<cite>beforeCreate</cite>、<cite>beforeUpdate</cite>）用以数据的验证和过滤。
 我们推荐使用专用的事件 <cite>validation</cite>，它允许我们调用内置的验证类进行验证数据：</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
@@ -140,7 +138,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>上面的例子使用了内置验证器`InclusionIn` 和 <cite>Uniqueness</cite>，更多的内置验证器请查看 <a class="reference internal" href="validation.html"><span class="doc">验证</span></a> 章节。</p>
+<p>上面的例子使用了内置验证器`InclusionIn` 和 <cite>Uniqueness</cite>，更多的内置验证器请查看 <a class="reference internal" href="validation.html"><em>验证</em></a> 章节。</p>
 <p>除了内置的验证程序，我们可以创建自定义验证器：</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 

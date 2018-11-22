@@ -22,8 +22,6 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
-    <link rel="index" title="索引" href="../index.html" />
-    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.3.2 文档" href="../index.html" />
     <link rel="next" title="随机数（Random）" href="random.html" />
     <link rel="prev" title="数据库抽象层（Database Abstraction Layer）" href="db.html" /> 
@@ -104,7 +102,7 @@
 			  
   <div class="section" id="profiler">
 <h1>性能分析器（Profiler）<a class="headerlink" href="#profiler" title="永久链接至标题">¶</a></h1>
-<p><a class="reference internal" href="../api/Phalcon_Profiler.html"><span class="doc">Phalcon\Profiler</span></a> 一个性能分析组件，可以实现多层嵌套：</p>
+<p><a class="reference internal" href="../api/Phalcon_Profiler.html"><em>Phalcon\Profiler</em></a> 一个性能分析组件，可以实现多层嵌套：</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$profiler</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Profiler</span><span class="p">();</span>
@@ -133,7 +131,7 @@
 <div class="section" id="db-db-profiler">
 <h2>DB 性能分析器（DB Profiler）<a class="headerlink" href="#db-db-profiler" title="永久链接至标题">¶</a></h2>
 <blockquote>
-<div><a class="reference internal" href="../api/Phalcon_Db_Profiler.html"><span class="doc">Phalcon\Db\Profiler</span></a> 组件，它被用于分析数据库的操作性能以便诊断性能问题，并发现瓶颈：</div></blockquote>
+<div><a class="reference internal" href="../api/Phalcon_Db_Profiler.html"><em>Phalcon\Db\Profiler</em></a> 组件，它被用于分析数据库的操作性能以便诊断性能问题，并发现瓶颈：</div></blockquote>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\DB\Profiler</span> <span class="k">as</span> <span class="nx">DbProfiler</span><span class="p">;</span>
@@ -202,7 +200,7 @@
 <span class="k">echo</span> <span class="s2">&quot;Total Usage Memory: &quot;</span><span class="p">,</span> <span class="nv">$profile</span><span class="o">-&gt;</span><span class="na">getTotalUsageMemory</span><span class="p">(),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>你也可以基于 <a class="reference internal" href="../api/Phalcon_Profiler.html"><span class="doc">Phalcon\Profiler</span></a> 或 <a class="reference internal" href="../api/Phalcon_Db_Profiler.html"><span class="doc">Phalcon\Db\Profiler</span></a> 建立你自己的分析器类。</p>
+<p>你也可以基于 <a class="reference internal" href="../api/Phalcon_Profiler.html"><em>Phalcon\Profiler</em></a> 或 <a class="reference internal" href="../api/Phalcon_Db_Profiler.html"><em>Phalcon\Db\Profiler</em></a> 建立你自己的分析器类。</p>
 </div>
 </div>
 

@@ -22,8 +22,6 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
-    <link rel="index" title="索引" href="../index.html" />
-    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.3.2 文档" href="../index.html" />
     <link rel="next" title="缓存对象关系映射（Caching in the ORM）" href="models-cache.html" />
     <link rel="prev" title="模型行为（Model Behaviors）" href="models-behaviors.html" /> 
@@ -216,7 +214,7 @@
 </div>
 <div class="section" id="phql-creating-phql-queries">
 <h2>创建 PHQL 查询（Creating PHQL Queries）<a class="headerlink" href="#phql-creating-phql-queries" title="永久链接至标题">¶</a></h2>
-<p>PHQL 查询可以通过类 <a class="reference internal" href="../api/Phalcon_Mvc_Model_Query.html"><span class="doc">Phalcon\Mvc\Model\Query</span></a> 进行实例化：</p>
+<p>PHQL 查询可以通过类 <a class="reference internal" href="../api/Phalcon_Mvc_Model_Query.html"><em>Phalcon\Mvc\Model\Query</em></a> 进行实例化：</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Model\Query</span><span class="p">;</span>
@@ -228,7 +226,7 @@
 <span class="nv">$cars</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
 </pre></div>
 </div>
-<p>在控制器或者视图中，利用注入服务 <a class="reference internal" href="../api/Phalcon_Mvc_Model_Manager.html"><span class="doc">models manager</span></a> 可以方便创建以及执行：</p>
+<p>在控制器或者视图中，利用注入服务 <a class="reference internal" href="../api/Phalcon_Mvc_Model_Manager.html"><em>models manager</em></a> 可以方便创建以及执行：</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Executing a simple query</span>
@@ -290,7 +288,7 @@
 <div class="section" id="result-types">
 <h3>结果类型（Result Types）<a class="headerlink" href="#result-types" title="永久链接至标题">¶</a></h3>
 <p>Depending on the type of columns we query, the result type will vary. If you retrieve a single whole object, then the object returned is
-a <a class="reference internal" href="../api/Phalcon_Mvc_Model_Resultset_Simple.html"><span class="doc">Phalcon\Mvc\Model\Resultset\Simple</span></a>. This kind of resultset is a set of complete model objects:</p>
+a <a class="reference internal" href="../api/Phalcon_Mvc_Model_Resultset_Simple.html"><em>Phalcon\Mvc\Model\Resultset\Simple</em></a>. This kind of resultset is a set of complete model objects:</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$phql</span> <span class="o">=</span> <span class="s2">&quot;SELECT c.* FROM Cars AS c ORDER BY c.name&quot;</span><span class="p">;</span>
@@ -326,7 +324,7 @@ other types of queries that do not return complete objects, for example:</p>
 </pre></div>
 </div>
 <p>We are only requesting some fields in the table, therefore those cannot be considered an entire object, so the returned object is
-still a resultset of type <a class="reference internal" href="../api/Phalcon_Mvc_Model_Resultset_Simple.html"><span class="doc">Phalcon\Mvc\Model\Resultset\Simple</span></a>. However, each element is a standard
+still a resultset of type <a class="reference internal" href="../api/Phalcon_Mvc_Model_Resultset_Simple.html"><em>Phalcon\Mvc\Model\Resultset\Simple</em></a>. However, each element is a standard
 object that only contain the two columns that were requested.</p>
 <p>These values that don&#8217;t represent complete objects are what we call scalars. PHQL allows you to query all types of scalars: fields, functions, literals, expressions, etc..:</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
@@ -345,7 +343,7 @@ object that only contain the two columns that were requested.</p>
 <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$manager</span><span class="o">-&gt;</span><span class="na">executeQuery</span><span class="p">(</span><span class="nv">$phql</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>The result in this case is an object <a class="reference internal" href="../api/Phalcon_Mvc_Model_Resultset_Complex.html"><span class="doc">Phalcon\Mvc\Model\Resultset\Complex</span></a>.
+<p>The result in this case is an object <a class="reference internal" href="../api/Phalcon_Mvc_Model_Resultset_Complex.html"><em>Phalcon\Mvc\Model\Resultset\Complex</em></a>.
 This allows access to both complete objects and scalars at once:</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
@@ -1055,7 +1053,7 @@ The following is the life cycle of each PHQL statement executed:</p>
 </div>
 <div class="section" id="reading-and-writing-separation">
 <h2>实现读写分离（Reading and Writing Separation）<a class="headerlink" href="#reading-and-writing-separation" title="永久链接至标题">¶</a></h2>
-<p>当查询器中实现此方法，将会替换 <a class="reference internal" href="models.html"><span class="doc">模型</span></a> 中实现的方法，实现读写分离代码如下：</p>
+<p>当查询器中实现此方法，将会替换 <a class="reference internal" href="models.html"><em>模型</em></a> 中实现的方法，实现读写分离代码如下：</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">MyQuery</span> <span class="k">extends</span> <span class="nx">Phalcon\Mvc\Model\Query</span>
@@ -1172,7 +1170,7 @@ The following is the life cycle of each PHQL statement executed:</p>
 </div>
 <div class="section" id="phql-phql-events">
 <h2>PHQL 事件（PHQL Events）<a class="headerlink" href="#phql-phql-events" title="永久链接至标题">¶</a></h2>
-<p>如果需要的话 <a class="reference internal" href="../api/Phalcon_Mvc_Model_Query.html"><span class="doc">Phalcon\MvcModelQuery</span></a> 可以发送事件到 <a class="reference internal" href="events.html"><span class="doc">EventsManager</span></a> 。
+<p>如果需要的话 <a class="reference internal" href="../api/Phalcon_Mvc_Model_Query.html"><em>Phalcon\MvcModelQuery</em></a> 可以发送事件到 <a class="reference internal" href="events.html"><em>EventsManager</em></a> 。
 支持如下的事件：</p>
 <table border="1" class="docutils">
 <colgroup>

@@ -22,8 +22,6 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
-    <link rel="index" title="索引" href="../index.html" />
-    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.3.2 文档" href="../index.html" />
     <link rel="next" title="命令行应用（Command Line Applications）" href="cli.html" />
     <link rel="prev" title="日志记录（Logging）" href="logging.html" /> 
@@ -116,7 +114,7 @@
 			  
   <div class="section" id="annotations-parser">
 <h1>注解解析器（Annotations Parser）<a class="headerlink" href="#annotations-parser" title="永久链接至标题">¶</a></h1>
-<p><span class="xref doc">Phalcon\Annotations</span> &lt;../api/Phalcon_Annotations`&gt;` 是一个通用组件，这是第一个为PHP用C语言写的注释解析器，为应用中的PHP类提供易于解析和缓存注释的功能。</p>
+<p><code class="xref doc docutils literal"><span class="pre">Phalcon\Annotations</span></code> &lt;../api/Phalcon_Annotations`&gt;` 是一个通用组件，这是第一个为PHP用C语言写的注释解析器，为应用中的PHP类提供易于解析和缓存注释的功能。</p>
 <p>注释内容是读自类，方法和属性的注释区域。一个注释单元可以放在注释区域的任何位置。</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
@@ -221,7 +219,7 @@
 </div>
 <p>虽然这个注释的读取过程是非常快速的，然而，出于性能原因，我们建议使用一个适配器储存解析后的注释内容。
 适配器把处理后的注释内容缓存起来，避免每次读取都需要解析一遍注释。</p>
-<p><a class="reference internal" href="../api/Phalcon_Annotations_Adapter_Memory.html"><span class="doc">Phalcon\Annotations\Adapter\Memory</span></a> 被用在上面的例子中。这个适配器只在请求过程中缓存注释（译者注：请求完成后缓存将被清空），因为这个原因，这个适配器非常适合用于开发环境中。当应用跑在生产环境中还有其他适配器可以替换。</p>
+<p><a class="reference internal" href="../api/Phalcon_Annotations_Adapter_Memory.html"><em>Phalcon\Annotations\Adapter\Memory</em></a> 被用在上面的例子中。这个适配器只在请求过程中缓存注释（译者注：请求完成后缓存将被清空），因为这个原因，这个适配器非常适合用于开发环境中。当应用跑在生产环境中还有其他适配器可以替换。</p>
 </div>
 <div class="section" id="types-of-annotations">
 <h2>注释类型（Types of Annotations）<a class="headerlink" href="#types-of-annotations" title="永久链接至标题">¶</a></h2>
@@ -504,29 +502,29 @@
 <tbody valign="top">
 <tr class="row-even"><td>Memory</td>
 <td>这个注释只缓存在内存中。当请求结束时缓存将被清空，每次请求都重新解析注释内容. 这个适配器适合用于开发环境中</td>
-<td><a class="reference internal" href="../api/Phalcon_Annotations_Adapter_Memory.html"><span class="doc">Phalcon\Annotations\Adapter\Memory</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Annotations_Adapter_Memory.html"><em>Phalcon\Annotations\Adapter\Memory</em></a></td>
 </tr>
 <tr class="row-odd"><td>Files</td>
 <td>已解析和已处理的注释将被永久保存在PHP文件中提高性能。这个适配器必须和字节码缓存一起使用。</td>
-<td><a class="reference internal" href="../api/Phalcon_Annotations_Adapter_Files.html"><span class="doc">Phalcon\Annotations\Adapter\Files</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Annotations_Adapter_Files.html"><em>Phalcon\Annotations\Adapter\Files</em></a></td>
 </tr>
 <tr class="row-even"><td>APC</td>
 <td>已解析和已处理的注释将永久保存在APC缓存中提升性能。 这是一个速度非常快的适配器。</td>
-<td><a class="reference internal" href="../api/Phalcon_Annotations_Adapter_Apc.html"><span class="doc">Phalcon\Annotations\Adapter\Apc</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Annotations_Adapter_Apc.html"><em>Phalcon\Annotations\Adapter\Apc</em></a></td>
 </tr>
 <tr class="row-odd"><td>XCache</td>
 <td>已解析和已处理的注释将永久保存在XCache缓存中提升性能。这也是一个速度非常快的适配器。</td>
-<td><a class="reference internal" href="../api/Phalcon_Annotations_Adapter_Xcache.html"><span class="doc">Phalcon\Annotations\Adapter\Xcache</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Annotations_Adapter_Xcache.html"><em>Phalcon\Annotations\Adapter\Xcache</em></a></td>
 </tr>
 <tr class="row-even"><td>Cache</td>
 <td>已解析和已处理的注释缓存在缓存组件中提升性能。</td>
-<td><a class="reference internal" href="../api/Phalcon_Annotations_Adapter_Cache.html"><span class="doc">Phalcon\Annotations\Adapter\Cache</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Annotations_Adapter_Cache.html"><em>Phalcon\Annotations\Adapter\Cache</em></a></td>
 </tr>
 </tbody>
 </table>
 <div class="section" id="implementing-your-own-adapters">
 <h3>自定义适配器（Implementing your own adapters）<a class="headerlink" href="#implementing-your-own-adapters" title="永久链接至标题">¶</a></h3>
-<p>为了建立自己的注释适配器或者继承一个已存在的适配器，这个 <a class="reference internal" href="../api/Phalcon_Annotations_AdapterInterface.html"><span class="doc">Phalcon\Annotations\AdapterInterface</span></a> 接口都必须实现。</p>
+<p>为了建立自己的注释适配器或者继承一个已存在的适配器，这个 <a class="reference internal" href="../api/Phalcon_Annotations_AdapterInterface.html"><em>Phalcon\Annotations\AdapterInterface</em></a> 接口都必须实现。</p>
 </div>
 </div>
 <div class="section" id="external-resources">

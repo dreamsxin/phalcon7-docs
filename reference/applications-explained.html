@@ -22,8 +22,6 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
-    <link rel="index" title="索引" href="../index.html" />
-    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.3.2 文档" href="../index.html" />
     <link rel="next" title="授权（License）" href="license.html" />
     <link rel="prev" title="理解依赖注入（Dependency Injection Explained）" href="di-explained.html" /> 
@@ -104,7 +102,7 @@
 			  
   <div class="section" id="understanding-how-phalcon-applications-work">
 <h1>理解应用是如何工作的（Understanding How Phalcon Applications Work）<a class="headerlink" href="#understanding-how-phalcon-applications-work" title="永久链接至标题">¶</a></h1>
-<p>如果你已经看过了 <a class="reference internal" href="tutorial.html"><span class="doc">tutorial</span></a> 或者已经通过 <a class="reference internal" href="tools.html"><span class="doc">Phalcon Devtools</span></a> 生成了代码，
+<p>如果你已经看过了 <a class="reference internal" href="tutorial.html"><em>tutorial</em></a> 或者已经通过 <a class="reference internal" href="tools.html"><em>Phalcon Devtools</em></a> 生成了代码，
 你将很容易识别以下的启动文件：</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
@@ -136,7 +134,7 @@
 </div>
 <div class="section" id="manual-bootstrapping">
 <h2>手动启动（Manual bootstrapping）<a class="headerlink" href="#manual-bootstrapping" title="永久链接至标题">¶</a></h2>
-<p>如果你不想使用 <a class="reference internal" href="../api/Phalcon_Mvc_Application.html"><span class="doc">Phalcon\Mvc\Application</span></a> ，以上的代码可以改成这样：</p>
+<p>如果你不想使用 <a class="reference internal" href="../api/Phalcon_Mvc_Application.html"><em>Phalcon\Mvc\Application</em></a> ，以上的代码可以改成这样：</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// 获取 &#39;router&#39; 服务</span>
@@ -189,7 +187,7 @@
 <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
 </pre></div>
 </div>
-<p>以下代码替换了 <a class="reference internal" href="../api/Phalcon_Mvc_Application.html"><span class="doc">Phalcon\Mvc\Application</span></a> ，虽然缺少了视图组件，
+<p>以下代码替换了 <a class="reference internal" href="../api/Phalcon_Mvc_Application.html"><em>Phalcon\Mvc\Application</em></a> ，虽然缺少了视图组件，
 但却更适合Rest风格的API接口：</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
@@ -279,7 +277,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>尽管上面的代码比使用 <a class="reference internal" href="../api/Phalcon_Mvc_Application.html"><span class="doc">Phalcon\Mvc\Application</span></a> 而需要的代码远远要累赘得很，
+<p>尽管上面的代码比使用 <a class="reference internal" href="../api/Phalcon_Mvc_Application.html"><em>Phalcon\Mvc\Application</em></a> 而需要的代码远远要累赘得很，
 但它为启动你的应用提供了一个可修改、可定制化的途径。
 因为根据你的项目需要，你可以想对实例什么和不实例化什么进行完全的控制，或者想用你自己的组件来替代那些确定和必须的组件从而扩展默认的功能。</p>
 </div>

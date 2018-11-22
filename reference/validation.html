@@ -22,8 +22,6 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
-    <link rel="index" title="索引" href="../index.html" />
-    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.3.2 文档" href="../index.html" />
     <link rel="next" title="表单（Forms）" href="forms.html" />
     <link rel="prev" title="上下文编码（Contextual Escaping）" href="escaper.html" /> 
@@ -115,7 +113,7 @@
 			  
   <div class="section" id="validation">
 <h1>验证（Validation）<a class="headerlink" href="#validation" title="永久链接至标题">¶</a></h1>
-<p><a class="reference internal" href="../api/Phalcon_Validation.html"><span class="doc">Phalcon\Validation</span></a> 对Phalcon来说是一个相对独立的组件，它可以对任意的数据进行验证。
+<p><a class="reference internal" href="../api/Phalcon_Validation.html"><em>Phalcon\Validation</em></a> 对Phalcon来说是一个相对独立的组件，它可以对任意的数据进行验证。
 当然也可以用来对非模型内的数据进行验证。</p>
 <p>下面的例子展示了一些基本的使用方法：</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
@@ -179,7 +177,7 @@
 <p>由于此模型是松耦合设计的，故此我们也可以使用自己书写的验证工具：</p>
 <div class="section" id="initializing-validation">
 <h2>初始化验证（Initializing Validation）<a class="headerlink" href="#initializing-validation" title="永久链接至标题">¶</a></h2>
-<p>我们可以直接在 <a class="reference internal" href="../api/Phalcon_Validation.html"><span class="doc">Phalcon\Validation</span></a> 初始化时添加验证链。我们可以把验证器放在一个单独的文件中以提高代码的重用率及可组织性：</p>
+<p>我们可以直接在 <a class="reference internal" href="../api/Phalcon_Validation.html"><em>Phalcon\Validation</em></a> 初始化时添加验证链。我们可以把验证器放在一个单独的文件中以提高代码的重用率及可组织性：</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Validation</span><span class="p">;</span>
@@ -252,75 +250,75 @@
 <tbody valign="top">
 <tr class="row-even"><td>PresenceOf</td>
 <td>检测字段的值是否为非空</td>
-<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_PresenceOf.html"><span class="doc">Example</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_PresenceOf.html"><em>Example</em></a></td>
 </tr>
 <tr class="row-odd"><td>Alnum</td>
 <td>检测字段的值是否为字母和数字</td>
-<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Alnum.html"><span class="doc">Example</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Alnum.html"><em>Example</em></a></td>
 </tr>
 <tr class="row-even"><td>Alpha</td>
 <td>检测字段的值是否为字母</td>
-<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Alpha.html"><span class="doc">Example</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Alpha.html"><em>Example</em></a></td>
 </tr>
 <tr class="row-odd"><td>Date</td>
 <td>检测字段的值是否为日期</td>
-<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Date.html"><span class="doc">Example</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Date.html"><em>Example</em></a></td>
 </tr>
 <tr class="row-even"><td>Digit</td>
 <td>检测字段的值是否为数字</td>
-<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Digit.html"><span class="doc">Example</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Digit.html"><em>Example</em></a></td>
 </tr>
 <tr class="row-odd"><td>Numericality</td>
 <td>检测字段的值是否为数量值</td>
-<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Numericality.html"><span class="doc">Example</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Numericality.html"><em>Example</em></a></td>
 </tr>
 <tr class="row-even"><td>Identical</td>
 <td>检测字段的值是否和指定的相同</td>
-<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Identical.html"><span class="doc">Example</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Identical.html"><em>Example</em></a></td>
 </tr>
 <tr class="row-odd"><td>Email</td>
 <td>检测值是否为合法的email地址</td>
-<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Email.html"><span class="doc">Example</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Email.html"><em>Example</em></a></td>
 </tr>
 <tr class="row-even"><td>ExclusionIn</td>
 <td>检测值是否不在列举的范围内</td>
-<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_ExclusionIn.html"><span class="doc">Example</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_ExclusionIn.html"><em>Example</em></a></td>
 </tr>
 <tr class="row-odd"><td>InclusionIn</td>
 <td>检测值是否在列举的范围内</td>
-<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_InclusionIn.html"><span class="doc">Example</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_InclusionIn.html"><em>Example</em></a></td>
 </tr>
 <tr class="row-even"><td>Regex</td>
 <td>检测值是否匹配正则表达式</td>
-<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Regex.html"><span class="doc">Example</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Regex.html"><em>Example</em></a></td>
 </tr>
 <tr class="row-odd"><td>StringLength</td>
 <td>检测值的字符串长度</td>
-<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_StringLength.html"><span class="doc">Example</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_StringLength.html"><em>Example</em></a></td>
 </tr>
 <tr class="row-even"><td>Between</td>
 <td>检测值是否位于两个值之间</td>
-<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Between.html"><span class="doc">Example</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Between.html"><em>Example</em></a></td>
 </tr>
 <tr class="row-odd"><td>Confirmation</td>
 <td>检测两个值是否相等</td>
-<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Confirmation.html"><span class="doc">Example</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Confirmation.html"><em>Example</em></a></td>
 </tr>
 <tr class="row-even"><td>Url</td>
 <td>监测值是否是合法的URL</td>
-<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Url.html"><span class="doc">Example</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Url.html"><em>Example</em></a></td>
 </tr>
 <tr class="row-odd"><td>Uniqueness</td>
 <td>监测值是否已存在</td>
-<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Uniqueness.html"><span class="doc">Example</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Uniqueness.html"><em>Example</em></a></td>
 </tr>
 <tr class="row-even"><td>Json</td>
 <td>监测值是否是合法的JSON</td>
-<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Json.html"><span class="doc">Example</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_Json.html"><em>Example</em></a></td>
 </tr>
 <tr class="row-odd"><td>File</td>
 <td>监测值是否是合法的文件格式</td>
-<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_File.html"><span class="doc">Example</span></a></td>
+<td><a class="reference internal" href="../api/Phalcon_Validation_Validator_File.html"><em>Example</em></a></td>
 </tr>
 </tbody>
 </table>
@@ -406,8 +404,8 @@
 </div>
 <div class="section" id="validation-messages">
 <h2>验证信息（Validation Messages）<a class="headerlink" href="#validation-messages" title="永久链接至标题">¶</a></h2>
-<p><a class="reference internal" href="../api/Phalcon_Validation.html"><span class="doc">Phalcon\Validation</span></a> 内置了一个消息子系统，这提供了一个非常好的验证消息回传机制，以便在验证结束后取得验证信息，比如失败原因等。</p>
-<p>每个消息由一个 <a class="reference internal" href="../api/Phalcon_Validation_Message.html"><span class="doc">Phalcon\Validation\Message</span></a> 类的实例构成。 验证过程产生的消息可以使用getMessages()方法取得。
+<p><a class="reference internal" href="../api/Phalcon_Validation.html"><em>Phalcon\Validation</em></a> 内置了一个消息子系统，这提供了一个非常好的验证消息回传机制，以便在验证结束后取得验证信息，比如失败原因等。</p>
+<p>每个消息由一个 <a class="reference internal" href="../api/Phalcon_Validation_Message.html"><em>Phalcon\Validation\Message</em></a> 类的实例构成。 验证过程产生的消息可以使用getMessages()方法取得。
 每条消息都有一些扩展的信息组成比如产生错误的属性或消息的类型等：</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
@@ -523,7 +521,7 @@
 <span class="nv">$validation</span><span class="o">-&gt;</span><span class="na">setFilters</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;trim&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>这里我们使用 <a class="reference internal" href="filter.html"><span class="doc">filter</span></a>: 组件进行过滤。 我们还可以使用自定义的或内置的过滤器。</p>
+<p>这里我们使用 <a class="reference internal" href="filter.html"><em>filter</em></a>: 组件进行过滤。 我们还可以使用自定义的或内置的过滤器。</p>
 </div>
 <div class="section" id="validation-events">
 <h2>验证事件（Validation Events）<a class="headerlink" href="#validation-events" title="永久链接至标题">¶</a></h2>

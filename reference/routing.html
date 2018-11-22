@@ -22,8 +22,6 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
-    <link rel="index" title="索引" href="../index.html" />
-    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.3.2 文档" href="../index.html" />
     <link rel="next" title="调度控制器（Dispatching Controllers）" href="dispatching.html" />
     <link rel="prev" title="MVC 应用（MVC Applications）" href="applications.html" /> 
@@ -135,7 +133,7 @@
 <p>Router 组件允许定义用户请求对应到哪个控制器或动作。Router 解析 URI 以确定这些信息。路由器有两种模式：MVC 模式和匹配模式(match-only)。第一种模式是使用MVC应用程序的理想选择。</p>
 <div class="section" id="defining-routes">
 <h2>定义路由（Defining Routes）<a class="headerlink" href="#defining-routes" title="永久链接至标题">¶</a></h2>
-<p>在 MVC 模式中 <a class="reference internal" href="../api/Phalcon_Mvc_Router.html"><span class="doc">Phalcon\Mvc\Router</span></a> 提供了一套简单方便的高级路由功能。你可以自定义路由规则，对应到你需要的 controllers/actions 上。路由的定义如下：</p>
+<p>在 MVC 模式中 <a class="reference internal" href="../api/Phalcon_Mvc_Router.html"><em>Phalcon\Mvc\Router</em></a> 提供了一套简单方便的高级路由功能。你可以自定义路由规则，对应到你需要的 controllers/actions 上。路由的定义如下：</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">;</span>
@@ -165,7 +163,7 @@
 </pre></div>
 </div>
 <p>add() 方法接受一个匹配模式作为第一个参数，一组可选的路径作为第二个参数。如上，如果URI就是/admin/users/my-profile的话，
-那么 &#8220;users&#8221; 控制的 &#8220;profile&#8221; 方法将被调用。当然路由器并不马上就调用这个方法，它只是收集这些信息并且通知相应的组件（比如 <a class="reference internal" href="../api/Phalcon_Mvc_Dispatcher.html"><span class="doc">Phalcon\Mvc\Dispatcher</span></a> ）应该调用这个控制器的这个动作。</p>
+那么 &#8220;users&#8221; 控制的 &#8220;profile&#8221; 方法将被调用。当然路由器并不马上就调用这个方法，它只是收集这些信息并且通知相应的组件（比如 <a class="reference internal" href="../api/Phalcon_Mvc_Dispatcher.html"><em>Phalcon\Mvc\Dispatcher</em></a> ）应该调用这个控制器的这个动作。</p>
 <p>一个应用程序可以由很多路径，一个一个定义是一个非常笨重的工作。这种情况下我们可以创建一个更加灵活的路由：</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
@@ -256,7 +254,7 @@ first subpattern matched (<code class="code docutils literal"><span class="pre">
 is uppercased. For instance, some_controller is converted to SomeController.</p>
 <p>Since you can add many routes as you need using the <code class="code docutils literal"><span class="pre">add()</span></code> method, the order in which routes are added indicate
 their relevance, latest routes added have more relevance than first added. Internally, all defined routes
-are traversed in reverse order until <a class="reference internal" href="../api/Phalcon_Mvc_Router.html"><span class="doc">Phalcon\Mvc\Router</span></a> finds the
+are traversed in reverse order until <a class="reference internal" href="../api/Phalcon_Mvc_Router.html"><em>Phalcon\Mvc\Router</em></a> finds the
 one that matches the given URI and processes it, while ignoring the rest.</p>
 </div>
 <div class="section" id="setting-placeholders-regular-expressions">
@@ -697,7 +695,7 @@ module. A couple of rewrite rules that work very well with Phalcon are:</p>
 </div>
 <div class="section" id="naming-routes">
 <h2>路由命名（Naming Routes）<a class="headerlink" href="#naming-routes" title="永久链接至标题">¶</a></h2>
-<p>Each route that is added to the router is stored internally as a <a class="reference internal" href="../api/Phalcon_Mvc_Router_Route.html"><span class="doc">Phalcon\Mvc\Router\Route</span></a> object.
+<p>Each route that is added to the router is stored internally as a <a class="reference internal" href="../api/Phalcon_Mvc_Router_Route.html"><em>Phalcon\Mvc\Router\Route</em></a> object.
 That class encapsulates all the details of each route. For instance, we can give a name to a path to identify it uniquely in our application.
 This is especially useful if you want to create URLs from it.</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
@@ -711,7 +709,7 @@ This is especially useful if you want to create URLs from it.</p>
 <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s2">&quot;/posts/{year}/{title}&quot;</span><span class="p">,</span> <span class="s2">&quot;Posts::show&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">setName</span><span class="p">(</span><span class="s2">&quot;show-posts&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Then, using for example the component <a class="reference internal" href="../api/Phalcon_Mvc_Url.html"><span class="doc">Phalcon\Mvc\Url</span></a> we can build routes from its name:</p>
+<p>Then, using for example the component <a class="reference internal" href="../api/Phalcon_Mvc_Url.html"><em>Phalcon\Mvc\Url</em></a> we can build routes from its name:</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Returns /posts/2012/phalcon-1-0-released</span>
@@ -816,7 +814,7 @@ read unauthorized files. A safe regular expression is: <code class="code docutil
 </div>
 <div class="section" id="default-behavior">
 <h2>默认行为（Default Behavior）<a class="headerlink" href="#default-behavior" title="永久链接至标题">¶</a></h2>
-<p><a class="reference internal" href="../api/Phalcon_Mvc_Router.html"><span class="doc">Phalcon\Mvc\Router</span></a> has a default behavior that provides a very simple routing that
+<p><a class="reference internal" href="../api/Phalcon_Mvc_Router.html"><em>Phalcon\Mvc\Router</em></a> has a default behavior that provides a very simple routing that
 always expects a URI that matches the following pattern: /:controller/:action/:params</p>
 <p>For example, for a URL like this <em>http://phalconphp.com/documentation/show/about.html</em>, this router will translate it as follows:</p>
 <table border="1" class="docutils">
@@ -1150,7 +1148,7 @@ Phalcon, you can also use <code class="code docutils literal"><span class="pre">
 </div>
 <div class="section" id="annotations-router">
 <h2>注解路由（Annotations Router）<a class="headerlink" href="#annotations-router" title="永久链接至标题">¶</a></h2>
-<p>这个组件利用集成的注解服务 <a class="reference internal" href="annotations.html"><span class="doc">annotations</span></a> 提供了一个路由定义的变体。通过这个策略，你可以直接在书写控制器
+<p>这个组件利用集成的注解服务 <a class="reference internal" href="annotations.html"><em>annotations</em></a> 提供了一个路由定义的变体。通过这个策略，你可以直接在书写控制器
 的时候编写路由，而不需要一个一个在服务注册的时候添加。</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
@@ -1377,16 +1375,16 @@ Phalcon, you can also use <code class="code docutils literal"><span class="pre">
 <span class="nv">$router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Mvc\Router</span><span class="p">();</span>
 <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">setMode</span><span class="p">(</span><span class="nx">Phalcon\Router</span><span class="o">::</span><span class="na">MODE_REST</span><span class="p">);</span>
 
-    <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REQUEST_METHOD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;POST&#39;</span><span class="p">;</span>
-    <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">(</span><span class="s1">&#39;/posts/info&#39;</span><span class="p">);</span>
+<span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REQUEST_METHOD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;POST&#39;</span><span class="p">;</span>
+<span class="nv">$router</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">(</span><span class="s1">&#39;/posts/info&#39;</span><span class="p">);</span>
 
-    <span class="k">echo</span> <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">getActionName</span><span class="p">();</span> <span class="c1">// 这里将输出 infoPost，如果不开启 REST 模式，将返回 info</span>
+<span class="k">echo</span> <span class="nv">$router</span><span class="o">-&gt;</span><span class="na">getActionName</span><span class="p">();</span> <span class="c1">// 这里将输出 infoPost，如果不开启 REST 模式，将返回 info</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="implementing-your-own-router">
 <h2>自定义路由（Implementing your own Router）<a class="headerlink" href="#implementing-your-own-router" title="永久链接至标题">¶</a></h2>
-<p>The <a class="reference internal" href="../api/Phalcon_Mvc_RouterInterface.html"><span class="doc">Phalcon\Mvc\RouterInterface</span></a> interface must be implemented to create your own router replacing
+<p>The <a class="reference internal" href="../api/Phalcon_Mvc_RouterInterface.html"><em>Phalcon\Mvc\RouterInterface</em></a> interface must be implemented to create your own router replacing
 the one provided by Phalcon.</p>
 </div>
 </div>
