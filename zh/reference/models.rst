@@ -1523,6 +1523,44 @@ Each generated profile contains the duration in milliseconds that each instructi
         }
     }
 
+使用 Criteria
+-------------
+
+查询
+^^^^
+
+.. code-block:: php
+
+    <?php
+
+    $robots = Robots::query()
+        ->where("type = :type:")
+        ->andWhere("year < 2000")
+        ->bind(array("type" => "mechanical"))
+        ->order("name")
+        ->execute();
+
+    $criteria = new \Phalcon\Mvc\Model\Criteria;
+    $criteria->setModelName('Robots')
+        ->where("type = :type:")
+        ->andWhere("year < 2000")
+        ->bind(array("type" => "mechanical"))
+        ->order("name")
+        ->execute();
+
+    // 模糊查询
+    $robots = \Phalcon\Mvc\Model\Criteria::fromInput($di, "Robots", ["type" => "mechanical"]);
+
+批量插入
+^^^^^^^^
+
+.. code-block:: php
+
+    <?php
+
+    Robots::query()->insert(["name", "year"], [['Astro Boy', 1952], ['Scooby Doo', 1969]])
+    ->execute();;
+
 .. _PDO: http://www.php.net/manual/en/pdo.prepared-statements.php
 .. _date: http://php.net/manual/en/function.date.php
 .. _time: http://php.net/manual/en/function.time.php

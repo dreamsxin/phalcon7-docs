@@ -499,6 +499,20 @@ status of the insertion we can print any validation messages generated internall
         }
     }
 
+批量插入
+^^^^^^^^
+
+.. code-block:: php
+
+    <?php
+
+    Phalcon\Mvc\Model\Query\Builder::createInsertBuilder()
+        ->table('Robots')
+        ->columns(array('name'))
+        ->values(array(array('name' => 'Google'), array('name' => 'Baidu')))
+        ->getQuery()
+        ->execute();
+
 更新数据（Updating Data）
 -------------------------
 Updating rows is very similar than inserting rows. As you may know, the instruction to
