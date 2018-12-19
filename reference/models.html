@@ -125,6 +125,11 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#id1">设置字段错误显示文本</a></li>
+<li><a class="reference internal" href="#criteria">使用 Criteria</a><ul>
+<li><a class="reference internal" href="#id2">查询</a></li>
+<li><a class="reference internal" href="#id3">批量插入</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1661,6 +1666,42 @@ this you can diagnose performance problems and to discover bottlenecks.</p>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
+</div>
+</div>
+<div class="section" id="criteria">
+<h2>使用 Criteria<a class="headerlink" href="#criteria" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id2">
+<h3>查询<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">Robots</span><span class="o">::</span><span class="na">query</span><span class="p">()</span>
+    <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s2">&quot;type = :type:&quot;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">andWhere</span><span class="p">(</span><span class="s2">&quot;year &lt; 2000&quot;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">bind</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;mechanical&quot;</span><span class="p">))</span>
+    <span class="o">-&gt;</span><span class="na">order</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
+
+<span class="nv">$criteria</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Phalcon\Mvc\Model\Criteria</span><span class="p">;</span>
+<span class="nv">$criteria</span><span class="o">-&gt;</span><span class="na">setModelName</span><span class="p">(</span><span class="s1">&#39;Robots&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s2">&quot;type = :type:&quot;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">andWhere</span><span class="p">(</span><span class="s2">&quot;year &lt; 2000&quot;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">bind</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;mechanical&quot;</span><span class="p">))</span>
+    <span class="o">-&gt;</span><span class="na">order</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
+
+<span class="c1">// 模糊查询</span>
+<span class="nv">$robots</span> <span class="o">=</span> <span class="nx">\Phalcon\Mvc\Model\Criteria</span><span class="o">::</span><span class="na">fromInput</span><span class="p">(</span><span class="nv">$di</span><span class="p">,</span> <span class="s2">&quot;Robots&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;mechanical&quot;</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>批量插入<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="nx">Robots</span><span class="o">::</span><span class="na">query</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">insert</span><span class="p">([</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span><span class="p">],</span> <span class="p">[[</span><span class="s1">&#39;Astro Boy&#39;</span><span class="p">,</span> <span class="mi">1952</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Scooby Doo&#39;</span><span class="p">,</span> <span class="mi">1969</span><span class="p">]])</span>
+<span class="o">-&gt;</span><span class="na">execute</span><span class="p">();;</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
