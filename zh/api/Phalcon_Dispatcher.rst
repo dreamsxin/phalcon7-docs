@@ -43,6 +43,24 @@ Sets the default action suffix
 
 
 
+public *string*  **getActionSuffix** ()
+
+Gets the default action suffix
+
+
+
+public  **setHandlerSuffix** (*string* $handlerSuffix)
+
+Sets the default handler suffix
+
+
+
+public *string*  **getHandlerSuffix** ()
+
+Gets the default handler suffix
+
+
+
 public  **setDefaultModule** (*string* $module)
 
 Sets the default module

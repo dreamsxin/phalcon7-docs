@@ -66,6 +66,12 @@ By default. The view is implicitly buffering all the output You can full disable
 
 
 
+public :doc:`Phalcon\\Mvc\\Application <Phalcon_Mvc_Application>`  **autoSendHeader** (*boolean* $autoSendHeader)
+
+Enable or disable sending cookies by each request
+
+
+
 public :doc:`Phalcon\\Http\\ResponseInterface <Phalcon_Http_ResponseInterface>`  **handle** ([*unknown* $data])
 
 Handles a MVC request
