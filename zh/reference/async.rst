@@ -7,6 +7,8 @@
 .. code-block:: php
 
     <?php
+    // 默认使用 Phalcon 源码文件路径
+    Phalcon\Async::setFilename('/tmp');
 
     $id1 = Phalcon\Async::call(function () {
         return 'one1';
