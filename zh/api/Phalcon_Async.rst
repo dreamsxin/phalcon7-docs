@@ -94,3 +94,29 @@ Destroy asynchronous
 
 
 
+public static  **setFilename** (*string* $filename)
+
+Sets the filename to a System V IPC key 
+
+.. code-block:: php
+
+    <?php
+
+     Phalcon\Async::setFilename('/tmp');
+
+
+
+
+public static *string*  **getFilename** ()
+
+Gets the filename 
+
+.. code-block:: php
+
+    <?php
+
+     Phalcon\Async::getFilename();
+
+
+
+

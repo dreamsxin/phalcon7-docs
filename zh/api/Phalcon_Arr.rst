@@ -209,7 +209,7 @@ Gets array key of the postion $array = array('name' => 'Phalcon7', 'version' => 
 
 
 
-public static *array*  **filter** (*array* $array, [*unknown* $callback], [*unknown* $strict])
+public static *array*  **filter** (*array* $array, [*unknown* $callback], [*unknown* $strict], [*unknown* $allowEmpty])
 
 Filters elements of an array using a the filter $array = array('name' => 'Phalcon7', 'version' => '1.0.x'); $key = \\Phalcon\\Arr::filter($array, 'int');
 
@@ -249,6 +249,18 @@ Aggregating
 public static *array*  **flip** (*array* $array, *string* $key, [*string* $value])
 
 Exchanges all keys with their associated values in an array
+
+
+
+public static *mixed*  **getHashKey** (*array* $array, [*int* $pos])
+
+Gets the postion key of an array
+
+
+
+public static *mixed*  **getHashValue** (*array* $array, [*int* $pos])
+
+Gets the postion value of an array
 
 
 

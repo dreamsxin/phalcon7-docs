@@ -54,6 +54,12 @@ Sets the default task suffix
 
 
 
+public *string*  **getTaskSuffix** ()
+
+Gets the default task suffix
+
+
+
 public  **setDefaultTask** (*string* $taskName)
 
 Sets the default task name
@@ -111,6 +117,24 @@ Phalcon\\Dispatcher constructor
 public  **setActionSuffix** (*string* $actionSuffix) inherited from Phalcon\\Dispatcher
 
 Sets the default action suffix
+
+
+
+public *string*  **getActionSuffix** () inherited from Phalcon\\Dispatcher
+
+Gets the default action suffix
+
+
+
+public  **setHandlerSuffix** (*string* $handlerSuffix) inherited from Phalcon\\Dispatcher
+
+Sets the default handler suffix
+
+
+
+public *string*  **getHandlerSuffix** () inherited from Phalcon\\Dispatcher
+
+Gets the default handler suffix
 
 
 

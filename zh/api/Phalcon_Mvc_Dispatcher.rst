@@ -54,6 +54,12 @@ Sets the default controller suffix
 
 
 
+public *string*  **getControllerSuffix** ()
+
+Gets the default controller suffix
+
+
+
 public  **setDefaultController** (*string* $controllerName)
 
 Sets the default controller name
@@ -123,6 +129,24 @@ Phalcon\\Dispatcher constructor
 public  **setActionSuffix** (*string* $actionSuffix) inherited from Phalcon\\Dispatcher
 
 Sets the default action suffix
+
+
+
+public *string*  **getActionSuffix** () inherited from Phalcon\\Dispatcher
+
+Gets the default action suffix
+
+
+
+public  **setHandlerSuffix** (*string* $handlerSuffix) inherited from Phalcon\\Dispatcher
+
+Sets the default handler suffix
+
+
+
+public *string*  **getHandlerSuffix** () inherited from Phalcon\\Dispatcher
+
+Gets the default handler suffix
 
 
 
