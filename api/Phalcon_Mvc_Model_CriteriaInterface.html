@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     
+    <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
     <title>Interface Phalcon\Mvc\Model\CriteriaInterface &mdash; Phalcon7 1.3.2 文档</title>
@@ -21,8 +22,6 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
-    <link rel="index" title="索引" href="../index.html" />
-    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.3.2 文档" href="../index.html" /> 
 </head>
 <body>
@@ -95,22 +94,22 @@
 <p>Phalcon\Mvc\Model\CriteriaInterface initializer</p>
 <div class="section" id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model\CriteriaInterface</span></a>  <strong>setModelName</strong> (<em>string</em> $modelName)</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Mvc\Model\CriteriaInterface</em></a>  <strong>setModelName</strong> (<em>string</em> $modelName)</p>
 <p>Set a model on which the query will be executed</p>
 <p>abstract public <em>string</em>  <strong>getModelName</strong> ()</p>
 <p>Returns an internal model name on which the criteria will be applied</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model\CriteriaInterface</span></a>  <strong>bind</strong> (<em>array</em> $bindParams, [<em>unknown</em> $merge])</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Mvc\Model\CriteriaInterface</em></a>  <strong>bind</strong> (<em>array</em> $bindParams, [<em>unknown</em> $merge])</p>
 <p>Adds the bind parameter to the criteria</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model\CriteriaInterface</span></a>  <strong>bindTypes</strong> (<em>array</em> $bindTypes, [<em>unknown</em> $merge])</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Mvc\Model\CriteriaInterface</em></a>  <strong>bindTypes</strong> (<em>array</em> $bindTypes, [<em>unknown</em> $merge])</p>
 <p>Sets the bind types in the criteria This method replaces all previously set bound parameters</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model\CriteriaInterface</span></a>  <strong>columns</strong> (<em>string|array</em> $columns)</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Mvc\Model\CriteriaInterface</em></a>  <strong>columns</strong> (<em>string|array</em> $columns)</p>
 <p>Sets the columns to be queried</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$criteria</span><span class="o">-&gt;</span><span class="na">columns</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">));</span>
 </pre></div>
 </div>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model\CriteriaInterface</span></a>  <strong>join</strong> (<em>string</em> $model, [<em>string</em> $conditions], [<em>string</em> $alias], [<em>string</em> $type])</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Mvc\Model\CriteriaInterface</em></a>  <strong>join</strong> (<em>string</em> $model, [<em>string</em> $conditions], [<em>string</em> $alias], [<em>string</em> $type])</p>
 <p>Adds a join to the query</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
@@ -120,34 +119,34 @@
 <span class="nv">$criteria</span><span class="o">-&gt;</span><span class="na">join</span><span class="p">(</span><span class="s1">&#39;Robots&#39;</span><span class="p">,</span> <span class="s1">&#39;r.id = RobotsParts.robots_id&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;LEFT&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model\CriteriaInterface</span></a>  <strong>where</strong> (<em>string</em> $conditions, [<em>array</em> $bindParams], [<em>array</em> $bindTypes])</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Mvc\Model\CriteriaInterface</em></a>  <strong>where</strong> (<em>string</em> $conditions, [<em>array</em> $bindParams], [<em>array</em> $bindTypes])</p>
 <p>Adds the conditions parameter to the criteria</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model\CriteriaInterface</span></a>  <strong>andWhere</strong> (<em>string</em> $conditions, [<em>array</em> $bindParams], [<em>array</em> $bindTypes])</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Mvc\Model\CriteriaInterface</em></a>  <strong>andWhere</strong> (<em>string</em> $conditions, [<em>array</em> $bindParams], [<em>array</em> $bindTypes])</p>
 <p>Appends a condition to the current conditions using an AND operator</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model\CriteriaInterface</span></a>  <strong>orWhere</strong> (<em>string</em> $conditions, [<em>array</em> $bindParams], [<em>array</em> $bindTypes])</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Mvc\Model\CriteriaInterface</em></a>  <strong>orWhere</strong> (<em>string</em> $conditions, [<em>array</em> $bindParams], [<em>array</em> $bindTypes])</p>
 <p>Appends a condition to the current conditions using an OR operator</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model\CriteriaInterface</span></a>  <strong>betweenWhere</strong> (<em>string</em> $expr, <em>mixed</em> $minimum, <em>mixed</em> $maximum, [<em>unknown</em> $useOrWhere])</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Mvc\Model\CriteriaInterface</em></a>  <strong>betweenWhere</strong> (<em>string</em> $expr, <em>mixed</em> $minimum, <em>mixed</em> $maximum, [<em>unknown</em> $useOrWhere])</p>
 <p>Appends a BETWEEN condition to the current conditions</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$criteria</span><span class="o">-&gt;</span><span class="na">betweenWhere</span><span class="p">(</span><span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="mf">100.25</span><span class="p">,</span> <span class="mf">200.50</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model\CriteriaInterface</span></a>  <strong>notBetweenWhere</strong> (<em>string</em> $expr, <em>mixed</em> $minimum, <em>mixed</em> $maximum, [<em>unknown</em> $useOrWhere])</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Mvc\Model\CriteriaInterface</em></a>  <strong>notBetweenWhere</strong> (<em>string</em> $expr, <em>mixed</em> $minimum, <em>mixed</em> $maximum, [<em>unknown</em> $useOrWhere])</p>
 <p>Appends a NOT BETWEEN condition to the current conditions</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$criteria</span><span class="o">-&gt;</span><span class="na">notBetweenWhere</span><span class="p">(</span><span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="mf">100.25</span><span class="p">,</span> <span class="mf">200.50</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model\CriteriaInterface</span></a>  <strong>inWhere</strong> (<em>string</em> $expr, <em>array</em> $values, [<em>unknown</em> $useOrWhere])</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Mvc\Model\CriteriaInterface</em></a>  <strong>inWhere</strong> (<em>string</em> $expr, <em>array</em> $values, [<em>unknown</em> $useOrWhere])</p>
 <p>Appends an IN condition to the current conditions</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$criteria</span><span class="o">-&gt;</span><span class="na">inWhere</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]);</span>
 </pre></div>
 </div>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model\CriteriaInterface</span></a>  <strong>notInWhere</strong> (<em>string</em> $expr, <em>array</em> $values, [<em>unknown</em> $useOrWhere])</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Mvc\Model\CriteriaInterface</em></a>  <strong>notInWhere</strong> (<em>string</em> $expr, <em>array</em> $values, [<em>unknown</em> $useOrWhere])</p>
 <p>Appends a NOT IN condition to the current conditions</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
@@ -156,17 +155,17 @@
 </div>
 <p>abstract public <em>string</em>  <strong>getWhere</strong> ()</p>
 <p>Returns the conditions parameter in the criteria</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model\CriteriaInterface</span></a>  <strong>conditions</strong> (<em>string</em> $conditions)</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Mvc\Model\CriteriaInterface</em></a>  <strong>conditions</strong> (<em>string</em> $conditions)</p>
 <p>Adds the conditions parameter to the criteria</p>
 <p>abstract public <em>string|array</em>  <strong>getColumns</strong> ()</p>
 <p>Returns the columns to be queried</p>
 <p>abstract public <em>string</em>  <strong>getConditions</strong> ()</p>
 <p>Returns the conditions parameter in the criteria</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model\CriteriaInterface</span></a>  <strong>orderBy</strong> (<em>string</em> $orderColumns)</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Mvc\Model\CriteriaInterface</em></a>  <strong>orderBy</strong> (<em>string</em> $orderColumns)</p>
 <p>Adds the order-by parameter to the criteria</p>
 <p>abstract public <em>string</em>  <strong>getOrder</strong> ()</p>
 <p>Returns the order parameter in the criteria</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model\CriteriaInterface</span></a>  <strong>limit</strong> (<em>int</em> $limit, [<em>int</em> $offset])</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Mvc\Model\CriteriaInterface</em></a>  <strong>limit</strong> (<em>int</em> $limit, [<em>int</em> $offset])</p>
 <p>Sets the limit parameter to the criteria</p>
 <p>abstract public <em>int</em>  <strong>getLimit</strong> ()</p>
 <p>Returns the limit parameter in the criteria</p>
@@ -174,31 +173,31 @@
 <p>...</p>
 <p>abstract public  <strong>getUniqueRow</strong> ()</p>
 <p>...</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model\CriteriaInterface</span></a>  <strong>forUpdate</strong> ([<em>boolean</em> $forUpdate])</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Mvc\Model\CriteriaInterface</em></a>  <strong>forUpdate</strong> ([<em>boolean</em> $forUpdate])</p>
 <p>Sets the &#8220;for_update&#8221; parameter to the criteria</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model\CriteriaInterface</span></a>  <strong>sharedLock</strong> ([<em>boolean</em> $sharedLock])</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Mvc\Model\CriteriaInterface</em></a>  <strong>sharedLock</strong> ([<em>boolean</em> $sharedLock])</p>
 <p>Sets the &#8220;shared_lock&#8221; parameter to the criteria</p>
 <p>abstract public <em>array</em>  <strong>getParams</strong> ()</p>
 <p>Returns all the parameters defined in the criteria</p>
-<p>abstract public static <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model\CriteriaInterface</span></a>  <strong>fromInput</strong> (<a class="reference internal" href="Phalcon_DiInterface.html"><span class="doc">Phalcon\DiInterface</span></a> $dependencyInjector, <em>string</em> $modelName, <em>array</em> $data)</p>
+<p>abstract public static <a class="reference internal" href=""><em>Phalcon\Mvc\Model\CriteriaInterface</em></a>  <strong>fromInput</strong> (<a class="reference internal" href="Phalcon_DiInterface.html"><em>Phalcon\DiInterface</em></a> $dependencyInjector, <em>string</em> $modelName, <em>array</em> $data)</p>
 <p>Builds a Phalcon\Mvc\Model\Criteria based on an input array like $_POST</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Mvc_Model_ResultsetInterface.html"><span class="doc">Phalcon\Mvc\Model\ResultsetInterface</span></a>  <strong>execute</strong> ()</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Mvc_Model_ResultsetInterface.html"><em>Phalcon\Mvc\Model\ResultsetInterface</em></a>  <strong>execute</strong> ()</p>
 <p>Executes a find using the parameters built with the criteria</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model\CriteriaInterface</span></a>  <strong>insert</strong> ()</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Mvc\Model\CriteriaInterface</em></a>  <strong>insert</strong> ()</p>
 <p>Set columns for an insert</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$criteria</span><span class="o">-&gt;</span><span class="na">insert</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">),</span> <span class="k">array</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;phalcon&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;zephir&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)));</span>
 </pre></div>
 </div>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model\CriteriaInterface</span></a>  <strong>update</strong> ()</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Mvc\Model\CriteriaInterface</em></a>  <strong>update</strong> ()</p>
 <p>Set columns for an update</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$criteria</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;phalcon&#39;</span><span class="p">));</span>
 </pre></div>
 </div>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Model\CriteriaInterface</span></a>  <strong>delete</strong> ()</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Mvc\Model\CriteriaInterface</em></a>  <strong>delete</strong> ()</p>
 <p>Set the table for a delete.</p>
 <p>abstract public <em>String</em>  <strong>getPhql</strong> ()</p>
 <p>Returns a PHQL statement built with the criteria</p>

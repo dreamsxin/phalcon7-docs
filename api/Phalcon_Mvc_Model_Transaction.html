@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     
+    <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
     <title>Class Phalcon\Mvc\Model\Transaction &mdash; Phalcon7 1.3.2 文档</title>
@@ -21,8 +22,6 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
-    <link rel="index" title="索引" href="../index.html" />
-    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.3.2 文档" href="../index.html" /> 
 </head>
 <body>
@@ -91,7 +90,7 @@
 			  
   <div class="section" id="class-phalcon-mvc-model-transaction">
 <h1>Class <strong>Phalcon\Mvc\Model\Transaction</strong><a class="headerlink" href="#class-phalcon-mvc-model-transaction" title="永久链接至标题">¶</a></h1>
-<p><em>implements</em> <a class="reference internal" href="Phalcon_Mvc_Model_TransactionInterface.html"><span class="doc">Phalcon\Mvc\Model\TransactionInterface</span></a></p>
+<p><em>implements</em> <a class="reference internal" href="Phalcon_Mvc_Model_TransactionInterface.html"><em>Phalcon\Mvc\Model\TransactionInterface</em></a></p>
 <p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/model/transaction.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
 <p>Transactions are protective blocks where SQL statements are only permanent if they can all succeed as one atomic action. Phalcon\Transaction is intended to be used with Phalcon_Model_Base. Phalcon Transactions should be created using Phalcon\Transaction\Manager.</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
@@ -126,17 +125,17 @@
 </div>
 <div class="section" id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
-<p>public  <strong>__construct</strong> (<a class="reference internal" href="Phalcon_DiInterface.html"><span class="doc">Phalcon\DiInterface</span></a> $dependencyInjector, [<em>boolean</em> $autoBegin], [<em>string</em> $service])</p>
+<p>public  <strong>__construct</strong> (<a class="reference internal" href="Phalcon_DiInterface.html"><em>Phalcon\DiInterface</em></a> $dependencyInjector, [<em>boolean</em> $autoBegin], [<em>string</em> $service])</p>
 <p>Phalcon\Mvc\Model\Transaction constructor</p>
-<p>public  <strong>setTransactionManager</strong> (<a class="reference internal" href="Phalcon_Mvc_Model_Transaction_ManagerInterface.html"><span class="doc">Phalcon\Mvc\Model\Transaction\ManagerInterface</span></a> $manager)</p>
+<p>public  <strong>setTransactionManager</strong> (<a class="reference internal" href="Phalcon_Mvc_Model_Transaction_ManagerInterface.html"><em>Phalcon\Mvc\Model\Transaction\ManagerInterface</em></a> $manager)</p>
 <p>Sets transaction manager related to the transaction</p>
 <p>public <em>boolean</em>  <strong>begin</strong> ()</p>
 <p>Starts the transaction</p>
 <p>public <em>boolean</em>  <strong>commit</strong> ()</p>
 <p>Commits the transaction</p>
-<p>public <em>boolean</em>  <strong>rollback</strong> ([<em>string</em> $rollbackMessage], [<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><span class="doc">Phalcon\Mvc\ModelInterface</span></a> $rollbackRecord])</p>
+<p>public <em>boolean</em>  <strong>rollback</strong> ([<em>string</em> $rollbackMessage], [<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><em>Phalcon\Mvc\ModelInterface</em></a> $rollbackRecord])</p>
 <p>Rolls back the transaction</p>
-<p>public <a class="reference internal" href="Phalcon_Db_AdapterInterface.html"><span class="doc">Phalcon\Db\AdapterInterface</span></a>  <strong>getConnection</strong> ()</p>
+<p>public <a class="reference internal" href="Phalcon_Db_AdapterInterface.html"><em>Phalcon\Db\AdapterInterface</em></a>  <strong>getConnection</strong> ()</p>
 <p>Returns the connection related to transaction</p>
 <p>public  <strong>setIsNewTransaction</strong> (<em>boolean</em> $isNew)</p>
 <p>Sets if is a reused transaction or new once</p>
@@ -148,7 +147,7 @@
 <p>Returns validations messages from last save try</p>
 <p>public <em>boolean</em>  <strong>isValid</strong> ()</p>
 <p>Checks whether internal connection is under an active transaction</p>
-<p>public  <strong>setRollbackedRecord</strong> (<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><span class="doc">Phalcon\Mvc\ModelInterface</span></a> $record)</p>
+<p>public  <strong>setRollbackedRecord</strong> (<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><em>Phalcon\Mvc\ModelInterface</em></a> $record)</p>
 <p>Sets object which generates rollback action</p>
 </div>
 </div>

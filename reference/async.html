@@ -108,6 +108,8 @@
 <div class="section" id="called-asynchronous">
 <h2>异步调用（Called asynchronous）<a class="headerlink" href="#called-asynchronous" title="永久链接至标题">¶</a></h2>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="c1">// 默认使用 Phalcon 源码文件路径</span>
+<span class="nx">Phalcon\Async</span><span class="o">::</span><span class="na">setFilename</span><span class="p">(</span><span class="s1">&#39;/tmp&#39;</span><span class="p">);</span>
 
 <span class="nv">$id1</span> <span class="o">=</span> <span class="nx">Phalcon\Async</span><span class="o">::</span><span class="na">call</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="s1">&#39;one1&#39;</span><span class="p">;</span>

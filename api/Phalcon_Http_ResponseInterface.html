@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     
+    <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
     <title>Interface Phalcon\Http\ResponseInterface &mdash; Phalcon7 1.3.2 文档</title>
@@ -21,8 +22,6 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
-    <link rel="index" title="索引" href="../index.html" />
-    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.3.2 文档" href="../index.html" /> 
 </head>
 <body>
@@ -95,42 +94,42 @@
 <p>Phalcon\Http\ResponseInterface initializer</p>
 <div class="section" id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Http\ResponseInterface</span></a>  <strong>setStatusCode</strong> (<em>int</em> $code, <em>string</em> $message)</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Http\ResponseInterface</em></a>  <strong>setStatusCode</strong> (<em>int</em> $code, <em>string</em> $message)</p>
 <p>Sets the HTTP response code</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Http_Response_Headers.html"><span class="doc">Phalcon\Http\Response\Headers</span></a>  <strong>getHeaders</strong> ()</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Http_Response_Headers.html"><em>Phalcon\Http\Response\Headers</em></a>  <strong>getHeaders</strong> ()</p>
 <p>Returns headers set by the user</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Http\ResponseInterface</span></a>  <strong>setHeader</strong> (<em>string</em> $name, <em>string</em> $value)</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Http\ResponseInterface</em></a>  <strong>setHeader</strong> (<em>string</em> $name, <em>string</em> $value)</p>
 <p>Overwrites a header in the response</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Http\ResponseInterface</span></a>  <strong>setRawHeader</strong> (<em>string</em> $header)</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Http\ResponseInterface</em></a>  <strong>setRawHeader</strong> (<em>string</em> $header)</p>
 <p>Send a raw header to the response</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Http\ResponseInterface</span></a>  <strong>resetHeaders</strong> ()</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Http\ResponseInterface</em></a>  <strong>resetHeaders</strong> ()</p>
 <p>Resets all the stablished headers</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Http\ResponseInterface</span></a>  <strong>setExpires</strong> (<em>DateTime</em> $datetime)</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Http\ResponseInterface</em></a>  <strong>setExpires</strong> (<em>DateTime</em> $datetime)</p>
 <p>Sets output expire time header</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Http\ResponseInterface</span></a>  <strong>setNotModified</strong> ()</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Http\ResponseInterface</em></a>  <strong>setNotModified</strong> ()</p>
 <p>Sends a Not-Modified response</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Http\ResponseInterface</span></a>  <strong>setContentType</strong> (<em>string</em> $contentType, [<em>string</em> $charset])</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Http\ResponseInterface</em></a>  <strong>setContentType</strong> (<em>string</em> $contentType, [<em>string</em> $charset])</p>
 <p>Sets the response content-type mime, optionally the charset</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Http\ResponseInterface</span></a>  <strong>redirect</strong> ([<em>string</em> $location], [<em>boolean</em> $externalRedirect], [<em>int</em> $statusCode])</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Http\ResponseInterface</em></a>  <strong>redirect</strong> ([<em>string</em> $location], [<em>boolean</em> $externalRedirect], [<em>int</em> $statusCode])</p>
 <p>Redirect by HTTP to another action or URL</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Http\ResponseInterface</span></a>  <strong>setContent</strong> (<em>string</em> $content)</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Http\ResponseInterface</em></a>  <strong>setContent</strong> (<em>string</em> $content)</p>
 <p>Sets HTTP response body</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Http\ResponseInterface</span></a>  <strong>setJsonContent</strong> (<em>string</em> $content)</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Http\ResponseInterface</em></a>  <strong>setJsonContent</strong> (<em>string</em> $content)</p>
 <p>Sets HTTP response body. The parameter is automatically converted to JSON</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setJsonContent</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;status&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;OK&quot;</span><span class="p">));</span>
 </pre></div>
 </div>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Http\ResponseInterface</span></a>  <strong>appendContent</strong> (<em>string</em> $content)</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Http\ResponseInterface</em></a>  <strong>appendContent</strong> (<em>string</em> $content)</p>
 <p>Appends a string to the HTTP response body</p>
 <p>abstract public <em>string</em>  <strong>getContent</strong> ()</p>
 <p>Gets the HTTP response body</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Http\ResponseInterface</span></a>  <strong>sendHeaders</strong> ()</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Http\ResponseInterface</em></a>  <strong>sendHeaders</strong> ()</p>
 <p>Sends headers to the client</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Http\ResponseInterface</span></a>  <strong>sendCookies</strong> ()</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Http\ResponseInterface</em></a>  <strong>sendCookies</strong> ()</p>
 <p>Sends cookies to the client</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Http\ResponseInterface</span></a>  <strong>send</strong> ()</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Http\ResponseInterface</em></a>  <strong>send</strong> ()</p>
 <p>Prints out HTTP response to the client</p>
 <p>abstract public  <strong>setFileToSend</strong> (<em>string</em> $filePath, [<em>string</em> $attachmentName])</p>
 <p>Sets an attached file to be sent at the end of the request</p>

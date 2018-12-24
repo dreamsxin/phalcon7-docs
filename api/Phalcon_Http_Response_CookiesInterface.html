@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     
+    <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
     <title>Interface Phalcon\Http\Response\CookiesInterface &mdash; Phalcon7 1.3.2 文档</title>
@@ -21,8 +22,6 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
-    <link rel="index" title="索引" href="../index.html" />
-    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.3.2 文档" href="../index.html" /> 
 </head>
 <body>
@@ -95,13 +94,13 @@
 <p>Phalcon\Http\Response\CookiesInterface initializer</p>
 <div class="section" id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Http\Response\CookiesInterface</span></a>  <strong>useEncryption</strong> (<em>boolean</em> $useEncryption)</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Http\Response\CookiesInterface</em></a>  <strong>useEncryption</strong> (<em>boolean</em> $useEncryption)</p>
 <p>Set if cookies in the bag must be automatically encrypted/decrypted</p>
 <p>abstract public <em>boolean</em>  <strong>isUsingEncryption</strong> ()</p>
 <p>Returns if the bag is automatically encrypting/decrypting cookies</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Http\Response\CookiesInterface</span></a>  <strong>set</strong> (<em>string</em> $name, [<em>mixed</em> $value], [<em>int</em> $expire], [<em>string</em> $path], [<em>boolean</em> $secure], [<em>string</em> $domain], [<em>boolean</em> $httpOnly])</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Http\Response\CookiesInterface</em></a>  <strong>set</strong> (<em>string</em> $name, [<em>mixed</em> $value], [<em>int</em> $expire], [<em>string</em> $path], [<em>boolean</em> $secure], [<em>string</em> $domain], [<em>boolean</em> $httpOnly])</p>
 <p>Sets a cookie to be sent at the end of the request</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Http_Cookie.html"><span class="doc">Phalcon\Http\Cookie</span></a>  <strong>get</strong> (<em>string</em> $name)</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Http_Cookie.html"><em>Phalcon\Http\Cookie</em></a>  <strong>get</strong> (<em>string</em> $name)</p>
 <p>Gets a cookie from the bag</p>
 <p>abstract public <em>boolean</em>  <strong>has</strong> (<em>string</em> $name)</p>
 <p>Check if a cookie is defined in the bag or exists in the $_COOKIE superglobal</p>
@@ -109,7 +108,7 @@
 <p>Deletes a cookie by its name This method does not removes cookies from the $_COOKIE superglobal</p>
 <p>abstract public <em>boolean</em>  <strong>send</strong> ()</p>
 <p>Sends the cookies to the client</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Http\Response\CookiesInterface</span></a>  <strong>reset</strong> ()</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Http\Response\CookiesInterface</em></a>  <strong>reset</strong> ()</p>
 <p>Reset set cookies</p>
 </div>
 </div>

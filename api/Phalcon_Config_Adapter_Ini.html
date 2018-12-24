@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     
+    <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
     <title>Class Phalcon\Config\Adapter\Ini &mdash; Phalcon7 1.3.2 文档</title>
@@ -21,8 +22,6 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
-    <link rel="index" title="索引" href="../index.html" />
-    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.3.2 文档" href="../index.html" /> 
 </head>
 <body>
@@ -91,8 +90,8 @@
 			  
   <div class="section" id="class-phalcon-config-adapter-ini">
 <h1>Class <strong>Phalcon\Config\Adapter\Ini</strong><a class="headerlink" href="#class-phalcon-config-adapter-ini" title="永久链接至标题">¶</a></h1>
-<p><em>extends</em> abstract class <a class="reference internal" href="Phalcon_Config_Adapter.html"><span class="doc">Phalcon\Config\Adapter</span></a></p>
-<p><em>implements</em> <a class="reference internal" href="Phalcon_Config_AdapterInterface.html"><span class="doc">Phalcon\Config\AdapterInterface</span></a>, ArrayAccess, Countable</p>
+<p><em>extends</em> abstract class <a class="reference internal" href="Phalcon_Config_Adapter.html"><em>Phalcon\Config\Adapter</em></a></p>
+<p><em>implements</em> <a class="reference internal" href="Phalcon_Config_AdapterInterface.html"><em>Phalcon\Config\AdapterInterface</em></a>, ArrayAccess, Countable</p>
 <p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/config/adapter/ini.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
 <p>Reads ini files and converts them to Phalcon\Config objects.  Given the next configuration file:</p>
 <div class="highlight-ini"><div class="highlight"><pre><span></span>  <span class="na">&lt;?php</span>
@@ -127,7 +126,7 @@
 <p>Load config file</p>
 <p>public static  <strong>factory</strong> ([<em>string</em> $filePath], [<em>string</em> $absolutePath]) inherited from Phalcon\Config\Adapter</p>
 <p>Phalcon\Config\Adapter factory</p>
-<p>public static <a class="reference internal" href="Phalcon_Config_Adapter.html"><span class="doc">Phalcon\Config\Adapter</span></a>  <strong>setBasePath</strong> (<em>string</em> $basePath) inherited from Phalcon\Config\Adapter</p>
+<p>public static <a class="reference internal" href="Phalcon_Config_Adapter.html"><em>Phalcon\Config\Adapter</em></a>  <strong>setBasePath</strong> (<em>string</em> $basePath) inherited from Phalcon\Config\Adapter</p>
 <p>Sets base path</p>
 <p>public static <em>string</em>  <strong>getBasePath</strong> () inherited from Phalcon\Config\Adapter</p>
 <p>Gets base path</p>
@@ -170,7 +169,7 @@
  <span class="nb">unset</span><span class="p">(</span><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;database&#39;</span><span class="p">]);</span>
 </pre></div>
 </div>
-<p>public <a class="reference internal" href="Phalcon_Config.html"><span class="doc">Phalcon\Config</span></a>  <strong>merge</strong> (<a class="reference internal" href="Phalcon_Config.html"><span class="doc">Phalcon\Config</span></a> $config) inherited from Phalcon\Config</p>
+<p>public <a class="reference internal" href="Phalcon_Config.html"><em>Phalcon\Config</em></a>  <strong>merge</strong> (<a class="reference internal" href="Phalcon_Config.html"><em>Phalcon\Config</em></a> $config) inherited from Phalcon\Config</p>
 <p>Merges a configuration into the current one</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
@@ -191,7 +190,7 @@
 <p>...</p>
 <p>public  <strong>__wakeup</strong> () inherited from Phalcon\Config</p>
 <p>...</p>
-<p>public static <a class="reference internal" href="Phalcon_Config.html"><span class="doc">Phalcon\Config</span></a>  <strong>__set_state</strong> ([<em>array</em> $properties]) inherited from Phalcon\Config</p>
+<p>public static <a class="reference internal" href="Phalcon_Config.html"><em>Phalcon\Config</em></a>  <strong>__set_state</strong> ([<em>array</em> $properties]) inherited from Phalcon\Config</p>
 <p>Restores the state of a Phalcon\Config object</p>
 <p>public  <strong>__get</strong> (<em>unknown</em> $property) inherited from Phalcon\Config</p>
 <p>...</p>

@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     
+    <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
     <title>Interface Phalcon\Logger\AdapterInterface &mdash; Phalcon7 1.3.2 文档</title>
@@ -21,8 +22,6 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
-    <link rel="index" title="索引" href="../index.html" />
-    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.3.2 文档" href="../index.html" /> 
 </head>
 <body>
@@ -95,39 +94,39 @@
 <p>Phalcon\Logger\AdapterInterface initializer</p>
 <div class="section" id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
-<p>abstract public <a class="reference internal" href="Phalcon_Logger_Adapter.html"><span class="doc">Phalcon\Logger\Adapter</span></a>  <strong>setFormatter</strong> (<a class="reference internal" href="Phalcon_Logger_FormatterInterface.html"><span class="doc">Phalcon\Logger\FormatterInterface</span></a> $formatter)</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Logger_Adapter.html"><em>Phalcon\Logger\Adapter</em></a>  <strong>setFormatter</strong> (<a class="reference internal" href="Phalcon_Logger_FormatterInterface.html"><em>Phalcon\Logger\FormatterInterface</em></a> $formatter)</p>
 <p>Sets the message formatter</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Logger_FormatterInterface.html"><span class="doc">Phalcon\Logger\FormatterInterface</span></a>  <strong>getFormatter</strong> ()</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Logger_FormatterInterface.html"><em>Phalcon\Logger\FormatterInterface</em></a>  <strong>getFormatter</strong> ()</p>
 <p>Returns the internal formatter</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Logger_Adapter.html"><span class="doc">Phalcon\Logger\Adapter</span></a>  <strong>setLogLevel</strong> (<em>int</em> $level)</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Logger_Adapter.html"><em>Phalcon\Logger\Adapter</em></a>  <strong>setLogLevel</strong> (<em>int</em> $level)</p>
 <p>Filters the logs sent to the handlers to be greater or equals than a specific level</p>
 <p>abstract public <em>int</em>  <strong>getLogLevel</strong> ()</p>
 <p>Returns the current log level</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Logger_Adapter.html"><span class="doc">Phalcon\Logger\Adapter</span></a>  <strong>begin</strong> ()</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Logger_Adapter.html"><em>Phalcon\Logger\Adapter</em></a>  <strong>begin</strong> ()</p>
 <p>Starts a transaction</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Logger_Adapter.html"><span class="doc">Phalcon\Logger\Adapter</span></a>  <strong>commit</strong> ()</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Logger_Adapter.html"><em>Phalcon\Logger\Adapter</em></a>  <strong>commit</strong> ()</p>
 <p>Commits the internal transaction</p>
-<p>abstract public <a class="reference internal" href="Phalcon_Logger_Adapter.html"><span class="doc">Phalcon\Logger\Adapter</span></a>  <strong>rollback</strong> ()</p>
+<p>abstract public <a class="reference internal" href="Phalcon_Logger_Adapter.html"><em>Phalcon\Logger\Adapter</em></a>  <strong>rollback</strong> ()</p>
 <p>Rollbacks the internal transaction</p>
 <p>abstract public <em>boolean</em>  <strong>close</strong> ()</p>
 <p>Closes the logger</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Logger\AdapterInterface</span></a>  <strong>log</strong> (<em>int|string</em> $type, <em>string</em> $message, [<em>array</em> $context])</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Logger\AdapterInterface</em></a>  <strong>log</strong> (<em>int|string</em> $type, <em>string</em> $message, [<em>array</em> $context])</p>
 <p>Sends/Writes messages to the file log</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Logger\AdapterInterface</span></a>  <strong>debug</strong> (<em>string</em> $message, [<em>array</em> $context])</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Logger\AdapterInterface</em></a>  <strong>debug</strong> (<em>string</em> $message, [<em>array</em> $context])</p>
 <p>Sends/Writes a debug message to the log</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Logger\AdapterInterface</span></a>  <strong>info</strong> (<em>string</em> $message, [<em>array</em> $context])</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Logger\AdapterInterface</em></a>  <strong>info</strong> (<em>string</em> $message, [<em>array</em> $context])</p>
 <p>Sends/Writes an info message to the log</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Logger\AdapterInterface</span></a>  <strong>notice</strong> (<em>string</em> $message, [<em>array</em> $context])</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Logger\AdapterInterface</em></a>  <strong>notice</strong> (<em>string</em> $message, [<em>array</em> $context])</p>
 <p>Sends/Writes a notice message to the log</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Logger\AdapterInterface</span></a>  <strong>warning</strong> (<em>string</em> $message, [<em>array</em> $context])</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Logger\AdapterInterface</em></a>  <strong>warning</strong> (<em>string</em> $message, [<em>array</em> $context])</p>
 <p>Sends/Writes a warning message to the log</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Logger\AdapterInterface</span></a>  <strong>error</strong> (<em>string</em> $message, [<em>array</em> $context])</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Logger\AdapterInterface</em></a>  <strong>error</strong> (<em>string</em> $message, [<em>array</em> $context])</p>
 <p>Sends/Writes an error message to the log</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Logger\AdapterInterface</span></a>  <strong>critical</strong> (<em>string</em> $message, [<em>array</em> $context])</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Logger\AdapterInterface</em></a>  <strong>critical</strong> (<em>string</em> $message, [<em>array</em> $context])</p>
 <p>Sends/Writes a critical message to the log</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Logger\AdapterInterface</span></a>  <strong>alert</strong> (<em>string</em> $message, [<em>array</em> $context])</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Logger\AdapterInterface</em></a>  <strong>alert</strong> (<em>string</em> $message, [<em>array</em> $context])</p>
 <p>Sends/Writes an alert message to the log</p>
-<p>abstract public <a class="reference internal" href="#"><span class="doc">Phalcon\Logger\AdapterInterface</span></a>  <strong>emergency</strong> (<em>string</em> $message, [<em>array</em> $context])</p>
+<p>abstract public <a class="reference internal" href=""><em>Phalcon\Logger\AdapterInterface</em></a>  <strong>emergency</strong> (<em>string</em> $message, [<em>array</em> $context])</p>
 <p>Sends/Writes an emergency message to the log</p>
 </div>
 </div>

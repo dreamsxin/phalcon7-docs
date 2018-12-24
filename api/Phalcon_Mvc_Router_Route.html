@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     
+    <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
     <title>Class Phalcon\Mvc\Router\Route &mdash; Phalcon7 1.3.2 文档</title>
@@ -21,8 +22,6 @@
 
     <script src="../static/jquery.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
-    <link rel="index" title="索引" href="../index.html" />
-    <link rel="search" title="搜索" href="../search.html" />
     <link rel="top" title="Phalcon7 1.3.2 文档" href="../index.html" /> 
 </head>
 <body>
@@ -91,7 +90,7 @@
 			  
   <div class="section" id="class-phalcon-mvc-router-route">
 <h1>Class <strong>Phalcon\Mvc\Router\Route</strong><a class="headerlink" href="#class-phalcon-mvc-router-route" title="永久链接至标题">¶</a></h1>
-<p><em>implements</em> <a class="reference internal" href="Phalcon_Mvc_Router_RouteInterface.html"><span class="doc">Phalcon\Mvc\Router\RouteInterface</span></a></p>
+<p><em>implements</em> <a class="reference internal" href="Phalcon_Mvc_Router_RouteInterface.html"><em>Phalcon\Mvc\Router\RouteInterface</em></a></p>
 <p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/mvc/router/route.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
 <p>This class represents every route added to the router</p>
 <div class="section" id="methods">
@@ -100,7 +99,7 @@
 <p>Phalcon\Mvc\Router\Route constructor</p>
 <p>public <em>string</em>  <strong>compilePattern</strong> (<em>string</em> $pattern, [<em>unknown</em> $regex])</p>
 <p>Replaces placeholders from pattern returning a valid PCRE regular expression</p>
-<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Router\Route</span></a>  <strong>via</strong> (<em>string|array</em> $httpMethods)</p>
+<p>public <a class="reference internal" href=""><em>Phalcon\Mvc\Router\Route</em></a>  <strong>via</strong> (<em>string|array</em> $httpMethods)</p>
 <p>Set one or more HTTP methods that constraint the matching of the route</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
@@ -112,7 +111,7 @@
 <p>Reconfigure the route adding a new pattern and a set of paths</p>
 <p>public <em>string</em>  <strong>getName</strong> ()</p>
 <p>Returns the route&#8217;s name</p>
-<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Router\Route</span></a>  <strong>setName</strong> (<em>string</em> $name)</p>
+<p>public <a class="reference internal" href=""><em>Phalcon\Mvc\Router\Route</em></a>  <strong>setName</strong> (<em>string</em> $name)</p>
 <p>Sets the route&#8217;s name</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
@@ -121,7 +120,7 @@
  <span class="p">))</span><span class="o">-&gt;</span><span class="na">setName</span><span class="p">(</span><span class="s1">&#39;about&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Router\Route</span></a>  <strong>beforeMatch</strong> (<em>callback</em> $callback)</p>
+<p>public <a class="reference internal" href=""><em>Phalcon\Mvc\Router\Route</em></a>  <strong>beforeMatch</strong> (<em>callback</em> $callback)</p>
 <p>Sets a callback that is called if the route is matched. The developer can implement any arbitrary conditions here If the callback returns false the route is treaded as not matched</p>
 <p>public <em>mixed</em>  <strong>getBeforeMatch</strong> ()</p>
 <p>Returns the &#8216;before match&#8217; callback if any</p>
@@ -135,7 +134,7 @@
 <p>Returns the paths</p>
 <p>public <em>array</em>  <strong>getReversedPaths</strong> ()</p>
 <p>Returns the paths using positions as keys and names as values</p>
-<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Router\Route</span></a>  <strong>setHttpMethods</strong> (<em>string|array</em> $httpMethods)</p>
+<p>public <a class="reference internal" href=""><em>Phalcon\Mvc\Router\Route</em></a>  <strong>setHttpMethods</strong> (<em>string|array</em> $httpMethods)</p>
 <p>Sets a set of HTTP methods that constraint the matching of the route (alias of via)</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
@@ -145,11 +144,11 @@
 </div>
 <p>public <em>string|array</em>  <strong>getHttpMethods</strong> ()</p>
 <p>Returns the HTTP methods that constraint matching the route</p>
-<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Router\Route</span></a>  <strong>setPrefix</strong> (<em>string</em> $prefix)</p>
+<p>public <a class="reference internal" href=""><em>Phalcon\Mvc\Router\Route</em></a>  <strong>setPrefix</strong> (<em>string</em> $prefix)</p>
 <p>Set a common uri prefix for the route</p>
 <p>public <em>string</em>  <strong>getPrefix</strong> ()</p>
 <p>Returns the common prefix for the route</p>
-<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Router\Route</span></a>  <strong>setHostname</strong> (<em>unknown</em> $hostname)</p>
+<p>public <a class="reference internal" href=""><em>Phalcon\Mvc\Router\Route</em></a>  <strong>setHostname</strong> (<em>unknown</em> $hostname)</p>
 <p>Sets a hostname restriction to the route</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
@@ -158,17 +157,17 @@
 </div>
 <p>public <em>string</em>  <strong>getHostname</strong> ()</p>
 <p>Returns the hostname restriction if any</p>
-<p>public <em>Phalcon\Mvc\RouteInterface</em>  <strong>setGroup</strong> (<a class="reference internal" href="Phalcon_Mvc_Router_Group.html"><span class="doc">Phalcon\Mvc\Router\Group</span></a> $group)</p>
+<p>public <em>Phalcon\Mvc\RouteInterface</em>  <strong>setGroup</strong> (<a class="reference internal" href="Phalcon_Mvc_Router_Group.html"><em>Phalcon\Mvc\Router\Group</em></a> $group)</p>
 <p>Sets the group associated with the route</p>
-<p>public <a class="reference internal" href="Phalcon_Mvc_Router_Group.html"><span class="doc">Phalcon\Mvc\Router\Group</span></a> <a href="#id1"><span class="problematic" id="id2">|</span></a>null <strong>getGroup</strong> ()</p>
+<p>public <a class="reference internal" href="Phalcon_Mvc_Router_Group.html"><em>Phalcon\Mvc\Router\Group</em></a> <a href="#id1"><span class="problematic" id="id2">|</span></a>null <strong>getGroup</strong> ()</p>
 <p>Returns the group associated with the route</p>
-<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Router\Route</span></a>  <strong>convert</strong> (<em>string</em> $name, <em>callable</em> $converter)</p>
+<p>public <a class="reference internal" href=""><em>Phalcon\Mvc\Router\Route</em></a>  <strong>convert</strong> (<em>string</em> $name, <em>callable</em> $converter)</p>
 <p>Adds a converter to perform an additional transformation for certain parameter</p>
 <p>public <em>array</em>  <strong>getConverters</strong> ()</p>
 <p>Returns the router converter</p>
 <p>public static  <strong>reset</strong> ()</p>
 <p>Resets the internal route id generator</p>
-<p>public <a class="reference internal" href="#"><span class="doc">Phalcon\Mvc\Router\Route</span></a>  <strong>setDefaults</strong> (<em>array</em> $defaults)</p>
+<p>public <a class="reference internal" href=""><em>Phalcon\Mvc\Router\Route</em></a>  <strong>setDefaults</strong> (<em>array</em> $defaults)</p>
 <p>Sets an array of default paths.</p>
 <p>public <em>array</em>  <strong>getDefaults</strong> ()</p>
 <p>Returns an array of default parameters</p>
