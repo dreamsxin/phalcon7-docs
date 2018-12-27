@@ -10,6 +10,10 @@ Phalcon 提供了 :doc:`Phalcon\\Snowflake <../api/Phalcon_Snowflake>` 类来生
     $id = $snowflake->nextId();
     $desc = $snowflake->parse($id)
 
+.. highlights::
+
+    多台服务器，需要在配置文件中设置不同的 `phalcon.snowflake.node`，默认为 0。
+
 利用分布式 ID 实现分库分表
 --------------------------
 Twitter-Snowflake 算法产生的背景相当简单，为了满足 Twitter 每秒上万条消息的请求，每条消息都必须分配一条唯一的id。

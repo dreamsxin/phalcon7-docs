@@ -32,6 +32,13 @@ Linux/Solaris
 
 添加扩展到你的php配置文件，然后重启Web服务器，如果你使用 php-fpm，则重启 php-fpm。
 
+查看默认配置
+^^^^^^^^^^^^
+
+.. code-block:: bash
+
+    php --ri phalcon7
+
 Mac OS X
 --------
 同上
