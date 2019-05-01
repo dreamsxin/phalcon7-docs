@@ -1249,6 +1249,11 @@ Returns a simple representation of the object that can be used with var_dump
 
 
 
+public  **getFieldValues** ()
+
+...
+
+
 public *array*  **toArray** ([*array* $columns], [*bool* $mustColumn], [*bool* $negate])
 
 Returns the instance as an array representation 

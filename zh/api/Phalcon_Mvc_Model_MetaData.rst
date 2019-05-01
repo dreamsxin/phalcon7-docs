@@ -82,6 +82,12 @@ Return the strategy to obtain the meta-data
 
 
 
+public *string*  **getCacheKey** (:doc:`Phalcon\\Mvc\\Model <Phalcon_Mvc_Model>` $model, *string* $table, *string* $schema)
+
+Return the meta data cache key
+
+
+
 public *array*  **readMetaData** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $model)
 
 Reads the complete meta-data for certain model 

@@ -33,3 +33,38 @@
 
     $ret = Phalcon\Async::recv($id1);
     $rets = Phalcon\Async::recvAll();
+
+协程 && 任务（Coroutine && Task）
+---------------------------------
+.. code-block:: php
+
+    <?php
+
+    $task = Phalcon\Async\Task::async(function () {
+        return 1;
+    });
+    $v = Phalcon\Async\Task::await($task);
+
+异步进程（Async Process）
+-------------------------
+
+.. code-block:: php
+
+    <?php
+
+    $builder = new Phalcon\Async\Process\Builder(PHP_BINARY);
+    $builder = $builder->withStdoutPipe();
+    $builder->withStderrInherited();
+
+    $proc = $builder->start(__DIR__.'/process.php');
+    if ($proc->isRunning()) {
+        echo "Running".PHP_EOL;
+        $stdout = $proc->getStdout();
+        try {
+            if (null !== ($chunk = $stdout->read())) {
+                echo $chunk;
+            }
+        } finally {
+            $stdout->close();
+        }
+    }

@@ -48,3 +48,16 @@ Parse a unique id value
 
 
 
+public static  **parseID** (*unknown* $id)
+
+Parse a unique id value 
+
+.. code-block:: php
+
+    <?php
+
+      $desc = \Phalcon\Snowflake::parseID($id);
+
+
+
+

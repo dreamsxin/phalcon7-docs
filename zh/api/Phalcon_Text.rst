@@ -196,3 +196,16 @@ Makes an underscored or dashed phrase human-readable
 
 
 
+public static *string*  **limitChars** (*string* $str, *int* $limit, [*string* $end])
+
+Limits a phrase to a given number of characters. 
+
+.. code-block:: php
+
+    <?php
+
+       $text = Phalcon\Text::limitChars($text, 30);
+
+
+
+

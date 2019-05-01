@@ -15,7 +15,6 @@ API Indice
    Phalcon_Annotations_Adapter_Cache
    Phalcon_Annotations_Adapter_Files
    Phalcon_Annotations_Adapter_Memory
-   Phalcon_Annotations_Adapter_Xcache
    Phalcon_Annotations_Annotation
    Phalcon_Annotations_Collection
    Phalcon_Annotations_Exception
@@ -37,6 +36,43 @@ API Indice
    Phalcon_Assets_Resource_Css
    Phalcon_Assets_Resource_Js
    Phalcon_Async
+   Phalcon_Async_CancellationException
+   Phalcon_Async_CancellationHandler
+   Phalcon_Async_Channel
+   Phalcon_Async_ChannelClosedException
+   Phalcon_Async_ChannelGroup
+   Phalcon_Async_ChannelIterator
+   Phalcon_Async_Context
+   Phalcon_Async_ContextVar
+   Phalcon_Async_Deferred
+   Phalcon_Async_DeferredAwaitable
+   Phalcon_Async_Network_Pipe
+   Phalcon_Async_Network_Pipe_Server
+   Phalcon_Async_Network_SocketException
+   Phalcon_Async_Network_TcpServer
+   Phalcon_Async_Network_TcpSocket
+   Phalcon_Async_Network_TlsClientEncryption
+   Phalcon_Async_Network_TlsInfo
+   Phalcon_Async_Network_TlsServerEncryption
+   Phalcon_Async_Network_UdpDatagram
+   Phalcon_Async_Network_UdpSocket
+   Phalcon_Async_Process
+   Phalcon_Async_Process_Builder
+   Phalcon_Async_Process_ReadablePipe
+   Phalcon_Async_Process_WritablePipe
+   Phalcon_Async_SignalWatcher
+   Phalcon_Async_StreamWatcher
+   Phalcon_Async_Stream_PendingReadException
+   Phalcon_Async_Stream_ReadablePipe
+   Phalcon_Async_Stream_StreamClosedException
+   Phalcon_Async_Stream_StreamException
+   Phalcon_Async_Stream_StreamReader
+   Phalcon_Async_Stream_StreamWriter
+   Phalcon_Async_Stream_WritablePipe
+   Phalcon_Async_Task
+   Phalcon_Async_TaskScheduler
+   Phalcon_Async_TimeoutException
+   Phalcon_Async_Timer
    Phalcon_Binary
    Phalcon_Binary_Exception
    Phalcon_Binary_Reader
@@ -44,13 +80,9 @@ API Indice
    Phalcon_Cache_Backend
    Phalcon_Cache_Backend_Apc
    Phalcon_Cache_Backend_File
-   Phalcon_Cache_Backend_Lmdb
    Phalcon_Cache_Backend_Memcached
    Phalcon_Cache_Backend_Memory
-   Phalcon_Cache_Backend_Mongo
    Phalcon_Cache_Backend_Redis
-   Phalcon_Cache_Backend_Wiredtiger
-   Phalcon_Cache_Backend_Xcache
    Phalcon_Cache_Backend_Yac
    Phalcon_Cache_Exception
    Phalcon_Cache_Frontend_Base64
@@ -60,11 +92,8 @@ API Indice
    Phalcon_Cache_Frontend_None
    Phalcon_Cache_Frontend_Output
    Phalcon_Cache_Multiple
-   Phalcon_Cache_Yac
-   Phalcon_Chart_Captcha
    Phalcon_Chart_Captcha_Tiny
    Phalcon_Chart_Exception
-   Phalcon_Chart_QRcode
    Phalcon_Cli_Color
    Phalcon_Cli_Console
    Phalcon_Cli_Console_Exception
@@ -93,6 +122,14 @@ API Indice
    Phalcon_Db_Adapter_Pdo_Mysql
    Phalcon_Db_Adapter_Pdo_Postgresql
    Phalcon_Db_Adapter_Pdo_Sqlite
+   Phalcon_Db_Builder
+   Phalcon_Db_Builder_Delete
+   Phalcon_Db_Builder_Exception
+   Phalcon_Db_Builder_Insert
+   Phalcon_Db_Builder_Join
+   Phalcon_Db_Builder_Select
+   Phalcon_Db_Builder_Update
+   Phalcon_Db_Builder_Where
    Phalcon_Db_Column
    Phalcon_Db_Dialect
    Phalcon_Db_Dialect_Mysql
@@ -169,10 +206,6 @@ API Indice
    Phalcon_Image_Adapter_GD
    Phalcon_Image_Adapter_Imagick
    Phalcon_Image_Exception
-   Phalcon_Intrusive_Avltree
-   Phalcon_Intrusive_Avltree_Node
-   Phalcon_Intrusive_Rbtree
-   Phalcon_Intrusive_Rbtree_Node
    Phalcon_Kernel
    Phalcon_Loader
    Phalcon_Loader_Exception
@@ -214,12 +247,10 @@ API Indice
    Phalcon_Mvc_Model_MetaData_Files
    Phalcon_Mvc_Model_MetaData_Memcached
    Phalcon_Mvc_Model_MetaData_Memory
-   Phalcon_Mvc_Model_MetaData_Mongo
    Phalcon_Mvc_Model_MetaData_Redis
    Phalcon_Mvc_Model_MetaData_Session
    Phalcon_Mvc_Model_MetaData_Strategy_Annotations
    Phalcon_Mvc_Model_MetaData_Strategy_Introspection
-   Phalcon_Mvc_Model_MetaData_Xcache
    Phalcon_Mvc_Model_Query
    Phalcon_Mvc_Model_Query_Builder
    Phalcon_Mvc_Model_Query_Builder_Delete
@@ -260,6 +291,7 @@ API Indice
    Phalcon_Mvc_View_Model
    Phalcon_Mvc_View_Simple
    Phalcon_Paginator_Adapter
+   Phalcon_Paginator_Adapter_DbBuilder
    Phalcon_Paginator_Adapter_Model
    Phalcon_Paginator_Adapter_NativeArray
    Phalcon_Paginator_Adapter_QueryBuilder
@@ -271,10 +303,6 @@ API Indice
    Phalcon_Profiler
    Phalcon_Profiler_Exception
    Phalcon_Profiler_Item
-   Phalcon_Py
-   Phalcon_Py_Exception
-   Phalcon_Py_Matplot
-   Phalcon_Py_Object
    Phalcon_Queue_Beanstalk
    Phalcon_Queue_Beanstalk_Job
    Phalcon_Random
@@ -284,9 +312,7 @@ API Indice
    Phalcon_Security
    Phalcon_Security_Exception
    Phalcon_Security_Random
-   Phalcon_Server
    Phalcon_Server_Exception
-   Phalcon_Server_Http
    Phalcon_Server_Simple
    Phalcon_Session_Adapter
    Phalcon_Session_Adapter_Cache
@@ -296,23 +322,10 @@ API Indice
    Phalcon_Session_Exception
    Phalcon_Snowflake
    Phalcon_Socket
-   Phalcon_Socket_Exception
    Phalcon_Socket_Client
+   Phalcon_Socket_Exception
    Phalcon_Socket_Server
-   Phalcon_Storage_Bloomfilter
-   Phalcon_Storage_Bloomfilter_Counting
-   Phalcon_Storage_Btree
-   Phalcon_Storage_Datrie
    Phalcon_Storage_Exception
-   Phalcon_Storage_Leveldb
-   Phalcon_Storage_Leveldb_Iterator
-   Phalcon_Storage_Leveldb_Writebatch
-   Phalcon_Storage_Libmdbx
-   Phalcon_Storage_Libmdbx_Cursor
-   Phalcon_Storage_Lmdb
-   Phalcon_Storage_Lmdb_Cursor
-   Phalcon_Storage_Wiredtiger
-   Phalcon_Storage_Wiredtiger_Cursor
    Phalcon_Sync_Event
    Phalcon_Sync_Exception
    Phalcon_Sync_Mutex
@@ -359,9 +372,6 @@ API Indice
    Phalcon_Validation_Validator_Url
    Phalcon_Version
    Phalcon_Xhprof
-   Phalcon_Websocket_Client
-   Phalcon_Websocket_Connection
-   Phalcon_Websocket_Server
    Phalcon_Acl_AdapterInterface
    Phalcon_Acl_ResourceAware
    Phalcon_Acl_ResourceInterface
@@ -370,11 +380,19 @@ API Indice
    Phalcon_Annotations_AdapterInterface
    Phalcon_Annotations_ReaderInterface
    Phalcon_Assets_FilterInterface
+   Phalcon_Async_Awaitable
+   Phalcon_Async_Network_Server
+   Phalcon_Async_Network_Socket
+   Phalcon_Async_Network_SocketStream
+   Phalcon_Async_Stream_DuplexStream
+   Phalcon_Async_Stream_ReadableStream
+   Phalcon_Async_Stream_WritableStream
    Phalcon_Cache_BackendInterface
    Phalcon_Cache_FrontendInterface
    Phalcon_Config_AdapterInterface
    Phalcon_CryptInterface
    Phalcon_Db_AdapterInterface
+   Phalcon_Db_BuilderInterface
    Phalcon_Db_ColumnInterface
    Phalcon_Db_DialectInterface
    Phalcon_Db_IndexInterface
@@ -435,4 +453,3 @@ API Indice
    Phalcon_ValidationInterface
    Phalcon_Validation_MessageInterface
    Phalcon_Validation_ValidatorInterface
-   Phalcon_Websocket_EventLoopInterface

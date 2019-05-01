@@ -70,7 +70,7 @@ Commits the transaction
 
 
 
-public *boolean*  **rollback** ([*string* $rollbackMessage], [:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $rollbackRecord])
+public *boolean*  **rollback** ([*string* $rollbackMessage], [:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $rollbackRecord], [*int* $rollbackCode], [*unknown* $throwError])
 
 Rolls back the transaction
 
@@ -115,6 +115,12 @@ Checks whether internal connection is under an active transaction
 public  **setRollbackedRecord** (:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $record)
 
 Sets object which generates rollback action
+
+
+
+public :doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>`  **getRollbackedRecord** ()
+
+Gets object which generates rollback action
 
 
 

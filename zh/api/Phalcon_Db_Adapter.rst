@@ -497,6 +497,30 @@ Returns the name of the dialect used
 
 
 
+public :doc:`Phalcon\\Db\\Builder\\Select <Phalcon_Db_Builder_Select>`  **createSelectBuilder** (*unknown* $tables)
+
+Create a select builder
+
+
+
+public :doc:`Phalcon\\Db\\Builder\\Update <Phalcon_Db_Builder_Update>`  **createUpdateBuilder** (*unknown* $table)
+
+Create a update builder
+
+
+
+public :doc:`Phalcon\\Db\\Builder\\Insert <Phalcon_Db_Builder_Insert>`  **createInsertBuilder** (*unknown* $table)
+
+Create a insert builder
+
+
+
+public :doc:`Phalcon\\Db\\Builder\\Delete <Phalcon_Db_Builder_Delete>`  **createDeleteBuilder** (*unknown* $table)
+
+Create a delete builder
+
+
+
 public  **setDI** (:doc:`Phalcon\\DiInterface <Phalcon_DiInterface>` $dependencyInjector) inherited from Phalcon\\Di\\Injectable
 
 Sets the dependency injector
