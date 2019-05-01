@@ -523,6 +523,33 @@ PDO支持事务工作。在事务里面执行数据操作, 在大多数数据库
 这个方法需要接受一个字符串作为第一个参数。你可以把日志类的对象传递给 :code:`Phalcon\DB::setLogger()`，
 这样执行SQL时将调用这个对象的log方法去记录。
 
+使用构建器（Using the Db Builder）
+----------------------------------
+.. code-block:: php
+
+    <?php
+    $ret = Phalcon\Db\Builder::select('robots')
+        ->join('robots_parts', 'robots_parts.robots_id = robots.id')
+        ->where('robots.id = 1')
+        ->limit(20)
+        ->orderBy('robots.name')
+        ->execute();
+        $item = $ret->fetch();
+
+    $ret = Phalcon\Db\Builder::update('robots')
+        ->set(['name' => 'test'])
+        ->where('id = 1')
+        ->execute();
+
+    $ret = Phalcon\Db\Builder::delete('robots')
+        ->where('id = 1')
+        ->execute();
+
+    $ret = Phalcon\Db\Builder::insert('robots')
+        ->values(['id' => 1, 'name' => 'Robotina', 'type' => '', 'year' => 1972])
+        ->execute();
+
+
 获取数据库表与视图信息（Describing Tables/Views）
 -------------------------------------------------
 :doc:`Phalcon\\Db <../api/Phalcon_Db>` 也提供了方法去检索详细的表和视图信息：

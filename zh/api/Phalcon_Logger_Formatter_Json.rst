@@ -16,6 +16,12 @@ Formats messages using JSON encoding
 Methods
 -------
 
+public  **__construct** ([*int* $options])
+
+Phalcon\\Logger\\Formatter\\Json constructor
+
+
+
 public *string*  **format** (*string* $message, *int* $type, *int* $timestamp, *array* $context)
 
 Applies a format to a message before sent it to the internal log

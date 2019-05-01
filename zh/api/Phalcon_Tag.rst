@@ -664,13 +664,25 @@ Return default values
 
 
 
-public static :doc:`Phalcon\\Mvc\\Model\\Query <Phalcon_Mvc_Model_Query>`  **setDefaultParams** (*unknown* $params)
+public static  **setDefaultParams** (*array* $params)
 
 Set default parameters
 
 
 
 public static *array*  **getDefaultParams** ()
+
+Returns default params
+
+
+
+public static  **setDefaultFormParams** (*array* $params)
+
+Set default form parameters
+
+
+
+public static *array*  **getDefaultFormParams** ()
 
 Returns default params
 

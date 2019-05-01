@@ -77,13 +77,19 @@ Return the next job in the list of buried jobs
 
 
 
-protected *array*  **readStatus** ()
+public *boolean|\Phalcon\Queue\Beanstalk\Job*  **jobPeek** (*unknown* $id)
+
+The peek commands let the client inspect a job in the system.
+
+
+
+public *array*  **readStatus** ()
 
 Reads the latest status from the Beanstalkd server
 
 
 
-protected  **readYaml** ()
+public  **readYaml** ()
 
 Fetch a YAML payload from the Beanstalkd server
 
@@ -95,7 +101,7 @@ Reads a packet from the socket. Prior to reading from the socket will check for 
 
 
 
-protected *integer|boolean*  **write** ()
+public *integer|boolean*  **write** (*string* $data)
 
 Writes data to the socket. Performs a connection if none is available
 
@@ -104,6 +110,36 @@ Writes data to the socket. Performs a connection if none is available
 public *boolean*  **disconnect** ()
 
 Closes the connection to the beanstalk server.
+
+
+
+public *boolean*  **quit** ()
+
+Simply closes the connection.
+
+
+
+public *array*  **listTubes** ()
+
+Returns a list of all existing tubes.
+
+
+
+public *array*  **listTubeUsed** ()
+
+Returns the tube currently being used by the client.
+
+
+
+public *array*  **listTubesWatched** ()
+
+Returns a list tubes currently being watched by the client.
+
+
+
+public *boolean|int*  **ignore** (*unknown* $tube)
+
+It removes the named tube from the watch list for the current connection.
 
 
 

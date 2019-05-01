@@ -30,7 +30,7 @@ Commits the transaction
 
 
 
-abstract public *boolean*  **rollback** ([*string* $rollbackMessage], [:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $rollbackRecord])
+abstract public *boolean*  **rollback** ([*string* $rollbackMessage], [:doc:`Phalcon\\Mvc\\ModelInterface <Phalcon_Mvc_ModelInterface>` $rollbackRecord], [*unknown* $rollbackCode], [*unknown* $throwError])
 
 Rollbacks the transaction
 
