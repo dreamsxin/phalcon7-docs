@@ -115,16 +115,28 @@
 <p>Return the delayed job with the shortest delay left</p>
 <p>public <em>boolean|PhalconQueueBeanstalkJob</em>  <strong>peekBuried</strong> ()</p>
 <p>Return the next job in the list of buried jobs</p>
-<p>protected <em>array</em>  <strong>readStatus</strong> ()</p>
+<p>public <em>boolean|PhalconQueueBeanstalkJob</em>  <strong>jobPeek</strong> (<em>unknown</em> $id)</p>
+<p>The peek commands let the client inspect a job in the system.</p>
+<p>public <em>array</em>  <strong>readStatus</strong> ()</p>
 <p>Reads the latest status from the Beanstalkd server</p>
-<p>protected  <strong>readYaml</strong> ()</p>
+<p>public  <strong>readYaml</strong> ()</p>
 <p>Fetch a YAML payload from the Beanstalkd server</p>
 <p>public <em>string|boolean Data or `false` on error.</em>  <strong>read</strong> ([<em>unknown</em> $length])</p>
 <p>Reads a packet from the socket. Prior to reading from the socket will check for availability of the connection.</p>
-<p>protected <em>integer|boolean</em>  <strong>write</strong> ()</p>
+<p>public <em>integer|boolean</em>  <strong>write</strong> (<em>string</em> $data)</p>
 <p>Writes data to the socket. Performs a connection if none is available</p>
 <p>public <em>boolean</em>  <strong>disconnect</strong> ()</p>
 <p>Closes the connection to the beanstalk server.</p>
+<p>public <em>boolean</em>  <strong>quit</strong> ()</p>
+<p>Simply closes the connection.</p>
+<p>public <em>array</em>  <strong>listTubes</strong> ()</p>
+<p>Returns a list of all existing tubes.</p>
+<p>public <em>array</em>  <strong>listTubeUsed</strong> ()</p>
+<p>Returns the tube currently being used by the client.</p>
+<p>public <em>array</em>  <strong>listTubesWatched</strong> ()</p>
+<p>Returns a list tubes currently being watched by the client.</p>
+<p>public <em>boolean|int</em>  <strong>ignore</strong> (<em>unknown</em> $tube)</p>
+<p>It removes the named tube from the watch list for the current connection.</p>
 <p>public  <strong>__sleep</strong> ()</p>
 <p>...</p>
 <p>public  <strong>__wakeup</strong> ()</p>

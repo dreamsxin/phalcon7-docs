@@ -105,6 +105,7 @@
 <li><a class="reference internal" href="#implementing-your-own-logger">自定义日志记录器（Implementing your own Logger）</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#using-the-db-builder">使用构建器（Using the Db Builder）</a></li>
 <li><a class="reference internal" href="#describing-tables-views">获取数据库表与视图信息（Describing Tables/Views）</a></li>
 <li><a class="reference internal" href="#id2">创建/修改/删除表</a><ul>
 <li><a class="reference internal" href="#creating-tables">创建数据库表（Creating Tables）</a></li>
@@ -690,6 +691,32 @@ bound parameters are directly passed to PDO:</p>
 <p>你可以实现你自己的日志类来记录数据库的所有操作，通过创建一个实现了&#8221;log&#8221;方法的类。
 这个方法需要接受一个字符串作为第一个参数。你可以把日志类的对象传递给 <code class="code docutils literal"><span class="pre">Phalcon\DB::setLogger()</span></code>，
 这样执行SQL时将调用这个对象的log方法去记录。</p>
+</div>
+</div>
+<div class="section" id="using-the-db-builder">
+<h2>使用构建器（Using the Db Builder）<a class="headerlink" href="#using-the-db-builder" title="永久链接至标题">¶</a></h2>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$ret</span> <span class="o">=</span> <span class="nx">Phalcon\Db\Builder</span><span class="o">::</span><span class="na">select</span><span class="p">(</span><span class="s1">&#39;robots&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">join</span><span class="p">(</span><span class="s1">&#39;robots_parts&#39;</span><span class="p">,</span> <span class="s1">&#39;robots_parts.robots_id = robots.id&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;robots.id = 1&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">limit</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">orderBy</span><span class="p">(</span><span class="s1">&#39;robots.name&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
+    <span class="nv">$item</span> <span class="o">=</span> <span class="nv">$ret</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">();</span>
+
+<span class="nv">$ret</span> <span class="o">=</span> <span class="nx">Phalcon\Db\Builder</span><span class="o">::</span><span class="na">update</span><span class="p">(</span><span class="s1">&#39;robots&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">set</span><span class="p">([</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;test&#39;</span><span class="p">])</span>
+    <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;id = 1&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
+
+<span class="nv">$ret</span> <span class="o">=</span> <span class="nx">Phalcon\Db\Builder</span><span class="o">::</span><span class="na">delete</span><span class="p">(</span><span class="s1">&#39;robots&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;id = 1&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
+
+<span class="nv">$ret</span> <span class="o">=</span> <span class="nx">Phalcon\Db\Builder</span><span class="o">::</span><span class="na">insert</span><span class="p">(</span><span class="s1">&#39;robots&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">values</span><span class="p">([</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Robotina&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span> <span class="o">=&gt;</span> <span class="mi">1972</span><span class="p">])</span>
+    <span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
+</pre></div>
 </div>
 </div>
 <div class="section" id="describing-tables-views">

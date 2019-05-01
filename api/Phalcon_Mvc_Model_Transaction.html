@@ -133,7 +133,7 @@
 <p>Starts the transaction</p>
 <p>public <em>boolean</em>  <strong>commit</strong> ()</p>
 <p>Commits the transaction</p>
-<p>public <em>boolean</em>  <strong>rollback</strong> ([<em>string</em> $rollbackMessage], [<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><em>Phalcon\Mvc\ModelInterface</em></a> $rollbackRecord])</p>
+<p>public <em>boolean</em>  <strong>rollback</strong> ([<em>string</em> $rollbackMessage], [<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><em>Phalcon\Mvc\ModelInterface</em></a> $rollbackRecord], [<em>int</em> $rollbackCode], [<em>unknown</em> $throwError])</p>
 <p>Rolls back the transaction</p>
 <p>public <a class="reference internal" href="Phalcon_Db_AdapterInterface.html"><em>Phalcon\Db\AdapterInterface</em></a>  <strong>getConnection</strong> ()</p>
 <p>Returns the connection related to transaction</p>
@@ -149,6 +149,8 @@
 <p>Checks whether internal connection is under an active transaction</p>
 <p>public  <strong>setRollbackedRecord</strong> (<a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><em>Phalcon\Mvc\ModelInterface</em></a> $record)</p>
 <p>Sets object which generates rollback action</p>
+<p>public <a class="reference internal" href="Phalcon_Mvc_ModelInterface.html"><em>Phalcon\Mvc\ModelInterface</em></a>  <strong>getRollbackedRecord</strong> ()</p>
+<p>Gets object which generates rollback action</p>
 </div>
 </div>
 

@@ -86,6 +86,8 @@
 <li><a class="reference internal" href="#called-asynchronous">异步调用（Called asynchronous）</a></li>
 <li><a class="reference internal" href="#gets-result-count">获取异步调用结果个数（Gets result count）</a></li>
 <li><a class="reference internal" href="#gets-asynchronous-result">获取异步调用结果（Gets asynchronous result）</a></li>
+<li><a class="reference internal" href="#coroutine-task">协程 &amp;&amp; 任务（Coroutine &amp;&amp; Task）</a></li>
+<li><a class="reference internal" href="#async-process">异步进程（Async Process）</a></li>
 </ul>
 </li>
 </ul>
@@ -134,6 +136,40 @@
 
 <span class="nv">$ret</span> <span class="o">=</span> <span class="nx">Phalcon\Async</span><span class="o">::</span><span class="na">recv</span><span class="p">(</span><span class="nv">$id1</span><span class="p">);</span>
 <span class="nv">$rets</span> <span class="o">=</span> <span class="nx">Phalcon\Async</span><span class="o">::</span><span class="na">recvAll</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="coroutine-task">
+<h2>协程 &amp;&amp; 任务（Coroutine &amp;&amp; Task）<a class="headerlink" href="#coroutine-task" title="永久链接至标题">¶</a></h2>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="nv">$task</span> <span class="o">=</span> <span class="nx">Phalcon\Async\Task</span><span class="o">::</span><span class="na">async</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">});</span>
+<span class="nv">$v</span> <span class="o">=</span> <span class="nx">Phalcon\Async\Task</span><span class="o">::</span><span class="na">await</span><span class="p">(</span><span class="nv">$task</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="async-process">
+<h2>异步进程（Async Process）<a class="headerlink" href="#async-process" title="永久链接至标题">¶</a></h2>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="nv">$builder</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Phalcon\Async\Process\Builder</span><span class="p">(</span><span class="nx">PHP_BINARY</span><span class="p">);</span>
+<span class="nv">$builder</span> <span class="o">=</span> <span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">withStdoutPipe</span><span class="p">();</span>
+<span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">withStderrInherited</span><span class="p">();</span>
+
+<span class="nv">$proc</span> <span class="o">=</span> <span class="nv">$builder</span><span class="o">-&gt;</span><span class="na">start</span><span class="p">(</span><span class="no">__DIR__</span><span class="o">.</span><span class="s1">&#39;/process.php&#39;</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$proc</span><span class="o">-&gt;</span><span class="na">isRunning</span><span class="p">())</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;Running&quot;</span><span class="o">.</span><span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="nv">$stdout</span> <span class="o">=</span> <span class="nv">$proc</span><span class="o">-&gt;</span><span class="na">getStdout</span><span class="p">();</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">null</span> <span class="o">!==</span> <span class="p">(</span><span class="nv">$chunk</span> <span class="o">=</span> <span class="nv">$stdout</span><span class="o">-&gt;</span><span class="na">read</span><span class="p">()))</span> <span class="p">{</span>
+            <span class="k">echo</span> <span class="nv">$chunk</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+        <span class="nv">$stdout</span><span class="o">-&gt;</span><span class="na">close</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>

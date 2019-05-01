@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Final class Phalcon\Async\Network\TcpSocket &mdash; Phalcon7 1.3.2 文档</title>
+    <meta name="keywords" content="php, phalcon, phalcon7, phalcon php, php framework, faster php framework">
+    <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../static/phalcon.css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.3.2',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script src="../static/jquery.min.js"></script>
+    <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="top" title="Phalcon7 1.3.2 文档" href="../index.html" /> 
+</head>
+<body>
+
+<header class="page-header">
+<nav class="navbar" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-container">
+				<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand phalcon-logo" href="/"><span itemprop="name" class="sr-only">Phalcon PHP</span></a>
+		</div>
+
+		<div class="collapse navbar-collapse navbar-right" id="main-menu-container">
+			<ul class="nav navbar-nav main-menu">
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7" class="header-nav-link">GitHub</a></li>
+			  <li class="first"><a href="https://github.com/dreamsxin/cphalcon7/releases" class="header-nav-link">Download</a></li>
+			  <li class="first"><a href="/api/" class="header-nav-link">API</a></li>
+			  <li class="first"><a href="/internals/" class="header-nav-link">内核开发手册</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+<div class="heading">
+    <div class="container">
+        <div class="row">
+            <h2>Documentation</h2>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li><a href="http://myleftstudio.com">Home</a> &raquo;</li>
+        <li><a href="../index.html">Phalcon7 1.3.2 文档</a> &raquo;</li> 
+      </ul>
+    </div>  
+</div>
+
+<div class="container-fluid">
+	<div class="col-md-3 primary-box">
+		<div class="panel panel-default">
+			<div class="panel-heading"><a href="../index.html">內容目录</a></div>
+			<div class="panel-body"><ul>
+<li><a class="reference internal" href="#">Final class <strong>Phalcon\Async\Network\TcpSocket</strong></a><ul>
+<li><a class="reference internal" href="#constants">Constants</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+</ul>
+</li>
+</ul>
+</div>
+		</div>
+	</div>
+  <div class="col-md-9 second-box" valign="top">
+	<div class="document">
+		<div class="documentwrapper">
+		  <div class="bodywrapper">
+			<div class="body" >
+			  
+  <div class="section" id="final-class-phalcon-async-network-tcpsocket">
+<h1>Final class <strong>Phalcon\Async\Network\TcpSocket</strong><a class="headerlink" href="#final-class-phalcon-async-network-tcpsocket" title="永久链接至标题">¶</a></h1>
+<p><em>implements</em> <a class="reference internal" href="Phalcon_Async_Network_SocketStream.html"><em>Phalcon\Async\Network\SocketStream</em></a>, <a class="reference internal" href="Phalcon_Async_Stream_ReadableStream.html"><em>Phalcon\Async\Stream\ReadableStream</em></a>, <a class="reference internal" href="Phalcon_Async_Stream_WritableStream.html"><em>Phalcon\Async\Stream\WritableStream</em></a>, <a class="reference internal" href="Phalcon_Async_Stream_DuplexStream.html"><em>Phalcon\Async\Stream\DuplexStream</em></a>, <a class="reference internal" href="Phalcon_Async_Network_Socket.html"><em>Phalcon\Async\Network\Socket</em></a></p>
+<p><span class="raw-html"><a href="https://github.com/dreamsxin/cphalcon7/blob/master/ext/async/network/tcpsocket.c" class="btn btn-default btn-sm">Source on GitHub</a></span></p>
+<div class="section" id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="永久链接至标题">¶</a></h2>
+<p><em>integer</em> <strong>NODELAY</strong></p>
+<p><em>integer</em> <strong>KEEPALIVE</strong></p>
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="永久链接至标题">¶</a></h2>
+<p>public static  <strong>connect</strong> (<em>unknown</em> $host, <em>unknown</em> $port, [<a class="reference internal" href="Phalcon_Async_Network_TlsClientEncryption.html"><em>Phalcon\Async\Network\TlsClientEncryption</em></a> $tls])</p>
+<p>...</p>
+<p>public static  <strong>import</strong> (<a class="reference internal" href="Phalcon_Async_Network_Pipe.html"><em>Phalcon\Async\Network\Pipe</em></a> $pipe, [<a class="reference internal" href="Phalcon_Async_Network_TlsClientEncryption.html"><em>Phalcon\Async\Network\TlsClientEncryption</em></a> $tls])</p>
+<p>...</p>
+<p>public static  <strong>pair</strong> ()</p>
+<p>...</p>
+<p>public  <strong>close</strong> ([<em>Throwable</em> $error])</p>
+<p>...</p>
+<p>public  <strong>flush</strong> ()</p>
+<p>...</p>
+<p>public  <strong>getAddress</strong> ()</p>
+<p>...</p>
+<p>public  <strong>getPort</strong> ()</p>
+<p>...</p>
+<p>public  <strong>setOption</strong> (<em>unknown</em> $option, <em>unknown</em> $value)</p>
+<p>...</p>
+<p>public  <strong>getRemoteAddress</strong> ()</p>
+<p>...</p>
+<p>public  <strong>getRemotePort</strong> ()</p>
+<p>...</p>
+<p>public  <strong>read</strong> ([<em>unknown</em> $length])</p>
+<p>...</p>
+<p>public  <strong>getReadableStream</strong> ()</p>
+<p>...</p>
+<p>public  <strong>write</strong> (<em>unknown</em> $data)</p>
+<p>...</p>
+<p>public  <strong>writeAsync</strong> (<em>unknown</em> $data)</p>
+<p>...</p>
+<p>public  <strong>getWriteQueueSize</strong> ()</p>
+<p>...</p>
+<p>public  <strong>getWritableStream</strong> ()</p>
+<p>...</p>
+<p>public  <strong>export</strong> (<a class="reference internal" href="Phalcon_Async_Network_Pipe.html"><em>Phalcon\Async\Network\Pipe</em></a> $pipe)</p>
+<p>...</p>
+<p>public  <strong>encrypt</strong> ()</p>
+<p>...</p>
+</div>
+</div>
+
+
+			</div>
+		  </div>
+		</div>
+	</div>
+  </div>
+</div>
+    <div class="related">
+      <ul>
+        <li class="right" >
+          <a href="../genindex.html" title="总目录"
+             >索引</a></li> 
+      </ul>
+    </div>
+
+<footer class="footer">
+	<div class="container">
+      <div class="row">
+          <div class="col-xs-6 col-sm-3">
+              <h4>Download</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/releases">安裝 Phalcon7</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+              <h4>Community</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7">GitHub</a></li>
+                  <li><a href="https://github.com/dreamsxin/cphalcon7/issues">Issue Tracker</a></li>
+              </ul>
+          </div>
+          <div class="col-xs-6 col-sm-2">
+              <h4>About</h4>
+              <ul>
+                  <li><a href="https://github.com/dreamsxin/cphalcon/wiki/%E6%8D%90%E8%B5%A0%EF%BC%88Donation%EF%BC%89">Donate</a></li>
+              </ul>
+          </div>
+          <div id="license-spaccer" class="visible-xs"></div>
+          <div id="license-wrapper" class="col-xs-12 col-sm-4">
+              <p class="license">
+
+                  Phalcon7 Framework is released under the <a href="https://github.com/dreamsxin/cphalcon7/blob/master/docs/LICENSE.md">new BSD license</a>.<br>
+                  Except where otherwise noted, content on this site is licensed under the
+                  <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License.</a>
+              </p>
+              <div class="design">
+                  <span>Designed by:</span>
+
+                  <a href="http://www.fog-city.net/" class="fogcity" target="_blank" title="Fog City Software"><span>Fog City Software</span></a>
+              </div>
+          </div>
+      </div>
+	</div>
+</footer>
+</body>
+</html>
