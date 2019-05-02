@@ -34,8 +34,8 @@
     $ret = Phalcon\Async::recv($id1);
     $rets = Phalcon\Async::recvAll();
 
-协程 && 任务（Coroutine && Task）
----------------------------------
+协程任务（Coroutine Task）
+--------------------------
 .. code-block:: php
 
     <?php
