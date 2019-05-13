@@ -124,10 +124,12 @@
 <h3>二叉树分库分表<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h3>
 <p>所谓 “二叉树分库分表” 指的是：
 在进行数据库扩容时，都是以2倍数进行扩容（初始值一定要是2的N次方，一般默认初始为16），这种分库方式的好处是，在进行扩容时，只需进行表级的数据同步。</p>
-<p>&gt;&gt; 当 length 一定是 2^n 时，h &amp; (length - 1) == h % length</p>
+<blockquote class="highlights">
+<div>当 length 一定是 2^n 时，h &amp; (length - 1) == h % length，效率杠杠的。</div></blockquote>
 <p>假设原来分成两个库，假设按照hash的方式分片。那么结果分为奇数库1和偶数库0。
-现在变成4个分片，这个过程没有数据的迁移，属于整库拷贝。原来偶数库变成了0和2，奇数的部分现在变成1和3。然后进行多余数据删除即可。
-这里的扩容就是一个删数据过程而不是迁移数据过程，理论上可以无限横向扩展</p>
+现在变成4个分片，这个过程没有数据的迁移，属于整库拷贝。原来偶数库变成了0和2，奇数的部分现在变成1和3。然后进行多余数据删除即可。</p>
+<blockquote class="highlights">
+<div>这里的扩容就是一个删数据过程而不是迁移数据过程，理论上可以无限横向扩展</div></blockquote>
 <p>生成分布式 ID：</p>
 <div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
