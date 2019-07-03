@@ -52,7 +52,7 @@
 
     <?php
 
-    $builder = new Phalcon\Async\Process\Builder(PHP_BINARY);
+    $builder = new Phalcon\Async\ProcessBuilder(PHP_BINARY);
     $builder = $builder->withStdoutPipe();
     $builder->withStderrInherited();
 
