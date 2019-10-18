@@ -20,7 +20,22 @@ Constants
 Methods
 -------
 
-public static  **bind** (*unknown* $host, *unknown* $port)
+private  **__construct** ()
+
+...
+
+
+public  **__wakeup** ()
+
+...
+
+
+public static  **bind** ([*unknown* $host], [*unknown* $port])
+
+...
+
+
+public static  **connect** (*unknown* $remote_host, *unknown* $remote_port, [*unknown* $host], [*unknown* $port])
 
 ...
 
@@ -55,17 +70,12 @@ public  **setOption** (*unknown* $option, *unknown* $value)
 ...
 
 
-public  **receive** ()
+public  **receive** ([*unknown* $size])
 
 ...
 
 
 public  **send** (:doc:`Phalcon\\Async\\Network\\UdpDatagram <Phalcon_Async_Network_UdpDatagram>` $datagram)
-
-...
-
-
-public  **sendAsync** (:doc:`Phalcon\\Async\\Network\\UdpDatagram <Phalcon_Async_Network_UdpDatagram>` $datagram)
 
 ...
 

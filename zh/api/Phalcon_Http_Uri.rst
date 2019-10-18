@@ -82,7 +82,7 @@ Retrieve the URI path
 
 
 
-public *string*  **build** ()
+public *string*  **build** ([*boolean* $fix])
 
 Returns uri
 

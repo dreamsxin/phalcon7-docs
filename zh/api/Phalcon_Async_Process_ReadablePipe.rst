@@ -11,6 +11,16 @@ Final class **Phalcon\\Async\\Process\\ReadablePipe**
 Methods
 -------
 
+private  **__construct** ()
+
+...
+
+
+public  **__wakeup** ()
+
+...
+
+
 public  **close** ([*Throwable* $error])
 
 ...

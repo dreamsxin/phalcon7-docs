@@ -162,7 +162,7 @@ Gets the bind types
 
 
 
-public :doc:`Phalcon\\Db\\ResultInterface <Phalcon_Db_ResultInterface>` |boolean **execute** () inherited from Phalcon\\Db\\Builder
+public :doc:`Phalcon\\Db\\ResultInterface <Phalcon_Db_ResultInterface>` |boolean|array **execute** ([*unknown* $pretreatment]) inherited from Phalcon\\Db\\Builder
 
 Execute query
 

@@ -11,6 +11,16 @@ Final class **Phalcon\\Async\\ChannelIterator**
 Methods
 -------
 
+private  **__construct** ()
+
+...
+
+
+public  **__wakeup** ()
+
+...
+
+
 public  **rewind** ()
 
 ...

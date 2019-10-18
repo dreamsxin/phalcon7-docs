@@ -16,6 +16,11 @@ public  **__construct** ([*unknown* $capacity])
 ...
 
 
+public  **__wakeup** ()
+
+...
+
+
 public  **getIterator** ()
 
 ...
@@ -27,16 +32,6 @@ public  **close** ([*Throwable* $error])
 
 
 public  **isClosed** ()
-
-...
-
-
-public  **isReadyForReceive** ()
-
-...
-
-
-public  **isReadyForSend** ()
 
 ...
 

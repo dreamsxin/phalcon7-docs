@@ -14,6 +14,11 @@ private  **__construct** ()
 ...
 
 
+public  **__wakeup** ()
+
+...
+
+
 public static  **run** (*unknown* $callback, [*unknown* $finalizer])
 
 ...
@@ -24,7 +29,27 @@ public static  **runWithContext** (:doc:`Phalcon\\Async\\Context <Phalcon_Async_
 ...
 
 
-public  **__wakeup** ()
+public static  **get** (*unknown* $type)
+
+...
+
+
+public static  **register** (*unknown* $type, *unknown* $factory)
+
+...
+
+
+public  **tick** (*unknown* $callback)
+
+...
+
+
+public  **timer** (*unknown* $callback)
+
+...
+
+
+public  **poll** (*unknown* $stream, *unknown* $callback)
 
 ...
 

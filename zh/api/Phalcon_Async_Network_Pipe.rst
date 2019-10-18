@@ -11,6 +11,16 @@ Final class **Phalcon\\Async\\Network\\Pipe**
 Methods
 -------
 
+private  **__construct** ()
+
+...
+
+
+public  **__wakeup** ()
+
+...
+
+
 public static  **connect** (*unknown* $name, [*unknown* $host], [*unknown* $ipc])
 
 ...
@@ -61,6 +71,11 @@ public  **getRemotePort** ()
 ...
 
 
+public  **isAlive** ()
+
+...
+
+
 public  **read** ([*unknown* $length])
 
 ...
@@ -72,11 +87,6 @@ public  **getReadableStream** ()
 
 
 public  **write** (*unknown* $data)
-
-...
-
-
-public  **writeAsync** (*unknown* $data)
 
 ...
 

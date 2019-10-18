@@ -11,6 +11,16 @@ Final class **Phalcon\\Async\\Stream\\WritablePipe**
 Methods
 -------
 
+private  **__construct** ()
+
+...
+
+
+public  **__wakeup** ()
+
+...
+
+
 public static  **getStdout** ()
 
 ...

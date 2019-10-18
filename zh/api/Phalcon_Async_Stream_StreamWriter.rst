@@ -11,6 +11,16 @@ Final class **Phalcon\\Async\\Stream\\StreamWriter**
 Methods
 -------
 
+private  **__construct** ()
+
+...
+
+
+public  **__wakeup** ()
+
+...
+
+
 public  **close** ([*Throwable* $error])
 
 ...

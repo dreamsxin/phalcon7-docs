@@ -16,7 +16,7 @@ private  **__construct** ()
 ...
 
 
-public  **__debugInfo** ()
+private  **__wakeup** ()
 
 ...
 

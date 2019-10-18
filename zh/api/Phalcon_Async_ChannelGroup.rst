@@ -11,7 +11,12 @@ Final class **Phalcon\\Async\\ChannelGroup**
 Methods
 -------
 
-public  **__construct** (*array* $channels, [*unknown* $timeout], [*unknown* $shuffle])
+public  **__construct** (*array* $channels, [*unknown* $shuffle])
+
+...
+
+
+public  **__wakeup** ()
 
 ...
 
@@ -21,12 +26,12 @@ public  **count** ()
 ...
 
 
-public  **select** ([*unknown* $value])
+public  **select** ([*unknown* $timeout])
 
 ...
 
 
-public  **send** (*unknown* $value)
+public  **send** (*unknown* $value, [*unknown* $timeout])
 
 ...
 

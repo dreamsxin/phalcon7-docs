@@ -9,6 +9,16 @@ Final class **Phalcon\\Async\\CancellationHandler**
 Methods
 -------
 
+private  **__construct** ()
+
+...
+
+
+public  **__wakeup** ()
+
+...
+
+
 public  **__invoke** ([*Throwable* $error])
 
 ...

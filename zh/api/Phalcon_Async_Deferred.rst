@@ -14,7 +14,7 @@ public  **__construct** ([*unknown* $cancel])
 ...
 
 
-public  **__debugInfo** ()
+public  **__wakeup** ()
 
 ...
 

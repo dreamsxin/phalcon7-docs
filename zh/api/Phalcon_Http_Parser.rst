@@ -34,9 +34,15 @@ Phalcon\\Http\\Parser constructor
 
 
 
-public *array|boolean $result*  **execute** (*unknown* $body)
+public *array|boolean $result*  **execute** (*unknown* $body, [*unknown* $output])
 
-Phalcon\\Http\\Parser constructor
+parse
+
+
+
+public *array*  **parseCookie** (*string* $str)
+
+parse cookies
 
 
 

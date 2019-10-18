@@ -18,6 +18,16 @@ Constants
 Methods
 -------
 
+private  **__construct** ()
+
+...
+
+
+public  **__wakeup** ()
+
+...
+
+
 public static  **connect** (*unknown* $host, *unknown* $port, [:doc:`Phalcon\\Async\\Network\\TlsClientEncryption <Phalcon_Async_Network_TlsClientEncryption>` $tls])
 
 ...
@@ -68,6 +78,11 @@ public  **getRemotePort** ()
 ...
 
 
+public  **isAlive** ()
+
+...
+
+
 public  **read** ([*unknown* $length])
 
 ...
@@ -79,11 +94,6 @@ public  **getReadableStream** ()
 
 
 public  **write** (*unknown* $data)
-
-...
-
-
-public  **writeAsync** (*unknown* $data)
 
 ...
 

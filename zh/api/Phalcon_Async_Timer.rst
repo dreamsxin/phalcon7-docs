@@ -14,6 +14,11 @@ public  **__construct** (*unknown* $milliseconds)
 ...
 
 
+public  **__wakeup** ()
+
+...
+
+
 public  **close** ([*Throwable* $error])
 
 ...
