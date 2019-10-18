@@ -104,7 +104,7 @@ Gets the bind types
 
 
 
-public :doc:`Phalcon\\Db\\ResultInterface <Phalcon_Db_ResultInterface>` |boolean **execute** ()
+public :doc:`Phalcon\\Db\\ResultInterface <Phalcon_Db_ResultInterface>` |boolean|array **execute** ([*unknown* $pretreatment])
 
 Execute query
 

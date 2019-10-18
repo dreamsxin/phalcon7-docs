@@ -9,7 +9,12 @@ Final class **Phalcon\\Async\\Network\\TlsInfo**
 Methods
 -------
 
-public  **__debugInfo** ()
+private  **__construct** ()
+
+...
+
+
+public  **__wakeup** ()
 
 ...
 

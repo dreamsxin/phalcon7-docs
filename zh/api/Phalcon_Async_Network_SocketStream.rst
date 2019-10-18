@@ -21,12 +21,12 @@ abstract public  **getRemotePort** ()
 ...
 
 
-abstract public  **flush** ()
+abstract public  **isAlive** ()
 
 ...
 
 
-abstract public  **writeAsync** (*unknown* $data)
+abstract public  **flush** ()
 
 ...
 

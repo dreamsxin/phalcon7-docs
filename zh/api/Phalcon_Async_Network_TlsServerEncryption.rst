@@ -9,6 +9,11 @@ Final class **Phalcon\\Async\\Network\\TlsServerEncryption**
 Methods
 -------
 
+public  **__wakeup** ()
+
+...
+
+
 public  **withDefaultCertificate** (*unknown* $cert, [*unknown* $key], [*unknown* $passphrase])
 
 ...

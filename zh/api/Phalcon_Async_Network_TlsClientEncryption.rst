@@ -9,6 +9,11 @@ Final class **Phalcon\\Async\\Network\\TlsClientEncryption**
 Methods
 -------
 
+public  **__wakeup** ()
+
+...
+
+
 public  **withAllowSelfSigned** (*unknown* $allow)
 
 ...

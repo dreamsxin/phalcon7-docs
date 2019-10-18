@@ -36,19 +36,30 @@ API Indice
    Phalcon_Assets_Resource_Css
    Phalcon_Assets_Resource_Js
    Phalcon_Async
+   Phalcon_Async_AwaitableImpl
    Phalcon_Async_CancellationException
    Phalcon_Async_CancellationHandler
    Phalcon_Async_Channel
    Phalcon_Async_ChannelClosedException
    Phalcon_Async_ChannelGroup
    Phalcon_Async_ChannelIterator
+   Phalcon_Async_ChannelSelect
    Phalcon_Async_Context
    Phalcon_Async_ContextVar
+   Phalcon_Async_DNS_Config
+   Phalcon_Async_DNS_Query
    Phalcon_Async_Deferred
    Phalcon_Async_DeferredAwaitable
+   Phalcon_Async_Monitor
+   Phalcon_Async_MonitorEvent
    Phalcon_Async_Network_Pipe
-   Phalcon_Async_Network_Pipe_Server
+   Phalcon_Async_Network_PipeServer
+   Phalcon_Async_Network_SocketAcceptException
+   Phalcon_Async_Network_SocketBindException
+   Phalcon_Async_Network_SocketConnectException
+   Phalcon_Async_Network_SocketDisconnectException
    Phalcon_Async_Network_SocketException
+   Phalcon_Async_Network_SocketListenException
    Phalcon_Async_Network_TcpServer
    Phalcon_Async_Network_TcpSocket
    Phalcon_Async_Network_TlsClientEncryption
@@ -56,23 +67,31 @@ API Indice
    Phalcon_Async_Network_TlsServerEncryption
    Phalcon_Async_Network_UdpDatagram
    Phalcon_Async_Network_UdpSocket
-   Phalcon_Async_Process
-   Phalcon_Async_Process_Builder
+   Phalcon_Async_Poll
+   Phalcon_Async_PollEvent
+   Phalcon_Async_Process_Process
+   Phalcon_Async_Process_ProcessBuilder
    Phalcon_Async_Process_ReadablePipe
    Phalcon_Async_Process_WritablePipe
-   Phalcon_Async_SignalWatcher
-   Phalcon_Async_StreamWatcher
+   Phalcon_Async_Signal
    Phalcon_Async_Stream_PendingReadException
+   Phalcon_Async_Stream_ReadableMemoryStream
    Phalcon_Async_Stream_ReadablePipe
    Phalcon_Async_Stream_StreamClosedException
    Phalcon_Async_Stream_StreamException
    Phalcon_Async_Stream_StreamReader
    Phalcon_Async_Stream_StreamWriter
+   Phalcon_Async_Stream_WritableMemoryStream
    Phalcon_Async_Stream_WritablePipe
+   Phalcon_Async_Sync_Condition
    Phalcon_Async_Task
    Phalcon_Async_TaskScheduler
+   Phalcon_Async_Thread
+   Phalcon_Async_TickEvent
+   Phalcon_Async_Timeout
    Phalcon_Async_TimeoutException
    Phalcon_Async_Timer
+   Phalcon_Async_TimerEvent
    Phalcon_Binary
    Phalcon_Binary_Exception
    Phalcon_Binary_Reader
@@ -326,6 +345,9 @@ API Indice
    Phalcon_Socket_Exception
    Phalcon_Socket_Server
    Phalcon_Storage_Exception
+   Phalcon_Storage_Leveldb
+   Phalcon_Storage_Leveldb_Iterator
+   Phalcon_Storage_Leveldb_Writebatch
    Phalcon_Sync_Event
    Phalcon_Sync_Exception
    Phalcon_Sync_Mutex
@@ -381,6 +403,8 @@ API Indice
    Phalcon_Annotations_ReaderInterface
    Phalcon_Assets_FilterInterface
    Phalcon_Async_Awaitable
+   Phalcon_Async_Component
+   Phalcon_Async_DNS_Resolver
    Phalcon_Async_Network_Server
    Phalcon_Async_Network_Socket
    Phalcon_Async_Network_SocketStream

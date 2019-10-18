@@ -14,6 +14,11 @@ public  **__construct** ()
 ...
 
 
+public  **__wakeup** ()
+
+...
+
+
 public  **get** ([:doc:`Phalcon\\Async\\Context <Phalcon_Async_Context>` $context])
 
 ...

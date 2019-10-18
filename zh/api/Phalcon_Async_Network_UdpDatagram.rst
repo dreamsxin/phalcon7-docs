@@ -9,12 +9,12 @@ Final class **Phalcon\\Async\\Network\\UdpDatagram**
 Methods
 -------
 
-public  **__construct** (*unknown* $data, *unknown* $address, *unknown* $port)
+public  **__construct** (*unknown* $data, [*unknown* $address], [*unknown* $port])
 
 ...
 
 
-public  **__debugInfo** ()
+public  **__wakeup** ()
 
 ...
 
@@ -25,6 +25,11 @@ public  **withData** (*unknown* $data)
 
 
 public  **withPeer** (*unknown* $address, *unknown* $port)
+
+...
+
+
+public  **withoutPeer** ()
 
 ...
 

@@ -16,7 +16,7 @@ private  **__construct** ()
 ...
 
 
-public  **__debugInfo** ()
+public  **__wakeup** ()
 
 ...
 
@@ -36,7 +36,7 @@ public static  **await** (:doc:`Phalcon\\Async\\Awaitable <Phalcon_Async_Awaitab
 ...
 
 
-public  **__wakeup** ()
+public  **getTrace** ([*unknown* $options], [*unknown* $limit])
 
 ...
 

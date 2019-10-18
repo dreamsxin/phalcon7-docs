@@ -26,6 +26,7 @@ Pagination using a SQL as source of data
                      "sql" => $sql,
                      "total_sql" => $sql2,
                      "bind" => $bind,
+                     //"total_bind" => $total_bind,
                      "limit" => 20,
                      "page" => $page
      ));

@@ -16,12 +16,22 @@ Constants
 Methods
 -------
 
-public static  **bind** (*unknown* $host, *unknown* $port, [:doc:`Phalcon\\Async\\Network\\TlsServerEncryption <Phalcon_Async_Network_TlsServerEncryption>` $tls])
+private  **__construct** ()
 
 ...
 
 
-public static  **listen** (*unknown* $host, *unknown* $port, [:doc:`Phalcon\\Async\\Network\\TlsServerEncryption <Phalcon_Async_Network_TlsServerEncryption>` $tls])
+public  **__wakeup** ()
+
+...
+
+
+public static  **bind** ([*unknown* $host], [*unknown* $port], [:doc:`Phalcon\\Async\\Network\\TlsServerEncryption <Phalcon_Async_Network_TlsServerEncryption>` $tls], [*unknown* $reuseport])
+
+...
+
+
+public static  **listen** ([*unknown* $host], [*unknown* $port], [:doc:`Phalcon\\Async\\Network\\TlsServerEncryption <Phalcon_Async_Network_TlsServerEncryption>` $tls], [*unknown* $reuseport])
 
 ...
 

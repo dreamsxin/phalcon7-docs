@@ -190,12 +190,17 @@ public  **__wakeup** () inherited from DateTime
 ...
 
 
-public static  **__set_state** () inherited from DateTime
+public static  **__set_state** (*array* $array) inherited from DateTime
 
 ...
 
 
-public static  **createFromFormat** (*unknown* $format, *unknown* $time, [*unknown* $object]) inherited from DateTime
+public static  **createFromImmutable** (*unknown* $DateTimeImmutable) inherited from DateTime
+
+...
+
+
+public static  **createFromFormat** (*unknown* $format, *unknown* $time, [*DateTimeZone* $object]) inherited from DateTime
 
 ...
 

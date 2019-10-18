@@ -14,6 +14,16 @@ private  **__construct** ()
 ...
 
 
+public  **__wakeup** ()
+
+...
+
+
+public  **isCancelled** ()
+
+...
+
+
 public  **with** (:doc:`Phalcon\\Async\\ContextVar <Phalcon_Async_ContextVar>` $var, *unknown* $value)
 
 ...
