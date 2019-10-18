@@ -224,7 +224,7 @@
 
 
 <span class="k">try</span> <span class="p">{</span>
-
+    <span class="nv">$socket</span><span class="o">-&gt;</span><span class="na">writeAsync</span><span class="p">(</span><span class="s2">&quot;GET /json HTTP/1.0</span><span class="se">\r\n</span><span class="s2">Host: httpbin.org</span><span class="se">\r\n</span><span class="s2">Connection: close</span><span class="se">\r\n\r\n</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">while</span> <span class="p">(</span><span class="k">null</span> <span class="o">!==</span> <span class="p">(</span><span class="nv">$chunk</span> <span class="o">=</span> <span class="nv">$socket</span><span class="o">-&gt;</span><span class="na">read</span><span class="p">()))</span> <span class="p">{</span>
         <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$chunk</span><span class="p">);</span>
     <span class="p">}</span>
