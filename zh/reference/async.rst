@@ -68,3 +68,68 @@
             $stdout->close();
         }
     }
+
+异步 Socket （Async Socket）
+----------------------------
+
+服务器端监听：
+
+.. code-block:: php
+
+    <?php
+
+    $server = Phalcon\Async\Network\TcpServer::listen('localhost', 8080);
+
+    try {
+        var_dump($server->getAddress(), $server->getPort());
+
+        while (true) {
+            $socket = $server->accept();
+            if ($socket === false) {
+                continue;
+            }
+
+            Phalcon\Async\Task::async(function () use ($socket) {
+
+                try {
+
+                $chunk = $socket->read();
+
+                if (empty($chunk)) {
+                    $socket->close();
+                    return;
+                }
+
+                $sendchunk = 'Hello World';
+                $sendchunk = \sprintf("HTTP/1.1 200 OK\r\nServer: webserver\r\nContent-Type: text/html\r\nTransfer-Encoding: chunked\r\nConnection: close\r\n\r\n%x\r\n%s\r\n0\r\n\r\n", \strlen($sendchunk), $sendchunk);
+                $socket->write($sendchunk);
+
+                } catch (\Throwable $e) {
+                    echo $e, "\n\n";
+            } finally {
+                    $socket->close();
+                }
+            });
+        }
+    } finally {
+        $server->close();
+    }
+
+客户端连接：
+
+.. code-block:: php
+
+    <?php
+
+    $socket = TcpSocket::connect('localhost', 80);
+
+
+    try {
+        
+        while (null !== ($chunk = $socket->read())) {
+            var_dump($chunk);
+        }
+
+    } finally {
+        $socket->close();
+    }
