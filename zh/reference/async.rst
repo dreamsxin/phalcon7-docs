@@ -84,32 +84,32 @@
         var_dump($server->getAddress(), $server->getPort());
 
         while (true) {
-        $socket = $server->accept();
-        if ($socket === false) {
-            continue;
-        }
-
-        Phalcon\Async\Task::async(function () use ($socket) {
-
-            try {
-
-            $chunk = $socket->read();
-
-            if (empty($chunk)) {
-                $socket->close();
-                return;
+            $socket = $server->accept();
+            if ($socket === false) {
+                continue;
             }
 
-            $sendchunk = 'Hello World';
-            $sendchunk = \sprintf("HTTP/1.1 200 OK\r\nServer: webserver\r\nContent-Type: text/html\r\nTransfer-Encoding: chunked\r\nConnection: close\r\n\r\n%x\r\n%s\r\n0\r\n\r\n", \strlen($sendchunk), $sendchunk);
-            $socket->write($sendchunk);
+            Phalcon\Async\Task::async(function () use ($socket) {
 
-            } catch (\Throwable $e) {
-                echo $e, "\n\n";
+                try {
+
+                $chunk = $socket->read();
+
+                if (empty($chunk)) {
+                    $socket->close();
+                    return;
+                }
+
+                $sendchunk = 'Hello World';
+                $sendchunk = \sprintf("HTTP/1.1 200 OK\r\nServer: webserver\r\nContent-Type: text/html\r\nTransfer-Encoding: chunked\r\nConnection: close\r\n\r\n%x\r\n%s\r\n0\r\n\r\n", \strlen($sendchunk), $sendchunk);
+                $socket->write($sendchunk);
+
+                } catch (\Throwable $e) {
+                    echo $e, "\n\n";
             } finally {
-                $socket->close();
-            }
-        });
+                    $socket->close();
+                }
+            });
         }
     } finally {
         $server->close();
