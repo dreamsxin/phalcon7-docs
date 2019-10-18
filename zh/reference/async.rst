@@ -125,7 +125,7 @@
 
 
     try {
-        
+        $socket->writeAsync("GET /json HTTP/1.0\r\nHost: httpbin.org\r\nConnection: close\r\n\r\n")
         while (null !== ($chunk = $socket->read())) {
             var_dump($chunk);
         }
