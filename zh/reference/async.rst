@@ -133,3 +133,24 @@
     } finally {
         $socket->close();
     }
+
+异步 WebSocket（Async WebSocket）
+---------------------------------
+
+WebSocket 服务端 <https://github.com/dreamsxin/cphalcon7/blob/master/examples/async/websocket-server.php>`_：
+
+.. code-block:: php
+
+    <?php
+    // ...
+    $ws = new Websocket('0.0.0.0', 10001, function($socket, $headers, $path, $data) {
+        var_dump($data);
+        Websocket::sendFragment($socket, 'Re: '.$data);
+    });
+    $ws->start();
+
+WebSocket 客户端 <https://github.com/dreamsxin/cphalcon7/blob/master/examples/async/websocket-client.php>`_：
+
+.. code-block:: bash
+
+    php -d extension=phalcon.so websocket-client.php -c ws://localhost:10001
