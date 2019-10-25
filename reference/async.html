@@ -89,6 +89,7 @@
 <li><a class="reference internal" href="#coroutine-task">协程任务（Coroutine Task）</a></li>
 <li><a class="reference internal" href="#async-process">异步进程（Async Process）</a></li>
 <li><a class="reference internal" href="#socket-async-socket">异步 Socket （Async Socket）</a></li>
+<li><a class="reference internal" href="#websocket-async-websocket">异步 WebSocket（Async WebSocket）</a></li>
 </ul>
 </li>
 </ul>
@@ -232,6 +233,23 @@
 <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
     <span class="nv">$socket</span><span class="o">-&gt;</span><span class="na">close</span><span class="p">();</span>
 <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="websocket-async-websocket">
+<h2>异步 WebSocket（Async WebSocket）<a class="headerlink" href="#websocket-async-websocket" title="永久链接至标题">¶</a></h2>
+<p>WebSocket 服务端 &lt;<a class="reference external" href="https://github.com/dreamsxin/cphalcon7/blob/master/examples/async/websocket-server.php">https://github.com/dreamsxin/cphalcon7/blob/master/examples/async/websocket-server.php</a>&gt;`_：</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="c1">// ...</span>
+<span class="nv">$ws</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Websocket</span><span class="p">(</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span> <span class="mi">10001</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$socket</span><span class="p">,</span> <span class="nv">$headers</span><span class="p">,</span> <span class="nv">$path</span><span class="p">,</span> <span class="nv">$data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+    <span class="nx">Websocket</span><span class="o">::</span><span class="na">sendFragment</span><span class="p">(</span><span class="nv">$socket</span><span class="p">,</span> <span class="s1">&#39;Re: &#39;</span><span class="o">.</span><span class="nv">$data</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="nv">$ws</span><span class="o">-&gt;</span><span class="na">start</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>WebSocket 客户端 &lt;<a class="reference external" href="https://github.com/dreamsxin/cphalcon7/blob/master/examples/async/websocket-client.php">https://github.com/dreamsxin/cphalcon7/blob/master/examples/async/websocket-client.php</a>&gt;`_：</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>php -d <span class="nv">extension</span><span class="o">=</span>phalcon.so websocket-client.php -c ws://localhost:10001
 </pre></div>
 </div>
 </div>
