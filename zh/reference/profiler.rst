@@ -1,6 +1,52 @@
 性能分析器（Profiler）
 ======================
 
+层次式性能分析器（Hierarchical Profiler）
+-----------------------------------------
+:doc:`Phalcon\\Xhprof <../api/Phalcon_Xhprof>` 在数据收集阶段，它跟踪调用次数与测量数据，例如运行经过的时间、CPU 计算时间和内存开销：
+
+.. code-block:: php
+
+    <?php
+
+    function print_canonical($xhprof_data)
+    {
+        if (!is_array($xhprof_data)) {
+            throw new \UnexpectedValueException("print_canonical expects an array, but %s given.", gettype($xhprof_data));
+        }
+
+        ksort($xhprof_data);
+        foreach($xhprof_data as $func => $metrics) {
+            echo str_pad($func, 40) . ":";
+            ksort($metrics);
+            foreach ($metrics as $name => $value) {
+                $value = str_pad($value, 4, " ", STR_PAD_LEFT);
+
+                echo " {$name}={$value};";
+            }
+            echo "\n";
+        }
+    }
+
+    function bar() {
+        return 1;
+    }
+
+    function foo($x) {
+        $sum = 0;
+        for ($idx = 0; $idx < 2; $idx++) {
+            $sum += bar();
+        }
+        return strlen("hello: {$x}");
+    }
+
+    Phalcon\Xhprof::enable(Phalcon\Xhprof::FLAG_MEMORY | Phalcon\Xhprof::FLAG_CPU);
+    foo("this is a test");
+    $output = Phalcon\Xhprof::disable();
+    print_canonical($output);
+
+手动性能分析器（Manual Profiler）
+---------------------------------
 :doc:`Phalcon\\Profiler <../api/Phalcon_Profiler>` 一个性能分析组件，可以实现多层嵌套：
 
 .. code-block:: php
