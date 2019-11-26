@@ -197,6 +197,29 @@ Namespaces make part of model names when they are within strings:
         }
     }
 
+动态创建模型（Create model dynamically）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+使用静态方法 :code:`register()` 动态创建模型
+
+.. code-block:: php
+
+    <?php
+
+    $configSqlite = array(
+        'dbname' => '/tmp/phalcon_test.sqlite',
+    );
+
+    $di = new Phalcon\Di\FactoryDefault;
+    $di->set('db', function() use ($configSqlite) {
+        $db = new Phalcon\Db\Adapter\Pdo\Sqlite($configSqlite);
+        return $db;
+    }, true);
+
+    Phalcon\Mvc\Model::register('Robots');
+    Phalcon\Mvc\Model::register('Robots2', 'robots');
+
+
 理解记录对象（Understanding Records To Objects）
 ------------------------------------------------
 每个模型的实例对应一条数据表中的记录。可以方便的通过读取对象的属性来访问相应的数据。比如，
