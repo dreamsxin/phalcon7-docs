@@ -1,5 +1,7 @@
 套接字类（Socket Class）
 ========================
+PHP >= 7.4 本模块弃用，请使用 Async 模块。
+
 Socket 类为网络通信提供了一套常用的方法和属性。
 
 套接字服务端类（Socket Server Class）

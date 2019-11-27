@@ -1,5 +1,7 @@
 服务类（Server Class）
 ======================
+PHP >= 7.4 本模块弃用，请使用 Async 模块。
+
 提供了一些常用的服务类。
 
 TCP 服务端类（TCP Server Class）
