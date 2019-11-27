@@ -1,5 +1,7 @@
 WebSocket 组件
 ===============
+PHP >= 7.4 本模块弃用，请使用 Async 模块。
+
 提供 WebSocket 服务端和客户端类。
 
 WebSocket 服务端类
