@@ -54,7 +54,7 @@ Niginx 下配置 Phalcon（Configuring Nginx for Phalcon）
         charset     utf-8;
 
         location / {
-            try_files $uri $uri/ /index.php;
+            try_files $uri $uri/ /index.php?$query_string;
         }
 
         location ~ \.php$ {
