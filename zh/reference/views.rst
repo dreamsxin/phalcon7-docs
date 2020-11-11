@@ -1254,6 +1254,32 @@ Phalcon 会自动将 `controller` 和 `action` 名转为小写作为视图文件
     // Attach the plugin as a listener
     $eventsManager->attach("view:afterRender", new TidyPlugin());
 
+禁用或启用特性（Disabling/Enabling Features）
+---------------------------------------------
+在 View 中，允许您在全局上启用或者禁用特定的特性或选项。
+我们可以使用 `setup` 方法暂时启用或者禁用它：
+
+.. code-block:: php
+
+    <?php
+
+    use Phalcon\Mvc\View;
+
+    View::setup(
+        array(
+            'strict'         => false
+        )
+    );
+
+The available options are:
+
++-----------------------+---------------------------------------------------------------------------------------+---------+
+| Option                | Description                                                                           | Default |
++=======================+=======================================================================================+=========+
+| strict                | 开启或者禁用严格模式，严格模式下对视图文件间的变量进行隔离                            | true    |
++-----------------------+---------------------------------------------------------------------------------------+---------+
+
+
 .. _this Github repository: https://github.com/bobthecow/mustache.php
 .. _ajax request: http://api.jquery.com/jQuery.ajax/
 .. _Tidy: http://www.php.net/manual/en/book.tidy.php

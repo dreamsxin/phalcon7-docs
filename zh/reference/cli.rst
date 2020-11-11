@@ -46,7 +46,7 @@ CLI 应用即是运行在命令行窗体上的应用。主要用来实现后台�
 
     // 创建console应用
     $console = new Phalcon\Cli\Console();
-    $console->setDI($di);
+    $console->setDI($di); // 可以不指定
 
     try {
         $console->handle();
@@ -100,7 +100,6 @@ CLI 应用即是运行在命令行窗体上的应用。主要用来实现后台�
 
     // 创建console应用
     $console = new ConsoleApp();
-    $console->setDI($di);
 
     /**
      * 处理console应用参数
@@ -162,7 +161,6 @@ CLI 应用即是运行在命令行窗体上的应用。主要用来实现后台�
 
     // 创建console应用
     $console = new \Phalcon\Cli\Console();
-    $console->setDI($di);
 
     // 处理console应用参数
     $arguments = array(

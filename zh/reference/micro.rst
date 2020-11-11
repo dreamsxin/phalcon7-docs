@@ -275,7 +275,7 @@ Phalcon中使用 :doc:`Phalcon\\Mvc\\Url <url>` 来生成其它的基于路由�
 
     $app = new Micro();
 
-    $app->setDI($di);
+    $app->setDI($di); // 可以不指定
 
     $app->get('/', function () use ($app) {
         // Read a setting from the config
