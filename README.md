@@ -27,4 +27,4 @@ make html
 项目地址：
 - https://github.com/dreamsxin/phalcon7-docs (documentation)
 - https://github.com/dreamsxin/cphalcon7 (source code)
-- https://github.com/dreamsxin/cphalcon (source code)
+- https://github.com/dreamsxin/cphalcon1.3 (source code)
